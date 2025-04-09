@@ -72,6 +72,8 @@ onready var _grid := $Grid
 func _ready() -> void:
 	randomize()
 	
+	Events.connect("scene_summoned", self, "_on_Skill_scene_summoned")
+	
 	_save_data = GameData.save_data
 	
 	$PincerExecutor.pusher = $Pusher
@@ -186,20 +188,7 @@ func _assign_traps_to_cells() -> void:
 # Grid? Or here?
 func _assign_enemies_to_cells() -> void:
 	for enemy in _enemy_units_node.get_children():
-		_assign_unit_to_cell(enemy)
-		
-		enemy.connect("action_done", self, "_on_Enemy_action_done")
-		enemy.connect("started_moving", self, "_on_Unit_picked_up")
-		enemy.connect("use_skill", self, "_on_Enemy_use_skill")
-		enemy.connect("use_delayed_skill", self, "_on_Enemy_use_delayed_skill")
-		enemy.connect("released", self, "_on_Unit_released")
-		enemy.connect("selected_for_view", self, "_on_Unit_selected_for_view")
-		enemy.connect("dead", self, "_on_Enemy_dead")
-		
-		if enemy.is_controlled_by_player:
-			enemy.connect("picked_up", self, "_on_Unit_picked_up")
-		
-		enemy.faction = Unit.ENEMY_FACTION
+		_add_enemy(enemy)
 
 
 func _assign_units_to_cells() -> void:
@@ -238,6 +227,23 @@ func _assign_unit_to_cell(unit: Unit) -> void:
 			area_cell.unit = unit
 	else:
 		cell.unit = unit
+
+
+func _add_enemy(enemy: Enemy) -> void:
+	_assign_unit_to_cell(enemy)
+	
+	enemy.connect("action_done", self, "_on_Enemy_action_done")
+	enemy.connect("started_moving", self, "_on_Unit_picked_up")
+	enemy.connect("use_skill", self, "_on_Enemy_use_skill")
+	enemy.connect("use_delayed_skill", self, "_on_Enemy_use_delayed_skill")
+	enemy.connect("released", self, "_on_Unit_released")
+	enemy.connect("selected_for_view", self, "_on_Unit_selected_for_view")
+	enemy.connect("dead", self, "_on_Enemy_dead")
+	
+	if enemy.is_controlled_by_player:
+		enemy.connect("picked_up", self, "_on_Unit_picked_up")
+	
+	enemy.faction = Unit.ENEMY_FACTION
 
 
 # EnemyPhases
@@ -1090,4 +1096,20 @@ func _on_StatusEffectIconAnimationTimer_timeout() -> void:
 	
 	for unit in _enemy_units_node.get_children():
 		unit.update_status_effects_icons()
+	
+
+func _on_Skill_scene_summoned(scene_path: String, target_cell: Cell) -> void:
+	var scene = ResourceLoader.load(scene_path).instance()
+	
+	if scene == null:
+		return
+	
+	scene.position = target_cell.position
+	
+	# TODO: Check if enemy or ally, or if item, add to items node
+	_enemy_units_node.add_child(scene)
+	
+	_add_enemy(scene)
+	scene.hide()
+	scene.appear()
 	

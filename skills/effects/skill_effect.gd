@@ -2,6 +2,7 @@ class_name SkillEffect
 extends Node2D
 
 
+signal scene_summoned(scenes, target_cell)
 signal effect_finished
 
 export(PackedScene) var heal_particles_packed_scene: PackedScene
@@ -84,6 +85,12 @@ func _apply_skill(unit: Unit, skill: Skill, target_cell: Cell) -> void:
 		
 		if skill.is_pusher:
 			_pusher.push_unit(_start_cell, target_cell)
+	
+	if skill.has_summon():
+		# TODO: If target cell has 2x2 unit, find a free cell for the summoned unit
+		_pusher.push_unit(_start_cell, target_cell)
+		
+		Events.emit_signal("scene_summoned", skill.summoned_scene, target_cell)
 
 
 func on_damage_absorbed(damage: int) -> void:

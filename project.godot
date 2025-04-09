@@ -216,6 +216,7 @@ config/windows_native_icon="res://icon.ico"
 
 Utils="*res://utils.gd"
 Enums="*res://enums.gd"
+Events="*res://events.gd"
 Loader="*res://loader.gd"
 GameData="*res://save_data/game_data.gd"
 AntialiasedLine2DTexture="*res://addons/antialiased_line2d/texture.gd"

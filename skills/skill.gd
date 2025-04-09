@@ -48,6 +48,9 @@ export(PackedScene) var effect_scene: PackedScene = null
 # Used only by enemies
 export(bool) var is_delayed: bool = false
 
+# Unit or item that this scene summons
+export(String, FILE, "*.tscn") var summoned_scene: String = ""
+
 
 func is_physical() -> bool:
 	return primary_weapon_type != Enums.WeaponType.STAFF
@@ -65,6 +68,10 @@ func is_buff() -> bool:
 	return skill_type == Enums.SkillType.BUFF
 
 
+func has_summon() -> bool:
+	return not summoned_scene.empty()
+
+
 func has_status_effects() -> bool:
 	return not status_effects.empty()
 
@@ -79,4 +86,3 @@ func is_enemy_targeted() -> bool:
 
 func is_targeted_individually() -> bool:
 	return area_of_effect in Enums.AREAS_OF_EFFECT_WITH_INDIVIDUAL_TARGETING
-
