@@ -15,6 +15,8 @@ export(Resource) var skill: Resource
 
 export(Enums.Preference) var preference: int = Enums.Preference.DEAL_DAMAGE
 
+export(Enums.MovementPreference) var movement_preference: int = Enums.MovementPreference.RANDOM
+
 # Specific cell to move to, if possible
 # x: [0, 5]
 # y: [0, 7]

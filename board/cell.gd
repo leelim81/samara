@@ -43,6 +43,32 @@ func get_neighbor(direction: int) -> Cell:
 	return all_neighbors[direction]
 
 
+func get_diagonal_neighbors() -> Array:
+	var diagonal_neighbors: Array = []
+	
+	_append_valid_diagonal_neighbors(DIRECTION.UP, diagonal_neighbors)
+	_append_valid_diagonal_neighbors(DIRECTION.DOWN, diagonal_neighbors)
+	
+	return diagonal_neighbors
+
+
+func _append_valid_diagonal_neighbors(direction: int, diagonal_neighbors: Array) -> void:
+	var neighbor: Cell = get_neighbor(direction)
+	
+	if neighbor == null:
+		return
+	
+	var left_neighbor: Cell = neighbor.get_neighbor(DIRECTION.LEFT)
+	
+	if left_neighbor != null:
+		diagonal_neighbors.append(left_neighbor)
+	
+	var right_neighbor: Cell = neighbor.get_neighbor(DIRECTION.RIGHT)
+	
+	if right_neighbor != null:
+		diagonal_neighbors.append(right_neighbor)
+
+
 func update_cells_in_area() -> void:
 	_cells_in_area_2x2 = _get_cells_in_area(2)
 

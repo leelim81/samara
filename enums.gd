@@ -203,6 +203,21 @@ enum Preference {
 	RANDOM
 }
 
+# AI preference when choosing a cell to move to
+enum MovementPreference {
+	HUG_ENEMIES,
+	
+	HUG_ALLIES,
+	
+	ORBIT_ENEMIES,
+	
+	ORBIT_ALLIES,
+	
+	FLEE,
+	
+	RANDOM,
+}
+
 static func status_effect_type_to_string(status_effect_type: int) -> String:
 	return StatusEffectType.keys()[status_effect_type]
 

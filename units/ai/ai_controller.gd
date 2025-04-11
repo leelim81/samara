@@ -129,22 +129,38 @@ func _reset_pincer() -> void:
 func execute_action(enemy: Enemy, grid: Grid, allies: Array, enemies: Array, allies_queue: Array) -> void:
 	if enemy.has_active_delayed_skill:
 		enemy.trigger_delayed_skill()
-	else:
-		if _action == null:
-			enemy.emit_action_done()
-		else:
-			var action_parameters = ActionParameters.new()
+		
+		return
+	
+	if _action == null:
+		enemy.emit_action_done()
+		
+		return
+	
+	var action_parameters = ActionParameters.new()
+	
+	action_parameters.enemy = enemy
+	action_parameters.grid = grid
+	action_parameters.allies = _get_units_alive(allies)
+	action_parameters.enemies = _get_units_alive(enemies)
+	action_parameters.action = _action
+	action_parameters.allies_queue = allies_queue
+	
+	action_parameters.build_navigation_graph()
+	
+	action_parameters.action.on_use()
+	
+	match(action_parameters.action.behavior):
+		Action.Behavior.MOVE:
+			_execute_move_action(action_parameters)
+		Action.Behavior.USE_SKILL:
+			_execute_skill_action(action_parameters)
+		Action.Behavior.PINCER:
+			assert(action_parameters.action.skill == null)
 			
-			action_parameters.enemy = enemy
-			action_parameters.grid = grid
-			action_parameters.allies = _get_units_alive(allies)
-			action_parameters.enemies = _get_units_alive(enemies)
-			action_parameters.action = _action
-			action_parameters.allies_queue = allies_queue
-			
-			action_parameters.build_navigation_graph()
-			
-			_execute_action(action_parameters)
+			_execute_pincer_action(action_parameters)
+		_:
+			action_parameters.enemy.emit_action_done()
 
 
 func move_after_using_skill(enemy: Enemy, grid: Grid, enemies: Array) -> void:
@@ -250,23 +266,8 @@ func _get_next_action(current_hp_percentage: float) -> Action:
 		return null
 
 
-func _execute_action(action_parameters: ActionParameters) -> void:
-	action_parameters.action.on_use()
-	
-	match(action_parameters.action.behavior):
-		Action.Behavior.MOVE:
-			_execute_move_action(action_parameters)
-		Action.Behavior.USE_SKILL:
-			_execute_skill_action(action_parameters)
-		Action.Behavior.PINCER:
-			assert(action_parameters.action.skill == null)
-			
-			_execute_pincer_action(action_parameters)
-		_:
-			action_parameters.enemy.emit_action_done()
-
-
 func _execute_move_action(action_parameters: ActionParameters) -> void:
+	# TODO: Delete unused move methods
 	assert(action_parameters.action.skill == null)
 	
 	if action_parameters.action.has_valid_cell():
@@ -313,10 +314,24 @@ func _move_to_given_cell(action_parameters: ActionParameters, next_cell: Cell, e
 
 
 func _move_to_chosen_cell(action_parameters: ActionParameters) -> void:
-	if _random.randf() < chance_to_move_to_enemy_during_move_behavior:
-		_find_cell_close_to_enemy(action_parameters)
-	else:
-		_find_random_cell_to_move_to(action_parameters)
+	var results: Array = $MovementEvaluator.find_cells(
+		action_parameters.enemy,
+		action_parameters.grid,
+		action_parameters.allies,
+		action_parameters.enemies,
+		action_parameters.action,
+		action_parameters.navigation_graph
+	)
+	
+	var top_result = results.front()
+	
+	# Pick a random result to make it less predictable
+	if results.size() > max_number_of_random_top_results and _random.randf() < chance_to_select_random_top_result:
+		top_result = results[_random.randi_range(0, max_number_of_random_top_results)]
+		
+	var path: Array = action_parameters.find_path(top_result.cell)
+	
+	action_parameters.enemy.start_moving(path)
 
 
 func _find_cell_close_to_enemy(action_parameters: ActionParameters) -> void:
@@ -403,7 +418,7 @@ func _execute_pincer_action(action_parameters: ActionParameters) -> void:
 		print("No allies alive, can't pincer!")
 		
 		# TODO: Might be made redundant by swap and pincer
-		_find_random_cell_to_move_to(action_parameters)
+		_execute_move_action(action_parameters)
 	elif _has_valid_coordinated_pincer(action_parameters):
 		# FIXME: Don't repeat code from move_to_given_cell()
 		var path: Array = action_parameters.find_path(_pincer_target_cell, _pincer_excluded_cells)
@@ -424,7 +439,7 @@ func _find_pincer(action_parameters: ActionParameters) -> void:
 	
 	if possible_pincers.empty():
 		# TODO: Swap and pincer
-		_find_random_cell_to_move_to(action_parameters)
+		_execute_move_action(action_parameters)
 	else:
 		var possible_pincer: PossiblePincer = possible_pincers[min(_random.randi_range(0, 3), possible_pincers.size() - 1)]
 		
