@@ -27,6 +27,10 @@ var base_damage: int = 0
 
 var turn_count: int = -1
 
+# If status effect is equipped (comes from an Equip skill).
+# Equipped status effects cannot be removed, 'cured' or dispelled
+var is_equipped: bool = false
+
 
 # Implement this method and calculate the base damage.
 func initialize(_inflicting_unit_stats: Stats) -> void:
@@ -45,6 +49,9 @@ func calculate_damage(_affected_unit_stats: Stats) -> int:
 
 
 func update() -> void:
+	if is_equipped:
+		return
+	
 	if turn_count == -1:
 		turn_count = duration_turns
 	
@@ -52,7 +59,7 @@ func update() -> void:
 
 
 func is_done() -> bool:
-	return turn_count <= 0
+	return turn_count <= 0 and not is_equipped
 
 
 func is_buff() -> bool:
@@ -62,7 +69,7 @@ func is_buff() -> bool:
 func get_description(can_show_remaining_turns: bool = true) -> String:
 	var status_effect_string: String = tr(Enums.status_effect_type_to_string(status_effect_type))
 	
-	if can_show_remaining_turns:
+	if can_show_remaining_turns and not is_equipped:
 		var turns_left_description: String = tr("TURNS_LEFT") % turn_count
 		
 		return "%s, %s" % [status_effect_string, turns_left_description]

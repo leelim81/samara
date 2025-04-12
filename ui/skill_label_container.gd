@@ -25,7 +25,7 @@ func initialize(skill: Skill, can_show_full_data: bool = false, is_locked: bool 
 	if can_show_full_data:
 		$Label.autowrap = true
 		
-		if can_include_activation_rate:
+		if can_include_activation_rate and not skill.is_equipped():
 			skill_description += COMMA_AND_SPACE + "%.0f%%" % (100.0 * skill.activation_rate)
 		
 		if skill.is_attack():
@@ -48,7 +48,10 @@ func initialize(skill: Skill, can_show_full_data: bool = false, is_locked: bool 
 			skill_description += " " + tr("MAX_HEAL_DESCRIPTION").to_lower() % skill.max_heal
 		
 		if skill.has_status_effects():
-			skill_description += COMMA_AND_SPACE + tr("STATUS_EFFECT_CHANCE_DESCRIPTION") % (skill.status_effect_infliction_rate * 100.0)
+			skill_description += COMMA_AND_SPACE
+			
+			if not skill.is_equipped():
+				skill_description += tr("STATUS_EFFECT_CHANCE_DESCRIPTION") % (skill.status_effect_infliction_rate * 100.0)
 			
 			for i in skill.status_effects.size():
 				var status_effect: StatusEffect = skill.status_effects[i]
@@ -58,7 +61,10 @@ func initialize(skill: Skill, can_show_full_data: bool = false, is_locked: bool 
 				else:
 					skill_description += COMMA_AND_SPACE
 				
-				skill_description += tr("STATUS_EFFECT_DESCRIPTION") % [status_effect.get_description(false), status_effect.duration_turns]
+				if skill.is_equipped():
+					skill_description += status_effect.get_description(false)
+				else:
+					skill_description += tr("STATUS_EFFECT_DESCRIPTION") % [status_effect.get_description(false), status_effect.duration_turns]
 	
 	$Label.text = skill_description
 	

@@ -69,7 +69,7 @@ func get_description(can_show_remaining_turns: bool = true) -> String:
 		
 		status_effect_description += tr("STATUS_EFFECT_RESISTANCE") % [(100.0 * modified_status_effect_vulnerability), modified_status_effect_key]
 	
-	if can_show_remaining_turns:
+	if can_show_remaining_turns and not is_equipped:
 		status_effect_description += ", " + tr("TURNS_LEFT") % turn_count
 	
 	return status_effect_description

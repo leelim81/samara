@@ -55,6 +55,7 @@ func apply_skill(unit: Unit,
 				has_modified_stats = true
 				
 				status_effect.initialize(unit.get_stats())
+				status_effect.is_equipped = skill.is_equipped()
 				
 				status_effects.append(status_effect)
 				
@@ -68,6 +69,9 @@ func apply_skill(unit: Unit,
 		var status_effects_to_remove := []
 		
 		for status_effect in status_effects:
+			if status_effect.is_equipped:
+				continue
+			
 			if status_effect.status_effect_type in skill.cured_status_effects:
 				status_effects_to_remove.append(status_effect)
 		
@@ -115,6 +119,8 @@ func inflict(status_effect_type: int, status_effects: Array) -> void:
 	
 	for status_effect in status_effects:
 		if status_effect.status_effect_type == status_effect_type and status_effect.is_done():
+			assert(not status_effect.is_equipped)
+			
 			status_effects_to_remove.append(status_effect)
 	
 	for status_effect in status_effects_to_remove:
@@ -125,6 +131,9 @@ func inflict(status_effect_type: int, status_effects: Array) -> void:
 
 
 func remove_status_effect(status_effects: Array, status_effect: StatusEffect) -> void:
+	if status_effect.is_equipped:
+		return
+	
 	var index: int = status_effects.find(status_effect)
 	
 	if index != -1:
@@ -162,6 +171,10 @@ func _get_attribute_resistance(defender_stats: Stats, attacker_attribute, defend
 
 
 func _can_inflict_status_effects(skill: Skill) -> bool:
+	# Always 'inflict' equipped skills
+	if skill.is_equipped():
+		return true
+	
 	return _random.randf() < skill.status_effect_infliction_rate
 
 

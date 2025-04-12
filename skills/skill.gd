@@ -86,3 +86,7 @@ func is_enemy_targeted() -> bool:
 
 func is_targeted_individually() -> bool:
 	return area_of_effect in Enums.AREAS_OF_EFFECT_WITH_INDIVIDUAL_TARGETING
+
+
+func is_equipped() -> bool:
+	return area_of_effect == Enums.AreaOfEffect.EQUIP

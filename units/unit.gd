@@ -270,6 +270,8 @@ func set_job(job: Job) -> void:
 	$Job.set_job(job)
 	
 	_load_job_textures()
+	
+	apply_equip_skills()
 
 
 func set_drag_mode(drag_mode: int) -> void:
@@ -374,6 +376,10 @@ func get_skills() -> Array:
 	return $Job.skills
 
 
+func get_unlocked_skills() -> Array:
+	return $Job.get_unlocked_skills()
+
+
 func get_status_effects() -> Array:
 	return _status_effects
 
@@ -398,7 +404,7 @@ func inflict_damage(damage: int) -> void:
 func activate_skills() -> Array:
 	var activated_skills := []
 	
-	for skill in $Job.get_unlocked_skills():
+	for skill in get_unlocked_skills():
 		# Activation rules
 		if skill.area_of_effect == Enums.AreaOfEffect.EQUIP or skill.skill_type == Enums.SkillType.COUNTER:
 			continue
@@ -478,6 +484,14 @@ func _remove_all_status_effects_of_type(var status_effect_type: int) -> void:
 				$SkillApplier.remove_status_effect(_status_effects, status_effect)
 		
 		recalculate_stats()
+
+
+func apply_equip_skills() -> void:
+	for skill in get_unlocked_skills():
+		if skill.area_of_effect != Enums.AreaOfEffect.EQUIP:
+			continue
+		
+		apply_skill(self, skill, null)
 
 
 ## Animation playback

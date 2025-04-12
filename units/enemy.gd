@@ -30,6 +30,8 @@ func _ready() -> void:
 	$Job.set_level(level)
 	
 	_turn_counter_max_value = get_stats().max_turn_counter
+	
+	apply_equip_skills()
 
 
 # allies_queue is a queue of the units that will act after this one
@@ -237,8 +239,18 @@ func _on_snap_to_grid() -> void:
 		emit_action_done()
 
 
+# Overridden method. Combine skills from Job and AI skills
 func get_skills() -> Array:
-	return $AIController.get_skills()
+	# TODO: Include only equip skills
+	var skills: Array = $Job.skills
+	
+	skills.append_array($AIController.get_skills())
+	
+	return skills
+
+
+func get_unlocked_skills() -> Array:
+	return get_skills()
 
 
 ## Signals
