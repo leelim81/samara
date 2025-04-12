@@ -316,8 +316,6 @@ func _move_to_given_cell(action_parameters: ActionParameters, next_cell: Cell, e
 func _move_to_chosen_cell(action_parameters: ActionParameters) -> void:
 	var results: Array = $MovementEvaluator.find_cells(
 		action_parameters.enemy,
-		action_parameters.grid,
-		action_parameters.allies,
 		action_parameters.enemies,
 		action_parameters.action,
 		action_parameters.navigation_graph

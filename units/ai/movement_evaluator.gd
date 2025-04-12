@@ -7,7 +7,7 @@ class MovementEvaluationResult extends Reference:
 	var neighboring_enemies: int = 0
 	var neighboring_allies: int = 0
 	
-	var squared_distance_to_enemies: int = 0
+	var squared_distance_to_enemies: float = 0
 
 
 # Sorts results by count of neighboring units or enemies
@@ -38,8 +38,6 @@ class DistanceSorter:
 
 
 func find_cells(var unit: Enemy,
-				var grid: Grid,
-				var allies: Array,
 				var enemies: Array,
 				var action: Action,
 				var navigation_graph: Dictionary) -> Array:
@@ -47,7 +45,7 @@ func find_cells(var unit: Enemy,
 	
 	for cell in navigation_graph:
 		var result: MovementEvaluationResult = _evaluate_cell(
-			unit, grid, allies, enemies, action, cell
+			unit, enemies, action, cell
 		)
 		
 		results.append(result)
@@ -58,8 +56,6 @@ func find_cells(var unit: Enemy,
 
 
 func _evaluate_cell(var unit: Enemy,
-					var grid: Grid,
-					var allies: Array,
 					var enemies: Array,
 					var action: Action,
 					var cell: Cell) -> MovementEvaluationResult:
@@ -96,8 +92,8 @@ func _count_neighboring_units(unit_faction: int, neighbors: Array, is_enemy: boo
 	return count
 
 
-func _get_squared_distance_to_enemies(start_cell: Cell, var enemies: Array) -> int:
-	var distance_squared: int = 0
+func _get_squared_distance_to_enemies(start_cell: Cell, var enemies: Array) -> float:
+	var distance_squared: float = 0
 	
 	# Do cells and units share the same coordinates?
 	for enemy in enemies:
