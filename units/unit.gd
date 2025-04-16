@@ -258,7 +258,7 @@ func release() -> void:
 
 
 func _load_job_textures() -> void:
-	$Control/WeaponType.texture = load(Enums.WEAPON_TYPE_TEXTURES[$Job.job.stats.weapon_type])
+	$CanvasLayer/Control/WeaponType.texture = load(Enums.WEAPON_TYPE_TEXTURES[$Job.job.stats.weapon_type])
 	$Sprite/Icon.texture = $Job.job.portrait
 	
 	$CanvasLayer/UnitName.text = tr($Job.job.job_name)

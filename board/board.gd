@@ -291,8 +291,6 @@ func _make_player_units_appear() -> void:
 		
 		yield($Tween, "tween_all_completed")
 		
-		# TODO: Apply equip skills
-		
 		_start_turn_zero_enemy_turn()
 
 
@@ -815,7 +813,7 @@ func _on_Unit_picked_up(unit: Unit) -> void:
 	
 	_update_trail(_grid.get_cell_from_position(unit.position))
 	
-	unit.z_index += 1
+	unit.z_index = 5
 	
 	_highlight_possible_chains(unit)
 	
@@ -940,8 +938,7 @@ func _on_Unit_released(unit: Unit) -> void:
 	
 	_stop_possible_chained_units_animations()
 	
-	# TODO: Store original Z index ?
-	unit.z_index -= 1
+	unit.z_index = 0
 	
 	var selected_cell: Cell = _find_closest_cell(unit.position)
 	

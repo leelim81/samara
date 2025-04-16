@@ -44,7 +44,7 @@ var _units_removed_from_play := []
 
 # To calculate areas of effect
 var _grid: Grid
-var _current_z_index: int = 1
+var _current_z_index: int = 5
 
 var pusher: Pusher = null
 
@@ -68,7 +68,7 @@ func start_skill_activation_phase(pincer: Pincer, grid: Grid, allies: Array = []
 	
 	$SkillActivationTimer.start()
 	
-	_current_z_index = 2
+	_current_z_index = z_index
 	
 	_activate_next_skill()
 
@@ -169,13 +169,14 @@ func _show_chain_previews(pincer: Pincer) -> void:
 	clear_chain_previews()
 	
 	for unit in pincer.pincering_units:
-		var chain_previewer = chain_previewer_packed_scene.instance()
+		var chain_previewer: Node2D = chain_previewer_packed_scene.instance()
 		
 		add_child(chain_previewer)
 		_chain_previews.push_back(chain_previewer)
 		
 		chain_previewer.update_preview(unit, _grid.get_cell_from_position(unit.position))
-		chain_previewer.z_index = -1
+		chain_previewer.z_as_relative = false
+		chain_previewer.z_index = 0
 
 
 func clear_chain_previews() -> void:

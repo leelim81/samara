@@ -58,7 +58,7 @@ tracks/3/keys = {
 
 [node name="DamageNumbers" type="Node2D"]
 modulate = Color( 1, 1, 1, 0 )
-z_index = 5
+z_index = 10
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_lock_": true

@@ -53,7 +53,7 @@ theme = ExtResource( 10 )
 [node name="HpBar" parent="Control" index="0"]
 texture_progress = ExtResource( 4 )
 
-[node name="Container" parent="Control" index="3"]
+[node name="Container" parent="Control" index="2"]
 visible = true
 
 [node name="TurnCount" parent="Control/Container" index="0"]
@@ -62,7 +62,7 @@ text = "1"
 [node name="NinePatchRect" parent="CanvasLayer/ActivatedSkillMarginContainer" index="1"]
 texture = ExtResource( 8 )
 
-[node name="UnitName" parent="CanvasLayer" index="2"]
+[node name="UnitName" parent="CanvasLayer" index="3"]
 modulate = Color( 1, 1, 1, 1 )
 theme = ExtResource( 10 )
 text = "YACHIE"
@@ -89,7 +89,7 @@ stream = ExtResource( 3 )
 script = ExtResource( 13 )
 _sprite_node_path = NodePath("../Sprite/Icon")
 _job_node_path = NodePath("../Job")
-_weapon_type_node_path = NodePath("../Control/WeaponType")
+_weapon_type_node_path = NodePath("../CanvasLayer/Control/WeaponType")
 _turn_count_node_path = NodePath("../Control/Container/TurnCount")
 _unit_name_node_path = NodePath("../CanvasLayer/UnitName")
 
