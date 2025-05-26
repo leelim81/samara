@@ -23,6 +23,15 @@ export(int) var turn_offset: int = 1
 # turn_offset + turn_steps * counter
 export(int, 0, 20, 1) var turn_steps: int = 1
 
+# How many times this condition can trigger
+export(int, -1, 20) var max_uses: int = -1
+
+# How many units can be alive after which this condition won't trigger
+export(int, -1, 20, 1) var max_units_alive: int = -1
+
+# How many units must be alive for this condition to trigger
+export(int, 0, 20, 1) var min_units_alive: int = -1
+
 # Set after a one-shot condition is activated and the corresponding action
 # is performed
 var _is_activated: bool = false
@@ -30,6 +39,8 @@ var _is_activated: bool = false
 # Turn counter, increased every time the turn check matches, even if the
 # rest of the checks do not pass.
 var _counter: int = 0
+
+var _usage_count: int = 0
 
 
 func _ready() -> void:
@@ -42,6 +53,12 @@ func is_true(current_hp_percentage: float, current_turn: int, can_use_turn_count
 	if is_current_counter_valid:
 		# Keep track of the counter even if the condition is not fulfilled
 		_counter += 1
+	
+	if max_uses != -1:
+		_usage_count += 1
+		
+		if _usage_count >= max_uses:
+			return false
 	
 	if current_hp_percentage < minimum_hp_percentage or current_hp_percentage > max_hp_percentage:
 		return false
