@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://jobs/haniwa/training_orbling_job.tres" type="Resource" id=1]
+[ext_resource path="res://units/enemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://units/ai/action.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/enemies/orbling_haniwa.png" type="Texture" id=4]
+
+[node name="Fleer" instance=ExtResource( 2 )]
+turn_counter = 0
+
+[node name="Job" parent="." index="2"]
+job = ExtResource( 1 )
+
+[node name="Icon" parent="Sprite" index="1"]
+texture = ExtResource( 4 )
+
+[node name="TurnCount" parent="Control/Container" index="0"]
+text = "0"
+
+[node name="UnitName" parent="CanvasLayer" index="3"]
+text = "TRAINING_ORBLING"
+
+[node name="Action" parent="AIController" index="3" instance=ExtResource( 3 )]
+behavior = 4
+
+[editable path="CanvasLayer/ActivatedSkillMarginContainer"]

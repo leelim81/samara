@@ -6,13 +6,14 @@ export(int) var activation_frame: int = 0
 export(PackedScene) var animation_packed_scene: PackedScene
 
 
-func _ready() -> void:
-	$AnimatedSprite.hide()
-	$AnimatedSprite.stop()
-
-
 func _start(unit: Unit, skill: Skill, target_cells: Array) -> void:
 	for cell in target_cells:
+		if animation_packed_scene == null:
+			_update_count(unit)
+			_apply_skill(unit, skill, cell)
+			
+			return
+		
 		var animated_sprite: AnimatedSprite = animation_packed_scene.instance()
 		
 		add_child(animated_sprite)

@@ -6,7 +6,8 @@ enum Behavior {
 	MOVE,
 	USE_SKILL,
 	PINCER,
-	WAIT
+	WAIT,
+	ESCAPE
 }
 
 export(Behavior) var behavior: int

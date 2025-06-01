@@ -73,6 +73,7 @@ func _ready() -> void:
 	randomize()
 	
 	Events.connect("scene_summoned", self, "_on_Skill_scene_summoned")
+	Events.connect("unit_escaped", self, "_on_Skill_unit_escaped")
 	
 	_save_data = GameData.save_data
 	
@@ -1109,4 +1110,9 @@ func _on_Skill_scene_summoned(scene_path: String, target_cell: Cell) -> void:
 	_add_enemy(scene)
 	scene.hide()
 	scene.appear()
+
+
+func _on_Skill_unit_escaped(target_unit: Unit, target_cell: Cell) -> void:
+	target_unit.play_escape_animation()
 	
+	assert(target_unit == target_cell.unit)

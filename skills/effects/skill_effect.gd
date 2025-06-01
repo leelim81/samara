@@ -91,6 +91,9 @@ func _apply_skill(unit: Unit, skill: Skill, target_cell: Cell) -> void:
 		_pusher.push_unit(_start_cell, target_cell)
 		
 		Events.emit_signal("scene_summoned", skill.summoned_scene, target_cell)
+	
+	if skill.is_escape and target_unit != null:
+		Events.emit_signal("unit_escaped", target_unit, target_cell)
 
 
 func on_damage_absorbed(damage: int) -> void:

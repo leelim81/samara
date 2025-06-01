@@ -8,6 +8,8 @@ class MovementEvaluationResult extends Reference:
 	var neighboring_allies: int = 0
 	
 	var squared_distance_to_enemies: float = 0
+	
+	var distance_to_border: float = 0
 
 
 # Sorts results by count of neighboring units or enemies
@@ -37,6 +39,11 @@ class DistanceSorter:
 		return a.squared_distance_to_enemies > b.squared_distance_to_enemies
 
 
+class BorderSorter:
+	static func sort_descending(a: MovementEvaluationResult, b: MovementEvaluationResult) -> bool:
+		return a.distance_to_border > b.distance_to_border
+
+
 func find_cells(var unit: Enemy,
 				var enemies: Array,
 				var action: Action,
@@ -51,6 +58,24 @@ func find_cells(var unit: Enemy,
 		results.append(result)
 	
 	_sort_by_preference(action.movement_preference, results)
+	
+	return results
+
+
+func find_border_cells(grid: Grid, var navigation_graph: Dictionary) -> Array:
+	var results: Array = []
+	
+	for cell in navigation_graph:
+		if not grid.is_border(cell.coordinates):
+			continue
+		
+		var result: MovementEvaluationResult = MovementEvaluationResult.new()
+		result.cell = cell
+		
+		result.distance_to_border = grid.distance_to_border(cell)
+		results.append(result)
+	
+	_sort_by_preference(Enums.MovementPreference.BORDER, results)
 	
 	return results
 
@@ -132,3 +157,5 @@ func _sort_by_preference(preference: int, movement_evaluation_results: Array) ->
 			movement_evaluation_results.sort_custom(DistanceSorter, "sort_descending")
 		Enums.MovementPreference.RANDOM:
 			movement_evaluation_results.shuffle()
+		Enums.MovementPreference.BORDER:
+			movement_evaluation_results.sort_custom(BorderSorter, "sort_ascending")

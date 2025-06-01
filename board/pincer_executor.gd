@@ -280,7 +280,12 @@ func update_dead_unit_on_swap(unit: Unit, cell_to_swap_to: Cell) -> void:
 func _check_next_dead_unit() -> void:
 	var unit: Unit = _dead_units.pop_front()
 	
-	if unit != null and not unit.is_death_animation_playing():
+	if unit != null and unit.is_escaped:
+		# If unit escaped, don't play the death animation, just clean up the cells
+		var cell: Cell = _grid.get_cell_from_position(unit.position)
+		
+		_clean_up_cell(unit, cell)
+	elif unit != null and not unit.is_death_animation_playing():
 		if unit.connect("death_animation_finished", self, "_on_Unit_death_animation_finished") != OK:
 			push_warning("Trying to connect death animation finished signal again to unit %s" % unit.name)
 			
@@ -297,17 +302,7 @@ func _check_next_dead_unit() -> void:
 			
 			_clean_up_all_cells(unit)
 		
-		# If 2x2, check neighbor cells
-		if unit.is2x2():
-			for area_cell in cell.get_cells_in_area():
-				if area_cell.unit != unit:
-					printerr("2x2 unit not in area cells")
-					
-					_clean_up_all_cells(unit)
-				
-				area_cell.unit = null
-		else:
-			cell.unit = null
+		_clean_up_cell(unit, cell)
 		
 		print("Setting cell of unit %s to null" % unit.name)
 	else:
@@ -383,6 +378,20 @@ func _play_status_effect_sound(status_effect_type: int) -> void:
 		$PoisonAudio.play()
 	elif status_effect_type == Enums.StatusEffectType.REGENERATE:
 		$RegenerateAudio.play()
+
+
+func _clean_up_cell(unit: Unit, cell: Cell) -> void:
+	# If 2x2, check neighbor cells
+	if unit.is2x2():
+		for area_cell in cell.get_cells_in_area():
+			if area_cell.unit != unit:
+				printerr("2x2 unit not in area cells")
+				
+				_clean_up_all_cells(unit)
+			
+			area_cell.unit = null
+	else:
+		cell.unit = null
 
 
 # Sets all cells with the given unit to null

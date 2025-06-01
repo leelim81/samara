@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://assets/fonts/Exo2-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://jobs/animal_spirit/yachie_job.tres" type="Resource" id=2]
@@ -199,6 +199,33 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
+[sub_resource type="Animation" id=16]
+resource_name = "disappear"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
 [sub_resource type="Animation" id=12]
 resource_name = "hide name"
 tracks/0/type = "value"
@@ -364,6 +391,7 @@ death_effect_packed_scene = ExtResource( 5 )
 anims/RESET = SubResource( 7 )
 anims/appear = SubResource( 5 )
 anims/death = SubResource( 6 )
+anims/disappear = SubResource( 16 )
 "anims/hide name" = SubResource( 12 )
 "anims/scale up and down" = SubResource( 13 )
 anims/shake = SubResource( 9 )
@@ -565,8 +593,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_right = 48.0
-margin_bottom = 48.0
+margin_left = -24.0
+margin_top = -24.0
+margin_right = 24.0
+margin_bottom = 24.0
 mouse_filter = 2
 texture = ExtResource( 14 )
 expand = true
@@ -634,6 +664,9 @@ bus = "Sound effects"
 
 [node name="SkillActivationAudio" type="AudioStreamPlayer" parent="Sound"]
 stream = ExtResource( 11 )
+bus = "Sound effects"
+
+[node name="EscapeAudio" type="AudioStreamPlayer" parent="Sound"]
 bus = "Sound effects"
 
 [connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]

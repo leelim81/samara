@@ -76,6 +76,8 @@ var _pincer_excluded_cells: Dictionary
 # Array<Cell>
 var _pincer_pincered_cells: Array
 
+onready var _escape_skill: Skill = ResourceLoader.load("res://skills/resources/escape.tres")
+
 
 func _ready() -> void:
 	_random.randomize()
@@ -159,6 +161,8 @@ func execute_action(enemy: Enemy, grid: Grid, allies: Array, enemies: Array, all
 			assert(action_parameters.action.skill == null)
 			
 			_execute_pincer_action(action_parameters)
+		Action.Behavior.ESCAPE:
+			_execute_escape_action(action_parameters)
 		_:
 			action_parameters.enemy.emit_action_done()
 
@@ -456,6 +460,29 @@ func _coordinate_pincer(action_parameters: ActionParameters, possible_pincer: Po
 	possible_pincer.ally.set_pincer(possible_pincer.start_cell, possible_pincer.end_cell, possible_pincer.pincered_cells)
 	
 	action_parameters.enemy.start_moving(possible_pincer.path_to_end_cell)
+
+
+func _execute_escape_action(action_parameters: ActionParameters) -> void:
+	var results: Array = $MovementEvaluator.find_border_cells(action_parameters.grid, action_parameters.navigation_graph)
+	
+	if results.empty():
+		action_parameters.action.movement_preference = Enums.MovementPreference.FLEE
+		
+		_execute_move_action(action_parameters)
+	else:
+		var top_result = results.front()
+	
+		# Pick a random result to make it less predictable
+		if results.size() > max_number_of_random_top_results and _random.randf() < chance_to_select_random_top_result:
+			top_result = results[_random.randi_range(0, max_number_of_random_top_results)]
+		
+		var cell: Cell = top_result.cell
+		
+		assert(action_parameters.grid.is_border(cell.coordinates))
+		
+		var path: Array = action_parameters.find_path(cell)
+		
+		action_parameters.enemy.use_skill(_escape_skill.duplicate(), [cell], path, false)
 
 
 func _get_units_alive(units: Array) -> Array:

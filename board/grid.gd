@@ -129,3 +129,18 @@ func get_top_left_corner() -> Cell:
 
 func get_top_right_corner() -> Cell:
 	return get_cell_from_coordinates(Vector2(width - 1, 0))
+
+# Borders
+func is_border(coordinates: Vector2) -> bool:
+	if coordinates.x == 0 || coordinates.x == width - 1:
+		return true
+	
+	if coordinates.y == 0 || coordinates.y == height -1:
+		return true
+	
+	return false
+
+
+func distance_to_border(cell: Cell) -> float:
+	return min(abs(cell.coordinates.x - width), abs(cell.coordinates.y - height))
+

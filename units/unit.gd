@@ -35,7 +35,7 @@ export(PackedScene) var death_effect_packed_scene: PackedScene
 
 export(Size) var size: int = Size.SINGLE_1X1
 
-export var velocity_pixels_per_second: float = 10.0
+export var velocity_pixels_per_second: float = 15.0
 export var snap_velocity_pixels_per_second: float = 200.0
 export var swap_velocity_pixels_per_second: float = 500.0
 
@@ -54,6 +54,9 @@ export(int, 1, 50, 1) var level: int = 10
 var current_state = STATE.IDLE setget set_current_state
 
 var faction: int = INVALID_FACTION
+
+# Says if a unit has escaped or used a escape skill
+var is_escaped: bool = false
 
 var _random := RandomNumberGenerator.new()
 
@@ -126,6 +129,17 @@ func play_death_animation() -> void:
 
 func is_death_animation_playing() -> bool:
 	return $AnimationPlayer.current_animation == "death"
+
+
+func play_escape_animation() -> void:
+	# Set the health to 0 and the flag so this unit is picked up the PincerExecutor
+	# in the next call to check_dead_units(), and the unit is removed from play
+	get_stats().health = 0
+	is_escaped = true
+	
+	$Sound/EscapeAudio.play()
+	
+	$AnimationPlayer.play("disappear")
 
 
 func play_scale_up_and_down_animation() -> void:

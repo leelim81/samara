@@ -216,6 +216,8 @@ enum MovementPreference {
 	FLEE,
 	
 	RANDOM,
+	
+	BORDER
 }
 
 static func status_effect_type_to_string(status_effect_type: int) -> String:

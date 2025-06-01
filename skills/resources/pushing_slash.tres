@@ -24,3 +24,5 @@ status_effect_infliction_rate = 0.3
 cured_status_effects = [  ]
 effect_scene = ExtResource( 1 )
 is_delayed = false
+summoned_scene = ""
+is_escape = false

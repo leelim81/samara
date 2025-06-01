@@ -51,6 +51,9 @@ export(bool) var is_delayed: bool = false
 # Unit or item that this scene summons
 export(String, FILE, "*.tscn") var summoned_scene: String = ""
 
+# True if this is a escape skill. Will remove unit(s) from play
+export(bool) var is_escape: bool = false
+
 
 func is_physical() -> bool:
 	return primary_weapon_type != Enums.WeaponType.STAFF
