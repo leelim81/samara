@@ -7,10 +7,10 @@ extends Node
 
 # Dictionary<Direction, Direction>
 const OPPOSITE_DIRECTION := {
-	Cell.DIRECTION.UP: Cell.DIRECTION.DOWN,
-	Cell.DIRECTION.DOWN: Cell.DIRECTION.UP,
-	Cell.DIRECTION.RIGHT: Cell.DIRECTION.LEFT,
-	Cell.DIRECTION.LEFT: Cell.DIRECTION.RIGHT,
+	Enums.DIRECTION.UP: Enums.DIRECTION.DOWN,
+	Enums.DIRECTION.DOWN: Enums.DIRECTION.UP,
+	Enums.DIRECTION.RIGHT: Enums.DIRECTION.LEFT,
+	Enums.DIRECTION.LEFT: Enums.DIRECTION.RIGHT,
 }
 
 
@@ -20,7 +20,7 @@ func push_unit(incoming_cell: Cell, pushed_unit_cell: Cell) -> void:
 	if pushed_unit_cell.unit == null or pushed_unit_cell.unit.is2x2():
 		return
 	
-	var direction: int = _get_direction(incoming_cell.coordinates, pushed_unit_cell.coordinates)
+	var direction: int = Enums.get_direction(incoming_cell.coordinates, pushed_unit_cell.coordinates)
 	var initial_direction: int = direction
 	
 	var cell_to_move_to: Cell = pushed_unit_cell.get_neighbor(direction)
@@ -28,7 +28,7 @@ func push_unit(incoming_cell: Cell, pushed_unit_cell: Cell) -> void:
 	# If the cell is null, pick another one
 	# Move just one cell
 	while not _is_cell_free(cell_to_move_to):
-		direction = _get_next_direction(direction)
+		direction = Enums.get_next_direction(direction)
 		
 		if direction == initial_direction:
 			cell_to_move_to = null
@@ -81,37 +81,6 @@ func _find_closest_free_cell(start_cell: Cell) -> Cell:
 					queue.push_back(neighbor)
 	
 	return null
-
-
-# Returns Direction enum
-func _get_direction(start_coordinates: Vector2, end_coordinates: Vector2) -> int:
-	var end_to_start: Vector2 = end_coordinates - start_coordinates
-	
-	if is_zero_approx(end_to_start.y):
-		if end_to_start.x < 0:
-			return Cell.DIRECTION.LEFT
-		else:
-			return Cell.DIRECTION.RIGHT
-	else:
-		if end_to_start.y < 0:
-			return Cell.DIRECTION.UP
-		else:
-			return Cell.DIRECTION.DOWN
-
-
-# Gets the next direction in clockwise order
-func _get_next_direction(direction: int) -> int:
-	match(direction):
-		Cell.DIRECTION.UP:
-			return Cell.DIRECTION.RIGHT
-		Cell.DIRECTION.RIGHT:
-			return Cell.DIRECTION.DOWN
-		Cell.DIRECTION.DOWN:
-			return Cell.DIRECTION.LEFT
-		Cell.DIRECTION.LEFT:
-			return Cell.DIRECTION.UP
-		_:
-			return Cell.DIRECTION.UP
 
 
 func _is_cell_free(cell: Cell) -> bool:

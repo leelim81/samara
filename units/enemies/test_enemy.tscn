@@ -18,11 +18,12 @@ texture = ExtResource( 5 )
 [node name="TurnCount" parent="Control/Container" index="0"]
 text = "2"
 
-[node name="UnitName" parent="CanvasLayer" index="2"]
+[node name="UnitName" parent="CanvasLayer" index="3"]
 text = "TRAINING_ORBLING"
 
 [node name="Action" parent="AIController" index="1" instance=ExtResource( 4 )]
 behavior = 2
+movement_preference = 2
 
 [node name="Condition" parent="AIController/Action" index="0" instance=ExtResource( 3 )]
 

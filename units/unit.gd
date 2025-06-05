@@ -51,9 +51,13 @@ export(bool) var is_controlled_by_player: bool = true
 
 export(int, 1, 50, 1) var level: int = 10
 
+export(bool) var can_flee_when_enemy_enters_nearby_cell: bool = false
+
 var current_state = STATE.IDLE setget set_current_state
 
 var faction: int = INVALID_FACTION
+
+var velocity: Vector2 = Vector2.ZERO
 
 # Says if a unit has escaped or used a escape skill
 var is_escaped: bool = false
@@ -131,6 +135,12 @@ func is_death_animation_playing() -> bool:
 	return $AnimationPlayer.current_animation == "death"
 
 
+func play_flee_animation() -> void:
+	# TODO: Show exclamation sign
+	
+	$Sound/FleeAudio.play()
+
+
 func play_escape_animation() -> void:
 	# Set the health to 0 and the flag so this unit is picked up the PincerExecutor
 	# in the next call to check_dead_units(), and the unit is removed from play
@@ -143,7 +153,7 @@ func play_escape_animation() -> void:
 
 
 func play_scale_up_and_down_animation() -> void:
-	_tween.remove($Sprite, ":scale")
+	_tween.remove($Sprite, "scale")
 	
 	$AnimationPlayer.play("scale up and down")
 
@@ -151,7 +161,7 @@ func play_scale_up_and_down_animation() -> void:
 func stop_scale_up_and_down_animation() -> void:
 	$AnimationPlayer.stop(true)
 	
-	_tween.remove($Sprite, ":scale")
+	_tween.remove($Sprite, "scale")
 	
 	_tween.interpolate_property($Sprite, "scale",
 		$Sprite.scale, Vector2.ONE,
@@ -162,7 +172,7 @@ func stop_scale_up_and_down_animation() -> void:
 
 
 func move_to_new_cell(target_position: Vector2) -> void:
-	_tween.remove(self, ":position")
+	_tween.remove(self, "position")
 	
 	var tween_time_seconds: float = Utils.calculate_time(position, target_position, swap_velocity_pixels_per_second)
 	
@@ -216,9 +226,9 @@ func disable_selection_area() -> void:
 func _move_towards_mouse() -> void:
 	var error: Vector2 = get_global_mouse_position() - global_position
 	
-	var velocity = Vector2(error * kp * velocity_pixels_per_second).limit_length(max_velocity_pixels_per_second)
+	velocity = Vector2(error * kp * velocity_pixels_per_second).limit_length(max_velocity_pixels_per_second)
 	
-	var _velocity = move_and_slide(velocity, Vector2.ZERO)
+	velocity = move_and_slide(velocity, Vector2.ZERO)
 
 
 func _input(event: InputEvent):
@@ -333,7 +343,7 @@ func set_current_state(new_state) -> void:
 
 
 func _increase_sprite_size() -> void:
-	_tween.remove(_sprite, ":scale")
+	_tween.remove(_sprite, "scale")
 	
 	_tween.interpolate_property(_sprite, "scale",
 		_sprite.scale, Vector2(1.2, 1.2),

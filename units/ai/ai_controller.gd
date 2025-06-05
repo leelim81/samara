@@ -23,11 +23,11 @@ class ActionParameters extends Reference:
 	
 	
 	func build_navigation_graph() -> void:
-		navigation_graph = BoardUtils.build_navigation_graph(grid, enemy.position, enemy.faction, enemy.get_stats().movement_range)
+		navigation_graph = BoardUtils.build_navigation_graph(grid, enemy, enemy.faction, enemy.get_stats().movement_range)
 	
 	
 	func find_path(target_cell: Cell, excluded_cells: Dictionary = {}) -> Array:
-		return BoardUtils.find_path(grid, navigation_graph, enemy.position, target_cell, excluded_cells)
+		return BoardUtils.find_path(grid, navigation_graph, enemy, target_cell, excluded_cells)
 
 
 # Action execution mode.
@@ -358,7 +358,7 @@ func _find_cell_close_to_enemy(action_parameters: ActionParameters) -> void:
 # Returns Array<Cell>
 # Finds free cells that neighbor enemies.
 func _find_cells_close_to_enemies(action_parameters: ActionParameters) -> Array:
-	var directions := [Cell.DIRECTION.RIGHT, Cell.DIRECTION.LEFT, Cell.DIRECTION.UP, Cell.DIRECTION.DOWN]
+	var directions := [Enums.DIRECTION.RIGHT, Enums.DIRECTION.LEFT, Enums.DIRECTION.UP, Enums.DIRECTION.DOWN]
 	var candidate_cells := []
 	
 	for enemy in action_parameters.enemies:

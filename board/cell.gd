@@ -2,14 +2,6 @@ class_name Cell
 extends Area2D
 
 
-enum DIRECTION {
-	UP,
-	DOWN,
-	LEFT,
-	RIGHT
-}
-
-
 # x,y coordinates in the grid matrix, for convenience.
 var coordinates: Vector2 = Vector2.ZERO
 
@@ -46,8 +38,8 @@ func get_neighbor(direction: int) -> Cell:
 func get_diagonal_neighbors() -> Array:
 	var diagonal_neighbors: Array = []
 	
-	_append_valid_diagonal_neighbors(DIRECTION.UP, diagonal_neighbors)
-	_append_valid_diagonal_neighbors(DIRECTION.DOWN, diagonal_neighbors)
+	_append_valid_diagonal_neighbors(Enums.DIRECTION.UP, diagonal_neighbors)
+	_append_valid_diagonal_neighbors(Enums.DIRECTION.DOWN, diagonal_neighbors)
 	
 	return diagonal_neighbors
 
@@ -58,12 +50,12 @@ func _append_valid_diagonal_neighbors(direction: int, diagonal_neighbors: Array)
 	if neighbor == null:
 		return
 	
-	var left_neighbor: Cell = neighbor.get_neighbor(DIRECTION.LEFT)
+	var left_neighbor: Cell = neighbor.get_neighbor(Enums.DIRECTION.LEFT)
 	
 	if left_neighbor != null:
 		diagonal_neighbors.append(left_neighbor)
 	
-	var right_neighbor: Cell = neighbor.get_neighbor(DIRECTION.RIGHT)
+	var right_neighbor: Cell = neighbor.get_neighbor(Enums.DIRECTION.RIGHT)
 	
 	if right_neighbor != null:
 		diagonal_neighbors.append(right_neighbor)
@@ -75,6 +67,19 @@ func update_cells_in_area() -> void:
 
 func get_cells_in_area() -> Array:
 	return _cells_in_area_2x2
+
+
+func activate_trap() -> void:
+	if unit == null or trap == null:
+		return
+	
+	print("Trap activated! %s" % unit.name)
+	
+	trap.activate(unit)
+	
+	if unit.is_dead():
+		unit.release()
+	
 
 
 # Returns Array<Cell>. If there are not enough neighbors, returns an empty array.
@@ -94,14 +99,14 @@ func _get_cells_in_area(var size: int) -> Array:
 		cells.push_back(row_cell)
 		
 		for _y in size - 1:
-			var column_cell: Cell = row_cell.get_neighbor(DIRECTION.RIGHT)
+			var column_cell: Cell = row_cell.get_neighbor(Enums.DIRECTION.RIGHT)
 			
 			if column_cell != null:
 				cells.push_back(column_cell)
 			else:
 				break
 		
-		row_cell = row_cell.get_neighbor(DIRECTION.DOWN)
+		row_cell = row_cell.get_neighbor(Enums.DIRECTION.DOWN)
 		
 		if row_cell == null:
 			break

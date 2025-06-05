@@ -14,7 +14,7 @@ func update_preview(unit: Unit, cell: Cell) -> void:
 	var last_cells_with_ally_for_each_direction: Array = []
 	
 	# This code is similar to find_chains() in Pincerer
-	for direction in Cell.DIRECTION.values():
+	for direction in Enums.DIRECTION.values():
 		var neighbor: Cell = cell.get_neighbor(direction)
 		
 		var last_cell_with_ally: Cell = null

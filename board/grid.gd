@@ -67,10 +67,10 @@ func _build_cell(x_position: float, y_position: float) -> Cell:
 func _set_neighbors(node: Cell) -> void:
 	var cell_coordinates: Vector2 = node.coordinates
 	
-	_set_neighbor(node, Vector2(cell_coordinates.x, cell_coordinates.y - 1), Cell.DIRECTION.UP)
-	_set_neighbor(node, Vector2(cell_coordinates.x, cell_coordinates.y + 1), Cell.DIRECTION.DOWN)
-	_set_neighbor(node, Vector2(cell_coordinates.x + 1, cell_coordinates.y), Cell.DIRECTION.RIGHT)
-	_set_neighbor(node, Vector2(cell_coordinates.x - 1, cell_coordinates.y), Cell.DIRECTION.LEFT)
+	_set_neighbor(node, Vector2(cell_coordinates.x, cell_coordinates.y - 1), Enums.DIRECTION.UP)
+	_set_neighbor(node, Vector2(cell_coordinates.x, cell_coordinates.y + 1), Enums.DIRECTION.DOWN)
+	_set_neighbor(node, Vector2(cell_coordinates.x + 1, cell_coordinates.y), Enums.DIRECTION.RIGHT)
+	_set_neighbor(node, Vector2(cell_coordinates.x - 1, cell_coordinates.y), Enums.DIRECTION.LEFT)
 
 
 func _set_neighbor(cell: Cell, neighbor_coordinates: Vector2, direction: int) -> void:

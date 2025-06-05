@@ -25,7 +25,7 @@ func find_pincers(grid: Grid, active_unit: Unit) -> Array:
 		var x: int = 0
 		
 		while x < grid_width:
-			var pincer: Pincer = _check_neighbors_for_pincers(grid, x, y, faction, Cell.DIRECTION.RIGHT, Enums.PincerOrientation.HORIZONTAL)
+			var pincer: Pincer = _check_neighbors_for_pincers(grid, x, y, faction, Enums.DIRECTION.RIGHT, Enums.PincerOrientation.HORIZONTAL)
 			
 			if pincer == null:
 				x += 1
@@ -39,7 +39,7 @@ func find_pincers(grid: Grid, active_unit: Unit) -> Array:
 		var y: int = grid_height - 1
 		
 		while y > -1:
-			var pincer: Pincer = _check_neighbors_for_pincers(grid, x, y, faction, Cell.DIRECTION.UP, Enums.PincerOrientation.VERTICAL)
+			var pincer: Pincer = _check_neighbors_for_pincers(grid, x, y, faction, Enums.DIRECTION.UP, Enums.PincerOrientation.VERTICAL)
 			
 			if pincer == null:
 				y -= 1
@@ -77,10 +77,10 @@ func find_chains(grid:Grid, pincer: Pincer) -> void:
 	var cells: Array = [grid.get_cell_from_position(pincer.start_position), grid.get_cell_from_position(pincer.end_position)]
 	
 	for cell in cells:
-		_find_chain(cell, Cell.DIRECTION.RIGHT, chain_families, faction)
-		_find_chain(cell, Cell.DIRECTION.LEFT, chain_families, faction)
-		_find_chain(cell, Cell.DIRECTION.UP, chain_families, faction)
-		_find_chain(cell, Cell.DIRECTION.DOWN, chain_families, faction)
+		_find_chain(cell, Enums.DIRECTION.RIGHT, chain_families, faction)
+		_find_chain(cell, Enums.DIRECTION.LEFT, chain_families, faction)
+		_find_chain(cell, Enums.DIRECTION.UP, chain_families, faction)
+		_find_chain(cell, Enums.DIRECTION.DOWN, chain_families, faction)
 	
 	pincer.chain_families = chain_families
 

@@ -220,6 +220,46 @@ enum MovementPreference {
 	BORDER
 }
 
+# Cell directions
+enum DIRECTION {
+	UP,
+	DOWN,
+	LEFT,
+	RIGHT
+}
+
+
+# Returns Direction enum
+static func get_direction(start_coordinates: Vector2, end_coordinates: Vector2) -> int:
+	var end_to_start: Vector2 = end_coordinates - start_coordinates
+	
+	if abs(end_to_start.x) > abs(end_to_start.y):
+		if end_to_start.x < 0:
+			return Enums.DIRECTION.LEFT
+		else:
+			return Enums.DIRECTION.RIGHT
+	else:
+		if end_to_start.y < 0:
+			return Enums.DIRECTION.UP
+		else:
+			return Enums.DIRECTION.DOWN
+
+
+# Gets the next direction in clockwise order
+static func get_next_direction(direction: int) -> int:
+	match(direction):
+		Enums.DIRECTION.UP:
+			return Enums.DIRECTION.RIGHT
+		Enums.DIRECTION.RIGHT:
+			return Enums.DIRECTION.DOWN
+		Enums.DIRECTION.DOWN:
+			return Enums.DIRECTION.LEFT
+		Enums.DIRECTION.LEFT:
+			return Enums.DIRECTION.UP
+		_:
+			return Enums.DIRECTION.UP
+
+
 static func status_effect_type_to_string(status_effect_type: int) -> String:
 	return StatusEffectType.keys()[status_effect_type]
 

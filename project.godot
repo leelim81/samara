@@ -114,7 +114,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://units/ai/possible_pincer.gd"
 }, {
-"base": "Reference",
+"base": "Node",
 "class": "Pusher",
 "language": "GDScript",
 "path": "res://board/pusher.gd"

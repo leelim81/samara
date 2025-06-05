@@ -66,8 +66,13 @@ class PriorityQueue:
 # Builds an adjacency dictionary with all the nodes that the given unit can visit
 # Enemies may block the unit from reaching certain tiles, besides the tiles they
 # already occupy
-static func build_navigation_graph(grid: Grid, unit_position: Vector2, faction: int, movement_range: int) -> Dictionary:
-	var start_cell: Cell = grid.get_cell_from_position(unit_position)
+static func build_navigation_graph(grid: Grid, unit: Unit, faction: int, movement_range: int) -> Dictionary:
+	var start_cell: Cell = grid.get_cell_from_position(unit.position)
+	
+	if start_cell.unit != unit:
+		printerr("Cell at position %s does not have unit %s" % [unit.position, unit.name])
+		
+		start_cell = _find_cell_with_unit(grid, unit)
 	
 	var queue := []
 	
@@ -79,8 +84,6 @@ static func build_navigation_graph(grid: Grid, unit_position: Vector2, faction: 
 	# Dictionary<Cell, Array<Cell> (array of cells connected to this cell)>
 	# Graph as adjacency list
 	var navigation_graph := {}
-	
-	var unit: Unit = start_cell.unit
 	
 	discovered_dict[start_cell] = 0
 	
@@ -113,6 +116,13 @@ static func build_navigation_graph(grid: Grid, unit_position: Vector2, faction: 
 	
 	return navigation_graph
 
+static func _find_cell_with_unit(grid: Grid, unit: Unit) -> Cell:
+	for cell in grid.get_all_cells():
+		if cell.unit == unit:
+			return cell
+	
+	return null
+
 
 static func _can_reach_cell(cell: Cell, distance: int, movement_range: int, unit: Unit, faction: int) -> bool:
 	var cell_unit: Unit = cell.unit
@@ -129,18 +139,24 @@ static func _can_enter_cell(unit: Unit, cell_unit: Unit, faction: int) -> bool:
 
 
 static func _can_fit_unit(unit: Unit, cell: Cell) -> bool:
-	return not (unit.is2x2() and cell.get_cells_in_area().empty())
+	return unit != null and not (unit.is2x2() and cell.get_cells_in_area().empty())
 
 
 static func get_distance_to_cell(start_cell: Cell, end_cell: Cell) -> float:
 	return abs(end_cell.coordinates.x - start_cell.coordinates.x) + abs(end_cell.coordinates.y - start_cell.coordinates.y)
 
 
-static func find_path(grid: Grid, navigation_graph: Dictionary, unit_position: Vector2, target_cell: Cell, excluded_cells: Dictionary = {}) -> Array:
-	var start_cell: Cell = grid.get_cell_from_position(unit_position)
+static func find_path(grid: Grid, navigation_graph: Dictionary, unit: Unit, target_cell: Cell, excluded_cells: Dictionary = {}) -> Array:
+	var start_cell: Cell = grid.get_cell_from_position(unit.position)
 	
-	# TODO: Pass unit so that you can find paths for swap and pincer action
-	var unit: Unit = start_cell.unit
+	if start_cell.unit != unit:
+		printerr("Error finding path, cell at position %s does not have unit %s" % [unit.position, unit.name])
+		
+		start_cell = _find_cell_with_unit(grid, unit)
+		
+		unit.position = start_cell.position
+	
+	assert(start_cell != null)
 	
 	# Skip the search if the cell is not reachable
 	# For 2x2 units you might not know because the target cell might be in 

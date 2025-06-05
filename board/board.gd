@@ -519,43 +519,47 @@ func _on_Cell_area_exited(area: Area2D, cell: Cell) -> void:
 	
 	var selected_cell: Cell = _find_closest_cell(_active_unit.position)
 	
-	if selected_cell != null:
-		# TODO: If there's an enemy in the selected cell then don't do this assignment
-		if _active_unit_last_valid_cell != _active_unit_current_cell:
-			_active_unit_last_valid_cell = _active_unit_current_cell
-			
-			_has_active_unit_exited_cell = true
-			
-			if _current_turn == Turn.PLAYER:
-				_start_drag_timer()
+	if selected_cell == null:
+		return
+	
+	# TODO: If there's an enemy in the selected cell then don't do this assignment
+	if _active_unit_last_valid_cell != _active_unit_current_cell:
+		_active_unit_last_valid_cell = _active_unit_current_cell
 		
-		_active_unit_current_cell = selected_cell
+		_has_active_unit_exited_cell = true
 		
-		if selected_cell.coordinates.distance_to(_active_unit_last_valid_cell.coordinates) > 1.5:
-			_color_cell(_active_unit_last_valid_cell)
-			
-			printerr("Warning! Jumped more than 1 tile")
+		if _current_turn == Turn.PLAYER:
+			_start_drag_timer()
+	
+	_active_unit_current_cell = selected_cell
+	
+	if selected_cell.coordinates.distance_to(_active_unit_last_valid_cell.coordinates) > 1.5:
+		_color_cell(_active_unit_last_valid_cell)
 		
-		if _active_unit.is2x2():
-			_update_2x2_unit_cells(_active_unit, selected_cell)
-		else:
-			var unit_to_swap: Unit = selected_cell.unit
-			
-			_swap_units(_active_unit, selected_cell.unit, _active_unit_current_cell, _active_unit_last_valid_cell)
-			
-			if selected_cell != _active_unit_last_valid_cell:
-				_activate_trap(selected_cell, _active_unit)
-			
-			_highlight_possible_chains(_active_unit)
-			
-			$ChainPreviewer.update_preview(_active_unit, selected_cell)
-			
-			var _is_present: bool = _active_unit_entered_cells.erase(cell)
-			
-			if unit_to_swap != null and unit_to_swap.is_dead():
-				$PincerExecutor.update_dead_unit_on_swap(unit_to_swap, _active_unit_last_valid_cell)
+		printerr("Warning! Jumped more than 1 tile")
+	
+	if _active_unit.is2x2():
+		_update_2x2_unit_cells(_active_unit, selected_cell)
+	else:
+		var unit_to_swap: Unit = selected_cell.unit
 		
-		_update_trail(selected_cell)
+		_swap_units(_active_unit, selected_cell.unit, _active_unit_current_cell, _active_unit_last_valid_cell)
+		
+		if selected_cell != _active_unit_last_valid_cell:
+			_activate_trap(selected_cell, _active_unit)
+		
+		_notify_unit_entered_cell(_active_unit, selected_cell)
+		
+		_highlight_possible_chains(_active_unit)
+		
+		$ChainPreviewer.update_preview(_active_unit, selected_cell)
+		
+		var _is_present: bool = _active_unit_entered_cells.erase(cell)
+		
+		if unit_to_swap != null and unit_to_swap.is_dead():
+			$PincerExecutor.update_dead_unit_on_swap(unit_to_swap, _active_unit_last_valid_cell)
+	
+	_update_trail(selected_cell)
 
 
 func _update_2x2_unit_cells(unit: Unit, cell: Cell) -> void:
@@ -661,6 +665,9 @@ func _find_closest_cell(unit_position: Vector2) -> Cell:
 
 
 func _swap_units(unit: Unit, unit_to_swap: Unit, next_active_cell: Cell, last_valid_cell: Cell) -> void:
+	if unit != null and unit_to_swap != null and unit.is_enemy(unit_to_swap.faction):
+		return
+	
 	if unit != unit_to_swap:
 		next_active_cell.unit = unit
 		last_valid_cell.unit = unit_to_swap
@@ -676,15 +683,14 @@ func _swap_units(unit: Unit, unit_to_swap: Unit, next_active_cell: Cell, last_va
 		_activate_trap(last_valid_cell, unit_to_swap)
 
 
+func _notify_unit_entered_cell(unit: Unit, selected_cell: Cell) -> void:
+	for neighboring_cell in selected_cell.neighbors:
+		$Fleer.make_unit_flee(unit, neighboring_cell, neighboring_cell.unit)
+
+
 # Move to cell?
 func _activate_trap(cell: Cell, unit: Unit) -> void:
-	if cell.trap != null:
-		print("Trap activated! %s" % unit.name)
-		
-		cell.trap.activate(unit)
-		
-		if unit.is_dead():
-			unit.release()
+	cell.activate_trap()
 
 
 func _execute_pincers(unit: Unit) -> void:
@@ -835,10 +841,10 @@ func _highlight_possible_chains(unit: Unit) -> void:
 	chain_families[unit] = []
 	var faction: int = unit.faction
 	
-	$Pincerer._find_chain(_active_unit_current_cell, Cell.DIRECTION.RIGHT, chain_families, faction)
-	$Pincerer._find_chain(_active_unit_current_cell, Cell.DIRECTION.LEFT, chain_families, faction)
-	$Pincerer._find_chain(_active_unit_current_cell, Cell.DIRECTION.UP, chain_families, faction)
-	$Pincerer._find_chain(_active_unit_current_cell, Cell.DIRECTION.DOWN, chain_families, faction)
+	$Pincerer._find_chain(_active_unit_current_cell, Enums.DIRECTION.RIGHT, chain_families, faction)
+	$Pincerer._find_chain(_active_unit_current_cell, Enums.DIRECTION.LEFT, chain_families, faction)
+	$Pincerer._find_chain(_active_unit_current_cell, Enums.DIRECTION.UP, chain_families, faction)
+	$Pincerer._find_chain(_active_unit_current_cell, Enums.DIRECTION.DOWN, chain_families, faction)
 	
 	for chains in chain_families.values():
 		for chain in chains:
@@ -972,6 +978,8 @@ func _on_Unit_released(unit: Unit) -> void:
 	else:
 		# If there is a unit in the selected cell swap with it
 		_swap_units(unit, selected_cell.unit, selected_cell, _active_unit_current_cell)
+	
+	_notify_unit_entered_cell(unit, selected_cell)
 	
 	unit.snap_to_grid(selected_cell.position)
 	

@@ -60,6 +60,11 @@ func act(grid: Grid, allies: Array, enemies: Array, allies_queue: Array) -> void
 			else:
 				print("Enemy %s can't act yet" % name)
 				
+				if current_state != STATE.IDLE:
+					print("Enemy %s waiting for _tween to end" % name)
+					
+					yield(_tween, "tween_all_completed")
+				
 				emit_action_done()
 
 
