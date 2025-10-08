@@ -40,5 +40,5 @@ position = Vector2( 161, 147 )
 [node name="Unit6" parent="Board/PlayerUnits" index="5"]
 position = Vector2( 148, 557 )
 
-[node name="DebugUnits" parent="Board" index="17"]
+[node name="DebugUnits" parent="Board" index="18"]
 visible = true

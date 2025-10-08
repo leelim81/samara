@@ -24,4 +24,5 @@ status_effect_infliction_rate = 0.3
 cured_status_effects = [  ]
 effect_scene = ExtResource( 2 )
 is_delayed = false
-summoned_scene = "res://units/enemies/dracorin.tscn"
+summoned_scene = "res://units/enemies/haniwa_orbling.tscn"
+is_escape = false

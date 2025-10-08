@@ -18,6 +18,12 @@ texture = ExtResource( 5 )
 [node name="TurnCount" parent="Control/Container" index="0"]
 text = "2"
 
+[node name="Icon" parent="CanvasLayer/StatusEffectsIcons" index="0"]
+margin_left = -24.0
+margin_top = -24.0
+margin_right = 24.0
+margin_bottom = 24.0
+
 [node name="UnitName" parent="CanvasLayer" index="3"]
 text = "TRAINING_ORBLING"
 

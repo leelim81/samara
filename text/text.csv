@@ -78,9 +78,12 @@ VERTICAL_STAB,Vertical stab,Puñalada vertical
 CIRCLE_SLASH,Circle slash,Corte circular
 POISONED_DAGGER,Poisoned dagger,Daga envenenada
 REGENERATE,Regenerate,Regenerar
+SUMMON,Summon,Invocar
+ESCAPE,Escape,Escapar
 HANIWA_ORBLING,Haniwa Orbling,Orbe Haniwa
 DRACORIN,Dracorin,Dracorín
 TRAINING_ORBLING,Training orbling,Orbe de entrenamiento
+TRAINING_BOSS,Training boss,Jefe de entrenamiento
 PART_1_TITLE,Greaves of Clay Stomping On A Spirit’s Head Forever,Grebas de Arcilla Pisoteando Eternamente la Cabeza de un Espíritu
 PRIMARY_WEAPON_DAMAGE_DESCRIPTION,%.1fx %s damage,%.1fx daño de tipo %s
 HEAL_DESCRIPTION,%.1fx healing power,%.1fx de poder curativo

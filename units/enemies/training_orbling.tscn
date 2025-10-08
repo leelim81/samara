@@ -15,13 +15,7 @@ job = ExtResource( 2 )
 [node name="Icon" parent="Sprite" index="1"]
 texture = ExtResource( 3 )
 
-[node name="Icon" parent="CanvasLayer/StatusEffectsIcons" index="0"]
-margin_left = -24.0
-margin_top = -24.0
-margin_right = 24.0
-margin_bottom = 24.0
-
-[node name="UnitName" parent="CanvasLayer" index="2"]
+[node name="UnitName" parent="CanvasLayer" index="3"]
 text = "TRAINING_ORBLING"
 
 [node name="Action" parent="AIController" index="1" instance=ExtResource( 4 )]
