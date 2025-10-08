@@ -272,7 +272,7 @@ static func find_area_of_effect_target_cells(var unit: Unit,
 	# 2x2 unit appears in more than one cell in the list, it is okay because
 	# the skill effect node keeps track of affected units and will not apply a 
 	# skill to the same unit twice
-	if unit.is2x2() and not skill.is_targeted_individually():
+	if unit.is2x2() and not skill.is_targeted_individually() and skill.area_of_effect != Enums.AreaOfEffect.RANDOM:
 		var cells: Array = cell.get_cells_in_area()
 		
 		for area_cell in cells:
