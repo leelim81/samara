@@ -834,8 +834,6 @@ func _highlight_possible_chains(unit: Unit) -> void:
 	if unit.faction != Unit.PLAYER_FACTION:
 		return
 	
-	_stop_possible_chained_units_animations()
-	
 	var chain_families: Dictionary = {}
 	
 	chain_families[unit] = []
@@ -846,10 +844,17 @@ func _highlight_possible_chains(unit: Unit) -> void:
 	$Pincerer._find_chain(_active_unit_current_cell, Enums.DIRECTION.UP, chain_families, faction)
 	$Pincerer._find_chain(_active_unit_current_cell, Enums.DIRECTION.DOWN, chain_families, faction)
 	
+	var currently_chained_units: Array = _possible_chained_units.duplicate()
+	_possible_chained_units.clear()
+	
 	for chains in chain_families.values():
 		for chain in chains:
 			for unit in chain:
 				_possible_chained_units.push_back(unit)
+	
+	for unit in currently_chained_units:
+		if not unit in _possible_chained_units:
+			unit.stop_scale_up_and_down_animation()
 	
 	for unit in _possible_chained_units:
 		unit.play_scale_up_and_down_animation()
