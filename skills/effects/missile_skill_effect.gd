@@ -48,7 +48,7 @@ func _get_start_position(unit: Unit) -> Vector2:
 
 
 func _get_target_position(target_cell: Cell, skill: Skill) -> Vector2:
-	if skill.is_targeted_individually() and target_cell.unit.is2x2():
+	if skill.is_targeted_individually() and target_cell.unit != null and target_cell.unit.is2x2():
 		return target_cell.unit.get_offset_origin()
 	else:
 		return target_cell.position
