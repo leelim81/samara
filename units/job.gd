@@ -60,4 +60,4 @@ func _reset_current_stats() -> void:
 	current_stats = base_stats.duplicate()
 	current_stats.level = level
 	
-	skills = job.skills
+	skills = job.skills.duplicate()

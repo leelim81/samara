@@ -247,7 +247,7 @@ func _on_snap_to_grid() -> void:
 # Overridden method. Combine skills from Job and AI skills
 func get_skills() -> Array:
 	# TODO: Include only equip skills
-	var skills: Array = $Job.skills
+	var skills: Array = $Job.skills.duplicate()
 	
 	skills.append_array($AIController.get_skills())
 	
