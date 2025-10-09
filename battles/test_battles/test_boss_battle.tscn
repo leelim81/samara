@@ -16,9 +16,6 @@ margin_top = -480.0
 margin_right = 360.0
 margin_bottom = 480.0
 
-[node name="Board" parent="." index="3"]
-fixed_player_units_level = 10
-
 [node name="Enemy2x2" parent="Board/EnemyPhases/Phase1" index="0" instance=ExtResource( 2 )]
 position = Vector2( 242, 249 )
 script = ExtResource( 5 )
