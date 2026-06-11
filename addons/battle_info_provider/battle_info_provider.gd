@@ -35,7 +35,7 @@ func build() -> bool:
 		
 		chapter.battle_info = _process_phases(enemy_phases)
 	
-	ResourceSaver.save(CHAPTER_LIST_PATH, chapter_list)
+	ResourceSaver.save(chapter_list, CHAPTER_LIST_PATH)
 	
 	return true
 

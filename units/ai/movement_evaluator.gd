@@ -44,10 +44,10 @@ class BorderSorter:
 		return a.distance_to_border > b.distance_to_border
 
 
-func find_cells()(var unit: Enemy,
-				var enemies: Array,
-				var action: Action,
-				var navigation_graph: Dictionary) -> Array:
+func find_cells(unit: Enemy,
+				enemies: Array,
+				action: Action,
+				navigation_graph: Dictionary) -> Array:
 	var results: Array = []
 	
 	for cell in navigation_graph:
@@ -80,10 +80,10 @@ func find_border_cells(grid: Grid, navigation_graph: Dictionary) -> Array:
 	return results
 
 
-func _evaluate_cell()(var unit: Enemy,
-					var enemies: Array,
-					var action: Action,
-					var cell: Cell) -> MovementEvaluationResult:
+func _evaluate_cell(unit: Enemy,
+					enemies: Array,
+					action: Action,
+					cell: Cell) -> MovementEvaluationResult:
 	
 	var result: MovementEvaluationResult = MovementEvaluationResult.new()
 	

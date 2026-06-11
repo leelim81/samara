@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/shove1.wav-7f0e95ed24c47829692aaf28ab165f77.sample"
+type="AudioStreamWAV"
+uid="uid://hqhy1vnfbavs"
+path="res://.godot/imported/shove1.wav-7f0e95ed24c47829692aaf28ab165f77.sample"
 
 [deps]
 
 source_file="res://assets/sfx/casino/shove1.wav"
-dest_files=[ "res://.import/shove1.wav-7f0e95ed24c47829692aaf28ab165f77.sample" ]
+dest_files=["res://.godot/imported/shove1.wav-7f0e95ed24c47829692aaf28ab165f77.sample"]
 
 [params]
 

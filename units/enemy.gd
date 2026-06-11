@@ -4,7 +4,7 @@ extends Unit
 
 signal action_done(unit)
 signal started_moving(unit)
-signal use_skill(unit, skill, target_cells)
+signal skill_use_requested(unit, skill, target_cells)
 
 # Unit, Skill, Array
 signal use_delayed_skill(unit, skill, target_cells)
@@ -52,19 +52,19 @@ func act(grid: Grid, allies: Array, enemies: Array, allies_queue: Array) -> void
 			
 			if turn_counter == 0:
 				if current_state != STATE.IDLE:
-					print("Enemy %s waiting for _tween to end" % name)
-					
-					await _tween.tween_all_completed
-				
+					print("Enemy %s waiting for movement to end" % name)
+
+					await wait_until_movement_finished()
+
 				$AIController.execute_action(self, grid, allies, enemies, allies_queue)
 			else:
 				print("Enemy %s can't act yet" % name)
-				
+
 				if current_state != STATE.IDLE:
-					print("Enemy %s waiting for _tween to end" % name)
-					
-					await _tween.tween_all_completed
-				
+					print("Enemy %s waiting for movement to end" % name)
+
+					await wait_until_movement_finished()
+
 				emit_action_done()
 
 
@@ -134,7 +134,7 @@ func _use_skill() -> void:
 			
 			emit_signal("use_delayed_skill", self, _selected_skill, _selected_skill_target_cells)
 		else:
-			emit_signal("use_skill", self, _selected_skill, _selected_skill_target_cells)
+			emit_signal("skill_use_requested", self, _selected_skill, _selected_skill_target_cells)
 			
 			has_active_delayed_skill = false
 	else:
@@ -170,19 +170,14 @@ func _start_moving() -> void:
 
 func _move() -> void:
 	var target_position = _path.pop_front()
-	
+
 	if target_position != null:
 		var tween_time_seconds: float = Utils.calculate_time(position, target_position, swap_velocity_pixels_per_second)
-		
-		_tween.interpolate_property(self, "position",
-					position, target_position,
-					tween_time_seconds,
-					Tween.TRANS_LINEAR)
-			
-		_tween.start()
+
+		_start_position_tween(target_position, tween_time_seconds, Tween.TRANS_LINEAR)
 	else:
 		release()
-		
+
 		_path.clear()
 
 
@@ -202,9 +197,9 @@ func reset_turn_counter() -> void:
 
 
 func release() -> void:
-	if not _path.is_empty() and _tween.is_active():
-		_tween.stop(self, "position")
-	
+	if not _path.is_empty() and _position_tween != null and _position_tween.is_running():
+		_position_tween.kill()
+
 	super.release()
 	
 	if is_controlled_by_player:
@@ -259,17 +254,14 @@ func get_unlocked_skills() -> Array:
 
 ## Signals
 
-func _on_Tween_tween_completed(_object: Object, key: String) -> void:
+func _on_position_tween_finished() -> void:
 	match(current_state):
 		STATE.PICKED_UP:
-			if key == ":position":
-				_move()
+			_move()
 		STATE.SNAPPING_TO_GRID:
-			if key == ":position":
-				_on_snap_to_grid()
+			_on_snap_to_grid()
 		STATE.SWAPPING:
-			if key == ":position":
-				self.current_state = STATE.IDLE
-				
-				if !_path.is_empty():
-					_start_moving()
+			self.current_state = STATE.IDLE
+
+			if !_path.is_empty():
+				_start_moving()

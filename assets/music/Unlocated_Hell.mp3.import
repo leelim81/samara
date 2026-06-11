@@ -2,14 +2,18 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-path="res://.import/Unlocated_Hell.mp3-89c2d838a61ee8d10b023449ccd5f643.mp3str"
+uid="uid://ca7dtxfn8cmb5"
+path="res://.godot/imported/Unlocated_Hell.mp3-89c2d838a61ee8d10b023449ccd5f643.mp3str"
 
 [deps]
 
 source_file="res://assets/music/Unlocated_Hell.mp3"
-dest_files=[ "res://.import/Unlocated_Hell.mp3-89c2d838a61ee8d10b023449ccd5f643.mp3str" ]
+dest_files=["res://.godot/imported/Unlocated_Hell.mp3-89c2d838a61ee8d10b023449ccd5f643.mp3str"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

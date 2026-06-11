@@ -22,9 +22,7 @@ func load_data():
 	if save_data != null:
 		return
 	
-	var file: File = File.new()
-	
-	if file.file_exists(_get_config_file_path()):
+	if FileAccess.file_exists(_get_config_file_path()):
 		if _load_config_file() != OK:
 			push_error("Failed to load save data")
 			
@@ -116,7 +114,7 @@ func _save_config_file() -> void:
 
 
 func _get_config_file_path() -> String:
-	if OS.get_name() == "HTML5":
+	if OS.get_name() == "Web":
 		return "user://" + _build_config_file_path()
 	else:
 		return _build_config_file_path()

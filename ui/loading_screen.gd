@@ -18,6 +18,11 @@ func fade_out() -> void:
 	animation_player.play(FADE_OUT_ANIMATION_NAME)
 
 
+# Progress is a value between 0 and 1
+func update_progress(_progress: float) -> void:
+	pass
+
+
 func _on_AnimationPlayer_animation_finished(animation_name: String) -> void:
 	match(animation_name):
 		FADE_IN_ANIMATION_NAME:

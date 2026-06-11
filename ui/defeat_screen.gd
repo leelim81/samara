@@ -5,7 +5,7 @@ signal try_again_button_pressed
 signal quit_button_pressed
 
 
-func grab_focus() -> void:
+func focus_default_button() -> void:
 	$MarginContainer/VBoxContainer/TryAgainButton.grab_focus()
 
 

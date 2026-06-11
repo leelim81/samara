@@ -41,7 +41,7 @@ func evaluate_skill(unit: Unit,
 					enemies: Array,
 					navigation_graph: Dictionary,
 					skill: Skill,
-					var preference: int) -> Array:
+					preference: int) -> Array:
 	var skill_evaluation_results: Array = []
 	
 	# For each cell you can travel to:

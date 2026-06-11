@@ -27,7 +27,7 @@ var supports: Dictionary = {}
 # Array<ChapterSaveData>
 var unlocked_chapters: Array = []
 
-var current_chapter: ChapterData
+var current_chapter: ChapterSaveData
 
 
 func unlock_chapter(title: String) -> void:

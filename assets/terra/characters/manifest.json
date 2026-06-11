@@ -1,0 +1,202 @@
+{
+  "source": "https://terrabattle.fandom.com (Terra Battle Wiki, Fandom)",
+  "license_note": "Artwork (c) Mistwalker / artist Kimihiko Fujisaka. Personal non-commercial fan project use only; do not distribute.",
+  "art_format": "Adventurer job art is 1414x2000 PNG (wiki original via format=original); enemy art is smaller in-game sprite renders.",
+  "early_story_context": {
+    "chapter_1": "Borderlands (tutorial). Start with Healer + choice of Bahl or Grace; recruit Knight (tavern) and Archer (Bahl start) or Warrior (Grace start). Enemies: Wee Orbling, Orbling (1-5 boss, Lv3).",
+    "chapter_2": "To the Capital. Enemies: Orbling, Gorf, Dracorin, Sabertooth; boss Spinetrich (2-5, Lv9). Dracorin can drop as a recruitable monster in 2-3/2-4/2-5."
+  },
+  "characters": [
+    {
+      "name": "Grace",
+      "slug": "grace",
+      "files": ["grace-job1.png", "grace-job2.png", "grace-job3.png"],
+      "class": "B",
+      "species": "Human",
+      "type": "Adventurer",
+      "weapon": "Bow",
+      "attribute": null,
+      "jobs": ["Grace the Archer", "Grace the Markswoman", "Grace the Ranger"],
+      "job1_base_stats": { "hp": 318, "atk": 31, "def": 24, "matk": 15, "mdef": 17 },
+      "job1_max_stats_lv90": { "hp": 2942, "atk": 284, "def": 220, "matk": 137, "mdef": 155 },
+      "notes": "Starter character (player picks Grace or Bahl). Huntress of Thanvarahaer, ~15 years old. Job1 skills: Megabow, Attack Up 10%, Defense Down 10% (Wild Beast), Poison Arrows."
+    },
+    {
+      "name": "Bahl",
+      "slug": "bahl",
+      "files": ["bahl-job1.png", "bahl-job2.png", "bahl-job3.png"],
+      "class": "B",
+      "species": "Human",
+      "type": "Adventurer",
+      "weapon": "Sword",
+      "attribute": null,
+      "jobs": ["Bahl the Dark Duelist", "Bahl the Dark Warrior", "Bahl the Dark Hero"],
+      "job1_base_stats": { "hp": 321, "atk": 31, "def": 26, "matk": 13, "mdef": 15 },
+      "job1_max_stats_lv90": { "hp": 2957, "atk": 284, "def": 238, "matk": 119, "mdef": 138 },
+      "notes": "Starter character (alternative to Grace). Swordswoman."
+    },
+    {
+      "name": "Kuscah",
+      "slug": "kuscah",
+      "files": ["kuscah-job1.png"],
+      "class": "B",
+      "species": "Human",
+      "type": "Adventurer",
+      "weapon": "Staff",
+      "attribute": "Healing",
+      "jobs": ["Kuscah the Acolyte", "Kuscah the Priest", "Kuscah the Healer"],
+      "job1_base_stats": { "hp": 293, "atk": 12, "def": 17, "matk": 29, "mdef": 26 },
+      "job1_max_stats_lv90": { "hp": 2734, "atk": 110, "def": 157, "matk": 266, "mdef": 238 },
+      "notes": "Classic early healer; listed in the wiki's Starter character category (can replace the generic Healer starter during events)."
+    },
+    {
+      "name": "Daiana",
+      "slug": "daiana",
+      "files": ["daiana-job1.png"],
+      "class": "A",
+      "species": "Stonefolk",
+      "type": "Adventurer",
+      "weapon": "Staff",
+      "attribute": "Fire",
+      "jobs": ["Daiana the Firedrinker", "Daiana the Firemane", "Daiana the Firemantle"],
+      "job1_base_stats": { "hp": 317, "atk": 18, "def": 20, "matk": 37, "mdef": 28 },
+      "job1_max_stats_lv90": { "hp": 2907, "atk": 166, "def": 183, "matk": 339, "mdef": 256 },
+      "notes": "Early-game fire mage (stonefolk). Currently via Pact of Truth / Pact of Fate."
+    },
+    {
+      "name": "Sh'berdan",
+      "slug": "shberdan",
+      "files": ["shberdan-job1.png"],
+      "class": "B",
+      "species": "Lizardfolk",
+      "type": "Adventurer",
+      "weapon": "Spear",
+      "attribute": null,
+      "jobs": ["Sh'berdan the Malodorous", "Sh'berdan the Noxious", "Sh'berdan the Stink Master"],
+      "job1_base_stats": { "hp": 317, "atk": 29, "def": 24, "matk": 29, "mdef": 21 },
+      "job1_max_stats_lv90": { "hp": 2907, "atk": 266, "def": 220, "matk": 266, "mdef": 192 },
+      "notes": "Lizardfolk spearman tied to the early capital arc (Ch 2-3 introduces lizardfolk/beastfolk). Hybrid ATK/MATK."
+    },
+    {
+      "name": "Gegonago",
+      "slug": "gegonago",
+      "files": ["gegonago-job1.png"],
+      "class": "S",
+      "species": "Beastfolk",
+      "type": "Adventurer",
+      "weapon": "Staff",
+      "attribute": "Remedy",
+      "jobs": ["Gegonago the Space Mage", "Gegonago the Astral Mage", "Gegonago the Magnificent"],
+      "job1_base_stats": { "hp": 381, "atk": 21, "def": 20, "matk": 36, "mdef": 28 },
+      "job1_max_stats_lv90": { "hp": 3495, "atk": 192, "def": 184, "matk": 330, "mdef": 256 },
+      "notes": "Beastfolk space mage, early-story era S-class."
+    },
+    {
+      "name": "Ma'curi",
+      "slug": "macuri",
+      "files": ["macuri-job1.png"],
+      "class": "B",
+      "species": "Lizardfolk",
+      "type": "Adventurer",
+      "weapon": "Spear",
+      "attribute": null,
+      "jobs": ["Ma'curi the Tormented", "Ma'curi the Tortured", "Ma'curi the Martyr"],
+      "job1_base_stats": { "hp": 318, "atk": 40, "def": 25, "matk": 12, "mdef": 14 },
+      "job1_max_stats_lv90": { "hp": 2942, "atk": 366, "def": 229, "matk": 110, "mdef": 128 },
+      "notes": "Included in place of Zael (see missing). Early-era B-class physical spear attacker; highest base ATK of this set."
+    },
+    {
+      "name": "Amimari",
+      "slug": "amimari",
+      "files": ["amimari-job1.png"],
+      "class": "SS",
+      "species": "Beastfolk",
+      "type": "Adventurer",
+      "weapon": "Staff",
+      "attribute": "Healing",
+      "jobs": ["Amimari the Nurse", "Amimari the Medic", "Amimari the Saint"],
+      "job1_base_stats": { "hp": 364, "atk": 22, "def": 22, "matk": 41, "mdef": 35 },
+      "job1_max_stats_lv90": null,
+      "notes": "Beastfolk healer; in the wiki's Starter character category (possible Healer replacement at game start during events)."
+    },
+    {
+      "name": "Mizell",
+      "slug": "mizell",
+      "files": ["mizell-job1.png"],
+      "class": "Z",
+      "species": "Human",
+      "type": "Adventurer",
+      "weapon": "Staff",
+      "attribute": null,
+      "jobs": ["Mizell the Dazzling", "Mizell the Enigma", "Neutralizer Mizell"],
+      "job1_base_stats": { "hp": 534, "atk": 24, "def": 29, "matk": 50, "mdef": 46 },
+      "job1_max_stats_lv90": { "hp": 4856, "atk": 218, "def": 263, "matk": 454, "mdef": 416 },
+      "notes": "BONUS / caveat: not an original early-story unit. Z-class character added in game version 4.2.0 (wiki page created 2016-08); included because requested, art kept for reference."
+    },
+    {
+      "name": "Orbling",
+      "slug": "enemy-orbling",
+      "files": ["enemy-orbling.png"],
+      "class": "Enemy",
+      "species": "Wild Beast",
+      "type": "Enemy",
+      "weapon": "Sword",
+      "attribute": null,
+      "jobs": [],
+      "notes": "Iconic early enemy. Boss of stage 1-5 (Lv3); regular Lv3/Lv8 in 2-1, Lv12 boss in 2-2. Tutorial fights use Wee Orbling (same family). Art is in-game sprite, 490x364."
+    },
+    {
+      "name": "Gorf",
+      "slug": "enemy-gorf",
+      "files": ["enemy-gorf.png"],
+      "class": "Enemy",
+      "species": "Wild Beast",
+      "type": "Enemy",
+      "weapon": "Staff",
+      "attribute": null,
+      "jobs": [],
+      "notes": "Frog-like staff enemy throughout Chapter 2 (Lv4-6) and Chapter 4. Art is in-game sprite, 192x380."
+    },
+    {
+      "name": "Dracorin",
+      "slug": "enemy-dracorin",
+      "files": ["enemy-dracorin.png"],
+      "class": "B",
+      "species": "Wild Beast",
+      "type": "Monster (enemy + recruitable)",
+      "weapon": "Bow",
+      "attribute": "Lightning",
+      "jobs": ["Dracorin", "Crackling Dracorin (job2)", "job3"],
+      "job1_base_stats": { "hp": 298, "atk": 23, "def": 24, "matk": 29, "mdef": 24 },
+      "job1_max_stats_lv90": { "hp": 3246, "atk": 228, "def": 261, "matk": 288, "mdef": 261 },
+      "notes": "Lightning bow enemy in Ch 2 (Lv5); ALSO a recruitable monster ally that can drop in stages 2-3, 2-4, 2-5 — a genuine early obtainable unit. Art 459x475."
+    },
+    {
+      "name": "Spinetrich",
+      "slug": "enemy-spinetrich-boss",
+      "files": ["enemy-spinetrich-boss.png"],
+      "class": "Enemy Boss (2x2)",
+      "species": "Wild Beast",
+      "type": "Enemy",
+      "weapon": "Spear",
+      "attribute": "Lightning",
+      "jobs": [],
+      "boss_stats_lv9": { "hp": 3949, "atk": 36, "def": 49, "matk": 38, "mdef": 51, "move": 3 },
+      "notes": "Boss of stage 2-5 (Chapter 2 finale). Skills: Stab (vertical), Thrust Away (vertical), Discharge (area), Slash/Sever (lateral). Immune (100 resist) to all status ailments. Art 495x446."
+    }
+  ],
+  "missing": [
+    {
+      "name": "Zael",
+      "reason": "Verified NOT an early-story character: wiki availability is 'The Last Story' collaboration event (S-class sword, jobs: Zael the Ex-Sellsword / the Knight / the Outsider King). Skipped; Ma'curi downloaded instead."
+    },
+    {
+      "name": "Mizell (original-era version)",
+      "reason": "No original early-story Mizell exists on the wiki; the only Mizell is the Z-class unit added in v4.2.0 (2016). Its Job 1 art was downloaded anyway as a bonus (mizell-job1.png)."
+    },
+    {
+      "name": "Job 2/3 art for non-starter characters",
+      "reason": "Skipped to stay within the ~20 download budget. Wiki file naming if needed later: <Name>_job2.png / <Name>_job3.png at https://terrabattle.fandom.com/wiki/Special:FilePath/<Name>_job2.png (append ?format=original for full-res PNG)."
+    }
+  ]
+}

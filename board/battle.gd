@@ -17,8 +17,10 @@ var _total_drag_time_seconds: float = 0
 
 var _is_battle_finished: bool = false
 
+var _progress_tween: Tween
+var _view_unit_menu_tween: Tween
+
 @onready var _progress_bar: TextureProgressBar = $CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/TextureProgressBar
-@onready var _tween: Tween = $CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/TextureProgressBar/Tween
 
 
 func _ready() -> void:
@@ -65,12 +67,12 @@ func _on_Board_drag_timer_stopped(time_left_seconds: float) -> void:
 
 
 func _on_Board_drag_timer_reset() -> void:
-	var _error = _tween.interpolate_property(_progress_bar, "value", 
-		_progress_bar.value, _progress_bar.max_value,
-		0.5,
-		Tween.TRANS_LINEAR)
-	
-	_error = _tween.start()
+	if _progress_tween != null:
+		_progress_tween.kill()
+
+	_progress_tween = create_tween()
+	_progress_tween.tween_property(_progress_bar, "value", _progress_bar.max_value, 0.5) \
+			.set_trans(Tween.TRANS_LINEAR)
 
 
 func _on_Board_player_turn_started() -> void:
@@ -86,7 +88,7 @@ func _on_Board_victory() -> void:
 	_is_battle_finished = true
 	
 	$CanvasLayer/VictoryScreen.initialize(_total_drag_time_seconds, _player_turn_count)
-	$CanvasLayer/VictoryScreen.grab_focus()
+	$CanvasLayer/VictoryScreen.focus_default_button()
 	
 	$CanvasLayer/VictoryScreen.show()
 
@@ -98,7 +100,7 @@ func _on_Board_defeat() -> void:
 	_is_battle_finished = true
 	
 	$CanvasLayer/DefeatScreen.show()
-	$CanvasLayer/DefeatScreen.grab_focus()
+	$CanvasLayer/DefeatScreen.focus_default_button()
 	
 	$BattleTheme.stop()
 
@@ -109,7 +111,7 @@ func _on_DefeatScreen_quit_button_pressed() -> void:
 
 
 func _on_DefeatScreen_try_again_button_pressed() -> void:
-	if Loader.change_scene_to_file(filename, chapter_data) != OK:
+	if Loader.change_scene_to_file(scene_file_path, chapter_data) != OK:
 		printerr("Failed to reload scene")
 
 
@@ -130,81 +132,56 @@ func _on_DragModeOptionButton_drag_mode_changed(drag_mode: int) -> void:
 
 func _on_Board_enemy_phase_started(current_enemy_phase: int, enemy_phase_count: int) -> void:
 	var control: Control = $CanvasLayer/EnemyPhaseCenterContainer
-	
+
 	control.show()
-	
-	var control_tween: Tween = $CanvasLayer/EnemyPhaseCenterContainer/Tween
-	
-	var _error = control_tween.interpolate_property(control,
-		"modulate",
-		Color.TRANSPARENT,
-		Color.WHITE,
-		enemy_phase_container_fade_time_seconds,
-		Tween.TRANS_LINEAR)
-	
-	_error = control_tween.start()
-	
+
+	var control_tween := create_tween()
+	control_tween.tween_property(control, "modulate", Color.WHITE, enemy_phase_container_fade_time_seconds) \
+			.from(Color.TRANSPARENT) \
+			.set_trans(Tween.TRANS_LINEAR)
+
 	$CanvasLayer/EnemyPhaseCenterContainer/NinePatchRect/Label.text = "%s %d/%d" % [tr("BATTLE"), current_enemy_phase, enemy_phase_count]
 
 
 func _on_Board_enemies_appeared() -> void:
 	var control: Control = $CanvasLayer/EnemyPhaseCenterContainer
-	
-	var control_tween: Tween = $CanvasLayer/EnemyPhaseCenterContainer/Tween
-	
-	var _error = control_tween.interpolate_property(control,
-		"modulate",
-		control.modulate,
-		Color.TRANSPARENT,
-		enemy_phase_container_fade_time_seconds,
-		Tween.TRANS_LINEAR)
-	
-	_error = control_tween.start()
-	
-	await control_tween.tween_all_completed
-	
+
+	var control_tween := create_tween()
+	control_tween.tween_property(control, "modulate", Color.TRANSPARENT, enemy_phase_container_fade_time_seconds) \
+			.set_trans(Tween.TRANS_LINEAR)
+
+	await control_tween.finished
+
 	$CanvasLayer/EnemyPhaseCenterContainer.hide()
 
 
 func _on_Board_unit_selected_for_view(unit: Unit) -> void:
-	var view_unit_menu_tween = $ViewUnitMenuCanvasLayer/Tween
-	
-	if not view_unit_menu_tween.is_active():
-		var view_unit_menu: Control = view_unit_menu_packed_scene.instantiate()
-		
-		$ViewUnitMenuCanvasLayer.add_child(view_unit_menu)
-		
-		view_unit_menu.initialize_from_data(unit.get_job(), unit.get_base_stats(), unit.get_stats(), unit.get_level(), unit.get_skills(), unit.get_status_effects(), unit.faction == Unit.PLAYER_FACTION, true, unit.faction == Unit.ENEMY_FACTION)
-		
-		var _error = view_unit_menu.connect("go_back", Callable(self, "_on_ViewUnitMenu_go_back").bind(view_unit_menu))
-		
-		view_unit_menu.modulate = Color.TRANSPARENT
-		
-		view_unit_menu_tween.interpolate_property(view_unit_menu,
-			"modulate",
-			Color.TRANSPARENT,
-			Color.WHITE,
-			view_unit_menu_fade_time_seconds,
-			Tween.TRANS_SINE)
-		
-		view_unit_menu_tween.start()
-		
-		$ViewUnitMenuCanvasLayer/SelectUnitAudio.play()
+	if _view_unit_menu_tween != null and _view_unit_menu_tween.is_running():
+		return
+
+	var view_unit_menu: Control = view_unit_menu_packed_scene.instantiate()
+
+	$ViewUnitMenuCanvasLayer.add_child(view_unit_menu)
+
+	view_unit_menu.initialize_from_data(unit.get_job(), unit.get_base_stats(), unit.get_stats(), unit.get_level(), unit.get_skills(), unit.get_status_effects(), unit.faction == Unit.PLAYER_FACTION, true, unit.faction == Unit.ENEMY_FACTION)
+
+	var _error = view_unit_menu.connect("back_requested", Callable(self, "_on_ViewUnitMenu_go_back").bind(view_unit_menu))
+
+	view_unit_menu.modulate = Color.TRANSPARENT
+
+	_view_unit_menu_tween = create_tween()
+	_view_unit_menu_tween.tween_property(view_unit_menu, "modulate", Color.WHITE, view_unit_menu_fade_time_seconds) \
+			.set_trans(Tween.TRANS_SINE)
+
+	$ViewUnitMenuCanvasLayer/SelectUnitAudio.play()
 
 
 func _on_ViewUnitMenu_go_back(view_unit_menu: Control) -> void:
-	var view_unit_menu_tween = $ViewUnitMenuCanvasLayer/Tween
-	
-	view_unit_menu_tween.interpolate_property(view_unit_menu,
-		"modulate",
-		view_unit_menu.modulate,
-		Color.TRANSPARENT,
-		view_unit_menu_fade_time_seconds,
-		Tween.TRANS_SINE)
-	
-	view_unit_menu_tween.start()
-	
-	await view_unit_menu_tween.tween_all_completed
-	
+	_view_unit_menu_tween = create_tween()
+	_view_unit_menu_tween.tween_property(view_unit_menu, "modulate", Color.TRANSPARENT, view_unit_menu_fade_time_seconds) \
+			.set_trans(Tween.TRANS_SINE)
+
+	await _view_unit_menu_tween.finished
+
 	view_unit_menu.queue_free()
 

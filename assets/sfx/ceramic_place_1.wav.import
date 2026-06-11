@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/ceramic_place_1.wav-276dc0f84435a5039ae34e74516b64c3.sample"
+type="AudioStreamWAV"
+uid="uid://bxuv0l4lodgnj"
+path="res://.godot/imported/ceramic_place_1.wav-276dc0f84435a5039ae34e74516b64c3.sample"
 
 [deps]
 
 source_file="res://assets/sfx/ceramic_place_1.wav"
-dest_files=[ "res://.import/ceramic_place_1.wav-276dc0f84435a5039ae34e74516b64c3.sample" ]
+dest_files=["res://.godot/imported/ceramic_place_1.wav-276dc0f84435a5039ae34e74516b64c3.sample"]
 
 [params]
 

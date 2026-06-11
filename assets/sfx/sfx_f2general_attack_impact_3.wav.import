@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/sfx_f2general_attack_impact_3.wav-fcba9d65bc17750dc77dfd38f86dd350.sample"
+type="AudioStreamWAV"
+uid="uid://dhg6hr3e0eweo"
+path="res://.godot/imported/sfx_f2general_attack_impact_3.wav-fcba9d65bc17750dc77dfd38f86dd350.sample"
 
 [deps]
 
 source_file="res://assets/sfx/sfx_f2general_attack_impact_3.wav"
-dest_files=[ "res://.import/sfx_f2general_attack_impact_3.wav-fcba9d65bc17750dc77dfd38f86dd350.sample" ]
+dest_files=["res://.godot/imported/sfx_f2general_attack_impact_3.wav-fcba9d65bc17750dc77dfd38f86dd350.sample"]
 
 [params]
 

@@ -235,7 +235,7 @@ func _add_enemy(enemy: Enemy) -> void:
 	
 	enemy.connect("action_done", Callable(self, "_on_Enemy_action_done"))
 	enemy.connect("started_moving", Callable(self, "_on_Unit_picked_up"))
-	enemy.connect("use_skill", Callable(self, "_on_Enemy_use_skill"))
+	enemy.connect("skill_use_requested", Callable(self, "_on_Enemy_use_skill"))
 	enemy.connect("use_delayed_skill", Callable(self, "_on_Enemy_use_delayed_skill"))
 	enemy.connect("released", Callable(self, "_on_Unit_released"))
 	enemy.connect("selected_for_view", Callable(self, "_on_Unit_selected_for_view"))
@@ -283,15 +283,12 @@ func _make_player_units_appear() -> void:
 		_player_units_node.show()
 		
 		_player_units_node.modulate = Color.TRANSPARENT
-		
-		$Tween.interpolate_property(_player_units_node, "modulate",
-			_player_units_node.modulate, Color.WHITE,
-			0.5)
-		
-		$Tween.start()
-		
-		await $Tween.tween_all_completed
-		
+
+		var appear_tween := create_tween()
+		appear_tween.tween_property(_player_units_node, "modulate", Color.WHITE, 0.5)
+
+		await appear_tween.finished
+
 		_start_turn_zero_enemy_turn()
 
 
@@ -496,9 +493,9 @@ func _on_Cell_area_entered(_area: Area2D, cell: Cell) -> void:
 		
 		_update_2x2_unit_cells(_active_unit, cell)
 		
-		for cell in _active_unit_entered_cells:
-			if not cell in previously_entered_cells:
-				_activate_trap(cell, _active_unit)
+		for entered_cell in _active_unit_entered_cells:
+			if not entered_cell in previously_entered_cells:
+				_activate_trap(entered_cell, _active_unit)
 	else:
 		_active_unit_entered_cells[cell] = cell
 		
@@ -773,7 +770,7 @@ func _remove_pincering_units_from_enemy_queue(unit: Unit, pincer: Pincer) -> voi
 			var index := _enemy_queue.find(pincering_unit)
 			
 			if index != -1:
-				_enemy_queue.remove(index)
+				_enemy_queue.remove_at(index)
 
 
 func _update_status_effects() -> void:
@@ -849,15 +846,15 @@ func _highlight_possible_chains(unit: Unit) -> void:
 	
 	for chains in chain_families.values():
 		for chain in chains:
-			for unit in chain:
-				_possible_chained_units.push_back(unit)
-	
-	for unit in currently_chained_units:
-		if not unit in _possible_chained_units:
-			unit.stop_scale_up_and_down_animation()
-	
-	for unit in _possible_chained_units:
-		unit.play_scale_up_and_down_animation()
+			for chained_unit in chain:
+				_possible_chained_units.push_back(chained_unit)
+
+	for chained_unit in currently_chained_units:
+		if not chained_unit in _possible_chained_units:
+			chained_unit.stop_scale_up_and_down_animation()
+
+	for chained_unit in _possible_chained_units:
+		chained_unit.play_scale_up_and_down_animation()
 
 
 func _stop_possible_chained_units_animations() -> void:
@@ -903,7 +900,7 @@ func _on_Enemy_use_skill(unit: Unit, skill: Skill, target_cells: Array) -> void:
 	
 	target_cells = BoardUtils.filter_cells(unit, skill, target_cells)
 	
-	skill_effect.start(Callable(unit, skill).bind(target_cells), start_cell, $Pusher)
+	skill_effect.start(unit, skill, target_cells, start_cell, $Pusher)
 	
 	await skill_effect.effect_finished
 	

@@ -27,7 +27,6 @@ var _start_cell: Cell
 var _affected_units: Array
 
 @onready var _skill_sound := $SkillSound
-@onready var _tween := $Tween
 
 
 func start(unit: Unit, skill: Skill, target_cells: Array, start_cell: Cell, pusher: Pusher) -> void:
@@ -73,9 +72,7 @@ func _apply_skill(unit: Unit, skill: Skill, target_cell: Cell) -> void:
 	if target_unit != null and not target_unit in _affected_units:
 		_affected_units.push_back(target_unit)
 		
-		var callback = funcref(self, "on_damage_absorbed")
-		
-		target_unit.apply_skill(unit, skill, callback)
+		target_unit.apply_skill(unit, skill, on_damage_absorbed)
 		
 		if skill.is_healing():
 			_build_heal_particles(target_unit)

@@ -2,8 +2,8 @@ class_name StackBasedMenuScreen
 extends Control
 
 
-signal navigate(scene_path, data)
-signal go_back()
+signal navigation_requested(scene_path, data)
+signal back_requested()
 
 
 func change_scene_to_file(scene_path: String, data: Object = null) -> void:
@@ -16,13 +16,13 @@ func change_scene_to_file(scene_path: String, data: Object = null) -> void:
 # Emits navigate signal and removes focus in all buttons
 # Passes the given data to the new scene
 func navigate(scene_path: String, data: Object = null) -> void:
-	emit_signal("navigate", scene_path, data)
+	emit_signal("navigation_requested", scene_path, data)
 	
 	_remove_focus(self)
 
 
 func go_back() -> void:
-	emit_signal("go_back")
+	emit_signal("back_requested")
 	
 	_remove_focus(self)
 

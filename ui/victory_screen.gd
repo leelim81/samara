@@ -4,7 +4,7 @@ extends Control
 signal continue_button_pressed
 
 
-func grab_focus() -> void:
+func focus_default_button() -> void:
 	$MarginContainer/VBoxContainer/ContinueButton.grab_focus()
 
 

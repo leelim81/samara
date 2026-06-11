@@ -53,22 +53,21 @@ func get_dialogue_json_filename() -> String:
 
 func _load_lines_keys() -> void:
 	var dialogue_json: String = get_dialogue_json_filename()
-	
-	var file: File = File.new()
-	
-	if file.open(dialogue_json, File.READ) != OK:
+
+	var file := FileAccess.open(dialogue_json, FileAccess.READ)
+
+	if file == null:
 		printerr("Failed to read file for scene %s, skipping dialogue" % dialogue_json)
-		
+
 		_skip_dialogue()
 	else:
-		var test_json_conv = JSON.new()
-		test_json_conv.parse(file.get_as_text())
-		var parse_result: JSON = test_json_conv.get_data()
-		
+		var json := JSON.new()
+		var error := json.parse(file.get_as_text())
+
 		file.close()
-		
-		if parse_result.error == OK:
-			lines = parse_result.result
+
+		if error == OK:
+			lines = json.data
 		else:
 			printerr("Failed to load JSON")
 
@@ -103,20 +102,14 @@ func _dim_text_of_last_line() -> void:
 
 func update_scroll() -> void:
 	_estimated_container_size += _current_dialogue_message_container.size.y
-	
-	$Tween.interpolate_property(_scroll_container, "scroll_vertical",
-		_scroll_container.scroll_vertical, _scroll_container.get_v_scroll_bar().max_value,
-		scroll_tween_time_seconds,
-		Tween.TRANS_SINE)
-	
-	$Tween.interpolate_property(_current_dialogue_message_container, "modulate",
-		Color.TRANSPARENT,
-		Color.WHITE,
-		$Timer.wait_time,
-		Tween.TRANS_SINE)
-	
-	$Tween.start()
-	
+
+	var tween := create_tween().set_parallel(true)
+	tween.tween_property(_scroll_container, "scroll_vertical", _scroll_container.get_v_scroll_bar().max_value, scroll_tween_time_seconds) \
+			.set_trans(Tween.TRANS_SINE)
+	tween.tween_property(_current_dialogue_message_container, "modulate", Color.WHITE, $Timer.wait_time) \
+			.from(Color.TRANSPARENT) \
+			.set_trans(Tween.TRANS_SINE)
+
 	$Timer.start()
 
 

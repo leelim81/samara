@@ -16,7 +16,7 @@ func _ready() -> void:
 	_loading_screen_instance = loading_screen.instance()
 	
 	var root_screen = get_node(root_screen_node_path)
-	var _error = root_screen.connect("navigate", Callable(self, "_on_StackBasedMenu_navigate"))
+	var _error = root_screen.connect("navigation_requested", Callable(self, "_on_StackBasedMenu_navigate"))
 	
 	_screens.push_back(root_screen)
 
@@ -42,24 +42,24 @@ func _push_back_new_scene(scene_path: String) -> void:
 	add_child(instanced_scene)
 	_screens.push_back(instanced_scene)
 	
-	var _error = instanced_scene.connect("navigate", Callable(self, "_on_StackBasedMenu_navigate"))
-	_error = instanced_scene.connect("go_back", Callable(self, "_on_StackBasedMenu_go_back"))
+	var _error = instanced_scene.connect("navigation_requested", Callable(self, "_on_StackBasedMenu_navigate"))
+	_error = instanced_scene.connect("back_requested", Callable(self, "_on_StackBasedMenu_go_back"))
 
 
 func _on_StackBasedMenu_navigate(scene_path: String, data: Object) -> void:
-	await _fade_in().completed
+	await _fade_in()
 	
 	_push_back_new_scene(scene_path)
 	
 	_notify_scene_on_add_to_tree(data)
 	
-	await _fade_out().completed
+	await _fade_out()
 	
 	_notify_scene_on_load()
 
 
 func _on_StackBasedMenu_go_back() -> void:
-	await _fade_in().completed
+	await _fade_in()
 	
 	var current_scene: Node = _screens.pop_back()
 	
@@ -71,7 +71,7 @@ func _on_StackBasedMenu_go_back() -> void:
 	
 	previous_scene.on_add_to_tree(null)
 	
-	await _fade_out().completed
+	await _fade_out()
 	
 	_notify_scene_on_load()
 

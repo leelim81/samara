@@ -24,7 +24,7 @@ func _ready() -> void:
 # Applies a skill, inflicts/heals damage, adds/removes status effects and stats modifiers
 func apply_skill(unit: Unit,
 		skill: Skill,
-		on_damage_absorbed_callback: FuncRef,
+		on_damage_absorbed_callback: Callable,
 		status_effects: Array) -> void:
 	if (skill.is_attack() or skill.is_healing()) and skill.primary_power > 0:
 		var damage := calculate_damage(unit.get_stats(), _target_unit.get_stats(), skill.primary_power, skill.primary_weapon_type, skill.primary_attribute)
@@ -35,8 +35,9 @@ func apply_skill(unit: Unit,
 			damage = -damage * 3
 		
 		var absorbed_damage = int(skill.absorb_rate * damage)
-		
-		on_damage_absorbed_callback.call_func(absorbed_damage)
+
+		if on_damage_absorbed_callback.is_valid():
+			on_damage_absorbed_callback.call(absorbed_damage)
 		
 		_target_unit.inflict_damage(damage)
 		
@@ -137,7 +138,7 @@ func remove_status_effect(status_effects: Array, status_effect: StatusEffect) ->
 	var index: int = status_effects.find(status_effect)
 	
 	if index != -1:
-		status_effects.remove(index)
+		status_effects.remove_at(index)
 		
 		_status_effect_node2d.remove(status_effect.status_effect_type)
 

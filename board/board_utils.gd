@@ -252,15 +252,15 @@ static func _is_cell_excluded(cell: Cell, unit: Unit, excluded_cells: Dictionary
 # Returns Array<Cell>
 # By default cells are filtered (meaning without cells with null units or with
 # targeted units that are either allies or enemies depending on the skill type)
-static func find_area_of_effect_target_cells()(var unit: Unit,
-		var start_position: Vector2,
-		var skill: Skill,
-		var grid: Grid,
-		var pincered_units: Array = [], # Array<Unit>
-		var chain: Array = [], # Array<Unit>, including the pincering unit that started the chain
-		var allies: Array = [], # Array<Unit>
-		var enemies: Array = [], # Array<Unit>
-		var can_filter_cells: bool = true
+static func find_area_of_effect_target_cells(unit: Unit,
+		start_position: Vector2,
+		skill: Skill,
+		grid: Grid,
+		pincered_units: Array = [], # Array<Unit>
+		chain: Array = [], # Array<Unit>, including the pincering unit that started the chain
+		allies: Array = [], # Array<Unit>
+		enemies: Array = [], # Array<Unit>
+		can_filter_cells: bool = true
 	) -> Array:
 	
 	var cell: Cell = grid.get_cell_from_position(start_position)
@@ -286,13 +286,13 @@ static func find_area_of_effect_target_cells()(var unit: Unit,
 		return _remove_duplicates(target_cells)
 
 
-static func _find_area_of_effect()(var cell: Cell, # Start cell from which skill is called
-		var skill: Skill,
-		var grid: Grid,
-		var pincered_units: Array, # Array<Unit>
-		var chain: Array, # Array<Unit>, including the pincering unit that started the chain
-		var allies: Array, # Array<Unit>
-		var enemies: Array # Array<Unit>
+static func _find_area_of_effect(cell: Cell, # Start cell from which skill is called
+		skill: Skill,
+		grid: Grid,
+		pincered_units: Array, # Array<Unit>
+		chain: Array, # Array<Unit>, including the pincering unit that started the chain
+		allies: Array, # Array<Unit>
+		enemies: Array # Array<Unit>
 	) -> Array:
 	match(skill.area_of_effect):
 		Enums.AreaOfEffect.NONE, Enums.AreaOfEffect.PINCER:

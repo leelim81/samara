@@ -1,7 +1,8 @@
 @tool
 # This is a convenience node that automatically synchronizes an AntialiasedLine2D
 # with a Polygon2D.
-class_name AntialiasedPolygon2D, "antialiased_polygon2d.svg"
+@icon("antialiased_polygon2d.svg")
+class_name AntialiasedPolygon2D
 extends Polygon2D
 
 @export var stroke_color := Color(0.4, 0.5, 1.0): set = set_stroke_color
@@ -21,7 +22,7 @@ func _ready() -> void:
 	add_child(line_2d)
 
 
-func _set(property: String, value) -> bool:
+func _set(property: StringName, value: Variant) -> bool:
 	if property == "polygon":
 		line_2d.points = AntialiasedLine2D.construct_closed_line(polygon)
 	return false

@@ -14,9 +14,8 @@ func _start(unit: Unit, skill: Skill, target_cells: Array) -> void:
 			
 			unit.add_child_at_offset(particle_arc)
 			
-			var _error = particle_arc.connect("target_reached", self,
-							"_on_ParticleArc_target_reached",
-							[unit, skill, target_cell])
+			var _error = particle_arc.target_reached.connect(
+					_on_ParticleArc_target_reached.bind(unit, skill, target_cell))
 			
 			var start_position: Vector2 = _get_start_position(unit)
 			var target_position: Vector2 = _get_target_position(target_cell, skill)

@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/gun_with_ricochet.wav-e8b04db833fdb5a5fa4b579a51aa951a.sample"
+type="AudioStreamWAV"
+uid="uid://cvnj3fkvgn6ft"
+path="res://.godot/imported/gun_with_ricochet.wav-e8b04db833fdb5a5fa4b579a51aa951a.sample"
 
 [deps]
 
 source_file="res://assets/sfx/gun_with_ricochet.wav"
-dest_files=[ "res://.import/gun_with_ricochet.wav-e8b04db833fdb5a5fa4b579a51aa951a.sample" ]
+dest_files=["res://.godot/imported/gun_with_ricochet.wav-e8b04db833fdb5a5fa4b579a51aa951a.sample"]
 
 [params]
 

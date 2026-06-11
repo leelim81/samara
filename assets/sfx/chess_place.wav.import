@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/chess_place.wav-3324081aebc211d0affc5fa6ad19580a.sample"
+type="AudioStreamWAV"
+uid="uid://bk2hjk0mbkv1e"
+path="res://.godot/imported/chess_place.wav-3324081aebc211d0affc5fa6ad19580a.sample"
 
 [deps]
 
 source_file="res://assets/sfx/chess_place.wav"
-dest_files=[ "res://.import/chess_place.wav-3324081aebc211d0affc5fa6ad19580a.sample" ]
+dest_files=["res://.godot/imported/chess_place.wav-3324081aebc211d0affc5fa6ad19580a.sample"]
 
 [params]
 

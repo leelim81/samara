@@ -97,8 +97,6 @@ grow_horizontal = 0
 size_flags_horizontal = 8
 text = "SKIP"
 
-[node name="Tween" type="Tween" parent="."]
-
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true

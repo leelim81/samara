@@ -57,8 +57,6 @@ var current_state = STATE.IDLE: set = set_current_state
 
 var faction: int = INVALID_FACTION
 
-var velocity: Vector2 = Vector2.ZERO
-
 # Says if a unit has escaped or used a escape skill
 var is_escaped: bool = false
 
@@ -71,7 +69,10 @@ var _has_entered_cell: bool = false
 
 @onready var _is2x2: bool = (size == Size.DOUBLE_2X2)
 
-@onready var _tween := $Tween
+var _position_tween: Tween
+var _scale_tween: Tween
+var _rotation_tween: Tween
+
 @onready var _sprite := $Sprite2D
 
 
@@ -153,51 +154,39 @@ func play_escape_animation() -> void:
 
 
 func play_scale_up_and_down_animation() -> void:
-	_tween.remove($Sprite2D, "scale")
-	
+	if _scale_tween != null:
+		_scale_tween.kill()
+
 	$AnimationPlayer.play("scale up and down")
 
 
 func stop_scale_up_and_down_animation() -> void:
-	$AnimationPlayer.stop(true)
-	
-	_tween.remove($Sprite2D, "scale")
-	
-	_tween.interpolate_property($Sprite2D, "scale",
-		$Sprite2D.scale, Vector2.ONE,
-		0.15,
-		Tween.TRANS_LINEAR)
-	
-	_tween.start()
+	$AnimationPlayer.stop()
+
+	_tween_sprite_scale(Vector2.ONE, 0.15, Tween.TRANS_LINEAR)
 
 
 func move_to_new_cell(target_position: Vector2) -> void:
-	_tween.remove(self, "position")
-	
 	var tween_time_seconds: float = Utils.calculate_time(position, target_position, swap_velocity_pixels_per_second)
-	
-	_tween.interpolate_property(self, "position",
-				position, target_position,
-				tween_time_seconds,
-				Tween.TRANS_SINE)
-			
-	_tween.start()
-	
+
+	_start_position_tween(target_position, tween_time_seconds)
+
 	self.current_state = STATE.SWAPPING
 
 
 func push_to_cell(target_position: Vector2) -> void:
 	move_to_new_cell(target_position)
-	
+
 	var tween_time_seconds: float = Utils.calculate_time(position, target_position, swap_velocity_pixels_per_second)
-	
-	_tween.interpolate_property($Sprite2D, "rotation",
-				0.0, 2 * PI,
-				tween_time_seconds,
-				Tween.TRANS_SINE)
-	
-	_tween.start()
-	
+
+	if _rotation_tween != null:
+		_rotation_tween.kill()
+
+	_rotation_tween = create_tween()
+	_rotation_tween.tween_property($Sprite2D, "rotation", 2 * PI, tween_time_seconds) \
+			.from(0.0) \
+			.set_trans(Tween.TRANS_SINE)
+
 	Utils.disable_object($CollisionShape2D)
 
 
@@ -225,13 +214,10 @@ func disable_selection_area() -> void:
 
 func _move_towards_mouse() -> void:
 	var error: Vector2 = get_global_mouse_position() - global_position
-	
-	velocity = Vector2(error * kp * velocity_pixels_per_second).limit_length(max_velocity_pixels_per_second)
-	
-	set_velocity(velocity)
-	set_up_direction(Vector2.ZERO)
+
+	velocity = (error * kp * velocity_pixels_per_second).limit_length(max_velocity_pixels_per_second)
+
 	move_and_slide()
-	velocity = velocity
 
 
 func _input(event: InputEvent):
@@ -244,15 +230,10 @@ func _input(event: InputEvent):
 
 func snap_to_grid(cell_origin: Vector2) -> void:
 	self.current_state = STATE.SNAPPING_TO_GRID
-	
+
 	var tween_time_seconds: float = Utils.calculate_time(position, cell_origin, snap_velocity_pixels_per_second)
-	
-	_tween.interpolate_property(self, "position",
-		position, cell_origin,
-		tween_time_seconds,
-		Tween.TRANS_SINE)
-	
-	_tween.start()
+
+	_start_position_tween(cell_origin, tween_time_seconds)
 
 
 func is_picked_up() -> bool:
@@ -346,25 +327,39 @@ func set_current_state(new_state) -> void:
 
 
 func _increase_sprite_size() -> void:
-	_tween.remove(_sprite, "scale")
-	
-	_tween.interpolate_property(_sprite, "scale",
-		_sprite.scale, Vector2(1.2, 1.2),
-		0.25,
-		Tween.TRANS_SINE)
-	
-	_tween.start()
+	_tween_sprite_scale(Vector2(1.2, 1.2), 0.25, Tween.TRANS_SINE)
 
 
 func _restore_sprite_size() -> void:
-	_tween.remove(_sprite, ":scale")
-	
-	_tween.interpolate_property(_sprite, "scale",
-		_sprite.scale, Vector2.ONE, # TODO: Save original _sprite scale
-		0.25,
-		Tween.TRANS_SINE)
-	
-	_tween.start()
+	_tween_sprite_scale(Vector2.ONE, 0.25, Tween.TRANS_SINE)
+
+
+func _tween_sprite_scale(target_scale: Vector2, duration_seconds: float, transition: Tween.TransitionType) -> void:
+	if _scale_tween != null:
+		_scale_tween.kill()
+
+	_scale_tween = create_tween()
+	_scale_tween.tween_property(_sprite, "scale", target_scale, duration_seconds) \
+			.set_trans(transition)
+
+
+# Tweens this unit's position, killing any previous position tween. The
+# finished callback drives the snap/swap state transitions.
+func _start_position_tween(target_position: Vector2, duration_seconds: float, transition: Tween.TransitionType = Tween.TRANS_SINE) -> void:
+	if _position_tween != null:
+		_position_tween.kill()
+
+	_position_tween = create_tween()
+	_position_tween.tween_property(self, "position", target_position, duration_seconds) \
+			.set_trans(transition)
+
+	_position_tween.finished.connect(_on_position_tween_finished)
+
+
+# Returns once the current position tween (if any) has finished playing.
+func wait_until_movement_finished() -> void:
+	if _position_tween != null and _position_tween.is_running():
+		await _position_tween.finished
 
 
 func is_player() -> bool:
@@ -451,7 +446,7 @@ func play_skill_activation_animation(activated_skills: Array, layer_z_index: int
 	$Sound/SkillActivationAudio.play()
 
 
-func apply_skill(unit: Unit, skill: Skill, on_damage_absorbed_callback: FuncRef) -> void:
+func apply_skill(unit: Unit, skill: Skill, on_damage_absorbed_callback: Callable) -> void:
 	$SkillApplier.apply_skill(unit, skill, on_damage_absorbed_callback, _status_effects)
 
 
@@ -518,7 +513,7 @@ func apply_equip_skills() -> void:
 		if skill.area_of_effect != Enums.AreaOfEffect.EQUIP:
 			continue
 		
-		apply_skill(self, skill, null)
+		apply_skill(self, skill, Callable())
 
 
 ## Animation playback
@@ -581,7 +576,7 @@ func _has_blocking_status_effect() -> bool:
 ## Signals
 
 func _on_SelectionArea2D_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
-	if event is InputEventMouseButton and event.doubleclick and is_click_to_drag:
+	if event is InputEventMouseButton and event.double_click and is_click_to_drag:
 		on_select_for_view()
 	elif event is InputEventMouseButton and event.pressed:
 		if not is_click_to_drag:
@@ -595,14 +590,12 @@ func _on_SelectionArea2D_input_event(_viewport: Node, event: InputEvent, _shape_
 					release()
 
 
-func _on_Tween_tween_completed(_object: Object, key: String) -> void:
+func _on_position_tween_finished() -> void:
 	match(current_state):
 		STATE.SNAPPING_TO_GRID:
-			if key == ":position":
-				_on_snap_to_grid()
+			_on_snap_to_grid()
 		STATE.SWAPPING:
-			if key == ":position":
-				self.current_state = STATE.IDLE
+			self.current_state = STATE.IDLE
 
 
 func _on_SelectionArea2D_mouse_entered() -> void:

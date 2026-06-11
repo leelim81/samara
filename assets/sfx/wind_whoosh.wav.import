@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/wind_whoosh.wav-1fac939c6cfd402952858f0b162b04b1.sample"
+type="AudioStreamWAV"
+uid="uid://b6dekxg7y6g8q"
+path="res://.godot/imported/wind_whoosh.wav-1fac939c6cfd402952858f0b162b04b1.sample"
 
 [deps]
 
 source_file="res://assets/sfx/wind_whoosh.wav"
-dest_files=[ "res://.import/wind_whoosh.wav-1fac939c6cfd402952858f0b162b04b1.sample" ]
+dest_files=["res://.godot/imported/wind_whoosh.wav-1fac939c6cfd402952858f0b162b04b1.sample"]
 
 [params]
 

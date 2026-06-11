@@ -3,7 +3,7 @@ extends AudioStreamPlayer
 
 @export var fade_time_seconds: float = 0.9
 
-@onready var _tween: Tween = $Tween
+var _fade_tween: Tween
 
 
 func _ready() -> void:
@@ -12,15 +12,9 @@ func _ready() -> void:
 
 
 func _on_Loader_scene_changed() -> void:
-	if _tween.is_active():
+	if _fade_tween != null and _fade_tween.is_running():
 		return
-	
-	var _error = _tween.interpolate_property(self,
-			"volume_db",
-			volume_db,
-			-80,
-			fade_time_seconds,
-			Tween.TRANS_LINEAR)
-	
-	if not _tween.start():
-		push_warning("Failed to start _tween to fade out audio")
+
+	_fade_tween = create_tween()
+	_fade_tween.tween_property(self, "volume_db", -80.0, fade_time_seconds) \
+			.set_trans(Tween.TRANS_LINEAR)

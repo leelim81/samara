@@ -11,7 +11,7 @@ var _last_active_button: Button = null
 
 
 func _ready() -> void:
-	if OS.get_name() == "HTML5":
+	if OS.get_name() == "Web":
 		_quit_button.hide()
 	
 	_set_focus()

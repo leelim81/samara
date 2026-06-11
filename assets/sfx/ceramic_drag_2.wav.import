@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/ceramic_drag_2.wav-3fd448d5c86ad8931bae746dd4630bbd.sample"
+type="AudioStreamWAV"
+uid="uid://daaiepe2by4mk"
+path="res://.godot/imported/ceramic_drag_2.wav-3fd448d5c86ad8931bae746dd4630bbd.sample"
 
 [deps]
 
 source_file="res://assets/sfx/ceramic_drag_2.wav"
-dest_files=[ "res://.import/ceramic_drag_2.wav-3fd448d5c86ad8931bae746dd4630bbd.sample" ]
+dest_files=["res://.godot/imported/ceramic_drag_2.wav-3fd448d5c86ad8931bae746dd4630bbd.sample"]
 
 [params]
 

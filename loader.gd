@@ -4,11 +4,10 @@ extends Node
 # Emitted when change_scene() is called and a new scene is going to be loaded
 signal scene_changed()
 
-var loader: ResourceLoader = null
+# Path of the scene currently being loaded in the background, empty if idle
+var _loading_path: String = ""
 
 var _wait_frames: int = 1
-
-var _time_max_ms: int = 100
 
 var _current_scene: Node = null
 
@@ -42,36 +41,30 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	if loader == null:
+	if _loading_path.is_empty():
 		set_process(false)
 	else:
-		var current_time_ms : = Time.get_ticks_msec()
-		
 		if _wait_frames > 0:
 			_wait_frames -= 1
-			
+
 			return
-		
-		while Time.get_ticks_msec() < current_time_ms + _time_max_ms:
-			var error = loader.poll()
-			
-			if error == ERR_FILE_EOF:
-				var resource = loader.get_resource()
-				loader = null
-				
+
+		var progress: Array = []
+		var status := ResourceLoader.load_threaded_get_status(_loading_path, progress)
+
+		match status:
+			ResourceLoader.THREAD_LOAD_LOADED:
+				var resource := ResourceLoader.load_threaded_get(_loading_path)
+				_loading_path = ""
+
 				_set_new_scene(resource)
-				
-				break
-			elif error == OK:
-				# TODO: Update progress
-				
-				pass
-			else:
+			ResourceLoader.THREAD_LOAD_IN_PROGRESS:
+				if _loading_screen_instance != null and not progress.is_empty():
+					_loading_screen_instance.update_progress(progress[0])
+			_:
 				printerr("Error loading scene")
-				
-				loader = null
-				
-				break
+
+				_loading_path = ""
 
 
 # https://www.youtube.com/watch?v=5aV_GSAE1kM
@@ -81,34 +74,35 @@ func change_scene_to_file(path: String, _data = null) -> int:
 	if path == "":
 		return ERR_CANT_CREATE
 	
-	if loader != null:
+	if not _loading_path.is_empty():
 		push_warning("Loader is busy")
-		
+
 		return ERR_ALREADY_IN_USE
-	
-	loader = ResourceLoader.load_threaded_request(path)
-	
-	if loader == null:
-		printerr("Couldn't load interactive loader for scene %s" % path)
-		
+
+	var error := ResourceLoader.load_threaded_request(path)
+
+	if error != OK:
+		printerr("Couldn't start threaded load for scene %s" % path)
+
 		return ERR_CANT_CREATE
 	else:
+		_loading_path = path
 		data = _data
-		
+
 		if _is_loading:
 			_start_loader()
 		else:
 			call_deferred("_play_loading_animation")
-		
+
 		emit_signal("scene_changed")
-		
+
 		return OK
 
 
 func _play_loading_animation() -> void:
 	_is_loading = true
 	
-	_loading_screen_instance = _loading_screen.instance()
+	_loading_screen_instance = _loading_screen.instantiate()
 	
 	get_tree().get_root().add_child(_loading_screen_instance)
 	

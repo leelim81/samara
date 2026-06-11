@@ -24,16 +24,14 @@ func _start(unit: Unit, skill: Skill, target_cells: Array) -> void:
 			animated_sprite.position = cell.unit.get_offset_origin()
 		
 		if activation_frame > 0:
-			var _error = animated_sprite.connect("frame_changed", self,
-							"_on_AnimatedSprite_frame_changed",
-							[animated_sprite, unit, skill, cell])
+			var _error = animated_sprite.frame_changed.connect(
+					_on_AnimatedSprite_frame_changed.bind(animated_sprite, unit, skill, cell))
 		else:
 			_apply_skill(unit, skill, cell)
-		
-		var _error = animated_sprite.connect("animation_finished", self,
-						"_on_AnimatedSprite_animation_finished",
-						[unit],
-						CONNECT_ONE_SHOT)
+
+		var _error = animated_sprite.animation_finished.connect(
+				_on_AnimatedSprite_animation_finished.bind(unit),
+				CONNECT_ONE_SHOT)
 		
 		animated_sprite.play()
 

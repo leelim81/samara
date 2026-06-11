@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/magic_heal.wav-f0f44a7d5272ac1965efdcfae23ddee8.sample"
+type="AudioStreamWAV"
+uid="uid://bys45vl1bhn4j"
+path="res://.godot/imported/magic_heal.wav-f0f44a7d5272ac1965efdcfae23ddee8.sample"
 
 [deps]
 
 source_file="res://assets/sfx/magic_heal.wav"
-dest_files=[ "res://.import/magic_heal.wav-f0f44a7d5272ac1965efdcfae23ddee8.sample" ]
+dest_files=["res://.godot/imported/magic_heal.wav-f0f44a7d5272ac1965efdcfae23ddee8.sample"]
 
 [params]
 

@@ -1,5 +1,6 @@
 @tool
-class_name AntialiasedLine2D, "antialiased_line2d.svg"
+@icon("antialiased_line2d.svg")
+class_name AntialiasedLine2D
 extends Line2D
 
 

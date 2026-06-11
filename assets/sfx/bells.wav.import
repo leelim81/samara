@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/bells.wav-0386eac475853356b51932f303d702a9.sample"
+type="AudioStreamWAV"
+uid="uid://owxgap4s8ayw"
+path="res://.godot/imported/bells.wav-0386eac475853356b51932f303d702a9.sample"
 
 [deps]
 
 source_file="res://assets/sfx/bells.wav"
-dest_files=[ "res://.import/bells.wav-0386eac475853356b51932f303d702a9.sample" ]
+dest_files=["res://.godot/imported/bells.wav-0386eac475853356b51932f303d702a9.sample"]
 
 [params]
 

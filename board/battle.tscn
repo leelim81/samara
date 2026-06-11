@@ -339,8 +339,6 @@ bus = "Sound effects"
 stream = ExtResource( 29 )
 bus = "Sound effects"
 
-[node name="Tween" type="Tween" parent="Board"]
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
@@ -402,8 +400,6 @@ stretch_margin_left = 10
 stretch_margin_top = 8
 stretch_margin_right = 10
 stretch_margin_bottom = 8
-
-[node name="Tween" type="Tween" parent="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/TextureProgressBar"]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer"]
 offset_top = 40.0
@@ -531,8 +527,6 @@ text = "BATTLE 1/5"
 align = 1
 valign = 1
 
-[node name="Tween" type="Tween" parent="CanvasLayer/EnemyPhaseCenterContainer"]
-
 [node name="DefeatScreen" parent="CanvasLayer" instance=ExtResource( 26 )]
 visible = false
 anchor_right = 0.0
@@ -554,8 +548,6 @@ __meta__ = {
 }
 
 [node name="ViewUnitMenuCanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Tween" type="Tween" parent="ViewUnitMenuCanvasLayer"]
 
 [node name="SelectUnitAudio" type="AudioStreamPlayer" parent="ViewUnitMenuCanvasLayer"]
 stream = ExtResource( 34 )
