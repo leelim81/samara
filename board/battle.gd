@@ -1,15 +1,15 @@
 extends MarginContainer
 
 
-export(String, FILE, "*.tscn") var next_scene: String
+@export var next_scene: String # (String, FILE, "*.tscn")
 
-export(Resource) var chapter_data: Resource 
+@export var chapter_data: Resource 
 
-export(float) var enemy_phase_container_fade_time_seconds: float = 0.75
+@export var enemy_phase_container_fade_time_seconds: float = 0.75
 
-export(PackedScene) var view_unit_menu_packed_scene: PackedScene
+@export var view_unit_menu_packed_scene: PackedScene
 
-export(float) var view_unit_menu_fade_time_seconds: float = 0.5
+@export var view_unit_menu_fade_time_seconds: float = 0.5
 
 var _timer: Timer
 var _player_turn_count: int = 0
@@ -17,8 +17,8 @@ var _total_drag_time_seconds: float = 0
 
 var _is_battle_finished: bool = false
 
-onready var _progress_bar: TextureProgress = $CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/TextureProgress
-onready var _tween: Tween = $CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/TextureProgress/Tween
+@onready var _progress_bar: TextureProgressBar = $CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/TextureProgressBar
+@onready var _tween: Tween = $CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/TextureProgressBar/Tween
 
 
 func _ready() -> void:
@@ -104,17 +104,17 @@ func _on_Board_defeat() -> void:
 
 
 func _on_DefeatScreen_quit_button_pressed() -> void:
-	if Loader.change_scene("res://ui/pre_battle_menu/stack_based_pre_battle_menu.tscn") != OK:
+	if Loader.change_scene_to_file("res://ui/pre_battle_menu/stack_based_pre_battle_menu.tscn") != OK:
 		printerr("Failed to return to pre-battle menu")
 
 
 func _on_DefeatScreen_try_again_button_pressed() -> void:
-	if Loader.change_scene(filename, chapter_data) != OK:
+	if Loader.change_scene_to_file(filename, chapter_data) != OK:
 		printerr("Failed to reload scene")
 
 
 func _on_VictoryScreen_continue_button_pressed() -> void:
-	if Loader.change_scene(next_scene, chapter_data) != OK:
+	if Loader.change_scene_to_file(next_scene, chapter_data) != OK:
 		printerr("Failed to change to %s" % next_scene)
 
 
@@ -137,8 +137,8 @@ func _on_Board_enemy_phase_started(current_enemy_phase: int, enemy_phase_count: 
 	
 	var _error = control_tween.interpolate_property(control,
 		"modulate",
-		Color.transparent,
-		Color.white,
+		Color.TRANSPARENT,
+		Color.WHITE,
 		enemy_phase_container_fade_time_seconds,
 		Tween.TRANS_LINEAR)
 	
@@ -155,13 +155,13 @@ func _on_Board_enemies_appeared() -> void:
 	var _error = control_tween.interpolate_property(control,
 		"modulate",
 		control.modulate,
-		Color.transparent,
+		Color.TRANSPARENT,
 		enemy_phase_container_fade_time_seconds,
 		Tween.TRANS_LINEAR)
 	
 	_error = control_tween.start()
 	
-	yield(control_tween, "tween_all_completed")
+	await control_tween.tween_all_completed
 	
 	$CanvasLayer/EnemyPhaseCenterContainer.hide()
 
@@ -170,20 +170,20 @@ func _on_Board_unit_selected_for_view(unit: Unit) -> void:
 	var view_unit_menu_tween = $ViewUnitMenuCanvasLayer/Tween
 	
 	if not view_unit_menu_tween.is_active():
-		var view_unit_menu: Control = view_unit_menu_packed_scene.instance()
+		var view_unit_menu: Control = view_unit_menu_packed_scene.instantiate()
 		
 		$ViewUnitMenuCanvasLayer.add_child(view_unit_menu)
 		
 		view_unit_menu.initialize_from_data(unit.get_job(), unit.get_base_stats(), unit.get_stats(), unit.get_level(), unit.get_skills(), unit.get_status_effects(), unit.faction == Unit.PLAYER_FACTION, true, unit.faction == Unit.ENEMY_FACTION)
 		
-		var _error = view_unit_menu.connect("go_back", self, "_on_ViewUnitMenu_go_back", [view_unit_menu])
+		var _error = view_unit_menu.connect("go_back", Callable(self, "_on_ViewUnitMenu_go_back").bind(view_unit_menu))
 		
-		view_unit_menu.modulate = Color.transparent
+		view_unit_menu.modulate = Color.TRANSPARENT
 		
 		view_unit_menu_tween.interpolate_property(view_unit_menu,
 			"modulate",
-			Color.transparent,
-			Color.white,
+			Color.TRANSPARENT,
+			Color.WHITE,
 			view_unit_menu_fade_time_seconds,
 			Tween.TRANS_SINE)
 		
@@ -198,13 +198,13 @@ func _on_ViewUnitMenu_go_back(view_unit_menu: Control) -> void:
 	view_unit_menu_tween.interpolate_property(view_unit_menu,
 		"modulate",
 		view_unit_menu.modulate,
-		Color.transparent,
+		Color.TRANSPARENT,
 		view_unit_menu_fade_time_seconds,
 		Tween.TRANS_SINE)
 	
 	view_unit_menu_tween.start()
 	
-	yield(view_unit_menu_tween, "tween_all_completed")
+	await view_unit_menu_tween.tween_all_completed
 	
 	view_unit_menu.queue_free()
 

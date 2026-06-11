@@ -5,10 +5,10 @@ extends Node2D
 signal scene_summoned(scenes, target_cell)
 signal effect_finished
 
-export(PackedScene) var heal_particles_packed_scene: PackedScene
-export(float) var delay_before_absorbing_damage_seconds: float = 0.5
-export(float) var delay_after_absorbing_damage_seconds: float = 0.5
-export(float) var delay_after_skill_without_absorb_seconds: float = 0.2
+@export var heal_particles_packed_scene: PackedScene
+@export var delay_before_absorbing_damage_seconds: float = 0.5
+@export var delay_after_absorbing_damage_seconds: float = 0.5
+@export var delay_after_skill_without_absorb_seconds: float = 0.2
 
 var _target_count: int = 0
 var _targets_affected: int = 0
@@ -26,8 +26,8 @@ var _start_cell: Cell
 # to each cell, but only in the direction in which the cells are evaluated).
 var _affected_units: Array
 
-onready var _skill_sound := $SkillSound
-onready var _tween := $Tween
+@onready var _skill_sound := $SkillSound
+@onready var _tween := $Tween
 
 
 func start(unit: Unit, skill: Skill, target_cells: Array, start_cell: Cell, pusher: Pusher) -> void:
@@ -57,7 +57,7 @@ func _start(_unit: Unit, _skill: Skill, _target_cells: Array) -> void:
 
 
 func _build_heal_particles(unit: Unit) -> void:
-	var particles: CPUParticles2D = heal_particles_packed_scene.instance()
+	var particles: CPUParticles2D = heal_particles_packed_scene.instantiate()
 	
 	# Particles is freed automatically after its timer expires
 	unit.add_child_at_offset(particles)
@@ -108,7 +108,7 @@ func _update_count(unit: Unit) -> void:
 		if _absorbed_damage > 0:
 			$DelayBeforeAbsorbingDamageTimer.start()
 			
-			yield($DelayBeforeAbsorbingDamageTimer, "timeout")
+			await $DelayBeforeAbsorbingDamageTimer.timeout
 			
 			unit.inflict_damage(int(max(-_max_absorbed_damage, -_absorbed_damage)))
 			
@@ -116,19 +116,19 @@ func _update_count(unit: Unit) -> void:
 			
 			$DelayAfterAbsorbingDamageTimer.start()
 			
-			yield($DelayAfterAbsorbingDamageTimer, "timeout")
+			await $DelayAfterAbsorbingDamageTimer.timeout
 		else:
 			$DelayAfterSkillWithoutAbsorbTimer.start()
 			
-			yield($DelayAfterSkillWithoutAbsorbTimer, "timeout")
+			await $DelayAfterSkillWithoutAbsorbTimer.timeout
 		
 		emit_signal("effect_finished")
 		hide()
 		
 		if $SkillSound.playing:
-			yield($SkillSound, "finished")
+			await $SkillSound.finished
 		
 		if $AbsorbHealSound.playing:
-			yield($AbsorbHealSound, "finished")
+			await $AbsorbHealSound.finished
 		
 		queue_free()

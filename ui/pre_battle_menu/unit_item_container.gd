@@ -10,7 +10,7 @@ var job: Job
 
 var _is_draggable: bool = false
 
-onready var _name_label: Label = $VBoxContainer/HBoxContainer/NameLabel
+@onready var _name_label: Label = $VBoxContainer/HBoxContainer/NameLabel
 
 
 func initialize(_job: Job, is_draggable: bool = false, compare_job: Job = null) -> void:
@@ -34,14 +34,14 @@ func set_change_button_as_choose_button() -> void:
 
 
 func highlight() -> void:
-	if $AnimationPlayer.current_animation.empty():
+	if $AnimationPlayer.current_animation.is_empty():
 		$AnimationPlayer.play("highlight")
 		
 		$HighlightAudio.play()
 
 
 # This method is untyped because it returns a Variant
-func get_drag_data(_position: Vector2):
+func _get_drag_data(_position: Vector2):
 	if _is_draggable:
 		set_drag_preview(_build_drag_preview())
 		
@@ -52,12 +52,12 @@ func get_drag_data(_position: Vector2):
 
 # https://www.youtube.com/watch?v=cNvzGKCkNXg
 # https://github.com/exploregamedev/Godot-demos/blob/main/IntroToDragAndDrop-part_1/demo-final
-func can_drop_data(_position: Vector2, data) -> bool:
+func _can_drop_data(_position: Vector2, data) -> bool:
 	# And data.is_in_group("draggable")
 	return _is_draggable and data is HBoxContainer and data != self
 
 
-func drop_data(_position: Vector2, data) -> void:
+func _drop_data(_position: Vector2, data) -> void:
 	emit_signal("unit_dropped_on_unit", self, data)
 
 

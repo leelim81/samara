@@ -20,25 +20,25 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 0
-custom_constants/margin_right = 50
-custom_constants/margin_top = 50
-custom_constants/margin_left = 50
-custom_constants/margin_bottom = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_bottom = 50
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-margin_left = 50.0
-margin_top = 50.0
-margin_right = 670.0
-margin_bottom = 910.0
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 670.0
+offset_bottom = 910.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]
-margin_right = 620.0
-margin_bottom = 779.0
+offset_right = 620.0
+offset_bottom = 779.0
 size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer"]
-margin_right = 596.0
-margin_bottom = 939.0
+offset_right = 596.0
+offset_bottom = 939.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "~ Team ~
@@ -65,10 +65,10 @@ align = 1
 autowrap = true
 
 [node name="ReturnButton" parent="MarginContainer/VBoxContainer" instance=ExtResource( 3 )]
-margin_left = 190.0
-margin_top = 787.0
-margin_right = 430.0
-margin_bottom = 860.0
+offset_left = 190.0
+offset_top = 787.0
+offset_right = 430.0
+offset_bottom = 860.0
 text = "RETURN"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ReturnButton" to="." method="_on_ReturnButton_pressed"]

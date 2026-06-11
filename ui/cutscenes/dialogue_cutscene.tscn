@@ -42,57 +42,57 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -360.0
-margin_top = -480.0
-margin_right = 360.0
-margin_bottom = 480.0
+offset_left = -360.0
+offset_top = -480.0
+offset_right = 360.0
+offset_bottom = 480.0
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -360.0
-margin_top = -480.0
-margin_right = 360.0
-margin_bottom = 480.0
-custom_constants/margin_right = 50
-custom_constants/margin_top = 50
-custom_constants/margin_left = 50
-custom_constants/margin_bottom = 50
+offset_left = -360.0
+offset_top = -480.0
+offset_right = 360.0
+offset_bottom = 480.0
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_bottom = 50
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-margin_left = 50.0
-margin_top = 50.0
-margin_right = 670.0
-margin_bottom = 910.0
-custom_constants/separation = 48
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 670.0
+offset_bottom = 910.0
+theme_override_constants/separation = 48
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]
-margin_right = 620.0
-margin_bottom = 739.0
+offset_right = 620.0
+offset_bottom = 739.0
 size_flags_vertical = 3
 theme = SubResource( 1 )
 scroll_horizontal_enabled = false
 
 [node name="MessagesVBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer"]
-margin_right = 620.0
-margin_bottom = 739.0
-rect_clip_content = true
+offset_right = 620.0
+offset_bottom = 739.0
+clip_contents = true
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/separation = 16
+theme_override_constants/separation = 16
 
 [node name="HBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/MessagesVBoxContainer" instance=ExtResource( 2 )]
 anchor_right = 0.0
-margin_right = 620.0
-margin_bottom = 170.0
+offset_right = 620.0
+offset_bottom = 170.0
 
 [node name="SkipButton" parent="MarginContainer/VBoxContainer" instance=ExtResource( 7 )]
-margin_left = 380.0
-margin_top = 787.0
-margin_right = 620.0
-margin_bottom = 860.0
+offset_left = 380.0
+offset_top = 787.0
+offset_right = 620.0
+offset_bottom = 860.0
 grow_horizontal = 0
 size_flags_horizontal = 8
 text = "SKIP"

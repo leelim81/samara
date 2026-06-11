@@ -8,13 +8,13 @@ const PHYSICAL_DAMAGE_MODIFIER: float = 1.57
 const STAFF_DAMAGE_MODIFIER: float = 1.57
 
 
-export(NodePath) var target_unit_path: NodePath
-export(NodePath) var status_effect_node2d_path: NodePath
+@export var target_unit_path: NodePath
+@export var status_effect_node2d_path: NodePath
 
 var _random := RandomNumberGenerator.new()
 
-onready var _status_effect_node2d: Node2D = get_node(status_effect_node2d_path)
-onready var _target_unit: Unit = get_node(target_unit_path)
+@onready var _status_effect_node2d: Node2D = get_node(status_effect_node2d_path)
+@onready var _target_unit: Unit = get_node(target_unit_path)
 
 
 func _ready() -> void:
@@ -78,7 +78,7 @@ func apply_skill(unit: Unit,
 		for status_effect in status_effects_to_remove:
 			remove_status_effect(status_effects, status_effect)
 		
-		if not status_effects_to_remove.empty():
+		if not status_effects_to_remove.is_empty():
 			has_modified_stats = true
 	
 	if has_modified_stats:
@@ -126,7 +126,7 @@ func inflict(status_effect_type: int, status_effects: Array) -> void:
 	for status_effect in status_effects_to_remove:
 		remove_status_effect(status_effects, status_effect)
 	
-	if not status_effects_to_remove.empty():
+	if not status_effects_to_remove.is_empty():
 		_target_unit.recalculate_stats()
 
 

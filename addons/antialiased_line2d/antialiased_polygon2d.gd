@@ -1,14 +1,14 @@
+@tool
 # This is a convenience node that automatically synchronizes an AntialiasedLine2D
 # with a Polygon2D.
-tool
 class_name AntialiasedPolygon2D, "antialiased_polygon2d.svg"
 extends Polygon2D
 
-export var stroke_color := Color(0.4, 0.5, 1.0) setget set_stroke_color
-export(float, 0.0, 1000.0) var stroke_width := 10.0 setget set_stroke_width
-export(int, "Sharp", "Bevel", "Round") var stroke_joint_mode := Line2D.LINE_JOINT_SHARP setget set_stroke_joint_mode
-export(float, 0.0, 1000.0) var stroke_sharp_limit := 2.0 setget set_stroke_sharp_limit
-export(int, 1, 32) var stroke_round_precision := 8 setget set_stroke_round_precision
+@export var stroke_color := Color(0.4, 0.5, 1.0): set = set_stroke_color
+@export var stroke_width := 10.0: set = set_stroke_width
+@export var stroke_joint_mode := Line2D.LINE_JOINT_SHARP: set = set_stroke_joint_mode
+@export var stroke_sharp_limit := 2.0: set = set_stroke_sharp_limit
+@export var stroke_round_precision := 8: set = set_stroke_round_precision
 
 var line_2d := Line2D.new()
 

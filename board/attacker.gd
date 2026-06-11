@@ -3,13 +3,13 @@ extends Node2D
 
 signal attack_phase_finished
 
-export(PackedScene) var attack_effect_packed_scene: PackedScene = null
+@export var attack_effect_packed_scene: PackedScene = null
 
 # Array<Attack>
 var _attack_queue: Array = []
 var _random := RandomNumberGenerator.new()
 
-onready var timer: Timer = $Timer
+@onready var timer: Timer = $Timer
 
 
 func _ready() -> void:
@@ -88,7 +88,7 @@ func _execute_attack(attack: Attack) -> void:
 	for targeted_unit in attack.targeted_units:
 		var damage: int = targeted_unit.calculate_attack_damage(attack.pincering_unit.get_stats()) * _random.randf_range(0.9, 1.1)
 		
-		var attack_effect: Node2D = attack_effect_packed_scene.instance()
+		var attack_effect: Node2D = attack_effect_packed_scene.instantiate()
 		add_child(attack_effect)
 		
 		attack_effect.position = targeted_unit.get_offset_origin()

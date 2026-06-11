@@ -1,8 +1,8 @@
 extends NinePatchRect
 
-onready var texture_rect: TextureRect = $MarginContainer/TextureRect
-onready var glow_texture_rect: TextureRect = $GlowTextureRect
-onready var weapon_type_texture_rect: TextureRect = $WeaponTypeTexture
+@onready var texture_rect: TextureRect = $MarginContainer/TextureRect
+@onready var glow_texture_rect: TextureRect = $GlowTextureRect
+@onready var weapon_type_texture_rect: TextureRect = $WeaponTypeTexture
 
 
 func initialize(job: Job, is_draggable: bool = false) -> void:

@@ -7,53 +7,53 @@ const _DEFAULT_STAT: int = 50
 const _STAT_GROWTH_PER_LEVEL: float = 0.1
 
 
-export(String) var unit_name: String
-export(String) var unit_type: String
+@export var unit_name: String
+@export var unit_type: String
 
-export var health_percentage: float = 1
+@export var health_percentage: float = 1
 
-export var attack_percentage: float = 1
-export var defense_percentage: float = 1
-export var spiritual_attack_percentage: float = 1
-export var spiritual_defense_percentage: float = 1
+@export var attack_percentage: float = 1
+@export var defense_percentage: float = 1
+@export var spiritual_attack_percentage: float = 1
+@export var spiritual_defense_percentage: float = 1
 
 # General status ailment vulnerability. The greater it is the
 # more vulnerable to status ailments. If it's zero then the unit
 # is immune (besides exceptions in status_ailment_vulnerabilities).
 # If it's greater than 1 then that status effect should cause extra damage
-export(float, 0, 5, 0.1) var status_ailment_vulnerability: float = 1.0
+@export var status_ailment_vulnerability: float = 1.0 # (float, 0, 5, 0.1)
 
 # Dictionary<StatusAilmentType (String), float>
 # Vulnerabilities to specific status ailments
 # 0: immune. 1: completely vulnerable
-export var status_ailment_vulnerabilities: Dictionary = {}
+@export var status_ailment_vulnerabilities: Dictionary = {}
 
 # Same attribute resistance. If it's > 1 then attacks with same attribute
 # should heal the unit
-export(float, 0, 2, 0.1) var same_attribute_resistance: float = 0.0
+@export var same_attribute_resistance: float = 0.0 # (float, 0, 2, 0.1)
 
 # Attribute of unit
-export(Enums.Attribute) var attribute: int = Enums.Attribute.NONE
+@export var attribute: int = Enums.Attribute.NONE # (Enums.Attribute)
 
 # Weapon type of unit
-export(Enums.WeaponType) var weapon_type: int = Enums.WeaponType.SWORD
+@export var weapon_type: int = Enums.WeaponType.SWORD # (Enums.WeaponType)
 
 # Max turn counter (only applies to AI-controlled characters)
-export(int, 0, 10, 1) var max_turn_counter: int = 3
+@export var max_turn_counter: int = 3 # (int, 0, 10, 1)
 
 # Says if turn counter can be randomized from [1, max_turn_counter] after
 # it reaches 0.
-export(bool) var can_randomize_turn_counter: bool = false
+@export var can_randomize_turn_counter: bool = false
 
 # How many cells this unit can move (only applies to AI-controlled characters)
-export(int, 0, 15, 1) var movement_range: int = 5
+@export var movement_range: int = 5 # (int, 0, 15, 1)
 
 # Skill activation rate modifier, used to change activation rate of all
 # skills used by a unit, additively.
 # -1 -> skills are never activated
 # 0 -> no effect
 # > 0 -> skills are activated more often
-export(float, -1, 1, 0.1) var skill_activation_rate_modifier: float = 0.0
+@export var skill_activation_rate_modifier: float = 0.0 # (float, -1, 1, 0.1)
 
 # These stats are calculated from the percentages above and the unit level,
 # using a linear growth per level. The percentages represent the stats differences
@@ -68,7 +68,7 @@ var defense: int = 0
 var spiritual_attack: int = 0
 var spiritual_defense: int = 0
 
-var level: int = 1 setget set_level
+var level: int = 1: set = set_level
 
 
 func _init() -> void:

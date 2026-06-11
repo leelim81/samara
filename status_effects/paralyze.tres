@@ -2,7 +2,7 @@
 
 [ext_resource path="res://status_effects/status_effect.gd" type="Script" id=1]
 [ext_resource path="res://status_effects/effects/paralyze_particles.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/ui/ui_icons.png" type="Texture" id=3]
+[ext_resource path="res://assets/ui/ui_icons.png" type="Texture2D" id=3]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 5

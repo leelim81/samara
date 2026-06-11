@@ -1,13 +1,13 @@
 extends AudioStreamPlayer
 
 
-export(float) var fade_time_seconds: float = 0.9
+@export var fade_time_seconds: float = 0.9
 
-onready var _tween: Tween = $Tween
+@onready var _tween: Tween = $Tween
 
 
 func _ready() -> void:
-	if Loader.connect("scene_changed", self, "_on_Loader_scene_changed") != OK:
+	if Loader.connect("scene_changed", Callable(self, "_on_Loader_scene_changed")) != OK:
 		printerr("Failed to connect to Loader signal")
 
 

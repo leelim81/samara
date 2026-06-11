@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://assets/vfx/star_02.png" type="Texture" id=1]
+[ext_resource path="res://assets/vfx/star_02.png" type="Texture2D" id=1]
 [ext_resource path="res://skills/effects/heal_particles.gd" type="Script" id=2]
 
 [sub_resource type="CanvasItemMaterial" id=1]
@@ -10,7 +10,7 @@ blend_mode = 1
 _data = [ Vector2( 0, 0 ), 0.0, 5.16417, 0, 0, Vector2( 0.144144, 0.981818 ), 0.17465, 0.17465, 0, 0, Vector2( 1, 0 ), -2.01818, 0.0, 0, 0 ]
 
 [sub_resource type="Gradient" id=2]
-colors = PoolColorArray( 0.961426, 0.221579, 0.221579, 1, 0.92627, 0.539029, 0.0470371, 1 )
+colors = PackedColorArray( 0.961426, 0.221579, 0.221579, 1, 0.92627, 0.539029, 0.0470371, 1 )
 
 [node name="DeathParticles" type="CPUParticles2D"]
 material = SubResource( 1 )

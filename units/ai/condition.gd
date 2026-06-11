@@ -3,34 +3,34 @@ extends Node
 
 # At what HP percentage this condition is true
 # Setting 1.0 is equivalent to ignoring this value
-export(float, 0.1, 1, 0.1) var max_hp_percentage: float = 1.0
+@export var max_hp_percentage: float = 1.0 # (float, 0.1, 1, 0.1)
 
 # Minimum HP percentage required so this condition is true.
 # Has to be lower than max HP percentage
-export(float, 0.0, 1, 0.1) var minimum_hp_percentage: float = 0.0
+@export var minimum_hp_percentage: float = 0.0 # (float, 0.0, 1, 0.1)
 
 # Whether this condition should only activate once
-export(bool) var is_one_shot: bool = false
+@export var is_one_shot: bool = false
 
 # If true, check turn offset and turn steps, otherwise don't use
 # turns to determine if condition can be activated
-export(bool) var can_check_turn_counter: bool = true
+@export var can_check_turn_counter: bool = true
 
 # At which specific enemy turn this condition is true
-export(int) var turn_offset: int = 1
+@export var turn_offset: int = 1
 
 # This condition repeats every X turns
 # turn_offset + turn_steps * counter
-export(int, 0, 20, 1) var turn_steps: int = 1
+@export var turn_steps: int = 1 # (int, 0, 20, 1)
 
 # How many times this condition can trigger
-export(int, -1, 20) var max_uses: int = -1
+@export var max_uses: int = -1 # (int, -1, 20)
 
 # How many units can be alive after which this condition won't trigger
-export(int, -1, 20, 1) var max_units_alive: int = -1
+@export var max_units_alive: int = -1 # (int, -1, 20, 1)
 
 # How many units must be alive for this condition to trigger
-export(int, 0, 20, 1) var min_units_alive: int = -1
+@export var min_units_alive: int = -1 # (int, 0, 20, 1)
 
 # Set after a one-shot condition is activated and the corresponding action
 # is performed

@@ -1,7 +1,7 @@
 extends Node
 
 
-class ActionParameters extends Reference:
+class ActionParameters extends RefCounted:
 	var enemy: Enemy
 	
 	var grid: Grid
@@ -43,19 +43,19 @@ enum Mode {
 }
 
 
-export(Mode) var mode: int = Mode.WEIGHT_BASED
+@export var mode: Mode = Mode.WEIGHT_BASED
 
 # Max turn counter. After turn counter passes this value it is reset to zero,
 # and the turn counter of all conditions is also reset.
 # Oneshot conditions are not reset.
 # If value is -1 then counter is never reset.
-export(int, -1, 99) var max_turn_counter: int = -1
+@export var max_turn_counter: int = -1 # (int, -1, 99)
 
-export(float, 0, 1, 0.1) var chance_to_move_to_enemy_during_move_behavior: float = 0.4
-export(float, 0, 1, 0.1) var chance_to_select_random_top_result: float = 0.4
-export(float, 0, 1, 0.1) var chance_to_move_after_using_skill: float = 0.2
+@export var chance_to_move_to_enemy_during_move_behavior: float = 0.4 # (float, 0, 1, 0.1)
+@export var chance_to_select_random_top_result: float = 0.4 # (float, 0, 1, 0.1)
+@export var chance_to_move_after_using_skill: float = 0.2 # (float, 0, 1, 0.1)
 
-export(int, 0, 5, 1) var max_number_of_random_top_results: int = 3
+@export var max_number_of_random_top_results: int = 3 # (int, 0, 5, 1)
 
 
 var _current_turn: int = 0
@@ -76,7 +76,7 @@ var _pincer_excluded_cells: Dictionary
 # Array<Cell>
 var _pincer_pincered_cells: Array
 
-onready var _escape_skill: Skill = ResourceLoader.load("res://skills/resources/escape.tres")
+@onready var _escape_skill: Skill = ResourceLoader.load("res://skills/resources/escape.tres")
 
 
 func _ready() -> void:
@@ -86,7 +86,7 @@ func _ready() -> void:
 		if action is Action:
 			_actions.push_back(action)
 	
-	assert(not _actions.empty(), "No actions")
+	assert(not _actions.is_empty(), "No actions")
 
 
 func get_skills() -> Array:
@@ -235,7 +235,7 @@ func _get_random_weighted_action(current_hp_percentage: float) -> Action:
 			if action.can_ignore_weights:
 				return action
 	
-	if possible_actions.empty():
+	if possible_actions.is_empty():
 		return null
 	
 	# Random weighted choice
@@ -253,7 +253,7 @@ func _get_random_weighted_action(current_hp_percentage: float) -> Action:
 
 
 func _get_next_action(current_hp_percentage: float) -> Action:
-	if _actions.empty():
+	if _actions.is_empty():
 		return null
 	
 	if _action_index >= _actions.size():
@@ -311,7 +311,7 @@ func _has_valid_coordinated_pincer(action_parameters: ActionParameters) -> bool:
 func _move_to_given_cell(action_parameters: ActionParameters, next_cell: Cell, excluded_cells: Dictionary = {}) -> void:
 	var path: Array = action_parameters.find_path(next_cell, excluded_cells)
 	
-	if not path.empty():
+	if not path.is_empty():
 		action_parameters.enemy.start_moving(path)
 	else:
 		_move_to_chosen_cell(action_parameters)
@@ -439,7 +439,7 @@ func _find_pincer(action_parameters: ActionParameters) -> void:
 	# Find all possible and coordinated pincers
 	var possible_pincers: Array = $PincerFinder.find_possible_pincers(action_parameters.enemy, action_parameters.grid, action_parameters.allies, action_parameters.enemies, action_parameters.navigation_graph, action_parameters.allies_queue)
 	
-	if possible_pincers.empty():
+	if possible_pincers.is_empty():
 		# TODO: Swap and pincer
 		_execute_move_action(action_parameters)
 	else:
@@ -465,7 +465,7 @@ func _coordinate_pincer(action_parameters: ActionParameters, possible_pincer: Po
 func _execute_escape_action(action_parameters: ActionParameters) -> void:
 	var results: Array = $MovementEvaluator.find_border_cells(action_parameters.grid, action_parameters.navigation_graph)
 	
-	if results.empty():
+	if results.is_empty():
 		action_parameters.action.movement_preference = Enums.MovementPreference.FLEE
 		
 		_execute_move_action(action_parameters)

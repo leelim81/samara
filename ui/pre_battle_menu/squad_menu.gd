@@ -1,18 +1,18 @@
 extends StackBasedMenuScreen
 
-export(PackedScene) var unit_item_packed_scene: PackedScene
+@export var unit_item_packed_scene: PackedScene
 
-export(String, FILE, "*.tscn") var change_unit_item_menu_scene: String
-export(String, FILE, "*.tscn") var view_unit_menu_scene: String
+@export var change_unit_item_menu_scene: String # (String, FILE, "*.tscn")
+@export var view_unit_menu_scene: String # (String, FILE, "*.tscn")
 
 var _changed_job: Job = null
 var _index_of_changed_job: int = -1
 var _unit_item_to_highlight: Control = null
 var _number_of_units_before_change: int = -1
 
-onready var _list_container: VBoxContainer = $MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer
+@onready var _list_container: VBoxContainer = $MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer
 
-onready var _return_button: Button = $MarginContainer/VBoxContainer/ReturnButton
+@onready var _return_button: Button = $MarginContainer/VBoxContainer/ReturnButton
 
 
 func _ready() -> void:
@@ -24,7 +24,7 @@ func _ready() -> void:
 
 
 func on_load() -> void:
-	.on_load()
+	super.on_load()
 	
 	_return_button.grab_focus()
 	
@@ -32,7 +32,7 @@ func on_load() -> void:
 
 
 func on_add_to_tree(data: Object) -> void:
-	.on_add_to_tree(data)
+	super.on_add_to_tree(data)
 	
 	_show_active_units()
 
@@ -62,19 +62,19 @@ func _show_active_units() -> void:
 		# TODO: Check if index is valid
 		var job: Job = save_data.jobs[index]
 		
-		var unit_item: Control = unit_item_packed_scene.instance()
+		var unit_item: Control = unit_item_packed_scene.instantiate()
 		
 		_list_container.add_child(unit_item)
 		
 		unit_item.initialize(job, true) # Is draggable
 		
-		if unit_item.connect("change_button_clicked", self, "_on_UnitItem_change_button_clicked", [job, i]) != OK:
+		if unit_item.connect("change_button_clicked", Callable(self, "_on_UnitItem_change_button_clicked").bind(job, i)) != OK:
 			printerr("Failed to connect signal")
 		
-		if unit_item.connect("unit_dropped_on_unit", self, "_on_UnitItem_unit_dropped_on_unit") != OK:
+		if unit_item.connect("unit_dropped_on_unit", Callable(self, "_on_UnitItem_unit_dropped_on_unit")) != OK:
 			printerr("Failed to connect signal")
 			
-		if unit_item.connect("unit_double_clicked", self, "_on_UnitItem_unit_double_clicked", [job]) != OK:
+		if unit_item.connect("unit_double_clicked", Callable(self, "_on_UnitItem_unit_double_clicked").bind(job)) != OK:
 			printerr("Failed to connect signal")
 		
 		if _changed_job != null && _index_of_changed_job != -1:

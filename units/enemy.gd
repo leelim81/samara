@@ -9,8 +9,8 @@ signal use_skill(unit, skill, target_cells)
 # Unit, Skill, Array
 signal use_delayed_skill(unit, skill, target_cells)
 
-export var turn_counter: int = 1 setget set_turn_counter
-export var chance_to_move_to_enemy_during_move_behavior: float = 0.8
+@export var turn_counter: int = 1: set = set_turn_counter
+@export var chance_to_move_to_enemy_during_move_behavior: float = 0.8
 
 var _turn_counter_max_value: int
 
@@ -54,7 +54,7 @@ func act(grid: Grid, allies: Array, enemies: Array, allies_queue: Array) -> void
 				if current_state != STATE.IDLE:
 					print("Enemy %s waiting for _tween to end" % name)
 					
-					yield(_tween, "tween_all_completed")
+					await _tween.tween_all_completed
 				
 				$AIController.execute_action(self, grid, allies, enemies, allies_queue)
 			else:
@@ -63,7 +63,7 @@ func act(grid: Grid, allies: Array, enemies: Array, allies_queue: Array) -> void
 				if current_state != STATE.IDLE:
 					print("Enemy %s waiting for _tween to end" % name)
 					
-					yield(_tween, "tween_all_completed")
+					await _tween.tween_all_completed
 				
 				emit_action_done()
 
@@ -101,7 +101,7 @@ func _enable_player_control() -> void:
 	enable_selection_area()
 	
 	$CanvasLayer/UnitName.show()
-	$CanvasLayer/UnitName.modulate = Color.white
+	$CanvasLayer/UnitName.modulate = Color.WHITE
 
 
 func use_skill(skill: Skill, target_cells: Array, path: Array, can_move_after_using_skill: bool = false) -> void:
@@ -202,10 +202,10 @@ func reset_turn_counter() -> void:
 
 
 func release() -> void:
-	if not _path.empty() and _tween.is_active():
+	if not _path.is_empty() and _tween.is_active():
 		_tween.stop(self, "position")
 	
-	.release()
+	super.release()
 	
 	if is_controlled_by_player:
 		$CanvasLayer/UnitName.hide()
@@ -232,7 +232,7 @@ func _clear_flags() -> void:
 
 
 func _on_snap_to_grid() -> void:
-	._on_snap_to_grid()
+	super._on_snap_to_grid()
 	
 	if _is_moving:
 		_execute_after_move()
@@ -271,5 +271,5 @@ func _on_Tween_tween_completed(_object: Object, key: String) -> void:
 			if key == ":position":
 				self.current_state = STATE.IDLE
 				
-				if !_path.empty():
+				if !_path.is_empty():
 					_start_moving()

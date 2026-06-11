@@ -8,18 +8,18 @@ extends Resource
 
 # Status effect type: poison, sleep, paralyze, confuse, demoralize,
 # buffs, or debuffs
-export(Enums.StatusEffectType) var status_effect_type: int = Enums.StatusEffectType.NONE
+@export var status_effect_type: int = Enums.StatusEffectType.NONE # (Enums.StatusEffectType)
 
 # Max duration in turns
-export(int, 0, 5, 1) var duration_turns: int = 3
+@export var duration_turns: int = 3 # (int, 0, 5, 1)
 
 # Custom icon. If it is null then skill labels use default icons
-export(Texture) var icon: Texture = null
+@export var icon: Texture2D = null
 
 # Effect scene must have a stop() method that stops the effect
 # and automatically frees the node.
 # If it is null then no effect scene is instanced.
-export(PackedScene) var effect_scene: PackedScene = null
+@export var effect_scene: PackedScene = null
 
 # How much damage this status effect inflicts or heals per turn. It depends on
 # the stats of the unit that inflicted this status effect, at the moment they did so

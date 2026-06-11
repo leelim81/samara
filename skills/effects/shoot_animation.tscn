@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://assets/vfx/gun.png" type="Texture" id=1]
+[ext_resource path="res://assets/vfx/gun.png" type="Texture2D" id=1]
 
 [sub_resource type="CanvasItemMaterial" id=8]
 blend_mode = 1
@@ -43,7 +43,7 @@ animations = [ {
 "speed": 12.0
 } ]
 
-[node name="ShootAnimation" type="AnimatedSprite"]
+[node name="ShootAnimation" type="AnimatedSprite2D"]
 modulate = Color( 1, 0.976471, 0.443137, 1 )
 material = SubResource( 8 )
 scale = Vector2( 0.5, 0.5 )

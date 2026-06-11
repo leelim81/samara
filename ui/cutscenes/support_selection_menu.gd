@@ -1,7 +1,7 @@
 extends Control
 
 
-export(Resource) var chapter_data: Resource
+@export var chapter_data: Resource
 
 # Check if files TITLE_<PAIR>_SUPPORT exist
 # When player presses button:
@@ -10,7 +10,7 @@ export(Resource) var chapter_data: Resource
 # Save which support you chose
 # Mark the chapter as cleared, invoke the Chapter clearer and update the save file
 # If you unlocked new units then notify that when you return to the pre-battle menu
-export(Array, Resource) var support_level_chapters: Array
+@export var support_level_chapters: Array # (Array, Resource)
 
 
 func _ready() -> void:
@@ -54,11 +54,11 @@ func _set_up_button(button: Button, pair: String, save_data: SaveData, max_suppo
 	button.text += " Lv. %d" % next_support_level
 	
 	if not button.disabled:
-		var _error = button.connect("pressed", self, "_on_support_button_pressed", [pair, save_data, next_support_level])
+		var _error = button.connect("pressed", Callable(self, "_on_support_button_pressed").bind(pair, save_data, next_support_level))
 
 
 func _return_to_pre_battle_menu() -> void:
-	Loader.change_scene("res://ui/pre_battle_menu/stack_based_pre_battle_menu.tscn")
+	Loader.change_scene_to_file("res://ui/pre_battle_menu/stack_based_pre_battle_menu.tscn")
 
 
 func _on_support_button_pressed(pair: String, save_data: SaveData, next_support_level: int) -> void:
@@ -74,7 +74,7 @@ func _on_support_button_pressed(pair: String, save_data: SaveData, next_support_
 	# TODO: Update save file
 	# Or do that just in pre-battle menu?
 	
-	Loader.change_scene("res://ui/cutscenes/support_dialogue_cutscene.tscn", support_dialogue_data)
+	Loader.change_scene_to_file("res://ui/cutscenes/support_dialogue_cutscene.tscn", support_dialogue_data)
 
 
 func _on_ReturnButton_pressed() -> void:

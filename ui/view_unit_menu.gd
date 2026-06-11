@@ -1,25 +1,25 @@
 extends StackBasedMenuScreen
 
 
-export(PackedScene) var skill_label_container_packed_scene: PackedScene
+@export var skill_label_container_packed_scene: PackedScene
 
 
-onready var full_name_label := $MarginContainer/VBoxContainer/FullNameLabel
-onready var title_label := $MarginContainer/VBoxContainer/TitleLabel
+@onready var full_name_label := $MarginContainer/VBoxContainer/FullNameLabel
+@onready var title_label := $MarginContainer/VBoxContainer/TitleLabel
 
-onready var full_portrait_texture_rect := $MarginContainer/VBoxContainer/HBoxContainer/UnitFullTextureRect
+@onready var full_portrait_texture_rect := $MarginContainer/VBoxContainer/HBoxContainer/UnitFullTextureRect
 
-onready var species_label := $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/SpeciesLabel
+@onready var species_label := $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/SpeciesLabel
 
-onready var unit_icon := $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/UnitIcon
+@onready var unit_icon := $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/UnitIcon
 
-onready var unit_stats_container := $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/UnitStatsContainer
+@onready var unit_stats_container := $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/UnitStatsContainer
 
-onready var tab_container := $MarginContainer/VBoxContainer/TabContainer
+@onready var tab_container := $MarginContainer/VBoxContainer/TabContainer
 
-onready var skills_vbox_container := $MarginContainer/VBoxContainer/TabContainer/SkillsTab/MarginContainer/ScrollContainer/SkillsVBoxContainer
+@onready var skills_vbox_container := $MarginContainer/VBoxContainer/TabContainer/SkillsTab/MarginContainer/ScrollContainer/SkillsVBoxContainer
 
-onready var status_effects_vbox_container := $MarginContainer/VBoxContainer/TabContainer/StatusEffectsTab/MarginContainer/ScrollContainer/StatusEffectsVBoxContainer
+@onready var status_effects_vbox_container := $MarginContainer/VBoxContainer/TabContainer/StatusEffectsTab/MarginContainer/ScrollContainer/StatusEffectsVBoxContainer
 
 
 # Called from squad menu
@@ -28,7 +28,7 @@ func initialize(job: Job, level: int) -> void:
 	initialize_from_data(job, job.stats, null, level, job.skills, [], true, false, false)
 
 
-func initialize_from_data(job: Job, base_stats: Stats, current_stats: Stats, level: int, skills: Array, status_effects: Array, var can_show_activation_rate: bool, var is_in_battle: bool, var can_ignore_locked_skills: bool) -> void:
+func initialize_from_data(job: Job, base_stats: Stats, current_stats: Stats, level: int, skills: Array, status_effects: Array, can_show_activation_rate: bool, is_in_battle: bool, can_ignore_locked_skills: bool) -> void:
 	_set_focus()
 	
 	for child in skills_vbox_container.get_children():
@@ -56,7 +56,7 @@ func initialize_from_data(job: Job, base_stats: Stats, current_stats: Stats, lev
 	var unlocked_skills: Array = job.get_unlocked_skills(level)
 	
 	for skill in skills:
-		var skill_label_container: HBoxContainer = skill_label_container_packed_scene.instance()
+		var skill_label_container: HBoxContainer = skill_label_container_packed_scene.instantiate()
 		
 		var is_skill_locked: bool = false
 		
@@ -69,7 +69,7 @@ func initialize_from_data(job: Job, base_stats: Stats, current_stats: Stats, lev
 	
 	if is_in_battle:
 		for status_effect in status_effects:
-			var status_effect_label_container: HBoxContainer = skill_label_container_packed_scene.instance()
+			var status_effect_label_container: HBoxContainer = skill_label_container_packed_scene.instantiate()
 			
 			status_effect_label_container.initialize_from_status_effect(status_effect)
 			

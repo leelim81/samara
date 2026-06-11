@@ -1,20 +1,20 @@
 extends MarginContainer
 
 
-export(PackedScene) var activated_skill_hbox_container_packed_scene: PackedScene
+@export var activated_skill_hbox_container_packed_scene: PackedScene
 
-onready var _vbox_container := $MarginContainer/VBoxContainer
+@onready var _vbox_container := $MarginContainer/VBoxContainer
 
 
 func play(activated_skills: Array, unit_position: Vector2) -> void:
 	for child in _vbox_container.get_children():
 		child.queue_free()
 	
-	if not activated_skills.empty():
+	if not activated_skills.is_empty():
 		for skill in activated_skills:
 			print("Activated skill %s " % skill.skill_name)
 			
-			var activated_skill_hbox_container: HBoxContainer = activated_skill_hbox_container_packed_scene.instance()
+			var activated_skill_hbox_container: HBoxContainer = activated_skill_hbox_container_packed_scene.instantiate()
 			
 			activated_skill_hbox_container.initialize(skill)
 			

@@ -2,19 +2,19 @@ class_name Grid
 extends Node2D
 
 
-export(PackedScene) var cell_packed_scene: PackedScene = null
+@export var cell_packed_scene: PackedScene = null
 
-export var tilesize: float = 100.0
-export var tile_offset: float = 0.0
+@export var tilesize: float = 100.0
+@export var tile_offset: float = 0.0
 
-export var width: int = 6
-export var height: int = 8
+@export var width: int = 6
+@export var height: int = 8
 
 # Array<Array<Cell>>
 # Where grid[i] is a row
 var grid := []
 
-onready var half_tilesize: float = tilesize / 2.0
+@onready var half_tilesize: float = tilesize / 2.0
 
 
 func _ready() -> void:
@@ -53,7 +53,7 @@ func _initialize_grid() -> void:
 
 
 func _build_cell(x_position: float, y_position: float) -> Cell:
-	var cell: Cell = cell_packed_scene.instance()
+	var cell: Cell = cell_packed_scene.instantiate()
 	
 	$Cells.add_child(cell)
 	

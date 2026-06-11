@@ -1,6 +1,6 @@
-extends AnimatedSprite
+extends AnimatedSprite2D
 
-export(float) var float_duration_seconds: float = 0.65
+@export var float_duration_seconds: float = 0.65
 
 var _random: RandomNumberGenerator = RandomNumberGenerator.new()
 

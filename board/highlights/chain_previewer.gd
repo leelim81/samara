@@ -1,7 +1,7 @@
 extends Node2D
 
 
-export(PackedScene) var chain_preview_line_2d_packed_scene: PackedScene
+@export var chain_preview_line_2d_packed_scene: PackedScene
 
 
 func update_preview(unit: Unit, cell: Cell) -> void:
@@ -34,7 +34,7 @@ func update_preview(unit: Unit, cell: Cell) -> void:
 			last_cells_with_ally_for_each_direction.push_back(last_cell_with_ally)
 	
 	for last_cell in last_cells_with_ally_for_each_direction:
-		var chain_preview_line_2d: Line2D = chain_preview_line_2d_packed_scene.instance()
+		var chain_preview_line_2d: Line2D = chain_preview_line_2d_packed_scene.instantiate()
 		
 		chain_preview_line_2d.add_point(cell.position)
 		chain_preview_line_2d.add_point(last_cell.position)

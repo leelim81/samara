@@ -1,7 +1,7 @@
 [gd_scene load_steps=2 format=2]
 
 [sub_resource type="Gradient" id=1]
-colors = PoolColorArray( 0.65098, 0.14902, 0.329412, 0.501961, 0.384314, 0.105882, 0.321569, 0.501961 )
+colors = PackedColorArray( 0.65098, 0.14902, 0.329412, 0.501961, 0.384314, 0.105882, 0.321569, 0.501961 )
 
 [node name="ChainPreviewLine2D" type="Line2D"]
 width = 60.0

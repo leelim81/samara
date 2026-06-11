@@ -84,7 +84,7 @@ func activate_trap() -> void:
 
 # Returns Array<Cell>. If there are not enough neighbors, returns an empty array.
 # Assumes that the cell is at the top left corner of the area.
-func _get_cells_in_area(var size: int) -> Array:
+func _get_cells_in_area(size: int) -> Array:
 	var row_cell: Cell = self
 	
 	var cells := []

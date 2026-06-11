@@ -3,7 +3,7 @@ extends HBoxContainer
 
 const COMMA_AND_SPACE: String = ", "
 
-export(Color) var locked_color: Color
+@export var locked_color: Color
 
 
 func initialize(skill: Skill, can_show_full_data: bool = false, is_locked: bool = false, can_include_activation_rate: bool = true) -> void:
@@ -69,7 +69,7 @@ func initialize(skill: Skill, can_show_full_data: bool = false, is_locked: bool 
 	$Label.text = skill_description
 	
 	if is_locked:
-		$Label.add_color_override("font_color", locked_color)
+		$Label.add_theme_color_override("font_color", locked_color)
 
 
 func initialize_from_status_effect(status_effect: StatusEffect) -> void:

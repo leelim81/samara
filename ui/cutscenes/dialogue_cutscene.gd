@@ -2,11 +2,11 @@ class_name DialogueCutscene
 extends Control
 
 
-export(Resource) var chapter_data: Resource 
+@export var chapter_data: Resource 
 
-export(PackedScene) var dialogue_message_container_packed_scene
+@export var dialogue_message_container_packed_scene: PackedScene
 
-export(float) var scroll_tween_time_seconds: float = 0.75
+@export var scroll_tween_time_seconds: float = 0.75
 
 # Array of objects with these members:
 # speaker: String
@@ -21,8 +21,8 @@ var _is_local: bool = true
 
 var is_dialogue_skipped: bool = false
 
-onready var _messages_container: VBoxContainer = $MarginContainer/VBoxContainer/ScrollContainer/MessagesVBoxContainer
-onready var _scroll_container: ScrollContainer = $MarginContainer/VBoxContainer/ScrollContainer
+@onready var _messages_container: VBoxContainer = $MarginContainer/VBoxContainer/ScrollContainer/MessagesVBoxContainer
+@onready var _scroll_container: ScrollContainer = $MarginContainer/VBoxContainer/ScrollContainer
 
 
 func _ready() -> void:
@@ -30,7 +30,7 @@ func _ready() -> void:
 	
 	_load_lines_keys()
 	
-	if _is_local and not lines.empty():
+	if _is_local and not lines.is_empty():
 		_start_showing_text()
 
 
@@ -43,7 +43,7 @@ func on_instance(data: Object) -> void:
 
 
 func on_fade_out_finished() -> void:
-	if not lines.empty():
+	if not lines.is_empty():
 		_start_showing_text()
 
 
@@ -61,7 +61,9 @@ func _load_lines_keys() -> void:
 		
 		_skip_dialogue()
 	else:
-		var parse_result: JSONParseResult = JSON.parse(file.get_as_text())
+		var test_json_conv = JSON.new()
+		test_json_conv.parse(file.get_as_text())
+		var parse_result: JSON = test_json_conv.get_data()
 		
 		file.close()
 		
@@ -82,12 +84,12 @@ func _show_next_line() -> void:
 	
 	var dialogue_message = lines[_current_line]
 	
-	_current_dialogue_message_container = dialogue_message_container_packed_scene.instance()
+	_current_dialogue_message_container = dialogue_message_container_packed_scene.instantiate()
 	
 	_messages_container.add_child(_current_dialogue_message_container)
 	
 	_current_dialogue_message_container.initialize(dialogue_message)
-	_current_dialogue_message_container.modulate = Color.transparent
+	_current_dialogue_message_container.modulate = Color.TRANSPARENT
 	
 	call_deferred("update_scroll")
 
@@ -100,16 +102,16 @@ func _dim_text_of_last_line() -> void:
 
 
 func update_scroll() -> void:
-	_estimated_container_size += _current_dialogue_message_container.rect_size.y
+	_estimated_container_size += _current_dialogue_message_container.size.y
 	
 	$Tween.interpolate_property(_scroll_container, "scroll_vertical",
-		_scroll_container.scroll_vertical, _scroll_container.get_v_scrollbar().max_value,
+		_scroll_container.scroll_vertical, _scroll_container.get_v_scroll_bar().max_value,
 		scroll_tween_time_seconds,
 		Tween.TRANS_SINE)
 	
 	$Tween.interpolate_property(_current_dialogue_message_container, "modulate",
-		Color.transparent,
-		Color.white,
+		Color.TRANSPARENT,
+		Color.WHITE,
 		$Timer.wait_time,
 		Tween.TRANS_SINE)
 	
@@ -160,7 +162,7 @@ func _skip_dialogue() -> void:
 	if not is_dialogue_skipped:
 		is_dialogue_skipped = true
 		
-		if Loader.change_scene(chapter_data.battle_scene_path, chapter_data) != OK:
+		if Loader.change_scene_to_file(chapter_data.battle_scene_path, chapter_data) != OK:
 			printerr("Failed to change scene")
 		
 		set_process(false)

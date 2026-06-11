@@ -3,56 +3,56 @@ extends Resource
 class_name Skill
 
 # Localizable string
-export(String) var skill_name: String = ""
-export(Enums.SkillType) var skill_type = Enums.SkillType.ATTACK
+@export var skill_name: String = ""
+@export var skill_type = Enums.SkillType.ATTACK # (Enums.SkillType)
 
-export(Enums.AreaOfEffect) var area_of_effect = Enums.AreaOfEffect.NONE
-export(int, 1, 10, 1) var area_of_effect_size: int = 1
-export(float, 0, 1, 0.1) var activation_rate: float = 0.3
+@export var area_of_effect = Enums.AreaOfEffect.NONE # (Enums.AreaOfEffect)
+@export var area_of_effect_size: int = 1 # (int, 1, 10, 1)
+@export var activation_rate: float = 0.3 # (float, 0, 1, 0.1)
 
 # True if the skill pushes away affected enemies
-export(bool) var is_pusher: bool = false
+@export var is_pusher: bool = false
 
 # Primary effect
-export(float, 0, 3, 0.5) var primary_power: float = 1
-export(Enums.WeaponType) var primary_weapon_type: int = Enums.WeaponType.SWORD
+@export var primary_power: float = 1 # (float, 0, 3, 0.5)
+@export var primary_weapon_type: int = Enums.WeaponType.SWORD # (Enums.WeaponType)
 
 # Primary attribute, only used if weapon type is staff (elemental / magic)
-export(Enums.Attribute) var primary_attribute: int = Enums.Attribute.NONE
+@export var primary_attribute: int = Enums.Attribute.NONE # (Enums.Attribute)
 
 # Note: Unused
-export(float, 0, 3, 0.5) var secondary_power: float = 0.0
-export(Enums.WeaponType) var secondary_weapon_type: int = Enums.WeaponType.GUN
-export(Enums.Attribute) var secondary_attribute: int = Enums.Attribute.NONE
+@export var secondary_power: float = 0.0 # (float, 0, 3, 0.5)
+@export var secondary_weapon_type: int = Enums.WeaponType.GUN # (Enums.WeaponType)
+@export var secondary_attribute: int = Enums.Attribute.NONE # (Enums.Attribute)
 
 # If >0, can absorb damage from primary attack, if attack deals damage >0
-export(float, 0, 1, 0.1) var absorb_rate: float = 0
+@export var absorb_rate: float = 0 # (float, 0, 1, 0.1)
 
 # Max HP healed. Also applies to absorbed HP
-export(int, 0, 9000, 100) var max_heal: int = 700
+@export var max_heal: int = 700 # (int, 0, 9000, 100)
 
 # Status effects that this skill applies on allies or
 # inflicts on the enemy
 # Array<StatusEffect>
-export(Array, Resource) var status_effects: Array = []
+@export var status_effects: Array = [] # (Array, Resource)
 
 # Not applied to buffs.
-export(float, 0, 1, 0.1) var status_effect_infliction_rate: float = 0.3
+@export var status_effect_infliction_rate: float = 0.3 # (float, 0, 1, 0.1)
 
 # Status effects that this skill removes or cures
-export(Array, Enums.StatusEffectType) var cured_status_effects: Array = []
+@export var cured_status_effects: Array = [] # (Array, Enums.StatusEffectType)
 
-export(PackedScene) var effect_scene: PackedScene = null
+@export var effect_scene: PackedScene = null
 
 # Delayed skills are charged in one turn and activated in the next turn.
 # Used only by enemies
-export(bool) var is_delayed: bool = false
+@export var is_delayed: bool = false
 
 # Unit or item that this scene summons
-export(String, FILE, "*.tscn") var summoned_scene: String = ""
+@export var summoned_scene: String = "" # (String, FILE, "*.tscn")
 
 # True if this is a escape skill. Will remove unit(s) from play
-export(bool) var is_escape: bool = false
+@export var is_escape: bool = false
 
 
 func is_physical() -> bool:
@@ -72,15 +72,15 @@ func is_buff() -> bool:
 
 
 func has_summon() -> bool:
-	return not summoned_scene.empty()
+	return not summoned_scene.is_empty()
 
 
 func has_status_effects() -> bool:
-	return not status_effects.empty()
+	return not status_effects.is_empty()
 
 
 func can_cure_status_effects() -> bool:
-	return not cured_status_effects.empty()
+	return not cured_status_effects.is_empty()
 
 
 func is_enemy_targeted() -> bool:

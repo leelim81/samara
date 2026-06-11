@@ -1,16 +1,16 @@
 extends VBoxContainer
 
 
-export(Color) var advantage_color: Color
-export(Color) var disadvantage_color: Color
+@export var advantage_color: Color
+@export var disadvantage_color: Color
 
 
-onready var health_number_label: Label = $HBoxContainer3/HealthNumber
+@onready var health_number_label: Label = $HBoxContainer3/HealthNumber
 
-onready var attack_number_label: Label = $HBoxContainer/AttackNumber
-onready var defense_number_label: Label = $HBoxContainer/DefenseNumber
-onready var spiritual_attack_number_label: Label = $HBoxContainer2/SpiritualAttackNumber
-onready var spiritual_defense_number_label: Label = $HBoxContainer2/SpiritualDefenseNumber
+@onready var attack_number_label: Label = $HBoxContainer/AttackNumber
+@onready var defense_number_label: Label = $HBoxContainer/DefenseNumber
+@onready var spiritual_attack_number_label: Label = $HBoxContainer2/SpiritualAttackNumber
+@onready var spiritual_defense_number_label: Label = $HBoxContainer2/SpiritualDefenseNumber
 
 
 func initialize(base_stats: Stats, compare_stats: Stats) -> void:
@@ -52,11 +52,11 @@ func _show_compared_number(label: Label, job_stat: int, compare_job_stat: int) -
 	var difference: int = job_stat - compare_job_stat
 	
 	if difference > 0:
-		label.add_color_override("font_color", advantage_color)
+		label.add_theme_color_override("font_color", advantage_color)
 		
 		label.text = "%d (%+d)" % [job_stat, difference]
 	elif difference < 0:
-		label.add_color_override("font_color", disadvantage_color)
+		label.add_theme_color_override("font_color", disadvantage_color)
 		
 		label.text = "%d (%+d)" % [job_stat, difference]
 	else:

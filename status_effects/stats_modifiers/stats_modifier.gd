@@ -2,20 +2,20 @@ class_name StatsModifier
 extends StatusEffect
 
 
-export(Enums.StatsType) var modified_stat: int = Enums.StatsType.NONE
+@export var modified_stat: int = Enums.StatsType.NONE # (Enums.StatsType)
 
 # How much the stat is modified
 # For skill activation rate this value is added to the stat, not multiplied
-export(float, -1, 1, 0.1) var modified_stat_percentage: float
+@export var modified_stat_percentage: float # (float, -1, 1, 0.1)
 
 # Modified status effect; which status effect this class
 # grants resistance or vulnerability to
-export(Enums.StatusEffectType) var modified_status_effect: int = Enums.StatusEffectType.NONE
+@export var modified_status_effect: int = Enums.StatusEffectType.NONE # (Enums.StatusEffectType)
 
 # How much vulnerability or resistance this class grants
 # < 0 -> grant resistance
 # > 0 -> grant vulnerability
-export(float, -1, 1, 0.1) var modified_status_effect_vulnerability: float
+@export var modified_status_effect_vulnerability: float # (float, -1, 1, 0.1)
 
 
 func modify_stats(base_stats: Stats, modified_stats: Stats) -> void:
@@ -50,7 +50,7 @@ func modify_stats(base_stats: Stats, modified_stats: Stats) -> void:
 
 
 func is_buff() -> bool:
-	return .is_buff() and (modified_stat_percentage > 0 or modified_status_effect_vulnerability < 0)
+	return super.is_buff() and (modified_stat_percentage > 0 or modified_status_effect_vulnerability < 0)
 
 
 func get_description(can_show_remaining_turns: bool = true) -> String:

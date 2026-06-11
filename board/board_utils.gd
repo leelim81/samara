@@ -1,5 +1,5 @@
 class_name BoardUtils
-extends Reference
+extends RefCounted
 
 
 class Element:
@@ -87,7 +87,7 @@ static func build_navigation_graph(grid: Grid, unit: Unit, faction: int, movemen
 	
 	discovered_dict[start_cell] = 0
 	
-	while not queue.empty():
+	while not queue.is_empty():
 		var node: Cell = queue.pop_front()
 		
 		# Initialize adjacency list for the given node
@@ -139,7 +139,7 @@ static func _can_enter_cell(unit: Unit, cell_unit: Unit, faction: int) -> bool:
 
 
 static func _can_fit_unit(unit: Unit, cell: Cell) -> bool:
-	return unit != null and not (unit.is2x2() and cell.get_cells_in_area().empty())
+	return unit != null and not (unit.is2x2() and cell.get_cells_in_area().is_empty())
 
 
 static func get_distance_to_cell(start_cell: Cell, end_cell: Cell) -> float:
@@ -252,7 +252,7 @@ static func _is_cell_excluded(cell: Cell, unit: Unit, excluded_cells: Dictionary
 # Returns Array<Cell>
 # By default cells are filtered (meaning without cells with null units or with
 # targeted units that are either allies or enemies depending on the skill type)
-static func find_area_of_effect_target_cells(var unit: Unit,
+static func find_area_of_effect_target_cells()(var unit: Unit,
 		var start_position: Vector2,
 		var skill: Skill,
 		var grid: Grid,
@@ -286,7 +286,7 @@ static func find_area_of_effect_target_cells(var unit: Unit,
 		return _remove_duplicates(target_cells)
 
 
-static func _find_area_of_effect(var cell: Cell, # Start cell from which skill is called
+static func _find_area_of_effect()(var cell: Cell, # Start cell from which skill is called
 		var skill: Skill,
 		var grid: Grid,
 		var pincered_units: Array, # Array<Unit>
@@ -397,7 +397,7 @@ static func _find_area_of_effect(var cell: Cell, # Start cell from which skill i
 			
 			return shuffled_cells.slice(0, skill.area_of_effect_size - 1)
 		_:
-			printerr("Area of effect is not implemented, can't find area: ", skill.area_of_effect)
+			printerr("Area3D of effect is not implemented, can't find area: ", skill.area_of_effect)
 			return []
 
 

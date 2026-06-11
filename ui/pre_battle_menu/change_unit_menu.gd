@@ -1,13 +1,13 @@
 extends StackBasedMenuScreen
 
 
-export(PackedScene) var unit_item_container_packed_scene: PackedScene
+@export var unit_item_container_packed_scene: PackedScene
 
-export(String, FILE, "*.tscn") var view_unit_menu_scene: String
+@export var view_unit_menu_scene: String # (String, FILE, "*.tscn")
 
 var _active_job: Job = null
 
-onready var _list_container: VBoxContainer = $MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer
+@onready var _list_container: VBoxContainer = $MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer
 
 
 func _show_units() -> void:
@@ -23,7 +23,7 @@ func _show_units() -> void:
 	
 	for job in save_data.jobs:
 		if not job in active_jobs:
-			var unit_item_container: Control = unit_item_container_packed_scene.instance()
+			var unit_item_container: Control = unit_item_container_packed_scene.instantiate()
 			
 			_list_container.add_child(unit_item_container)
 			
@@ -32,10 +32,10 @@ func _show_units() -> void:
 			
 			unit_item_container.set_change_button_as_choose_button()
 			
-			if unit_item_container.connect("change_button_clicked", self, "_on_UnitItemContainer_change_button_clicked", [job]) != OK:
+			if unit_item_container.connect("change_button_clicked", Callable(self, "_on_UnitItemContainer_change_button_clicked").bind(job)) != OK:
 				printerr("Error connecting signal")
 			
-			if unit_item_container.connect("unit_double_clicked", self, "_on_UnitItemContainer_unit_double_clicked", [job]) != OK:
+			if unit_item_container.connect("unit_double_clicked", Callable(self, "_on_UnitItemContainer_unit_double_clicked").bind(job)) != OK:
 				printerr("Failed to connect signal")
 
 
@@ -52,7 +52,7 @@ func on_add_to_tree(data: Object) -> void:
 
 
 func on_load() -> void:
-	.on_load()
+	super.on_load()
 	
 	$MarginContainer/VBoxContainer/ReturnButton.grab_focus()
 

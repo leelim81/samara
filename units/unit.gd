@@ -1,5 +1,5 @@
 class_name Unit
-extends KinematicBody2D
+extends CharacterBody2D
 
 
 enum STATE {
@@ -30,30 +30,30 @@ signal dead(unit)
 signal death_animation_finished(unit)
 signal selected_for_view(unit)
 
-export(PackedScene) var damage_numbers_packed_scene: PackedScene
-export(PackedScene) var death_effect_packed_scene: PackedScene
+@export var damage_numbers_packed_scene: PackedScene
+@export var death_effect_packed_scene: PackedScene
 
-export(Size) var size: int = Size.SINGLE_1X1
+@export var size: Size = Size.SINGLE_1X1
 
-export var velocity_pixels_per_second: float = 15.0
-export var snap_velocity_pixels_per_second: float = 200.0
-export var swap_velocity_pixels_per_second: float = 500.0
+@export var velocity_pixels_per_second: float = 15.0
+@export var snap_velocity_pixels_per_second: float = 200.0
+@export var swap_velocity_pixels_per_second: float = 500.0
 
 # Max velocity when dragging the unit. It can't be too fast or the unit
 # will tunnel through cells and other units.
-export var max_velocity_pixels_per_second: float = 2048.0 # 2048
+@export var max_velocity_pixels_per_second: float = 2048.0 # 2048
 
 # Proportional control constant
-export var kp: float = 1.4
+@export var kp: float = 1.4
 
-export(bool) var is_click_to_drag: bool = true
-export(bool) var is_controlled_by_player: bool = true
+@export var is_click_to_drag: bool = true
+@export var is_controlled_by_player: bool = true
 
-export(int, 1, 50, 1) var level: int = 10
+@export var level: int = 10 # (int, 1, 50, 1)
 
-export(bool) var can_flee_when_enemy_enters_nearby_cell: bool = false
+@export var can_flee_when_enemy_enters_nearby_cell: bool = false
 
-var current_state = STATE.IDLE setget set_current_state
+var current_state = STATE.IDLE: set = set_current_state
 
 var faction: int = INVALID_FACTION
 
@@ -69,10 +69,10 @@ var _status_effects: Array = []
 
 var _has_entered_cell: bool = false
 
-onready var _is2x2: bool = (size == Size.DOUBLE_2X2)
+@onready var _is2x2: bool = (size == Size.DOUBLE_2X2)
 
-onready var _tween := $Tween
-onready var _sprite := $Sprite
+@onready var _tween := $Tween
+@onready var _sprite := $Sprite2D
 
 
 func _ready() -> void:
@@ -119,7 +119,7 @@ func play_death_animation() -> void:
 	$AnimationPlayer.play("death")
 	$Sound/DeathAudio.play()
 	
-	var death_effect: Node2D = death_effect_packed_scene.instance()
+	var death_effect: Node2D = death_effect_packed_scene.instantiate()
 	
 	add_child_at_offset(death_effect)
 	death_effect.play()
@@ -153,7 +153,7 @@ func play_escape_animation() -> void:
 
 
 func play_scale_up_and_down_animation() -> void:
-	_tween.remove($Sprite, "scale")
+	_tween.remove($Sprite2D, "scale")
 	
 	$AnimationPlayer.play("scale up and down")
 
@@ -161,10 +161,10 @@ func play_scale_up_and_down_animation() -> void:
 func stop_scale_up_and_down_animation() -> void:
 	$AnimationPlayer.stop(true)
 	
-	_tween.remove($Sprite, "scale")
+	_tween.remove($Sprite2D, "scale")
 	
-	_tween.interpolate_property($Sprite, "scale",
-		$Sprite.scale, Vector2.ONE,
+	_tween.interpolate_property($Sprite2D, "scale",
+		$Sprite2D.scale, Vector2.ONE,
 		0.15,
 		Tween.TRANS_LINEAR)
 	
@@ -191,7 +191,7 @@ func push_to_cell(target_position: Vector2) -> void:
 	
 	var tween_time_seconds: float = Utils.calculate_time(position, target_position, swap_velocity_pixels_per_second)
 	
-	_tween.interpolate_property($Sprite, "rotation",
+	_tween.interpolate_property($Sprite2D, "rotation",
 				0.0, 2 * PI,
 				tween_time_seconds,
 				Tween.TRANS_SINE)
@@ -228,7 +228,10 @@ func _move_towards_mouse() -> void:
 	
 	velocity = Vector2(error * kp * velocity_pixels_per_second).limit_length(max_velocity_pixels_per_second)
 	
-	velocity = move_and_slide(velocity, Vector2.ZERO)
+	set_velocity(velocity)
+	set_up_direction(Vector2.ZERO)
+	move_and_slide()
+	velocity = velocity
 
 
 func _input(event: InputEvent):
@@ -283,7 +286,7 @@ func release() -> void:
 
 func _load_job_textures() -> void:
 	$CanvasLayer/Control/WeaponType.texture = load(Enums.WEAPON_TYPE_TEXTURES[$Job.job.stats.weapon_type])
-	$Sprite/Icon.texture = $Job.job.portrait
+	$Sprite2D/Icon.texture = $Job.job.portrait
 	
 	$CanvasLayer/UnitName.text = tr($Job.job.job_name)
 
@@ -418,7 +421,7 @@ func inflict_damage(damage: int) -> void:
 	if damage > 0:
 		$AnimationPlayer.play("shake")
 	
-	var damage_numbers: Node2D = damage_numbers_packed_scene.instance()
+	var damage_numbers: Node2D = damage_numbers_packed_scene.instantiate()
 	
 	add_child_at_offset(damage_numbers)
 	
@@ -499,7 +502,7 @@ func update_status_effects_icons() -> void:
 		$CanvasLayer/StatusEffectsIcons.update_icon(_status_effects)
 
 
-func _remove_all_status_effects_of_type(var status_effect_type: int) -> void:
+func _remove_all_status_effects_of_type(status_effect_type: int) -> void:
 	if has_status_effect_of_type(status_effect_type):
 		var status_effects_to_remove: Array = _status_effects.duplicate()
 		
@@ -604,16 +607,16 @@ func _on_Tween_tween_completed(_object: Object, key: String) -> void:
 
 func _on_SelectionArea2D_mouse_entered() -> void:
 	if is_controlled_by_player and current_state == STATE.IDLE and can_act():
-		$Sprite/Glow.show()
+		$Sprite2D/Glow.show()
 		
-		$Sprite.scale = Vector2(1.1, 1.1)
+		$Sprite2D.scale = Vector2(1.1, 1.1)
 
 
 func _on_SelectionArea2D_mouse_exited() -> void:
 	if is_controlled_by_player and current_state == STATE.IDLE and can_act():
 		#$Sprite/Glow.hide()
 		
-		$Sprite.scale = Vector2(1, 1)
+		$Sprite2D.scale = Vector2(1, 1)
 
 
 func _on_LongPressTimer_timeout() -> void:

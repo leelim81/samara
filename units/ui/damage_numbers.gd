@@ -1,9 +1,9 @@
 extends Node2D
 
 
-onready var label: Label = $Label
+@onready var label: Label = $Label
 
-export(Color) var heal_color: Color
+@export var heal_color: Color
 
 
 func play(value: int) -> void:

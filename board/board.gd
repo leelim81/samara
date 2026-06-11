@@ -26,13 +26,13 @@ signal enemies_appeared
 signal unit_selected_for_view(job)
 
 # Set to true to use debug units instead of the player's squad
-export(bool) var can_use_debug_units: bool = false
+@export var can_use_debug_units: bool = false
 
 # Maximum amount of player units loaded into the field
-export(int, 2, 6) var player_units_count: int = 6
+@export var player_units_count: int = 6 # (int, 2, 6)
 
 # Fixed player units level
-export(int, -1, 100) var fixed_player_units_level: int = -1
+@export var fixed_player_units_level: int = -1 # (int, -1, 100)
 
 var _active_unit: Unit = null
 var _active_unit_current_cell: Cell = null
@@ -66,14 +66,14 @@ var _save_data: SaveData
 
 var _is_battle_finished: bool = false
 
-onready var _grid := $Grid
+@onready var _grid := $Grid
 
 
 func _ready() -> void:
 	randomize()
 	
-	Events.connect("scene_summoned", self, "_on_Skill_scene_summoned")
-	Events.connect("unit_escaped", self, "_on_Skill_unit_escaped")
+	Events.connect("scene_summoned", Callable(self, "_on_Skill_scene_summoned"))
+	Events.connect("unit_escaped", Callable(self, "_on_Skill_unit_escaped"))
 	
 	_save_data = GameData.save_data
 	
@@ -142,8 +142,8 @@ func _load_player_units() -> void:
 func _connect_cell_signals() -> void:
 	for row in _grid.grid:
 		for cell in row:
-			var _error = cell.connect("area_entered", self, "_on_Cell_area_entered", [cell])
-			_error = cell.connect("area_exited", self, "_on_Cell_area_exited", [cell])
+			var _error = cell.connect("area_entered", Callable(self, "_on_Cell_area_entered").bind(cell))
+			_error = cell.connect("area_exited", Callable(self, "_on_Cell_area_exited").bind(cell))
 
 
 # EnemyPhases
@@ -151,7 +151,7 @@ func _load_enemy_phases() -> void:
 	_enemy_phases_queue = $EnemyPhases.get_children()
 	
 	for enemy_phase in _enemy_phases_queue:
-		if not enemy_phase.get_children().empty():
+		if not enemy_phase.get_children().is_empty():
 			_enemy_phase_count += 1
 		
 		$EnemyPhases.remove_child(enemy_phase)
@@ -196,10 +196,10 @@ func _assign_units_to_cells() -> void:
 	for unit in _player_units_node.get_children():
 		_assign_unit_to_cell(unit)
 		
-		var _error = unit.connect("picked_up", self, "_on_Unit_picked_up")
-		_error = unit.connect("released", self, "_on_Unit_released")
-		_error = unit.connect("snapped_to_grid", self, "_on_Unit_snapped_to_grid")
-		_error = unit.connect("selected_for_view", self, "_on_Unit_selected_for_view")
+		var _error = unit.connect("picked_up", Callable(self, "_on_Unit_picked_up"))
+		_error = unit.connect("released", Callable(self, "_on_Unit_released"))
+		_error = unit.connect("snapped_to_grid", Callable(self, "_on_Unit_snapped_to_grid"))
+		_error = unit.connect("selected_for_view", Callable(self, "_on_Unit_selected_for_view"))
 		
 		unit.faction = Unit.PLAYER_FACTION
 
@@ -233,16 +233,16 @@ func _assign_unit_to_cell(unit: Unit) -> void:
 func _add_enemy(enemy: Enemy) -> void:
 	_assign_unit_to_cell(enemy)
 	
-	enemy.connect("action_done", self, "_on_Enemy_action_done")
-	enemy.connect("started_moving", self, "_on_Unit_picked_up")
-	enemy.connect("use_skill", self, "_on_Enemy_use_skill")
-	enemy.connect("use_delayed_skill", self, "_on_Enemy_use_delayed_skill")
-	enemy.connect("released", self, "_on_Unit_released")
-	enemy.connect("selected_for_view", self, "_on_Unit_selected_for_view")
-	enemy.connect("dead", self, "_on_Enemy_dead")
+	enemy.connect("action_done", Callable(self, "_on_Enemy_action_done"))
+	enemy.connect("started_moving", Callable(self, "_on_Unit_picked_up"))
+	enemy.connect("use_skill", Callable(self, "_on_Enemy_use_skill"))
+	enemy.connect("use_delayed_skill", Callable(self, "_on_Enemy_use_delayed_skill"))
+	enemy.connect("released", Callable(self, "_on_Unit_released"))
+	enemy.connect("selected_for_view", Callable(self, "_on_Unit_selected_for_view"))
+	enemy.connect("dead", Callable(self, "_on_Enemy_dead"))
 	
 	if enemy.is_controlled_by_player:
-		enemy.connect("picked_up", self, "_on_Unit_picked_up")
+		enemy.connect("picked_up", Callable(self, "_on_Unit_picked_up"))
 	
 	enemy.faction = Unit.ENEMY_FACTION
 
@@ -255,18 +255,18 @@ func _make_enemies_appear(units: Array) -> void:
 	# Delay before showing units
 	$PlayerAppearanceTimer.start()
 	
-	yield($PlayerAppearanceTimer, "timeout")
+	await $PlayerAppearanceTimer.timeout
 	
 	for unit in units:
 		$EnemyAppearanceTimer.start()
 		
 		unit.appear()
 		
-		yield($EnemyAppearanceTimer, "timeout")
+		await $EnemyAppearanceTimer.timeout
 	
 	$PlayerAppearanceTimer.start()
 	
-	yield($PlayerAppearanceTimer, "timeout")
+	await $PlayerAppearanceTimer.timeout
 	
 	for unit in units:
 		unit.hide_name()
@@ -282,15 +282,15 @@ func _make_player_units_appear() -> void:
 	else:
 		_player_units_node.show()
 		
-		_player_units_node.modulate = Color.transparent
+		_player_units_node.modulate = Color.TRANSPARENT
 		
 		$Tween.interpolate_property(_player_units_node, "modulate",
-			_player_units_node.modulate, Color.white,
+			_player_units_node.modulate, Color.WHITE,
 			0.5)
 		
 		$Tween.start()
 		
-		yield($Tween, "tween_all_completed")
+		await $Tween.tween_all_completed
 		
 		_start_turn_zero_enemy_turn()
 
@@ -315,7 +315,7 @@ func _start_turn_zero_enemy_turn() -> void:
 	_update_enemy()
 
 
-func _start_player_turn(var has_same_cell: bool = false) -> void:
+func _start_player_turn(has_same_cell: bool = false) -> void:
 	print("Starting player turn")
 	
 	$PincerExecutor.initialize(_grid, _enemy_units_node.get_children(), _player_units_node.get_children())
@@ -362,7 +362,7 @@ func _start_player_turn(var has_same_cell: bool = false) -> void:
 		
 		$PlayerSkipTurnTimer.start()
 		
-		yield($PlayerSkipTurnTimer, "timeout")
+		await $PlayerSkipTurnTimer.timeout
 		
 		_start_enemy_turn()
 
@@ -448,7 +448,7 @@ func _start_enemy_turn() -> void:
 	
 	_enemy_queue.clear()
 	
-	if _enemy_units_node.get_children().empty():
+	if _enemy_units_node.get_children().is_empty():
 		emit_signal("victory")
 	else:
 		_initialize_enemy_pincer_executor()
@@ -471,7 +471,7 @@ func _start_enemy_turn() -> void:
 func _update_enemy() -> void:
 	_clear_active_cells()
 	
-	if not _enemy_queue.empty():
+	if not _enemy_queue.is_empty():
 		var enemy: Unit = _enemy_queue.pop_front()
 		
 		print("Active enemy is %s" % enemy.name)
@@ -510,7 +510,7 @@ func _on_Cell_area_entered(_area: Area2D, cell: Cell) -> void:
 # [x] Dropping in same tile as unit
 # [-] Unit sometimes dropped but then it can't be swapped
 func _on_Cell_area_exited(area: Area2D, cell: Cell) -> void:
-	cell.modulate = Color.white
+	cell.modulate = Color.WHITE
 	
 	if not area.get_unit().is_picked_up():
 		return
@@ -571,7 +571,7 @@ func _update_2x2_unit_cells(unit: Unit, cell: Cell) -> void:
 		
 		entered_cell.unit = null
 		
-		entered_cell.modulate = Color.white
+		entered_cell.modulate = Color.WHITE
 	
 	_push_cells_in_area(unit, cell)
 	
@@ -603,7 +603,7 @@ func _clean_up_cells_in_area(unit: Unit, cell: Cell) -> void:
 	
 	for area_cell in cell.get_cells_in_area():
 		if area_cell.unit == unit:
-			area_cell.modulate = Color.white
+			area_cell.modulate = Color.WHITE
 			
 			area_cell.unit = null
 
@@ -639,12 +639,12 @@ func _clear_active_cells() -> void:
 
 func _color_cell(cell: Cell) -> void:
 	if OS.is_debug_build():
-		cell.modulate = Color.red
+		cell.modulate = Color.RED
 
 
 func _find_closest_cell(unit_position: Vector2) -> Cell:
 	# If empty then unit hasn't moved
-	if _active_unit_entered_cells.empty():
+	if _active_unit_entered_cells.is_empty():
 		var cell = _grid.get_cell_from_position(unit_position)
 		
 		assert(cell.unit != null)
@@ -696,7 +696,7 @@ func _activate_trap(cell: Cell, unit: Unit) -> void:
 func _execute_pincers(unit: Unit) -> void:
 	$PincerExecutor.check_dead_units()
 	
-	yield($PincerExecutor, "finished_checking_for_dead_units")
+	await $PincerExecutor.finished_checking_for_dead_units
 	
 	_pincer_queue = $Pincerer.find_pincers(_grid, unit)
 	
@@ -707,7 +707,7 @@ func _execute_pincers(unit: Unit) -> void:
 	
 	print("Found %d pincers" % _pincer_queue.size())
 	
-	while not _pincer_queue.empty() and _pincer_queue.front() != null:
+	while not _pincer_queue.is_empty() and _pincer_queue.front() != null:
 		var pincer: Pincer = _pincer_queue.pop_front()
 		
 		$Pincerer.find_chains(_grid, pincer)
@@ -722,29 +722,29 @@ func _execute_pincers(unit: Unit) -> void:
 		
 		$PincerExecutor.highlight_pincer(pincer)
 		
-		yield($PincerExecutor, "pincer_highlighted")
+		await $PincerExecutor.pincer_highlighted
 		
 		if _current_turn == Turn.PLAYER:
 			$PincerExecutor.start_skill_activation_phase(pincer, _grid, _player_units_node.get_children(), _enemy_units_node.get_children())
 			
-			yield($PincerExecutor, "skill_activation_phase_finished")
+			await $PincerExecutor.skill_activation_phase_finished
 		
 		$PincerExecutor.start_buff_skill_phase()
-		yield($PincerExecutor, "buff_skill_phase_finished")
+		await $PincerExecutor.buff_skill_phase_finished
 		
 		$Attacker.start(pincer)
-		yield($Attacker, "attack_phase_finished")
+		await $Attacker.attack_phase_finished
 		
 		$PincerExecutor.start_attack_skill_phase()
-		yield($PincerExecutor, "attack_skill_phase_finished")
+		await $PincerExecutor.attack_skill_phase_finished
 		
 		$PincerExecutor.check_dead_units()
-		yield($PincerExecutor, "finished_checking_for_dead_units")
+		await $PincerExecutor.finished_checking_for_dead_units
 		
 		if _current_turn == Turn.PLAYER:
 			$PincerExecutor.start_heal_phase()
 			
-			yield($PincerExecutor, "heal_phase_finished")
+			await $PincerExecutor.heal_phase_finished
 		
 		if _current_turn == Turn.ENEMY:
 			# Removes the unit (besides the active unit) that performed the
@@ -783,11 +783,11 @@ func _update_status_effects() -> void:
 	
 	$PincerExecutor.start_status_effect_phase()
 	
-	yield($PincerExecutor, "status_effect_phase_finished")
+	await $PincerExecutor.status_effect_phase_finished
 	
 	$PincerExecutor.check_dead_units()
 	
-	yield($PincerExecutor, "finished_checking_for_dead_units")
+	await $PincerExecutor.finished_checking_for_dead_units
 	
 	_start_player_turn()
 
@@ -890,11 +890,11 @@ func _on_Enemy_use_skill(unit: Unit, skill: Skill, target_cells: Array) -> void:
 	# Wait for it to finish
 	$PincerExecutor/BeforeSkillActivationPhaseFinishesTimer.start()
 	
-	yield($PincerExecutor/BeforeSkillActivationPhaseFinishesTimer, "timeout")
+	await $PincerExecutor/BeforeSkillActivationPhaseFinishesTimer.timeout
 	
 	$PincerExecutor/BeforeSkillActivationPhaseFinishesTimer.stop()
 	
-	var skill_effect: Node2D = skill.effect_scene.instance()
+	var skill_effect: Node2D = skill.effect_scene.instantiate()
 	add_child(skill_effect)
 	
 	var start_cell: Cell = _grid.get_cell_from_position(unit.position)
@@ -903,15 +903,15 @@ func _on_Enemy_use_skill(unit: Unit, skill: Skill, target_cells: Array) -> void:
 	
 	target_cells = BoardUtils.filter_cells(unit, skill, target_cells)
 	
-	skill_effect.start(unit, skill, target_cells, start_cell, $Pusher)
+	skill_effect.start(Callable(unit, skill).bind(target_cells), start_cell, $Pusher)
 	
-	yield(skill_effect, "effect_finished")
+	await skill_effect.effect_finished
 	
 	unit.z_index = 0
 	
 	$PincerExecutor.check_dead_units()
 	
-	yield($PincerExecutor, "finished_checking_for_dead_units")
+	await $PincerExecutor.finished_checking_for_dead_units
 	
 	unit.on_skill_used(_grid, _player_units_node.get_children())
 
@@ -926,7 +926,7 @@ func _on_Enemy_use_delayed_skill(unit: Unit, skill: Skill, target_cells: Array) 
 	# Wait for it to finish
 	$PincerExecutor/BeforeSkillActivationPhaseFinishesTimer.start()
 	
-	yield($PincerExecutor/BeforeSkillActivationPhaseFinishesTimer, "timeout")
+	await $PincerExecutor/BeforeSkillActivationPhaseFinishesTimer.timeout
 	
 	$PincerExecutor/BeforeSkillActivationPhaseFinishesTimer.stop()
 	
@@ -979,7 +979,7 @@ func _on_Unit_released(unit: Unit) -> void:
 		
 		for cell in _active_unit_entered_cells:
 			if cell.unit == unit:
-				cell.modulate = Color.white
+				cell.modulate = Color.WHITE
 	else:
 		# If there is a unit in the selected cell swap with it
 		_swap_units(unit, selected_cell.unit, selected_cell, _active_unit_current_cell)
@@ -1010,7 +1010,7 @@ func _on_Unit_snapped_to_grid(unit: Unit) -> void:
 		
 		$PincerExecutor.check_dead_units()
 		
-		yield($PincerExecutor, "finished_checking_for_dead_units")
+		await $PincerExecutor.finished_checking_for_dead_units
 		
 		if _has_active_unit_exited_cell:
 			_clear_active_cells()
@@ -1050,7 +1050,7 @@ func _on_Enemy_action_done(unit: Unit) -> void:
 	
 	$PincerExecutor.check_dead_units()
 	
-	yield($PincerExecutor, "finished_checking_for_dead_units")
+	await $PincerExecutor.finished_checking_for_dead_units
 	
 	unit.z_index = 0
 	
@@ -1110,7 +1110,7 @@ func _on_StatusEffectIconAnimationTimer_timeout() -> void:
 	
 
 func _on_Skill_scene_summoned(scene_path: String, target_cell: Cell) -> void:
-	var scene = ResourceLoader.load(scene_path).instance()
+	var scene = ResourceLoader.load(scene_path).instantiate()
 	
 	if scene == null:
 		return

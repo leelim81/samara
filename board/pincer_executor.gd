@@ -1,7 +1,7 @@
 extends Node2D
 
 
-class SkillAttack extends Reference:
+class SkillAttack extends RefCounted:
 	var unit: Unit
 	
 	var skill: Skill
@@ -19,8 +19,8 @@ signal finished_checking_for_dead_units
 # Finished executing a pincer
 signal pincer_executed
 
-export(PackedScene) var chain_previewer_packed_scene: PackedScene
-export(PackedScene) var pincer_highlight_packed_scene: PackedScene
+@export var chain_previewer_packed_scene: PackedScene
+@export var pincer_highlight_packed_scene: PackedScene
 
 var _unit_queue := []
 var _dead_units := []
@@ -79,7 +79,7 @@ func _activate_next_skill() -> void:
 	if unit != null:
 		var activated_skills: Array = unit.activate_skills()
 		
-		if activated_skills.empty():
+		if activated_skills.is_empty():
 			# If no skills are activated then go to the next unit right away
 			# I don't like the recursion but it makes it easier
 			_activate_next_skill()
@@ -97,17 +97,17 @@ func _activate_next_skill() -> void:
 		if _is_any_skill_activated():
 			$BeforeSkillActivationPhaseFinishesTimer.start()
 			
-			yield($BeforeSkillActivationPhaseFinishesTimer, "timeout")
+			await $BeforeSkillActivationPhaseFinishesTimer.timeout
 		else:
 			$NoSkillsActivatedTimer.start()
 			
-			yield($NoSkillsActivatedTimer, "timeout")
+			await $NoSkillsActivatedTimer.timeout
 		
 		_emit_deferred("skill_activation_phase_finished")
 
 
 func _is_any_skill_activated() -> bool:
-	return (not _buff_skills.empty()) or (not _attack_skills.empty()) or (not _heal_skills.empty())
+	return (not _buff_skills.is_empty()) or (not _attack_skills.is_empty()) or (not _heal_skills.is_empty())
 
 
 # Queue units to activate their skills one by one
@@ -169,7 +169,7 @@ func _show_chain_previews(pincer: Pincer) -> void:
 	clear_chain_previews()
 	
 	for unit in pincer.pincering_units:
-		var chain_previewer: Node2D = chain_previewer_packed_scene.instance()
+		var chain_previewer: Node2D = chain_previewer_packed_scene.instantiate()
 		
 		add_child(chain_previewer)
 		_chain_previews.push_back(chain_previewer)
@@ -187,7 +187,7 @@ func clear_chain_previews() -> void:
 
 
 func highlight_pincer(pincer: Pincer) -> void:
-	var pincer_higlight: Node2D = pincer_highlight_packed_scene.instance()
+	var pincer_higlight: Node2D = pincer_highlight_packed_scene.instantiate()
 	
 	add_child(pincer_higlight)
 	
@@ -195,7 +195,7 @@ func highlight_pincer(pincer: Pincer) -> void:
 	
 	_show_chain_previews(pincer)
 	
-	yield(pincer_higlight, "pincer_highlighted")
+	await pincer_higlight.pincer_highlighted
 	
 	emit_signal("pincer_highlighted")
 
@@ -214,7 +214,7 @@ func _execute_next_skill(skill_queue: Array, finish_signal: String) -> void:
 	if next_skill != null:
 		var chain: Array = _find_chain(next_skill.unit, _complete_chains)
 		
-		assert(!chain.empty())
+		assert(!chain.is_empty())
 		
 		# Array<Cell>
 		var target_cells: Array = BoardUtils.find_area_of_effect_target_cells(next_skill.unit,
@@ -226,15 +226,15 @@ func _execute_next_skill(skill_queue: Array, finish_signal: String) -> void:
 			_allies,
 			_enemies)
 		
-		var skill_effect: Node2D = next_skill.skill.effect_scene.instance()
+		var skill_effect: Node2D = next_skill.skill.effect_scene.instantiate()
 		
 		add_child(skill_effect)
 		
-		var _error = skill_effect.connect("effect_finished", self, "_on_SkillEffect_effect_finished", [skill_queue, finish_signal])
+		var _error = skill_effect.connect("effect_finished", Callable(self, "_on_SkillEffect_effect_finished").bind(skill_queue, finish_signal))
 		
 		var start_cell: Cell = _grid.get_cell_from_position(next_skill.unit.position)
 		
-		skill_effect.start(next_skill.unit, next_skill.skill, target_cells, start_cell, pusher)
+		skill_effect.start(Callable(next_skill.unit, next_skill.skill).bind(target_cells), start_cell, pusher)
 		
 		next_skill.unit.stop_scale_up_and_down_animation()
 	else:
@@ -268,7 +268,7 @@ func update_dead_unit_on_swap(unit: Unit, cell_to_swap_to: Cell) -> void:
 	assert(not unit.is2x2())
 	
 	if not unit.is_death_animation_playing():
-		var _error = unit.connect("death_animation_finished", self, "_on_Unit_death_animation_finished")
+		var _error = unit.connect("death_animation_finished", Callable(self, "_on_Unit_death_animation_finished"))
 		
 		unit.call_deferred("play_death_animation")
 		
@@ -286,7 +286,7 @@ func _check_next_dead_unit() -> void:
 		
 		_clean_up_cell(unit, cell)
 	elif unit != null and not unit.is_death_animation_playing():
-		if unit.connect("death_animation_finished", self, "_on_Unit_death_animation_finished") != OK:
+		if unit.connect("death_animation_finished", Callable(self, "_on_Unit_death_animation_finished")) != OK:
 			push_warning("Trying to connect death animation finished signal again to unit %s" % unit.name)
 			
 			return
@@ -331,7 +331,7 @@ func start_status_effect_phase() -> void:
 	for status_effect_type in status_effects:
 		var enemies_with_status_effect := get_units_with_status_effect(_enemies, status_effect_type)
 		
-		if not enemies_with_status_effect.empty():
+		if not enemies_with_status_effect.is_empty():
 			for enemy in _enemies:
 				enemy.inflict(status_effect_type)
 			
@@ -340,11 +340,11 @@ func start_status_effect_phase() -> void:
 			if _status_effect_has_delay(status_effect_type):
 				$StatusEffectTimer.start()
 				
-				yield($StatusEffectTimer, "timeout")
+				await $StatusEffectTimer.timeout
 		
 		var player_units_status_effect := get_units_with_status_effect(_allies, status_effect_type)
 		
-		if not player_units_status_effect.empty():
+		if not player_units_status_effect.is_empty():
 			for unit in player_units_status_effect:
 				unit.inflict(status_effect_type)
 			
@@ -353,7 +353,7 @@ func start_status_effect_phase() -> void:
 			if _status_effect_has_delay(status_effect_type):
 				$StatusEffectTimer.start()
 				
-				yield($StatusEffectTimer, "timeout")
+				await $StatusEffectTimer.timeout
 	
 	_emit_deferred("status_effect_phase_finished")
 

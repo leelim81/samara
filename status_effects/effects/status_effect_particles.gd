@@ -9,6 +9,6 @@ func stop() -> void:
 	
 	$Timer.start()
 	
-	yield($Timer, "timeout")
+	await $Timer.timeout
 	
 	queue_free()

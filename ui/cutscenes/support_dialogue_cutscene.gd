@@ -1,8 +1,8 @@
 extends DialogueCutscene
 
 
-export(String) var pair: String = "YACHIE_AND_SAKI"
-export(int, 1, 4) var support_level: int = 1
+@export var pair: String = "YACHIE_AND_SAKI"
+@export var support_level: int = 1 # (int, 1, 4)
 
 
 func on_instance(data: Object) -> void:
@@ -20,7 +20,7 @@ func _skip_dialogue() -> void:
 	if not is_dialogue_skipped:
 		is_dialogue_skipped = true
 		
-		if Loader.change_scene("res://ui/pre_battle_menu/stack_based_pre_battle_menu.tscn") != OK:
+		if Loader.change_scene_to_file("res://ui/pre_battle_menu/stack_based_pre_battle_menu.tscn") != OK:
 			printerr("Failed to change scene")
 
 		set_process(false)

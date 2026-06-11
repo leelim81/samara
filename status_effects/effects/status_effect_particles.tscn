@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://status_effects/effects/status_effect_particles.gd" type="Script" id=1]
-[ext_resource path="res://assets/vfx/kenney/circle_01.png" type="Texture" id=2]
+[ext_resource path="res://assets/vfx/kenney/circle_01.png" type="Texture2D" id=2]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 blend_mode = 1
@@ -10,7 +10,7 @@ blend_mode = 1
 _data = [ Vector2( 0, 0.197348 ), 0.0, 5.70275, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="Gradient" id=2]
-colors = PoolColorArray( 0.180392, 0.501961, 0.396078, 1, 0.317647, 0.701961, 0.254902, 1 )
+colors = PackedColorArray( 0.180392, 0.501961, 0.396078, 1, 0.317647, 0.701961, 0.254902, 1 )
 
 [node name="StatusEffectParticles" type="CPUParticles2D"]
 material = SubResource( 1 )

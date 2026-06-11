@@ -1,7 +1,7 @@
 extends CPUParticles2D
 
 
-export(bool) var free_on_timeout: bool = true
+@export var free_on_timeout: bool = true
 
 
 func play() -> void:

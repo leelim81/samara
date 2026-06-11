@@ -1,7 +1,7 @@
 extends Node
 
 
-class SkillEvaluationResult extends Reference:
+class SkillEvaluationResult extends RefCounted:
 	var cell: Cell = null
 	var damage_dealt: int = 0
 	var units_affected: int = 0
@@ -92,13 +92,13 @@ func _estimate_damage(unit: Unit, targeted_unit: Unit, skill: Skill) -> int:
 func _sort_by_preference(preference: int, skill_evaluation_results: Array) -> void:
 	match(preference):
 		Enums.Preference.DEAL_DAMAGE:
-			skill_evaluation_results.sort_custom(DamageSorter, "sort_descending")
+			skill_evaluation_results.sort_custom(Callable(DamageSorter, "sort_descending"))
 		Enums.Preference.AFFECT_UNITS:
-			skill_evaluation_results.sort_custom(UnitsAffectedSorter, "sort_descending")
+			skill_evaluation_results.sort_custom(Callable(UnitsAffectedSorter, "sort_descending"))
 		Enums.Preference.RANDOM:
 			skill_evaluation_results.shuffle()
 		_:
-			skill_evaluation_results.sort_custom(UnitsKilledSorter, "sort_descending")
+			skill_evaluation_results.sort_custom(Callable(UnitsKilledSorter, "sort_descending"))
 
 
 func get_target_cells(unit: Unit,

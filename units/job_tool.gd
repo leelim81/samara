@@ -1,24 +1,24 @@
-tool
+@tool
 extends Node
 
 
-export(NodePath) var _sprite_node_path: NodePath
-export(NodePath) var _job_node_path: NodePath
+@export var _sprite_node_path: NodePath
+@export var _job_node_path: NodePath
 
-export(NodePath) var _weapon_type_node_path: NodePath
-export(NodePath) var _turn_count_node_path: NodePath
+@export var _weapon_type_node_path: NodePath
+@export var _turn_count_node_path: NodePath
 
-export(NodePath) var _unit_name_node_path: NodePath
+@export var _unit_name_node_path: NodePath
 
 
 func _ready() -> void:
-	if not Engine.editor_hint:
+	if not Engine.is_editor_hint():
 		return
 	
 	var job_node = get_node(_job_node_path)
 	var job: Job = job_node.job
 	
-	var sprite: Sprite = get_node(_sprite_node_path)
+	var sprite: Sprite2D = get_node(_sprite_node_path)
 	sprite.texture = job.portrait
 	
 	var unit: Unit = get_parent()

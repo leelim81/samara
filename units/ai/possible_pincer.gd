@@ -1,5 +1,5 @@
 class_name PossiblePincer
-extends Reference
+extends RefCounted
 
 
 var start_cell: Cell = null

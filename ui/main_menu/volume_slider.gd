@@ -3,20 +3,20 @@ extends HSlider
 
 signal on_changed(bus_name, volume)
 
-export var _bus_name := "Music"
+@export var _bus_name := "Music"
 
-onready var _bus_index := AudioServer.get_bus_index(_bus_name)
-onready var _slide_sound_effect := $SlideSoundEffect
+@onready var _bus_index := AudioServer.get_bus_index(_bus_name)
+@onready var _slide_sound_effect := $SlideSoundEffect
 
 
 func _ready() -> void:
-	value = db2linear(AudioServer.get_bus_volume_db(_bus_index))
+	value = db_to_linear(AudioServer.get_bus_volume_db(_bus_index))
 	
-	var _error = connect("value_changed", self, "_on_VolumeSlider_value_changed")
+	var _error = connect("value_changed", Callable(self, "_on_VolumeSlider_value_changed"))
 
 
 func _on_VolumeSlider_value_changed(new_value: float) -> void:
-	AudioServer.set_bus_volume_db(_bus_index, linear2db(new_value))
+	AudioServer.set_bus_volume_db(_bus_index, linear_to_db(new_value))
 	
 	_slide_sound_effect.play()
 	

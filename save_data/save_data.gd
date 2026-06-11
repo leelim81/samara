@@ -5,20 +5,20 @@ extends Resource
 const MAX_SQUAD_SIZE: int = 6
 const MIN_SQUAD_SIZE: int = 2
 
-export(int) var version: int = 1
+@export var version: int = 1
 
 # Array<Job>
 # Jobs that the player has
-export(Array, Resource) var jobs: Array = []
+@export var jobs: Array = [] # (Array, Resource)
 
 # Array<int>
-export(Array, int) var active_units: Array = []
+@export var active_units: Array = [] # (Array, int)
 
-export(float) var music_volume: float = 1.0
-export(float) var sound_effects_volume: float = 1.0
+@export var music_volume: float = 1.0
+@export var sound_effects_volume: float = 1.0
 
-export(String, "en", "es") var locale: String = ""
-export(Enums.DragMode) var drag_mode: int = Enums.DragMode.CLICK
+@export var locale: String = "" # (String, "en", "es")
+@export var drag_mode: int = Enums.DragMode.CLICK # (Enums.DragMode)
 
 # Dictionary<String (Pair), int (support level, 1 - 4)>
 # TODO: Save and load from file

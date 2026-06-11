@@ -36,7 +36,7 @@ func find_possible_pincers(unit: Unit, grid: Grid, allies: Array, enemies: Array
 	
 	reachable_pincers.append_array(coordinated_pincers)
 	
-	reachable_pincers.sort_custom(PathLengthAndUnitsPinceredSorter, "sort")
+	reachable_pincers.sort_custom(Callable(PathLengthAndUnitsPinceredSorter, "sort"))
 	
 	return reachable_pincers
 
@@ -80,7 +80,7 @@ func _filter_reachable_possible_pincers(unit: Unit, grid: Grid, navigation_graph
 		
 		var unit_path_to_end_cell: Array = BoardUtils.find_path(grid, navigation_graph, unit, possible_pincer.end_cell, excluded_cells)
 		
-		if not unit_path_to_end_cell.empty():
+		if not unit_path_to_end_cell.is_empty():
 			possible_pincer.start_cell_path_length = 0
 			possible_pincer.end_cell_path_length = unit_path_to_end_cell.size()
 			
@@ -212,7 +212,7 @@ func _find_reachable_coordinated_pincers(unit: Unit, grid: Grid, enemies: Array,
 			
 			# Stop with the first reachable pincer
 			# TODO: Use other criteria? Limit how many allies the unit can look ahead?
-			if not coordinated_pincers.empty():
+			if not coordinated_pincers.is_empty():
 				break
 	
 	return coordinated_pincers
@@ -295,7 +295,7 @@ func _is_pincer_reachable(unit: Unit, grid: Grid, navigation_graph: Dictionary, 
 	var unit_path_to_end_cell: Array = BoardUtils.find_path(grid, navigation_graph, unit, possible_pincer.end_cell, unit_excluded_start_cells)
 	var unit_path_to_start_cell: Array = BoardUtils.find_path(grid, navigation_graph, unit, possible_pincer.start_cell, unit_excluded_end_cells)
 	
-	if unit_path_to_end_cell.empty() and unit_path_to_start_cell.empty():
+	if unit_path_to_end_cell.is_empty() and unit_path_to_start_cell.is_empty():
 		return false
 	
 	possible_pincer.ally = ally

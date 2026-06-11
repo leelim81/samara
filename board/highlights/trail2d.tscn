@@ -4,8 +4,8 @@
 [ext_resource path="res://board/highlights/trail2d.gd" type="Script" id=2]
 
 [sub_resource type="Gradient" id=6]
-offsets = PoolRealArray( 0, 0.237113 )
-colors = PoolColorArray( 0, 0, 0, 0, 0.65098, 0.14902, 0.329412, 1 )
+offsets = PackedFloat32Array( 0, 0.237113 )
+colors = PackedColorArray( 0, 0, 0, 0, 0.65098, 0.14902, 0.329412, 1 )
 
 [sub_resource type="Image" id=7]
 data = {

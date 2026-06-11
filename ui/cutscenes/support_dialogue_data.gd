@@ -1,5 +1,5 @@
 class_name SupportDialogueData
-extends Reference
+extends RefCounted
 
 
 var chapter_data: ChapterData

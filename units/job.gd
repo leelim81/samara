@@ -3,9 +3,9 @@ extends Node
 # TODO: Merge with unit script
 
 # Job
-export(Resource) var job: Resource
+@export var job: Resource
 
-export(int) var level: int = 0
+@export var level: int = 0
 
 var base_stats: Stats
 

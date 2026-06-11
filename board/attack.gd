@@ -1,5 +1,5 @@
 class_name Attack
-extends Reference
+extends RefCounted
 
 
 # Array<Unit>

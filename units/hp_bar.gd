@@ -1,7 +1,7 @@
-extends TextureProgress
+extends TextureProgressBar
 
 
-onready var _tween: Tween = $Tween
+@onready var _tween: Tween = $Tween
 
 
 func _on_Job_health_changed(current_health: int, max_health: int) -> void:

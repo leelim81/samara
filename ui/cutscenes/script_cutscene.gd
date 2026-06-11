@@ -3,16 +3,16 @@ extends Control
 # Chapter data with scene title
 # Set by Loader in on_instance(), but exported to be able to test this scene
 # locally
-export(Resource) var chapter_data: Resource 
+@export var chapter_data: Resource 
 
-export(PackedScene) var text_label_packed_scene: PackedScene
+@export var text_label_packed_scene: PackedScene
 
 # Next scene
-export(String, FILE, "*.tscn") var dialogue_scene_path: String
+@export var dialogue_scene_path: String # (String, FILE, "*.tscn")
 
-export(float) var new_character_every_x_seconds: float = 0.0
+@export var new_character_every_x_seconds: float = 0.0
 
-export(String) var title_suffix: String = ""
+@export var title_suffix: String = ""
 
 var _current_page: int = 0
 var _current_paragraph: int = 0
@@ -27,7 +27,7 @@ var _is_local: bool = true
 
 var _is_dialogue_skipped: bool = false
 
-onready var _text_container: VBoxContainer = $MarginContainer/VBoxContainer/TextVBoxContainer
+@onready var _text_container: VBoxContainer = $MarginContainer/VBoxContainer/TextVBoxContainer
 
 
 func _ready() -> void:
@@ -37,7 +37,7 @@ func _ready() -> void:
 	
 	_read_pages()
 	
-	if _is_local and not _pages.empty():
+	if _is_local and not _pages.is_empty():
 		_start_showing_text()
 
 
@@ -54,7 +54,7 @@ func on_instance(data: Object) -> void:
 
 
 func on_fade_out_finished() -> void:
-	if not _pages.empty():
+	if not _pages.is_empty():
 		_start_showing_text()
 
 
@@ -69,7 +69,9 @@ func _read_pages() -> void:
 		
 		_skip_dialogue()
 	else:
-		var parse_result: JSONParseResult = JSON.parse(file.get_as_text())
+		var test_json_conv = JSON.new()
+		test_json_conv.parse(file.get_as_text())
+		var parse_result: JSON = test_json_conv.get_data()
 		
 		file.close()
 		
@@ -101,9 +103,9 @@ func _start_showing_text() -> void:
 func _show_next_paragraph() -> void:
 	var paragraph: String = _pages[_current_page][_current_paragraph]
 	
-	if paragraph.empty():
+	if paragraph.is_empty():
 		# If empty, adds an empty label so that it serves as a line break
-		_current_label = text_label_packed_scene.instance()
+		_current_label = text_label_packed_scene.instantiate()
 		_current_label.text = ""
 		_current_label.percent_visible = 1
 		
@@ -112,7 +114,7 @@ func _show_next_paragraph() -> void:
 		# Note: Potentially recursive call
 		_advance_to_next_paragraph()
 	else:
-		_current_label = text_label_packed_scene.instance()
+		_current_label = text_label_packed_scene.instantiate()
 		_current_label.text = tr(paragraph)
 		_current_label.percent_visible = 0
 		
@@ -194,7 +196,7 @@ func _skip_dialogue() -> void:
 	if not _is_dialogue_skipped:
 		_is_dialogue_skipped = true
 		
-		if Loader.change_scene(dialogue_scene_path, chapter_data) != OK:
+		if Loader.change_scene_to_file(dialogue_scene_path, chapter_data) != OK:
 			printerr("Failed to change scene")
 		
 		set_process(false)

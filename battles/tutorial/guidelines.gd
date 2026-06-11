@@ -1,8 +1,8 @@
 extends Node2D
 
-export(NodePath) var units_node_path: NodePath
+@export var units_node_path: NodePath
 
-onready var units: Node2D = get_node(units_node_path)
+@onready var units: Node2D = get_node(units_node_path)
 
 var current_phase := 0
 

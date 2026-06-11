@@ -4,7 +4,7 @@ extends Node
 # Emitted when change_scene() is called and a new scene is going to be loaded
 signal scene_changed()
 
-var loader: ResourceInteractiveLoader = null
+var loader: ResourceLoader = null
 
 var _wait_frames: int = 1
 
@@ -13,7 +13,7 @@ var _time_max_ms: int = 100
 var _current_scene: Node = null
 
 # Data passed from one scene to another
-var data: Reference = null
+var data: RefCounted = null
 
 var _loading_screen_instance: Node = null
 
@@ -30,7 +30,7 @@ var _is_loading: bool = false
 # and we can fade out.
 var _can_fade_out: bool = false
 
-onready var _loading_screen: PackedScene = preload("res://ui/loading_screen.tscn")
+@onready var _loading_screen: PackedScene = preload("res://ui/loading_screen.tscn")
 
 
 func _ready() -> void:
@@ -77,7 +77,7 @@ func _process(_delta: float) -> void:
 # https://www.youtube.com/watch?v=5aV_GSAE1kM
 # https://dicode1q.blogspot.com/2022/10/background-loading-in-godot-dicode.html
 # https://docs.godotengine.org/en/stable/tutorials/io/background_loading.html#example
-func change_scene(path: String, _data = null) -> int:
+func change_scene_to_file(path: String, _data = null) -> int:
 	if path == "":
 		return ERR_CANT_CREATE
 	
@@ -86,7 +86,7 @@ func change_scene(path: String, _data = null) -> int:
 		
 		return ERR_ALREADY_IN_USE
 	
-	loader = ResourceLoader.load_interactive(path)
+	loader = ResourceLoader.load_threaded_request(path)
 	
 	if loader == null:
 		printerr("Couldn't load interactive loader for scene %s" % path)
@@ -112,7 +112,7 @@ func _play_loading_animation() -> void:
 	
 	get_tree().get_root().add_child(_loading_screen_instance)
 	
-	var _error = _loading_screen_instance.connect("fade_in_finished", self, "_on_LoadingScreen_fade_in_finished")
+	var _error = _loading_screen_instance.connect("fade_in_finished", Callable(self, "_on_LoadingScreen_fade_in_finished"))
 	
 	_loading_screen_instance.play_loading_animation()
 
@@ -120,7 +120,7 @@ func _play_loading_animation() -> void:
 func _set_new_scene(resource: Resource) -> void:
 	_can_fade_out = true
 	
-	_current_scene = resource.instance()
+	_current_scene = resource.instantiate()
 	
 	if _current_scene.has_method("on_instance"):
 		_current_scene.on_instance(data)
@@ -135,7 +135,7 @@ func _set_new_scene(resource: Resource) -> void:
 	# This is so that the fade out animation is only played once, for the last
 	# scene changed to
 	if _can_fade_out:
-		var _error = _loading_screen_instance.connect("fade_out_finished", self, "_on_LoadingScreen_fade_out_finished")
+		var _error = _loading_screen_instance.connect("fade_out_finished", Callable(self, "_on_LoadingScreen_fade_out_finished"))
 		
 		_loading_screen_instance.fade_out()
 

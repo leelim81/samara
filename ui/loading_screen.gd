@@ -7,7 +7,7 @@ const FADE_OUT_ANIMATION_NAME := "Fade out"
 signal fade_in_finished()
 signal fade_out_finished()
 
-onready var animation_player := $AnimationPlayer
+@onready var animation_player := $AnimationPlayer
 
 
 func play_loading_animation() -> void:

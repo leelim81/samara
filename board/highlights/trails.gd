@@ -1,14 +1,14 @@
 extends Node2D
 
 
-export(PackedScene) var trail_2d_packed_scene: PackedScene
+@export var trail_2d_packed_scene: PackedScene
 
-export(Gradient) var player_trail_gradient: Gradient
-export(Gradient) var enemy_trail_gradient: Gradient
+@export var player_trail_gradient: Gradient
+@export var enemy_trail_gradient: Gradient
 
 
 func build_trail(is_player_turn: bool) -> Node2D:
-	var trail: Node2D = trail_2d_packed_scene.instance()
+	var trail: Node2D = trail_2d_packed_scene.instantiate()
 	
 	trail.set_gradient(_get_gradient(is_player_turn))
 	

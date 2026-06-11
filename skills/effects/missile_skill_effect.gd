@@ -1,8 +1,8 @@
 extends SkillEffect
 
 
-export(PackedScene) var particle_arc_scene: PackedScene
-export(PackedScene) var hit_effect_packed_scene: PackedScene
+@export var particle_arc_scene: PackedScene
+@export var hit_effect_packed_scene: PackedScene
 
 
 func _start(unit: Unit, skill: Skill, target_cells: Array) -> void:
@@ -10,7 +10,7 @@ func _start(unit: Unit, skill: Skill, target_cells: Array) -> void:
 		if target_cell.unit == unit:
 			_on_ParticleArc_target_reached(unit, skill, target_cell)
 		else:
-			var particle_arc: Node2D = particle_arc_scene.instance()
+			var particle_arc: Node2D = particle_arc_scene.instantiate()
 			
 			unit.add_child_at_offset(particle_arc)
 			
@@ -27,7 +27,7 @@ func _start(unit: Unit, skill: Skill, target_cells: Array) -> void:
 # Instance heal particles / instance the next effect on arrival
 # It should free itself once it's done
 func _on_ParticleArc_target_reached(unit: Unit, skill: Skill, target_cell: Cell) -> void:
-	var hit_effect: Node2D = hit_effect_packed_scene.instance()
+	var hit_effect: Node2D = hit_effect_packed_scene.instantiate()
 	
 	# Hit effect has to free automatically
 	# TODO: If skill is targeted individually, add hit effect as child of target_cell.unit

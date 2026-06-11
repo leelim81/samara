@@ -67,7 +67,7 @@ func _find_closest_free_cell(start_cell: Cell) -> Cell:
 	# Dictionary<Cell, bool>
 	var discovered_dict := {}
 	
-	while not queue.empty():
+	while not queue.is_empty():
 		var node: Cell = queue.pop_front()
 		
 		# Flag as discovered

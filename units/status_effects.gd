@@ -16,7 +16,7 @@ func add(status_effect_type: int, effect_scene: PackedScene) -> void:
 		return
 	
 	if not _status_effects.has(status_effect_type):
-		var effect: Node2D = effect_scene.instance()
+		var effect: Node2D = effect_scene.instantiate()
 		
 		add_child(effect)
 		

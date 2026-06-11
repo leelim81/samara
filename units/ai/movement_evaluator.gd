@@ -1,7 +1,7 @@
 extends Node
 
 
-class MovementEvaluationResult extends Reference:
+class MovementEvaluationResult extends RefCounted:
 	var cell: Cell = null
 	
 	var neighboring_enemies: int = 0
@@ -44,7 +44,7 @@ class BorderSorter:
 		return a.distance_to_border > b.distance_to_border
 
 
-func find_cells(var unit: Enemy,
+func find_cells()(var unit: Enemy,
 				var enemies: Array,
 				var action: Action,
 				var navigation_graph: Dictionary) -> Array:
@@ -62,7 +62,7 @@ func find_cells(var unit: Enemy,
 	return results
 
 
-func find_border_cells(grid: Grid, var navigation_graph: Dictionary) -> Array:
+func find_border_cells(grid: Grid, navigation_graph: Dictionary) -> Array:
 	var results: Array = []
 	
 	for cell in navigation_graph:
@@ -80,7 +80,7 @@ func find_border_cells(grid: Grid, var navigation_graph: Dictionary) -> Array:
 	return results
 
 
-func _evaluate_cell(var unit: Enemy,
+func _evaluate_cell()(var unit: Enemy,
 					var enemies: Array,
 					var action: Action,
 					var cell: Cell) -> MovementEvaluationResult:
@@ -117,7 +117,7 @@ func _count_neighboring_units(unit_faction: int, neighbors: Array, is_enemy: boo
 	return count
 
 
-func _get_squared_distance_to_enemies(start_cell: Cell, var enemies: Array) -> float:
+func _get_squared_distance_to_enemies(start_cell: Cell, enemies: Array) -> float:
 	var distance_squared: float = 0
 	
 	# Do cells and units share the same coordinates?
@@ -134,28 +134,28 @@ func _sort_by_preference(preference: int, movement_evaluation_results: Array) ->
 			
 			hug_sorter.can_count_enemies = true
 			
-			movement_evaluation_results.sort_custom(hug_sorter, "sort_descending")
+			movement_evaluation_results.sort_custom(Callable(hug_sorter, "sort_descending"))
 		Enums.MovementPreference.HUG_ALLIES:
 			var hug_sorter: HugSorter = HugSorter.new()
 			
 			hug_sorter.can_count_enemies = false
 			
-			movement_evaluation_results.sort_custom(hug_sorter, "sort_descending")
+			movement_evaluation_results.sort_custom(Callable(hug_sorter, "sort_descending"))
 		Enums.MovementPreference.ORBIT_ENEMIES:
 			var hug_sorter: HugSorter = HugSorter.new()
 			
 			hug_sorter.can_count_enemies = true
 			
-			movement_evaluation_results.sort_custom(hug_sorter, "sort_descending")
+			movement_evaluation_results.sort_custom(Callable(hug_sorter, "sort_descending"))
 		Enums.MovementPreference.ORBIT_ALLIES:
 			var hug_sorter: HugSorter = HugSorter.new()
 			
 			hug_sorter.can_count_enemies = false
 			
-			movement_evaluation_results.sort_custom(hug_sorter, "sort_descending")
+			movement_evaluation_results.sort_custom(Callable(hug_sorter, "sort_descending"))
 		Enums.MovementPreference.FLEE:
-			movement_evaluation_results.sort_custom(DistanceSorter, "sort_descending")
+			movement_evaluation_results.sort_custom(Callable(DistanceSorter, "sort_descending"))
 		Enums.MovementPreference.RANDOM:
 			movement_evaluation_results.shuffle()
 		Enums.MovementPreference.BORDER:
-			movement_evaluation_results.sort_custom(BorderSorter, "sort_ascending")
+			movement_evaluation_results.sort_custom(Callable(BorderSorter, "sort_ascending"))

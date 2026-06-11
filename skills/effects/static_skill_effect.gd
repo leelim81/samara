@@ -2,8 +2,8 @@ extends SkillEffect
 
 
 # Frame at which the skill is activated
-export(int) var activation_frame: int = 0
-export(PackedScene) var animation_packed_scene: PackedScene
+@export var activation_frame: int = 0
+@export var animation_packed_scene: PackedScene
 
 
 func _start(unit: Unit, skill: Skill, target_cells: Array) -> void:
@@ -14,7 +14,7 @@ func _start(unit: Unit, skill: Skill, target_cells: Array) -> void:
 			
 			return
 		
-		var animated_sprite: AnimatedSprite = animation_packed_scene.instance()
+		var animated_sprite: AnimatedSprite2D = animation_packed_scene.instantiate()
 		
 		add_child(animated_sprite)
 		animated_sprite.position = cell.position
@@ -33,12 +33,12 @@ func _start(unit: Unit, skill: Skill, target_cells: Array) -> void:
 		var _error = animated_sprite.connect("animation_finished", self,
 						"_on_AnimatedSprite_animation_finished",
 						[unit],
-						CONNECT_ONESHOT)
+						CONNECT_ONE_SHOT)
 		
 		animated_sprite.play()
 
 
-func _on_AnimatedSprite_frame_changed(animated_sprite: AnimatedSprite, unit: Unit, skill: Skill, target_cell: Cell) -> void:
+func _on_AnimatedSprite_frame_changed(animated_sprite: AnimatedSprite2D, unit: Unit, skill: Skill, target_cell: Cell) -> void:
 	if animated_sprite.frame == activation_frame:
 		_apply_skill(unit, skill, target_cell)
 

@@ -10,32 +10,32 @@ enum Behavior {
 	ESCAPE
 }
 
-export(Behavior) var behavior: int
+@export var behavior: Behavior
 
-export(Resource) var skill: Resource
+@export var skill: Resource
 
-export(Enums.Preference) var preference: int = Enums.Preference.DEAL_DAMAGE
+@export var preference: int = Enums.Preference.DEAL_DAMAGE # (Enums.Preference)
 
-export(Enums.MovementPreference) var movement_preference: int = Enums.MovementPreference.RANDOM
+@export var movement_preference: int = Enums.MovementPreference.RANDOM # (Enums.MovementPreference)
 
 # Specific cell to move to, if possible
 # x: [0, 5]
 # y: [0, 7]
-export(float, -1, 5, 1) var cell_x_to_move_to: float = -1
-export(float, -1, 7, 1) var cell_y_to_move_to: float = -1
+@export var cell_x_to_move_to: float = -1 # (float, -1, 5, 1)
+@export var cell_y_to_move_to: float = -1 # (float, -1, 7, 1)
 
 # If unit can move when using a skill, or if it should use it from its current
 # position. Can only be used when skill and cell to move to are not null
-export(bool) var can_move_when_using_skill: bool = true
+@export var can_move_when_using_skill: bool = true
 
 # Weight of this action, affects how often this action is chosen if there
 # are multiple available actions
-export(int, 1, 10, 1) var weight: int = 1
+@export var weight: int = 1 # (int, 1, 10, 1)
 
 # Translation key
-export(String) var text: String
+@export var text: String
 
-export(bool) var can_ignore_weights: bool = false
+@export var can_ignore_weights: bool = false
 
 
 func can_activate(current_hp_percentage: float, current_turn: int, can_use_turn_counter: bool = true) -> bool:

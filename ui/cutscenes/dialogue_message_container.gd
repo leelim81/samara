@@ -11,16 +11,16 @@ const _ICONS: Dictionary = {
 
 signal text_fully_visible
 
-export(float) var new_character_every_x_seconds: float = 0
+@export var new_character_every_x_seconds: float = 0
 
-export(Color) var dim_color: Color
+@export var dim_color: Color
 
 var _accumulated_time_seconds: float = 0
 
-onready var _name_label := $VBoxContainer/NameLabel
-onready var _message_label := $MarginContainer/MarginContainer/MessageLabel
-onready var _character_icon := $VBoxContainer/TextureRect
-onready var _nine_patch := $MarginContainer/NinePatchRect
+@onready var _name_label := $VBoxContainer/NameLabel
+@onready var _message_label := $MarginContainer/MarginContainer/MessageLabel
+@onready var _character_icon := $VBoxContainer/TextureRect
+@onready var _nine_patch := $MarginContainer/NinePatchRect
 
 
 func _ready() -> void:

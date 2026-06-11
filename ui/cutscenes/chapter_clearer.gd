@@ -1,16 +1,16 @@
 extends Node
 
 # ChapterData
-export(Resource) var current_chapter_data: Resource
+@export var current_chapter_data: Resource
 
 # ChapterData
-export(Resource) var next_chapter_data: Resource
+@export var next_chapter_data: Resource
 
-export(Array, Resource) var unlocked_jobs: Array
+@export var unlocked_jobs: Array # (Array, Resource)
 
-export(int) var unlocked_jobs_level: int = 1
+@export var unlocked_jobs_level: int = 1
 
-export(int) var levels_to_add: int = 0
+@export var levels_to_add: int = 0
 
 
 func unlock_next_chapter() -> void:

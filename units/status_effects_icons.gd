@@ -5,7 +5,7 @@ var _index: int = 0
 
 
 func update_icon(status_effects: Array) -> void:
-	if not status_effects.empty():
+	if not status_effects.is_empty():
 		if _index >= status_effects.size():
 			_index = 0
 		

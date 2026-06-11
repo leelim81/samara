@@ -3,15 +3,15 @@ extends Node2D
 
 signal pincer_highlighted
 
-export(Color) var player_color: Color
-export(Color) var enemy_color: Color
+@export var player_color: Color
+@export var enemy_color: Color
 
 
 func initialize(pincer: Pincer) -> void:
 	for child in $Highlight.get_children():
 		child.hide()
 	
-	var sprite: Sprite
+	var sprite: Sprite2D
 	
 	if(pincer.pincer_orientation == Enums.PincerOrientation.HORIZONTAL || pincer.pincer_orientation == Enums.PincerOrientation.VERTICAL):
 		sprite = _get_sprite_based_on_size(pincer.size())

@@ -1,16 +1,16 @@
 extends Node2D
 
 
-class HighlightedSkill extends Reference:
+class HighlightedSkill extends RefCounted:
 	var unit: Unit
 	var skill: Skill
 	var skill_highlight: Node2D = null
 
 
-export(PackedScene) var skill_highlight_packed_scene: PackedScene
+@export var skill_highlight_packed_scene: PackedScene
 
 # Only enemies use delayed skills so it's fine to just use one color
-export(Color) var cell_highlight_color
+@export var cell_highlight_color: Color
 
 
 # Array<HighlightedSkill>
@@ -18,7 +18,7 @@ var _highlighted_skills: Array = []
 
 
 func highlight(unit: Unit, skill: Skill, target_cells: Array) -> void:
-	var skill_highlight: Node2D = skill_highlight_packed_scene.instance()
+	var skill_highlight: Node2D = skill_highlight_packed_scene.instantiate()
 	
 	add_child(skill_highlight)
 	skill_highlight.show_highlight(target_cells, cell_highlight_color)

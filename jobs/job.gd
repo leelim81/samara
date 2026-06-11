@@ -7,18 +7,18 @@ const _UNLOCK_SKILL_LEVEL_MULTIPLE: int = 10
 
 # Stats
 # Has to be unique (duplicated)
-export(Resource) var stats: Resource = null
+@export var stats: Resource = null
 
 # Array<Skill>
-export(Array, Resource) var skills: Array = []
+@export var skills: Array = [] # (Array, Resource)
 
-export(String) var job_name: String = ""
+@export var job_name: String = ""
 
-export(Texture) var portrait: Texture = null
+@export var portrait: Texture2D = null
 
-export(Texture) var full_portrait: Texture = null
+@export var full_portrait: Texture2D = null
 
-var level: int = 1 setget set_level
+var level: int = 1: set = set_level
 
 
 func get_unlocked_skills(_level: int) -> Array:

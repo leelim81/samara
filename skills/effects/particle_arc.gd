@@ -3,21 +3,21 @@ extends Node2D
 
 signal target_reached
 
-export(float) var trail_velocity_pixels_per_second := 1200.0
-export(float) var displacement_time_seconds := 0.2
+@export var trail_velocity_pixels_per_second := 1200.0
+@export var displacement_time_seconds := 0.2
 
 # If true, the _tween time is fixed and the velocity of the trail will
 # be determined by the _tween automatically.
-export(bool) var is_tween_fixed_time := true
+@export var is_tween_fixed_time := true
 
-export(float) var arc_height := 100.0
+@export var arc_height := 100.0
 
-export(NodePath) var particles_node_path: NodePath
+@export var particles_node_path: NodePath
 
 var _particles: CPUParticles2D
 var _total_tween_time_seconds: float
 
-onready var _tween := $Tween
+@onready var _tween := $Tween
 
 
 func _ready() -> void:
@@ -63,7 +63,7 @@ func _on_Tween_tween_all_completed() -> void:
 	
 	$Timer.start()
 	
-	yield($Timer, "timeout")
+	await $Timer.timeout
 	
 	queue_free()
 

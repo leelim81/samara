@@ -1,4 +1,4 @@
-tool
+@tool
 extends EditorPlugin
 # This plugin loads the chapter list and inspects each battle scene to get the
 # number of enemy types for each weapon type and the total number of enemy
@@ -29,7 +29,7 @@ func build() -> bool:
 			
 			continue
 		
-		var battle = battle_packed_scene.instance()
+		var battle = battle_packed_scene.instantiate()
 		
 		var enemy_phases: Node2D = battle.get_node("Board/EnemyPhases")
 		

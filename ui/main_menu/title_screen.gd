@@ -1,13 +1,13 @@
 extends StackBasedMenuScreen
 
 
-export(String, FILE, "*.tscn") var settings_scene: String
-export(String, FILE, "*.tscn") var credits_scene: String
+@export var settings_scene: String # (String, FILE, "*.tscn")
+@export var credits_scene: String # (String, FILE, "*.tscn")
 
 var _last_active_button: Button = null
 
-onready var _quit_button: Button = $MarginContainer/VBoxContainer2/VBoxContainer/QuitButton
-onready var _start_button: Button = $MarginContainer/VBoxContainer2/VBoxContainer/StartButton
+@onready var _quit_button: Button = $MarginContainer/VBoxContainer2/VBoxContainer/QuitButton
+@onready var _start_button: Button = $MarginContainer/VBoxContainer2/VBoxContainer/StartButton
 
 
 func _ready() -> void:
@@ -20,7 +20,7 @@ func _ready() -> void:
 
 
 func on_load() -> void:
-	.on_load()
+	super.on_load()
 	
 	_set_focus()
 
@@ -35,7 +35,7 @@ func _set_focus() -> void:
 
 
 func _on_StartButton_pressed() -> void:
-	change_scene("res://ui/pre_battle_menu/stack_based_pre_battle_menu.tscn")
+	change_scene_to_file("res://ui/pre_battle_menu/stack_based_pre_battle_menu.tscn")
 
 
 func _on_ContinueButton_pressed() -> void:
