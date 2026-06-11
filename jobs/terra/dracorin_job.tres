@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=6 format=2]
+
+[ext_resource path="res://jobs/job.gd" type="Script" id=1]
+[ext_resource path="res://stats/terra/dracorin_stats.tres" type="Resource" id=2]
+[ext_resource path="res://assets/terra/tokens/dracorin_token.png" type="Texture2D" id=3]
+[ext_resource path="res://assets/terra/full/dracorin_full.png" type="Texture2D" id=4]
+[ext_resource path="res://skills/resources/terra/thunder_arrows.tres" type="Resource" id=5]
+
+[resource]
+script = ExtResource( 1 )
+stats = ExtResource( 2 )
+skills = [ ExtResource( 5 ) ]
+job_name = "DRACORIN"
+portrait = ExtResource( 3 )
+full_portrait = ExtResource( 4 )

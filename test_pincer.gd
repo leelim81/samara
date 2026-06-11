@@ -10,7 +10,7 @@ func _initialize() -> void:
 
 
 func _run() -> void:
-	var battle = (load("res://battles/tutorial/tutorial.tscn") as PackedScene).instantiate()
+	var battle = (load("res://battles/terra/borderlands.tscn") as PackedScene).instantiate()
 
 	root.add_child(battle)
 

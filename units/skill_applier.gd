@@ -2,10 +2,15 @@ extends Node
 
 
 const WEAPON_ADVANTAGE: float = 2.0
-const WEAPON_DISADVANTAGE: float = 0.8
+const WEAPON_DISADVANTAGE: float = 1.0
 
-const PHYSICAL_DAMAGE_MODIFIER: float = 1.57
-const STAFF_DAMAGE_MODIFIER: float = 1.57
+# Terra Battle damage model:
+# physical = 1.395 * power * ATK^1.7 / DEF^0.7
+# magical  = 1.5   * power * MATK^1.7 / MDEF^0.7
+const PHYSICAL_DAMAGE_MODIFIER: float = 1.395
+const STAFF_DAMAGE_MODIFIER: float = 1.5
+const ATTACK_EXPONENT: float = 1.7
+const DEFENSE_EXPONENT: float = 0.7
 
 
 @export var target_unit_path: NodePath
@@ -92,16 +97,20 @@ func calculate_damage(attacker_stats: Stats,
 			weapon_type: int,
 			attribute: int) -> int:
 	var damage: float = 0
-	
+
 	if weapon_type == Enums.WeaponType.STAFF:
-		damage = STAFF_DAMAGE_MODIFIER * power * attacker_stats.attack * attacker_stats.attack / float(defender_stats.defense)
-		
+		damage = STAFF_DAMAGE_MODIFIER * power \
+				* pow(attacker_stats.spiritual_attack, ATTACK_EXPONENT) \
+				/ pow(max(1.0, defender_stats.spiritual_defense), DEFENSE_EXPONENT)
+
 		damage = damage * (1 - _get_attribute_resistance(defender_stats, attribute, defender_stats.attribute))
 	else:
-		damage = PHYSICAL_DAMAGE_MODIFIER * power * attacker_stats.attack * attacker_stats.attack / float(defender_stats.defense)
-		
+		damage = PHYSICAL_DAMAGE_MODIFIER * power \
+				* pow(attacker_stats.attack, ATTACK_EXPONENT) \
+				/ pow(max(1.0, defender_stats.defense), DEFENSE_EXPONENT)
+
 		damage = damage * _get_weapon_type_advantage(weapon_type, defender_stats.weapon_type)
-	
+
 	return int(damage)
 
 
