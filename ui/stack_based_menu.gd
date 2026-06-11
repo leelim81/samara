@@ -13,7 +13,7 @@ var _screens := []
 
 
 func _ready() -> void:
-	_loading_screen_instance = loading_screen.instance()
+	_loading_screen_instance = loading_screen.instantiate()
 	
 	var root_screen = get_node(root_screen_node_path)
 	var _error = root_screen.connect("navigation_requested", Callable(self, "_on_StackBasedMenu_navigate"))

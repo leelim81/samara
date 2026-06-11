@@ -103,7 +103,6 @@ offset_right = 620.0
 offset_bottom = 73.0
 custom_minimum_size = Vector2( 240, 0 )
 text = "English"
-items = [ "English", null, false, 0, null, "Español", null, false, 1, null ]
 selected = 0
 script = ExtResource( 3 )
 

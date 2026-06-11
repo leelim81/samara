@@ -8,8 +8,14 @@ signal drag_mode_changed(drag_mode)
 
 
 func _ready() -> void:
+	# Items are built in code: the Godot 3 scene "items" property is not
+	# understood by Godot 4's OptionButton.
+	clear()
+	add_icon_item(preload("res://assets/ui/click.png"), "CLICK", CLICK_MODE_INDEX)
+	add_icon_item(preload("res://assets/ui/drag.png"), "HOLD", HOLD_MODE_INDEX)
+
 	var save_data: SaveData = GameData.save_data
-	
+
 	if save_data.drag_mode == Enums.DragMode.CLICK:
 		select(CLICK_MODE_INDEX)
 	else:
