@@ -9,202 +9,6 @@
 
 config_version=5
 
-_global_script_classes=[ {
-"base": "Node",
-"class": "Action",
-"language": "GDScript",
-"path": "res://units/ai/action.gd"
-}, {
-"base": "Line2D",
-"class": "AntialiasedLine2D",
-"language": "GDScript",
-"path": "res://addons/antialiased_line2d/antialiased_line2d.gd"
-}, {
-"base": "Polygon2D",
-"class": "AntialiasedPolygon2D",
-"language": "GDScript",
-"path": "res://addons/antialiased_line2d/antialiased_polygon2d.gd"
-}, {
-"base": "Polygon2D",
-"class": "AntialiasedRegularPolygon2D",
-"language": "GDScript",
-"path": "res://addons/antialiased_line2d/antialiased_regular_polygon2d.gd"
-}, {
-"base": "Reference",
-"class": "Attack",
-"language": "GDScript",
-"path": "res://board/attack.gd"
-}, {
-"base": "Node2D",
-"class": "Attacker",
-"language": "GDScript",
-"path": "res://board/attacker.gd"
-}, {
-"base": "Button",
-"class": "AudioButton",
-"language": "GDScript",
-"path": "res://ui/audio_button.gd"
-}, {
-"base": "Resource",
-"class": "BattleInfo",
-"language": "GDScript",
-"path": "res://chapter_data/battle_info.gd"
-}, {
-"base": "Node2D",
-"class": "Board",
-"language": "GDScript",
-"path": "res://board/board.gd"
-}, {
-"base": "Reference",
-"class": "BoardUtils",
-"language": "GDScript",
-"path": "res://board/board_utils.gd"
-}, {
-"base": "Area2D",
-"class": "Cell",
-"language": "GDScript",
-"path": "res://board/cell.gd"
-}, {
-"base": "Resource",
-"class": "ChapterData",
-"language": "GDScript",
-"path": "res://chapter_data/chapter_data.gd"
-}, {
-"base": "Resource",
-"class": "ChapterList",
-"language": "GDScript",
-"path": "res://chapter_data/chapter_list.gd"
-}, {
-"base": "Node",
-"class": "ChapterSaveData",
-"language": "GDScript",
-"path": "res://save_data/chapter_save_data.gd"
-}, {
-"base": "Control",
-"class": "DialogueCutscene",
-"language": "GDScript",
-"path": "res://ui/cutscenes/dialogue_cutscene.gd"
-}, {
-"base": "Unit",
-"class": "Enemy",
-"language": "GDScript",
-"path": "res://units/enemy.gd"
-}, {
-"base": "Node2D",
-"class": "Grid",
-"language": "GDScript",
-"path": "res://board/grid.gd"
-}, {
-"base": "Resource",
-"class": "Job",
-"language": "GDScript",
-"path": "res://jobs/job.gd"
-}, {
-"base": "Reference",
-"class": "Pincer",
-"language": "GDScript",
-"path": "res://board/pincer.gd"
-}, {
-"base": "Node",
-"class": "Pincerer",
-"language": "GDScript",
-"path": "res://board/pincerer.gd"
-}, {
-"base": "Reference",
-"class": "PossiblePincer",
-"language": "GDScript",
-"path": "res://units/ai/possible_pincer.gd"
-}, {
-"base": "Node",
-"class": "Pusher",
-"language": "GDScript",
-"path": "res://board/pusher.gd"
-}, {
-"base": "Resource",
-"class": "SaveData",
-"language": "GDScript",
-"path": "res://save_data/save_data.gd"
-}, {
-"base": "Resource",
-"class": "Skill",
-"language": "GDScript",
-"path": "res://skills/skill.gd"
-}, {
-"base": "Node2D",
-"class": "SkillEffect",
-"language": "GDScript",
-"path": "res://skills/effects/skill_effect.gd"
-}, {
-"base": "Control",
-"class": "StackBasedMenuScreen",
-"language": "GDScript",
-"path": "res://ui/stack_based_menu_screen.gd"
-}, {
-"base": "Resource",
-"class": "Stats",
-"language": "GDScript",
-"path": "res://stats/stats.gd"
-}, {
-"base": "StatusEffect",
-"class": "StatsModifier",
-"language": "GDScript",
-"path": "res://status_effects/stats_modifiers/stats_modifier.gd"
-}, {
-"base": "Resource",
-"class": "StatusEffect",
-"language": "GDScript",
-"path": "res://status_effects/status_effect.gd"
-}, {
-"base": "Reference",
-"class": "SupportDialogueData",
-"language": "GDScript",
-"path": "res://ui/cutscenes/support_dialogue_data.gd"
-}, {
-"base": "Node2D",
-"class": "Trap",
-"language": "GDScript",
-"path": "res://board/trap.gd"
-}, {
-"base": "KinematicBody2D",
-"class": "Unit",
-"language": "GDScript",
-"path": "res://units/unit.gd"
-} ]
-_global_script_class_icons={
-"Action": "",
-"AntialiasedLine2D": "res://addons/antialiased_line2d/antialiased_line2d.svg",
-"AntialiasedPolygon2D": "res://addons/antialiased_line2d/antialiased_polygon2d.svg",
-"AntialiasedRegularPolygon2D": "res://addons/antialiased_line2d/antialiased_regular_polygon2d.svg",
-"Attack": "",
-"Attacker": "",
-"AudioButton": "",
-"BattleInfo": "",
-"Board": "",
-"BoardUtils": "",
-"Cell": "",
-"ChapterData": "",
-"ChapterList": "",
-"ChapterSaveData": "",
-"DialogueCutscene": "",
-"Enemy": "",
-"Grid": "",
-"Job": "",
-"Pincer": "",
-"Pincerer": "",
-"PossiblePincer": "",
-"Pusher": "",
-"SaveData": "",
-"Skill": "",
-"SkillEffect": "",
-"StackBasedMenuScreen": "",
-"Stats": "",
-"StatsModifier": "",
-"StatusEffect": "",
-"SupportDialogueData": "",
-"Trap": "",
-"Unit": ""
-}
-
 [application]
 
 config/name="Genso Battle"
@@ -232,7 +36,7 @@ window/size/viewport_width=720
 window/size/viewport_height=960
 window/dpi/allow_hidpi=true
 window/handheld/orientation="portrait"
-window/stretch/mode="2d"
+window/stretch/mode="canvas_items"
 window/stretch/aspect="keep"
 
 [editor_plugins]
@@ -269,15 +73,9 @@ translations=PackedStringArray( "res://text/text.en.translation", "res://text/te
 
 limits/debugger/max_chars_per_second=10000
 
-[physics]
-
-common/enable_pause_aware_picking=true
-
 [rendering]
 
-quality/driver/driver_name="GLES2"
-quality/intended_usage/framebuffer_allocation=0
-quality/intended_usage/framebuffer_allocation.mobile=0
-vram_compression/import_etc=true
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_etc2_astc=false
 environment/defaults/default_environment="res://default_env.tres"
