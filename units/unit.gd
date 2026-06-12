@@ -184,12 +184,28 @@ func _physics_process(_delta: float) -> void:
 
 func appear() -> void:
 	disable_selection_area()
-	
+
 	disable_swap_area()
-	
+
 	$Sound/AppearAudio.play()
-	
+
 	$AnimationPlayer.play("appear")
+
+	play_spawn_zoom()
+
+
+# Character art starts oversized and settles into the tile while the token
+# fades in — Terra Battle's spawn stamp.
+func play_spawn_zoom() -> void:
+	if _icon_tween != null:
+		_icon_tween.kill()
+
+	_icon.scale = Vector2(1.45, 1.45)
+
+	_icon_tween = create_tween()
+	_icon_tween.tween_property(_icon, "scale", Vector2.ONE, 0.6) \
+			.set_trans(Tween.TRANS_CUBIC) \
+			.set_ease(Tween.EASE_OUT)
 
 
 func hide_name() -> void:

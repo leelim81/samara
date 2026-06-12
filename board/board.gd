@@ -281,8 +281,11 @@ func _make_player_units_appear() -> void:
 		return
 	else:
 		_player_units_node.show()
-		
+
 		_player_units_node.modulate = Color.TRANSPARENT
+
+		for unit in _player_units_node.get_children():
+			unit.play_spawn_zoom()
 
 		var appear_tween := create_tween()
 		appear_tween.tween_property(_player_units_node, "modulate", Color.WHITE, 0.5)

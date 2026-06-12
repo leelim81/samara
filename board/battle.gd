@@ -33,18 +33,33 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	var percentage_left = _progress_bar.max_value * _timer.time_left / _timer.wait_time
-	
+
 	_progress_bar.value = percentage_left
+
+	# Bar turns red as the move timer runs out
+	var urgency: float = clampf(percentage_left / _progress_bar.max_value / 0.35, 0.0, 1.0)
+
+	_progress_bar.tint_progress = Color(1.0, 0.38, 0.32).lerp(Color.WHITE, urgency)
 
 
 func on_instance(data: Object) -> void:
 	assert(data is ChapterData)
-	
+
 	chapter_data = data
 
 
 func _update_turn_count() -> void:
-	$CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer2/TurnCountLabel.text = "%d" % _player_turn_count
+	var label: Label = $CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer2/TurnCountLabel
+
+	label.text = "%d" % _player_turn_count
+
+	label.pivot_offset = label.size / 2.0
+	label.scale = Vector2(1.35, 1.35)
+
+	var pop_tween := create_tween()
+	pop_tween.tween_property(label, "scale", Vector2.ONE, 0.35) \
+			.set_trans(Tween.TRANS_BACK) \
+			.set_ease(Tween.EASE_OUT)
 
 
 ## Signals
@@ -73,6 +88,7 @@ func _on_Board_drag_timer_reset() -> void:
 	_progress_tween = create_tween()
 	_progress_tween.tween_property(_progress_bar, "value", _progress_bar.max_value, 0.5) \
 			.set_trans(Tween.TRANS_LINEAR)
+	_progress_tween.parallel().tween_property(_progress_bar, "tint_progress", Color.WHITE, 0.5)
 
 
 func _on_Board_player_turn_started() -> void:

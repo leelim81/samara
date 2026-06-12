@@ -213,9 +213,26 @@ func release() -> void:
 
 
 func set_turn_counter(value: int) -> void:
+	var changed: bool = value != turn_counter
+
 	turn_counter = value
-	
-	$Control/Container/TurnCount.text = str(turn_counter)
+
+	var label: Label = $Control/Container/TurnCount
+
+	label.text = str(turn_counter)
+
+	# Red warning once this enemy is about to act
+	label.self_modulate = Color(1.0, 0.42, 0.38) if turn_counter <= 1 else Color.WHITE
+
+	# Tick pop so the countdown change catches the eye
+	if changed and is_inside_tree():
+		label.pivot_offset = label.size / 2.0
+		label.scale = Vector2(1.5, 1.5)
+
+		var tick_tween := create_tween()
+		tick_tween.tween_property(label, "scale", Vector2.ONE, 0.3) \
+				.set_trans(Tween.TRANS_BACK) \
+				.set_ease(Tween.EASE_OUT)
 
 
 func emit_action_done() -> void:
