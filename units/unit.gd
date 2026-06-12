@@ -69,6 +69,9 @@ var _has_entered_cell: bool = false
 
 @onready var _is2x2: bool = (size == Size.DOUBLE_2X2)
 
+# Captured before _clip_icon_to_tile() reparents it under the clip mask
+@onready var _icon: Sprite2D = $Sprite2D/Icon
+
 var _position_tween: Tween
 var _scale_tween: Tween
 var _lunge_tween: Tween
@@ -87,8 +90,28 @@ func _ready() -> void:
 
 	_pin_overlay_layout()
 
+	_clip_icon_to_tile()
+
 	if not is_click_to_drag:
 		set_process_input(false)
+
+
+# Clips the character art to the rounded tile background so portraits and
+# wing sprites can't spill past the border. Built at runtime so the many
+# scenes overriding Sprite2D/Icon by path keep working; the glow halo and
+# border stay unclipped siblings.
+func _clip_icon_to_tile() -> void:
+	var mask := Sprite2D.new()
+
+	mask.name = "IconMask"
+	mask.texture = _sprite.texture
+	mask.clip_children = CanvasItem.CLIP_CHILDREN_ONLY
+
+	_sprite.add_child(mask)
+	_sprite.move_child(mask, _icon.get_index())
+
+	_sprite.remove_child(_icon)
+	mask.add_child(_icon)
 
 
 # The web export's binary scene conversion mangles Control offsets on
@@ -113,16 +136,17 @@ func _pin_overlay_layout() -> void:
 	hp_bar.anchor_right = 0.0
 	hp_bar.anchor_bottom = 1.0
 
+	# Inset past the border ring and its rounded corners
 	if is2x2():
-		hp_bar.offset_left = 4.0
-		hp_bar.offset_top = 85.0
-		hp_bar.offset_right = 192.0
-		hp_bar.offset_bottom = 90.0
+		hp_bar.offset_left = 10.0
+		hp_bar.offset_top = 84.0
+		hp_bar.offset_right = 188.0
+		hp_bar.offset_bottom = 89.0
 	else:
-		hp_bar.offset_left = 3.0
-		hp_bar.offset_top = -13.0
-		hp_bar.offset_right = 94.0
-		hp_bar.offset_bottom = -8.0
+		hp_bar.offset_left = 10.0
+		hp_bar.offset_top = -16.0
+		hp_bar.offset_right = 87.0
+		hp_bar.offset_bottom = -11.0
 
 	var container: Control = $Control/Container
 
@@ -311,8 +335,8 @@ func release() -> void:
 
 func _load_job_textures() -> void:
 	$CanvasLayer/Control/WeaponType.texture = load(Enums.WEAPON_TYPE_TEXTURES[$Job.job.stats.weapon_type])
-	$Sprite2D/Icon.texture = $Job.job.portrait
-	
+	_icon.texture = $Job.job.portrait
+
 	$CanvasLayer/UnitName.text = tr($Job.job.job_name)
 
 
@@ -506,18 +530,16 @@ func play_attack_lunge(target_global_position: Vector2) -> void:
 # Quick zoom punch of the character art inside the tile when this unit
 # strikes — the Terra Battle attack tell.
 func play_attack_zoom() -> void:
-	var icon: Sprite2D = $Sprite2D/Icon
-
 	if _icon_tween != null:
 		_icon_tween.kill()
 
-	icon.scale = Vector2.ONE
+	_icon.scale = Vector2.ONE
 
 	_icon_tween = create_tween()
-	_icon_tween.tween_property(icon, "scale", Vector2(1.16, 1.16), 0.07) \
+	_icon_tween.tween_property(_icon, "scale", Vector2(1.16, 1.16), 0.07) \
 			.set_trans(Tween.TRANS_QUAD) \
 			.set_ease(Tween.EASE_OUT)
-	_icon_tween.tween_property(icon, "scale", Vector2.ONE, 0.24) \
+	_icon_tween.tween_property(_icon, "scale", Vector2.ONE, 0.24) \
 			.set_trans(Tween.TRANS_CUBIC) \
 			.set_ease(Tween.EASE_IN_OUT)
 

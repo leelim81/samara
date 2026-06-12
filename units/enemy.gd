@@ -35,6 +35,8 @@ func _ready() -> void:
 
 	_pin_overlay_layout()
 
+	_clip_icon_to_tile()
+
 	apply_equip_skills()
 
 

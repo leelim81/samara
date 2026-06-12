@@ -41,10 +41,10 @@ position = Vector2( 47.5, 47.5 )
 shape = SubResource( 3 )
 
 [node name="HpBar" parent="Control" index="0"]
-offset_left = 4.0
-offset_top = 85.0
-offset_right = 192.0
-offset_bottom = 90.0
+offset_left = 10.0
+offset_top = 84.0
+offset_right = 188.0
+offset_bottom = 89.0
 nine_patch_stretch = true
 
 [node name="CanvasLayer" parent="." index="10"]

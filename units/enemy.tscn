@@ -59,10 +59,10 @@ theme = ExtResource( 10 )
 [node name="HpBar" parent="Control" index="0"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 3.0
-offset_top = -13.0
-offset_right = 94.0
-offset_bottom = -8.0
+offset_left = 10.0
+offset_top = -16.0
+offset_right = 87.0
+offset_bottom = -11.0
 texture_progress = ExtResource( 4 )
 
 [node name="Container" parent="Control" index="2"]
