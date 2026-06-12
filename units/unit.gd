@@ -216,6 +216,15 @@ func play_death_animation() -> void:
 	$AnimationPlayer.play("death")
 	$Sound/DeathAudio.play()
 
+	# Fallen allies and bosses get a somber cut-in; rank-and-file deaths
+	# keep just the dissolve so chains stay fast
+	if is_player() or is2x2():
+		Events.emit_signal("cutin_requested",
+				[get_full_art()],
+				tr($Job.job.job_name),
+				is_player(),
+				Color(0.62, 0.5, 0.5))
+
 	var death_effect: Node2D = death_effect_packed_scene.instantiate()
 
 	add_child_at_offset(death_effect)
@@ -601,8 +610,25 @@ func activate_skills() -> Array:
 func play_skill_activation_animation(activated_skills: Array, layer_z_index: int) -> void:
 	$CanvasLayer/ActivatedSkillMarginContainer.play(activated_skills, position)
 	$CanvasLayer.z_index = layer_z_index
-	
+
 	$Sound/SkillActivationAudio.play()
+
+	if not activated_skills.is_empty():
+		Events.emit_signal("cutin_requested",
+				[get_full_art()],
+				tr(activated_skills.front().skill_name),
+				is_player(),
+				Color.WHITE)
+
+
+# Full-body illustration for cut-ins, falling back to the tile art
+func get_full_art() -> Texture2D:
+	var job: Job = get_job()
+
+	if job != null and job.full_portrait != null:
+		return job.full_portrait
+
+	return _icon.texture
 
 
 func apply_skill(unit: Unit, skill: Skill, on_damage_absorbed_callback: Callable) -> void:

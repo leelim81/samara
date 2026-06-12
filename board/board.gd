@@ -711,11 +711,13 @@ func _execute_pincers(unit: Unit) -> void:
 		var pincer: Pincer = _pincer_queue.pop_front()
 		
 		$Pincerer.find_chains(_grid, pincer)
-		
+
 		if not pincer.is_valid():
 			continue
-		
+
 		print("Evaluating pincer")
+
+		_show_chain_cutin(pincer)
 		
 		if _current_turn == Turn.ENEMY:
 			_set_turn_counter_of_pincering_units(unit, pincer)
@@ -759,6 +761,27 @@ func _execute_pincers(unit: Unit) -> void:
 		_start_enemy_turn()
 	else:
 		_update_enemy()
+
+
+# Dual cut-in of the flanking pair when allies chain into a pincer
+func _show_chain_cutin(pincer: Pincer) -> void:
+	if _current_turn != Turn.PLAYER:
+		return
+
+	var chained_count := 0
+
+	for chains in pincer.chain_families.values():
+		for chain in chains:
+			chained_count += chain.size()
+
+	if chained_count == 0 or pincer.pincering_units.size() < 2:
+		return
+
+	Events.emit_signal("cutin_requested",
+			[pincer.pincering_units[0].get_full_art(), pincer.pincering_units[1].get_full_art()],
+			"%s ×%d" % [tr("CHAIN"), 2 + chained_count],
+			true,
+			Color.WHITE)
 
 
 func _set_turn_counter_of_pincering_units(unit: Unit, pincer: Pincer) -> void:
