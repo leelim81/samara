@@ -11,5 +11,6 @@ func _on_Job_health_changed(current_health: int, max_health: int) -> void:
 		_tween.kill()
 
 	_tween = create_tween()
-	_tween.tween_property(self, "value", next_value, 0.25) \
-			.set_trans(Tween.TRANS_LINEAR)
+	_tween.tween_property(self, "value", next_value, 0.35) \
+			.set_trans(Tween.TRANS_CUBIC) \
+			.set_ease(Tween.EASE_OUT)

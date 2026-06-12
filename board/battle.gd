@@ -84,24 +84,29 @@ func _on_Board_player_turn_started() -> void:
 func _on_Board_victory() -> void:
 	if _is_battle_finished:
 		return
-	
+
 	_is_battle_finished = true
-	
+
 	$CanvasLayer/VictoryScreen.initialize(_total_drag_time_seconds, _player_turn_count)
-	$CanvasLayer/VictoryScreen.focus_default_button()
-	
+
+	# Let the last death dissolve finish before the banner drops
+	await get_tree().create_timer(0.8).timeout
+
 	$CanvasLayer/VictoryScreen.show()
+	$CanvasLayer/VictoryScreen.focus_default_button()
 
 
 func _on_Board_defeat() -> void:
 	if _is_battle_finished:
 		return
-	
+
 	_is_battle_finished = true
-	
+
+	await get_tree().create_timer(0.6).timeout
+
 	$CanvasLayer/DefeatScreen.show()
 	$CanvasLayer/DefeatScreen.focus_default_button()
-	
+
 	$BattleTheme.stop()
 
 

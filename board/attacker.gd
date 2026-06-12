@@ -3,13 +3,17 @@ extends Node2D
 
 signal attack_phase_finished
 
+# Seconds from lunge start to the hit landing (sound, flash, damage)
+const LUNGE_IMPACT_DELAY_SECONDS := 0.08
+
+# Seconds after impact before the next unit in the chain attacks
+const ATTACK_FOLLOW_THROUGH_SECONDS := 0.22
+
 @export var attack_effect_packed_scene: PackedScene = null
 
 # Array<Attack>
 var _attack_queue: Array = []
 var _random := RandomNumberGenerator.new()
-
-@onready var timer: Timer = $Timer
 
 
 func _ready() -> void:
@@ -18,12 +22,10 @@ func _ready() -> void:
 
 func start(pincer: Pincer) -> void:
 	_attack_queue = _queue_attacks(pincer)
-	
+
 	_filter_attacks(_attack_queue)
-	
-	_execute_next_attack()
-	
-	timer.start()
+
+	_run_attack_sequence()
 
 
 func _queue_attacks(pincer: Pincer) -> Array:
@@ -71,30 +73,50 @@ func _filter_attacks(attacks: Array) -> void:
 		attack.targeted_units = filtered_targeted_units
 
 
-func _execute_next_attack() -> void:
-	var attack = _attack_queue.pop_front()
-	
-	if attack != null:
+# Plays the whole pincer attack chain: each attacker lunges at its target,
+# the hit lands mid-lunge, and the next chain member follows right after.
+func _run_attack_sequence() -> void:
+	while not _attack_queue.is_empty():
+		var attack: Attack = _attack_queue.pop_front()
+
+		if attack.targeted_units.is_empty():
+			continue
+
+		if attack.attacking_unit.is_alive():
+			attack.attacking_unit.play_attack_lunge(_get_attack_focus(attack))
+
+		await get_tree().create_timer(LUNGE_IMPACT_DELAY_SECONDS).timeout
+
 		_execute_attack(attack)
-	else:
-		timer.stop()
-		
-		call_deferred("emit_signal", "attack_phase_finished")
+
+		await get_tree().create_timer(ATTACK_FOLLOW_THROUGH_SECONDS).timeout
+
+	call_deferred("emit_signal", "attack_phase_finished")
+
+
+# Point the lunge at the center of everything this attack hits
+func _get_attack_focus(attack: Attack) -> Vector2:
+	var focus := Vector2.ZERO
+
+	for targeted_unit in attack.targeted_units:
+		focus += targeted_unit.global_position
+
+	return focus / attack.targeted_units.size()
 
 
 func _execute_attack(attack: Attack) -> void:
 	_play_sound(attack.pincering_unit.get_stats().weapon_type)
-	
+
 	for targeted_unit in attack.targeted_units:
 		var damage: int = targeted_unit.calculate_attack_damage(attack.pincering_unit.get_stats()) * _random.randf_range(0.9, 1.1)
-		
+
 		var attack_effect: Node2D = attack_effect_packed_scene.instantiate()
 		add_child(attack_effect)
-		
+
 		attack_effect.position = targeted_unit.get_offset_origin()
-		
+
 		targeted_unit.inflict_damage(damage)
-		
+
 		targeted_unit.on_attacked()
 
 
@@ -105,7 +127,7 @@ func _play_sound(weapon_type: int) -> void:
 		$BackupAudio.stream = audio_stream_player.stream
 		$BackupAudio.volume_db = audio_stream_player.volume_db
 		audio_stream_player = $BackupAudio
-	
+
 	audio_stream_player.play()
 
 
@@ -119,7 +141,3 @@ func _get_audio_stream_player(weapon_type: int) -> Node:
 			return $SpearAudio
 		_:
 			return $StaffAudio
-
-
-func _on_Timer_timeout() -> void:
-	_execute_next_attack()

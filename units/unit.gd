@@ -36,8 +36,8 @@ signal selected_for_view(unit)
 @export var size: Size = Size.SINGLE_1X1
 
 @export var velocity_pixels_per_second: float = 15.0
-@export var snap_velocity_pixels_per_second: float = 200.0
-@export var swap_velocity_pixels_per_second: float = 500.0
+@export var snap_velocity_pixels_per_second: float = 420.0
+@export var swap_velocity_pixels_per_second: float = 800.0
 
 # Max velocity when dragging the unit. It can't be too fast or the unit
 # will tunnel through cells and other units.
@@ -71,7 +71,8 @@ var _has_entered_cell: bool = false
 
 var _position_tween: Tween
 var _scale_tween: Tween
-var _rotation_tween: Tween
+var _lunge_tween: Tween
+var _flash_tween: Tween
 
 @onready var _sprite := $Sprite2D
 
@@ -119,9 +120,9 @@ func hide_name() -> void:
 func play_death_animation() -> void:
 	$AnimationPlayer.play("death")
 	$Sound/DeathAudio.play()
-	
+
 	var death_effect: Node2D = death_effect_packed_scene.instantiate()
-	
+
 	add_child_at_offset(death_effect)
 	death_effect.play()
 	
@@ -166,26 +167,17 @@ func stop_scale_up_and_down_animation() -> void:
 	_tween_sprite_scale(Vector2.ONE, 0.15, Tween.TRANS_LINEAR)
 
 
+# Displaced units dart out of the way with a quick ease-out slide.
 func move_to_new_cell(target_position: Vector2) -> void:
 	var tween_time_seconds: float = Utils.calculate_time(position, target_position, swap_velocity_pixels_per_second)
 
-	_start_position_tween(target_position, tween_time_seconds)
+	_start_position_tween(target_position, tween_time_seconds, Tween.TRANS_CUBIC, Tween.EASE_OUT)
 
 	self.current_state = STATE.SWAPPING
 
 
 func push_to_cell(target_position: Vector2) -> void:
 	move_to_new_cell(target_position)
-
-	var tween_time_seconds: float = Utils.calculate_time(position, target_position, swap_velocity_pixels_per_second)
-
-	if _rotation_tween != null:
-		_rotation_tween.kill()
-
-	_rotation_tween = create_tween()
-	_rotation_tween.tween_property($Sprite2D, "rotation", 2 * PI, tween_time_seconds) \
-			.from(0.0) \
-			.set_trans(Tween.TRANS_SINE)
 
 	Utils.disable_object($CollisionShape2D)
 
@@ -233,7 +225,7 @@ func snap_to_grid(cell_origin: Vector2) -> void:
 
 	var tween_time_seconds: float = Utils.calculate_time(position, cell_origin, snap_velocity_pixels_per_second)
 
-	_start_position_tween(cell_origin, tween_time_seconds)
+	_start_position_tween(cell_origin, tween_time_seconds, Tween.TRANS_QUAD, Tween.EASE_OUT)
 
 
 func is_picked_up() -> bool:
@@ -326,32 +318,49 @@ func set_current_state(new_state) -> void:
 			$Sound/SwapAudio.play()
 
 
+# Quick pop on pickup, like lifting a piece off the board.
 func _increase_sprite_size() -> void:
-	_tween_sprite_scale(Vector2(1.2, 1.2), 0.25, Tween.TRANS_SINE)
+	_tween_sprite_scale(Vector2(1.18, 1.18), 0.12, Tween.TRANS_BACK, Tween.EASE_OUT)
 
 
 func _restore_sprite_size() -> void:
-	_tween_sprite_scale(Vector2.ONE, 0.25, Tween.TRANS_SINE)
+	_tween_sprite_scale(Vector2.ONE, 0.12, Tween.TRANS_CUBIC, Tween.EASE_OUT)
 
 
-func _tween_sprite_scale(target_scale: Vector2, duration_seconds: float, transition: Tween.TransitionType) -> void:
+# Squash-and-settle pulse played when a unit lands on its cell.
+func play_settle_animation() -> void:
+	if _scale_tween != null:
+		_scale_tween.kill()
+
+	_scale_tween = create_tween()
+	_scale_tween.tween_property(_sprite, "scale", Vector2(1.08, 0.92), 0.06) \
+			.set_trans(Tween.TRANS_QUAD) \
+			.set_ease(Tween.EASE_OUT)
+	_scale_tween.tween_property(_sprite, "scale", Vector2.ONE, 0.12) \
+			.set_trans(Tween.TRANS_BACK) \
+			.set_ease(Tween.EASE_OUT)
+
+
+func _tween_sprite_scale(target_scale: Vector2, duration_seconds: float, transition: Tween.TransitionType, easing: Tween.EaseType = Tween.EASE_IN_OUT) -> void:
 	if _scale_tween != null:
 		_scale_tween.kill()
 
 	_scale_tween = create_tween()
 	_scale_tween.tween_property(_sprite, "scale", target_scale, duration_seconds) \
-			.set_trans(transition)
+			.set_trans(transition) \
+			.set_ease(easing)
 
 
 # Tweens this unit's position, killing any previous position tween. The
 # finished callback drives the snap/swap state transitions.
-func _start_position_tween(target_position: Vector2, duration_seconds: float, transition: Tween.TransitionType = Tween.TRANS_SINE) -> void:
+func _start_position_tween(target_position: Vector2, duration_seconds: float, transition: Tween.TransitionType = Tween.TRANS_SINE, easing: Tween.EaseType = Tween.EASE_IN_OUT) -> void:
 	if _position_tween != null:
 		_position_tween.kill()
 
 	_position_tween = create_tween()
 	_position_tween.tween_property(self, "position", target_position, duration_seconds) \
-			.set_trans(transition)
+			.set_trans(transition) \
+			.set_ease(easing)
 
 	_position_tween.finished.connect(_on_position_tween_finished)
 
@@ -412,15 +421,53 @@ func calculate_attack_damage(attacker_stats: Stats) -> int:
 
 func inflict_damage(damage: int) -> void:
 	$Job.decrease_health(damage)
-	
+
 	if damage > 0:
 		$AnimationPlayer.play("shake")
-	
+
+		flash_hit()
+
 	var damage_numbers: Node2D = damage_numbers_packed_scene.instantiate()
-	
+
 	add_child_at_offset(damage_numbers)
-	
+
 	damage_numbers.play(damage)
+
+
+# Quick lunge toward an attack target and back; the visual punch of a
+# pincer attack. Only the sprite moves, so cell lookups stay untouched.
+func play_attack_lunge(target_global_position: Vector2) -> void:
+	var direction: Vector2 = (target_global_position - global_position).normalized()
+
+	if _lunge_tween != null:
+		_lunge_tween.kill()
+
+	_lunge_tween = create_tween()
+	_lunge_tween.tween_property(_sprite, "position", direction * 22.0, 0.08) \
+			.set_trans(Tween.TRANS_CUBIC) \
+			.set_ease(Tween.EASE_OUT)
+	_lunge_tween.tween_property(_sprite, "position", Vector2.ZERO, 0.18) \
+			.set_trans(Tween.TRANS_CUBIC) \
+			.set_ease(Tween.EASE_IN_OUT)
+
+
+# Additive white flash over the tile when this unit takes a hit.
+func flash_hit() -> void:
+	var flash: Sprite2D = $Sprite2D/Flash
+
+	# Mirror the tile background so the flash fits 1x1 and 2x2 tiles alike
+	flash.texture = _sprite.texture
+
+	if _flash_tween != null:
+		_flash_tween.kill()
+
+	flash.modulate.a = 0.0
+
+	_flash_tween = create_tween()
+	_flash_tween.tween_property(flash, "modulate:a", 0.85, 0.04)
+	_flash_tween.tween_property(flash, "modulate:a", 0.0, 0.22) \
+			.set_trans(Tween.TRANS_CUBIC) \
+			.set_ease(Tween.EASE_OUT)
 
 
 func activate_skills() -> Array:
@@ -529,9 +576,11 @@ func _death_animation_finished() -> void:
 
 func _on_snap_to_grid() -> void:
 	self.current_state = STATE.IDLE
-	
+
+	play_settle_animation()
+
 	emit_signal("snapped_to_grid", self)
-	
+
 	$Sound/SnapAudio.play()
 
 
@@ -601,15 +650,13 @@ func _on_position_tween_finished() -> void:
 func _on_SelectionArea2D_mouse_entered() -> void:
 	if is_controlled_by_player and current_state == STATE.IDLE and can_act():
 		$Sprite2D/Glow.show()
-		
-		$Sprite2D.scale = Vector2(1.1, 1.1)
+
+		_tween_sprite_scale(Vector2(1.08, 1.08), 0.1, Tween.TRANS_CUBIC, Tween.EASE_OUT)
 
 
 func _on_SelectionArea2D_mouse_exited() -> void:
 	if is_controlled_by_player and current_state == STATE.IDLE and can_act():
-		#$Sprite/Glow.hide()
-		
-		$Sprite2D.scale = Vector2(1, 1)
+		_tween_sprite_scale(Vector2.ONE, 0.1, Tween.TRANS_CUBIC, Tween.EASE_OUT)
 
 
 func _on_LongPressTimer_timeout() -> void:

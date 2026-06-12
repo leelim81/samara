@@ -169,13 +169,17 @@ func execute_action(enemy: Enemy, grid: Grid, allies: Array, enemies: Array, all
 
 func move_after_using_skill(enemy: Enemy, grid: Grid, enemies: Array) -> void:
 	var action_parameters = ActionParameters.new()
-	
+
 	action_parameters.enemy = enemy
 	action_parameters.grid = grid
 	action_parameters.enemies = enemies
-	
+
+	# The skill action that just executed; the evaluator reads its
+	# movement preference (falls back to RANDOM when null)
+	action_parameters.action = _action
+
 	action_parameters.build_navigation_graph()
-	
+
 	_move_to_chosen_cell(action_parameters)
 
 

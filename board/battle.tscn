@@ -326,9 +326,10 @@ one_shot = true
 wait_time = 0.25
 
 [node name="BeforeSkillActivationPhaseFinishesTimer" type="Timer" parent="Board/PincerExecutor"]
+wait_time = 0.6
 
 [node name="DeathAnimationTimer" type="Timer" parent="Board/PincerExecutor"]
-wait_time = 0.5
+wait_time = 0.25
 
 [node name="StatusEffectTimer" type="Timer" parent="Board/PincerExecutor"]
 one_shot = true

@@ -11,9 +11,6 @@
 script = ExtResource( 3 )
 attack_effect_packed_scene = ExtResource( 1 )
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.25
-
 [node name="SwordAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
 volume_db = -2.0
@@ -35,5 +32,3 @@ bus = "Sound effects"
 
 [node name="BackupAudio" type="AudioStreamPlayer" parent="."]
 bus = "Sound effects"
-
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

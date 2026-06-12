@@ -57,9 +57,18 @@ func find_cells(unit: Enemy,
 		
 		results.append(result)
 	
-	_sort_by_preference(action.movement_preference, results)
-	
+	_sort_by_preference(_get_movement_preference(action), results)
+
 	return results
+
+
+# Actions can be null (e.g. moving right after a skill with no follow-up
+# action); treat that as a random wander.
+func _get_movement_preference(action: Action) -> int:
+	if action == null:
+		return Enums.MovementPreference.RANDOM
+
+	return action.movement_preference
 
 
 func find_border_cells(grid: Grid, navigation_graph: Dictionary) -> Array:
@@ -86,10 +95,10 @@ func _evaluate_cell(unit: Enemy,
 					cell: Cell) -> MovementEvaluationResult:
 	
 	var result: MovementEvaluationResult = MovementEvaluationResult.new()
-	
+
 	result.cell = cell
-	
-	match action.movement_preference:
+
+	match _get_movement_preference(action):
 		Enums.MovementPreference.HUG_ENEMIES:
 			result.neighboring_enemies = _count_neighboring_units(unit.faction, cell.neighbors, true)
 		Enums.MovementPreference.HUG_ALLIES:

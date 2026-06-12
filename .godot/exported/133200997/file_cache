@@ -5,7 +5,7 @@ res://assets/fonts/Exo2Regular18.tres::9afafee568b0b34cefb5aa30962012b3::1781188
 res://assets/fonts/Exo2Regular.tres::36e6dd6f09191ed21b61d8f000019db7::1781188476::res://.godot/exported/133200997/export-b703ccb9ef739bd957918f89fbd2c380-Exo2Regular.res
 res://default_bus_layout.tres::6feb3aae10a54b4c54ea013f3b46064f::1781188476::res://.godot/exported/133200997/export-19246414aa9fb561ced4b8dce477acec-default_bus_layout.res
 res://theme.tres::24c3bdc372088c4d7dff62c3ea176e9b::1781223379::res://.godot/exported/133200997/export-1b11a992ebcc6f262e4ee4a4db300a0d-theme.res
-res://units/unit.tscn::867a89002fbc25ff42156ea913c71bb2::1781226417::res://.godot/exported/133200997/export-b7c7498bd5985312ef7f2237b7aeaff9-unit.scn
+res://units/unit.tscn::dd7724676c812cd1a8929bd0a254e06d::1781268859::res://.godot/exported/133200997/export-b7c7498bd5985312ef7f2237b7aeaff9-unit.scn
 res://default_env.tres::a52129f071fffbd20a6013a6c0edec1e::1781188476::res://.godot/exported/133200997/export-7cf3fd67ad9f55210191d77b582b8209-default_env.res
 res://battles/introduction/greaves_of_clay.tscn::35cef8c8052fbe327b1523182043cc21::1781188476::res://.godot/exported/133200997/export-3e280b1055c255ad6cd7b72cbd967b53-greaves_of_clay.scn
 res://battles/terra/borderlands.tscn::f2bc5515940227a83cd8ee6976fb0cc9::1781225459::res://.godot/exported/133200997/export-6fcb1f6894af0a7533062d9604052b24-borderlands.scn
@@ -18,11 +18,11 @@ res://board/highlights/cell_highlight.tscn::5ddfb1acdaaee7e84c1353e6a3f7e584::17
 res://board/highlights/chain_previewer.tscn::c87e49eb5b0cf88d1f5d43867b3541b8::1781188477::res://.godot/exported/133200997/export-d09cf4c7293f4b950dfb3df08c6802bb-chain_previewer.scn
 res://board/highlights/chain_previewer_line2d.tscn::6279d3ef496be4e3caf39837528a1d71::1781188477::res://.godot/exported/133200997/export-1b113f47fd6a383eb02ad2175de2da47-chain_previewer_line2d.scn
 res://board/highlights/delayed_skill_highlighter.tscn::845eeb1a25276b120fdc090b4e13ec56::1781188477::res://.godot/exported/133200997/export-ae943943aa648840500248d49623fb9a-delayed_skill_highlighter.scn
-res://board/highlights/pincer_highlight.tscn::1ac567a84a204e5dcea0a050b2e10017::1781188477::res://.godot/exported/133200997/export-eefbbb42e2a988ee15dbb1435f7873bb-pincer_highlight.scn
+res://board/highlights/pincer_highlight.tscn::d6138ee3d5859a395ba1137bac70fd9b::1781269294::res://.godot/exported/133200997/export-eefbbb42e2a988ee15dbb1435f7873bb-pincer_highlight.scn
 res://board/highlights/skill_highlight.tscn::d09717cacbfbdcf2d09fd81673d4c1de::1781188477::res://.godot/exported/133200997/export-cac8cbf033af4200127872ddf5249f20-skill_highlight.scn
 res://board/highlights/trail2d.tscn::a4dda13419c1d2bb94eb105269ac221a::1781188477::res://.godot/exported/133200997/export-5083e77c9bf075877fbdc5a064b7b1be-trail2d.scn
-res://board/attacker.tscn::e6789e234ff4f3b6ec4a53f127c34baf::1781188477::res://.godot/exported/133200997/export-b84b0efd896669cb451399ba7302f5e7-attacker.scn
-res://board/battle.tscn::b32c1828fff0c90809772fb6626b807c::1781226417::res://.godot/exported/133200997/export-17dae8706ba3621e47ba3e0e0e785bc7-battle.scn
+res://board/attacker.tscn::40181856a7b9cea2d3ea512efd404fd7::1781268859::res://.godot/exported/133200997/export-b84b0efd896669cb451399ba7302f5e7-attacker.scn
+res://board/battle.tscn::016cddafd85eee21b9a8753e2bbf07d6::1781268859::res://.godot/exported/133200997/export-17dae8706ba3621e47ba3e0e0e785bc7-battle.scn
 res://board/cell.tscn::b15ca9d4b7f2e783e1135f5703fd276f::1781188477::res://.godot/exported/133200997/export-c1cd22ec9f82bfbccb44fff70940950c-cell.scn
 res://board/trap.tscn::699a0650d5d2852cc79c8fc5d3789ab4::1781188477::res://.godot/exported/133200997/export-1b1672cc02f0886e234660d537e34d70-trap.scn
 res://chapter_data/terra/borderlands.tres::03f1c16f08a3e5a3ad02d9387b007630::1781225459::res://.godot/exported/133200997/export-c08a1d504c1cb511edf33e9c2d0d8e32-borderlands.res
@@ -196,6 +196,6 @@ res://units/enemies/haniwa_orbling.tscn::6b0f8f252acc2c520b5d9455bac74079::17811
 res://units/enemies/test_enemy.tscn::d18bd46bec95e6a29fa59a9a05c2f954::1781188476::res://.godot/exported/133200997/export-f2dd08103cbb3ae4d8307b710ef2259b-test_enemy.scn
 res://units/enemies/training_orbling.tscn::a7b0059016d24e4e07330407ada34822::1781188476::res://.godot/exported/133200997/export-1d758034ed1aafe5bc810b841800a825-training_orbling.scn
 res://units/ui/activated_skill_margin_container.tscn::1a11dc301c85f339a4a048a85758b2ba::1781188477::res://.godot/exported/133200997/export-655e716e2649fcfea54d7b29814b6c1b-activated_skill_margin_container.scn
-res://units/ui/damage_numbers.tscn::d5b279025e1fe59e8a400b33d5234c78::1781226417::res://.godot/exported/133200997/export-0a9b8c40e9d330022b7ee15e539549f0-damage_numbers.scn
-res://units/ui/death_particles.tscn::a5c18fed456eba05cf0722d8cb9928f7::1781188477::res://.godot/exported/133200997/export-b7945f64ad196d3b8c023daec4d4fa97-death_particles.scn
-res://units/enemy.tscn::e953e4dce70919137fe765709bb76f1f::1781224766::res://.godot/exported/133200997/export-f54d83d198d18fb0db3742a1af0d85ab-enemy.scn
+res://units/ui/damage_numbers.tscn::632b2ebdee51d55e29eca5c81d234b5b::1781268859::res://.godot/exported/133200997/export-0a9b8c40e9d330022b7ee15e539549f0-damage_numbers.scn
+res://units/ui/death_particles.tscn::4cfb4bb0e75d63b7bb8e7bcca7e19147::1781269275::res://.godot/exported/133200997/export-b7945f64ad196d3b8c023daec4d4fa97-death_particles.scn
+res://units/enemy.tscn::07ba0b0f588fdeb31a36eb20b365d857::1781268859::res://.godot/exported/133200997/export-f54d83d198d18fb0db3742a1af0d85ab-enemy.scn

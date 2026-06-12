@@ -59,6 +59,9 @@ visible = true
 [node name="TurnCount" parent="Control/Container" index="0"]
 text = "1"
 
+[node name="WeaponType" parent="CanvasLayer/Control" index="0"]
+visible = false
+
 [node name="NinePatchRect" parent="CanvasLayer/ActivatedSkillMarginContainer" index="1"]
 texture = ExtResource( 8 )
 
