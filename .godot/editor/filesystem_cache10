@@ -1,9 +1,10 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1781225652
+::res://::1781226515
 default_bus_layout.tres::AudioBusLayout::-1::1781188476::0::1::::<><><>0<>0<><>::
 default_env.tres::Environment::-1::1781188476::0::1::::<><><>0<>0<><>::
 enums.gd::GDScript::7378857898191831885::1781224823::0::1::::<>Node<><>0<>0<><>::
 events.gd::GDScript::7402218315576955497::1781188476::0::1::::<>Node<><>0<>0<><>::
+export_presets.cfg::TextFile::-1::1781226503::0::1::::<><><>0<>0<><>::
 icon.ico::OtherFile::-1::1781184353::0::1::::<><><>0<>0<><>::
 icon.png::CompressedTexture2D::5784838794092704604::1781184353::1781190721::1::::<><><>0<>0<>2c71d0e84f4f3371771dedc2048d9468<>res://.godot/imported/icon.png-487276ed1e3a0c39cad0279d744ee560.ctex::
 loader.gd::GDScript::8719253697106321466::1781188628::0::1::::<>Node<><>0<>0<><>::
@@ -284,6 +285,8 @@ skill_highlight.tscn::PackedScene::-1::1781188477::0::1::::<><><>0<>0<><>::res:/
 trail2d.gd::GDScript::7745615399937602685::1781188477::0::1::::<>Node2D<><>0<>0<><>::
 trail2d.tscn::PackedScene::-1::1781188477::0::1::::<><><>0<>0<><>::res://addons/antialiased_line2d/antialiased_line2d.gd<>res://board/highlights/trail2d.gd
 trails.gd::GDScript::1378118214100076090::1781188477::0::1::::<>Node2D<><>0<>0<><>::
+::res://build/::1781226515
+::res://build/web/::1781226515
 ::res://chapter_data/::1781225407
 battle_info.gd::GDScript::6385201418298922054::1781188477::0::1::::BattleInfo<>Resource<><>0<>0<><>::
 chapter_data.gd::GDScript::7983260008866269444::1781225407::0::1::::ChapterData<>Resource<><>0<>0<><>::
@@ -462,7 +465,7 @@ dialogue_borderlands.json::JSON::-1::1781226236::0::1::::<><><>0<>0<><>::
 dialogue_to_the_capital.json::JSON::-1::1781226241::0::1::::<><><>0<>0<><>::
 script_borderlands.json::JSON::-1::1781226200::0::1::::<><><>0<>0<><>::
 script_to_the_capital.json::JSON::-1::1781226203::0::1::::<><><>0<>0<><>::
-::res://tools/::1781226274
+::res://tools/::1781226435
 screenshot.gd::GDScript::4297612880075675452::1781191948::0::1::::<>SceneTree<><>0<>0<><>::
 screenshot_cutscene.gd::GDScript::308746142516858129::1781226274::0::1::::<>SceneTree<><>0<>0<><>::
 ::res://ui/::1781224982
