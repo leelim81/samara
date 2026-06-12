@@ -14,5 +14,7 @@ phases_count = 5
 [resource]
 script = ExtResource( 1 )
 title = "TO_THE_CAPITAL"
+caption = "TO_THE_CAPITAL_CAPTION"
+difficulty = "5-6"
 battle_scene_path = "res://battles/terra/to_the_capital.tscn"
 battle_info = SubResource( 1 )

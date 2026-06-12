@@ -4,6 +4,12 @@ extends Resource
 
 @export var title: String
 
+# Short flavor line shown on the stage card (translation key)
+@export var caption: String
+
+# Difficulty level shown on the stage card (e.g. "1-4")
+@export var difficulty: String
+
 @export var battle_scene_path: String # (String, FILE, "*.tscn")
 
 @export var script_background: Texture2D

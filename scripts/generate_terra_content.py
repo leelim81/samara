@@ -439,6 +439,8 @@ phases_count = {phases}
 [resource]
 script = ExtResource( 1 )
 title = "{title}"
+caption = "{caption}"
+difficulty = "{difficulty}"
 battle_scene_path = "res://battles/terra/{scene}.tscn"
 battle_info = SubResource( 1 )
 """
@@ -457,10 +459,12 @@ def battle_info(phases):
 
 w1 = battle_info(STAGE_1)
 write("chapter_data/terra/borderlands.tres", CHAPTER_TEMPLATE.format(
-    title="BORDERLANDS", scene="borderlands", phases=len(STAGE_1), **w1))
+    title="BORDERLANDS", caption="BORDERLANDS_CAPTION", difficulty="1-4",
+    scene="borderlands", phases=len(STAGE_1), **w1))
 w2 = battle_info(STAGE_2)
 write("chapter_data/terra/to_the_capital.tres", CHAPTER_TEMPLATE.format(
-    title="TO_THE_CAPITAL", scene="to_the_capital", phases=len(STAGE_2), **w2))
+    title="TO_THE_CAPITAL", caption="TO_THE_CAPITAL_CAPTION", difficulty="5-6",
+    scene="to_the_capital", phases=len(STAGE_2), **w2))
 
 write("chapter_data/main_story_chapter_list.tres", """[gd_resource type="Resource" load_steps=4 format=2]
 

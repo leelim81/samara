@@ -34,7 +34,7 @@ func _create_buttons_for_unlocked_chapters() -> void:
 		if container.connect("pressed", Callable(self, "on_ChapterButton_pressed").bind(chapter_data)) == OK:
 			$MarginContainer/VBoxContainer/VBoxContainer2.add_child(container)
 		
-		container.set_values(unlocked_chapter.title, chapter_data.battle_info)
+		container.set_values(chapter_data)
 
 
 func _on_SquadButton_pressed() -> void:

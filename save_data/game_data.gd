@@ -71,7 +71,7 @@ func _load_data_from_default_resource() -> void:
 	var duplicated_jobs: Array = []
 	
 	for job in save_data.jobs:
-		duplicated_jobs.push_back(_duplicate_job(job, 10))
+		duplicated_jobs.push_back(_duplicate_job(job, 1))
 	
 	save_data.jobs = duplicated_jobs
 

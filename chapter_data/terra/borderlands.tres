@@ -14,5 +14,7 @@ phases_count = 3
 [resource]
 script = ExtResource( 1 )
 title = "BORDERLANDS"
+caption = "BORDERLANDS_CAPTION"
+difficulty = "1-4"
 battle_scene_path = "res://battles/terra/borderlands.tscn"
 battle_info = SubResource( 1 )
