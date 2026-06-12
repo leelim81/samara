@@ -19,6 +19,16 @@ func play(activated_skills: Array, unit_position: Vector2) -> void:
 			activated_skill_hbox_container.initialize(skill)
 			
 			_vbox_container.add_child(activated_skill_hbox_container)
+			
+			# White-on-dark styling for the floating combat popup; the same
+			# label scene is also used on parchment menus, so style it here
+			var label: Label = activated_skill_hbox_container.get_node("Label")
+			
+			label.add_theme_color_override("font_color", Color.WHITE)
+			label.add_theme_color_override("font_outline_color", Color(0.227451, 0.211765, 0.188235))
+			label.add_theme_constant_override("outline_size", 8)
+			
+			activated_skill_hbox_container.get_node("TextureRect").modulate = Color(0.937255, 0.909804, 0.847059)
 		
 		_set_growth_position(unit_position)
 		

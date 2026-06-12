@@ -59,6 +59,7 @@ activated_skill_hbox_container_packed_scene = ExtResource( 1 )
 "anims/Fade in and then out" = SubResource( 1 )
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
+self_modulate = Color( 0.42, 0.38, 0.38, 1 )
 show_behind_parent = true
 offset_right = 340.0
 offset_bottom = 62.0

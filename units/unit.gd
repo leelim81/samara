@@ -139,14 +139,17 @@ func _pin_overlay_layout() -> void:
 	# Inset past the border ring and its rounded corners
 	if is2x2():
 		hp_bar.offset_left = 10.0
-		hp_bar.offset_top = 84.0
+		hp_bar.offset_top = 83.0
 		hp_bar.offset_right = 188.0
-		hp_bar.offset_bottom = 89.0
+		hp_bar.offset_bottom = 90.0
 	else:
 		hp_bar.offset_left = 10.0
-		hp_bar.offset_top = -16.0
+		hp_bar.offset_top = -17.0
 		hp_bar.offset_right = 87.0
-		hp_bar.offset_bottom = -11.0
+		hp_bar.offset_bottom = -10.0
+
+	# Dark track under the fill so missing HP reads at a glance
+	hp_bar.tint_under = Color(0.35, 0.27, 0.23)
 
 	var container: Control = $Control/Container
 
