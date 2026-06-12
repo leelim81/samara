@@ -11,6 +11,10 @@ func _initialize() -> void:
 
 
 func _run() -> void:
+	# Keep the window on top so macOS never occludes it and stops rendering,
+	# which would freeze every captured frame at a stale image
+	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_ALWAYS_ON_TOP, true)
+
 	var args := OS.get_cmdline_user_args()
 
 	var out_dir: String = args[0] if args.size() > 0 else "/tmp/pincer_frames"
@@ -82,6 +86,27 @@ func _run() -> void:
 
 	if below != null and players.size() > 2:
 		_teleport(grid, players[2], below)
+
+	# Draw a drag trail along the flanker's approach so the ribbon styling
+	# shows up in the captured frames
+	var trail = board.get_node("Trails").build_trail(true)
+
+	var trail_cells := [
+		left.coordinates + Vector2(0, 3),
+		left.coordinates + Vector2(1, 3),
+		left.coordinates + Vector2(1, 2),
+		left.coordinates + Vector2(1, 1),
+		left.coordinates + Vector2(0, 1),
+		left.coordinates,
+	]
+
+	for trail_coordinates in trail_cells:
+		var trail_cell = grid.get_cell_from_coordinates(trail_coordinates)
+
+		if trail_cell != null:
+			trail.add(trail_cell.position)
+
+	trail.queue_clear()
 
 	board._execute_pincers(players[0])
 

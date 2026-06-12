@@ -84,6 +84,7 @@ func _run_attack_sequence() -> void:
 
 		if attack.attacking_unit.is_alive():
 			attack.attacking_unit.play_attack_lunge(_get_attack_focus(attack))
+			attack.attacking_unit.play_attack_zoom()
 
 		await get_tree().create_timer(LUNGE_IMPACT_DELAY_SECONDS).timeout
 

@@ -73,6 +73,7 @@ var _position_tween: Tween
 var _scale_tween: Tween
 var _lunge_tween: Tween
 var _flash_tween: Tween
+var _icon_tween: Tween
 
 @onready var _sprite := $Sprite2D
 
@@ -318,9 +319,9 @@ func set_current_state(new_state) -> void:
 			$Sound/SwapAudio.play()
 
 
-# Quick pop on pickup, like lifting a piece off the board.
+# Big lift on pickup, like Terra Battle's held token riding above the board.
 func _increase_sprite_size() -> void:
-	_tween_sprite_scale(Vector2(1.18, 1.18), 0.12, Tween.TRANS_BACK, Tween.EASE_OUT)
+	_tween_sprite_scale(Vector2(1.28, 1.28), 0.14, Tween.TRANS_BACK, Tween.EASE_OUT)
 
 
 func _restore_sprite_size() -> void:
@@ -447,6 +448,25 @@ func play_attack_lunge(target_global_position: Vector2) -> void:
 			.set_trans(Tween.TRANS_CUBIC) \
 			.set_ease(Tween.EASE_OUT)
 	_lunge_tween.tween_property(_sprite, "position", Vector2.ZERO, 0.18) \
+			.set_trans(Tween.TRANS_CUBIC) \
+			.set_ease(Tween.EASE_IN_OUT)
+
+
+# Quick zoom punch of the character art inside the tile when this unit
+# strikes — the Terra Battle attack tell.
+func play_attack_zoom() -> void:
+	var icon: Sprite2D = $Sprite2D/Icon
+
+	if _icon_tween != null:
+		_icon_tween.kill()
+
+	icon.scale = Vector2.ONE
+
+	_icon_tween = create_tween()
+	_icon_tween.tween_property(icon, "scale", Vector2(1.16, 1.16), 0.07) \
+			.set_trans(Tween.TRANS_QUAD) \
+			.set_ease(Tween.EASE_OUT)
+	_icon_tween.tween_property(icon, "scale", Vector2.ONE, 0.24) \
 			.set_trans(Tween.TRANS_CUBIC) \
 			.set_ease(Tween.EASE_IN_OUT)
 

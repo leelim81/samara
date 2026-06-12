@@ -1,10 +1,16 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://board/highlights/chain_preview_line2d.gd" type="Script" id=1]
 
 [sub_resource type="Gradient" id=1]
-colors = PackedColorArray( 0.65098, 0.14902, 0.329412, 0.501961, 0.384314, 0.105882, 0.321569, 0.501961 )
+colors = PackedColorArray( 1, 0.84, 0.45, 0.55, 1, 0.92, 0.65, 0.55 )
 
 [node name="ChainPreviewLine2D" type="Line2D"]
-width = 60.0
-default_color = Color( 0.65098, 0.14902, 0.329412, 0.501961 )
+width = 44.0
+default_color = Color( 1, 0.84, 0.45, 0.55 )
 gradient = SubResource( 1 )
 texture_mode = 1
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource( 1 )
