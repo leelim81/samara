@@ -62,8 +62,8 @@ custom_minimum_size = Vector2( 0, 400 )
 size_flags_vertical = 1
 theme_override_fonts/font = SubResource( 1 )
 text = "VICTORY"
-align = 1
-valign = 1
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="DragTimeLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 offset_top = 408.0
@@ -71,7 +71,7 @@ offset_right = 620.0
 offset_bottom = 437.0
 size_flags_vertical = 5
 text = "Total drag time: 32.4 s"
-align = 1
+horizontal_alignment = 1
 
 [node name="TurnCountLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 offset_top = 445.0
@@ -79,7 +79,7 @@ offset_right = 620.0
 offset_bottom = 779.0
 size_flags_vertical = 3
 text = "Turns: 4"
-align = 1
+horizontal_alignment = 1
 
 [node name="ContinueButton" parent="MarginContainer/VBoxContainer" instance=ExtResource( 5 )]
 offset_left = 190.0

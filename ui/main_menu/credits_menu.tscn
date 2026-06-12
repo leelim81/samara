@@ -61,8 +61,8 @@ Kenney Casino Audio
 
 ~ Additional Thanks ~
 Terra Battle wiki & community"
-align = 1
-autowrap = true
+horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="ReturnButton" parent="MarginContainer/VBoxContainer" instance=ExtResource( 3 )]
 offset_left = 190.0

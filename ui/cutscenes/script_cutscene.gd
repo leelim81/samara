@@ -104,7 +104,7 @@ func _show_next_paragraph() -> void:
 		# If empty, adds an empty label so that it serves as a line break
 		_current_label = text_label_packed_scene.instantiate()
 		_current_label.text = ""
-		_current_label.percent_visible = 1
+		_current_label.visible_ratio = 1
 		
 		_text_container.add_child(_current_label)
 		
@@ -113,7 +113,7 @@ func _show_next_paragraph() -> void:
 	else:
 		_current_label = text_label_packed_scene.instantiate()
 		_current_label.text = tr(paragraph)
-		_current_label.percent_visible = 0
+		_current_label.visible_ratio = 0
 		
 		_text_container.add_child(_current_label)
 		
@@ -128,7 +128,7 @@ func _slowly_make_text_visible(delta: float, label: Label) -> void:
 		label.visible_characters += 1
 		_accumulated_time_seconds = 0
 	
-	if label.percent_visible >= 1:
+	if label.visible_ratio >= 1:
 		_set_text_fully_visible()
 
 
@@ -150,14 +150,14 @@ func _on_press_ui_select() -> void:
 	if _current_label == null:
 		return
 	
-	if _current_label.percent_visible >= 1:
+	if _current_label.visible_ratio >= 1:
 		_advance_to_next_paragraph()
 	else:
 		_set_text_fully_visible()
 
 
 func _set_text_fully_visible() -> void:
-	_current_label.percent_visible = 1
+	_current_label.visible_ratio = 1
 	
 	set_process(false)
 

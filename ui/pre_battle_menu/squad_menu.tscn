@@ -40,16 +40,16 @@ theme_override_constants/separation = 16
 offset_right = 620.0
 offset_bottom = 29.0
 text = "SQUAD"
-align = 1
-valign = 1
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
 offset_top = 45.0
 offset_right = 620.0
 offset_bottom = 74.0
 text = "SQUAD_DESCRIPTION"
-align = 1
-valign = 1
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ShowSkillsButton" type="CheckButton" parent="MarginContainer/VBoxContainer"]
 visible = false
@@ -60,7 +60,7 @@ offset_bottom = 202.0
 custom_minimum_size = Vector2( 240, 0 )
 size_flags_horizontal = 4
 text = "SHOW_SKILLS"
-align = 1
+horizontal_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]
 offset_top = 90.0

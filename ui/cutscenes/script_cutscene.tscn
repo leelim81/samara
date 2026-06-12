@@ -23,6 +23,7 @@ anchor_bottom = 1.0
 color = Color( 0.937255, 0.909804, 0.847059, 1 )
 
 [node name="Background" type="TextureRect" parent="."]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5

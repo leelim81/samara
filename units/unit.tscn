@@ -650,7 +650,7 @@ theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_offset_y = 1
 theme_override_fonts/font = ExtResource( 19 )
 text = "99"
-valign = 1
+vertical_alignment = 1
 __meta__ = {
 "_edit_lock_": true
 }

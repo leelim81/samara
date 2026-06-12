@@ -41,7 +41,7 @@ theme_override_constants/separation = 16
 offset_right = 620.0
 offset_bottom = 29.0
 text = "Yachie Kicchou"
-align = 1
+horizontal_alignment = 1
 uppercase = true
 
 [node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer"]
@@ -50,8 +50,8 @@ offset_top = 45.0
 offset_right = 632.0
 offset_bottom = 74.0
 text = "Matriarch of the Kiketsu Family"
-align = 1
-autowrap = true
+horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 offset_top = 45.0

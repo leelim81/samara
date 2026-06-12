@@ -43,8 +43,8 @@ custom_minimum_size = Vector2( 0, 400 )
 size_flags_vertical = 6
 theme_override_fonts/font = SubResource( 1 )
 text = "DEFEAT"
-align = 1
-valign = 1
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="TryAgainButton" parent="MarginContainer/VBoxContainer" instance=ExtResource( 4 )]
 offset_left = 190.0

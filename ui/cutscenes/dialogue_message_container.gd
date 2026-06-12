@@ -3,10 +3,12 @@ extends HBoxContainer
 
 # TODO: Use a resource
 const _ICONS: Dictionary = {
-	"YACHIE": "res://assets/player/yachie.png",
-	"SAKI": "res://assets/player/saki.png",
-	"YUUMA": "res://assets/player/yuuma.png",
-	"EAGLE_SPIRIT": "res://assets/player/eagle_1.png"
+	"BAHL": "res://assets/terra/tokens/bahl_token.png",
+	"GRACE": "res://assets/terra/tokens/grace_token.png",
+	"KUSCAH": "res://assets/terra/tokens/kuscah_token.png",
+	"SHBERDAN": "res://assets/terra/tokens/shberdan_token.png",
+	"DAIANA": "res://assets/terra/tokens/daiana_token.png",
+	"MACURI": "res://assets/terra/tokens/macuri_token.png"
 }
 
 signal text_fully_visible
@@ -45,14 +47,14 @@ func initialize(dialogue_message) -> void:
 	if _ICONS.has(speaker):
 		$VBoxContainer/TextureRect.texture = load(_ICONS[speaker])
 	
-	_message_label.percent_visible = 0
+	_message_label.visible_ratio = 0
 	_accumulated_time_seconds = 0
 	
 	$DialogueAudio.play()
 
 
 func start_showing_text() -> void:
-	if _message_label.percent_visible < 1.0:
+	if _message_label.visible_ratio < 1.0:
 		set_process(true)
 
 
@@ -63,16 +65,16 @@ func _slowly_make_text_visible(delta: float, label: Label) -> void:
 		label.visible_characters += 1
 		_accumulated_time_seconds = 0
 	
-	if label.percent_visible >= 1.0:
+	if label.visible_ratio >= 1.0:
 		set_text_fully_visible()
 
 
 func is_text_fully_visible() -> bool:
-	return is_equal_approx(_message_label.percent_visible, 1.0)
+	return is_equal_approx(_message_label.visible_ratio, 1.0)
 
 
 func set_text_fully_visible() -> void:
-	_message_label.percent_visible = 1
+	_message_label.visible_ratio = 1
 	
 	emit_signal("text_fully_visible")
 	
