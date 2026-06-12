@@ -29,7 +29,8 @@ func _run() -> void:
 	var board = battle.get_node("Board")
 	var grid = board.get_node("Grid")
 
-	for i in 1200:
+	# Generous window: cold boots reimport assets before the scene loads
+	for i in 3000:
 		await process_frame
 
 		if board._current_turn == board.Turn.PLAYER:
