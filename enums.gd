@@ -43,10 +43,10 @@ const WEAPON_RELATIONSHIPS: Dictionary = {
 }
 
 const WEAPON_TYPE_TEXTURES: Dictionary = {
-	WeaponType.SWORD: "res://assets/ui/sword.png",
-	WeaponType.SPEAR: "res://assets/ui/spear.png",
-	WeaponType.GUN: "res://assets/ui/gun.png",
-	WeaponType.STAFF: "res://assets/ui/staff.png"
+	WeaponType.SWORD: "res://assets/terra/ui/sword.png",
+	WeaponType.SPEAR: "res://assets/terra/ui/spear.png",
+	WeaponType.GUN: "res://assets/terra/ui/gun.png",
+	WeaponType.STAFF: "res://assets/terra/ui/staff.png"
 }
 
 enum StatusEffectType {

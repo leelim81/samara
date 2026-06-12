@@ -1,22 +1,21 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=3]
 
-[ext_resource path="res://theme.tres" type="Theme" id=1]
-[ext_resource path="res://ui/main_menu/title_screen.gd" type="Script" id=2]
-[ext_resource path="res://assets/ui/title.png" type="Texture2D" id=3]
-[ext_resource path="res://ui/audio_button.tscn" type="PackedScene" id=4]
+[ext_resource type="Theme" path="res://theme.tres" id="1"]
+[ext_resource type="Script" path="res://ui/main_menu/title_screen.gd" id="2"]
+[ext_resource type="PackedScene" path="res://ui/audio_button.tscn" id="4"]
 
 [node name="TitleScreen" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource( 1 )
-script = ExtResource( 2 )
+theme = ExtResource("1")
+script = ExtResource("2")
 settings_scene = "res://ui/main_menu/SettingsMenu.tscn"
 credits_scene = "res://ui/main_menu/CreditsMenu.tscn"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.207843, 0.0313726, 0.164706, 1 )
+color = Color(0.937255, 0.909804, 0.847059, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_right = 1.0
@@ -27,58 +26,79 @@ theme_override_constants/margin_left = 50
 theme_override_constants/margin_bottom = 50
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer"]
-offset_left = 50.0
-offset_top = 50.0
-offset_right = 670.0
-offset_bottom = 910.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 theme_override_constants/separation = 12
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer2"]
-offset_right = 620.0
-offset_bottom = 520.0
+[node name="TitleBlock" type="VBoxContainer" parent="MarginContainer/VBoxContainer2"]
+layout_mode = 2
 size_flags_vertical = 3
-texture = ExtResource( 3 )
-expand = true
-stretch_mode = 6
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="TopRule" type="ColorRect" parent="MarginContainer/VBoxContainer2/TitleBlock"]
+custom_minimum_size = Vector2(280, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+color = Color(0.227451, 0.211765, 0.188235, 0.45)
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer2/TitleBlock"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.227451, 0.211765, 0.188235, 1)
+theme_override_font_sizes/font_size = 72
+text = "T E R R A
+B A T T L E"
+horizontal_alignment = 1
+
+[node name="BottomRule" type="ColorRect" parent="MarginContainer/VBoxContainer2/TitleBlock"]
+custom_minimum_size = Vector2(280, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+color = Color(0.227451, 0.211765, 0.188235, 0.45)
+
+[node name="SubtitleLabel" type="Label" parent="MarginContainer/VBoxContainer2/TitleBlock"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.227451, 0.211765, 0.188235, 0.6)
+theme_override_font_sizes/font_size = 16
+text = "A  F A N  R E C R E A T I O N"
+horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer2"]
-offset_left = 190.0
-offset_top = 532.0
-offset_right = 430.0
-offset_bottom = 860.0
-custom_minimum_size = Vector2( 240, 0 )
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 5
 theme_override_constants/separation = 12
 alignment = 1
 
-[node name="StartButton" parent="MarginContainer/VBoxContainer2/VBoxContainer" instance=ExtResource( 4 )]
-offset_bottom = 73.0
+[node name="StartButton" parent="MarginContainer/VBoxContainer2/VBoxContainer" instance=ExtResource("4")]
+layout_mode = 2
 text = "START"
 
-[node name="ContinueButton" parent="MarginContainer/VBoxContainer2/VBoxContainer" instance=ExtResource( 4 )]
+[node name="ContinueButton" parent="MarginContainer/VBoxContainer2/VBoxContainer" instance=ExtResource("4")]
 visible = false
-offset_top = 85.0
-offset_bottom = 158.0
+layout_mode = 2
 text = "CONTINUE"
 
-[node name="SettingsButton" parent="MarginContainer/VBoxContainer2/VBoxContainer" instance=ExtResource( 4 )]
-offset_top = 85.0
-offset_bottom = 158.0
+[node name="SettingsButton" parent="MarginContainer/VBoxContainer2/VBoxContainer" instance=ExtResource("4")]
+layout_mode = 2
 text = "SETTINGS"
 
-[node name="CreditsButton" parent="MarginContainer/VBoxContainer2/VBoxContainer" instance=ExtResource( 4 )]
-offset_top = 170.0
-offset_bottom = 243.0
+[node name="CreditsButton" parent="MarginContainer/VBoxContainer2/VBoxContainer" instance=ExtResource("4")]
+layout_mode = 2
 text = "CREDITS"
 
-[node name="QuitButton" parent="MarginContainer/VBoxContainer2/VBoxContainer" instance=ExtResource( 4 )]
-offset_top = 255.0
-offset_bottom = 328.0
+[node name="QuitButton" parent="MarginContainer/VBoxContainer2/VBoxContainer" instance=ExtResource("4")]
+layout_mode = 2
 text = "QUIT"
+
+[node name="FooterLabel" type="Label" parent="MarginContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.227451, 0.211765, 0.188235, 0.45)
+theme_override_font_sizes/font_size = 13
+text = "Personal, non-commercial fan project. Terra Battle is a property of Mistwalker Corporation."
+horizontal_alignment = 1
+autowrap_mode = 2
 
 [connection signal="tree_entered" from="." to="." method="_on_TitleScreen_tree_entered"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer2/VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]

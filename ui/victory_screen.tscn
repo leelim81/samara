@@ -25,7 +25,7 @@ script = ExtResource( 4 )
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.0470588, 0.0313726, 0.164706, 0.752941 )
+color = Color( 0.937255, 0.909804, 0.847059, 0.92 )
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 material = SubResource( 2 )

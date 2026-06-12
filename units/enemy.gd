@@ -28,9 +28,11 @@ var _path := []
 
 func _ready() -> void:
 	$Job.set_level(level)
-	
+
 	_turn_counter_max_value = get_stats().max_turn_counter
-	
+
+	_load_job_textures()
+
 	apply_equip_skills()
 
 

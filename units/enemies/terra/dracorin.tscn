@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://units/enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://jobs/terra/dracorin_job.tres" type="Resource" id=2]
+[ext_resource path="res://assets/terra/tokens/dracorin_token.png" type="Texture2D" id=3]
 [ext_resource path="res://units/ai/condition.tscn" type="PackedScene" id=4]
 [ext_resource path="res://units/ai/action.tscn" type="PackedScene" id=5]
 [ext_resource path="res://skills/resources/terra/thunder_arrows.tres" type="Resource" id=6]
@@ -12,6 +13,9 @@ turn_counter = 4
 
 [node name="Job" parent="." index="2"]
 job = ExtResource( 2 )
+
+[node name="Icon" parent="Sprite2D" index="1"]
+texture = ExtResource( 3 )
 
 [node name="UnitName" parent="CanvasLayer" index="3"]
 text = "DRACORIN"

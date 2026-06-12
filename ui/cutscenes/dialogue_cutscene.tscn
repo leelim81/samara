@@ -35,7 +35,7 @@ dialogue_message_container_packed_scene = ExtResource( 2 )
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.207843, 0.0313726, 0.164706, 1 )
+color = Color( 0.937255, 0.909804, 0.847059, 1 )
 
 [node name="Background" type="TextureRect" parent="."]
 anchor_left = 0.5

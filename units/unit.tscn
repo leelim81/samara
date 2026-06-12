@@ -5,13 +5,13 @@
 [ext_resource path="res://units/ui/activated_skill_margin_container.tscn" type="PackedScene" id=3]
 [ext_resource path="res://units/ui/damage_numbers.tscn" type="PackedScene" id=4]
 [ext_resource path="res://units/ui/death_particles.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/ui/unit_square_bg_2.png" type="Texture2D" id=6]
+[ext_resource path="res://assets/terra/ui/unit_square_bg.png" type="Texture2D" id=6]
 [ext_resource path="res://assets/ui/unit_glow.png" type="Texture2D" id=7]
 [ext_resource path="res://assets/sfx/youkai_death.wav" type="AudioStream" id=8]
 [ext_resource path="res://assets/sfx/ceramic_place_1.wav" type="AudioStream" id=9]
 [ext_resource path="res://assets/sfx/casino/shove2.wav" type="AudioStream" id=10]
 [ext_resource path="res://assets/sfx/casino/place10.wav" type="AudioStream" id=11]
-[ext_resource path="res://assets/ui/sword.png" type="Texture2D" id=12]
+[ext_resource path="res://assets/terra/ui/sword.png" type="Texture2D" id=12]
 [ext_resource path="res://assets/sfx/ceramic_drag_2.wav" type="AudioStream" id=13]
 [ext_resource path="res://assets/ui/letter_z.png" type="Texture2D" id=14]
 [ext_resource path="res://assets/enemies/orbling_dracorin.png" type="Texture2D" id=15]
@@ -19,10 +19,10 @@
 [ext_resource path="res://units/swap_area2d.gd" type="Script" id=17]
 [ext_resource path="res://units/unit.gd" type="Script" id=18]
 [ext_resource path="res://assets/fonts/CinzelDecorativeBold40.tres" type="FontFile" id=19]
-[ext_resource path="res://assets/ui/unit_player_border.png" type="Texture2D" id=20]
-[ext_resource path="res://assets/ui/red_bar_progress.png" type="Texture2D" id=21]
+[ext_resource path="res://assets/terra/ui/unit_player_border.png" type="Texture2D" id=20]
+[ext_resource path="res://assets/terra/ui/hp_bar_fill.png" type="Texture2D" id=21]
 [ext_resource path="res://assets/sfx/ceramic_drag_1.wav" type="AudioStream" id=22]
-[ext_resource path="res://assets/ui/hp_bar_bg.png" type="Texture2D" id=23]
+[ext_resource path="res://assets/terra/ui/hp_bar_bg.png" type="Texture2D" id=23]
 [ext_resource path="res://units/skill_applier.gd" type="Script" id=24]
 [ext_resource path="res://units/status_effects.gd" type="Script" id=25]
 [ext_resource path="res://units/hp_bar.gd" type="Script" id=26]
@@ -528,7 +528,7 @@ __meta__ = {
 }
 
 [node name="Glow" type="Sprite2D" parent="Sprite2D"]
-modulate = Color( 0.65098, 0.14902, 0.329412, 1 )
+modulate = Color( 0.752941, 0.627451, 0.384314, 0.85 )
 show_behind_parent = true
 z_index = -1
 texture = ExtResource( 7 )
@@ -595,10 +595,11 @@ anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 8.0
 offset_top = -22.0
-offset_right = 62.0
-offset_bottom = -15.0
+offset_right = 89.0
+offset_bottom = -14.0
 mouse_filter = 2
 value = 100.0
+nine_patch_stretch = true
 texture_under = ExtResource( 23 )
 texture_progress = ExtResource( 21 )
 stretch_margin_left = 3
@@ -731,11 +732,14 @@ offset_bottom = 21.5
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 1
+theme_override_colors/font_color = Color( 0.227451, 0.211765, 0.188235, 1 )
+theme_override_colors/font_outline_color = Color( 0.937255, 0.909804, 0.847059, 0.9 )
+theme_override_constants/outline_size = 6
 theme_override_fonts/font = SubResource( 8 )
 text = "HANIWA_WARRIOR"
-align = 1
-valign = 1
-autowrap = true
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="LongPressTimer" type="Timer" parent="."]
 wait_time = 0.5

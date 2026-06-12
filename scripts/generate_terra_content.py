@@ -203,10 +203,11 @@ for slug, (token, job_name, skill_slugs) in JOBS.items():
         skill_refs=", ".join(refs), job_name=job_name))
 
 # ---------------------------------------------------------------- enemy scenes
-ENEMY_SCENE_TEMPLATE = """[gd_scene load_steps=5 format=2]
+ENEMY_SCENE_TEMPLATE = """[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://units/enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://jobs/terra/{slug}_job.tres" type="Resource" id=2]
+[ext_resource path="res://assets/terra/tokens/{token}_token.png" type="Texture2D" id=3]
 [ext_resource path="res://units/ai/condition.tscn" type="PackedScene" id=4]
 [ext_resource path="res://units/ai/action.tscn" type="PackedScene" id=5]
 
@@ -217,7 +218,10 @@ turn_counter = {turn_counter}
 [node name="Job" parent="." index="2"]
 job = ExtResource( 2 )
 
-[node name="UnitName" parent="CanvasLayer" index="3"]
+[node name="Icon" parent="Sprite2D" index="1"]
+texture = ExtResource( 3 )
+
+{border_override}[node name="UnitName" parent="CanvasLayer" index="3"]
 text = "{display}"
 
 {actions}
@@ -258,16 +262,23 @@ ENEMY_SCENES = {
 for slug, node_name in ENEMY_SCENES.items():
     display = JOBS[slug][1]
     skill_slugs = JOBS[slug][2]
+    token = JOBS[slug][0]
     enemy_level = ENEMIES[slug][1]
     enemy_counter = ENEMIES[slug][9]
     res_lines, blocks = actions_block(skill_slugs)
+    # 1x1 bosses get the golden frame
+    border_override = ""
+    if slug == "orbling_boss":
+        res_lines.append('[ext_resource path="res://assets/terra/ui/boss_border.png" type="Texture2D" id=9]')
+        border_override = '[node name="Border" parent="Sprite2D" index="2"]\ntexture = ExtResource( 9 )\n\n'
     scene = ENEMY_SCENE_TEMPLATE.format(
         slug=slug, node_name=node_name, display=display, level=enemy_level,
-        turn_counter=enemy_counter, actions="\n".join(blocks))
+        turn_counter=enemy_counter, token=token, border_override=border_override,
+        actions="\n".join(blocks))
     # splice extra ext_resources for skills after id=5 line
     scene = scene.replace('[ext_resource path="res://units/ai/action.tscn" type="PackedScene" id=5]',
                           '[ext_resource path="res://units/ai/action.tscn" type="PackedScene" id=5]\n' + "\n".join(res_lines))
-    scene = scene.replace("load_steps=5", f"load_steps={5 + len(skill_slugs)}")
+    scene = scene.replace("load_steps=6", f"load_steps={6 + len(skill_slugs) + (1 if border_override else 0)}")
     write(f"units/enemies/terra/{slug}.tscn", scene)
 
 # Spinetrich is a 2x2 boss: based on the enemy_2x2 layout

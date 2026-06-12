@@ -110,7 +110,8 @@ SPIRITUAL_DEFENSE,Spiritual defense,Defensa spiritual
 SKILL_ACTIVATION_RATE_MODIFIER,Skill activation rate,Tasa de activación de habilidades
 STATUS_EFFECT_RESISTANCE,%+.0f%% resistance to %s,%+.0f%% de resistencia a %s
 SKILLS_TAB,Skills,Habilidades
-STATUS_EFFECTS_TAB,Status effects,EstadosBORDERLANDS,Borderlands,Tierras fronterizas
+STATUS_EFFECTS_TAB,Status effects,Estados
+BORDERLANDS,Borderlands,Tierras fronterizas
 TO_THE_CAPITAL,To the Capital,Hacia la capital
 BAHL,Bahl,Bahl
 GRACE,Grace,Grace
