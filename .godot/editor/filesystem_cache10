@@ -38,7 +38,7 @@ orbling_dracorin_full.png::CompressedTexture2D::4077262856040848243::1781184353:
 orbling_haniwa.png::CompressedTexture2D::2553821811309492162::1781184353::1781190722::1::::<><><>0<>0<>8beba5363dfedef676cd470b8e0661ee<>res://.godot/imported/orbling_haniwa.png-7dda29372800c89cd836f10fd2b14fe5.ctex::
 orbling_haniwa_full.png::CompressedTexture2D::4697225376519585593::1781184353::1781190722::1::::<><><>0<>0<>688dbdfedb8b1de528471f2e3ff1d0cf<>res://.godot/imported/orbling_haniwa_full.png-3babbac370e24995cb9d7fb3e8e10afa.ctex::
 unit_square_bg.png::CompressedTexture2D::2318802634846646792::1781184353::1781190722::1::::<><><>0<>0<>b5f6d2bcba245d2ed1d3e973b6cad6a3<>res://.godot/imported/unit_square_bg.png-81432e7c5236def5c998c05091d8afcc.ctex::
-::res://assets/fonts/::1781190721
+::res://assets/fonts/::1781281094
 CinzelDecorative OFL.txt::TextFile::-1::1781184353::0::1::::<><><>0<>0<><>::
 CinzelDecorative-Bold.ttf::FontFile::8767263333668952165::1781184353::1781190721::1::::<><><>0<>0<>041bdaf9ad44581c2ccb78396802b927<>res://.godot/imported/CinzelDecorative-Bold.ttf-1fc9b04be9eaa6675b83556ffc8af182.fontdata::
 CinzelDecorativeBold40.tres::FontFile::-1::1781188476::0::1::::<><><>0<>0<><>::res://assets/fonts/CinzelDecorative-Bold.ttf
@@ -50,6 +50,7 @@ Exo2 OFL.txt::TextFile::-1::1781184353::0::1::::<><><>0<>0<><>::
 Exo2-Regular.ttf::FontFile::5234880135821463865::1781184353::1781190721::1::::<><><>0<>0<>c485b38ee8e6343a4b17e33f0641ce0f<>res://.godot/imported/Exo2-Regular.ttf-65917513ea737ac3716c804ff23a6ba8.fontdata::
 Exo2Regular18.tres::FontFile::-1::1781188476::0::1::::<><><>0<>0<><>::res://assets/fonts/Exo2-Regular.ttf
 Exo2Regular.tres::FontFile::-1::1781188476::0::1::::<><><>0<>0<><>::res://assets/fonts/Exo2-Regular.ttf
+Exo2SemiBold.tres::FontVariation::-1::1781281094::0::1::::<><><>0<>0<><>::res://assets/fonts/Exo2-Regular.ttf
 ::res://assets/music/::1781190721
 Unlocated_Hell.mp3::AudioStreamMP3::4839118752974534896::1781184353::1781190721::1::::<><><>0<>0<>24fa689498cab7eb3c342749a0634f5d<>res://.godot/imported/Unlocated_Hell.mp3-89c2d838a61ee8d10b023449ccd5f643.mp3str::
 ::res://assets/pincer_highlights/::1781190722
@@ -257,7 +258,7 @@ attack.gd::GDScript::7122976739992665295::1781188477::0::1::::Attack<>RefCounted
 attacker.gd::GDScript::3513285196231765724::1781270891::0::1::::Attacker<>Node2D<><>0<>0<><>::
 attacker.tscn::PackedScene::-1::1781268859::0::1::::<><><>0<>0<><>::res://skills/effects/attack_effect.tscn<>res://assets/sfx/sfx_whitewidow_attack_impact.wav<>res://board/attacker.gd<>res://assets/sfx/sfx_f2general_attack_impact_3.wav<>res://assets/sfx/gun_with_ricochet.wav<>res://assets/sfx/sfx_neutral_sunelemental_impact.wav
 battle.gd::GDScript::6728734705744623894::1781268859::0::1::::<>MarginContainer<><>0<>0<><>::
-battle.tscn::PackedScene::-1::1781271565::0::1::::<><><>0<>0<><>::res://theme.tres<>res://board/cell.tscn<>res://board/highlights/trail2d.tscn<>res://board/highlights/chain_previewer.tscn<>res://board/highlights/pincer_highlight.tscn<>res://board/board.gd<>res://board/battle.gd<>res://assets/terra/ui/bar_fill.png<>res://board/fleer.gd<>res://assets/terra/ui/bar_bg.png<>res://board/pincer_executor.gd<>res://board/pincerer.gd<>res://board/grid.gd<>res://board/pusher.gd<>res://assets/terra/ui/grid.png<>res://assets/terra/ui/panel_card.png<>res://assets/music/Unlocated_Hell.mp3<>res://assets/ui/city_bg.png<>res://ui/drag_mode_option_button.tscn<>res://board/attacker.tscn<>res://units/unit.tscn<>res://ui/defeat_screen.tscn<>res://ui/victory_screen.tscn<>res://ui/view_unit_menu.tscn<>res://assets/sfx/bells.wav<>res://assets/sfx/spell_1.wav<>res://assets/fonts/CinzelDecorativeBold40.tres<>res://board/highlights/delayed_skill_highlighter.tscn<>res://ui/audio_button.tscn<>res://assets/sfx/chess_place_2.wav<>res://board/highlights/trails.gd<>res://assets/terra/ui/ui_icons.png
+battle.tscn::PackedScene::-1::1781281116::0::1::::<><><>0<>0<><>::res://theme.tres<>res://board/cell.tscn<>res://board/highlights/trail2d.tscn<>res://board/highlights/chain_previewer.tscn<>res://board/highlights/pincer_highlight.tscn<>res://board/board.gd<>res://board/battle.gd<>res://assets/terra/ui/bar_fill.png<>res://board/fleer.gd<>res://assets/terra/ui/bar_bg.png<>res://board/pincer_executor.gd<>res://board/pincerer.gd<>res://board/grid.gd<>res://board/pusher.gd<>res://assets/terra/ui/grid.png<>res://assets/terra/ui/panel_card.png<>res://assets/music/Unlocated_Hell.mp3<>res://assets/ui/city_bg.png<>res://ui/drag_mode_option_button.tscn<>res://board/attacker.tscn<>res://units/unit.tscn<>res://ui/defeat_screen.tscn<>res://ui/victory_screen.tscn<>res://ui/view_unit_menu.tscn<>res://assets/sfx/bells.wav<>res://assets/sfx/spell_1.wav<>res://board/highlights/delayed_skill_highlighter.tscn<>res://ui/audio_button.tscn<>res://assets/sfx/chess_place_2.wav<>res://board/highlights/trails.gd<>res://assets/terra/ui/ui_icons.png
 board.gd::GDScript::3954095454800199928::1781190102::0::1::::Board<>Node2D<><>0<>0<><>::
 board_utils.gd::GDScript::335306704686223731::1781189866::0::1::::BoardUtils<>RefCounted<><>0<>0<><>::
 cell.gd::GDScript::980751288271494695::1781188477::0::1::::Cell<>Area2D<><>0<>0<><>::
@@ -287,10 +288,10 @@ trail2d.gd::GDScript::7745615399937602685::1781188477::0::1::::<>Node2D<><>0<>0<
 trail2d.tscn::PackedScene::-1::1781271565::0::1::::<><><>0<>0<><>::res://addons/antialiased_line2d/antialiased_line2d.gd<>res://board/highlights/trail2d.gd
 trails.gd::GDScript::1378118214100076090::1781188477::0::1::::<>Node2D<><>0<>0<><>::
 ::res://build/::1781226515
-::res://build/web/::1781278060
-index.apple-touch-icon.png::CompressedTexture2D::671408193628746592::1781278060::1781269528::1::::<><><>0<>0<>3d824a20facb708d8daf3d0aadcd1099<>res://.godot/imported/index.apple-touch-icon.png-21031f526f7942c8019a62913b80e091.ctex::
-index.icon.png::CompressedTexture2D::4578476410241139680::1781278060::1781269528::1::::<><><>0<>0<>845dd99bdc3abd932d4380b729180570<>res://.godot/imported/index.icon.png-a9d2f4f7433eeddc29dad75f5e7f8710.ctex::
-index.png::CompressedTexture2D::5193192814418057516::1781278060::1781269528::1::::<><><>0<>0<>495bc6d4f9b8f560c72aa0519372ef85<>res://.godot/imported/index.png-7e97af7272d6fa0065ffc53e96463470.ctex::
+::res://build/web/::1781280204
+index.apple-touch-icon.png::CompressedTexture2D::671408193628746592::1781280204::1781269528::1::::<><><>0<>0<>3d824a20facb708d8daf3d0aadcd1099<>res://.godot/imported/index.apple-touch-icon.png-21031f526f7942c8019a62913b80e091.ctex::
+index.icon.png::CompressedTexture2D::4578476410241139680::1781280204::1781269528::1::::<><><>0<>0<>845dd99bdc3abd932d4380b729180570<>res://.godot/imported/index.icon.png-a9d2f4f7433eeddc29dad75f5e7f8710.ctex::
+index.png::CompressedTexture2D::5193192814418057516::1781280204::1781269528::1::::<><><>0<>0<>495bc6d4f9b8f560c72aa0519372ef85<>res://.godot/imported/index.png-7e97af7272d6fa0065ffc53e96463470.ctex::
 ::res://chapter_data/::1781225407
 battle_info.gd::GDScript::6385201418298922054::1781188477::0::1::::BattleInfo<>Resource<><>0<>0<><>::
 chapter_data.gd::GDScript::7983260008866269444::1781225407::0::1::::ChapterData<>Resource<><>0<>0<><>::
@@ -550,7 +551,7 @@ status_effects.gd::GDScript::3344235936376689526::1781188476::0::1::::<>Node2D<>
 status_effects_icons.gd::GDScript::4392307881220690778::1781188476::0::1::::<>Control<><>0<>0<><>::
 swap_area2d.gd::GDScript::2737474249706455740::1781188476::0::1::::<>Area2D<><>0<>0<><>::
 unit.gd::GDScript::5317760837349298727::1781278499::0::1::::Unit<>CharacterBody2D<><>0<>0<><>::
-unit.tscn::PackedScene::-1::1781278489::0::1::::<><><>0<>0<><>::res://assets/fonts/Exo2-Regular.ttf<>res://jobs/animal_spirit/yachie_job.tres<>res://units/ui/activated_skill_margin_container.tscn<>res://units/ui/damage_numbers.tscn<>res://units/ui/death_particles.tscn<>res://assets/terra/ui/unit_square_bg.png<>res://assets/ui/unit_glow.png<>res://assets/sfx/youkai_death.wav<>res://assets/sfx/ceramic_place_1.wav<>res://assets/sfx/casino/shove2.wav<>res://assets/sfx/casino/place10.wav<>res://assets/terra/ui/sword.png<>res://assets/sfx/ceramic_drag_2.wav<>res://assets/ui/letter_z.png<>res://assets/enemies/orbling_dracorin.png<>res://units/job.gd<>res://units/swap_area2d.gd<>res://units/unit.gd<>res://assets/fonts/CinzelDecorativeBold40.tres<>res://assets/terra/ui/unit_player_border.png<>res://assets/terra/ui/hp_bar_fill.png<>res://assets/sfx/ceramic_drag_1.wav<>res://assets/terra/ui/hp_bar_bg.png<>res://units/skill_applier.gd<>res://units/status_effects.gd<>res://units/hp_bar.gd<>res://units/status_effects_icons.gd<>res://assets/sfx/casino/shove1.wav
+unit.tscn::PackedScene::-1::1781281116::0::1::::<><><>0<>0<><>::res://assets/fonts/Exo2-Regular.ttf<>res://jobs/animal_spirit/yachie_job.tres<>res://units/ui/activated_skill_margin_container.tscn<>res://units/ui/damage_numbers.tscn<>res://units/ui/death_particles.tscn<>res://assets/terra/ui/unit_square_bg.png<>res://assets/ui/unit_glow.png<>res://assets/sfx/youkai_death.wav<>res://assets/sfx/ceramic_place_1.wav<>res://assets/sfx/casino/shove2.wav<>res://assets/sfx/casino/place10.wav<>res://assets/terra/ui/sword.png<>res://assets/sfx/ceramic_drag_2.wav<>res://assets/ui/letter_z.png<>res://assets/enemies/orbling_dracorin.png<>res://units/job.gd<>res://units/swap_area2d.gd<>res://units/unit.gd<>res://assets/fonts/Exo2SemiBold.tres<>res://assets/terra/ui/unit_player_border.png<>res://assets/terra/ui/hp_bar_fill.png<>res://assets/sfx/ceramic_drag_1.wav<>res://assets/terra/ui/hp_bar_bg.png<>res://units/skill_applier.gd<>res://units/status_effects.gd<>res://units/hp_bar.gd<>res://units/status_effects_icons.gd<>res://assets/sfx/casino/shove1.wav
 ::res://units/ai/::1781268980
 action.gd::GDScript::682810832837739716::1781188477::0::1::::Action<>Node<><>0<>0<><>::
 action.tscn::PackedScene::-1::1781188477::0::1::::<><><>0<>0<><>::res://units/ai/action.gd
@@ -582,7 +583,7 @@ fleer.tscn::PackedScene::-1::1781188476::0::1::::<><><>0<>0<><>::res://jobs/hani
 test_boss.tscn::PackedScene::-1::1781188476::0::1::::<><><>0<>0<><>::res://units/enemies/enemy_2x2.tscn<>res://units/ai/action.tscn<>res://units/ai/condition.tscn<>res://skills/resources/pushing_slash.tres<>res://skills/resources/sleep.tres<>res://skills/resources/summon.tres
 ::res://units/ui/::1781269275
 activated_skill_margin_container.gd::GDScript::7700157427617688457::1781278463::0::1::::<>MarginContainer<><>0<>0<><>::
-activated_skill_margin_container.tscn::PackedScene::-1::1781278489::0::1::::<><><>0<>0<><>::res://ui/skill_label_container.tscn<>res://assets/ui/bright_red_panel_transparent.png<>res://units/ui/activated_skill_margin_container.gd
+activated_skill_margin_container.tscn::PackedScene::-1::1781281116::0::1::::<><><>0<>0<><>::res://ui/skill_label_container.tscn<>res://assets/ui/bright_red_panel_transparent.png<>res://units/ui/activated_skill_margin_container.gd
 damage_numbers.gd::GDScript::5258201086662044850::1781268859::0::1::::<>Node2D<><>0<>0<><>::
-damage_numbers.tscn::PackedScene::-1::1781268859::0::1::::<><><>0<>0<><>::res://assets/fonts/CinzelDecorativeBold.tres<>res://units/ui/damage_numbers.gd
+damage_numbers.tscn::PackedScene::-1::1781281116::0::1::::<><><>0<>0<><>::res://assets/fonts/Exo2SemiBold.tres<>res://units/ui/damage_numbers.gd
 death_particles.tscn::PackedScene::-1::1781269275::0::1::::<><><>0<>0<><>::res://assets/vfx/star_02.png<>res://skills/effects/heal_particles.gd

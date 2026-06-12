@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://assets/fonts/CinzelDecorativeBold.tres" type="FontFile" id=1]
+[ext_resource path="res://assets/fonts/Exo2SemiBold.tres" type="FontVariation" id=1]
 [ext_resource path="res://units/ui/damage_numbers.gd" type="Script" id=2]
 
 [node name="DamageNumbers" type="Node2D"]
@@ -25,6 +25,7 @@ theme_override_colors/font_color = Color( 1, 1, 1, 1 )
 theme_override_colors/font_outline_color = Color( 0.227451, 0.211765, 0.188235, 1 )
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource( 1 )
+theme_override_font_sizes/font_size = 46
 text = "9999"
 horizontal_alignment = 1
 vertical_alignment = 1

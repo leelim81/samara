@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://theme.tres" type="Theme" id=1]
 [ext_resource path="res://board/cell.tscn" type="PackedScene" id=2]
@@ -26,7 +26,6 @@
 [ext_resource path="res://ui/view_unit_menu.tscn" type="PackedScene" id=28]
 [ext_resource path="res://assets/sfx/bells.wav" type="AudioStream" id=29]
 [ext_resource path="res://assets/sfx/spell_1.wav" type="AudioStream" id=30]
-[ext_resource path="res://assets/fonts/CinzelDecorativeBold40.tres" type="FontFile" id=31]
 [ext_resource path="res://board/highlights/delayed_skill_highlighter.tscn" type="PackedScene" id=32]
 [ext_resource path="res://ui/audio_button.tscn" type="PackedScene" id=33]
 [ext_resource path="res://assets/sfx/chess_place_2.wav" type="AudioStream" id=34]
