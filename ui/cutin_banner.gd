@@ -67,6 +67,17 @@ func _play_next() -> void:
 
 	show()
 
+	$WhooshAudio.play()
+
+	# Faction-colored hairlines: gold for allied cut-ins, red for enemies
+	var band_style: StyleBoxFlat = _band.get_theme_stylebox("panel")
+
+	if band_style != null:
+		if request.from_left:
+			band_style.border_color = Color(0.752941, 0.627451, 0.384314, 0.7)
+		else:
+			band_style.border_color = Color(0.85, 0.32, 0.28, 0.75)
+
 	_name_label.text = request.text
 
 	var is_dual: bool = request.textures.size() > 1
