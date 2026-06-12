@@ -33,6 +33,8 @@ func _ready() -> void:
 
 	_load_job_textures()
 
+	_pin_overlay_layout()
+
 	apply_equip_skills()
 
 

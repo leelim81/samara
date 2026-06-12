@@ -42,9 +42,9 @@ shape = SubResource( 3 )
 
 [node name="HpBar" parent="Control" index="0"]
 offset_left = 4.0
-offset_top = 89.0
+offset_top = 85.0
 offset_right = 192.0
-offset_bottom = 94.0
+offset_bottom = 90.0
 nine_patch_stretch = true
 
 [node name="CanvasLayer" parent="." index="10"]

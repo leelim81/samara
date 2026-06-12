@@ -3,11 +3,11 @@
 [ext_resource path="res://board/highlights/chain_preview_line2d.gd" type="Script" id=1]
 
 [sub_resource type="Gradient" id=1]
-colors = PackedColorArray( 1, 0.84, 0.45, 0.55, 1, 0.92, 0.65, 0.55 )
+colors = PackedColorArray( 0.93, 0.58, 0.1, 0.7, 1, 0.72, 0.28, 0.7 )
 
 [node name="ChainPreviewLine2D" type="Line2D"]
 width = 44.0
-default_color = Color( 1, 0.84, 0.45, 0.55 )
+default_color = Color( 0.93, 0.58, 0.1, 0.7 )
 gradient = SubResource( 1 )
 texture_mode = 1
 joint_mode = 2

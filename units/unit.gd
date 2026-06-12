@@ -80,13 +80,64 @@ var _icon_tween: Tween
 
 func _ready() -> void:
 	_random.randomize()
-	
+
 	self.current_state = STATE.IDLE
-	
+
 	_load_job_textures()
-	
+
+	_pin_overlay_layout()
+
 	if not is_click_to_drag:
 		set_process_input(false)
+
+
+# The web export's binary scene conversion mangles Control offsets on
+# inherited scenes (enemy HP bars floated mid-air in browser builds), so the
+# tile overlay layout is pinned here in code where every platform agrees.
+func _pin_overlay_layout() -> void:
+	var control: Control = $Control
+
+	control.anchor_left = 0.0
+	control.anchor_top = 0.0
+	control.anchor_right = 1.0
+	control.anchor_bottom = 1.0
+	control.offset_left = -48.0
+	control.offset_top = -48.0
+	control.offset_right = 49.0
+	control.offset_bottom = 49.0
+
+	var hp_bar: Control = $Control/HpBar
+
+	hp_bar.anchor_left = 0.0
+	hp_bar.anchor_top = 1.0
+	hp_bar.anchor_right = 0.0
+	hp_bar.anchor_bottom = 1.0
+
+	if is2x2():
+		hp_bar.offset_left = 4.0
+		hp_bar.offset_top = 85.0
+		hp_bar.offset_right = 192.0
+		hp_bar.offset_bottom = 90.0
+	else:
+		hp_bar.offset_left = 3.0
+		hp_bar.offset_top = -13.0
+		hp_bar.offset_right = 94.0
+		hp_bar.offset_bottom = -8.0
+
+	var container: Control = $Control/Container
+
+	container.anchor_left = 0.5
+	container.anchor_top = 0.5
+	container.anchor_right = 0.5
+	container.anchor_bottom = 0.5
+	container.offset_left = -48.0
+	container.offset_top = -48.0
+	container.offset_right = 48.0
+	container.offset_bottom = 48.0
+	container.add_theme_constant_override("margin_left", 42)
+	container.add_theme_constant_override("margin_top", 30)
+	container.add_theme_constant_override("margin_right", 8)
+	container.add_theme_constant_override("margin_bottom", 16)
 
 
 func _physics_process(_delta: float) -> void:
