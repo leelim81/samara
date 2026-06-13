@@ -1,14 +1,18 @@
 extends Control
-# Shared skill-activation feed. As units activate skills during a pincer,
-# each name appears as one row in a single bottom-centered stack — so the
-# callouts never scatter across the board or overlap each other.
+# Shared skill-activation feed. Each activated skill slides in as one box-less
+# callout (star + glowing name) stacked at the lower-left, so they never
+# scatter across the board or overlap. Newest sits at the bottom; older rows
+# slide up; each self-expires.
 
 
 const MAX_ROWS := 5
+const LEFT_X := 40.0
+const BOTTOM_OFFSET := 156.0
+const ROW_STEP := 46.0
 
 @export var row_scene: PackedScene
 
-@onready var _vbox: VBoxContainer = $VBox
+var _rows: Array = []
 
 
 func _ready() -> void:
@@ -19,16 +23,41 @@ func _ready() -> void:
 
 
 func _on_skill_activated(skill) -> void:
-	# Drop the oldest row if the stack gets tall
-	while _vbox.get_child_count() >= MAX_ROWS:
-		var oldest: Node = _vbox.get_child(0)
+	# Retire the oldest callout if the stack gets tall
+	while _rows.size() >= MAX_ROWS:
+		var oldest = _rows.pop_front()
 
-		_vbox.remove_child(oldest)
-		oldest.queue_free()
+		if is_instance_valid(oldest):
+			oldest.dismiss_now()
 
 	var row = row_scene.instantiate()
 
-	_vbox.add_child(row)
+	add_child(row)
 
 	row.setup(skill)
-	row.play()
+	row.expired.connect(_on_row_expired.bind(row))
+
+	_rows.push_back(row)
+
+	_reflow(row)
+
+
+func _on_row_expired(row) -> void:
+	_rows.erase(row)
+
+	_reflow(null)
+
+
+# Stack rows from the bottom up (newest lowest); slide the new one in, glide
+# the rest to their new heights
+func _reflow(new_row) -> void:
+	var screen: Vector2 = get_viewport_rect().size
+
+	for i in _rows.size():
+		var from_bottom: int = _rows.size() - 1 - i
+		var y: float = screen.y - BOTTOM_OFFSET - from_bottom * ROW_STEP
+
+		if _rows[i] == new_row:
+			_rows[i].play(Vector2(LEFT_X, y))
+		else:
+			_rows[i].move_to_y(y)
