@@ -9,7 +9,7 @@
 [node name="BoardUI" instance=ExtResource( 1 )]
 
 [node name="Board" parent="." index="0"]
-fixed_player_units_level = 4
+fixed_player_units_level = 2
 
 [node name="Phase1" parent="Board/EnemyPhases" index="0"]
 visible = false

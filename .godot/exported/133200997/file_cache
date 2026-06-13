@@ -9,7 +9,7 @@ res://units/unit.tscn::a730e5fe7ca79548a846f6080d7d655b::1781318013::res://.godo
 res://default_env.tres::a52129f071fffbd20a6013a6c0edec1e::1781188476::res://.godot/exported/133200997/export-7cf3fd67ad9f55210191d77b582b8209-default_env.res
 res://battles/introduction/greaves_of_clay.tscn::35cef8c8052fbe327b1523182043cc21::1781188476::res://.godot/exported/133200997/export-3e280b1055c255ad6cd7b72cbd967b53-greaves_of_clay.scn
 res://battles/terra/borderlands.tscn::f2bc5515940227a83cd8ee6976fb0cc9::1781225459::res://.godot/exported/133200997/export-6fcb1f6894af0a7533062d9604052b24-borderlands.scn
-res://battles/terra/to_the_capital.tscn::cf048c1ada9f793b0daecb6e95e29cae::1781225459::res://.godot/exported/133200997/export-63a7893397d484702cdd7edecfb48acf-to_the_capital.scn
+res://battles/terra/to_the_capital.tscn::70478e7718afe5c359f9a406815de0b6::1781367661::res://.godot/exported/133200997/export-63a7893397d484702cdd7edecfb48acf-to_the_capital.scn
 res://battles/test_battles/escape_battle.tscn::4b682fde2336bbaf384a777893813d37::1781188476::res://.godot/exported/133200997/export-accfde798cbaad05cdd590df8dc7bd5d-escape_battle.scn
 res://battles/test_battles/test_battle_1.tscn::3e19ec7b06a84487f44fcfb844ea0c75::1781188476::res://.godot/exported/133200997/export-9dd6abdd8740cae24c59c5458ffd4dea-test_battle_1.scn
 res://battles/test_battles/test_boss_battle.tscn::5f9e95494b29ec8aee09cc54655042b6::1781188476::res://.godot/exported/133200997/export-e8297efdd1c1ea9589e3f96767c86e3b-test_boss_battle.scn
@@ -203,6 +203,6 @@ res://assets/fonts/Exo2SemiBold.tres::15daf3dc4f73d26620766fdf757518f6::17812810
 res://ui/cutin_banner.tscn::0838814988154b68b28a75e28467347a::1781344036::res://.godot/exported/133200997/export-a8309ff8a54973c2370f75a3f35190d4-cutin_banner.scn
 res://ui/fast_forward_button.tscn::9ec40d48ab8e21beb08cdecdab73dffa::1781317870::res://.godot/exported/133200997/export-e3ba2b47c0c3b93061d7ef6bb991d26c-fast_forward_button.scn
 res://ui/skill_feed.tscn::d3183b0e6fd8c50d69c99a6760c5fd35::1781360606::res://.godot/exported/133200997/export-ce3371dfe75309de88c1575b7ce1d3d9-skill_feed.scn
-res://ui/skill_feed_row.tscn::a2831470fa18e7410668290543146760::1781361930::res://.godot/exported/133200997/export-97c78b8f3b41799df7ef0ea942599056-skill_feed_row.scn
+res://ui/skill_feed_row.tscn::4b2e7cdf49ec597045ed907b8165ee62::1781367718::res://.godot/exported/133200997/export-97c78b8f3b41799df7ef0ea942599056-skill_feed_row.scn
 res://assets/fonts/EBGaramondItalic.tres::eb6ebae5da81cf31c25760a4db85c980::1781361901::res://.godot/exported/133200997/export-e2147991d06345365eaab657f635028e-EBGaramondItalic.res
-res://units/ui/slice_death.tscn::8f490f8e311793e3a0e6d1a3f7a06532::1781366396::res://.godot/exported/133200997/export-4242e0a1dcc97dcbb6de92150ad2ed96-slice_death.scn
+res://units/ui/slice_death.tscn::d9f6b3ce80a9017e07229351a8120cf4::1781367758::res://.godot/exported/133200997/export-4242e0a1dcc97dcbb6de92150ad2ed96-slice_death.scn
