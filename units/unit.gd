@@ -223,7 +223,8 @@ func play_death_animation() -> void:
 				[get_full_art()],
 				tr($Job.job.job_name),
 				is_player(),
-				Color(0.62, 0.5, 0.5))
+				Color(0.62, 0.5, 0.5),
+				false)
 
 	var death_effect: Node2D = death_effect_packed_scene.instantiate()
 
@@ -608,17 +609,12 @@ func activate_skills() -> Array:
 
 
 func play_skill_activation_animation(activated_skills: Array, layer_z_index: int) -> void:
+	# The big character cut-in fires once per pincer (see board._show_pincer_cutin);
+	# an individual skill shows its name on the floating card and plays its cue
 	$CanvasLayer/ActivatedSkillMarginContainer.play(activated_skills, position)
 	$CanvasLayer.z_index = layer_z_index
 
 	$Sound/SkillActivationAudio.play()
-
-	if not activated_skills.is_empty():
-		Events.emit_signal("cutin_requested",
-				[get_full_art()],
-				tr(activated_skills.front().skill_name),
-				is_player(),
-				Color.WHITE)
 
 
 # Full-body illustration for cut-ins, falling back to the tile art

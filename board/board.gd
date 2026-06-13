@@ -753,11 +753,16 @@ func _execute_pincers(unit: Unit) -> void:
 
 		print("Evaluating pincer")
 
-		_show_chain_cutin(pincer)
-		
+		_show_pincer_cutin(pincer)
+
+		# Let the cut-in take the stage for a beat before the board resolves,
+		# so the attacking characters read clearly and nothing feels rushed
+		$CutinFocusTimer.start()
+		await $CutinFocusTimer.timeout
+
 		if _current_turn == Turn.ENEMY:
 			_set_turn_counter_of_pincering_units(unit, pincer)
-		
+
 		$PincerExecutor.highlight_pincer(pincer)
 		
 		await $PincerExecutor.pincer_highlighted
@@ -799,25 +804,40 @@ func _execute_pincers(unit: Unit) -> void:
 		_update_enemy()
 
 
-# Dual cut-in of the flanking pair when allies chain into a pincer
-func _show_chain_cutin(pincer: Pincer) -> void:
-	if _current_turn != Turn.PLAYER:
+# Dual cut-in of the attacking pair when a pincer forms. The band runs
+# perpendicular to the pincer axis (see cutin_banner.gd) so it never covers
+# the units that formed it.
+func _show_pincer_cutin(pincer: Pincer) -> void:
+	if pincer.pincering_units.size() < 2:
 		return
 
+	# Count units chained beyond the two leads for a "CHAIN xN" label
 	var chained_count := 0
 
 	for chains in pincer.chain_families.values():
 		for chain in chains:
-			chained_count += chain.size()
+			# Each chain includes its lead pincering unit, so subtract it
+			chained_count += max(0, chain.size() - 1)
 
-	if chained_count == 0 or pincer.pincering_units.size() < 2:
-		return
+	var label: String
+
+	if chained_count > 0:
+		label = "%s ×%d" % [tr("CHAIN"), 2 + chained_count]
+	else:
+		label = tr("PINCER")
+
+	# Horizontal pincer (units side by side) -> tall vertical band so the
+	# art enters from top/bottom; vertical pincer -> wide band, art from sides
+	var vertical_band: bool = pincer.pincer_orientation == Enums.PincerOrientation.HORIZONTAL
+
+	var allied: bool = pincer.pincering_units.front().is_player()
 
 	Events.emit_signal("cutin_requested",
 			[pincer.pincering_units[0].get_full_art(), pincer.pincering_units[1].get_full_art()],
-			"%s ×%d" % [tr("CHAIN"), 2 + chained_count],
-			true,
-			Color.WHITE)
+			label,
+			allied,
+			Color.WHITE,
+			vertical_band)
 
 
 func _set_turn_counter_of_pincering_units(unit: Unit, pincer: Pincer) -> void:

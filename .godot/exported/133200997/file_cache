@@ -22,7 +22,7 @@ res://board/highlights/pincer_highlight.tscn::d6138ee3d5859a395ba1137bac70fd9b::
 res://board/highlights/skill_highlight.tscn::d09717cacbfbdcf2d09fd81673d4c1de::1781188477::res://.godot/exported/133200997/export-cac8cbf033af4200127872ddf5249f20-skill_highlight.scn
 res://board/highlights/trail2d.tscn::bc03ac9d13b0b7ba5355931c19e01348::1781271565::res://.godot/exported/133200997/export-5083e77c9bf075877fbdc5a064b7b1be-trail2d.scn
 res://board/attacker.tscn::1c5afdf72e4c59d26b99dcc6dec11dca::1781318013::res://.godot/exported/133200997/export-b84b0efd896669cb451399ba7302f5e7-attacker.scn
-res://board/battle.tscn::7157f48f1e87f38d48cc21c660efb633::1781317890::res://.godot/exported/133200997/export-17dae8706ba3621e47ba3e0e0e785bc7-battle.scn
+res://board/battle.tscn::3b165b6682428cdec8559dbd0cc6b0ad::1781325577::res://.godot/exported/133200997/export-17dae8706ba3621e47ba3e0e0e785bc7-battle.scn
 res://board/cell.tscn::b15ca9d4b7f2e783e1135f5703fd276f::1781188477::res://.godot/exported/133200997/export-c1cd22ec9f82bfbccb44fff70940950c-cell.scn
 res://board/trap.tscn::699a0650d5d2852cc79c8fc5d3789ab4::1781188477::res://.godot/exported/133200997/export-1b1672cc02f0886e234660d537e34d70-trap.scn
 res://chapter_data/terra/borderlands.tres::03f1c16f08a3e5a3ad02d9387b007630::1781225459::res://.godot/exported/133200997/export-c08a1d504c1cb511edf33e9c2d0d8e32-borderlands.res
@@ -200,5 +200,5 @@ res://units/ui/damage_numbers.tscn::c84450174316b59c4bee65c97d2d16c6::1781281116
 res://units/ui/death_particles.tscn::4cfb4bb0e75d63b7bb8e7bcca7e19147::1781269275::res://.godot/exported/133200997/export-b7945f64ad196d3b8c023daec4d4fa97-death_particles.scn
 res://units/enemy.tscn::6cd29b87267e88e92d35eacb91fb2eef::1781318013::res://.godot/exported/133200997/export-f54d83d198d18fb0db3742a1af0d85ab-enemy.scn
 res://assets/fonts/Exo2SemiBold.tres::15daf3dc4f73d26620766fdf757518f6::1781281094::res://.godot/exported/133200997/export-a1e2dc45573c466368fa0fd656efcf00-Exo2SemiBold.res
-res://ui/cutin_banner.tscn::861c1f0a9ce29d452197b8842a212ed9::1781318013::res://.godot/exported/133200997/export-a8309ff8a54973c2370f75a3f35190d4-cutin_banner.scn
+res://ui/cutin_banner.tscn::1f29a8874204ff676255c025bd3a70af::1781324222::res://.godot/exported/133200997/export-a8309ff8a54973c2370f75a3f35190d4-cutin_banner.scn
 res://ui/fast_forward_button.tscn::9ec40d48ab8e21beb08cdecdab73dffa::1781317870::res://.godot/exported/133200997/export-e3ba2b47c0c3b93061d7ef6bb991d26c-fast_forward_button.scn
