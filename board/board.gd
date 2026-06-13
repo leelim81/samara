@@ -826,9 +826,10 @@ func _show_pincer_cutin(pincer: Pincer) -> void:
 	else:
 		label = tr("PINCER")
 
-	# Horizontal pincer (units side by side) -> tall vertical band so the
-	# art enters from top/bottom; vertical pincer -> wide band, art from sides
-	var vertical_band: bool = pincer.pincer_orientation == Enums.PincerOrientation.HORIZONTAL
+	# Characters enter perpendicular to the pincer: a vertical pincer (units
+	# stacked up/down) sends them in from the sides; a horizontal pincer sends
+	# them from top and bottom
+	var enter_from_sides: bool = pincer.pincer_orientation == Enums.PincerOrientation.VERTICAL
 
 	var allied: bool = pincer.pincering_units.front().is_player()
 
@@ -837,7 +838,7 @@ func _show_pincer_cutin(pincer: Pincer) -> void:
 			label,
 			allied,
 			Color.WHITE,
-			vertical_band)
+			enter_from_sides)
 
 
 func _set_turn_counter_of_pincering_units(unit: Unit, pincer: Pincer) -> void:

@@ -224,7 +224,7 @@ func play_death_animation() -> void:
 				tr($Job.job.job_name),
 				is_player(),
 				Color(0.62, 0.5, 0.5),
-				false)
+				true)
 
 	var death_effect: Node2D = death_effect_packed_scene.instantiate()
 

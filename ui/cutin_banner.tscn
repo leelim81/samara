@@ -1,18 +1,34 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://ui/cutin_banner.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/Exo2SemiBold.tres" type="FontVariation" id=2]
 [ext_resource path="res://assets/sfx/wind_whoosh.wav" type="AudioStream" id=3]
 
 [sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.121569, 0.113725, 0.101961, 0.88 )
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color( 0.752941, 0.627451, 0.384314, 0.7 )
+bg_color = Color( 0.121569, 0.113725, 0.101961, 0.66 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.752941, 0.627451, 0.384314, 0.6 )
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
 shadow_color = Color( 0, 0, 0, 0.25 )
-shadow_size = 10
+shadow_size = 8
+
+[sub_resource type="Gradient" id=2]
+offsets = PackedFloat32Array( 0, 1 )
+colors = PackedColorArray( 0, 0, 0, 0.5, 0, 0, 0, 0 )
+
+[sub_resource type="GradientTexture2D" id=3]
+gradient = SubResource( 2 )
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2( 0.5, 0.5 )
+fill_to = Vector2( 0.5, 0 )
 
 [node name="CutInBanner" type="Control"]
 anchor_right = 1.0
@@ -20,29 +36,49 @@ anchor_bottom = 1.0
 mouse_filter = 2
 script = ExtResource( 1 )
 
-[node name="Band" type="Panel" parent="."]
-clip_contents = true
+[node name="Content" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="ArtA" type="TextureRect" parent="Content"]
+mouse_filter = 2
+expand = true
+stretch_mode = 5
+
+[node name="GlowA" type="TextureRect" parent="Content/ArtA"]
+show_behind_parent = true
+texture = SubResource( 3 )
+mouse_filter = 2
+expand = true
+stretch_mode = 0
+
+[node name="ArtB" type="TextureRect" parent="Content"]
+mouse_filter = 2
+expand = true
+stretch_mode = 5
+
+[node name="GlowB" type="TextureRect" parent="Content/ArtB"]
+show_behind_parent = true
+texture = SubResource( 3 )
+mouse_filter = 2
+expand = true
+stretch_mode = 0
+
+[node name="Pill" type="Panel" parent="Content"]
 mouse_filter = 2
 theme_override_styles/panel = SubResource( 1 )
 
-[node name="ArtA" type="TextureRect" parent="Band"]
-mouse_filter = 2
-expand = true
-stretch_mode = 5
-
-[node name="ArtB" type="TextureRect" parent="Band"]
-mouse_filter = 2
-expand = true
-stretch_mode = 5
-
-[node name="NameLabel" type="Label" parent="."]
+[node name="NameLabel" type="Label" parent="Content/Pill"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 mouse_filter = 2
 theme_override_colors/font_color = Color( 1, 1, 1, 1 )
 theme_override_colors/font_outline_color = Color( 0.227451, 0.211765, 0.188235, 1 )
-theme_override_constants/outline_size = 12
+theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource( 2 )
-theme_override_font_sizes/font_size = 38
-text = "SKILL"
+theme_override_font_sizes/font_size = 36
+text = "PINCER"
 horizontal_alignment = 1
 vertical_alignment = 1
 

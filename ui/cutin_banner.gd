@@ -1,9 +1,11 @@
 extends Control
-# Terra Battle style cut-in: large character art sweeps across a dark band
-# when units pincer, chain, cast skills, or fall. The band runs PERPENDICULAR
-# to the pincer axis so it never covers the units that formed it:
-#   vertical pincer (units stacked up/down) -> horizontal band, art from L/R
-#   horizontal pincer (units side by side)  -> vertical band, art from top/bottom
+# Terra Battle style cut-in: large character art sweeps in over the board when
+# units pincer, chain, cast skills, or fall. Faithful to TB, it does NOT black
+# out the grid — there is no opaque band. Each character carries a soft local
+# glow for contrast on the pale board, and the label sits in a compact pill.
+# The art enters PERPENDICULAR to the pincer axis so it stays clear of center:
+#   vertical pincer (units up/down) -> characters slide in from left and right
+#   horizontal pincer (units side by side) -> from top and bottom
 # Requests queue so cut-ins never overlap; combat is never gated on them.
 
 
@@ -12,47 +14,44 @@ class CutInRequest extends RefCounted:
 	var text: String
 	var allied: bool
 	var tint: Color
-	var vertical_band: bool
+	var enter_from_sides: bool
 
 
-# Slower, more readable cadence than a quick flash
 const SLIDE_IN_SECONDS := 0.3
 const HOLD_SECONDS := 0.8
 const FADE_OUT_SECONDS := 0.32
 
-# Slow drift across the hold keeps the frozen art feeling alive
-const DRIFT_PIXELS := 24.0
+const DRIFT_PIXELS := 22.0
 
-# Band thickness along its short axis
-const HORIZONTAL_BAND_HEIGHT := 224.0
-const VERTICAL_BAND_WIDTH := 312.0
+# Glow halo size relative to the character art
+const GLOW_SCALE := 1.5
 
 const MAX_QUEUE := 4
 
 var _queue: Array = []
 var _is_playing := false
 
-@onready var _band: Panel = $Band
-@onready var _art_a: TextureRect = $Band/ArtA
-@onready var _art_b: TextureRect = $Band/ArtB
-@onready var _name_label: Label = $NameLabel
+@onready var _content: Control = $Content
+@onready var _art_a: TextureRect = $Content/ArtA
+@onready var _art_b: TextureRect = $Content/ArtB
+@onready var _glow_a: TextureRect = $Content/ArtA/GlowA
+@onready var _glow_b: TextureRect = $Content/ArtB/GlowB
+@onready var _pill: Panel = $Content/Pill
+@onready var _name_label: Label = $Content/Pill/NameLabel
 
 
 func _ready() -> void:
-	# The root stays present; the band and label are transparent when idle.
-	# (Toggling root visibility between cut-ins left the band non-drawing.)
-	_band.modulate.a = 0.0
-	_name_label.modulate.a = 0.0
+	# Stay present; fade Content via modulate (toggling root visibility left
+	# children non-drawing)
+	_content.modulate.a = 0.0
 
-	# Path lookup keeps this working in --script tool runs too, where
-	# autoload globals can resolve differently
 	var events: Node = get_node_or_null("/root/Events")
 
 	if events != null:
 		var _error = events.connect("cutin_requested", Callable(self, "_on_cutin_requested"))
 
 
-func _on_cutin_requested(textures: Array, text: String, allied: bool, tint: Color, vertical_band: bool = false) -> void:
+func _on_cutin_requested(textures: Array, text: String, allied: bool, tint: Color, enter_from_sides: bool = false) -> void:
 	if _queue.size() >= MAX_QUEUE:
 		return
 
@@ -62,7 +61,7 @@ func _on_cutin_requested(textures: Array, text: String, allied: bool, tint: Colo
 	request.text = text
 	request.allied = allied
 	request.tint = tint
-	request.vertical_band = vertical_band
+	request.enter_from_sides = enter_from_sides
 
 	_queue.push_back(request)
 
@@ -79,59 +78,55 @@ func _play_next() -> void:
 
 	$WhooshAudio.play()
 
-	_style_band(request.allied)
-
 	_name_label.text = request.text
 
-	if request.vertical_band:
-		_play_vertical(request)
-	else:
+	_style_pill(request.allied)
+	_layout_pill()
+
+	# A vertical pincer (units up/down) sends characters in from the sides;
+	# a horizontal pincer sends them from top and bottom
+	if request.enter_from_sides:
 		_play_horizontal(request)
+	else:
+		_play_vertical(request)
 
 
-# Faction-colored hairlines: gold for allied cut-ins, red for enemies
-func _style_band(allied: bool) -> void:
-	var band_style: StyleBoxFlat = _band.get_theme_stylebox("panel")
+# Compact pill sized to the label, faction-tinted border, centered on screen
+func _style_pill(allied: bool) -> void:
+	var style: StyleBoxFlat = _pill.get_theme_stylebox("panel")
 
-	if band_style != null:
-		band_style.border_color = Color(0.752941, 0.627451, 0.384314, 0.7) if allied \
-				else Color(0.85, 0.32, 0.28, 0.78)
+	if style != null:
+		style.border_color = Color(0.752941, 0.627451, 0.384314, 0.6) if allied \
+				else Color(0.85, 0.32, 0.28, 0.7)
 
 
-# Wide band centered vertically; art slides in from left and right
+func _layout_pill() -> void:
+	var screen: Vector2 = get_viewport_rect().size
+	var font: Font = _name_label.get_theme_font("font")
+	var font_size: int = _name_label.get_theme_font_size("font_size")
+	var text_size: Vector2 = font.get_string_size(_name_label.text, HORIZONTAL_ALIGNMENT_CENTER, -1, font_size)
+
+	var pill_size := Vector2(text_size.x + 64.0, text_size.y + 28.0)
+
+	_pill.size = pill_size
+	_pill.position = (screen - pill_size) * 0.5
+
+
+# Characters slide in from left and right (used for a vertical pincer)
 func _play_horizontal(request: CutInRequest) -> void:
 	var screen: Vector2 = get_viewport_rect().size
-
-	var band_top: float = (screen.y - HORIZONTAL_BAND_HEIGHT) * 0.5
-
-	_band.position = Vector2(0, band_top)
-	_band.size = Vector2(screen.x, HORIZONTAL_BAND_HEIGHT)
-
-	_name_label.position = Vector2(0, band_top)
-	_name_label.size = Vector2(screen.x, HORIZONTAL_BAND_HEIGHT)
-
-	# Portrait art taller than the slot, biased up so the face frames in the
-	# band and the legs crop below (a face-forward cut-in)
-	var art_size := Vector2(330, HORIZONTAL_BAND_HEIGHT + 150)
-	var art_y: float = -art_size.y * 0.10
+	var art_size := Vector2(320, 540)
+	var art_y: float = (screen.y - art_size.y) * 0.5
 
 	var is_dual: bool = request.textures.size() > 1
-
-	var a_rest := Vector2(8, art_y)
-	var b_rest := Vector2(screen.x - art_size.x - 8, art_y)
-
-	_setup_art(_art_a, art_size, request, 0, true)
-	_setup_art(_art_b, art_size, request, 1 if is_dual else 0, is_dual or not request.allied)
-
-	# A single cut-in shows one portrait on the acting faction's side
 	var use_a: bool = is_dual or request.allied
 	var use_b: bool = is_dual or not request.allied
 
-	_art_a.visible = use_a
-	_art_b.visible = use_b
+	var a_rest := Vector2(-12, art_y)
+	var b_rest := Vector2(screen.x - art_size.x + 12, art_y)
 
-	_art_a.position = Vector2(-art_size.x, art_y)
-	_art_b.position = Vector2(screen.x, art_y)
+	_prepare_art(_art_a, _glow_a, art_size, request, 0, use_a, Vector2(-art_size.x, art_y))
+	_prepare_art(_art_b, _glow_b, art_size, request, 1 if is_dual else 0, use_b, Vector2(screen.x, art_y))
 
 	var movers := []
 
@@ -143,37 +138,21 @@ func _play_horizontal(request: CutInRequest) -> void:
 	_run_cutin(movers)
 
 
-# Tall band centered horizontally; art slides in from top and bottom
+# Characters slide in from top and bottom (used for a horizontal pincer)
 func _play_vertical(request: CutInRequest) -> void:
 	var screen: Vector2 = get_viewport_rect().size
-
-	var band_left: float = (screen.x - VERTICAL_BAND_WIDTH) * 0.5
-
-	_band.position = Vector2(band_left, 0)
-	_band.size = Vector2(VERTICAL_BAND_WIDTH, screen.y)
-
-	_name_label.position = Vector2(band_left, (screen.y - 80.0) * 0.5)
-	_name_label.size = Vector2(VERTICAL_BAND_WIDTH, 80.0)
-
-	var art_size := Vector2(VERTICAL_BAND_WIDTH + 60, 430)
-	var art_x: float = (VERTICAL_BAND_WIDTH - art_size.x) * 0.5
+	var art_size := Vector2(380, 430)
+	var art_x: float = (screen.x - art_size.x) * 0.5
 
 	var is_dual: bool = request.textures.size() > 1
-
-	var a_rest := Vector2(art_x, 20)
-	var b_rest := Vector2(art_x, screen.y - art_size.y - 20)
-
-	_setup_art(_art_a, art_size, request, 0, true)
-	_setup_art(_art_b, art_size, request, 1 if is_dual else 0, is_dual or not request.allied)
-
 	var use_a: bool = is_dual or request.allied
 	var use_b: bool = is_dual or not request.allied
 
-	_art_a.visible = use_a
-	_art_b.visible = use_b
+	var a_rest := Vector2(art_x, 8)
+	var b_rest := Vector2(art_x, screen.y - art_size.y - 8)
 
-	_art_a.position = Vector2(art_x, -art_size.y)
-	_art_b.position = Vector2(art_x, screen.y)
+	_prepare_art(_art_a, _glow_a, art_size, request, 0, use_a, Vector2(art_x, -art_size.y))
+	_prepare_art(_art_b, _glow_b, art_size, request, 1 if is_dual else 0, use_b, Vector2(art_x, screen.y))
 
 	var movers := []
 
@@ -185,7 +164,9 @@ func _play_vertical(request: CutInRequest) -> void:
 	_run_cutin(movers)
 
 
-func _setup_art(art: TextureRect, art_size: Vector2, request: CutInRequest, texture_index: int, enabled: bool) -> void:
+func _prepare_art(art: TextureRect, glow: TextureRect, art_size: Vector2, request: CutInRequest, texture_index: int, enabled: bool, start_pos: Vector2) -> void:
+	art.visible = enabled
+
 	if not enabled:
 		return
 
@@ -194,18 +175,24 @@ func _setup_art(art: TextureRect, art_size: Vector2, request: CutInRequest, text
 	art.texture = request.textures[min(texture_index, request.textures.size() - 1)]
 	art.self_modulate = request.tint
 	art.scale = Vector2(1.08, 1.08)
+	art.position = start_pos
+
+	# Soft dark halo, larger than the art, centered behind it
+	var glow_size: Vector2 = art_size * GLOW_SCALE
+	glow.size = glow_size
+	glow.position = (art_size - glow_size) * 0.5
 
 
-# Shared slide-in / hold-drift / fade-out for the given movers (one per used
-# art). First tween of each phase is sequential; siblings use parallel().
+# Slide-in (with settle scale) -> hold drift -> fade, fading the whole Content
 func _run_cutin(movers: Array) -> void:
-	_band.modulate = Color(1, 1, 1, 0)
-	_name_label.modulate = Color(1, 1, 1, 0)
+	_content.modulate = Color(1, 1, 1, 0)
+	_pill.scale = Vector2(0.9, 0.9)
+	_pill.pivot_offset = _pill.size * 0.5
 
 	var t := create_tween()
 
-	# Phase 1 — band fades in while each art slides and settles its punch scale
-	t.tween_property(_band, "modulate:a", 1.0, SLIDE_IN_SECONDS * 0.7)
+	# Phase 1 — content fades in while each art slides and settles
+	t.tween_property(_content, "modulate:a", 1.0, SLIDE_IN_SECONDS * 0.7)
 
 	for mover in movers:
 		t.parallel().tween_property(mover.art, "position", mover.rest, SLIDE_IN_SECONDS) \
@@ -215,8 +202,10 @@ func _run_cutin(movers: Array) -> void:
 				.set_trans(Tween.TRANS_BACK) \
 				.set_ease(Tween.EASE_OUT)
 
-	# Phase 2 — name reads in just after the art lands
-	t.tween_property(_name_label, "modulate:a", 1.0, 0.16)
+	# Phase 2 — pill pops in just after the art lands
+	t.tween_property(_pill, "scale", Vector2.ONE, 0.16) \
+			.set_trans(Tween.TRANS_BACK) \
+			.set_ease(Tween.EASE_OUT)
 
 	# Phase 3 — hold with a slow drift
 	for i in movers.size():
@@ -228,11 +217,8 @@ func _run_cutin(movers: Array) -> void:
 		else:
 			t.parallel().tween_property(mover.art, "position", drift_target, HOLD_SECONDS).set_trans(Tween.TRANS_LINEAR)
 
-	# Phase 4 — band and name fade out together
-	t.tween_property(_band, "modulate:a", 0.0, FADE_OUT_SECONDS) \
-			.set_trans(Tween.TRANS_CUBIC) \
-			.set_ease(Tween.EASE_IN)
-	t.parallel().tween_property(_name_label, "modulate:a", 0.0, FADE_OUT_SECONDS) \
+	# Phase 4 — fade everything out together
+	t.tween_property(_content, "modulate:a", 0.0, FADE_OUT_SECONDS) \
 			.set_trans(Tween.TRANS_CUBIC) \
 			.set_ease(Tween.EASE_IN)
 
