@@ -60,5 +60,5 @@ vertical_alignment = 1
 
 [node name="WhooshAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
-volume_db = -8.0
+volume_db = -6.0
 bus = "Sound effects"

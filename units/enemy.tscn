@@ -103,7 +103,7 @@ texture = ExtResource( 11 )
 
 [node name="AppearAudio" parent="Sound" index="0"]
 stream = ExtResource( 3 )
-volume_db = 8.0
+volume_db = 3.0
 
 [node name="DeathAudio" parent="Sound" index="1"]
 stream = ExtResource( 12 )

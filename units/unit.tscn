@@ -775,30 +775,32 @@ one_shot = true
 
 [node name="AppearAudio" type="AudioStreamPlayer" parent="Sound"]
 stream = ExtResource( 10 )
+volume_db = 1.0
 bus = "Sound effects"
 
 [node name="DeathAudio" type="AudioStreamPlayer" parent="Sound"]
 stream = ExtResource( 8 )
-volume_db = 3.0
+volume_db = 2.0
 bus = "Sound effects"
 
 [node name="PickUpAudio" type="AudioStreamPlayer" parent="Sound"]
 stream = ExtResource( 13 )
-volume_db = 12.0
+volume_db = 5.0
 bus = "Sound effects"
 
 [node name="SwapAudio" type="AudioStreamPlayer" parent="Sound"]
 stream = SubResource( 11 )
-volume_db = 12.0
+volume_db = 3.0
 bus = "Sound effects"
 
 [node name="SnapAudio" type="AudioStreamPlayer" parent="Sound"]
 stream = SubResource( 10 )
-volume_db = 6.0
+volume_db = 4.0
 bus = "Sound effects"
 
 [node name="SkillActivationAudio" type="AudioStreamPlayer" parent="Sound"]
 stream = ExtResource( 11 )
+volume_db = -1.0
 bus = "Sound effects"
 
 [node name="EscapeAudio" type="AudioStreamPlayer" parent="Sound"]
