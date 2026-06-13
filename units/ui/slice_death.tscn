@@ -1,13 +1,12 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://units/ui/slice_death.gd" type="Script" id=1]
-[ext_resource path="res://assets/sfx/bells.wav" type="AudioStream" id=2]
+[ext_resource path="res://assets/sfx/boss_death.wav" type="AudioStream" id=2]
 
 [node name="SliceDeath" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="DeathAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
-volume_db = 1.0
-pitch_scale = 0.5
+volume_db = 2.0
 bus = "Sound effects"
