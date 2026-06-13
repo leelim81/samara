@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://ui/skill_feed_row.gd" type="Script" id=1]
-[ext_resource path="res://assets/fonts/Exo2SemiBold.tres" type="FontVariation" id=2]
+[ext_resource path="res://assets/fonts/EBGaramondItalic.tres" type="FontVariation" id=2]
 [ext_resource path="res://assets/vfx/star_07.png" type="Texture2D" id=3]
 
 [sub_resource type="Gradient" id=1]
@@ -35,6 +35,6 @@ theme_override_colors/font_color = Color( 0.45, 0.88, 1, 1 )
 theme_override_colors/font_outline_color = Color( 0.07, 0.06, 0.05, 1 )
 theme_override_constants/outline_size = 9
 theme_override_fonts/font = ExtResource( 2 )
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 30
 text = "Skill"
 vertical_alignment = 1
