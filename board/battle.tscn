@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://theme.tres" type="Theme" id=1]
 [ext_resource path="res://board/cell.tscn" type="PackedScene" id=2]
@@ -34,6 +34,7 @@
 [ext_resource path="res://board/highlights/trails.gd" type="Script" id=35]
 [ext_resource path="res://assets/terra/ui/ui_icons.png" type="Texture2D" id=36]
 [ext_resource path="res://ui/cutin_banner.tscn" type="PackedScene" id=37]
+[ext_resource path="res://ui/skill_feed.tscn" type="PackedScene" id=40]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 324, 8 )
@@ -574,6 +575,8 @@ __meta__ = {
 }
 
 [node name="CutInBanner" parent="CanvasLayer" instance=ExtResource( 37 )]
+
+[node name="SkillFeed" parent="CanvasLayer" instance=ExtResource( 40 )]
 
 [node name="VictoryScreen" parent="CanvasLayer" instance=ExtResource( 27 )]
 visible = false

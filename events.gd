@@ -11,3 +11,7 @@ signal unit_escaped(unit, target_cell)
 # enter_from_sides: true = art enters from left/right (vertical pincer),
 #   false = from top/bottom (horizontal pincer)
 signal cutin_requested(textures, text, allied, tint, enter_from_sides)
+
+# A unit's skill activated during a pincer; the shared skill feed shows its
+# name as one row so callouts stack instead of scattering across the board.
+signal skill_activated(skill)

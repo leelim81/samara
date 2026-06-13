@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://ui/skill_feed.gd" type="Script" id=1]
+[ext_resource path="res://ui/skill_feed_row.tscn" type="PackedScene" id=2]
+
+[node name="SkillFeed" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 1 )
+row_scene = ExtResource( 2 )
+
+[node name="VBox" type="VBoxContainer" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -210.0
+offset_bottom = -28.0
+grow_vertical = 0
+theme_override_constants/separation = 6
+alignment = 2
+mouse_filter = 2

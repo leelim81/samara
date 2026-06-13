@@ -610,11 +610,15 @@ func activate_skills() -> Array:
 
 func play_skill_activation_animation(activated_skills: Array, layer_z_index: int) -> void:
 	# The big character cut-in fires once per pincer (see board._show_pincer_cutin);
-	# an individual skill shows its name on the floating card and plays its cue
-	$CanvasLayer/ActivatedSkillMarginContainer.play(activated_skills, position)
+	# each activated skill adds one row to the shared feed instead of spawning
+	# its own floating box, so callouts never scatter or overlap
 	$CanvasLayer.z_index = layer_z_index
 
-	$Sound/SkillActivationAudio.play()
+	for skill in activated_skills:
+		Events.emit_signal("skill_activated", skill)
+
+	if not activated_skills.is_empty():
+		$Sound/SkillActivationAudio.play()
 
 
 # Full-body illustration for cut-ins, falling back to the tile art
