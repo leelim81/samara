@@ -66,6 +66,11 @@ var _save_data: SaveData
 
 var _is_battle_finished: bool = false
 
+# Battle spoils, accumulated as enemies fall and read by the results screen
+var _battle_exp: int = 0
+var _battle_coins: int = 0
+var _enemies_defeated: int = 0
+
 @onready var _grid := $Grid
 
 
@@ -419,12 +424,43 @@ func on_give_up() -> void:
 		_active_unit.release()
 
 
+# Combat resolution runs at this multiplier when fast-forward is on.
+# Player decision/drag time is never sped up (see _apply_combat_speed).
+const FAST_FORWARD_SCALE := 2.5
+
+var _fast_forward_enabled: bool = false
+var _is_player_interactive: bool = false
+
+
+func set_fast_forward(enabled: bool) -> void:
+	_fast_forward_enabled = enabled
+
+	_apply_combat_speed()
+
+
+# Speeds up animation-heavy resolution but keeps the player's free turn at
+# real time, so the move timer window never changes.
+func _apply_combat_speed() -> void:
+	if _fast_forward_enabled and not _is_player_interactive:
+		Engine.time_scale = FAST_FORWARD_SCALE
+	else:
+		Engine.time_scale = 1.0
+
+
 func _enable_unit_selection() -> void:
+	_is_player_interactive = true
+
+	_apply_combat_speed()
+
 	_enable_units(_player_units_node.get_children())
 	_enable_units(_enemy_units_node.get_children())
 
 
 func _disable_unit_selection() -> void:
+	_is_player_interactive = false
+
+	_apply_combat_speed()
+
 	_disable_units(_player_units_node.get_children())
 	_disable_units(_enemy_units_node.get_children())
 
@@ -1054,6 +1090,27 @@ func _on_Unit_selected_for_view(unit: Unit) -> void:
 func _on_Enemy_dead(unit: Unit) -> void:
 	$DelayedSkillHighlighter.remove_all(unit)
 
+	_accumulate_spoils(unit)
+
+
+# Spoils scale with the enemy's level; bosses (2x2) are worth far more
+func _accumulate_spoils(unit: Unit) -> void:
+	var level: int = unit.get_level()
+	var multiplier: int = 5 if unit.is2x2() else 1
+
+	_battle_exp += (18 + level * 12) * multiplier
+	_battle_coins += (6 + level * 5) * multiplier
+	_enemies_defeated += 1
+
+
+# Battle spoils for the results screen: {exp, coins, defeated}
+func get_battle_spoils() -> Dictionary:
+	return {
+		"exp": _battle_exp,
+		"coins": _battle_coins,
+		"defeated": _enemies_defeated,
+	}
+
 
 func _on_Enemy_action_done(unit: Unit) -> void:
 	if unit != _active_unit:
@@ -1119,6 +1176,9 @@ func _on_DragTimer_timeout() -> void:
 
 
 func _on_Board_tree_exiting() -> void:
+	# Never leave fast-forward bleeding into menus or the next scene
+	Engine.time_scale = 1.0
+
 	# Free unused enemy phases
 	for enemy_phase in _enemy_phases_queue:
 		enemy_phase.free()

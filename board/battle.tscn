@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://theme.tres" type="Theme" id=1]
 [ext_resource path="res://board/cell.tscn" type="PackedScene" id=2]
@@ -28,6 +28,7 @@
 [ext_resource path="res://assets/sfx/spell_1.wav" type="AudioStream" id=30]
 [ext_resource path="res://board/highlights/delayed_skill_highlighter.tscn" type="PackedScene" id=32]
 [ext_resource path="res://ui/audio_button.tscn" type="PackedScene" id=33]
+[ext_resource path="res://ui/fast_forward_button.tscn" type="PackedScene" id=38]
 [ext_resource path="res://assets/sfx/chess_place_2.wav" type="AudioStream" id=34]
 [ext_resource path="res://board/highlights/trails.gd" type="Script" id=35]
 [ext_resource path="res://assets/terra/ui/ui_icons.png" type="Texture2D" id=36]
@@ -497,11 +498,15 @@ text = "1"
 offset_left = 486.0
 offset_right = 560.0
 
-[node name="GiveUpButton" parent="CanvasLayer/MarginContainer/HBoxContainer" instance=ExtResource( 33 )]
+[node name="FastForwardButton" parent="CanvasLayer/MarginContainer/HBoxContainer" instance=ExtResource( 38 )]
 offset_left = 576.0
-offset_right = 680.0
+offset_right = 628.0
+
+[node name="GiveUpButton" parent="CanvasLayer/MarginContainer/HBoxContainer" instance=ExtResource( 33 )]
+offset_left = 644.0
+offset_right = 740.0
 offset_bottom = 80.0
-custom_minimum_size = Vector2( 100, 0 )
+custom_minimum_size = Vector2( 96, 0 )
 text = "GIVE_UP"
 
 [node name="EnemyPhaseCenterContainer" type="CenterContainer" parent="CanvasLayer"]
@@ -582,6 +587,7 @@ bus = "Music"
 [connection signal="timeout" from="Board/PincerExecutor/SkillActivationTimer" to="Board/PincerExecutor" method="_on_SkillActivationTimer_timeout"]
 [connection signal="timeout" from="Board/PincerExecutor/DeathAnimationTimer" to="Board/PincerExecutor" method="_on_DeathAnimationTimer_timeout"]
 [connection signal="drag_mode_changed" from="CanvasLayer/MarginContainer/HBoxContainer/DragModeOptionButton" to="." method="_on_DragModeOptionButton_drag_mode_changed"]
+[connection signal="fast_forward_toggled" from="CanvasLayer/MarginContainer/HBoxContainer/FastForwardButton" to="." method="_on_FastForwardButton_fast_forward_toggled"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/HBoxContainer/GiveUpButton" to="." method="_on_GiveUpButton_pressed"]
 [connection signal="quit_button_pressed" from="CanvasLayer/DefeatScreen" to="." method="_on_DefeatScreen_quit_button_pressed"]
 [connection signal="try_again_button_pressed" from="CanvasLayer/DefeatScreen" to="." method="_on_DefeatScreen_try_again_button_pressed"]

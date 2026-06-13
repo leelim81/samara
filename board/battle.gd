@@ -103,7 +103,10 @@ func _on_Board_victory() -> void:
 
 	_is_battle_finished = true
 
-	$CanvasLayer/VictoryScreen.initialize(_total_drag_time_seconds, _player_turn_count)
+	# Results screen animates in real time regardless of fast-forward
+	Engine.time_scale = 1.0
+
+	$CanvasLayer/VictoryScreen.initialize(_total_drag_time_seconds, _player_turn_count, $Board.get_battle_spoils())
 
 	# Let the last death dissolve finish before the banner drops
 	await get_tree().create_timer(0.8).timeout
@@ -117,6 +120,8 @@ func _on_Board_defeat() -> void:
 		return
 
 	_is_battle_finished = true
+
+	Engine.time_scale = 1.0
 
 	await get_tree().create_timer(0.6).timeout
 
@@ -149,6 +154,10 @@ func _on_GiveUpButton_pressed() -> void:
 
 func _on_DragModeOptionButton_drag_mode_changed(drag_mode: int) -> void:
 	$Board.update_drag_mode(drag_mode)
+
+
+func _on_FastForwardButton_fast_forward_toggled(enabled: bool) -> void:
+	$Board.set_fast_forward(enabled)
 
 
 func _on_Board_enemy_phase_started(current_enemy_phase: int, enemy_phase_count: int) -> void:
