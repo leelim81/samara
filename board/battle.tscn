@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://theme.tres" type="Theme" id=1]
 [ext_resource path="res://board/cell.tscn" type="PackedScene" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://board/pusher.gd" type="Script" id=18]
 [ext_resource path="res://assets/terra/ui/grid.png" type="Texture2D" id=19]
 [ext_resource path="res://assets/terra/ui/panel_card.png" type="Texture2D" id=20]
+[ext_resource path="res://assets/fonts/Exo2SemiBold.tres" type="FontVariation" id=39]
 [ext_resource path="res://assets/music/Unlocated_Hell.mp3" type="AudioStream" id=21]
 [ext_resource path="res://assets/ui/city_bg.png" type="Texture2D" id=22]
 [ext_resource path="res://ui/drag_mode_option_button.tscn" type="PackedScene" id=23]
@@ -72,6 +73,21 @@ region = Rect2( 128, 0, 64, 64 )
 flags = 5
 atlas = ExtResource( 36 )
 region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.984314, 0.968627, 0.929412, 0.97 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.752941, 0.627451, 0.384314, 0.65 )
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color( 0, 0, 0, 0.16 )
+shadow_size = 10
+shadow_offset = Vector2( 0, 3 )
 
 [node name="Battle" type="MarginContainer"]
 anchor_right = 1.0
@@ -522,25 +538,30 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/EnemyPhaseCenterContainer"]
-offset_left = 200.0
-offset_top = 448.0
-offset_right = 520.0
-offset_bottom = 512.0
-custom_minimum_size = Vector2( 320, 64 )
-texture = ExtResource( 20 )
-patch_margin_left = 26
-patch_margin_top = 29
-patch_margin_right = 27
-patch_margin_bottom = 19
+[node name="Banner" type="PanelContainer" parent="CanvasLayer/EnemyPhaseCenterContainer"]
+theme_override_styles/panel = SubResource( 10 )
 
-[node name="Label" type="Label" parent="CanvasLayer/EnemyPhaseCenterContainer/NinePatchRect"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-size_flags_horizontal = 3
-text = "BATTLE 1/5"
+[node name="Margin" type="MarginContainer" parent="CanvasLayer/EnemyPhaseCenterContainer/Banner"]
+theme_override_constants/margin_left = 56
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 56
+theme_override_constants/margin_bottom = 18
+
+[node name="VBox" type="VBoxContainer" parent="CanvasLayer/EnemyPhaseCenterContainer/Banner/Margin"]
+theme_override_constants/separation = 2
+
+[node name="SubtitleLabel" type="Label" parent="CanvasLayer/EnemyPhaseCenterContainer/Banner/Margin/VBox"]
+theme_override_colors/font_color = Color( 0.227451, 0.211765, 0.188235, 0.65 )
+theme_override_font_sizes/font_size = 17
+text = "BATTLE"
 horizontal_alignment = 1
-vertical_alignment = 1
+
+[node name="NumberLabel" type="Label" parent="CanvasLayer/EnemyPhaseCenterContainer/Banner/Margin/VBox"]
+theme_override_colors/font_color = Color( 0.227451, 0.211765, 0.188235, 1 )
+theme_override_fonts/font = ExtResource( 39 )
+theme_override_font_sizes/font_size = 44
+text = "1 / 5"
+horizontal_alignment = 1
 
 [node name="DefeatScreen" parent="CanvasLayer" instance=ExtResource( 26 )]
 visible = false

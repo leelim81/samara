@@ -162,15 +162,26 @@ func _on_FastForwardButton_fast_forward_toggled(enabled: bool) -> void:
 
 func _on_Board_enemy_phase_started(current_enemy_phase: int, enemy_phase_count: int) -> void:
 	var control: Control = $CanvasLayer/EnemyPhaseCenterContainer
+	var banner: Control = $CanvasLayer/EnemyPhaseCenterContainer/Banner
 
 	control.show()
 
+	$CanvasLayer/EnemyPhaseCenterContainer/Banner/Margin/VBox/SubtitleLabel.text = tr("BATTLE").to_upper()
+	$CanvasLayer/EnemyPhaseCenterContainer/Banner/Margin/VBox/NumberLabel.text = "%d / %d" % [current_enemy_phase, enemy_phase_count]
+
+	# Fade the layer in and pop the card so it lands cleanly
 	var control_tween := create_tween()
 	control_tween.tween_property(control, "modulate", Color.WHITE, enemy_phase_container_fade_time_seconds) \
 			.from(Color.TRANSPARENT) \
 			.set_trans(Tween.TRANS_LINEAR)
 
-	$CanvasLayer/EnemyPhaseCenterContainer/NinePatchRect/Label.text = "%s %d/%d" % [tr("BATTLE"), current_enemy_phase, enemy_phase_count]
+	banner.pivot_offset = banner.get_combined_minimum_size() / 2.0
+	banner.scale = Vector2(0.85, 0.85)
+
+	var pop_tween := create_tween()
+	pop_tween.tween_property(banner, "scale", Vector2.ONE, 0.4) \
+			.set_trans(Tween.TRANS_BACK) \
+			.set_ease(Tween.EASE_OUT)
 
 
 func _on_Board_enemies_appeared() -> void:
