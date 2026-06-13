@@ -288,10 +288,10 @@ trail2d.gd::GDScript::7745615399937602685::1781188477::0::1::::<>Node2D<><>0<>0<
 trail2d.tscn::PackedScene::-1::1781271565::0::1::::<><><>0<>0<><>::res://addons/antialiased_line2d/antialiased_line2d.gd<>res://board/highlights/trail2d.gd
 trails.gd::GDScript::1378118214100076090::1781188477::0::1::::<>Node2D<><>0<>0<><>::
 ::res://build/::1781226515
-::res://build/web/::1781352544
-index.apple-touch-icon.png::CompressedTexture2D::671408193628746592::1781352544::1781269528::1::::<><><>0<>0<>3d824a20facb708d8daf3d0aadcd1099<>res://.godot/imported/index.apple-touch-icon.png-21031f526f7942c8019a62913b80e091.ctex::
-index.icon.png::CompressedTexture2D::4578476410241139680::1781352544::1781269528::1::::<><><>0<>0<>845dd99bdc3abd932d4380b729180570<>res://.godot/imported/index.icon.png-a9d2f4f7433eeddc29dad75f5e7f8710.ctex::
-index.png::CompressedTexture2D::5193192814418057516::1781352544::1781269528::1::::<><><>0<>0<>495bc6d4f9b8f560c72aa0519372ef85<>res://.godot/imported/index.png-7e97af7272d6fa0065ffc53e96463470.ctex::
+::res://build/web/::1781360871
+index.apple-touch-icon.png::CompressedTexture2D::671408193628746592::1781360871::1781269528::1::::<><><>0<>0<>3d824a20facb708d8daf3d0aadcd1099<>res://.godot/imported/index.apple-touch-icon.png-21031f526f7942c8019a62913b80e091.ctex::
+index.icon.png::CompressedTexture2D::4578476410241139680::1781360871::1781269528::1::::<><><>0<>0<>845dd99bdc3abd932d4380b729180570<>res://.godot/imported/index.icon.png-a9d2f4f7433eeddc29dad75f5e7f8710.ctex::
+index.png::CompressedTexture2D::5193192814418057516::1781360871::1781269528::1::::<><><>0<>0<>495bc6d4f9b8f560c72aa0519372ef85<>res://.godot/imported/index.png-7e97af7272d6fa0065ffc53e96463470.ctex::
 ::res://chapter_data/::1781225407
 battle_info.gd::GDScript::6385201418298922054::1781188477::0::1::::BattleInfo<>Resource<><>0<>0<><>::
 chapter_data.gd::GDScript::7983260008866269444::1781225407::0::1::::ChapterData<>Resource<><>0<>0<><>::
@@ -470,7 +470,7 @@ dialogue_borderlands.json::JSON::-1::1781226236::0::1::::<><><>0<>0<><>::
 dialogue_to_the_capital.json::JSON::-1::1781226241::0::1::::<><><>0<>0<><>::
 script_borderlands.json::JSON::-1::1781226200::0::1::::<><><>0<>0<><>::
 script_to_the_capital.json::JSON::-1::1781226203::0::1::::<><><>0<>0<><>::
-::res://tools/::1781360688
+::res://tools/::1781361601
 audit_art.gd::GDScript::2585363787179767723::1781308139::0::1::::<>SceneTree<><>0<>0<><>::
 screenshot.gd::GDScript::4297612880075675452::1781191948::0::1::::<>SceneTree<><>0<>0<><>::
 screenshot_cutscene.gd::GDScript::308746142516858129::1781226274::0::1::::<>SceneTree<><>0<>0<><>::
@@ -550,7 +550,7 @@ unit_item_container.gd::GDScript::3460599237794002007::1781188477::0::1::::<>HBo
 unit_item_container.tscn::PackedScene::-1::1781188477::0::1::::<><><>0<>0<><>::res://theme.tres<>res://ui/pre_battle_menu/unit_stats_container.tscn<>res://ui/pre_battle_menu/unit_icon.tscn<>res://assets/ui/red_panel_border.png<>res://assets/sfx/ceramic_place_1.wav<>res://ui/pre_battle_menu/unit_item_container.gd<>res://ui/audio_button.tscn
 unit_stats_container.gd::GDScript::2297033996795958088::1781188477::0::1::::<>VBoxContainer<><>0<>0<><>::
 unit_stats_container.tscn::PackedScene::-1::1781188477::0::1::::<><><>0<>0<><>::res://assets/fonts/Exo2Regular18.tres<>res://ui/pre_battle_menu/unit_stats_container.gd
-::res://units/::1781352236
+::res://units/::1781361526
 enemy.gd::GDScript::2531443298731140725::1781284972::0::1::::Enemy<>Unit<><>0<>0<><>::
 enemy.tscn::PackedScene::-1::1781318013::0::1::::<><><>0<>0<><>::res://units/unit.tscn<>res://units/enemy.gd<>res://assets/sfx/ceramic_drag_3.wav<>res://assets/terra/ui/hp_bar_fill.png<>res://assets/terra/ui/enemy_border.png<>res://assets/player/yachie.png<>res://assets/terra/ui/unit_square_bg.png<>res://assets/ui/light_blue_panel_transparent.png<>res://units/ai/ai_controller.tscn<>res://theme.tres<>res://assets/ui/unit_circle_gradient.png<>res://assets/sfx/pot_break_2.wav<>res://units/job_tool.gd
 hp_bar.gd::GDScript::5278149172001875755::1781278512::0::1::::<>TextureProgressBar<><>0<>0<><>::
@@ -560,7 +560,7 @@ skill_applier.gd::GDScript::5553114460799430424::1781191358::0::1::::<>Node<><>0
 status_effects.gd::GDScript::3344235936376689526::1781188476::0::1::::<>Node2D<><>0<>0<><>::
 status_effects_icons.gd::GDScript::4392307881220690778::1781188476::0::1::::<>Control<><>0<>0<><>::
 swap_area2d.gd::GDScript::2737474249706455740::1781188476::0::1::::<>Area2D<><>0<>0<><>::
-unit.gd::GDScript::5317760837349298727::1781352236::0::1::::Unit<>CharacterBody2D<><>0<>0<><>::
+unit.gd::GDScript::5317760837349298727::1781361526::0::1::::Unit<>CharacterBody2D<><>0<>0<><>::
 unit.tscn::PackedScene::-1::1781318013::0::1::::<><><>0<>0<><>::res://assets/fonts/Exo2-Regular.ttf<>res://jobs/animal_spirit/yachie_job.tres<>res://units/ui/activated_skill_margin_container.tscn<>res://units/ui/damage_numbers.tscn<>res://units/ui/death_particles.tscn<>res://assets/terra/ui/unit_square_bg.png<>res://assets/ui/unit_glow.png<>res://assets/sfx/youkai_death.wav<>res://assets/sfx/ceramic_place_1.wav<>res://assets/sfx/casino/shove2.wav<>res://assets/sfx/casino/place10.wav<>res://assets/terra/ui/sword.png<>res://assets/sfx/ceramic_drag_2.wav<>res://assets/ui/letter_z.png<>res://assets/enemies/orbling_dracorin.png<>res://units/job.gd<>res://units/swap_area2d.gd<>res://units/unit.gd<>res://assets/fonts/Exo2SemiBold.tres<>res://assets/terra/ui/unit_player_border.png<>res://assets/terra/ui/hp_bar_fill.png<>res://assets/sfx/ceramic_drag_1.wav<>res://assets/terra/ui/hp_bar_bg.png<>res://units/skill_applier.gd<>res://units/status_effects.gd<>res://units/hp_bar.gd<>res://units/status_effects_icons.gd<>res://assets/sfx/casino/shove1.wav
 ::res://units/ai/::1781268980
 action.gd::GDScript::682810832837739716::1781188477::0::1::::Action<>Node<><>0<>0<><>::

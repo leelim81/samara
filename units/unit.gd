@@ -80,6 +80,10 @@ var _icon_tween: Tween
 
 @onready var _sprite := $Sprite2D
 
+# The sprite's resting position. Non-zero for 2x2 bosses (their art is offset
+# to center across four tiles), so animations must return here, not to zero.
+@onready var _sprite_home: Vector2 = $Sprite2D.position
+
 
 func _ready() -> void:
 	_random.randomize()
@@ -548,10 +552,10 @@ func play_attack_lunge(target_global_position: Vector2) -> void:
 		_lunge_tween.kill()
 
 	_lunge_tween = create_tween()
-	_lunge_tween.tween_property(_sprite, "position", direction * 22.0, 0.08) \
+	_lunge_tween.tween_property(_sprite, "position", _sprite_home + direction * 22.0, 0.08) \
 			.set_trans(Tween.TRANS_CUBIC) \
 			.set_ease(Tween.EASE_OUT)
-	_lunge_tween.tween_property(_sprite, "position", Vector2.ZERO, 0.18) \
+	_lunge_tween.tween_property(_sprite, "position", _sprite_home, 0.18) \
 			.set_trans(Tween.TRANS_CUBIC) \
 			.set_ease(Tween.EASE_IN_OUT)
 
