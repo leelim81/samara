@@ -218,7 +218,12 @@ func hide_name() -> void:
 
 func play_death_animation() -> void:
 	$AnimationPlayer.play("death")
-	$Sound/DeathAudio.play()
+
+	# Bosses shatter into fading horizontal slices; everyone else dissolves
+	if is2x2():
+		_play_slice_death()
+	else:
+		$Sound/DeathAudio.play()
 
 	# Fallen allies and bosses get a somber cut-in; rank-and-file deaths
 	# keep just the dissolve so chains stay fast
@@ -240,6 +245,56 @@ func play_death_animation() -> void:
 	Utils.disable_object($CollisionShape2D)
 	
 	emit_signal("dead", self)
+
+
+const SLICE_DEATH_SCENE := preload("res://units/ui/slice_death.tscn")
+
+
+# Shatter the boss art into horizontal slices on a node that outlives this
+# unit's removal (parented to the Board, not to self)
+func _play_slice_death() -> void:
+	# The high-res full illustration shatters far cleaner than the low-res
+	# tile token
+	var texture: Texture2D = get_full_art()
+
+	if texture == null:
+		$Sound/DeathAudio.play()
+		return
+
+	var center: Vector2 = _icon.global_position
+	var display_size: Vector2 = _fit_to_box(texture.get_size(), 212.0)
+
+	# Hide the tile art so only the slices read
+	_icon.visible = false
+
+	var slice := SLICE_DEATH_SCENE.instantiate()
+
+	_board_root().add_child(slice)
+
+	slice.play(texture, center, display_size)
+
+
+# Largest size fitting within a square box that preserves the texture aspect
+func _fit_to_box(texture_size: Vector2, box: float) -> Vector2:
+	if texture_size.x <= 0.0 or texture_size.y <= 0.0:
+		return Vector2(box, box)
+
+	var aspect: float = texture_size.x / texture_size.y
+
+	if aspect >= 1.0:
+		return Vector2(box, box / aspect)
+
+	return Vector2(box * aspect, box)
+
+
+# Walks up to the Board so spawned effects survive this unit being removed
+func _board_root() -> Node:
+	var node: Node = get_parent()
+
+	while node != null and not (node is Board):
+		node = node.get_parent()
+
+	return node if node != null else get_parent()
 
 
 func is_death_animation_playing() -> bool:

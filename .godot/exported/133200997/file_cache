@@ -205,3 +205,4 @@ res://ui/fast_forward_button.tscn::9ec40d48ab8e21beb08cdecdab73dffa::1781317870:
 res://ui/skill_feed.tscn::d3183b0e6fd8c50d69c99a6760c5fd35::1781360606::res://.godot/exported/133200997/export-ce3371dfe75309de88c1575b7ce1d3d9-skill_feed.scn
 res://ui/skill_feed_row.tscn::a2831470fa18e7410668290543146760::1781361930::res://.godot/exported/133200997/export-97c78b8f3b41799df7ef0ea942599056-skill_feed_row.scn
 res://assets/fonts/EBGaramondItalic.tres::eb6ebae5da81cf31c25760a4db85c980::1781361901::res://.godot/exported/133200997/export-e2147991d06345365eaab657f635028e-EBGaramondItalic.res
+res://units/ui/slice_death.tscn::8f490f8e311793e3a0e6d1a3f7a06532::1781366396::res://.godot/exported/133200997/export-4242e0a1dcc97dcbb6de92150ad2ed96-slice_death.scn
