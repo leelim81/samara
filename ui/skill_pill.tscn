@@ -1,0 +1,86 @@
+[gd_scene load_steps=6 format=3 uid="uid://b8skillpill01"]
+
+[ext_resource type="Script" path="res://ui/skill_pill.gd" id="1_pill"]
+[ext_resource type="PackedScene" path="res://ui/skill_label_container.tscn" id="2_slc"]
+[ext_resource type="FontVariation" path="res://assets/fonts/Exo2SemiBold.tres" id="3_semibold"]
+[ext_resource type="FontFile" path="res://assets/fonts/Exo2Regular18.tres" id="4_regular"]
+
+[sub_resource type="StyleBoxFlat" id="panel"]
+content_margin_left = 16.0
+content_margin_top = 11.0
+content_margin_right = 14.0
+content_margin_bottom = 11.0
+bg_color = Color(0.121569, 0.145098, 0.211765, 0.92)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.06)
+corner_radius_top_left = 13
+corner_radius_top_right = 13
+corner_radius_bottom_right = 13
+corner_radius_bottom_left = 13
+
+[sub_resource type="StyleBoxFlat" id="qbtn"]
+bg_color = Color(1, 1, 1, 0.05)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.28)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[node name="SkillPill" type="PanelContainer"]
+theme_override_styles/panel = SubResource("panel")
+script = ExtResource("1_pill")
+skill_label_container_scene = ExtResource("2_slc")
+
+[node name="H" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Icon" type="TextureRect" parent="H"]
+custom_minimum_size = Vector2(34, 34)
+layout_mode = 2
+size_flags_vertical = 4
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Body" type="VBoxContainer" parent="H"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 3
+
+[node name="NameLabel" type="Label" parent="H/Body"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.952941, 0.964706, 1, 1)
+theme_override_fonts/font = ExtResource("3_semibold")
+theme_override_font_sizes/font_size = 23
+text = "Skill"
+
+[node name="DetailLabel" type="Label" parent="H/Body"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.701961, 0.764706, 0.882353, 1)
+theme_override_fonts/font = ExtResource("4_regular")
+theme_override_font_sizes/font_size = 17
+text = "detail"
+autowrap_mode = 3
+
+[node name="QButton" type="Button" parent="H"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.701961, 0.764706, 0.882353, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_semibold")
+theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("qbtn")
+theme_override_styles/hover = SubResource("qbtn")
+theme_override_styles/pressed = SubResource("qbtn")
+theme_override_styles/focus = SubResource("qbtn")
+text = "?"

@@ -1,211 +1,309 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=20 format=3 uid="uid://cvunitmenu01"]
 
-[ext_resource path="res://assets/player/yachie_full.png" type="Texture2D" id=1]
-[ext_resource path="res://theme.tres" type="Theme" id=2]
-[ext_resource path="res://ui/pre_battle_menu/unit_icon.tscn" type="PackedScene" id=3]
-[ext_resource path="res://ui/skill_label_container.tscn" type="PackedScene" id=4]
-[ext_resource path="res://ui/pre_battle_menu/unit_stats_container.tscn" type="PackedScene" id=6]
-[ext_resource path="res://ui/view_unit_menu.gd" type="Script" id=7]
-[ext_resource path="res://ui/audio_button.tscn" type="PackedScene" id=8]
-[ext_resource path="res://assets/sfx/chess_place_2.wav" type="AudioStream" id=9]
+[ext_resource type="Script" path="res://ui/view_unit_menu.gd" id="1_menu"]
+[ext_resource type="PackedScene" path="res://ui/skill_pill.tscn" id="2_pill"]
+[ext_resource type="PackedScene" path="res://ui/skill_label_container.tscn" id="3_status"]
+[ext_resource type="FontFile" path="res://assets/fonts/EBGaramond24.tres" id="4_name"]
+[ext_resource type="FontVariation" path="res://assets/fonts/Exo2SemiBold.tres" id="5_semibold"]
+[ext_resource type="FontFile" path="res://assets/fonts/Exo2Regular18.tres" id="6_regular"]
+[ext_resource type="Texture2D" path="res://assets/terra/ui/stat_atk.png" id="7_atk"]
+[ext_resource type="Texture2D" path="res://assets/terra/ui/stat_def.png" id="8_def"]
+[ext_resource type="Texture2D" path="res://assets/terra/ui/stat_satk.png" id="9_satk"]
+[ext_resource type="Texture2D" path="res://assets/terra/ui/stat_sdef.png" id="10_sdef"]
+[ext_resource type="Texture2D" path="res://assets/terra/full/kuscah_full.png" id="11_art"]
+[ext_resource type="Texture2D" path="res://assets/terra/tokens/kuscah_token.png" id="12_token"]
+[ext_resource type="Texture2D" path="res://assets/terra/ui/staff.png" id="13_weapon"]
+[ext_resource type="PackedScene" path="res://ui/audio_button.tscn" id="14_return"]
+
+[sub_resource type="Gradient" id="grad"]
+offsets = PackedFloat32Array(0, 1)
+colors = PackedColorArray(0.164706, 0.2, 0.290196, 1, 0.054902, 0.070588, 0.105882, 1)
+
+[sub_resource type="GradientTexture2D" id="bgtex"]
+gradient = SubResource("grad")
+width = 360
+height = 480
+fill = 1
+fill_from = Vector2(0.5, 0.42)
+fill_to = Vector2(1.15, 1.15)
+
+[sub_resource type="StyleBoxFlat" id="thumb_sb"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.0941176, 0.121569, 0.180392, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.388235, 0.831373, 0.831373, 0.85)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="hp_bg"]
+bg_color = Color(0, 0, 0, 0.45)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="hp_fill"]
+bg_color = Color(0.454902, 0.819608, 0.396078, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [node name="ViewUnitMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-scale = Vector2( 1.01806, 1 )
-theme = ExtResource( 2 )
-script = ExtResource( 7 )
-skill_label_container_packed_scene = ExtResource( 4 )
+script = ExtResource("1_menu")
+skill_pill_packed_scene = ExtResource("2_pill")
+status_row_packed_scene = ExtResource("3_status")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Bg" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.937255, 0.909804, 0.847059, 1 )
+texture = SubResource("bgtex")
+expand_mode = 1
+stretch_mode = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme_override_constants/margin_right = 50
-theme_override_constants/margin_top = 50
-theme_override_constants/margin_left = 50
-theme_override_constants/margin_bottom = 50
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 24
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-offset_left = 50.0
-offset_top = 50.0
-offset_right = 670.0
-offset_bottom = 910.0
-theme_override_constants/separation = 16
+[node name="Root" type="VBoxContainer" parent="Margin"]
+layout_mode = 2
+theme_override_constants/separation = 14
 
-[node name="FullNameLabel" type="Label" parent="MarginContainer/VBoxContainer"]
-offset_right = 620.0
-offset_bottom = 29.0
-text = "Yachie Kicchou"
+[node name="NameLabel" type="Label" parent="Margin/Root"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.964706, 0.945098, 0.901961, 1)
+theme_override_fonts/font = ExtResource("4_name")
+theme_override_font_sizes/font_size = 44
+text = "ACOLYTE"
 horizontal_alignment = 1
-uppercase = true
 
-[node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer"]
-visible = false
-offset_top = 45.0
-offset_right = 632.0
-offset_bottom = 74.0
-text = "Matriarch of the Kiketsu Family"
-horizontal_alignment = 1
-autowrap_mode = 2
+[node name="Header" type="HBoxContainer" parent="Margin/Root"]
+layout_mode = 2
+theme_override_constants/separation = 18
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-offset_top = 45.0
-offset_right = 620.0
-offset_bottom = 345.0
-size_flags_horizontal = 3
-
-[node name="UnitFullTextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-offset_right = 320.0
-offset_bottom = 420.0
-custom_minimum_size = Vector2( 320, 420 )
-texture = ExtResource( 1 )
-expand = true
+[node name="FullArt" type="TextureRect" parent="Margin/Root/Header"]
+custom_minimum_size = Vector2(278, 446)
+layout_mode = 2
+size_flags_vertical = 1
+texture = ExtResource("11_art")
+expand_mode = 1
 stretch_mode = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-offset_left = 308.0
-offset_right = 620.0
-offset_bottom = 300.0
+[node name="Info" type="VBoxContainer" parent="Margin/Root/Header"]
+layout_mode = 2
 size_flags_horizontal = 3
-alignment = 1
+size_flags_vertical = 4
+theme_override_constants/separation = 14
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-offset_top = 64.0
-offset_right = 312.0
-offset_bottom = 164.0
-alignment = 1
+[node name="ThumbRow" type="HBoxContainer" parent="Margin/Root/Header/Info"]
+layout_mode = 2
+theme_override_constants/separation = 14
 
-[node name="UnitIcon" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 3 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 106.0
-offset_right = 206.0
-offset_bottom = 100.0
-size_flags_horizontal = 0
+[node name="JobThumb" type="PanelContainer" parent="Margin/Root/Header/Info/ThumbRow"]
+custom_minimum_size = Vector2(84, 84)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("thumb_sb")
 
-[node name="SpeciesLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-visible = false
-offset_top = 189.0
-offset_right = 312.0
-offset_bottom = 218.0
-text = "Beast Youkai"
+[node name="Token" type="TextureRect" parent="Margin/Root/Header/Info/ThumbRow/JobThumb"]
+layout_mode = 2
+texture = ExtResource("12_token")
+expand_mode = 1
+stretch_mode = 5
 
-[node name="UnitStatsContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 6 )]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 0.0
-offset_top = 172.0
-offset_right = 312.0
-offset_bottom = 236.0
+[node name="ThumbMeta" type="VBoxContainer" parent="Margin/Root/Header/Info/ThumbRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 6
 
-[node name="TabContainer" type="TabContainer" parent="MarginContainer/VBoxContainer"]
-offset_top = 361.0
-offset_right = 620.0
-offset_bottom = 771.0
+[node name="SpeciesRow" type="HBoxContainer" parent="Margin/Root/Header/Info/ThumbRow/ThumbMeta"]
+layout_mode = 2
+theme_override_constants/separation = 7
+
+[node name="WeaponIcon" type="TextureRect" parent="Margin/Root/Header/Info/ThumbRow/ThumbMeta/SpeciesRow"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("13_weapon")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SpeciesLabel" type="Label" parent="Margin/Root/Header/Info/ThumbRow/ThumbMeta/SpeciesRow"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.682353, 0.737255, 0.831373, 1)
+theme_override_fonts/font = ExtResource("6_regular")
+theme_override_font_sizes/font_size = 20
+text = "Human"
+
+[node name="LVLabel" type="Label" parent="Margin/Root/Header/Info/ThumbRow/ThumbMeta"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.992157, 0.866667, 0.541176, 1)
+theme_override_fonts/font = ExtResource("5_semibold")
+theme_override_font_sizes/font_size = 30
+text = "LV 2"
+
+[node name="HPBlock" type="VBoxContainer" parent="Margin/Root/Header/Info"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="HPRow" type="HBoxContainer" parent="Margin/Root/Header/Info/HPBlock"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HPTag" type="Label" parent="Margin/Root/Header/Info/HPBlock/HPRow"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.937255, 0.290196, 0.341176, 1)
+theme_override_fonts/font = ExtResource("5_semibold")
+theme_override_font_sizes/font_size = 22
+text = "HP"
+
+[node name="HPValue" type="Label" parent="Margin/Root/Header/Info/HPBlock/HPRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.952941, 0.964706, 1, 1)
+theme_override_fonts/font = ExtResource("5_semibold")
+theme_override_font_sizes/font_size = 22
+text = "586"
+
+[node name="HPBar" type="ProgressBar" parent="Margin/Root/Header/Info/HPBlock"]
+custom_minimum_size = Vector2(0, 9)
+layout_mode = 2
+theme_override_styles/background = SubResource("hp_bg")
+theme_override_styles/fill = SubResource("hp_fill")
+value = 100.0
+show_percentage = false
+
+[node name="StatsGrid" type="GridContainer" parent="Margin/Root/Header/Info"]
+layout_mode = 2
+theme_override_constants/h_separation = 18
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="AtkStat" type="HBoxContainer" parent="Margin/Root/Header/Info/StatsGrid"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Icon" type="TextureRect" parent="Margin/Root/Header/Info/StatsGrid/AtkStat"]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("7_atk")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Value" type="Label" parent="Margin/Root/Header/Info/StatsGrid/AtkStat"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.952941, 0.964706, 1, 1)
+theme_override_fonts/font = ExtResource("5_semibold")
+theme_override_font_sizes/font_size = 24
+text = "24"
+
+[node name="DefStat" type="HBoxContainer" parent="Margin/Root/Header/Info/StatsGrid"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Icon" type="TextureRect" parent="Margin/Root/Header/Info/StatsGrid/DefStat"]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+size_flags_vertical = 4
+self_modulate = Color(0.560784, 0.705882, 1, 1)
+texture = ExtResource("8_def")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Value" type="Label" parent="Margin/Root/Header/Info/StatsGrid/DefStat"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.952941, 0.964706, 1, 1)
+theme_override_fonts/font = ExtResource("5_semibold")
+theme_override_font_sizes/font_size = 24
+text = "34"
+
+[node name="SatkStat" type="HBoxContainer" parent="Margin/Root/Header/Info/StatsGrid"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Icon" type="TextureRect" parent="Margin/Root/Header/Info/StatsGrid/SatkStat"]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+size_flags_vertical = 4
+self_modulate = Color(1, 0.603922, 0.835294, 1)
+texture = ExtResource("9_satk")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Value" type="Label" parent="Margin/Root/Header/Info/StatsGrid/SatkStat"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.952941, 0.964706, 1, 1)
+theme_override_fonts/font = ExtResource("5_semibold")
+theme_override_font_sizes/font_size = 24
+text = "58"
+
+[node name="SdefStat" type="HBoxContainer" parent="Margin/Root/Header/Info/StatsGrid"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Icon" type="TextureRect" parent="Margin/Root/Header/Info/StatsGrid/SdefStat"]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+size_flags_vertical = 4
+self_modulate = Color(0.498039, 0.878431, 0.752941, 1)
+texture = ExtResource("10_sdef")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Value" type="Label" parent="Margin/Root/Header/Info/StatsGrid/SdefStat"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.952941, 0.964706, 1, 1)
+theme_override_fonts/font = ExtResource("5_semibold")
+theme_override_font_sizes/font_size = 24
+text = "52"
+
+[node name="SkillsHeader" type="Label" parent="Margin/Root"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.560784, 0.62549, 0.737255, 1)
+theme_override_fonts/font = ExtResource("6_regular")
+theme_override_font_sizes/font_size = 16
+text = "SKILLS"
+
+[node name="SkillsScroll" type="ScrollContainer" parent="Margin/Root"]
+layout_mode = 2
 size_flags_vertical = 3
+horizontal_scroll_mode = 0
 
-[node name="SkillsTab" type="TabBar" parent="MarginContainer/VBoxContainer/TabContainer"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 2.0
-offset_top = 47.0
-offset_right = -2.0
-offset_bottom = -2.0
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/TabContainer/SkillsTab"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_bottom = 16
-
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/TabContainer/SkillsTab/MarginContainer"]
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 600.0
-offset_bottom = 345.0
+[node name="SkillsVBox" type="VBoxContainer" parent="Margin/Root/SkillsScroll"]
+layout_mode = 2
 size_flags_horizontal = 3
-scroll_horizontal_enabled = false
+theme_override_constants/separation = 8
 
-[node name="SkillsVBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/SkillsTab/MarginContainer/ScrollContainer"]
-offset_right = 584.0
-offset_bottom = 192.0
-size_flags_horizontal = 3
-
-[node name="SkillLabelContainer" parent="MarginContainer/VBoxContainer/TabContainer/SkillsTab/MarginContainer/ScrollContainer/SkillsVBoxContainer" instance=ExtResource( 4 )]
-offset_right = 584.0
-
-[node name="SkillLabelContainer2" parent="MarginContainer/VBoxContainer/TabContainer/SkillsTab/MarginContainer/ScrollContainer/SkillsVBoxContainer" instance=ExtResource( 4 )]
-offset_top = 40.0
-offset_right = 584.0
-offset_bottom = 72.0
-
-[node name="SkillLabelContainer3" parent="MarginContainer/VBoxContainer/TabContainer/SkillsTab/MarginContainer/ScrollContainer/SkillsVBoxContainer" instance=ExtResource( 4 )]
-offset_top = 80.0
-offset_right = 584.0
-offset_bottom = 112.0
-
-[node name="SkillLabelContainer4" parent="MarginContainer/VBoxContainer/TabContainer/SkillsTab/MarginContainer/ScrollContainer/SkillsVBoxContainer" instance=ExtResource( 4 )]
-offset_top = 120.0
-offset_right = 584.0
-offset_bottom = 152.0
-
-[node name="SkillLabelContainer5" parent="MarginContainer/VBoxContainer/TabContainer/SkillsTab/MarginContainer/ScrollContainer/SkillsVBoxContainer" instance=ExtResource( 4 )]
-offset_top = 160.0
-offset_right = 584.0
-offset_bottom = 192.0
-
-[node name="StatusEffectsTab" type="TabBar" parent="MarginContainer/VBoxContainer/TabContainer"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 2.0
-offset_top = 45.0
-offset_right = -2.0
-offset_bottom = -2.0
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/TabContainer/StatusEffectsTab"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_bottom = 16
-
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/TabContainer/StatusEffectsTab/MarginContainer"]
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 600.0
-offset_bottom = 347.0
-size_flags_horizontal = 3
-scroll_horizontal_enabled = false
-
-[node name="StatusEffectsVBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/StatusEffectsTab/MarginContainer/ScrollContainer"]
-offset_right = 584.0
-offset_bottom = 32.0
-size_flags_horizontal = 3
-
-[node name="SkillLabelContainer" parent="MarginContainer/VBoxContainer/TabContainer/StatusEffectsTab/MarginContainer/ScrollContainer/StatusEffectsVBoxContainer" instance=ExtResource( 4 )]
-offset_right = 584.0
-
-[node name="SelectTabAudio" type="AudioStreamPlayer" parent="MarginContainer/VBoxContainer/TabContainer"]
-stream = ExtResource( 9 )
-bus = "Sound effects"
-
-[node name="ReturnButton" parent="MarginContainer/VBoxContainer" instance=ExtResource( 8 )]
-offset_left = 190.0
-offset_top = 787.0
-offset_right = 430.0
-offset_bottom = 860.0
+[node name="ReturnButton" parent="Margin/Root" instance=ExtResource("14_return")]
+custom_minimum_size = Vector2(0, 58)
+layout_mode = 2
 text = "RETURN"
 
-[connection signal="tab_changed" from="MarginContainer/VBoxContainer/TabContainer" to="." method="_on_TabContainer_tab_changed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/ReturnButton" to="." method="_on_ReturnButton_pressed"]
+[connection signal="pressed" from="Margin/Root/ReturnButton" to="." method="_on_ReturnButton_pressed"]
