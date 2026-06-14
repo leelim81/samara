@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://assets/vfx/star_02.png" type="Texture2D" id=1]
+[ext_resource path="res://assets/vfx/spark_star.png" type="Texture2D" id=1]
 [ext_resource path="res://skills/effects/heal_particles.gd" type="Script" id=2]
 
 [sub_resource type="CanvasItemMaterial" id=1]
@@ -16,6 +16,7 @@ colors = PackedColorArray( 0.961426, 0.221579, 0.221579, 1, 0.92627, 0.539029, 0
 material = SubResource( 1 )
 scale = Vector2( 0.125, 0.125 )
 z_index = 5
+local_coords = true
 emitting = false
 amount = 20
 lifetime = 0.6
@@ -36,7 +37,7 @@ scale_amount_max = 0.55
 scale_amount_curve = SubResource( 3 )
 color_ramp = SubResource( 2 )
 script = ExtResource( 2 )
-free_on_timeout = false
+free_on_timeout = true
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0

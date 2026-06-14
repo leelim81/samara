@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bi608ycf46pu6"
-path="res://.godot/imported/sweep.png-7308da6707152edd0d04cbd1e77efa2b.ctex"
+uid="uid://dhle82bln44xq"
+path="res://.godot/imported/spark_point.png-cee6b89040783c7891ecca263af017dd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/vfx/sweep.png"
-dest_files=["res://.godot/imported/sweep.png-7308da6707152edd0d04cbd1e77efa2b.ctex"]
+source_file="res://assets/vfx/spark_point.png"
+dest_files=["res://.godot/imported/spark_point.png-cee6b89040783c7891ecca263af017dd.ctex"]
 
 [params]
 

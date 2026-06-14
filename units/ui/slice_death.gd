@@ -4,10 +4,11 @@ extends Node2D
 # from the boss's icon texture so it matches whatever art is on the tile.
 
 
-const STRIP_COUNT := 16
-const SLIDE_SECONDS := 0.62
-const STAGGER_SECONDS := 0.022
-const FLASH_SECONDS := 0.14
+const STRIP_COUNT := 18
+const SLIDE_SECONDS := 1.0
+const STAGGER_SECONDS := 0.02
+const FLASH_SECONDS := 0.16
+const HOLD_SECONDS := 0.32
 
 
 func play(texture: Texture2D, center_global: Vector2, display_size: Vector2) -> void:
@@ -42,7 +43,7 @@ func play(texture: Texture2D, center_global: Vector2, display_size: Vector2) -> 
 		_animate_strip(strip, i)
 
 	# Free after the last strip finishes
-	var total: float = FLASH_SECONDS + STRIP_COUNT * STAGGER_SECONDS + SLIDE_SECONDS + 0.3
+	var total: float = FLASH_SECONDS + HOLD_SECONDS + STRIP_COUNT * STAGGER_SECONDS + SLIDE_SECONDS + 0.3
 
 	get_tree().create_timer(total).timeout.connect(queue_free)
 
@@ -51,24 +52,26 @@ func _animate_strip(strip: Sprite2D, index: int) -> void:
 	# Alternating shear direction, widening toward the ends, so the art
 	# fans apart rather than sliding uniformly
 	var direction: float = 1.0 if index % 2 == 0 else -1.0
-	var distance: float = direction * (22.0 + float(index % 6) * 10.0)
+	var distance: float = direction * (34.0 + float(index % 6) * 16.0)
 
 	var rest_x: float = strip.position.x
 
-	# Bright at the cut moment, then shear out and fade
+	# Bright at the cut moment, then hold so the sliced image sinks in,
+	# then shear slowly apart while fading
 	strip.modulate = Color(1.7, 1.7, 1.7, 1.0)
 
 	var tween := create_tween()
 
 	tween.tween_interval(index * STAGGER_SECONDS)
 
-	# Quick flash settle
+	# Flash settle, then a beat to register the cut
 	tween.tween_property(strip, "modulate", Color(1, 1, 1, 1), FLASH_SECONDS)
+	tween.tween_interval(HOLD_SECONDS)
 
-	# Shear apart while fading out
+	# Slow shear apart; fade weighted to the end so the image lingers
 	tween.tween_property(strip, "position:x", rest_x + distance, SLIDE_SECONDS) \
-			.set_trans(Tween.TRANS_CUBIC) \
-			.set_ease(Tween.EASE_OUT)
+			.set_trans(Tween.TRANS_SINE) \
+			.set_ease(Tween.EASE_IN_OUT)
 	tween.parallel().tween_property(strip, "modulate:a", 0.0, SLIDE_SECONDS) \
-			.set_trans(Tween.TRANS_CUBIC) \
+			.set_trans(Tween.TRANS_QUART) \
 			.set_ease(Tween.EASE_IN)

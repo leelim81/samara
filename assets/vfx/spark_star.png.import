@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cx52oba00wk2a"
-path="res://.godot/imported/spotlight_4.png-0f2198b4537c1c529f38bfce55c8a3a2.ctex"
+uid="uid://xe8apmgje6ou"
+path="res://.godot/imported/spark_star.png-115b7f566fb6338a844311401a3d89a7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/vfx/spotlight_4.png"
-dest_files=["res://.godot/imported/spotlight_4.png-0f2198b4537c1c529f38bfce55c8a3a2.ctex"]
+source_file="res://assets/vfx/spark_star.png"
+dest_files=["res://.godot/imported/spark_star.png-115b7f566fb6338a844311401a3d89a7.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://demivskflbvnf"
-path="res://.godot/imported/circle_01.png-c6a149ab718c94b7c722b0d904ecfce9.ctex"
+uid="uid://bnapkew7alkan"
+path="res://.godot/imported/glow_spark.png-2ca91fa4615a897eadd83d65a66bcede.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/vfx/kenney/circle_01.png"
-dest_files=["res://.godot/imported/circle_01.png-c6a149ab718c94b7c722b0d904ecfce9.ctex"]
+source_file="res://assets/vfx/glow_spark.png"
+dest_files=["res://.godot/imported/glow_spark.png-2ca91fa4615a897eadd83d65a66bcede.ctex"]
 
 [params]
 

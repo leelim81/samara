@@ -60,12 +60,12 @@ offset_bottom = 345.0
 size_flags_horizontal = 3
 
 [node name="UnitFullTextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-offset_right = 300.0
-offset_bottom = 300.0
-custom_minimum_size = Vector2( 300, 300 )
+offset_right = 320.0
+offset_bottom = 420.0
+custom_minimum_size = Vector2( 320, 420 )
 texture = ExtResource( 1 )
 expand = true
-stretch_mode = 6
+stretch_mode = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 offset_left = 308.0

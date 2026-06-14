@@ -2,7 +2,7 @@
 
 [ext_resource path="res://ui/skill_feed_row.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/EBGaramondItalic.tres" type="FontVariation" id=2]
-[ext_resource path="res://assets/vfx/star_07.png" type="Texture2D" id=3]
+[ext_resource path="res://assets/vfx/spark_star.png" type="Texture2D" id=3]
 
 [sub_resource type="Gradient" id=1]
 offsets = PackedFloat32Array( 0, 0.16, 0.62, 1 )

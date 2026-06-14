@@ -109,7 +109,8 @@ func _on_Board_victory() -> void:
 	$CanvasLayer/VictoryScreen.initialize(_total_drag_time_seconds, _player_turn_count, $Board.get_battle_spoils())
 
 	# Let the last death dissolve finish before the banner drops
-	await get_tree().create_timer(0.8).timeout
+	# Give the boss slice-death (~1.4s) time to play out before results
+	await get_tree().create_timer(1.5).timeout
 
 	$CanvasLayer/VictoryScreen.show()
 	$CanvasLayer/VictoryScreen.focus_default_button()

@@ -1,37 +1,31 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://assets/vfx/gun.png" type="Texture2D" id=1]
+[ext_resource path="res://assets/vfx/pierce_bolt.png" type="Texture2D" id=1]
 
 [sub_resource type="CanvasItemMaterial" id=8]
 blend_mode = 1
 
 [sub_resource type="AtlasTexture" id=1]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 256, 256 )
 
 [sub_resource type="AtlasTexture" id=2]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 256, 0, 256, 256 )
 
 [sub_resource type="AtlasTexture" id=3]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 512, 0, 256, 256 )
 
 [sub_resource type="AtlasTexture" id=4]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 0, 256, 256, 256 )
 
 [sub_resource type="AtlasTexture" id=5]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 256, 256, 256, 256 )
 
 [sub_resource type="AtlasTexture" id=6]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 512, 256, 256, 256 )
 
@@ -40,13 +34,13 @@ animations = [ {
 "frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
 "loop": false,
 "name": "default",
-"speed": 12.0
+"speed": 16.0
 } ]
 
 [node name="ShootAnimation" type="AnimatedSprite2D"]
-modulate = Color( 1, 0.976471, 0.443137, 1 )
+modulate = Color( 0.5, 1, 0.38, 1 )
 material = SubResource( 8 )
-scale = Vector2( 0.5, 0.5 )
+scale = Vector2( 0.62, 0.62 )
 frames = SubResource( 7 )
 frame = 5
 playing = true

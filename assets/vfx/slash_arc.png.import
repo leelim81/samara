@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwnx8odg12x3k"
-path="res://.godot/imported/star_07.png-15d6a0d729c76ddc67ffe342fd5c498d.ctex"
+uid="uid://dyhxdua4x6suc"
+path="res://.godot/imported/slash_arc.png-ef1771765f793056d98182fe7afc27f0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/vfx/star_07.png"
-dest_files=["res://.godot/imported/star_07.png-15d6a0d729c76ddc67ffe342fd5c498d.ctex"]
+source_file="res://assets/vfx/slash_arc.png"
+dest_files=["res://.godot/imported/slash_arc.png-ef1771765f793056d98182fe7afc27f0.ctex"]
 
 [params]
 

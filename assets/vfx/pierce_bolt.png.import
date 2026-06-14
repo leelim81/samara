@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvpnd2r32xatv"
-path="res://.godot/imported/circle_04.png-2899acccd1eaf7e678e255eb780b46ee.ctex"
+uid="uid://djicgdnpd8j10"
+path="res://.godot/imported/pierce_bolt.png-23105f84fd28aacb4792488e50577557.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/vfx/kenney/circle_04.png"
-dest_files=["res://.godot/imported/circle_04.png-2899acccd1eaf7e678e255eb780b46ee.ctex"]
+source_file="res://assets/vfx/pierce_bolt.png"
+dest_files=["res://.godot/imported/pierce_bolt.png-23105f84fd28aacb4792488e50577557.ctex"]
 
 [params]
 

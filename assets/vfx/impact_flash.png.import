@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://de3beekfsq54"
-path="res://.godot/imported/hit_cross.png-6afb8f01a7025aecced8cfff9601a857.ctex"
+uid="uid://d2qnoojxkd4j3"
+path="res://.godot/imported/impact_flash.png-48817eb3d7dd145b0c44b4cee146c43b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/vfx/hit_cross.png"
-dest_files=["res://.godot/imported/hit_cross.png-6afb8f01a7025aecced8cfff9601a857.ctex"]
+source_file="res://assets/vfx/impact_flash.png"
+dest_files=["res://.godot/imported/impact_flash.png-48817eb3d7dd145b0c44b4cee146c43b.ctex"]
 
 [params]
 

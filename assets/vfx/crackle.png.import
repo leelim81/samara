@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4s22waiy0haa"
-path="res://.godot/imported/chomp.png-a42d57024e17cb514a224e4a84379f21.ctex"
+uid="uid://pyu7yk8ll5e6"
+path="res://.godot/imported/crackle.png-12df3f07815e975d6c3748394551991a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/vfx/chomp.png"
-dest_files=["res://.godot/imported/chomp.png-a42d57024e17cb514a224e4a84379f21.ctex"]
+source_file="res://assets/vfx/crackle.png"
+dest_files=["res://.godot/imported/crackle.png-12df3f07815e975d6c3748394551991a.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwffnkryxrapj"
-path="res://.godot/imported/star_02.png-b20e56194a4811a5a261b8d55b8ac33a.ctex"
+uid="uid://b5jo6rf3k5jml"
+path="res://.godot/imported/claw_slash.png-6d1abb3e0228a507a9699e2540214e1f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/vfx/star_02.png"
-dest_files=["res://.godot/imported/star_02.png-b20e56194a4811a5a261b8d55b8ac33a.ctex"]
+source_file="res://assets/vfx/claw_slash.png"
+dest_files=["res://.godot/imported/claw_slash.png-6d1abb3e0228a507a9699e2540214e1f.ctex"]
 
 [params]
 

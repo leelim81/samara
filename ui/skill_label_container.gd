@@ -23,7 +23,7 @@ func initialize(skill: Skill, can_show_full_data: bool = false, is_locked: bool 
 		skill_description += " (%d)" % skill.area_of_effect_size
 	
 	if can_show_full_data:
-		$Label.autowrap = true
+		$Label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		
 		if can_include_activation_rate and not skill.is_equipped():
 			skill_description += COMMA_AND_SPACE + "%.0f%%" % (100.0 * skill.activation_rate)

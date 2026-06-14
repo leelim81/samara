@@ -226,9 +226,9 @@ func play_death_animation() -> void:
 	else:
 		$Sound/DeathAudio.play()
 
-	# Fallen allies and bosses get a somber cut-in; rank-and-file deaths
-	# keep just the dissolve so chains stay fast
-	if is_player() or is2x2():
+	# Fallen allies get a somber cut-in. The boss does NOT — its slice-death
+	# is the only animation (no separate portrait popup).
+	if is_player():
 		Events.emit_signal("cutin_requested",
 				[get_full_art()],
 				tr($Job.job.job_name),
@@ -236,9 +236,15 @@ func play_death_animation() -> void:
 				Color(0.62, 0.5, 0.5),
 				true)
 
+	# Burst the death particles from the unit's location, but parent them to the
+	# board (not to this unit) so they survive — and stay put — when the dead
+	# unit is repositioned and removed during cleanup. (As a child of the unit
+	# with world-space particles, they otherwise snap to the board origin.)
 	var death_effect: Node2D = death_effect_packed_scene.instantiate()
+	var death_global: Vector2 = _sprite.global_position
 
-	add_child_at_offset(death_effect)
+	_board_root().add_child(death_effect)
+	death_effect.global_position = death_global
 	death_effect.play()
 	
 	disable_selection_area()
@@ -263,7 +269,7 @@ func _play_slice_death() -> void:
 		return
 
 	var center: Vector2 = _icon.global_position
-	var display_size: Vector2 = _fit_to_box(texture.get_size(), 212.0)
+	var display_size: Vector2 = _fit_to_box(texture.get_size(), 300.0)
 
 	# Hide the tile art so only the slices read
 	_icon.visible = false

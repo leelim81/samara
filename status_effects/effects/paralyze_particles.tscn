@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://status_effects/effects/status_effect_particles.gd" type="Script" id=1]
-[ext_resource path="res://assets/vfx/kenney/spark_all_512.png" type="Texture2D" id=2]
+[ext_resource path="res://assets/vfx/crackle.png" type="Texture2D" id=2]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 blend_mode = 1

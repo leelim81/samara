@@ -2,7 +2,7 @@
 
 [ext_resource path="res://theme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/fonts/Exo2-Regular.ttf" type="FontFile" id=2]
-[ext_resource path="res://assets/vfx/spotlight_4.png" type="Texture2D" id=3]
+[ext_resource path="res://assets/vfx/glow_spark.png" type="Texture2D" id=3]
 [ext_resource path="res://ui/victory_screen.gd" type="Script" id=4]
 [ext_resource path="res://ui/audio_button.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/fonts/Exo2SemiBold.tres" type="FontVariation" id=6]
