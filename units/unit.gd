@@ -165,10 +165,11 @@ func _pin_overlay_layout() -> void:
 	container.offset_top = -48.0
 	container.offset_right = 48.0
 	container.offset_bottom = 48.0
-	container.add_theme_constant_override("margin_left", 42)
-	container.add_theme_constant_override("margin_top", 30)
-	container.add_theme_constant_override("margin_right", 8)
-	container.add_theme_constant_override("margin_bottom", 16)
+	# Enemy turn countdown sits in the top-left corner
+	container.add_theme_constant_override("margin_left", 9)
+	container.add_theme_constant_override("margin_top", 1)
+	container.add_theme_constant_override("margin_right", 52)
+	container.add_theme_constant_override("margin_bottom", 58)
 
 
 func _physics_process(_delta: float) -> void:
