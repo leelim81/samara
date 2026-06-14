@@ -35,6 +35,10 @@ signal selected_for_view(unit)
 
 @export var size: Size = Size.SINGLE_1X1
 
+# Marks a boss that is not a 2x2 (which already gets the slice-death). A 1x1
+# boss still gets the hollow boss-death toll instead of the normal death sound.
+@export var is_boss: bool = false
+
 @export var velocity_pixels_per_second: float = 15.0
 @export var snap_velocity_pixels_per_second: float = 420.0
 @export var swap_velocity_pixels_per_second: float = 800.0
@@ -224,6 +228,11 @@ func play_death_animation() -> void:
 	if is2x2():
 		_play_slice_death()
 	else:
+		# A flagged 1x1 boss still gets the hollow boss toll
+		if is_boss:
+			$Sound/DeathAudio.stream = BOSS_DEATH_SOUND
+			$Sound/DeathAudio.volume_db = 0.0
+
 		$Sound/DeathAudio.play()
 
 	# Fallen allies get a somber cut-in. The boss does NOT — its slice-death
@@ -255,6 +264,7 @@ func play_death_animation() -> void:
 
 
 const SLICE_DEATH_SCENE := preload("res://units/ui/slice_death.tscn")
+const BOSS_DEATH_SOUND := preload("res://assets/sfx/boss_death.wav")
 
 
 # Shatter the boss art into horizontal slices on a node that outlives this

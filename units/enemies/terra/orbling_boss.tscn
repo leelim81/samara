@@ -11,6 +11,7 @@
 [node name="OrblingBoss" instance=ExtResource( 1 )]
 level = 3
 turn_counter = 4
+is_boss = true
 
 [node name="Job" parent="." index="2"]
 job = ExtResource( 2 )
