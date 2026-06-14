@@ -1,0 +1,15 @@
+{
+ "title": "BEYOND_THE_LIGHT",
+ "slug": "beyond_the_light",
+ "difficulty": "72-73",
+ "scene": "res://battles/terra/beyond_the_light.tscn",
+ "enemies": [
+  "Spitch",
+  "Aurochs",
+  "Gnorusk",
+  "Snaptrap",
+  "Right Creeper",
+  "Left Creeper"
+ ],
+ "art_missing": []
+}

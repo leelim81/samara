@@ -1,0 +1,13 @@
+{
+ "title": "DUNGEONS_DEEP",
+ "slug": "dungeons_deep",
+ "difficulty": "29-30",
+ "scene": "res://battles/terra/dungeons_deep.tscn",
+ "enemies": [
+  "Peprop\u00e9",
+  "Assassin",
+  "Cyberclops",
+  "Hell Bat"
+ ],
+ "art_missing": []
+}

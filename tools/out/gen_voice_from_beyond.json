@@ -1,0 +1,15 @@
+{
+ "title": "VOICE_FROM_BEYOND",
+ "slug": "voice_from_beyond",
+ "difficulty": "51-52",
+ "scene": "res://battles/terra/voice_from_beyond.tscn",
+ "enemies": [
+  "Boltspew",
+  "Thunder Horn",
+  "Mermaid",
+  "Vajra"
+ ],
+ "art_missing": [
+  "Vajra"
+ ]
+}

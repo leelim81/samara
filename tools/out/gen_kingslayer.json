@@ -1,0 +1,10 @@
+{
+ "title": "KINGSLAYER",
+ "slug": "kingslayer",
+ "difficulty": "31-32",
+ "scene": "res://battles/terra/kingslayer.tscn",
+ "enemies": [
+  "Androclops"
+ ],
+ "art_missing": []
+}

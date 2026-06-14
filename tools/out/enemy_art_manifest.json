@@ -1,0 +1,1821 @@
+{
+ "art_dir": "assets/terra/enemies",
+ "totals": {
+  "roster": 301,
+  "downloaded": 299,
+  "already_present": 0,
+  "no_image_on_page": 2,
+  "failed": 0
+ },
+ "no_image": [
+  "Lock-On+",
+  "Bosses"
+ ],
+ "failed": [],
+ "enemies": {
+  "Archer": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/2/29/Archer.png/revision/latest?cb=20150409041044",
+   "file": "assets/terra/enemies/archer.png",
+   "status": "downloaded",
+   "bytes": 129324
+  },
+  "Orbling": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/f/f4/Orbling_%28Chapter_1%29_icon.png/revision/latest?cb=20151017072527",
+   "file": "assets/terra/enemies/orbling.png",
+   "status": "downloaded",
+   "bytes": 18068
+  },
+  "Warrior": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/9/97/Warrior.png/revision/latest?cb=20150409041215",
+   "file": "assets/terra/enemies/warrior.png",
+   "status": "downloaded",
+   "bytes": 134992
+  },
+  "Wee Orbling": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/7/7b/Wee_Orbling_%28Sword%29.png/revision/latest?cb=20151017065331",
+   "file": "assets/terra/enemies/wee-orbling.png",
+   "status": "downloaded",
+   "bytes": 22242
+  },
+  "Dracorin": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/0/03/Dracorin.png/revision/latest?cb=20150409061430",
+   "file": "assets/terra/enemies/dracorin.png",
+   "status": "downloaded",
+   "bytes": 74526
+  },
+  "Gorf": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/4/44/Gorf.png/revision/latest?cb=20150828172756",
+   "file": "assets/terra/enemies/gorf.png",
+   "status": "downloaded",
+   "bytes": 23062
+  },
+  "Sabertooth": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/a/a4/Sabertooth.png/revision/latest?cb=20150409061654",
+   "file": "assets/terra/enemies/sabertooth.png",
+   "status": "downloaded",
+   "bytes": 75556
+  },
+  "Spinetrich (Boss)": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/8/8b/Spinetrich.png/revision/latest?cb=20150409061950",
+   "file": "assets/terra/enemies/spinetrich-boss.png",
+   "status": "downloaded",
+   "bytes": 64382
+  },
+  "Beastfolk Archer": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/d/d3/Beastfolk_Archer.png/revision/latest?cb=20150409090002",
+   "file": "assets/terra/enemies/beastfolk-archer.png",
+   "status": "downloaded",
+   "bytes": 121236
+  },
+  "Beastfolk Healer": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/c/c4/Beastfolk_Healer.png/revision/latest?cb=20150409083242",
+   "file": "assets/terra/enemies/beastfolk-healer.png",
+   "status": "downloaded",
+   "bytes": 145936
+  },
+  "Beastfolk Hero": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/5/5b/Beastfolk_Hero.png/revision/latest?cb=20150409060059",
+   "file": "assets/terra/enemies/beastfolk-hero.png",
+   "status": "downloaded",
+   "bytes": 165408
+  },
+  "Beastfolk Knight": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/f/ff/Beastfolk_Knight.png/revision/latest?cb=20150409075216",
+   "file": "assets/terra/enemies/beastfolk-knight.png",
+   "status": "downloaded",
+   "bytes": 120524
+  },
+  "Beastfolk Mage": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/b/b2/Beastfolk_Mage_%28Fire%29.png/revision/latest?cb=20150409083351",
+   "file": "assets/terra/enemies/beastfolk-mage.png",
+   "status": "downloaded",
+   "bytes": 146840
+  },
+  "Beastfolk Warrior": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/f/fe/Beastfolk_Warrior.png/revision/latest?cb=20150409085217",
+   "file": "assets/terra/enemies/beastfolk-warrior.png",
+   "status": "downloaded",
+   "bytes": 140808
+  },
+  "Lizardfolk Archer": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/4/4e/Lizardfolk_Archer.png/revision/latest?cb=20150409084812",
+   "file": "assets/terra/enemies/lizardfolk-archer.png",
+   "status": "downloaded",
+   "bytes": 137936
+  },
+  "Lizardfolk Healer": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/e/e2/Lizardfolk_Healer.png/revision/latest?cb=20150409084725",
+   "file": "assets/terra/enemies/lizardfolk-healer.png",
+   "status": "downloaded",
+   "bytes": 132946
+  },
+  "Lizardfolk Hero": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/1/1b/Lizardfolk_Hero_%28PvP%29.png/revision/latest?cb=20151020191137",
+   "file": "assets/terra/enemies/lizardfolk-hero.png",
+   "status": "downloaded",
+   "bytes": 160680
+  },
+  "Lizardfolk Knight": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/f/fc/Lizardfolk_Knight.png/revision/latest?cb=20150409084805",
+   "file": "assets/terra/enemies/lizardfolk-knight.png",
+   "status": "downloaded",
+   "bytes": 112684
+  },
+  "Lizardfolk Mage": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/8/80/Lizardfolk_Mage_%28Fire%29.png/revision/latest?cb=20150409085326",
+   "file": "assets/terra/enemies/lizardfolk-mage.png",
+   "status": "downloaded",
+   "bytes": 130020
+  },
+  "Lizardfolk Warrior": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/e/e7/Lizardfolk_Warrior.png/revision/latest?cb=20150409084817",
+   "file": "assets/terra/enemies/lizardfolk-warrior.png",
+   "status": "downloaded",
+   "bytes": 119822
+  },
+  "Devil Bat": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/d/de/Devil_Bat.png/revision/latest?cb=20150409084709",
+   "file": "assets/terra/enemies/devil-bat.png",
+   "status": "downloaded",
+   "bytes": 70192
+  },
+  "Horned Slug": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/1/19/Horned_Slug.png/revision/latest?cb=20151114190748",
+   "file": "assets/terra/enemies/horned-slug.png",
+   "status": "downloaded",
+   "bytes": 50170
+  },
+  "Lizardfolk Warrior (Boss)": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/e/e7/Lizardfolk_Warrior.png/revision/latest?cb=20150409084817",
+   "file": "assets/terra/enemies/lizardfolk-warrior-boss.png",
+   "status": "downloaded",
+   "bytes": 119822
+  },
+  "Mudtoad": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/9/94/Mudtoad.png/revision/latest?cb=20150822120031",
+   "file": "assets/terra/enemies/mudtoad.png",
+   "status": "downloaded",
+   "bytes": 39778
+  },
+  "Sabertooth King": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/4/43/Sabertooth_King.png/revision/latest?cb=20150409055634",
+   "file": "assets/terra/enemies/sabertooth-king.png",
+   "status": "downloaded",
+   "bytes": 119310
+  },
+  "Spinetrich": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/8/8b/Spinetrich.png/revision/latest?cb=20150409061950",
+   "file": "assets/terra/enemies/spinetrich.png",
+   "status": "downloaded",
+   "bytes": 64382
+  },
+  "Triscorp": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/8/87/Triscorp.png/revision/latest?cb=20141011210805",
+   "file": "assets/terra/enemies/triscorp.png",
+   "status": "downloaded",
+   "bytes": 55600
+  },
+  "White Sabertooth": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/7/73/White_Sabertooth.png/revision/latest?cb=20150409081543",
+   "file": "assets/terra/enemies/white-sabertooth.png",
+   "status": "downloaded",
+   "bytes": 76480
+  },
+  "Aeropede": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/0/0b/Aeropede.png/revision/latest?cb=20150907051913",
+   "file": "assets/terra/enemies/aeropede.png",
+   "status": "downloaded",
+   "bytes": 83756
+  },
+  "Antenna Orbling": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/2/26/Antenna_Orbling.png/revision/latest?cb=20151113064615",
+   "file": "assets/terra/enemies/antenna-orbling.png",
+   "status": "downloaded",
+   "bytes": 56772
+  },
+  "Blastosaur": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/d/df/Blastosaur.png/revision/latest?cb=20150409063452",
+   "file": "assets/terra/enemies/blastosaur.png",
+   "status": "downloaded",
+   "bytes": 45090
+  },
+  "Fungibird": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/7/76/Fungibird.png/revision/latest?cb=20150907061256",
+   "file": "assets/terra/enemies/fungibird.png",
+   "status": "downloaded",
+   "bytes": 42216
+  },
+  "Slugosaur": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/2/26/Slugosaur_icon.png/revision/latest?cb=20151025013240",
+   "file": "assets/terra/enemies/slugosaur.png",
+   "status": "downloaded",
+   "bytes": 21414
+  },
+  "Whitewyrm": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/4/43/Whitewyrm.png/revision/latest?cb=20150409054317",
+   "file": "assets/terra/enemies/whitewyrm.png",
+   "status": "downloaded",
+   "bytes": 93996
+  },
+  "Wyvern": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/c/c1/Wyvern.png/revision/latest?cb=20150409062041",
+   "file": "assets/terra/enemies/wyvern.png",
+   "status": "downloaded",
+   "bytes": 75222
+  },
+  "Arachnobot": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/8/80/Arachnobot.png/revision/latest?cb=20150409061441",
+   "file": "assets/terra/enemies/arachnobot.png",
+   "status": "downloaded",
+   "bytes": 61550
+  },
+  "Arachnobot (Boss)": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/8/80/Arachnobot.png/revision/latest?cb=20150409061441",
+   "file": "assets/terra/enemies/arachnobot-boss.png",
+   "status": "downloaded",
+   "bytes": 61550
+  },
+  "Arachnolings": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/6/67/Arachnolings.png/revision/latest?cb=20151113070124",
+   "file": "assets/terra/enemies/arachnolings.png",
+   "status": "downloaded",
+   "bytes": 35276
+  },
+  "Cybermummy": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/4/4b/Cybermummy.png/revision/latest?cb=20150822113446",
+   "file": "assets/terra/enemies/cybermummy.png",
+   "status": "downloaded",
+   "bytes": 73926
+  },
+  "Impalebot": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/3/30/Impalebot.png/revision/latest?cb=20151024034818",
+   "file": "assets/terra/enemies/impalebot.png",
+   "status": "downloaded",
+   "bytes": 43246
+  },
+  "Mech Orbling": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/6/6c/Mech_Orbling.png/revision/latest?cb=20150409075610",
+   "file": "assets/terra/enemies/mech-orbling.png",
+   "status": "downloaded",
+   "bytes": 44610
+  },
+  "Power Pyramid": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/c/ce/Power_Pyramid_icon.png/revision/latest?cb=20151111084954",
+   "file": "assets/terra/enemies/power-pyramid.png",
+   "status": "downloaded",
+   "bytes": 22988
+  },
+  "Robotick": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/2/2f/Robotick.png/revision/latest?cb=20151114192436",
+   "file": "assets/terra/enemies/robotick.png",
+   "status": "downloaded",
+   "bytes": 29870
+  },
+  "Slashbot": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/c/ce/Slashbot.png/revision/latest?cb=20151024190228",
+   "file": "assets/terra/enemies/slashbot.png",
+   "status": "downloaded",
+   "bytes": 37616
+  },
+  "Teksura": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/b/b2/Teksura_LV17.png/revision/latest?cb=20151024214538",
+   "file": "assets/terra/enemies/teksura.png",
+   "status": "downloaded",
+   "bytes": 61622
+  },
+  "Heat Sparker": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/a/ab/Heat_Sparker.png/revision/latest?cb=20151107182553",
+   "file": "assets/terra/enemies/heat-sparker.png",
+   "status": "downloaded",
+   "bytes": 47254
+  },
+  "Magma Eye": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/d/d0/Magma_Eye.png/revision/latest?cb=20151024063447",
+   "file": "assets/terra/enemies/magma-eye.png",
+   "status": "downloaded",
+   "bytes": 17018
+  },
+  "Magma Mummy": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/b/b9/Magma_Mummy.png/revision/latest?cb=20150409061419",
+   "file": "assets/terra/enemies/magma-mummy.png",
+   "status": "downloaded",
+   "bytes": 71588
+  },
+  "Mantle Slime": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/8/80/Mantle_Slime.png/revision/latest?cb=20150425175739",
+   "file": "assets/terra/enemies/mantle-slime.png",
+   "status": "downloaded",
+   "bytes": 34684
+  },
+  "Mantle Tortoise": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/3/3d/Mantle_Tortoise.png/revision/latest?cb=20150409081634",
+   "file": "assets/terra/enemies/mantle-tortoise.png",
+   "status": "downloaded",
+   "bytes": 64304
+  },
+  "Mantledrake": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/e/e8/Mantledrake.png/revision/latest?cb=20141118074454",
+   "file": "assets/terra/enemies/mantledrake.png",
+   "status": "downloaded",
+   "bytes": 142188
+  },
+  "Phi Orbling": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/6/68/Phi_Orbling.png/revision/latest?cb=20150409061722",
+   "file": "assets/terra/enemies/phi-orbling.png",
+   "status": "downloaded",
+   "bytes": 54098
+  },
+  "Red Starwhip": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/3/32/Red_Starwhip.png/revision/latest?cb=20150409082435",
+   "file": "assets/terra/enemies/red-starwhip.png",
+   "status": "downloaded",
+   "bytes": 43820
+  },
+  "Rockburn": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/4/43/Rockburn.png/revision/latest?cb=20151024062939",
+   "file": "assets/terra/enemies/rockburn.png",
+   "status": "downloaded",
+   "bytes": 32948
+  },
+  "Bomborg": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/a/a2/Bomborg.png/revision/latest?cb=20150409063429",
+   "file": "assets/terra/enemies/bomborg.png",
+   "status": "downloaded",
+   "bytes": 22200
+  },
+  "Cyberscorp": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/7/74/Cyberscorp.png/revision/latest?cb=20150914021212",
+   "file": "assets/terra/enemies/cyberscorp.png",
+   "status": "downloaded",
+   "bytes": 51536
+  },
+  "Cyberwyrm": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/3/3a/Cyberwyrm.png/revision/latest?cb=20151103021232",
+   "file": "assets/terra/enemies/cyberwyrm.png",
+   "status": "downloaded",
+   "bytes": 67516
+  },
+  "Electrotick": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/d/db/Electrotick.png/revision/latest?cb=20150914061404",
+   "file": "assets/terra/enemies/electrotick.png",
+   "status": "downloaded",
+   "bytes": 32038
+  },
+  "Electrowatt": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/3/3c/Electrowatt.png/revision/latest?cb=20150914033727",
+   "file": "assets/terra/enemies/electrowatt.png",
+   "status": "downloaded",
+   "bytes": 36204
+  },
+  "Mechadrake": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/2/2c/Mechadrake_icon.png/revision/latest?cb=20151103023156",
+   "file": "assets/terra/enemies/mechadrake.png",
+   "status": "downloaded",
+   "bytes": 26360
+  },
+  "Mechanic": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/5/55/Mechanic.png/revision/latest?cb=20150409064305",
+   "file": "assets/terra/enemies/mechanic.png",
+   "status": "downloaded",
+   "bytes": 22508
+  },
+  "Trilobot": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/c/cb/Trilobot.png/revision/latest?cb=20150913181229",
+   "file": "assets/terra/enemies/trilobot.png",
+   "status": "downloaded",
+   "bytes": 38130
+  },
+  "Dark Tortoise": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/a/a3/Dark_Tortoise.png/revision/latest?cb=20150409084659",
+   "file": "assets/terra/enemies/dark-tortoise.png",
+   "status": "downloaded",
+   "bytes": 64368
+  },
+  "Flame Urchin": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/7/75/Flame_Urchin_icon.png/revision/latest?cb=20151103022154",
+   "file": "assets/terra/enemies/flame-urchin.png",
+   "status": "downloaded",
+   "bytes": 40834
+  },
+  "Golem": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/c/ce/Golem.png/revision/latest?cb=20150823123441",
+   "file": "assets/terra/enemies/golem.png",
+   "status": "downloaded",
+   "bytes": 99438
+  },
+  "Magma Slug": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/9/92/Magma_Slug.png/revision/latest?cb=20151024211017",
+   "file": "assets/terra/enemies/magma-slug.png",
+   "status": "downloaded",
+   "bytes": 49072
+  },
+  "Mantle Mammoth": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/d/d8/Mantle_Mammoth_icon.png/revision/latest?cb=20151111221701",
+   "file": "assets/terra/enemies/mantle-mammoth.png",
+   "status": "downloaded",
+   "bytes": 28192
+  },
+  "Pyrotoad": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/2/2a/Pyrotoad.png/revision/latest?cb=20151109060924",
+   "file": "assets/terra/enemies/pyrotoad.png",
+   "status": "downloaded",
+   "bytes": 41958
+  },
+  "Redguard": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/1/15/Redguard.png/revision/latest?cb=20160527192432",
+   "file": "assets/terra/enemies/redguard.png",
+   "status": "downloaded",
+   "bytes": 69050
+  },
+  "Rockfreeze": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/1/1c/Rockfreeze.png/revision/latest?cb=20151024193120",
+   "file": "assets/terra/enemies/rockfreeze.png",
+   "status": "downloaded",
+   "bytes": 26186
+  },
+  "Burnbot": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/6/65/Burnbot.png/revision/latest?cb=20160527191823",
+   "file": "assets/terra/enemies/burnbot.png",
+   "status": "downloaded",
+   "bytes": 32748
+  },
+  "Burnbot Redux": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/a/ad/Burnbot_Redux_icon.png/revision/latest?cb=20151019030559",
+   "file": "assets/terra/enemies/burnbot-redux.png",
+   "status": "downloaded",
+   "bytes": 18376
+  },
+  "Stonefolk Archer": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/e/e4/Stonefolk_Archer.png/revision/latest?cb=20150409090036",
+   "file": "assets/terra/enemies/stonefolk-archer.png",
+   "status": "downloaded",
+   "bytes": 211096
+  },
+  "Stonefolk Healer": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/1/1e/Stonefolk_Healer.png/revision/latest?cb=20150409084119",
+   "file": "assets/terra/enemies/stonefolk-healer.png",
+   "status": "downloaded",
+   "bytes": 137514
+  },
+  "Stonefolk Knight": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/9/92/Stonefolk_Knight.png/revision/latest?cb=20150409084225",
+   "file": "assets/terra/enemies/stonefolk-knight.png",
+   "status": "downloaded",
+   "bytes": 162856
+  },
+  "Stonefolk Mage": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/e/e4/Stonefolk_Mage_%28Fire%29.png/revision/latest?cb=20150409084216",
+   "file": "assets/terra/enemies/stonefolk-mage.png",
+   "status": "downloaded",
+   "bytes": 128192
+  },
+  "Stonefolk Warrior": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/d/d6/Stonefolk_Warrior.png/revision/latest?cb=20150409090038",
+   "file": "assets/terra/enemies/stonefolk-warrior.png",
+   "status": "downloaded",
+   "bytes": 208052
+  },
+  "Time Devourer": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/6/6b/Time_Devourer_icon.png/revision/latest?cb=20151103013822",
+   "file": "assets/terra/enemies/time-devourer.png",
+   "status": "downloaded",
+   "bytes": 20682
+  },
+  "Toxic Bomborg": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/d/df/Toxic_Bomborg.png/revision/latest?cb=20151024213317",
+   "file": "assets/terra/enemies/toxic-bomborg.png",
+   "status": "downloaded",
+   "bytes": 22112
+  },
+  "Beambot": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/6/6b/Beambot.png/revision/latest?cb=20150822120031",
+   "file": "assets/terra/enemies/beambot.png",
+   "status": "downloaded",
+   "bytes": 39862
+  },
+  "Bludgeonbot": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/1/1b/Bludgeonbot.png/revision/latest?cb=20150822120031",
+   "file": "assets/terra/enemies/bludgeonbot.png",
+   "status": "downloaded",
+   "bytes": 32954
+  },
+  "Electropede": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/6/66/Electropede.png/revision/latest?cb=20151126063005",
+   "file": "assets/terra/enemies/electropede.png",
+   "status": "downloaded",
+   "bytes": 69376
+  },
+  "Gigaworm": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/a/ab/Gigaworm_icon.png/revision/latest?cb=20151111090151",
+   "file": "assets/terra/enemies/gigaworm.png",
+   "status": "downloaded",
+   "bytes": 28836
+  },
+  "Mechaclops": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/1/14/Mechaclops.png/revision/latest?cb=20150409083742",
+   "file": "assets/terra/enemies/mechaclops.png",
+   "status": "downloaded",
+   "bytes": 94014
+  },
+  "Mothbot": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/5/54/Mothbot.png/revision/latest?cb=20150409085213",
+   "file": "assets/terra/enemies/mothbot.png",
+   "status": "downloaded",
+   "bytes": 55358
+  },
+  "Mothbot Queen": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/b/bf/Mothbot_Queen_icon.png/revision/latest?cb=20151214072505",
+   "file": "assets/terra/enemies/mothbot-queen.png",
+   "status": "downloaded",
+   "bytes": 22774
+  },
+  "Nanoworm": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/2/2a/Nanoworm.png/revision/latest?cb=20151024180808",
+   "file": "assets/terra/enemies/nanoworm.png",
+   "status": "downloaded",
+   "bytes": 90562
+  },
+  "Phantasmal Lens": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/d/df/Phantasmal_Lens.png/revision/latest?cb=20151109060452",
+   "file": "assets/terra/enemies/phantasmal-lens.png",
+   "status": "downloaded",
+   "bytes": 83592
+  },
+  "Scrap Golem": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/4/41/Scrap_Golem.png/revision/latest?cb=20151024184746",
+   "file": "assets/terra/enemies/scrap-golem.png",
+   "status": "downloaded",
+   "bytes": 77634
+  },
+  "Scrap Slime": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/3/3b/Scrap_Slime.png/revision/latest?cb=20151024184923",
+   "file": "assets/terra/enemies/scrap-slime.png",
+   "status": "downloaded",
+   "bytes": 47874
+  },
+  "Assassin": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/6/69/Assassin.png/revision/latest?cb=20150409061456",
+   "file": "assets/terra/enemies/assassin.png",
+   "status": "downloaded",
+   "bytes": 90630
+  },
+  "Assassin Poseur": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/4/40/Assassin_Poseur.png/revision/latest?cb=20151023230919",
+   "file": "assets/terra/enemies/assassin-poseur.png",
+   "status": "downloaded",
+   "bytes": 30752
+  },
+  "Chainer": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/1/15/Chainer.png/revision/latest?cb=20151023231516",
+   "file": "assets/terra/enemies/chainer.png",
+   "status": "downloaded",
+   "bytes": 36946
+  },
+  "Cyberclops": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/8/89/Cyberclops.png/revision/latest?cb=20150409085537",
+   "file": "assets/terra/enemies/cyberclops.png",
+   "status": "downloaded",
+   "bytes": 92252
+  },
+  "Flail": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/1/1d/Flail.png/revision/latest?cb=20151113070748",
+   "file": "assets/terra/enemies/flail.png",
+   "status": "downloaded",
+   "bytes": 43864
+  },
+  "Hell Bat": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/2/29/Hell_Bat.png/revision/latest?cb=20151024034019",
+   "file": "assets/terra/enemies/hell-bat.png",
+   "status": "downloaded",
+   "bytes": 62198
+  },
+  "Magic Muzzler": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/c/c7/Magic_Muzzler.png/revision/latest?cb=20151024061559",
+   "file": "assets/terra/enemies/magic-muzzler.png",
+   "status": "downloaded",
+   "bytes": 30246
+  },
+  "Peprop\u00e9": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/e/ef/Peprop%C3%A9.png/revision/latest?cb=20150612135615",
+   "file": "assets/terra/enemies/peprop.png",
+   "status": "downloaded",
+   "bytes": 161800
+  },
+  "Pyrosaurus": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/3/39/Pyrosaurus.png/revision/latest?cb=20151024184038",
+   "file": "assets/terra/enemies/pyrosaurus.png",
+   "status": "downloaded",
+   "bytes": 106920
+  },
+  "Slashbot Redux": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/b/bc/Slashbot_Redux.png/revision/latest?cb=20151024185833",
+   "file": "assets/terra/enemies/slashbot-redux.png",
+   "status": "downloaded",
+   "bytes": 41334
+  },
+  "Stonefiend": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/2/2a/Stonefiend.png/revision/latest?cb=20151111085613",
+   "file": "assets/terra/enemies/stonefiend.png",
+   "status": "downloaded",
+   "bytes": 153804
+  },
+  "Vial Chucker": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/e/e5/Vial_Chucker.png/revision/latest?cb=20150409085158",
+   "file": "assets/terra/enemies/vial-chucker.png",
+   "status": "downloaded",
+   "bytes": 73224
+  },
+  "Androclops": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/5/51/Androclops.png/revision/latest?cb=20150409085557",
+   "file": "assets/terra/enemies/androclops.png",
+   "status": "downloaded",
+   "bytes": 92364
+  },
+  "Impalebot Redux": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/9/90/Impalebot_Redux.png/revision/latest?cb=20151024035214",
+   "file": "assets/terra/enemies/impalebot-redux.png",
+   "status": "downloaded",
+   "bytes": 57100
+  },
+  "Toxoid": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/6/6a/Toxoid_icon.png/revision/latest?cb=20151019034727",
+   "file": "assets/terra/enemies/toxoid.png",
+   "status": "downloaded",
+   "bytes": 17032
+  },
+  "Dark Ampcell": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/3/30/Dark_Ampcell.png/revision/latest?cb=20151024012544",
+   "file": "assets/terra/enemies/dark-ampcell.png",
+   "status": "downloaded",
+   "bytes": 10204
+  },
+  "Dark Archercell": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/f/fc/Dark_Archercell.png/revision/latest?cb=20151024012803",
+   "file": "assets/terra/enemies/dark-archercell.png",
+   "status": "downloaded",
+   "bytes": 31872
+  },
+  "Dark Mechacell": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/3/35/Dark_Mechacell.png/revision/latest?cb=20151024064611",
+   "file": "assets/terra/enemies/dark-mechacell.png",
+   "status": "downloaded",
+   "bytes": 39124
+  },
+  "Dark Sparker": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/7/78/Dark_Sparker.png/revision/latest?cb=20151024000435",
+   "file": "assets/terra/enemies/dark-sparker.png",
+   "status": "downloaded",
+   "bytes": 42670
+  },
+  "Darkbot": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/e/e7/Darkbot.png/revision/latest?cb=20151023234733",
+   "file": "assets/terra/enemies/darkbot.png",
+   "status": "downloaded",
+   "bytes": 50730
+  },
+  "Mechadrake Redux": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/e/ee/Mechadrake_Redux_icon.png/revision/latest?cb=20151103015813",
+   "file": "assets/terra/enemies/mechadrake-redux.png",
+   "status": "downloaded",
+   "bytes": 26096
+  },
+  "Regenercell": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/8/8f/Regenercell.png/revision/latest?cb=20150409055205",
+   "file": "assets/terra/enemies/regenercell.png",
+   "status": "downloaded",
+   "bytes": 59894
+  },
+  "Cryoplatelet": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/1/18/Cryoplatelet.png/revision/latest?cb=20151023232043",
+   "file": "assets/terra/enemies/cryoplatelet.png",
+   "status": "downloaded",
+   "bytes": 35688
+  },
+  "Freeze Sparker": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/c/c1/Freeze_Sparker.png/revision/latest?cb=20151024010158",
+   "file": "assets/terra/enemies/freeze-sparker.png",
+   "status": "downloaded",
+   "bytes": 46112
+  },
+  "Megacell": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/5/5c/Megacell.png/revision/latest?cb=20150409055730",
+   "file": "assets/terra/enemies/megacell.png",
+   "status": "downloaded",
+   "bytes": 102410
+  },
+  "Shieldcell": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/5/5d/Shieldcell.png/revision/latest?cb=20151024185607",
+   "file": "assets/terra/enemies/shieldcell.png",
+   "status": "downloaded",
+   "bytes": 34566
+  },
+  "Enerzerk": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/8/89/Enerzerk_icon.png/revision/latest?cb=20151111222337",
+   "file": "assets/terra/enemies/enerzerk.png",
+   "status": "downloaded",
+   "bytes": 20850
+  },
+  "Mechacell": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/8/86/Mechacell.png/revision/latest?cb=20151024064114",
+   "file": "assets/terra/enemies/mechacell.png",
+   "status": "downloaded",
+   "bytes": 21504
+  },
+  "Powercell": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/7/73/Powercell.png/revision/latest?cb=20151024182803",
+   "file": "assets/terra/enemies/powercell.png",
+   "status": "downloaded",
+   "bytes": 63978
+  },
+  "Ramcell": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/e/e5/Ramcell.png/revision/latest?cb=20151024184435",
+   "file": "assets/terra/enemies/ramcell.png",
+   "status": "downloaded",
+   "bytes": 33178
+  },
+  "Lock-On": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/8/8c/Lock-On.png/revision/latest?cb=20151024044936",
+   "file": "assets/terra/enemies/lock-on.png",
+   "status": "downloaded",
+   "bytes": 28036
+  },
+  "Lock-On+": {
+   "url": null,
+   "file": null,
+   "status": "no_image_on_page"
+  },
+  "Oxsecian Airgrunt": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/6/64/Oxsecian_Airgrunt_%28Spear%29.png/revision/latest?cb=20151119192229",
+   "file": "assets/terra/enemies/oxsecian-airgrunt.png",
+   "status": "downloaded",
+   "bytes": 82660
+  },
+  "Oxsecian Battery": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/5/5d/Oxsecian_Battery.png/revision/latest?cb=20151108080244",
+   "file": "assets/terra/enemies/oxsecian-battery.png",
+   "status": "downloaded",
+   "bytes": 29972
+  },
+  "Oxsecian Bomb": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/3/32/Oxsecian_Bomb.png/revision/latest?cb=20151025221044",
+   "file": "assets/terra/enemies/oxsecian-bomb.png",
+   "status": "downloaded",
+   "bytes": 22140
+  },
+  "Pneumatobot": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/3/30/Pneumatobot_icon.png/revision/latest?cb=20151103022830",
+   "file": "assets/terra/enemies/pneumatobot.png",
+   "status": "downloaded",
+   "bytes": 22018
+  },
+  "Pneumatobot (Beta)": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/1/17/Pneumatobot_%28Beta%29.png/revision/latest?cb=20151025223520",
+   "file": "assets/terra/enemies/pneumatobot-beta.png",
+   "status": "downloaded",
+   "bytes": 30190
+  },
+  "Energy Aspirator": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/5/51/Energy_Aspirator_icon.png/revision/latest?cb=20151103021521",
+   "file": "assets/terra/enemies/energy-aspirator.png",
+   "status": "downloaded",
+   "bytes": 24146
+  },
+  "Laser Unit H": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/7/74/Laser_Unit_H.png/revision/latest?cb=20151016060837",
+   "file": "assets/terra/enemies/laser-unit-h.png",
+   "status": "downloaded",
+   "bytes": 33244
+  },
+  "Laser Unit V": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/e/e4/Laser_Unit_V.png/revision/latest?cb=20151016061423",
+   "file": "assets/terra/enemies/laser-unit-v.png",
+   "status": "downloaded",
+   "bytes": 32464
+  },
+  "Oxsecian Sniper": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/f/f9/Oxsecian_Sniper.png/revision/latest?cb=20151024182044",
+   "file": "assets/terra/enemies/oxsecian-sniper.png",
+   "status": "downloaded",
+   "bytes": 73864
+  },
+  "EM Generator": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/d/da/EM_Generator_icon.png/revision/latest?cb=20151111225515",
+   "file": "assets/terra/enemies/em-generator.png",
+   "status": "downloaded",
+   "bytes": 16402
+  },
+  "Oxsecian Grunt": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/c/c7/Oxsecian_Grunt_%28Bow%29.png/revision/latest?cb=20151206200547",
+   "file": "assets/terra/enemies/oxsecian-grunt.png",
+   "status": "downloaded",
+   "bytes": 65010
+  },
+  "Oxsecian Grunt SP": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/0/06/Oxsecian_Grunt_SP.png/revision/latest?cb=20151025192118",
+   "file": "assets/terra/enemies/oxsecian-grunt-sp.png",
+   "status": "downloaded",
+   "bytes": 75122
+  },
+  "Oxsecian Guard SP": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/1/1c/Oxsecian_Raider.png/revision/latest?cb=20151025191839",
+   "file": "assets/terra/enemies/oxsecian-guard-sp.png",
+   "status": "downloaded",
+   "bytes": 61996
+  },
+  "Oxsecian Gunner SP": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/9/9c/Oxsecian_Blitzer.png/revision/latest?cb=20151103001606",
+   "file": "assets/terra/enemies/oxsecian-gunner-sp.png",
+   "status": "downloaded",
+   "bytes": 54900
+  },
+  "Carnelibean": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/6/65/Carnelibean.png/revision/latest?cb=20151025050401",
+   "file": "assets/terra/enemies/carnelibean.png",
+   "status": "downloaded",
+   "bytes": 18050
+  },
+  "Celestial Dragon": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/a/aa/Celestial_Dragon.png/revision/latest?cb=20141016153103",
+   "file": "assets/terra/enemies/celestial-dragon.png",
+   "status": "downloaded",
+   "bytes": 200644
+  },
+  "Firespew": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/f/f2/Firespew.png/revision/latest?cb=20151025050943",
+   "file": "assets/terra/enemies/firespew.png",
+   "status": "downloaded",
+   "bytes": 44024
+  },
+  "Floralpede": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/2/2a/Floralpede.png/revision/latest?cb=20150409080441",
+   "file": "assets/terra/enemies/floralpede.png",
+   "status": "downloaded",
+   "bytes": 80320
+  },
+  "Pegawyrm": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/a/a2/Pegawyrm.png/revision/latest?cb=20150409055157",
+   "file": "assets/terra/enemies/pegawyrm.png",
+   "status": "downloaded",
+   "bytes": 116842
+  },
+  "Phoenix (Enemy)": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/c/cb/Phoenix_%28Eidolon%29.png/revision/latest?cb=20151019042858",
+   "file": "assets/terra/enemies/phoenix-enemy.png",
+   "status": "downloaded",
+   "bytes": 171484
+  },
+  "Pyrowisp": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/f/f4/Pyrowisp.png/revision/latest?cb=20150409085215",
+   "file": "assets/terra/enemies/pyrowisp.png",
+   "status": "downloaded",
+   "bytes": 105482
+  },
+  "Rhinosaurus": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/c/cd/Rhinosaurus.png/revision/latest?cb=20140905234939",
+   "file": "assets/terra/enemies/rhinosaurus.png",
+   "status": "downloaded",
+   "bytes": 293346
+  },
+  "Slime Slug": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/9/95/Slime_Slug.png/revision/latest?cb=20150409061703",
+   "file": "assets/terra/enemies/slime-slug.png",
+   "status": "downloaded",
+   "bytes": 41656
+  },
+  "Aquafeeder": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/c/cf/Aquafeeder.png/revision/latest?cb=20150908010014",
+   "file": "assets/terra/enemies/aquafeeder.png",
+   "status": "downloaded",
+   "bytes": 65032
+  },
+  "Boltspew": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/1/18/Boltspew.png/revision/latest?cb=20150907052830",
+   "file": "assets/terra/enemies/boltspew.png",
+   "status": "downloaded",
+   "bytes": 39788
+  },
+  "Cryowisp": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/9/94/Cryowisp.png/revision/latest?cb=20150409084606",
+   "file": "assets/terra/enemies/cryowisp.png",
+   "status": "downloaded",
+   "bytes": 91484
+  },
+  "Ice Golem": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/1/15/Ice_Golem_%28Boss%29_icon.png/revision/latest?cb=20150820082227",
+   "file": "assets/terra/enemies/ice-golem.png",
+   "status": "downloaded",
+   "bytes": 17624
+  },
+  "Lazulibean": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/d/d3/Lazulibean.png/revision/latest?cb=20151025055330",
+   "file": "assets/terra/enemies/lazulibean.png",
+   "status": "downloaded",
+   "bytes": 35108
+  },
+  "Mermaid": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/6/66/Mermaid.png/revision/latest?cb=20150409083744",
+   "file": "assets/terra/enemies/mermaid.png",
+   "status": "downloaded",
+   "bytes": 61180
+  },
+  "Mudwing": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/9/91/Mudwing.png/revision/latest?cb=20151025055821",
+   "file": "assets/terra/enemies/mudwing.png",
+   "status": "downloaded",
+   "bytes": 99550
+  },
+  "Snowspew": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/5/54/Snowspew.png/revision/latest?cb=20151019031612",
+   "file": "assets/terra/enemies/snowspew.png",
+   "status": "downloaded",
+   "bytes": 40128
+  },
+  "Starwhip": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/2/2b/Starwhip.png/revision/latest?cb=20150409085539",
+   "file": "assets/terra/enemies/starwhip.png",
+   "status": "downloaded",
+   "bytes": 31956
+  },
+  "Thunder Horn": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/3/33/Thunder_Horn.png/revision/latest?cb=20151025202411",
+   "file": "assets/terra/enemies/thunder-horn.png",
+   "status": "downloaded",
+   "bytes": 80808
+  },
+  "Vajra (Monster)": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/f/f0/Vajra_%28Monster%29.png/revision/latest?cb=20141017135423",
+   "file": "assets/terra/enemies/vajra-monster.png",
+   "status": "downloaded",
+   "bytes": 214790
+  },
+  "Bosses": {
+   "url": null,
+   "file": null,
+   "status": "no_image_on_page"
+  },
+  "Cursed Claw": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/4/4e/Cursed_Claw.png/revision/latest?cb=20150907055819",
+   "file": "assets/terra/enemies/cursed-claw.png",
+   "status": "downloaded",
+   "bytes": 40136
+  },
+  "Dark Dragon": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/c/ce/Dark_Dragon_icon.png/revision/latest?cb=20151103020436",
+   "file": "assets/terra/enemies/dark-dragon.png",
+   "status": "downloaded",
+   "bytes": 20780
+  },
+  "Dark Pegawyrm": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/0/0b/Dark_Pegawyrm.png/revision/latest?cb=20150409054909",
+   "file": "assets/terra/enemies/dark-pegawyrm.png",
+   "status": "downloaded",
+   "bytes": 111496
+  },
+  "Necromancer": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/5/5d/Necromancer.png/revision/latest?cb=20150618143906",
+   "file": "assets/terra/enemies/necromancer.png",
+   "status": "downloaded",
+   "bytes": 34806
+  },
+  "Onyx Dragon": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/5/5c/Onyx_Dragon.png/revision/latest?cb=20150409073927",
+   "file": "assets/terra/enemies/onyx-dragon.png",
+   "status": "downloaded",
+   "bytes": 140034
+  },
+  "Seed": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/2/2e/Seed.png/revision/latest?cb=20150907050158",
+   "file": "assets/terra/enemies/seed.png",
+   "status": "downloaded",
+   "bytes": 17998
+  },
+  "Shadow Slug": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/e/ee/Shadow_Slug.png/revision/latest?cb=20151025193543",
+   "file": "assets/terra/enemies/shadow-slug.png",
+   "status": "downloaded",
+   "bytes": 25840
+  },
+  "Slasher": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/9/9a/Slasher.png/revision/latest?cb=20150409061935",
+   "file": "assets/terra/enemies/slasher.png",
+   "status": "downloaded",
+   "bytes": 98952
+  },
+  "Impaler": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/3/31/Impaler.png/revision/latest?cb=20151025052549",
+   "file": "assets/terra/enemies/impaler.png",
+   "status": "downloaded",
+   "bytes": 61774
+  },
+  "Negator X": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/c/cd/Negator_X.png/revision/latest?cb=20151024193915",
+   "file": "assets/terra/enemies/negator-x.png",
+   "status": "downloaded",
+   "bytes": 19912
+  },
+  "Oxsecian Bomber": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/4/47/Oxsecian_Bomber.png/revision/latest?cb=20151107025142",
+   "file": "assets/terra/enemies/oxsecian-bomber.png",
+   "status": "downloaded",
+   "bytes": 74056
+  },
+  "Oxsecian Bomber EX": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/4/4a/Oxsecian_Bomber_EX_icon.png/revision/latest?cb=20151103022648",
+   "file": "assets/terra/enemies/oxsecian-bomber-ex.png",
+   "status": "downloaded",
+   "bytes": 19678
+  },
+  "Oxsecian Fighter": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/d/d2/Oxsecian_Fighter.png/revision/latest?cb=20151025191421",
+   "file": "assets/terra/enemies/oxsecian-fighter.png",
+   "status": "downloaded",
+   "bytes": 87262
+  },
+  "Restorator Z": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/1/16/Restorator_Z.png/revision/latest?cb=20151025193246",
+   "file": "assets/terra/enemies/restorator-z.png",
+   "status": "downloaded",
+   "bytes": 23532
+  },
+  "Terminator Y": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/a/a1/Terminator_Y.png/revision/latest?cb=20151025202230",
+   "file": "assets/terra/enemies/terminator-y.png",
+   "status": "downloaded",
+   "bytes": 28882
+  },
+  "Thornasaurus": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/4/47/Thornasaurus.png/revision/latest?cb=20150409062006",
+   "file": "assets/terra/enemies/thornasaurus.png",
+   "status": "downloaded",
+   "bytes": 103388
+  },
+  "1AOO": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/2/2d/1AOO_icon.png/revision/latest?cb=20151027013248",
+   "file": "assets/terra/enemies/1aoo.png",
+   "status": "downloaded",
+   "bytes": 15350
+  },
+  "1AOO MarkI": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/8/85/1AOO_Mark%E2%85%A0.png/revision/latest?cb=20151108022247",
+   "file": "assets/terra/enemies/1aoo-marki.png",
+   "status": "downloaded",
+   "bytes": 103074
+  },
+  "2BOO": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/4/44/2BOO_icon.png/revision/latest?cb=20151107015854",
+   "file": "assets/terra/enemies/2boo.png",
+   "status": "downloaded",
+   "bytes": 23052
+  },
+  "2BOO MarkI": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/f/f9/2BOO_Mark%E2%85%A0.png/revision/latest?cb=20151108024458",
+   "file": "assets/terra/enemies/2boo-marki.png",
+   "status": "downloaded",
+   "bytes": 76104
+  },
+  "3COO": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/7/77/3COO_icon.png/revision/latest?cb=20151107021049",
+   "file": "assets/terra/enemies/3coo.png",
+   "status": "downloaded",
+   "bytes": 19120
+  },
+  "3COO MarkI": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/9/90/3COO_Mark%E2%85%A0.png/revision/latest?cb=20151108031629",
+   "file": "assets/terra/enemies/3coo-marki.png",
+   "status": "downloaded",
+   "bytes": 40376
+  },
+  "Craggy Leviathan": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/7/78/Craggy_Leviathan_icon.png/revision/latest?cb=20151103015228",
+   "file": "assets/terra/enemies/craggy-leviathan.png",
+   "status": "downloaded",
+   "bytes": 17466
+  },
+  "Electroseizer": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/f/f3/Electroseizer.png/revision/latest?cb=20151025050738",
+   "file": "assets/terra/enemies/electroseizer.png",
+   "status": "downloaded",
+   "bytes": 34986
+  },
+  "Paralypede": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/c/cf/Paralypede.png/revision/latest?cb=20150409082244",
+   "file": "assets/terra/enemies/paralypede.png",
+   "status": "downloaded",
+   "bytes": 83410
+  },
+  "Time Analyzer": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/9/9b/Time_Analyzer.png/revision/latest?cb=20151025202635",
+   "file": "assets/terra/enemies/time-analyzer.png",
+   "status": "downloaded",
+   "bytes": 33698
+  },
+  "54B2": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/a/a5/54B2.png/revision/latest?cb=20171230082700",
+   "file": "assets/terra/enemies/54b2.png",
+   "status": "downloaded",
+   "bytes": 580976
+  },
+  "54B2 (Enemy)": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/a/a5/54B2.png/revision/latest?cb=20171230082700",
+   "file": "assets/terra/enemies/54b2-enemy.png",
+   "status": "downloaded",
+   "bytes": 580976
+  },
+  "Cryobird": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/f/fe/Cryobird.png/revision/latest?cb=20150907054352",
+   "file": "assets/terra/enemies/cryobird.png",
+   "status": "downloaded",
+   "bytes": 41374
+  },
+  "Defense Amp": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/f/f1/Defense_Amp.png/revision/latest?cb=20151103000812",
+   "file": "assets/terra/enemies/defense-amp.png",
+   "status": "downloaded",
+   "bytes": 10818
+  },
+  "Electrosapper": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/0/0d/Electrosapper.png/revision/latest?cb=20150409080020",
+   "file": "assets/terra/enemies/electrosapper.png",
+   "status": "downloaded",
+   "bytes": 35650
+  },
+  "Ice Razor": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/6/67/Ice_Razor.png/revision/latest?cb=20151025051723",
+   "file": "assets/terra/enemies/ice-razor.png",
+   "status": "downloaded",
+   "bytes": 10456
+  },
+  "Ice Slammer": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/f/f1/Ice_Slammer.png/revision/latest?cb=20150907063609",
+   "file": "assets/terra/enemies/ice-slammer.png",
+   "status": "downloaded",
+   "bytes": 25742
+  },
+  "Jade Guardian": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/0/0c/Jade_Guardian_icon.png/revision/latest?cb=20151019054258",
+   "file": "assets/terra/enemies/jade-guardian.png",
+   "status": "downloaded",
+   "bytes": 28676
+  },
+  "Oxsecian Gunner": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/8/88/Oxsecian_Gunner_A.png/revision/latest?cb=20150821135910",
+   "file": "assets/terra/enemies/oxsecian-gunner.png",
+   "status": "downloaded",
+   "bytes": 94922
+  },
+  "Crasher": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/e/e7/Crasher.png/revision/latest?cb=20151113070300",
+   "file": "assets/terra/enemies/crasher.png",
+   "status": "downloaded",
+   "bytes": 37388
+  },
+  "Dark Petrifier": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/7/7a/Dark_Petrifier.png/revision/latest?cb=20150409084611",
+   "file": "assets/terra/enemies/dark-petrifier.png",
+   "status": "downloaded",
+   "bytes": 47498
+  },
+  "Grim Leaker": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/e/eb/Grim_Leaker.png/revision/latest?cb=20151114190418",
+   "file": "assets/terra/enemies/grim-leaker.png",
+   "status": "downloaded",
+   "bytes": 19102
+  },
+  "Mechabird": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/1/16/Mechabird.png/revision/latest?cb=20151107024550",
+   "file": "assets/terra/enemies/mechabird.png",
+   "status": "downloaded",
+   "bytes": 38166
+  },
+  "Nebulator": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/0/08/Nebulator.png/revision/latest?cb=20151111234516",
+   "file": "assets/terra/enemies/nebulator.png",
+   "status": "downloaded",
+   "bytes": 52344
+  },
+  "Oxsecian Stormer": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/6/66/Oxsecian_Stormer.png/revision/latest?cb=20151114191930",
+   "file": "assets/terra/enemies/oxsecian-stormer.png",
+   "status": "downloaded",
+   "bytes": 67084
+  },
+  "Spiny Leviathan": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/7/79/Spiny_Leviathan_icon.png/revision/latest?cb=20151103014026",
+   "file": "assets/terra/enemies/spiny-leviathan.png",
+   "status": "downloaded",
+   "bytes": 27114
+  },
+  "Transporter": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/5/51/Transporter.png/revision/latest?cb=20151025203125",
+   "file": "assets/terra/enemies/transporter.png",
+   "status": "downloaded",
+   "bytes": 24648
+  },
+  "Arachnochip": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/c/c9/Arachnochip.png/revision/latest?cb=20151025045542",
+   "file": "assets/terra/enemies/arachnochip.png",
+   "status": "downloaded",
+   "bytes": 55060
+  },
+  "Arachnochip EX": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/1/18/Arachnochip_EX.png/revision/latest?cb=20151025045950",
+   "file": "assets/terra/enemies/arachnochip-ex.png",
+   "status": "downloaded",
+   "bytes": 80044
+  },
+  "Fire Spawn": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/7/72/Flame_Spawn.png/revision/latest?cb=20151019065626",
+   "file": "assets/terra/enemies/fire-spawn.png",
+   "status": "downloaded",
+   "bytes": 39008
+  },
+  "Ice Spawn": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/8/8c/Ice_Spawn.png/revision/latest?cb=20150907064348",
+   "file": "assets/terra/enemies/ice-spawn.png",
+   "status": "downloaded",
+   "bytes": 43174
+  },
+  "Kraken": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/d/d3/Kraken.png/revision/latest?cb=20141016152955",
+   "file": "assets/terra/enemies/kraken.png",
+   "status": "downloaded",
+   "bytes": 125042
+  },
+  "Kraken's Tentacle": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/0/03/Kraken%27s_Tentacle.png/revision/latest?cb=20151025053119",
+   "file": "assets/terra/enemies/kraken-s-tentacle.png",
+   "status": "downloaded",
+   "bytes": 19686
+  },
+  "Lich": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/8/86/Lich.png/revision/latest?cb=20141016152955",
+   "file": "assets/terra/enemies/lich.png",
+   "status": "downloaded",
+   "bytes": 112906
+  },
+  "Marilith": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/6/6b/Marilith.png/revision/latest?cb=20150409052927",
+   "file": "assets/terra/enemies/marilith.png",
+   "status": "downloaded",
+   "bytes": 110334
+  },
+  "Mediscanner": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/e/e3/Mediscanner.png/revision/latest?cb=20150409055717",
+   "file": "assets/terra/enemies/mediscanner.png",
+   "status": "downloaded",
+   "bytes": 39612
+  },
+  "Oxsecian Blitzer": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/9/9c/Oxsecian_Blitzer.png/revision/latest?cb=20151103001606",
+   "file": "assets/terra/enemies/oxsecian-blitzer.png",
+   "status": "downloaded",
+   "bytes": 54900
+  },
+  "Oxsecian Lancer": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/0/06/Oxsecian_Grunt_SP.png/revision/latest?cb=20151025192118",
+   "file": "assets/terra/enemies/oxsecian-lancer.png",
+   "status": "downloaded",
+   "bytes": 75122
+  },
+  "Oxsecian RPS": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/7/79/Oxsecian_RPS.png/revision/latest?cb=20151025192345",
+   "file": "assets/terra/enemies/oxsecian-rps.png",
+   "status": "downloaded",
+   "bytes": 20660
+  },
+  "Oxsecian Raider": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/1/1c/Oxsecian_Raider.png/revision/latest?cb=20151025191839",
+   "file": "assets/terra/enemies/oxsecian-raider.png",
+   "status": "downloaded",
+   "bytes": 61996
+  },
+  "Tiamat": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/9/9a/Tiamat.png/revision/latest?cb=20141016152956",
+   "file": "assets/terra/enemies/tiamat.png",
+   "status": "downloaded",
+   "bytes": 128720
+  },
+  "1AOO MarkII": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/6/64/1AOO_Mark%E2%85%A1.png/revision/latest?cb=20151112034710",
+   "file": "assets/terra/enemies/1aoo-markii.png",
+   "status": "downloaded",
+   "bytes": 137580
+  },
+  "2BOO MarkII": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/d/d9/2BOO_Mark%E2%85%A1.png/revision/latest?cb=20151108023941",
+   "file": "assets/terra/enemies/2boo-markii.png",
+   "status": "downloaded",
+   "bytes": 165074
+  },
+  "3COO MarkII": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/3/37/3COO_Mark%E2%85%A1.png/revision/latest?cb=20151108031843",
+   "file": "assets/terra/enemies/3coo-markii.png",
+   "status": "downloaded",
+   "bytes": 139754
+  },
+  "Hover Zapper": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/2/20/Hover_Zapper.png/revision/latest?cb=20151107191610",
+   "file": "assets/terra/enemies/hover-zapper.png",
+   "status": "downloaded",
+   "bytes": 38344
+  },
+  "Oxsecian Gas Bomb": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/f/f4/Oxsecian_Gas_Bomb.png/revision/latest?cb=20151019025913",
+   "file": "assets/terra/enemies/oxsecian-gas-bomb.png",
+   "status": "downloaded",
+   "bytes": 16990
+  },
+  "Oxsecian Stormer SP": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/2/28/Oxsecian_Stormer_SP.png/revision/latest?cb=20151025192743",
+   "file": "assets/terra/enemies/oxsecian-stormer-sp.png",
+   "status": "downloaded",
+   "bytes": 92854
+  },
+  "Oxsecian Worm": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/2/29/Oxsecian_Worm_icon.png/revision/latest?cb=20151024193317",
+   "file": "assets/terra/enemies/oxsecian-worm.png",
+   "status": "downloaded",
+   "bytes": 25890
+  },
+  "6ZOO": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/e/ef/6ZOO_-_Form_1_icon.png/revision/latest?cb=20151107192730",
+   "file": "assets/terra/enemies/6zoo.png",
+   "status": "downloaded",
+   "bytes": 28764
+  },
+  "Elemental Spinner": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/7/72/Elemental_Spinner.png/revision/latest?cb=20151107023537",
+   "file": "assets/terra/enemies/elemental-spinner.png",
+   "status": "downloaded",
+   "bytes": 30460
+  },
+  "Oxsecian Arrowbot": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/4/48/Oxsecian_Arrowbot.png/revision/latest?cb=20151108075907",
+   "file": "assets/terra/enemies/oxsecian-arrowbot.png",
+   "status": "downloaded",
+   "bytes": 53118
+  },
+  "Oxsecian Bladebot": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/b/bf/Oxsecian_Bladebot.png/revision/latest?cb=20151108080525",
+   "file": "assets/terra/enemies/oxsecian-bladebot.png",
+   "status": "downloaded",
+   "bytes": 53142
+  },
+  "Oxsecian Fighter EX": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/d/da/Oxsecian_Fighter_EX_icon.png/revision/latest?cb=20151009021615",
+   "file": "assets/terra/enemies/oxsecian-fighter-ex.png",
+   "status": "downloaded",
+   "bytes": 15378
+  },
+  "Oxsecian Spearbot": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/2/2e/Oxsecian_Spearbot.png/revision/latest?cb=20151108080718",
+   "file": "assets/terra/enemies/oxsecian-spearbot.png",
+   "status": "downloaded",
+   "bytes": 46690
+  },
+  "Oxsecian Striker": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/1/1b/Oxsecian_Striker.png/revision/latest?cb=20151108080938",
+   "file": "assets/terra/enemies/oxsecian-striker.png",
+   "status": "downloaded",
+   "bytes": 81506
+  },
+  "Space Debris": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/f/f4/Space_Debris.png/revision/latest?cb=20151025202036",
+   "file": "assets/terra/enemies/space-debris.png",
+   "status": "downloaded",
+   "bytes": 29992
+  },
+  "Antlion": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/1/1e/Antlion_icon.png/revision/latest?cb=20151106211408",
+   "file": "assets/terra/enemies/antlion.png",
+   "status": "downloaded",
+   "bytes": 30976
+  },
+  "Aurochs": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/4/4e/Aurochs.png/revision/latest?cb=20150908061556",
+   "file": "assets/terra/enemies/aurochs.png",
+   "status": "downloaded",
+   "bytes": 96306
+  },
+  "Gnorusk": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/9/97/Gnorusk.png/revision/latest?cb=20150908091344",
+   "file": "assets/terra/enemies/gnorusk.png",
+   "status": "downloaded",
+   "bytes": 88786
+  },
+  "Left Creeper": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/e/e1/Left_Creeper.png/revision/latest?cb=20150908092158",
+   "file": "assets/terra/enemies/left-creeper.png",
+   "status": "downloaded",
+   "bytes": 52822
+  },
+  "Mudcrawler": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/4/42/Mudcrawler.png/revision/latest?cb=20150908091143",
+   "file": "assets/terra/enemies/mudcrawler.png",
+   "status": "downloaded",
+   "bytes": 34936
+  },
+  "Proto": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/c/c1/Proto.png/revision/latest?cb=20150612111034",
+   "file": "assets/terra/enemies/proto.png",
+   "status": "downloaded",
+   "bytes": 80522
+  },
+  "Right Creeper": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/d/d5/Right_Creeper.png/revision/latest?cb=20150908092017",
+   "file": "assets/terra/enemies/right-creeper.png",
+   "status": "downloaded",
+   "bytes": 55948
+  },
+  "Snaptrap": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/c/c2/Snaptrap.png/revision/latest?cb=20150908093402",
+   "file": "assets/terra/enemies/snaptrap.png",
+   "status": "downloaded",
+   "bytes": 125100
+  },
+  "Snaptrap Seedling": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/d/d9/Snaptrap_Seedling.png/revision/latest?cb=20150908092850",
+   "file": "assets/terra/enemies/snaptrap-seedling.png",
+   "status": "downloaded",
+   "bytes": 32168
+  },
+  "Snaptrap Sprout": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/6/65/Snaptrap_Sprout.png/revision/latest?cb=20150908093203",
+   "file": "assets/terra/enemies/snaptrap-sprout.png",
+   "status": "downloaded",
+   "bytes": 49230
+  },
+  "Spitch": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/8/8b/Spitch.png/revision/latest?cb=20150908090744",
+   "file": "assets/terra/enemies/spitch.png",
+   "status": "downloaded",
+   "bytes": 40434
+  },
+  "Spitch Leader": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/f/fd/Spitch_Leader.png/revision/latest?cb=20150908090213",
+   "file": "assets/terra/enemies/spitch-leader.png",
+   "status": "downloaded",
+   "bytes": 43200
+  },
+  "Thorny Creeper": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/e/eb/Thorny_Creeper.png/revision/latest?cb=20150908091649",
+   "file": "assets/terra/enemies/thorny-creeper.png",
+   "status": "downloaded",
+   "bytes": 113696
+  },
+  "Apirath": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/7/70/Apirath.png/revision/latest?cb=20150619111025",
+   "file": "assets/terra/enemies/apirath.png",
+   "status": "downloaded",
+   "bytes": 91108
+  },
+  "Carrion Cutter": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/d/df/Carrion_Cutter.png/revision/latest?cb=20150619081147",
+   "file": "assets/terra/enemies/carrion-cutter.png",
+   "status": "downloaded",
+   "bytes": 101592
+  },
+  "Kirusk": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/7/78/Kirusk.png/revision/latest?cb=20150619081310",
+   "file": "assets/terra/enemies/kirusk.png",
+   "status": "downloaded",
+   "bytes": 99322
+  },
+  "Magic Amp": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/3/36/Magic_Amp.png/revision/latest?cb=20150619111024",
+   "file": "assets/terra/enemies/magic-amp.png",
+   "status": "downloaded",
+   "bytes": 41018
+  },
+  "Power Amp": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/b/b4/Power_Amp.png/revision/latest?cb=20150619111024",
+   "file": "assets/terra/enemies/power-amp.png",
+   "status": "downloaded",
+   "bytes": 38588
+  },
+  "Reviver": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/8/83/Reviver.png/revision/latest?cb=20150619081055",
+   "file": "assets/terra/enemies/reviver.png",
+   "status": "downloaded",
+   "bytes": 40968
+  },
+  "Sands of Time": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/7/7b/Sands_of_Time.png/revision/latest?cb=20150619081545",
+   "file": "assets/terra/enemies/sands-of-time.png",
+   "status": "downloaded",
+   "bytes": 49082
+  },
+  "Scar": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/c/c7/Scar.png/revision/latest?cb=20150619080848",
+   "file": "assets/terra/enemies/scar.png",
+   "status": "downloaded",
+   "bytes": 90544
+  },
+  "Slasher Bloblin": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/c/cc/Slasher_Bloblin.png/revision/latest?cb=20150619081403",
+   "file": "assets/terra/enemies/slasher-bloblin.png",
+   "status": "downloaded",
+   "bytes": 98748
+  },
+  "Slasher Goblin": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/3/35/Slasher_Goblin.png/revision/latest?cb=20150619081457",
+   "file": "assets/terra/enemies/slasher-goblin.png",
+   "status": "downloaded",
+   "bytes": 61320
+  },
+  "Toxicrawler": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/4/42/Toxicrawler.png/revision/latest?cb=20150619080959",
+   "file": "assets/terra/enemies/toxicrawler.png",
+   "status": "downloaded",
+   "bytes": 38702
+  },
+  "54B2 (Ally)": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/a/a5/54B2.png/revision/latest?cb=20171230082700",
+   "file": "assets/terra/enemies/54b2-ally.png",
+   "status": "downloaded",
+   "bytes": 580976
+  },
+  "Fortified Oxsecian Bulwark": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/0/06/Fortified_Oxsecian_Bulwark.png/revision/latest?cb=20150723061606",
+   "file": "assets/terra/enemies/fortified-oxsecian-bulwark.png",
+   "status": "downloaded",
+   "bytes": 119956
+  },
+  "Modded Oxsecian Medicbot": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/f/f5/Modded_Oxsecian_Medicbot.png/revision/latest?cb=20151114202240",
+   "file": "assets/terra/enemies/modded-oxsecian-medicbot.png",
+   "status": "downloaded",
+   "bytes": 22832
+  },
+  "Oxsecian Generator": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/3/36/Oxsecian_Generator.png/revision/latest?cb=20150723061605",
+   "file": "assets/terra/enemies/oxsecian-generator.png",
+   "status": "downloaded",
+   "bytes": 40692
+  },
+  "Oxsecian Shock Laser": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/1/11/Oxsecian_Shock_Laser_%28Column%29.png/revision/latest?cb=20150723091504",
+   "file": "assets/terra/enemies/oxsecian-shock-laser.png",
+   "status": "downloaded",
+   "bytes": 28306
+  },
+  "Oxsecian Zapper": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/4/4d/Oxsecian_Zapper.png/revision/latest?cb=20150723061605",
+   "file": "assets/terra/enemies/oxsecian-zapper.png",
+   "status": "downloaded",
+   "bytes": 34044
+  },
+  "Rebel Defender": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/c/c2/Rebel_Defender.png/revision/latest?cb=20150723075313",
+   "file": "assets/terra/enemies/rebel-defender.png",
+   "status": "downloaded",
+   "bytes": 65906
+  },
+  "Rebel Electrocutor": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/e/e5/Rebel_Electrocutor.png/revision/latest?cb=20150723061604",
+   "file": "assets/terra/enemies/rebel-electrocutor.png",
+   "status": "downloaded",
+   "bytes": 70840
+  },
+  "Rebel Soldier": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/f/f8/Rebel_Soldier.png/revision/latest?cb=20150723062926",
+   "file": "assets/terra/enemies/rebel-soldier.png",
+   "status": "downloaded",
+   "bytes": 76538
+  },
+  "Frostshroom": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/a/a4/Frostshroom.png/revision/latest?cb=20150821061053",
+   "file": "assets/terra/enemies/frostshroom.png",
+   "status": "downloaded",
+   "bytes": 39750
+  },
+  "Layla": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/c/c8/Layla.png/revision/latest?cb=20150821071322",
+   "file": "assets/terra/enemies/layla.png",
+   "status": "downloaded",
+   "bytes": 95516
+  },
+  "Mini Frostshroom": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/6/66/Mini_Frostshroom.png/revision/latest?cb=20150821061052",
+   "file": "assets/terra/enemies/mini-frostshroom.png",
+   "status": "downloaded",
+   "bytes": 17766
+  },
+  "Oxsecian Mobile Artillery": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/f/fc/Oxsecian_Mobile_Artillery.png/revision/latest?cb=20150821134402",
+   "file": "assets/terra/enemies/oxsecian-mobile-artillery.png",
+   "status": "downloaded",
+   "bytes": 97808
+  },
+  "Oxsecian Soldier": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/4/4b/Oxsecian_Soldier.png/revision/latest?cb=20150821163626",
+   "file": "assets/terra/enemies/oxsecian-soldier.png",
+   "status": "downloaded",
+   "bytes": 60622
+  },
+  "Prototype Zero": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/9/91/Prototype_Zero.png/revision/latest?cb=20150821174016",
+   "file": "assets/terra/enemies/prototype-zero.png",
+   "status": "downloaded",
+   "bytes": 116476
+  },
+  "Rossi": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/e/e7/Rossi.png/revision/latest?cb=20150821075032",
+   "file": "assets/terra/enemies/rossi.png",
+   "status": "downloaded",
+   "bytes": 62154
+  },
+  "Snow Spook": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/5/5b/Snow_Spook.png/revision/latest?cb=20150821061052",
+   "file": "assets/terra/enemies/snow-spook.png",
+   "status": "downloaded",
+   "bytes": 17108
+  },
+  "Treant": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/3/31/Treant.png/revision/latest?cb=20150821061052",
+   "file": "assets/terra/enemies/treant.png",
+   "status": "downloaded",
+   "bytes": 31622
+  },
+  "Faeyu": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/3/34/Faeyu.png/revision/latest?cb=20160623105302",
+   "file": "assets/terra/enemies/faeyu.png",
+   "status": "downloaded",
+   "bytes": 53206
+  },
+  "Falaan": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/2/26/Falaan.png/revision/latest?cb=20160623105408",
+   "file": "assets/terra/enemies/falaan.png",
+   "status": "downloaded",
+   "bytes": 54064
+  },
+  "Leefa": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/c/ce/Leefa.png/revision/latest?cb=20160623105730",
+   "file": "assets/terra/enemies/leefa.png",
+   "status": "downloaded",
+   "bytes": 56710
+  },
+  "Naarfan": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/c/c1/Naarfan.png/revision/latest?cb=20160623105911",
+   "file": "assets/terra/enemies/naarfan.png",
+   "status": "downloaded",
+   "bytes": 52300
+  },
+  "Phaarz": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/5/58/Phaarz_icon.png/revision/latest?cb=20160623090542",
+   "file": "assets/terra/enemies/phaarz.png",
+   "status": "downloaded",
+   "bytes": 24048
+  },
+  "Xaepha (Boss)": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/8/88/Xaepha_%28Boss%29.png/revision/latest?cb=20160625193115",
+   "file": "assets/terra/enemies/xaepha-boss.png",
+   "status": "downloaded",
+   "bytes": 160434
+  },
+  "Giant Nega": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/3/3d/Giant_Nega_icon.png/revision/latest?cb=20160825230819",
+   "file": "assets/terra/enemies/giant-nega.png",
+   "status": "downloaded",
+   "bytes": 31996
+  },
+  "Negabeast": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/4/47/Negabeast_icon.png/revision/latest?cb=20160825230646",
+   "file": "assets/terra/enemies/negabeast.png",
+   "status": "downloaded",
+   "bytes": 26938
+  },
+  "Negale": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/c/cc/Negale.png/revision/latest?cb=20160825230956",
+   "file": "assets/terra/enemies/negale.png",
+   "status": "downloaded",
+   "bytes": 88416
+  },
+  "Negaray": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/3/38/Negaray.png/revision/latest?cb=20160825231512",
+   "file": "assets/terra/enemies/negaray.png",
+   "status": "downloaded",
+   "bytes": 63074
+  },
+  "Negat": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/8/8f/Negat.png/revision/latest?cb=20160825231114",
+   "file": "assets/terra/enemies/negat.png",
+   "status": "downloaded",
+   "bytes": 89120
+  },
+  "Negaton": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/2/22/Negaton.png/revision/latest?cb=20160825231310",
+   "file": "assets/terra/enemies/negaton.png",
+   "status": "downloaded",
+   "bytes": 116238
+  },
+  "Energos": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/8/88/Energos_icon.png/revision/latest?cb=20160930082155",
+   "file": "assets/terra/enemies/energos.png",
+   "status": "downloaded",
+   "bytes": 18400
+  },
+  "Fragmentor": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/7/79/Fragmentor_%28Type_A%29.png/revision/latest?cb=20161001044400",
+   "file": "assets/terra/enemies/fragmentor.png",
+   "status": "downloaded",
+   "bytes": 80716
+  },
+  "Incapacitator": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/f/f1/Incapacitator_%28Type_A%29.png/revision/latest?cb=20161001050650",
+   "file": "assets/terra/enemies/incapacitator.png",
+   "status": "downloaded",
+   "bytes": 39180
+  },
+  "Relic": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/1/11/Relic.png/revision/latest?cb=20160929042721",
+   "file": "assets/terra/enemies/relic.png",
+   "status": "downloaded",
+   "bytes": 144878
+  },
+  "Ancient Sadness": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/b/b1/Ancient_Sadness_icon.png/revision/latest?cb=20170223235451",
+   "file": "assets/terra/enemies/ancient-sadness.png",
+   "status": "downloaded",
+   "bytes": 35596
+  },
+  "Animata Sorrow": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/f/fb/Animata_Sorrow.png/revision/latest?cb=20170223234919",
+   "file": "assets/terra/enemies/animata-sorrow.png",
+   "status": "downloaded",
+   "bytes": 122726
+  },
+  "Animata Tear": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/0/0f/Animata_Tear.png/revision/latest?cb=20170223234835",
+   "file": "assets/terra/enemies/animata-tear.png",
+   "status": "downloaded",
+   "bytes": 125098
+  },
+  "Devourer": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/b/be/Devourer.png/revision/latest?cb=20170223235056",
+   "file": "assets/terra/enemies/devourer.png",
+   "status": "downloaded",
+   "bytes": 163308
+  },
+  "Golem Magician": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/a/a3/Golem_Magician.png/revision/latest?cb=20170223234557",
+   "file": "assets/terra/enemies/golem-magician.png",
+   "status": "downloaded",
+   "bytes": 137176
+  },
+  "Golem Sentry": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/8/83/Golem_Sentry.png/revision/latest?cb=20170223234706",
+   "file": "assets/terra/enemies/golem-sentry.png",
+   "status": "downloaded",
+   "bytes": 136604
+  },
+  "Golem Warrior": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/e/ed/Golem_Warrior.png/revision/latest?cb=20170223234455",
+   "file": "assets/terra/enemies/golem-warrior.png",
+   "status": "downloaded",
+   "bytes": 129910
+  },
+  "Harrier": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/8/8f/Harrier.png/revision/latest?cb=20170223235143",
+   "file": "assets/terra/enemies/harrier.png",
+   "status": "downloaded",
+   "bytes": 143344
+  },
+  "Jag (Enemy)": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/7/78/Jag.png/revision/latest?cb=20170223043117",
+   "file": "assets/terra/enemies/jag-enemy.png",
+   "status": "downloaded",
+   "bytes": 209792
+  },
+  "Quiverer": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/8/8e/Quiverer.png/revision/latest?cb=20170224003954",
+   "file": "assets/terra/enemies/quiverer.png",
+   "status": "downloaded",
+   "bytes": 176156
+  },
+  "Reaver": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/3/37/Reaver_icon.png/revision/latest?cb=20170224004154",
+   "file": "assets/terra/enemies/reaver.png",
+   "status": "downloaded",
+   "bytes": 23830
+  },
+  "Squirmer": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/5/52/Squirmer.png/revision/latest?cb=20170224003809",
+   "file": "assets/terra/enemies/squirmer.png",
+   "status": "downloaded",
+   "bytes": 58482
+  },
+  "Wiggler": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/e/e4/Wiggler.png/revision/latest?cb=20170224003905",
+   "file": "assets/terra/enemies/wiggler.png",
+   "status": "downloaded",
+   "bytes": 112816
+  },
+  "Wisprat": {
+   "url": "https://static.wikia.nocookie.net/terrabattle/images/5/57/Wisprat.png/revision/latest?cb=20170223235226",
+   "file": "assets/terra/enemies/wisprat.png",
+   "status": "downloaded",
+   "bytes": 83390
+  }
+ }
+}

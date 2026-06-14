@@ -67,8 +67,27 @@ func is_chapter_unlocked(title: String) -> bool:
 
 func is_chapter_cleared(title: String) -> bool:
 	var chapter_save_data: ChapterSaveData = find_unlocked_chapter_by_title(title)
-	
+
 	return chapter_save_data != null && chapter_save_data.is_cleared
+
+
+# Marks a chapter cleared and unlocks the next chapter in the story list.
+func clear_chapter_and_unlock_next(title: String) -> void:
+	var chapter_save_data: ChapterSaveData = find_unlocked_chapter_by_title(title)
+
+	if chapter_save_data == null:
+		unlock_chapter(title)
+		chapter_save_data = find_unlocked_chapter_by_title(title)
+
+	chapter_save_data.is_cleared = true
+
+	var chapter_list: ChapterList = load("res://chapter_data/main_story_chapter_list.tres")
+
+	for i in chapter_list.chapters.size():
+		if chapter_list.chapters[i].title == title and i + 1 < chapter_list.chapters.size():
+			unlock_chapter(chapter_list.chapters[i + 1].title)
+
+			break
 
 
 func add_job(job: Job, level: int) -> void:

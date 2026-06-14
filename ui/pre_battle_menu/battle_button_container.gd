@@ -9,6 +9,11 @@ func set_values(chapter_data: ChapterData) -> void:
 	$VBoxContainer/TitleRow/DifficultyLabel.text = "Lv %s" % chapter_data.difficulty
 	$VBoxContainer/CaptionLabel.text = tr(chapter_data.caption)
 
+	if chapter_data.locked:
+		modulate = Color(1, 1, 1, 0.45)
+		$VBoxContainer/TitleRow/AudioButton.disabled = true
+		$VBoxContainer/CaptionLabel.text = tr("COMING_SOON")
+
 	var battle_info: BattleInfo = chapter_data.battle_info
 
 	$VBoxContainer/InfoRow/SwordEnemyCountLabel.text = str(battle_info.sword_enemy_count)

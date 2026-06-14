@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=10 format=2]
+
+[ext_resource path="res://jobs/job.gd" type="Script" id=1]
+[ext_resource path="res://stats/terra/oxsecian_guard_sp_stats.tres" type="Resource" id=2]
+[ext_resource path="res://assets/terra/tokens/oxsecian_guard_sp_token.png" type="Texture2D" id=3]
+[ext_resource path="res://assets/terra/full/oxsecian_guard_sp_full.png" type="Texture2D" id=4]
+[ext_resource path="res://skills/resources/terra/d_ram_sword.tres" type="Resource" id=5]
+[ext_resource path="res://skills/resources/terra/slash.tres" type="Resource" id=6]
+[ext_resource path="res://skills/resources/terra/sever.tres" type="Resource" id=7]
+[ext_resource path="res://skills/resources/terra/d_stone_shield_sword.tres" type="Resource" id=8]
+[ext_resource path="res://skills/resources/terra/counterattack.tres" type="Resource" id=9]
+
+[resource]
+script = ExtResource( 1 )
+stats = ExtResource( 2 )
+skills = [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ]
+job_name = "OXSECIAN GUARD SP"
+portrait = ExtResource( 3 )
+full_portrait = ExtResource( 4 )

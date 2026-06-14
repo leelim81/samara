@@ -1,0 +1,11 @@
+{
+ "title": "THE_LIGHT_OF_DEVOTION",
+ "slug": "the_light_of_devotion",
+ "difficulty": "74-74",
+ "scene": "res://battles/terra/the_light_of_devotion.tscn",
+ "enemies": [
+  "Prototype Zero",
+  "Oxsecian Mobile Artillery"
+ ],
+ "art_missing": []
+}

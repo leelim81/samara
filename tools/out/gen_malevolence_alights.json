@@ -1,0 +1,16 @@
+{
+ "title": "MALEVOLENCE_ALIGHTS",
+ "slug": "malevolence_alights",
+ "difficulty": "75-75",
+ "scene": "res://battles/terra/malevolence_alights.tscn",
+ "enemies": [
+  "Falaan",
+  "Leefa",
+  "Leefa",
+  "Falaan",
+  "Xaepha"
+ ],
+ "art_missing": [
+  "Xaepha"
+ ]
+}

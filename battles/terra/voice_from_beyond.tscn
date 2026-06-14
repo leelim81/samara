@@ -1,0 +1,81 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://board/battle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://units/enemies/terra/boltspew.tscn" type="PackedScene" id=10]
+[ext_resource path="res://units/enemies/terra/mermaid.tscn" type="PackedScene" id=11]
+[ext_resource path="res://units/enemies/terra/thunder_horn.tscn" type="PackedScene" id=12]
+[ext_resource path="res://units/enemies/terra/vajra.tscn" type="PackedScene" id=13]
+
+[node name="BoardUI" instance=ExtResource( 1 )]
+
+[node name="Board" parent="." index="0"]
+fixed_player_units_level = 67
+
+[node name="Phase1" parent="Board/EnemyPhases" index="0"]
+visible = false
+
+[node name="Boltspew1" parent="Board/EnemyPhases/Phase1" index="0" instance=ExtResource( 10 )]
+position = Vector2( 150, 150 )
+
+[node name="Boltspew2" parent="Board/EnemyPhases/Phase1" index="1" instance=ExtResource( 10 )]
+position = Vector2( 350, 150 )
+
+[node name="Boltspew3" parent="Board/EnemyPhases/Phase1" index="2" instance=ExtResource( 10 )]
+position = Vector2( 550, 150 )
+
+[node name="Boltspew4" parent="Board/EnemyPhases/Phase1" index="3" instance=ExtResource( 10 )]
+position = Vector2( 50, 250 )
+
+[node name="Boltspew5" parent="Board/EnemyPhases/Phase1" index="4" instance=ExtResource( 10 )]
+position = Vector2( 250, 250 )
+
+[node name="Boltspew6" parent="Board/EnemyPhases/Phase1" index="5" instance=ExtResource( 10 )]
+position = Vector2( 450, 250 )
+
+[node name="Phase2" parent="Board/EnemyPhases" index="1"]
+visible = false
+
+[node name="Boltspew7" parent="Board/EnemyPhases/Phase2" index="0" instance=ExtResource( 10 )]
+position = Vector2( 150, 150 )
+
+[node name="Boltspew8" parent="Board/EnemyPhases/Phase2" index="1" instance=ExtResource( 10 )]
+position = Vector2( 350, 150 )
+
+[node name="Boltspew9" parent="Board/EnemyPhases/Phase2" index="2" instance=ExtResource( 10 )]
+position = Vector2( 550, 150 )
+
+[node name="Boltspew10" parent="Board/EnemyPhases/Phase2" index="3" instance=ExtResource( 10 )]
+position = Vector2( 50, 250 )
+
+[node name="ThunderHorn1" parent="Board/EnemyPhases/Phase2" index="4" instance=ExtResource( 12 )]
+position = Vector2( 250, 250 )
+
+[node name="ThunderHorn2" parent="Board/EnemyPhases/Phase2" index="5" instance=ExtResource( 12 )]
+position = Vector2( 450, 250 )
+
+[node name="Mermaid1" parent="Board/EnemyPhases/Phase2" index="6" instance=ExtResource( 11 )]
+position = Vector2( 150, 350 )
+
+[node name="Phase3" parent="Board/EnemyPhases" index="2"]
+visible = false
+
+[node name="Vajra1" parent="Board/EnemyPhases/Phase3" index="0" instance=ExtResource( 13 )]
+position = Vector2( 250, 150 )
+
+[node name="Boltspew11" parent="Board/EnemyPhases/Phase3" index="1" instance=ExtResource( 10 )]
+position = Vector2( 550, 150 )
+
+[node name="Boltspew12" parent="Board/EnemyPhases/Phase3" index="2" instance=ExtResource( 10 )]
+position = Vector2( 50, 250 )
+
+[node name="Boltspew13" parent="Board/EnemyPhases/Phase3" index="3" instance=ExtResource( 10 )]
+position = Vector2( 450, 250 )
+
+[node name="Boltspew14" parent="Board/EnemyPhases/Phase3" index="4" instance=ExtResource( 10 )]
+position = Vector2( 150, 350 )
+
+[node name="Mermaid2" parent="Board/EnemyPhases/Phase3" index="5" instance=ExtResource( 11 )]
+position = Vector2( 350, 350 )
+
+[node name="Mermaid3" parent="Board/EnemyPhases/Phase3" index="6" instance=ExtResource( 11 )]
+position = Vector2( 550, 350 )

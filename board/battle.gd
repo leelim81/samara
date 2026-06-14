@@ -143,6 +143,11 @@ func _on_DefeatScreen_try_again_button_pressed() -> void:
 
 
 func _on_VictoryScreen_continue_button_pressed() -> void:
+	# Mark this chapter cleared and unlock the next one in the story list.
+	if chapter_data != null and chapter_data is ChapterData:
+		GameData.save_data.clear_chapter_and_unlock_next(chapter_data.title)
+		GameData.save()
+
 	if Loader.change_scene_to_file(next_scene, chapter_data) != OK:
 		printerr("Failed to change to %s" % next_scene)
 

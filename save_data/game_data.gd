@@ -77,9 +77,12 @@ func _load_data_from_default_resource() -> void:
 
 
 func unlock_default_chapters() -> void:
-	save_data.unlock_chapter("BORDERLANDS")
-	save_data.unlock_chapter("TO_THE_CAPITAL")
-	
+	# Real progression: only the first chapter is unlocked at the start; clearing
+	# a chapter unlocks the next (see SaveData.clear_chapter_and_unlock_next).
+	var chapter_list: ChapterList = load("res://chapter_data/main_story_chapter_list.tres")
+	if not chapter_list.chapters.is_empty():
+		save_data.unlock_chapter(chapter_list.chapters[0].title)
+
 	save_data.current_chapter = save_data.unlocked_chapters.back()
 
 

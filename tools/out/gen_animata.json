@@ -1,0 +1,14 @@
+{
+ "title": "ANIMATA",
+ "slug": "animata",
+ "difficulty": "38-39",
+ "scene": "res://battles/terra/animata.tscn",
+ "enemies": [
+  "Powercell",
+  "Ramcell",
+  "Mechacell",
+  "Enerzerk",
+  "Powercell"
+ ],
+ "art_missing": []
+}

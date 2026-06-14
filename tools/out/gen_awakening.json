@@ -1,0 +1,16 @@
+{
+ "title": "AWAKENING",
+ "slug": "awakening",
+ "difficulty": "47-47",
+ "scene": "res://battles/terra/awakening.tscn",
+ "enemies": [
+  "Lock-On",
+  "Oxsecian Grunt",
+  "Oxsecian Grunt SP",
+  "Oxsecian Airgrunt",
+  "Oxsecian Guard SP",
+  "Oxsecian Gunner SP",
+  "EM Generator"
+ ],
+ "art_missing": []
+}

@@ -1,0 +1,10 @@
+{
+ "title": "RISING_WORLD",
+ "slug": "rising_world",
+ "difficulty": "69-70",
+ "scene": "res://battles/terra/rising_world.tscn",
+ "enemies": [
+  "6ZOO"
+ ],
+ "art_missing": []
+}

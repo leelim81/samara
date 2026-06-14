@@ -1,0 +1,14 @@
+{
+ "title": "TO_THE_HEART",
+ "slug": "to_the_heart",
+ "difficulty": "27-28",
+ "scene": "res://battles/terra/to_the_heart.tscn",
+ "enemies": [
+  "Electropede",
+  "Nanoworm",
+  "Mechaclops",
+  "Gigaworm",
+  "Mechaclops"
+ ],
+ "art_missing": []
+}

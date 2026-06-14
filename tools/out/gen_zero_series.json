@@ -1,0 +1,14 @@
+{
+ "title": "ZERO_SERIES",
+ "slug": "zero_series",
+ "difficulty": "58-59",
+ "scene": "res://battles/terra/zero_series.tscn",
+ "enemies": [
+  "2BOO Mark\u2160",
+  "Electroseizer",
+  "Slime Slug"
+ ],
+ "art_missing": [
+  "2BOO Mark\u2160"
+ ]
+}

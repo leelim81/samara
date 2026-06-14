@@ -1,0 +1,21 @@
+{
+ "title": "MELTING_POT",
+ "slug": "melting_pot",
+ "difficulty": "7-8",
+ "scene": "res://battles/terra/melting_pot.tscn",
+ "enemies": [
+  "Beastfolk Knight",
+  "Beastfolk Warrior",
+  "Beastfolk Healer",
+  "Lizardfolk Warrior",
+  "Lizardfolk Knight",
+  "Lizardfolk Healer",
+  "Beastfolk Mage",
+  "Beastfolk Archer",
+  "Lizardfolk Archer",
+  "Lizardfolk Mage",
+  "Beastfolk Hero",
+  "Lizardfolk Hero"
+ ],
+ "art_missing": []
+}

@@ -1,0 +1,15 @@
+{
+ "title": "INTRUDER_ALERT",
+ "slug": "intruder_alert",
+ "difficulty": "40-41",
+ "scene": "res://battles/terra/intruder_alert.tscn",
+ "enemies": [
+  "Lock-On",
+  "Oxsecian Airgrunt",
+  "Pneumatobot (Beta)",
+  "Oxsecian Bomb",
+  "Lock-On+",
+  "Oxsecian Airgrunt"
+ ],
+ "art_missing": []
+}

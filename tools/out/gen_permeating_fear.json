@@ -1,0 +1,13 @@
+{
+ "title": "PERMEATING_FEAR",
+ "slug": "permeating_fear",
+ "difficulty": "76-76",
+ "scene": "res://battles/terra/permeating_fear.tscn",
+ "enemies": [
+  "Negale",
+  "Negat",
+  "Negaton",
+  "Giant Nega"
+ ],
+ "art_missing": []
+}

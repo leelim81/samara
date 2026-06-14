@@ -1,0 +1,15 @@
+{
+ "title": "VENGEANCE",
+ "slug": "vengeance",
+ "difficulty": "65-66",
+ "scene": "res://battles/terra/vengeance.tscn",
+ "enemies": [
+  "Oxsecian Raider",
+  "Oxsecian Blitzer",
+  "Oxsecian RPS",
+  "Arachnochip",
+  "Arachnochip EX",
+  "Lich"
+ ],
+ "art_missing": []
+}

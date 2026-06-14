@@ -1,0 +1,15 @@
+{
+ "title": "DESCENT",
+ "slug": "descent",
+ "difficulty": "12-13",
+ "scene": "res://battles/terra/descent.tscn",
+ "enemies": [
+  "Aeropede",
+  "Antenna Orbling",
+  "Whitewyrm",
+  "Fungibird",
+  "Aeropede",
+  "Whitewyrm"
+ ],
+ "art_missing": []
+}

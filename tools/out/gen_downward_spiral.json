@@ -1,0 +1,15 @@
+{
+ "title": "DOWNWARD_SPIRAL",
+ "slug": "downward_spiral",
+ "difficulty": "33-34",
+ "scene": "res://battles/terra/downward_spiral.tscn",
+ "enemies": [
+  "Dark Mechacell",
+  "Regenercell",
+  "Dark Ampcell",
+  "Darkbot",
+  "Dark Archercell",
+  "Mechadrake Redux"
+ ],
+ "art_missing": []
+}

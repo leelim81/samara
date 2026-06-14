@@ -12,6 +12,9 @@ extends Resource
 
 @export var battle_scene_path: String # (String, FILE, "*.tscn")
 
+# Placeholder chapter: shown in the menu but not yet playable (no battle data)
+@export var locked: bool = false
+
 @export var script_background: Texture2D
 @export var dialogue_background: Texture2D
 @export var post_battle_script_background: Texture2D

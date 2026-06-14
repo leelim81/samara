@@ -1,0 +1,13 @@
+{
+ "title": "THE_CITY_BELOW",
+ "slug": "the_city_below",
+ "difficulty": "15-16",
+ "scene": "res://battles/terra/the_city_below.tscn",
+ "enemies": [
+  "Robotick",
+  "Arachnobot",
+  "Power Pyramid",
+  "Power Pyramid"
+ ],
+ "art_missing": []
+}

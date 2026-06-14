@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=6 format=2]
+
+[ext_resource path="res://jobs/job.gd" type="Script" id=1]
+[ext_resource path="res://stats/terra/heat_sparker_stats.tres" type="Resource" id=2]
+[ext_resource path="res://assets/terra/tokens/heat_sparker_token.png" type="Texture2D" id=3]
+[ext_resource path="res://assets/terra/full/heat_sparker_full.png" type="Texture2D" id=4]
+[ext_resource path="res://skills/resources/terra/d_fiery_thrust.tres" type="Resource" id=5]
+
+[resource]
+script = ExtResource( 1 )
+stats = ExtResource( 2 )
+skills = [ ExtResource( 5 ) ]
+job_name = "HEAT SPARKER"
+portrait = ExtResource( 3 )
+full_portrait = ExtResource( 4 )

@@ -1,0 +1,13 @@
+{
+ "title": "ANIMATA_TEARS",
+ "slug": "animata_tears",
+ "difficulty": "78-78",
+ "scene": "res://battles/terra/animata_tears.tscn",
+ "enemies": [
+  "Harrier",
+  "Wisprat",
+  "Devourer",
+  "Ancient Sadness"
+ ],
+ "art_missing": []
+}

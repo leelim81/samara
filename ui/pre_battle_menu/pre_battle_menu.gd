@@ -30,10 +30,12 @@ func _create_buttons_for_unlocked_chapters() -> void:
 		var container: Control = battle_button_container_packed_scene.instantiate()
 		
 		var chapter_data: ChapterData = save_data.find_chapter_data_by_title(unlocked_chapter.title)
-		
-		if container.connect("pressed", Callable(self, "on_ChapterButton_pressed").bind(chapter_data)) == OK:
-			$MarginContainer/VBoxContainer/VBoxContainer2.add_child(container)
-		
+
+		if not chapter_data.locked:
+			container.connect("pressed", Callable(self, "on_ChapterButton_pressed").bind(chapter_data))
+
+		$MarginContainer/VBoxContainer/VBoxContainer2.add_child(container)
+
 		container.set_values(chapter_data)
 
 

@@ -1,0 +1,12 @@
+{
+ "title": "INTO_THE_TOWER",
+ "slug": "into_the_tower",
+ "difficulty": "9-10",
+ "scene": "res://battles/terra/into_the_tower.tscn",
+ "enemies": [
+  "Lizardfolk Knight",
+  "Lizardfolk Warrior",
+  "Lizardfolk Warrior"
+ ],
+ "art_missing": []
+}

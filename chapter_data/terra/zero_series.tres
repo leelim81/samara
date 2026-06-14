@@ -1,0 +1,20 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://chapter_data/chapter_data.gd" type="Script" id=1]
+[ext_resource path="res://chapter_data/battle_info.gd" type="Script" id=2]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 2 )
+sword_enemy_count = 0
+gun_enemy_count = 0
+spear_enemy_count = 2
+staff_enemy_count = 1
+phases_count = 4
+
+[resource]
+script = ExtResource( 1 )
+title = "ZERO_SERIES"
+caption = "ZERO_SERIES_CAPTION"
+difficulty = "58-59"
+battle_scene_path = "res://battles/terra/zero_series.tscn"
+battle_info = SubResource( 1 )

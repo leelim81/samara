@@ -1,0 +1,13 @@
+{
+ "title": "LIVING_ROCK",
+ "slug": "living_rock",
+ "difficulty": "24-25",
+ "scene": "res://battles/terra/living_rock.tscn",
+ "enemies": [
+  "Stonefolk Knight",
+  "Stonefolk Archer",
+  "Stonefolk Warrior",
+  "Time Devourer"
+ ],
+ "art_missing": []
+}

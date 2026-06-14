@@ -1,0 +1,14 @@
+{
+ "title": "SORROW",
+ "slug": "sorrow",
+ "difficulty": "63-64",
+ "scene": "res://battles/terra/sorrow.tscn",
+ "enemies": [
+  "Oxsecian Stormer",
+  "Nebulator",
+  "Nebulator",
+  "Transporter",
+  "Spiny Leviathan"
+ ],
+ "art_missing": []
+}

@@ -1,0 +1,14 @@
+{
+ "title": "REBOOT",
+ "slug": "reboot",
+ "difficulty": "67-68",
+ "scene": "res://battles/terra/reboot.tscn",
+ "enemies": [
+  "Oxsecian Gas Bomb",
+  "3COO Mark\u2161",
+  "3COO"
+ ],
+ "art_missing": [
+  "3COO Mark\u2161"
+ ]
+}

@@ -1,0 +1,120 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://board/battle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://units/enemies/terra/aeropede.tscn" type="PackedScene" id=10]
+[ext_resource path="res://units/enemies/terra/antenna_orbling.tscn" type="PackedScene" id=11]
+[ext_resource path="res://units/enemies/terra/fungibird.tscn" type="PackedScene" id=12]
+[ext_resource path="res://units/enemies/terra/whitewyrm.tscn" type="PackedScene" id=13]
+
+[node name="BoardUI" instance=ExtResource( 1 )]
+
+[node name="Board" parent="." index="0"]
+fixed_player_units_level = 23
+
+[node name="Phase1" parent="Board/EnemyPhases" index="0"]
+visible = false
+
+[node name="Aeropede1" parent="Board/EnemyPhases/Phase1" index="0" instance=ExtResource( 10 )]
+position = Vector2( 150, 150 )
+
+[node name="Aeropede2" parent="Board/EnemyPhases/Phase1" index="1" instance=ExtResource( 10 )]
+position = Vector2( 350, 150 )
+
+[node name="Aeropede3" parent="Board/EnemyPhases/Phase1" index="2" instance=ExtResource( 10 )]
+position = Vector2( 550, 150 )
+
+[node name="Aeropede4" parent="Board/EnemyPhases/Phase1" index="3" instance=ExtResource( 10 )]
+position = Vector2( 50, 250 )
+
+[node name="Aeropede5" parent="Board/EnemyPhases/Phase1" index="4" instance=ExtResource( 10 )]
+position = Vector2( 250, 250 )
+
+[node name="Aeropede6" parent="Board/EnemyPhases/Phase1" index="5" instance=ExtResource( 10 )]
+position = Vector2( 450, 250 )
+
+[node name="Phase2" parent="Board/EnemyPhases" index="1"]
+visible = false
+
+[node name="Whitewyrm1" parent="Board/EnemyPhases/Phase2" index="0" instance=ExtResource( 13 )]
+position = Vector2( 250, 150 )
+
+[node name="Whitewyrm2" parent="Board/EnemyPhases/Phase2" index="1" instance=ExtResource( 13 )]
+position = Vector2( 50, 150 )
+
+[node name="Aeropede7" parent="Board/EnemyPhases/Phase2" index="2" instance=ExtResource( 10 )]
+position = Vector2( 550, 150 )
+
+[node name="Aeropede8" parent="Board/EnemyPhases/Phase2" index="3" instance=ExtResource( 10 )]
+position = Vector2( 450, 250 )
+
+[node name="AntennaOrbling1" parent="Board/EnemyPhases/Phase2" index="4" instance=ExtResource( 11 )]
+position = Vector2( 150, 350 )
+
+[node name="AntennaOrbling2" parent="Board/EnemyPhases/Phase2" index="5" instance=ExtResource( 11 )]
+position = Vector2( 350, 350 )
+
+[node name="Phase3" parent="Board/EnemyPhases" index="2"]
+visible = false
+
+[node name="Aeropede9" parent="Board/EnemyPhases/Phase3" index="0" instance=ExtResource( 10 )]
+position = Vector2( 150, 150 )
+
+[node name="Aeropede10" parent="Board/EnemyPhases/Phase3" index="1" instance=ExtResource( 10 )]
+position = Vector2( 350, 150 )
+
+[node name="Aeropede11" parent="Board/EnemyPhases/Phase3" index="2" instance=ExtResource( 10 )]
+position = Vector2( 550, 150 )
+
+[node name="Aeropede12" parent="Board/EnemyPhases/Phase3" index="3" instance=ExtResource( 10 )]
+position = Vector2( 50, 250 )
+
+[node name="Aeropede13" parent="Board/EnemyPhases/Phase3" index="4" instance=ExtResource( 10 )]
+position = Vector2( 250, 250 )
+
+[node name="Aeropede14" parent="Board/EnemyPhases/Phase3" index="5" instance=ExtResource( 10 )]
+position = Vector2( 450, 250 )
+
+[node name="Aeropede15" parent="Board/EnemyPhases/Phase3" index="6" instance=ExtResource( 10 )]
+position = Vector2( 150, 350 )
+
+[node name="Phase4" parent="Board/EnemyPhases" index="3"]
+visible = false
+
+[node name="Whitewyrm3" parent="Board/EnemyPhases/Phase4" index="0" instance=ExtResource( 13 )]
+position = Vector2( 250, 150 )
+
+[node name="Whitewyrm4" parent="Board/EnemyPhases/Phase4" index="1" instance=ExtResource( 13 )]
+position = Vector2( 50, 150 )
+
+[node name="Aeropede16" parent="Board/EnemyPhases/Phase4" index="2" instance=ExtResource( 10 )]
+position = Vector2( 550, 150 )
+
+[node name="Aeropede17" parent="Board/EnemyPhases/Phase4" index="3" instance=ExtResource( 10 )]
+position = Vector2( 450, 250 )
+
+[node name="Aeropede18" parent="Board/EnemyPhases/Phase4" index="4" instance=ExtResource( 10 )]
+position = Vector2( 150, 350 )
+
+[node name="Aeropede19" parent="Board/EnemyPhases/Phase4" index="5" instance=ExtResource( 10 )]
+position = Vector2( 350, 350 )
+
+[node name="Aeropede20" parent="Board/EnemyPhases/Phase4" index="6" instance=ExtResource( 10 )]
+position = Vector2( 550, 350 )
+
+[node name="Phase5" parent="Board/EnemyPhases" index="4"]
+visible = false
+
+[node name="Whitewyrm5" parent="Board/EnemyPhases/Phase5" index="0" instance=ExtResource( 13 )]
+position = Vector2( 250, 150 )
+
+[node name="Aeropede21" parent="Board/EnemyPhases/Phase5" index="1" instance=ExtResource( 10 )]
+position = Vector2( 550, 150 )
+
+[node name="Aeropede22" parent="Board/EnemyPhases/Phase5" index="2" instance=ExtResource( 10 )]
+position = Vector2( 50, 250 )
+
+[node name="Aeropede23" parent="Board/EnemyPhases/Phase5" index="3" instance=ExtResource( 10 )]
+position = Vector2( 450, 250 )
+
+[node name="Aeropede24" parent="Board/EnemyPhases/Phase5" index="4" instance=ExtResource( 10 )]
+position = Vector2( 150, 350 )

@@ -2,20 +2,37 @@ extends Node
 
 
 enum Attribute {
-	# Non-elemental (e.g. healing)
+	# Non-elemental (e.g. healing / physical)
 	NONE,
-	
-	# Attribute 1, opposes attribute 2
-	ATTRIBUTE_1,
-	
-	# Attribute 2, opposes attribute 1
-	ATTRIBUTE_2
+
+	# The eight Terra Battle elements. LIGHTNING=1 and FIRE=2 keep the indices
+	# the old ATTRIBUTE_1/ATTRIBUTE_2 used, so existing .tres stay valid.
+	LIGHTNING,   # 1
+	FIRE,        # 2
+	ICE,         # 3
+	DARKNESS,    # 4
+	SOLAR,       # 5
+	LUNAR,       # 6
+	PHOTON,      # 7
+	GRAVITON,    # 8
+
+	# Support attribute (healers); has no elemental relationships
+	HEALING,     # 9
 }
 
-# dict[winning attribute] = losing attribute
+# dict[winning attribute] = losing attribute. Terra's four opposed pairs each
+# deal x2 to the other (both directions). The one-directional advantages
+# (Solar>Ice, Lunar>Fire, Photon>Darkness, Graviton>Lightning) are not modelled
+# yet because this lookup is single-valued.
 const ATTRIBUTE_RELATIONSHIPS: Dictionary = {
-	Attribute.ATTRIBUTE_1: Attribute.ATTRIBUTE_2,
-	Attribute.ATTRIBUTE_2: Attribute.ATTRIBUTE_1
+	Attribute.FIRE: Attribute.ICE,
+	Attribute.ICE: Attribute.FIRE,
+	Attribute.LIGHTNING: Attribute.DARKNESS,
+	Attribute.DARKNESS: Attribute.LIGHTNING,
+	Attribute.SOLAR: Attribute.LUNAR,
+	Attribute.LUNAR: Attribute.SOLAR,
+	Attribute.PHOTON: Attribute.GRAVITON,
+	Attribute.GRAVITON: Attribute.PHOTON,
 }
 
 enum WeaponType {

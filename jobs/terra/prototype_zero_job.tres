@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=9 format=2]
+
+[ext_resource path="res://jobs/job.gd" type="Script" id=1]
+[ext_resource path="res://stats/terra/prototype_zero_stats.tres" type="Resource" id=2]
+[ext_resource path="res://assets/terra/tokens/prototype_zero_token.png" type="Texture2D" id=3]
+[ext_resource path="res://assets/terra/full/prototype_zero_full.png" type="Texture2D" id=4]
+[ext_resource path="res://skills/resources/terra/d_ultima_assault_staff.tres" type="Resource" id=5]
+[ext_resource path="res://skills/resources/terra/d_breath_attack_staff.tres" type="Resource" id=6]
+[ext_resource path="res://skills/resources/terra/d_synergy_wave_staff.tres" type="Resource" id=7]
+[ext_resource path="res://skills/resources/terra/d_system_repair.tres" type="Resource" id=8]
+
+[resource]
+script = ExtResource( 1 )
+stats = ExtResource( 2 )
+skills = [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ]
+job_name = "PROTOTYPE ZERO"
+portrait = ExtResource( 3 )
+full_portrait = ExtResource( 4 )

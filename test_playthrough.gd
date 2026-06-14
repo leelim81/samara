@@ -1,9 +1,14 @@
 extends SceneTree
-# Dev-only integration test: plays a whole stage by teleport-flanking enemies
-# every player turn until victory. Exercises waves, enemy turns, skills,
-# 2x2 boss pincers and the victory signal. Usage:
+# Integration smoke test: drives a battle to victory by teleport-pincering enemies.
+# Each player turn it finds any enemy with two naturally-free flank cells (never
+# displacing other enemies, which would corrupt the board) and sandwiches it with
+# two strikers. Fails fast if no enemy is flankable for many turns.
+#
+# NOTE: this is a smoke test, not a guaranteed oracle. A single-pincer teleport
+# bot cannot clear every chapter (clustered enemies with no free flanks, or very
+# tanky 2x2 bosses). A true 38/38 gate would need to drive the engine's real
+# one-unit-drag move API. Use validate_check.gd for the authoritative load gate.
 #   godot --headless --script res://test_playthrough.gd -- <battle_scene.tscn>
-
 
 var _victory := false
 var _defeat := false
@@ -18,7 +23,6 @@ func _run() -> void:
 	var scene_path: String = args[0] if args.size() > 0 else "res://battles/terra/borderlands.tscn"
 
 	var battle = (load(scene_path) as PackedScene).instantiate()
-
 	root.add_child(battle)
 
 	var board = battle.get_node("Board")
@@ -28,37 +32,29 @@ func _run() -> void:
 	board.defeat.connect(func(): _defeat = true)
 
 	var rounds := 0
+	var no_flank_streak := 0
 
-	for i in 12000:
+	for i in 20000:
 		await process_frame
 
 		if _victory:
 			print("TEST PASS: victory after %d pincer rounds" % rounds)
-
 			quit(0)
-
 			return
 
 		if _defeat:
 			printerr("TEST FAIL: defeat after %d rounds" % rounds)
-
 			quit(1)
-
 			return
 
 		if board._current_turn != board.Turn.PLAYER:
 			continue
 
-		# Wait a few frames so wave spawns and appear animations settle.
+		# Let wave spawns / appear animations settle.
 		for j in 20:
 			await process_frame
 
 		if _victory or _defeat:
-			continue
-
-		var enemy = _find_alive_enemy(board)
-
-		if enemy == null:
 			continue
 
 		var players := _alive_players(board)
@@ -66,24 +62,36 @@ func _run() -> void:
 		if players.size() < 2:
 			continue
 
-		var flanks := _find_flank_cells(grid, enemy)
+		# Find any alive enemy with two naturally-free flank cells.
+		var flanks := []
+
+		for enemy in _alive_enemies(board):
+			var f := _find_flank_cells(grid, enemy)
+
+			if not f.is_empty():
+				flanks = f
+				break
 
 		if flanks.is_empty():
-			printerr("TEST WARN: no flank found for %s" % enemy.name)
+			no_flank_streak += 1
+
+			if no_flank_streak > 40:
+				printerr("TEST FAIL: no flankable enemy for 40 turns (rounds: %d)" % rounds)
+				quit(1)
+				return
 
 			continue
+
+		no_flank_streak = 0
 
 		_teleport(grid, players[0], flanks[0])
 		_teleport(grid, players[1], flanks[1])
 
 		rounds += 1
 
-		print("TEST: round %d pincering %s (hp %d)" % [rounds, enemy.name, enemy.get_stats().health])
-
 		await board._execute_pincers(players[0])
 
 	printerr("TEST FAIL: timed out (rounds: %d, victory: %s)" % [rounds, _victory])
-
 	quit(1)
 
 
@@ -97,71 +105,82 @@ func _alive_players(board) -> Array:
 	return result
 
 
-func _find_alive_enemy(board):
+func _alive_enemies(board) -> Array:
+	var result := []
+
 	for unit in board._enemy_units_node.get_children():
 		if unit.is_alive() and not unit.is_escaped:
-			return unit
+			result.push_back(unit)
 
-	return null
+	return result
 
 
+# Two free, in-range cells on opposite sides of the enemy (horizontal, then
+# vertical). Spans the 2-wide body for 2x2 bosses. A cell is free if empty or
+# holds a player (we never displace enemies).
 func _find_flank_cells(grid, enemy) -> Array:
-	var cell = grid.get_cell_from_position(enemy.position)
+	var cell = _cell_of(grid, enemy)
 
 	if cell == null:
 		return []
 
-	var coordinates: Vector2 = cell.coordinates
-	var width := 2 if enemy.is2x2() else 1
+	var c: Vector2 = cell.coordinates
+	var w := 2 if enemy.is2x2() else 1
 
-	# Horizontal flank: left of the body, right of the body (same row).
-	var left: Vector2 = coordinates + Vector2(-1, 0)
-	var right: Vector2 = coordinates + Vector2(width, 0)
+	var pairs := [
+		[c + Vector2(-1, 0), c + Vector2(w, 0)],
+		[c + Vector2(0, -1), c + Vector2(0, w)],
+	]
 
-	if grid._is_in_range(left) and grid._is_in_range(right):
-		var left_cell = grid.get_cell_from_coordinates(left)
-		var right_cell = grid.get_cell_from_coordinates(right)
+	for pair in pairs:
+		if grid._is_in_range(pair[0]) and grid._is_in_range(pair[1]):
+			var a = grid.get_cell_from_coordinates(pair[0])
+			var b = grid.get_cell_from_coordinates(pair[1])
 
-		if _is_flankable(left_cell, enemy) and _is_flankable(right_cell, enemy):
-			return [left_cell, right_cell]
-
-	# Vertical flank: above and below (same column).
-	var up: Vector2 = coordinates + Vector2(0, -1)
-	var down: Vector2 = coordinates + Vector2(0, width)
-
-	if grid._is_in_range(up) and grid._is_in_range(down):
-		var up_cell = grid.get_cell_from_coordinates(up)
-		var down_cell = grid.get_cell_from_coordinates(down)
-
-		if _is_flankable(up_cell, enemy) and _is_flankable(down_cell, enemy):
-			return [up_cell, down_cell]
+			if _is_free(a, enemy) and _is_free(b, enemy):
+				return [a, b]
 
 	return []
 
 
-# A cell can host a flanking ally if it's empty or holds a player unit.
-func _is_flankable(cell, enemy) -> bool:
+func _is_free(cell, enemy) -> bool:
 	if cell == null or cell.unit == enemy:
 		return false
 
 	return cell.unit == null or cell.unit.faction == 1
 
 
-func _teleport(grid, unit, target_cell) -> void:
-	var current_cell = grid.get_cell_from_position(unit.position)
+# Authoritative cell of a unit (the cell that actually holds it), robust to pixel
+# position drift after teleports.
+func _cell_of(grid, unit):
+	for x in grid.width:
+		for y in grid.height:
+			var cell = grid.get_cell_from_coordinates(Vector2(x, y))
 
-	if target_cell == current_cell:
+			if cell != null and cell.unit == unit:
+				return cell
+
+	return null
+
+
+func _teleport(grid, unit, target_cell) -> void:
+	if target_cell == null:
 		return
 
-	if current_cell != null and current_cell.unit == unit:
-		current_cell.unit = null
+	var current_cell = _cell_of(grid, unit)
 
-	if target_cell.unit != null and target_cell.unit != unit:
-		var displaced = target_cell.unit
+	if current_cell == target_cell:
+		return
 
-		if current_cell != null:
+	# Target cells are always empty or player-held, so any displaced unit is a
+	# player swapped into the striker's old cell — enemies are never orphaned.
+	var displaced = target_cell.unit
+
+	if current_cell != null:
+		current_cell.unit = displaced
+
+		if displaced != null:
 			displaced.position = current_cell.position
-			current_cell.unit = displaced
 
 	target_cell.unit = unit
 	unit.position = target_cell.position

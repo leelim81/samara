@@ -1,0 +1,14 @@
+{
+ "title": "SEPARATE_WAYS",
+ "slug": "separate_ways",
+ "difficulty": "44-45",
+ "scene": "res://battles/terra/separate_ways.tscn",
+ "enemies": [
+  "Laser Unit H",
+  "Oxsecian Airgrunt",
+  "Oxsecian Sniper",
+  "Laser Unit V",
+  "Energy Aspirator"
+ ],
+ "art_missing": []
+}

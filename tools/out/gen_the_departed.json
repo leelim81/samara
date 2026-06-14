@@ -1,0 +1,14 @@
+{
+ "title": "THE_DEPARTED",
+ "slug": "the_departed",
+ "difficulty": "73-73",
+ "scene": "res://battles/terra/the_departed.tscn",
+ "enemies": [
+  "Oxsecian Generator",
+  "Rebel Soldier",
+  "54B2",
+  "Rebel Electrocutor",
+  "Rebel Defender"
+ ],
+ "art_missing": []
+}

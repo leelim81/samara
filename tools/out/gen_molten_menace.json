@@ -1,0 +1,13 @@
+{
+ "title": "MOLTEN_MENACE",
+ "slug": "molten_menace",
+ "difficulty": "17-18",
+ "scene": "res://battles/terra/molten_menace.tscn",
+ "enemies": [
+  "Mantle Slime",
+  "Mantle Tortoise",
+  "Heat Sparker",
+  "Mantledrake"
+ ],
+ "art_missing": []
+}

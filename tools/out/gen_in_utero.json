@@ -1,0 +1,12 @@
+{
+ "title": "IN_UTERO",
+ "slug": "in_utero",
+ "difficulty": "21-22",
+ "scene": "res://battles/terra/in_utero.tscn",
+ "enemies": [
+  "Rockfreeze",
+  "Dark Tortoise",
+  "Golem"
+ ],
+ "art_missing": []
+}

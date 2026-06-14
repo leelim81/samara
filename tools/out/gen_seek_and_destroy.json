@@ -1,0 +1,12 @@
+{
+ "title": "SEEK_AND_DESTROY",
+ "slug": "seek_and_destroy",
+ "difficulty": "55-56",
+ "scene": "res://battles/terra/seek_and_destroy.tscn",
+ "enemies": [
+  "Oxsecian Fighter",
+  "Terminator Y",
+  "Oxsecian Bomber EX"
+ ],
+ "art_missing": []
+}

@@ -1,0 +1,71 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://board/battle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://units/enemies/terra/arachnochip.tscn" type="PackedScene" id=10]
+[ext_resource path="res://units/enemies/terra/arachnochip_ex.tscn" type="PackedScene" id=11]
+[ext_resource path="res://units/enemies/terra/lich.tscn" type="PackedScene" id=12]
+[ext_resource path="res://units/enemies/terra/oxsecian_blitzer.tscn" type="PackedScene" id=13]
+[ext_resource path="res://units/enemies/terra/oxsecian_raider.tscn" type="PackedScene" id=14]
+[ext_resource path="res://units/enemies/terra/oxsecian_rps.tscn" type="PackedScene" id=15]
+
+[node name="BoardUI" instance=ExtResource( 1 )]
+
+[node name="Board" parent="." index="0"]
+fixed_player_units_level = 80
+
+[node name="Phase1" parent="Board/EnemyPhases" index="0"]
+visible = false
+
+[node name="OxsecianRaider1" parent="Board/EnemyPhases/Phase1" index="0" instance=ExtResource( 14 )]
+position = Vector2( 150, 150 )
+
+[node name="OxsecianRaider2" parent="Board/EnemyPhases/Phase1" index="1" instance=ExtResource( 14 )]
+position = Vector2( 350, 150 )
+
+[node name="OxsecianBlitzer1" parent="Board/EnemyPhases/Phase1" index="2" instance=ExtResource( 13 )]
+position = Vector2( 550, 150 )
+
+[node name="OxsecianBlitzer2" parent="Board/EnemyPhases/Phase1" index="3" instance=ExtResource( 13 )]
+position = Vector2( 50, 250 )
+
+[node name="OxsecianBlitzer3" parent="Board/EnemyPhases/Phase1" index="4" instance=ExtResource( 13 )]
+position = Vector2( 250, 250 )
+
+[node name="OxsecianRps1" parent="Board/EnemyPhases/Phase1" index="5" instance=ExtResource( 15 )]
+position = Vector2( 450, 250 )
+
+[node name="Phase2" parent="Board/EnemyPhases" index="1"]
+visible = false
+
+[node name="Arachnochip1" parent="Board/EnemyPhases/Phase2" index="0" instance=ExtResource( 10 )]
+position = Vector2( 150, 150 )
+
+[node name="Arachnochip2" parent="Board/EnemyPhases/Phase2" index="1" instance=ExtResource( 10 )]
+position = Vector2( 350, 150 )
+
+[node name="Arachnochip3" parent="Board/EnemyPhases/Phase2" index="2" instance=ExtResource( 10 )]
+position = Vector2( 550, 150 )
+
+[node name="ArachnochipEx1" parent="Board/EnemyPhases/Phase2" index="3" instance=ExtResource( 11 )]
+position = Vector2( 50, 250 )
+
+[node name="OxsecianRps2" parent="Board/EnemyPhases/Phase2" index="4" instance=ExtResource( 15 )]
+position = Vector2( 250, 250 )
+
+[node name="Phase3" parent="Board/EnemyPhases" index="2"]
+visible = false
+
+[node name="Lich1" parent="Board/EnemyPhases/Phase3" index="0" instance=ExtResource( 12 )]
+position = Vector2( 250, 150 )
+
+[node name="OxsecianRaider3" parent="Board/EnemyPhases/Phase3" index="1" instance=ExtResource( 14 )]
+position = Vector2( 550, 150 )
+
+[node name="OxsecianRaider4" parent="Board/EnemyPhases/Phase3" index="2" instance=ExtResource( 14 )]
+position = Vector2( 50, 250 )
+
+[node name="OxsecianRaider5" parent="Board/EnemyPhases/Phase3" index="3" instance=ExtResource( 14 )]
+position = Vector2( 450, 250 )
+
+[node name="OxsecianRaider6" parent="Board/EnemyPhases/Phase3" index="4" instance=ExtResource( 14 )]
+position = Vector2( 150, 350 )

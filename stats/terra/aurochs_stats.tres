@@ -1,0 +1,23 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://stats/stats.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+unit_name = "AUROCHS"
+unit_type = "MONSTER"
+health_percentage = 1.4849
+attack_percentage = 0.768
+defense_percentage = 1.3947
+spiritual_attack_percentage = 0.2987
+spiritual_defense_percentage = 1.3813
+status_ailment_vulnerability = 0.54
+status_ailment_vulnerabilities = {
+}
+same_attribute_resistance = 0.5
+attribute = 0
+weapon_type = 2
+max_turn_counter = 6
+can_randomize_turn_counter = true
+movement_range = 4
+skill_activation_rate_modifier = 0.0

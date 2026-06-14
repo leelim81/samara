@@ -1,0 +1,15 @@
+{
+ "title": "THE_BRIDGEHEAD",
+ "slug": "the_bridgehead",
+ "difficulty": "72-73",
+ "scene": "res://battles/terra/the_bridgehead.tscn",
+ "enemies": [
+  "Slasher Goblin",
+  "Magic Amp",
+  "Apirath",
+  "Power Amp",
+  "Kirusk",
+  "Apirath"
+ ],
+ "art_missing": []
+}

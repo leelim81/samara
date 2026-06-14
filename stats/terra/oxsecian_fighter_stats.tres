@@ -1,0 +1,23 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://stats/stats.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+unit_name = "OXSECIAN FIGHTER"
+unit_type = "MONSTER"
+health_percentage = 0.3451
+attack_percentage = 0.7636
+defense_percentage = 0.9273
+spiritual_attack_percentage = 0.4109
+spiritual_defense_percentage = 0.9455
+status_ailment_vulnerability = 0.56
+status_ailment_vulnerabilities = {
+}
+same_attribute_resistance = 0.5
+attribute = 0
+weapon_type = 1
+max_turn_counter = 12
+can_randomize_turn_counter = true
+movement_range = 4
+skill_activation_rate_modifier = 0.0

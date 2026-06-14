@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://units/enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://jobs/terra/antenna_orbling_job.tres" type="Resource" id=2]
+[ext_resource path="res://assets/terra/tokens/antenna_orbling_token.png" type="Texture2D" id=3]
+[ext_resource path="res://units/ai/condition.tscn" type="PackedScene" id=4]
+[ext_resource path="res://units/ai/action.tscn" type="PackedScene" id=5]
+[ext_resource path="res://skills/resources/terra/thunder.tres" type="Resource" id=6]
+[ext_resource path="res://skills/resources/terra/d_thunder_breath.tres" type="Resource" id=7]
+[node name="AntennaOrbling" instance=ExtResource( 1 )]
+level = 12
+turn_counter = 3
+
+[node name="Job" parent="." index="2"]
+job = ExtResource( 2 )
+
+[node name="Icon" parent="Sprite2D" index="1"]
+texture = ExtResource( 3 )
+
+[node name="UnitName" parent="CanvasLayer" index="3"]
+text = "ANTENNA ORBLING"
+
+[node name="Action1" parent="AIController" index="0" instance=ExtResource( 5 )]
+behavior = 1
+skill = ExtResource( 6 )
+
+[node name="Condition" parent="AIController/Action1" index="0" instance=ExtResource( 4 )]
+
+[node name="Action2" parent="AIController" index="1" instance=ExtResource( 5 )]
+behavior = 1
+skill = ExtResource( 7 )
+
+[node name="Condition" parent="AIController/Action2" index="0" instance=ExtResource( 4 )]
+
+[node name="ActionMove" parent="AIController" index="2" instance=ExtResource( 5 )]
+behavior = 2
+weight = 3
+
+[node name="Condition" parent="AIController/ActionMove" index="0" instance=ExtResource( 4 )]
+
+[editable path="CanvasLayer/ActivatedSkillMarginContainer"]

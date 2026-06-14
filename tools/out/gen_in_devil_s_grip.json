@@ -1,0 +1,11 @@
+{
+ "title": "IN_DEVIL_S_GRIP",
+ "slug": "in_devil_s_grip",
+ "difficulty": "77-77",
+ "scene": "res://battles/terra/in_devil_s_grip.tscn",
+ "enemies": [
+  "Incapacitator",
+  "Relic"
+ ],
+ "art_missing": []
+}

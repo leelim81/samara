@@ -1,0 +1,100 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://units/enemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://jobs/terra/lizardfolk_warrior_job.tres" type="Resource" id=3]
+[ext_resource path="res://assets/ui/enemy_border_2x2.png" type="Texture2D" id=9]
+[ext_resource path="res://assets/ui/unit_square_bg_2x2.png" type="Texture2D" id=10]
+[ext_resource path="res://units/ai/condition.tscn" type="PackedScene" id=4]
+[ext_resource path="res://units/ai/action.tscn" type="PackedScene" id=5]
+[ext_resource path="res://skills/resources/terra/sever.tres" type="Resource" id=20]
+[ext_resource path="res://skills/resources/terra/thunder.tres" type="Resource" id=21]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 80, 80 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 96.5, 96.5 )
+
+[node name="LizardfolkWarrior" instance=ExtResource( 2 )]
+size = 1
+level = 15
+turn_counter = 5
+
+[node name="Job" parent="." index="2"]
+job = ExtResource( 3 )
+
+[node name="CollisionShape2D" parent="." index="4"]
+visible = true
+position = Vector2( 48, 48 )
+shape = SubResource( 1 )
+
+[node name="Sprite2D" parent="." index="5"]
+position = Vector2( 51.5, 51.5 )
+texture = ExtResource( 10 )
+
+[node name="Glow" parent="Sprite2D" index="0"]
+scale = Vector2( 2, 2 )
+
+[node name="Border" parent="Sprite2D" index="2"]
+texture = ExtResource( 9 )
+
+[node name="CollisionShape2D" parent="SelectionArea2D" index="0"]
+position = Vector2( 47.5, 47.5 )
+shape = SubResource( 3 )
+
+[node name="HpBar" parent="Control" index="0"]
+offset_left = 16.0
+offset_top = 63.0
+offset_right = 120.0
+offset_bottom = 70.0
+nine_patch_stretch = true
+
+[node name="CanvasLayer" parent="." index="10"]
+position = Vector2( 48, 48 )
+
+[node name="WeaponType" parent="CanvasLayer/Control" index="0"]
+offset_left = -8.0
+offset_top = -53.0
+offset_right = 57.0
+offset_bottom = 12.0
+
+[node name="Icon" parent="CanvasLayer/StatusEffectsIcons" index="0"]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 48.0
+offset_bottom = 48.0
+
+[node name="ActivatedSkillMarginContainer" parent="CanvasLayer" index="2"]
+offset_left = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="UnitName" parent="CanvasLayer" index="3"]
+offset_left = -48.0
+offset_top = -48.0
+offset_right = 52.0
+offset_bottom = 52.0
+text = "LIZARDFOLK WARRIOR"
+
+[node name="Sprite2D" parent="CanvasLayer/UnitName" index="0"]
+position = Vector2( 48, 48 )
+
+[node name="Action1" parent="AIController" index="0" instance=ExtResource( 5 )]
+behavior = 1
+skill = ExtResource( 20 )
+
+[node name="Condition" parent="AIController/Action1" index="0" instance=ExtResource( 4 )]
+
+[node name="Action2" parent="AIController" index="1" instance=ExtResource( 5 )]
+behavior = 1
+skill = ExtResource( 21 )
+
+[node name="Condition" parent="AIController/Action2" index="0" instance=ExtResource( 4 )]
+
+[node name="ActionMove" parent="AIController" index="2" instance=ExtResource( 5 )]
+behavior = 2
+weight = 3
+
+[node name="Condition" parent="AIController/ActionMove" index="0" instance=ExtResource( 4 )]
+
+[editable path="CanvasLayer/ActivatedSkillMarginContainer"]

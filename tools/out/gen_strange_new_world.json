@@ -1,0 +1,12 @@
+{
+ "title": "STRANGE_NEW_WORLD",
+ "slug": "strange_new_world",
+ "difficulty": "49-50",
+ "scene": "res://battles/terra/strange_new_world.tscn",
+ "enemies": [
+  "Celestial Dragon",
+  "Pegawyrm",
+  "Slime Slug"
+ ],
+ "art_missing": []
+}

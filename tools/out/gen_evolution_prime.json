@@ -1,0 +1,12 @@
+{
+ "title": "EVOLUTION_PRIME",
+ "slug": "evolution_prime",
+ "difficulty": "61-62",
+ "scene": "res://battles/terra/evolution_prime.tscn",
+ "enemies": [
+  "Ice Razor",
+  "54B2",
+  "Defense Amp"
+ ],
+ "art_missing": []
+}

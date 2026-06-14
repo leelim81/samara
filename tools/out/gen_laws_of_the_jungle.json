@@ -1,0 +1,14 @@
+{
+ "title": "LAWS_OF_THE_JUNGLE",
+ "slug": "laws_of_the_jungle",
+ "difficulty": "53-54",
+ "scene": "res://battles/terra/laws_of_the_jungle.tscn",
+ "enemies": [
+  "Cursed Claw",
+  "Slasher",
+  "Necromancer",
+  "Dark Pegawyrm",
+  "Onyx Dragon"
+ ],
+ "art_missing": []
+}

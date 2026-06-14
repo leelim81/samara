@@ -1,0 +1,20 @@
+{
+ "title": "THE_OXSECIANS",
+ "slug": "the_oxsecians",
+ "difficulty": "42-43",
+ "scene": "res://battles/terra/the_oxsecians.tscn",
+ "enemies": [
+  "Analyzer",
+  "Oxsecian Grunt",
+  "Oxsecian Grunt",
+  "Oxsecian Guard",
+  "Oxsecian Airgrunt",
+  "Oxsecian Grunt",
+  "Oxsecian Guard"
+ ],
+ "art_missing": [
+  "Analyzer",
+  "Oxsecian Guard",
+  "Oxsecian Guard"
+ ]
+}

@@ -1,0 +1,14 @@
+{
+ "title": "LABYRINTH",
+ "slug": "labyrinth",
+ "difficulty": "19-20",
+ "scene": "res://battles/terra/labyrinth.tscn",
+ "enemies": [
+  "Teksura",
+  "Electrowatt",
+  "Trilobot",
+  "Mechadrake",
+  "Electrowatt"
+ ],
+ "art_missing": []
+}

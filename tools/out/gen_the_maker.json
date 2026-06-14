@@ -1,0 +1,15 @@
+{
+ "title": "THE_MAKER",
+ "slug": "the_maker",
+ "difficulty": "36-37",
+ "scene": "res://battles/terra/the_maker.tscn",
+ "enemies": [
+  "Shieldcell",
+  "Cryoplatelet",
+  "Regenercell",
+  "Freeze Sparker",
+  "Regenercell",
+  "Megacell"
+ ],
+ "art_missing": []
+}
