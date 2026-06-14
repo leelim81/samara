@@ -1,114 +1,95 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=3 uid="uid://cstatscont01"]
 
-[ext_resource path="res://assets/fonts/Exo2Regular18.tres" type="FontFile" id=1]
-[ext_resource path="res://ui/pre_battle_menu/unit_stats_container.gd" type="Script" id=2]
+[ext_resource type="FontFile" path="res://assets/fonts/Exo2Regular18.tres" id="1_font"]
+[ext_resource type="Script" path="res://ui/pre_battle_menu/unit_stats_container.gd" id="2_script"]
+[ext_resource type="Texture2D" path="res://assets/terra/ui/stat_atk.png" id="3_atk"]
+[ext_resource type="Texture2D" path="res://assets/terra/ui/stat_def.png" id="4_def"]
+[ext_resource type="Texture2D" path="res://assets/terra/ui/stat_satk.png" id="5_satk"]
+[ext_resource type="Texture2D" path="res://assets/terra/ui/stat_sdef.png" id="6_sdef"]
 
 [node name="UnitStatsContainer" type="VBoxContainer"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -152.0
-offset_top = -29.0
-offset_right = 152.0
-offset_bottom = 35.0
-theme_override_constants/separation = -1
-script = ExtResource( 2 )
-advantage_color = Color( 0.607843, 0.835294, 0.278431, 1 )
-disadvantage_color = Color( 1, 0.309804, 0.309804, 1 )
+theme_override_constants/separation = 4
+script = ExtResource("2_script")
+advantage_color = Color(0.607843, 0.835294, 0.278431, 1)
+disadvantage_color = Color(1, 0.309804, 0.309804, 1)
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="."]
-offset_right = 304.0
-offset_bottom = 22.0
+theme_override_constants/separation = 8
 
 [node name="HealthLabel" type="Label" parent="HBoxContainer3"]
-offset_right = 50.0
-offset_bottom = 22.0
-custom_minimum_size = Vector2( 50, 0 )
-theme_override_colors/font_color = Color( 0.933333, 0.188235, 0.27451, 1 )
-theme_override_fonts/font = ExtResource( 1 )
-text = "HP:"
+custom_minimum_size = Vector2(34, 0)
+theme_override_colors/font_color = Color(0.937255, 0.290196, 0.341176, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 20
+text = "HP"
 
 [node name="HealthNumber" type="Label" parent="HBoxContainer3"]
-offset_left = 58.0
-offset_right = 145.0
-offset_bottom = 22.0
-custom_minimum_size = Vector2( 87, 0 )
-theme_override_fonts/font = ExtResource( 1 )
+theme_override_colors/font_color = Color(0.937255, 0.945098, 0.984314, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 20
 text = "9999"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-offset_top = 21.0
-offset_right = 304.0
-offset_bottom = 43.0
+theme_override_constants/separation = 6
 
-[node name="AttackLabel" type="Label" parent="HBoxContainer"]
-offset_right = 50.0
-offset_bottom = 22.0
-custom_minimum_size = Vector2( 50, 0 )
-theme_override_fonts/font = ExtResource( 1 )
-text = "ATK:"
+[node name="AtkIcon" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(22, 22)
+size_flags_vertical = 4
+texture = ExtResource("3_atk")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="AttackNumber" type="Label" parent="HBoxContainer"]
-offset_left = 58.0
-offset_right = 145.0
-offset_bottom = 22.0
-custom_minimum_size = Vector2( 87, 0 )
-theme_override_fonts/font = ExtResource( 1 )
-text = "999 (-999)"
-clip_text = true
+custom_minimum_size = Vector2(78, 0)
+theme_override_colors/font_color = Color(0.937255, 0.945098, 0.984314, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 20
+text = "999"
 
-[node name="DefenseLabel" type="Label" parent="HBoxContainer"]
-offset_left = 153.0
-offset_right = 203.0
-offset_bottom = 22.0
-custom_minimum_size = Vector2( 50, 0 )
-theme_override_fonts/font = ExtResource( 1 )
-text = "DEF:"
+[node name="DefIcon" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(22, 22)
+size_flags_vertical = 4
+self_modulate = Color(0.560784, 0.705882, 1, 1)
+texture = ExtResource("4_def")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="DefenseNumber" type="Label" parent="HBoxContainer"]
-offset_left = 211.0
-offset_right = 298.0
-offset_bottom = 22.0
-custom_minimum_size = Vector2( 87, 0 )
-theme_override_fonts/font = ExtResource( 1 )
-text = "999 (-999)"
-clip_text = true
+custom_minimum_size = Vector2(78, 0)
+theme_override_colors/font_color = Color(0.937255, 0.945098, 0.984314, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 20
+text = "999"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="."]
-offset_top = 42.0
-offset_right = 304.0
-offset_bottom = 64.0
+theme_override_constants/separation = 6
 
-[node name="SpiritualAttackLabel" type="Label" parent="HBoxContainer2"]
-offset_right = 50.0
-offset_bottom = 22.0
-custom_minimum_size = Vector2( 50, 0 )
-theme_override_fonts/font = ExtResource( 1 )
-text = "SATK:"
+[node name="SatkIcon" type="TextureRect" parent="HBoxContainer2"]
+custom_minimum_size = Vector2(22, 22)
+size_flags_vertical = 4
+self_modulate = Color(1, 0.603922, 0.835294, 1)
+texture = ExtResource("5_satk")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="SpiritualAttackNumber" type="Label" parent="HBoxContainer2"]
-offset_left = 58.0
-offset_right = 145.0
-offset_bottom = 22.0
-custom_minimum_size = Vector2( 87, 0 )
-theme_override_fonts/font = ExtResource( 1 )
+custom_minimum_size = Vector2(78, 0)
+theme_override_colors/font_color = Color(0.937255, 0.945098, 0.984314, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 20
 text = "9999"
-clip_text = true
 
-[node name="SpiritualDefenseLabel" type="Label" parent="HBoxContainer2"]
-offset_left = 153.0
-offset_right = 203.0
-offset_bottom = 22.0
-custom_minimum_size = Vector2( 50, 0 )
-theme_override_fonts/font = ExtResource( 1 )
-text = "SDEF:"
+[node name="SdefIcon" type="TextureRect" parent="HBoxContainer2"]
+custom_minimum_size = Vector2(22, 22)
+size_flags_vertical = 4
+self_modulate = Color(0.498039, 0.878431, 0.752941, 1)
+texture = ExtResource("6_sdef")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="SpiritualDefenseNumber" type="Label" parent="HBoxContainer2"]
-offset_left = 211.0
-offset_right = 298.0
-offset_bottom = 22.0
-custom_minimum_size = Vector2( 87, 0 )
-theme_override_fonts/font = ExtResource( 1 )
+custom_minimum_size = Vector2(78, 0)
+theme_override_colors/font_color = Color(0.937255, 0.945098, 0.984314, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 20
 text = "9999"
-clip_text = true
