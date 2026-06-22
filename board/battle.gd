@@ -21,12 +21,19 @@ var _progress_tween: Tween
 var _view_unit_menu_tween: Tween
 
 @onready var _progress_bar: TextureProgressBar = $CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/TextureProgressBar
+@onready var _your_turn_label: Label = $CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/YourTurnLabel
 
 # Live battle-spoils HUD (built programmatically; see _build_live_hud).
 var _wave_label: Label
 var _coins_label: Label
 var _exp_label: Label
 var _ko_label: Label
+
+@onready var _power_segments: Array = [
+	$CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/PowerGauge/Seg1,
+	$CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/PowerGauge/Seg2,
+	$CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/PowerGauge/Seg3,
+]
 
 
 func _ready() -> void:
@@ -39,6 +46,9 @@ func _ready() -> void:
 
 	if not $Board.spoils_changed.is_connected(_on_spoils_changed):
 		$Board.spoils_changed.connect(_on_spoils_changed)
+
+	if not $Board.power_changed.is_connected(_on_power_changed):
+		$Board.power_changed.connect(_on_power_changed)
 
 	$BattleTheme.play()
 
@@ -105,8 +115,10 @@ func _on_Board_drag_timer_reset() -> void:
 
 func _on_Board_player_turn_started() -> void:
 	_player_turn_count += 1
-	
+
 	_update_turn_count()
+
+	_your_turn_label.visible = true
 
 
 func _on_Board_victory() -> void:
@@ -173,6 +185,10 @@ func _on_GiveUpButton_pressed() -> void:
 	_open_pause_menu()
 
 
+func _on_PauseButton_pressed() -> void:
+	_open_pause_menu()
+
+
 func _on_DragModeOptionButton_drag_mode_changed(drag_mode: int) -> void:
 	$Board.update_drag_mode(drag_mode)
 
@@ -182,6 +198,9 @@ func _on_FastForwardButton_fast_forward_toggled(enabled: bool) -> void:
 
 
 func _on_Board_enemy_phase_started(current_enemy_phase: int, enemy_phase_count: int) -> void:
+	if _your_turn_label != null:
+		_your_turn_label.visible = false
+
 	var control: Control = $CanvasLayer/EnemyPhaseCenterContainer
 	var banner: Control = $CanvasLayer/EnemyPhaseCenterContainer/Banner
 
@@ -303,6 +322,12 @@ func _update_live_hud() -> void:
 
 func _on_spoils_changed(_exp: int, _coins: int, _defeated: int) -> void:
 	_update_live_hud()
+
+
+# Power Gauge: light whole segments up to the current power level.
+func _on_power_changed(power: int, _max_power: int) -> void:
+	for i in _power_segments.size():
+		_power_segments[i].value = 100.0 if i < power else 0.0
 
 
 # ---- In-battle pause menu (Resume / Give Up with confirm) ----

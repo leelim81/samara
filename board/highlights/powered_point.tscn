@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpoweredpoint0a"]
+
+[ext_resource type="Script" path="res://board/highlights/powered_point.gd" id="1"]
+
+[node name="PoweredPoint" type="Node2D"]
+script = ExtResource("1")

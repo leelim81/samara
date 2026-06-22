@@ -64,6 +64,10 @@ var faction: int = INVALID_FACTION
 # Says if a unit has escaped or used a escape skill
 var is_escaped: bool = false
 
+# Set by the board for the duration of one skill-activation roll when this unit
+# stands on a Powered Point; forces its active skills to fire (100% activation).
+var is_on_powered_point: bool = false
+
 var _random := RandomNumberGenerator.new()
 
 # Array<StatusEffect>
@@ -683,11 +687,16 @@ func activate_skills() -> Array:
 		if skill.area_of_effect == Enums.AreaOfEffect.EQUIP or skill.skill_type == Enums.SkillType.COUNTER:
 			continue
 		
-		var activation: float = _random.randf() + $Job.current_stats.skill_activation_rate_modifier
-		
-		if activation < skill.activation_rate:
+		if is_on_powered_point:
+			# Powered Point: guaranteed activation (TB rule). Status-effect
+			# infliction is rolled separately during execution, so it is unaffected.
 			activated_skills.push_back(skill)
-	
+		else:
+			var activation: float = _random.randf() + $Job.current_stats.skill_activation_rate_modifier
+
+			if activation < skill.activation_rate:
+				activated_skills.push_back(skill)
+
 	return activated_skills
 
 

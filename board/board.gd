@@ -28,6 +28,9 @@ signal unit_selected_for_view(job)
 # Emitted whenever battle spoils change (an enemy falls) so the HUD can update live.
 signal spoils_changed(exp, coins, defeated)
 
+# Power Gauge: emitted when the gauge level changes (0..POWER_MAX).
+signal power_changed(power, max_power)
+
 # Set to true to use debug units instead of the player's squad
 @export var can_use_debug_units: bool = false
 
@@ -79,7 +82,17 @@ var _shake_tween: Tween
 var _shake_home_set: bool = false
 var _shake_home: Vector2 = Vector2.ZERO
 
+# Power Gauge + Powered Points (Terra Battle)
+const POWERED_POINT_SCENE := preload("res://board/highlights/powered_point.tscn")
+const POWER_MAX: int = 3
+const POWER_PER_PINCER: int = 1
+
+var _power: int = 0
+var _powered_cell: Cell = null
+var _powered_disc: Node2D = null
+
 @onready var _grid := $Grid
+@onready var _powered_points := $PoweredPoints
 
 
 func _ready() -> void:
@@ -91,7 +104,10 @@ func _ready() -> void:
 	_save_data = GameData.save_data
 	
 	$PincerExecutor.pusher = $Pusher
-	
+
+	$PincerExecutor.powered_point_consumed.connect(_clear_powered_point)
+	emit_signal("power_changed", _power, POWER_MAX)
+
 	if can_use_debug_units:
 		_player_units_node = $DebugUnits
 		
@@ -803,6 +819,16 @@ func _execute_pincers(unit: Unit) -> void:
 			$PincerExecutor.start_heal_phase()
 			
 			await $PincerExecutor.heal_phase_finished
+
+			# Each completed player pincer charges the Power Gauge; a full gauge
+			# spawns a Powered Point and resets.
+			_power = min(_power + POWER_PER_PINCER, POWER_MAX)
+			emit_signal("power_changed", _power, POWER_MAX)
+
+			if _power >= POWER_MAX:
+				_spawn_powered_point()
+				_power = 0
+				emit_signal("power_changed", _power, POWER_MAX)
 		
 		if _current_turn == Turn.ENEMY:
 			# Removes the unit (besides the active unit) that performed the
@@ -1200,6 +1226,44 @@ func _accumulate_spoils(unit: Unit) -> void:
 	_enemies_defeated += 1
 
 	emit_signal("spoils_changed", _battle_exp, _battle_coins, _enemies_defeated)
+
+
+# ---- Power Gauge + Powered Points (Terra Battle) ----
+
+# Spawns one Powered Point on a random free cell (one at a time). No-op if the
+# board is full, so it never asserts.
+func _spawn_powered_point() -> void:
+	var free_cells: Array = []
+
+	for cell in _grid.get_all_cells():
+		if cell.unit == null and cell.trap == null and not cell.is_powered:
+			free_cells.push_back(cell)
+
+	if free_cells.is_empty():
+		return
+
+	if _powered_cell != null:
+		_clear_powered_point()
+
+	var cell: Cell = free_cells.pick_random()
+	cell.is_powered = true
+	_powered_cell = cell
+
+	var disc: Node2D = POWERED_POINT_SCENE.instantiate()
+	_powered_points.add_child(disc)
+	disc.position = cell.position
+	_powered_disc = disc
+
+
+# Clears the active Powered Point (a unit on it activated, or it was replaced).
+func _clear_powered_point(_cell = null) -> void:
+	if _powered_cell != null:
+		_powered_cell.is_powered = false
+		_powered_cell = null
+
+	if is_instance_valid(_powered_disc):
+		_powered_disc.consume()
+		_powered_disc = null
 
 
 # Battle spoils for the results screen: {exp, coins, defeated}

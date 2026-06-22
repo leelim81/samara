@@ -248,6 +248,9 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="PoweredPoints" type="Node2D" parent="Board"]
+z_index = 1
+
 [node name="Trails" type="Node2D" parent="Board"]
 script = ExtResource( 35 )
 trail_2d_packed_scene = ExtResource( 3 )
@@ -399,9 +402,62 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/HBoxContainer"]
 offset_right = 250.0
-offset_bottom = 80.0
-custom_minimum_size = Vector2( 250, 80 )
+offset_bottom = 98.0
+custom_minimum_size = Vector2( 250, 98 )
 mouse_filter = 2
+
+[node name="PowerGauge" type="HBoxContainer" parent="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer"]
+offset_right = 250.0
+offset_bottom = 14.0
+theme_override_constants/separation = 4
+
+[node name="P" type="Label" parent="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/PowerGauge"]
+offset_right = 14.0
+offset_bottom = 14.0
+custom_minimum_size = Vector2( 14, 0 )
+theme_override_colors/font_color = Color( 0.227451, 0.211765, 0.188235, 1 )
+theme_override_font_sizes/font_size = 15
+text = "P"
+vertical_alignment = 1
+
+[node name="Seg1" type="TextureProgressBar" parent="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/PowerGauge"]
+custom_minimum_size = Vector2( 56, 10 )
+size_flags_vertical = 4
+max_value = 100.0
+value = 0.0
+texture_under = ExtResource( 12 )
+texture_progress = ExtResource( 8 )
+nine_patch_stretch = true
+stretch_margin_left = 5
+stretch_margin_top = 4
+stretch_margin_right = 5
+stretch_margin_bottom = 4
+
+[node name="Seg2" type="TextureProgressBar" parent="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/PowerGauge"]
+custom_minimum_size = Vector2( 56, 10 )
+size_flags_vertical = 4
+max_value = 100.0
+value = 0.0
+texture_under = ExtResource( 12 )
+texture_progress = ExtResource( 8 )
+nine_patch_stretch = true
+stretch_margin_left = 5
+stretch_margin_top = 4
+stretch_margin_right = 5
+stretch_margin_bottom = 4
+
+[node name="Seg3" type="TextureProgressBar" parent="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/PowerGauge"]
+custom_minimum_size = Vector2( 56, 10 )
+size_flags_vertical = 4
+max_value = 100.0
+value = 0.0
+texture_under = ExtResource( 12 )
+texture_progress = ExtResource( 8 )
+nine_patch_stretch = true
+stretch_margin_left = 5
+stretch_margin_top = 4
+stretch_margin_right = 5
+stretch_margin_bottom = 4
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer"]
 offset_right = 250.0
@@ -420,7 +476,7 @@ offset_left = 40.0
 offset_top = 8.0
 offset_right = 240.0
 offset_bottom = 24.0
-custom_minimum_size = Vector2( 200, 10 )
+custom_minimum_size = Vector2( 138, 10 )
 mouse_filter = 2
 size_flags_horizontal = 0
 size_flags_vertical = 6
@@ -432,6 +488,14 @@ stretch_margin_left = 5
 stretch_margin_top = 4
 stretch_margin_right = 5
 stretch_margin_bottom = 4
+
+[node name="YourTurnLabel" type="Label" parent="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2( 72, 0 )
+size_flags_vertical = 4
+theme_override_colors/font_color = Color( 0.30, 0.27, 0.24, 1 )
+theme_override_font_sizes/font_size = 14
+text = "YOUR TURN"
+vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer"]
 offset_top = 40.0
@@ -530,6 +594,10 @@ offset_right = 560.0
 offset_left = 576.0
 offset_right = 628.0
 
+[node name="PauseButton" parent="CanvasLayer/MarginContainer/HBoxContainer" instance=ExtResource( 33 )]
+custom_minimum_size = Vector2( 56, 0 )
+text = "II"
+
 [node name="GiveUpButton" parent="CanvasLayer/MarginContainer/HBoxContainer" instance=ExtResource( 33 )]
 offset_left = 644.0
 offset_right = 740.0
@@ -623,6 +691,7 @@ bus = "Music"
 [connection signal="timeout" from="Board/PincerExecutor/DeathAnimationTimer" to="Board/PincerExecutor" method="_on_DeathAnimationTimer_timeout"]
 [connection signal="drag_mode_changed" from="CanvasLayer/MarginContainer/HBoxContainer/DragModeOptionButton" to="." method="_on_DragModeOptionButton_drag_mode_changed"]
 [connection signal="fast_forward_toggled" from="CanvasLayer/MarginContainer/HBoxContainer/FastForwardButton" to="." method="_on_FastForwardButton_fast_forward_toggled"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/HBoxContainer/PauseButton" to="." method="_on_PauseButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/HBoxContainer/GiveUpButton" to="." method="_on_GiveUpButton_pressed"]
 [connection signal="quit_button_pressed" from="CanvasLayer/DefeatScreen" to="." method="_on_DefeatScreen_quit_button_pressed"]
 [connection signal="try_again_button_pressed" from="CanvasLayer/DefeatScreen" to="." method="_on_DefeatScreen_try_again_button_pressed"]

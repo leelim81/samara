@@ -19,6 +19,9 @@ signal finished_checking_for_dead_units
 # Finished executing a pincer
 signal pincer_executed
 
+# Emitted when a unit standing on a Powered Point begins activating skills.
+signal powered_point_consumed(cell)
+
 @export var chain_previewer_packed_scene: PackedScene
 @export var pincer_highlight_packed_scene: PackedScene
 
@@ -75,10 +78,20 @@ func start_skill_activation_phase(pincer: Pincer, grid: Grid, allies: Array = []
 
 func _activate_next_skill() -> void:
 	var unit: Unit = _unit_queue.pop_front()
-	
+
 	if unit != null:
+		# Powered Point: if this unit stands on a powered cell, force its skills
+		# to activate this roll, then consume the point.
+		var powered_cell: Cell = _grid.get_cell_from_position(unit.position)
+		unit.is_on_powered_point = (powered_cell != null and powered_cell.is_powered)
+
+		if unit.is_on_powered_point:
+			emit_signal("powered_point_consumed", powered_cell)
+
 		var activated_skills: Array = unit.activate_skills()
-		
+
+		unit.is_on_powered_point = false
+
 		if activated_skills.is_empty():
 			# If no skills are activated then go to the next unit right away
 			# I don't like the recursion but it makes it easier

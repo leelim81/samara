@@ -32,6 +32,7 @@ run "save: round-trip + migration"   res://tools/test_save_roundtrip.gd "test_sa
 if [ -f "$SAVE.testbak" ]; then mv "$SAVE.testbak" "$SAVE"; else rm -f "$SAVE"; fi
 
 run "battle: pincer integration"     res://test_pincer.gd               "TEST PASS"
+run "powered point: 100% activation" res://tools/test_powered_point.gd   "test_powered_point: PASS"
 
 echo "========================="
 if [ "$fail" = "0" ]; then echo "ALL TESTS PASS"; else echo "SOME TESTS FAILED"; fi
