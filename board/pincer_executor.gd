@@ -332,7 +332,7 @@ func start_status_effect_phase() -> void:
 		var enemies_with_status_effect := get_units_with_status_effect(_enemies, status_effect_type)
 		
 		if not enemies_with_status_effect.is_empty():
-			for enemy in _enemies:
+			for enemy in enemies_with_status_effect:
 				enemy.inflict(status_effect_type)
 			
 			_play_status_effect_sound(status_effect_type)

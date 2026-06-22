@@ -6,6 +6,15 @@ const _DEFAULT_HP: int = 1500
 const _DEFAULT_STAT: int = 50
 const _STAT_GROWTH_PER_LEVEL: float = 0.1
 
+# Terra Battle's max level. Player stat growth is sub-linear (~11x from L1 to
+# L90): stat(L) = base * 0.1 * pct * L^_GROWTH_EXPONENT reproduces the L1 value
+# (L=1 -> x1) and reaches ~11x at L90 (90^0.53 ~= 10.9, matching the wiki anchor
+# Mechaclops 336->3660 HP). Only units that actually level up use this curve
+# (see uses_growth_curve); enemies keep legacy linear growth so their
+# wiki-calibrated stat blocks stay byte-identical.
+const _MAX_LEVEL: int = 90
+const _GROWTH_EXPONENT: float = 0.53
+
 
 @export var unit_name: String
 @export var unit_type: String
@@ -37,6 +46,11 @@ const _STAT_GROWTH_PER_LEVEL: float = 0.1
 
 # Weapon type of unit
 @export var weapon_type: int = Enums.WeaponType.SWORD # (Enums.WeaponType)
+
+# When true, this unit uses Terra Battle's sub-linear level curve (players who
+# level 1->90). When false (default), it uses legacy linear growth, which keeps
+# enemy stat blocks — calibrated at their fixed encounter level — unchanged.
+@export var uses_growth_curve: bool = false
 
 # Max turn counter (only applies to AI-controlled characters)
 @export var max_turn_counter: int = 3 # (int, 0, 10, 1)
@@ -106,4 +120,9 @@ func _update_stats() -> void:
 
 
 func _get_stat(base_value: int, modifier: float) -> int:
+	if uses_growth_curve:
+		# Sub-linear TB curve: equals the legacy value at L1, ~11x by L90.
+		return int(round(float(base_value) * _STAT_GROWTH_PER_LEVEL * modifier * pow(level, _GROWTH_EXPONENT)))
+
+	# Legacy linear growth (enemies; calibrated at their fixed encounter level).
 	return int(round(float(level * base_value) * _STAT_GROWTH_PER_LEVEL * modifier))

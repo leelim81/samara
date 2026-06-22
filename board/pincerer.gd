@@ -232,7 +232,11 @@ func _find_chain(cell: Cell, direction: int, chain_families: Dictionary, faction
 			else:
 				# Found an enemy unit, stop searching
 				break
-		
+		else:
+			# Empty cell breaks the chain — Terra Battle requires contiguous
+			# allies (no gaps) between the pincering unit and a chained unit.
+			break
+
 		neighbor = neighbor.get_neighbor(direction)
 
 

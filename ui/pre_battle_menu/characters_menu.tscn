@@ -45,6 +45,11 @@ text = "CHARACTERS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="SortOption" type="OptionButton" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2( 220, 48 )
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color( 0.882353, 0.917647, 1, 1 )
+
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]
 offset_top = 80.0
 offset_right = 620.0

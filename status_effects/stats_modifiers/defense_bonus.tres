@@ -11,7 +11,7 @@ region = Rect2( 0, 64, 64, 64 )
 [resource]
 script = ExtResource( 1 )
 status_effect_type = 7
-duration_turns = 3
+duration_turns = 1
 icon = SubResource( 1 )
 modified_stat = 2
 modified_stat_percentage = 0.2

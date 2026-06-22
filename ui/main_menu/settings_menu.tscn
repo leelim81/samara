@@ -107,7 +107,6 @@ selected = 0
 script = ExtResource( 3 )
 
 [node name="CheckButton" type="CheckButton" parent="MarginContainer/VBoxContainer/VBoxContainer"]
-visible = false
 offset_top = -43.0
 offset_right = 620.0
 offset_bottom = -1.0
@@ -124,3 +123,4 @@ text = "RETURN"
 [connection signal="on_changed" from="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2/VolumeSlider2" to="." method="_on_VolumeSlider_on_changed"]
 [connection signal="item_selected" from="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer3/LanguageOptionButton" to="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer3/LanguageOptionButton" method="_on_LanguageOptionButton_item_selected"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ReturnButton" to="." method="_on_ReturnButton_pressed"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/VBoxContainer/CheckButton" to="." method="_on_DragModeCheckButton_toggled"]

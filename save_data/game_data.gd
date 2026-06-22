@@ -33,6 +33,11 @@ func load_data():
 	else:
 		_load_data_from_default_resource()
 
+	# Ensure the multi-squad model exists and active_units reflects the active
+	# squad (also migrates pre-multi-squad saves into squads[0]).
+	save_data.ensure_squads()
+	save_data.active_units = save_data.squads[save_data.active_squad_index]["units"].duplicate()
+
 
 # True once the player has progress on disk (used to show "Continue").
 func has_save_file() -> bool:
@@ -72,6 +77,8 @@ func _load_data_from_configs_file() -> void:
 		save_data.jobs.push_back(_deserialize_job(serialized_job))
 	
 	save_data.active_units = config_file.get_value(_UNIT_DATA_SECTION, "active_units", save_data.active_units)
+	save_data.squads = config_file.get_value(_UNIT_DATA_SECTION, "squads", [])
+	save_data.active_squad_index = config_file.get_value(_UNIT_DATA_SECTION, "active_squad_index", 0)
 
 	save_data.music_volume = config_file.get_value(_SETTINGS_SECTION, "music_volume", 1.0)
 	save_data.sound_effects_volume = config_file.get_value(_SETTINGS_SECTION, "sound_effects_volume", 1.0)
@@ -110,16 +117,21 @@ func unlock_default_chapters() -> void:
 
 # TODO: Test save and load functions
 func save() -> void:
+	# Mirror the live squad edits into the saved-squads list before persisting.
+	save_data.sync_active_squad()
+
 	var serialized_jobs := []
-	
-	# Save jobs references as an array of dictionaries. Preserve the order
-	# so that active_units can point to the correct units.
+
+	# Save jobs as an array of dictionaries. Preserve the order so that the
+	# squad unit indices keep pointing at the correct units.
 	for job in save_data.jobs:
-		serialized_jobs.push_back(job.to_dictionary())
-	
+		serialized_jobs.push_back(_serialize_job(job))
+
 	config_file.set_value(_UNIT_DATA_SECTION, _JOBS_KEY, serialized_jobs)
 	config_file.set_value(_UNIT_DATA_SECTION, "active_units", save_data.active_units)
-	
+	config_file.set_value(_UNIT_DATA_SECTION, "squads", save_data.squads)
+	config_file.set_value(_UNIT_DATA_SECTION, "active_squad_index", save_data.active_squad_index)
+
 	config_file.set_value(_SETTINGS_SECTION, "music_volume", save_data.music_volume)
 	config_file.set_value(_SETTINGS_SECTION, "sound_effects_volume", save_data.sound_effects_volume)
 	config_file.set_value(_SETTINGS_SECTION, "locale", save_data.locale)
@@ -153,16 +165,26 @@ func _build_config_file_path() -> String:
 
 
 func _serialize_job(job: Job) -> Dictionary:
-	var dictionary := {}
-	
-	dictionary["job_resource_path"] = job.resource_path
-	dictionary["level"] = job.level
-	
-	return dictionary
+	var path: String = job.source_path if job.source_path != "" else job.resource_path
+
+	return {
+		"job_resource_path": path,
+		"level": job.level,
+		"current_exp": job.current_exp,
+	}
 
 
 func _deserialize_job(dictionary: Dictionary) -> Job:
-	return _duplicate_job(load(dictionary.job_resource_path), dictionary.level)
+	var job: Job = _duplicate_job(load(dictionary.job_resource_path), dictionary.get("level", 1))
+
+	job.current_exp = dictionary.get("current_exp", 0)
+
+	# Migrate legacy saves that stored only level: seed EXP from the level so
+	# subsequent EXP gains continue from the right place.
+	if job.current_exp == 0 and job.level > 1:
+		job.current_exp = Leveling.exp_for_level(job.level)
+
+	return job
 
 
 func _duplicate_job(job: Job, level: int) -> Job:
@@ -170,8 +192,11 @@ func _duplicate_job(job: Job, level: int) -> Job:
 	# but does not duplicate other resources of Job
 	var new_job: Job = job.duplicate()
 	new_job.stats = job.stats.duplicate()
-	
+
+	# Preserve the original path for save serialization (duplicates lose it).
+	new_job.source_path = job.source_path if job.source_path != "" else job.resource_path
+
 	# Sets the level to update the stats
 	new_job.level = level
-	
+
 	return new_job

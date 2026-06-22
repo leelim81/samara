@@ -20,6 +20,10 @@ extends StackBasedMenuScreen
 @onready var _skills_header: Label = $Margin/Root/SkillsHeader
 @onready var _return_button: Button = $Margin/Root/ReturnButton
 
+# Created lazily and reused across initialize() calls.
+var _element_label: Label = null
+var _exp_label: Label = null
+
 
 # Called from squad menu
 func initialize(job: Job, level: int) -> void:
@@ -41,6 +45,9 @@ func initialize_from_data(job: Job, base_stats: Stats, current_stats: Stats, lev
 	_weapon_icon.texture = load(Enums.WEAPON_TYPE_TEXTURES[base_stats.weapon_type])
 
 	_lv_label.text = "LV %d" % level
+
+	_update_element_label(base_stats.attribute)
+	_update_exp_label(job, level)
 
 	# In battle the panel reflects the unit's live stats; otherwise its base
 	var display_stats: Stats = current_stats if (is_in_battle and current_stats != null) else base_stats
@@ -103,3 +110,71 @@ func _on_ReturnButton_pressed() -> void:
 	_return_button.disabled = true
 
 	go_back()
+
+
+# ---- Element & EXP display (Terra Battle status screen parity) ----
+
+func _update_element_label(attribute: int) -> void:
+	if _element_label == null:
+		_element_label = Label.new()
+		_element_label.add_theme_font_size_override("font_size", 18)
+		var species_row: Node = _weapon_icon.get_parent()
+		species_row.add_child(_element_label)
+		# Sit right after the weapon icon.
+		species_row.move_child(_element_label, _weapon_icon.get_index() + 1)
+
+	if attribute == Enums.Attribute.NONE:
+		_element_label.visible = false
+		return
+
+	_element_label.visible = true
+	_element_label.text = _element_name(attribute)
+	_element_label.add_theme_color_override("font_color", _element_color(attribute))
+
+
+func _update_exp_label(job: Job, level: int) -> void:
+	if _exp_label == null:
+		_exp_label = Label.new()
+		_exp_label.add_theme_font_size_override("font_size", 15)
+		_exp_label.add_theme_color_override("font_color", Color(0.6, 0.67, 0.78))
+		var meta: Node = _lv_label.get_parent()
+		meta.add_child(_exp_label)
+		meta.move_child(_exp_label, _lv_label.get_index() + 1)
+
+	if level >= Leveling.MAX_LEVEL:
+		_exp_label.text = "NEXT  MAX"
+	else:
+		var to_next: int = Leveling.exp_for_level(level + 1) - job.current_exp
+		_exp_label.text = "NEXT  %d EXP" % maxi(0, to_next)
+
+
+func _element_name(attribute: int) -> String:
+	match attribute:
+		Enums.Attribute.FIRE:
+			return "FIRE"
+		Enums.Attribute.ICE:
+			return "ICE"
+		Enums.Attribute.LIGHTNING:
+			return "LIGHTNING"
+		Enums.Attribute.DARKNESS:
+			return "DARK"
+		Enums.Attribute.HEALING:
+			return "HEAL"
+		_:
+			return ""
+
+
+func _element_color(attribute: int) -> Color:
+	match attribute:
+		Enums.Attribute.FIRE:
+			return Color(1.0, 0.45, 0.3)
+		Enums.Attribute.ICE:
+			return Color(0.5, 0.8, 1.0)
+		Enums.Attribute.LIGHTNING:
+			return Color(1.0, 0.85, 0.3)
+		Enums.Attribute.DARKNESS:
+			return Color(0.72, 0.52, 0.95)
+		Enums.Attribute.HEALING:
+			return Color(0.5, 0.9, 0.6)
+		_:
+			return Color.WHITE

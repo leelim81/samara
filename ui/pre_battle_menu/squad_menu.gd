@@ -13,6 +13,12 @@ var _number_of_units_before_change: int = -1
 @onready var _list_container: VBoxContainer = $MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer
 
 @onready var _return_button: Button = $MarginContainer/VBoxContainer/ReturnButton
+@onready var _squad_name_edit: LineEdit = $MarginContainer/VBoxContainer/SquadNameEdit
+@onready var _squad_bar: HBoxContainer = $MarginContainer/VBoxContainer/SquadBar
+
+const _SLOT_NORMAL := preload("res://assets/ui/btn_dark_normal.tres")
+const _SLOT_HOVER := preload("res://assets/ui/btn_dark_hover.tres")
+const _SLOT_PRESSED := preload("res://assets/ui/btn_dark_pressed.tres")
 
 
 func _ready() -> void:
@@ -21,6 +27,7 @@ func _ready() -> void:
 	_number_of_units_before_change = save_data.active_units.size()
 	
 	_show_active_units()
+	_refresh_squad_ui()
 
 
 func on_load() -> void:
@@ -29,6 +36,7 @@ func on_load() -> void:
 	_return_button.grab_focus()
 	
 	_highlight_changed_unit()
+	_refresh_squad_ui()
 
 
 func on_add_to_tree(data: Object) -> void:
@@ -150,6 +158,9 @@ func _highlight_changed_unit() -> void:
 
 
 func _on_ReturnButton_pressed() -> void:
+	GameData.save_data.sync_active_squad()
+	GameData.save()
+
 	go_back()
 
 
@@ -159,3 +170,106 @@ func _on_AddUnitButton_pressed() -> void:
 
 func _on_UnitItem_unit_double_clicked(job: Job) -> void:
 	navigate(view_unit_menu_scene, job)
+
+
+# ---- Multi-squad bar (Terra Battle: save & switch up to 10 named squads) ----
+
+func _refresh_squad_ui() -> void:
+	var save_data: SaveData = GameData.save_data
+	save_data.ensure_squads()
+
+	if not _squad_name_edit.text_submitted.is_connected(_on_squad_name_submitted):
+		_squad_name_edit.text_submitted.connect(_on_squad_name_submitted)
+		_squad_name_edit.focus_exited.connect(_on_squad_name_focus_exited)
+
+	_squad_name_edit.text = save_data.active_squad_name()
+	_refresh_squad_bar()
+
+
+func _refresh_squad_bar() -> void:
+	var save_data: SaveData = GameData.save_data
+
+	for child in _squad_bar.get_children():
+		child.queue_free()
+
+	for i in save_data.squads.size():
+		var slot := _make_slot_button(str(i + 1), i == save_data.active_squad_index)
+		slot.pressed.connect(_on_squad_slot_pressed.bind(i))
+		_squad_bar.add_child(slot)
+
+	if save_data.squads.size() < SaveData.MAX_SQUADS:
+		var add_button := _make_slot_button("+", false)
+		add_button.pressed.connect(_on_add_squad_pressed)
+		_squad_bar.add_child(add_button)
+
+
+func _make_slot_button(label: String, is_active: bool) -> Button:
+	var button := Button.new()
+	button.text = label
+	button.custom_minimum_size = Vector2(46, 46)
+	button.focus_mode = Control.FOCUS_NONE
+	button.add_theme_stylebox_override("normal", _SLOT_NORMAL)
+	button.add_theme_stylebox_override("hover", _SLOT_HOVER)
+	button.add_theme_stylebox_override("pressed", _SLOT_PRESSED)
+	button.add_theme_stylebox_override("focus", _SLOT_HOVER)
+
+	if is_active:
+		button.modulate = Color(1.0, 0.85, 0.4)
+		button.add_theme_color_override("font_color", Color(1.0, 0.96, 0.78))
+	else:
+		button.add_theme_color_override("font_color", Color(0.85, 0.88, 0.95))
+
+	return button
+
+
+func _on_squad_slot_pressed(index: int) -> void:
+	var save_data: SaveData = GameData.save_data
+
+	if index == save_data.active_squad_index:
+		return
+
+	save_data.switch_to_squad(index)
+	GameData.save()
+
+	_number_of_units_before_change = save_data.active_units.size()
+	_changed_job = null
+	_index_of_changed_job = -1
+	_unit_item_to_highlight = null
+
+	_show_active_units()
+	_refresh_squad_ui()
+	$PlaceSound.play()
+
+
+func _on_add_squad_pressed() -> void:
+	var save_data: SaveData = GameData.save_data
+
+	var index: int = save_data.create_squad()
+
+	if index == -1:
+		return
+
+	save_data.switch_to_squad(index)
+	GameData.save()
+
+	_number_of_units_before_change = 0
+
+	_show_active_units()
+	_refresh_squad_ui()
+	$PlaceSound.play()
+
+
+func _on_squad_name_submitted(_text: String) -> void:
+	_commit_squad_name()
+	_squad_name_edit.release_focus()
+
+
+func _on_squad_name_focus_exited() -> void:
+	_commit_squad_name()
+
+
+func _commit_squad_name() -> void:
+	var save_data: SaveData = GameData.save_data
+	save_data.rename_active_squad(_squad_name_edit.text)
+	save_data.sync_active_squad()
+	GameData.save()

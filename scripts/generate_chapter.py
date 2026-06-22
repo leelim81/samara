@@ -26,10 +26,12 @@ DEVNULL = open(os.devnull, "wb")
 SWORD, BOW, SPEAR, STAFF = 0, 1, 2, 3
 ST_ATTACK, ST_HEAL, ST_COUNTER = 0, 1, 5
 AOE_NONE, AOE_PINCER, AOE_AREA_X, AOE_CROSS_X, AOE_HORIZONTAL_X, AOE_VERTICAL_X = 0, 2, 3, 4, 6, 7
-# Enums.Attribute: NONE 0, LIGHTNING 1, FIRE 2, ICE 3, DARKNESS 4, SOLAR 5,
-# LUNAR 6, PHOTON 7, GRAVITON 8, HEALING 9
+# Enums.Attribute (canonical Terra Battle set): NONE 0, LIGHTNING 1, FIRE 2,
+# ICE 3, DARKNESS 4, HEALING 9. The non-canonical Solar/Lunar/Photon/Graviton
+# are remapped to canonical flavors so they never reach the engine:
+# Solar->Fire, Lunar->Ice, Photon->Lightning, Graviton->Darkness.
 ATTR = {"Lightning": 1, "Fire": 2, "Ice": 3, "Darkness": 4, "Dark": 4,
-        "Solar": 5, "Lunar": 6, "Photon": 7, "Graviton": 8}
+        "Solar": 2, "Lunar": 3, "Photon": 1, "Graviton": 4}
 WEAPON = {"Sword": SWORD, "Bow": BOW, "Gun": BOW, "Spear": SPEAR, "Staff": STAFF,
           "Unarmed": SWORD, None: SWORD, "": SWORD}
 
@@ -70,10 +72,11 @@ _ELEMENTS = [
     (("ice", "frost", "blizzard", "freeze", "frozen", "glaci", "cryo", "chill"), 3),
     (("lightning", "thunder", "electric", "shock", "spark", "volt", "discharge", "plasma"), 1),
     (("dark", "shadow", "abyss", "void", "doom", "curse", "death", "night"), 4),
-    (("solar", "sunlight", "radiant"), 5),
-    (("lunar", "moon"), 6),
-    (("photon", "prism", "laser", "beam"), 7),
-    (("gravit", "graviton"), 8),
+    # Non-canonical flavors remapped to canonical attributes (no 5-8 emitted).
+    (("solar", "sunlight", "radiant"), 2),
+    (("lunar", "moon"), 3),
+    (("photon", "prism", "laser", "beam"), 1),
+    (("gravit", "graviton"), 4),
 ]
 _WEAP_AOE = {SWORD: AOE_HORIZONTAL_X, BOW: AOE_AREA_X, SPEAR: AOE_VERTICAL_X, STAFF: AOE_CROSS_X}
 _WEAP_KEY = {SWORD: "sword", BOW: "bow", SPEAR: "spear", STAFF: "staff"}

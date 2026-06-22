@@ -18,7 +18,27 @@ const _SKILL_UNLOCK_LEVELS: Array = [1, 15, 35, 65]
 
 @export var full_portrait: Texture2D = null
 
+# Total accumulated EXP (player characters only; enemies set level directly).
+# The level is derived from this via Leveling.level_for_exp().
+@export var current_exp: int = 0
+
 var level: int = 1: set = set_level
+
+# Original .tres path, preserved across duplication so the player's roster can
+# be re-serialized (duplicated resources lose their resource_path).
+var source_path: String = ""
+
+
+# Adds EXP and re-derives the level from the new total. Returns levels gained.
+func gain_exp(amount: int) -> int:
+	if amount <= 0:
+		return 0
+
+	var previous_level: int = level
+	current_exp += amount
+	set_level(Leveling.level_for_exp(current_exp))
+
+	return level - previous_level
 
 
 func get_unlocked_skills(_level: int) -> Array:

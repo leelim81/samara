@@ -5,14 +5,24 @@ extends Resource
 const MAX_SQUAD_SIZE: int = 6
 const MIN_SQUAD_SIZE: int = 2
 
+# Terra Battle lets the player save & switch up to 10 named squads.
+const MAX_SQUADS: int = 10
+const SQUAD_NAME_MAX_LENGTH: int = 10
+
 @export var version: int = 1
 
 # Array<Job>
 # Jobs that the player has
 @export var jobs: Array = [] # (Array, Resource)
 
-# Array<int>
+# Array<int> — the currently-active squad's unit indices (live working set that
+# the squad/battle code reads directly). Mirrored into squads[active_squad_index]
+# on save / squad switch.
 @export var active_units: Array = [] # (Array, int)
+
+# Array<Dictionary{name:String, units:Array[int]}> — up to MAX_SQUADS saved squads.
+@export var squads: Array = []
+@export var active_squad_index: int = 0
 
 @export var music_volume: float = 1.0
 @export var sound_effects_volume: float = 1.0
@@ -93,9 +103,10 @@ func clear_chapter_and_unlock_next(title: String) -> void:
 func add_job(job: Job, level: int) -> void:
 	var new_job: Job = job.duplicate()
 	new_job.stats = new_job.stats.duplicate()
-	
+	new_job.source_path = job.source_path if job.source_path != "" else job.resource_path
+
 	new_job.level = level
-	
+
 	jobs.push_back(new_job)
 
 
@@ -140,5 +151,59 @@ func remove_job(job: Job) -> void:
 
 func add_support_level(pair: String) -> void:
 	var current_support_level: int = supports.get(pair, 0)
-	
+
 	supports[pair] = current_support_level + 1
+
+
+# ---- Squad save/switch (Terra Battle: up to 10 named squads) ----
+
+# Guarantees at least one squad exists, seeded from the legacy active_units list
+# (handles fresh saves and migration of pre-multi-squad saves).
+func ensure_squads() -> void:
+	if squads.is_empty():
+		squads.append({"name": "SQUAD 1", "units": active_units.duplicate()})
+
+	active_squad_index = clampi(active_squad_index, 0, squads.size() - 1)
+
+
+# Mirrors the live active_units into the active saved squad (call before saving).
+func sync_active_squad() -> void:
+	ensure_squads()
+	squads[active_squad_index]["units"] = active_units.duplicate()
+
+
+func active_squad_name() -> String:
+	ensure_squads()
+	return squads[active_squad_index]["name"]
+
+
+func rename_active_squad(new_name: String) -> void:
+	ensure_squads()
+	squads[active_squad_index]["name"] = new_name.substr(0, SQUAD_NAME_MAX_LENGTH)
+
+
+# Persists current edits, then makes squad `index` active and loads its units.
+func switch_to_squad(index: int) -> void:
+	ensure_squads()
+
+	if index < 0 or index >= squads.size():
+		return
+
+	sync_active_squad()
+
+	active_squad_index = index
+	active_units = squads[index]["units"].duplicate()
+
+
+# Creates a new empty squad (up to MAX_SQUADS). Returns its index, or -1 if full.
+func create_squad() -> int:
+	ensure_squads()
+
+	if squads.size() >= MAX_SQUADS:
+		return -1
+
+	sync_active_squad()
+
+	squads.append({"name": "SQUAD %d" % (squads.size() + 1), "units": []})
+
+	return squads.size() - 1

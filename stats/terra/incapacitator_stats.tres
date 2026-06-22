@@ -15,7 +15,7 @@ status_ailment_vulnerability = 0.6
 status_ailment_vulnerabilities = {
 }
 same_attribute_resistance = 0.5
-attribute = 8
+attribute = 4
 weapon_type = 3
 max_turn_counter = 4
 can_randomize_turn_counter = true

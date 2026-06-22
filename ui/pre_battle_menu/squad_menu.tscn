@@ -76,6 +76,22 @@ text = "SQUAD_DESCRIPTION"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="SquadNameEdit" type="LineEdit" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(240, 46)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.964706, 0.945098, 0.901961, 1)
+theme_override_colors/font_placeholder_color = Color(0.6, 0.65, 0.75, 1)
+max_length = 10
+alignment = 1
+placeholder_text = "SQUAD NAME"
+
+[node name="SquadBar" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 6
+alignment = 1
+
 [node name="ShowSkillsButton" type="CheckButton" parent="MarginContainer/VBoxContainer"]
 visible = false
 custom_minimum_size = Vector2(240, 0)

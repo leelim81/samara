@@ -12,6 +12,9 @@ const STAFF_DAMAGE_MODIFIER: float = 1.5
 const ATTACK_EXPONENT: float = 1.7
 const DEFENSE_EXPONENT: float = 0.7
 
+# Heal skills restore this multiple of their computed magnitude.
+const HEAL_POWER_MULTIPLIER: float = 3.0
+
 
 @export var target_unit_path: NodePath
 @export var status_effect_node2d_path: NodePath
@@ -37,7 +40,7 @@ func apply_skill(unit: Unit,
 		damage = int(damage * _random.randf_range(0.9, 1.1))
 		
 		if skill.is_healing():
-			damage = -damage * 3
+			damage = -int(damage * HEAL_POWER_MULTIPLIER)
 		
 		var absorbed_damage = int(skill.absorb_rate * damage)
 
@@ -99,17 +102,22 @@ func calculate_damage(attacker_stats: Stats,
 	var damage: float = 0
 
 	if weapon_type == Enums.WeaponType.STAFF:
+		# Magical attack: spiritual attack vs spiritual defense.
 		damage = STAFF_DAMAGE_MODIFIER * power \
 				* pow(attacker_stats.spiritual_attack, ATTACK_EXPONENT) \
 				/ pow(max(1.0, defender_stats.spiritual_defense), DEFENSE_EXPONENT)
-
-		damage = damage * (1 - _get_attribute_resistance(defender_stats, attribute, defender_stats.attribute))
 	else:
+		# Physical attack: attack vs defense.
 		damage = PHYSICAL_DAMAGE_MODIFIER * power \
 				* pow(attacker_stats.attack, ATTACK_EXPONENT) \
 				/ pow(max(1.0, defender_stats.defense), DEFENSE_EXPONENT)
 
-		damage = damage * _get_weapon_type_advantage(weapon_type, defender_stats.weapon_type)
+	# Terra Battle applies BOTH advantage multipliers AFTER the base damage:
+	# the Circle of Carnage weapon triangle (1.0 for STAFF or neutral matchups)
+	# and the elemental advantage (1.0 for non-elemental attacks). Applying both
+	# unconditionally lets an elemental physical weapon benefit from each, as TB does.
+	damage *= _get_weapon_type_advantage(weapon_type, defender_stats.weapon_type)
+	damage *= _get_attribute_multiplier(defender_stats, attribute, defender_stats.attribute)
 
 	return int(damage)
 
@@ -164,20 +172,27 @@ func _get_weapon_type_advantage(attacker_weapon_type: int, defender_weapon_type:
 		return WEAPON_DISADVANTAGE
 
 
-func _get_attribute_resistance(defender_stats: Stats, attacker_attribute, defender_attribute) -> float:
+# Returns the elemental damage multiplier the defender takes from an attack of
+# the given attribute. Mirrors _get_weapon_type_advantage:
+#   - non-elemental (NONE) or support (HEALING) attacker: 1.0 (no bonus)
+#   - opposed pair (Fire<->Ice, Lightning<->Darkness): 2.0 (double damage)
+#   - same attribute: 1.0 - same_attribute_resistance (a value >1.0 heals)
+#   - otherwise: 1.0
+func _get_attribute_multiplier(defender_stats: Stats, attacker_attribute, defender_attribute) -> float:
+	if attacker_attribute == Enums.Attribute.NONE or attacker_attribute == Enums.Attribute.HEALING:
+		return 1.0
+
 	if attacker_attribute == defender_attribute:
-		return defender_stats.same_attribute_resistance
-	else:
-		var disadvantaged_attribute = Enums.ATTRIBUTE_RELATIONSHIPS.get(attacker_attribute)
-		
-		if disadvantaged_attribute != null and disadvantaged_attribute == defender_attribute:
-			# Vulnerable
-			return -1.0
-		else:
-			# TODO: Use elemental resistance dictionary
-			
-			# No resistance
-			return 0.0
+		return 1.0 - defender_stats.same_attribute_resistance
+
+	var opposed_attribute = Enums.ATTRIBUTE_RELATIONSHIPS.get(attacker_attribute)
+
+	if opposed_attribute != null and opposed_attribute == defender_attribute:
+		# Opposed elements deal double damage.
+		return WEAPON_ADVANTAGE
+
+	# TODO (P3): consult a per-element resistance table on the defender.
+	return 1.0
 
 
 func _can_inflict_status_effects(skill: Skill) -> bool:
