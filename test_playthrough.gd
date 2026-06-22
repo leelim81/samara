@@ -62,10 +62,15 @@ func _run() -> void:
 		if players.size() < 2:
 			continue
 
-		# Find any alive enemy with two naturally-free flank cells.
+		# Find any alive enemy with two naturally-free flank cells. Prefer 2x2
+		# bosses so they die before their AI wanders them into a board corner
+		# where no pincer axis is in range.
 		var flanks := []
 
-		for enemy in _alive_enemies(board):
+		var scan := _alive_enemies(board)
+		scan.sort_custom(func(a, b): return a.is2x2() and not b.is2x2())
+
+		for enemy in scan:
 			var f := _find_flank_cells(grid, enemy)
 
 			if not f.is_empty():

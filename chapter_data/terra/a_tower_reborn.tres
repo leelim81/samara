@@ -5,17 +5,17 @@
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 2 )
-sword_enemy_count = 0
+sword_enemy_count = 1
 gun_enemy_count = 0
-spear_enemy_count = 0
-staff_enemy_count = 0
-phases_count = 0
+spear_enemy_count = 3
+staff_enemy_count = 2
+phases_count = 4
 
 [resource]
 script = ExtResource( 1 )
 title = "A_TOWER_REBORN"
-caption = "COMING_SOON"
+caption = "A_TOWER_REBORN_CAPTION"
 difficulty = "80"
-battle_scene_path = ""
-locked = true
+battle_scene_path = "res://battles/terra/a_tower_reborn.tscn"
+locked = false
 battle_info = SubResource( 1 )

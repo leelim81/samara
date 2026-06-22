@@ -24,6 +24,7 @@ RETURN_TO_MAIN_MENU,Main menu,Menú principal
 ADD_UNIT,Add unit,Agregar unidad
 REMOVE,Remove,Quitar
 VIEW,View,Ver
+CHARACTERS,Characters,Personajes
 TRY_AGAIN,Try again,Intentar de nuevo
 TOTAL_DRAG_TIME,Total drag time: {time} s,Tiempo de arrastre: {time} s
 TURN_COUNT,Turns: {count},Turnos: {count}
@@ -111,8 +112,8 @@ SKILL_ACTIVATION_RATE_MODIFIER,Skill activation rate,Tasa de activación de habi
 STATUS_EFFECT_RESISTANCE,%+.0f%% resistance to %s,%+.0f%% de resistencia a %s
 SKILLS_TAB,Skills,Habilidades
 STATUS_EFFECTS_TAB,Status effects,Estados
-BORDERLANDS,Borderlands,Tierras fronterizas
-TO_THE_CAPITAL,To the Capital,Hacia la capital
+BORDERLANDS,Exile,Exile
+TO_THE_CAPITAL,Toward the Throne,Toward the Throne
 BAHL,Bahl,Bahl
 GRACE,Grace,Grace
 KUSCAH,Kuscah,Kuscah
@@ -140,86 +141,86 @@ FIRE,Fire,Fuego
 THUNDER_ARROWS,Thunder Arrows,Flechas de trueno
 THRUST_AWAY,Thrust Away,Empujón
 DISCHARGE,Discharge,Descarga
-BORDERLANDS_CAPTION,Wild creatures prowl the frontier. Learn to move and to strike as one.,Criaturas salvajes acechan la frontera. Aprende a moverte y atacar en conjunto.
-TO_THE_CAPITAL_CAPTION,The road to the capital is long and watched by hungry things.,El camino a la capital es largo y lo vigilan criaturas hambrientas.
-MELTING_POT,Melting Pot,Crisol
-MELTING_POT_CAPTION,The capital's peoples mix and clash. Earn their respect with steel.,Los pueblos de la capital se mezclan y chocan. Gánate su respeto con acero.
-INTO_THE_TOWER,Into the Tower,Into the Tower
-INTO_THE_TOWER_CAPTION,The path presses on through Into the Tower.,The path presses on through Into the Tower.
+BORDERLANDS_CAPTION,"Branded and cast out for naming one corruption too many, you take the long road to Outer Heaven...","Branded and cast out for naming one corruption too many, you take the long road to Outer Heaven..."
+TO_THE_CAPITAL_CAPTION,The road to the capital runs through starving villages and fat magistrates.,The road to the capital runs through starving villages and fat magistrates.
+MELTING_POT,The Gathering,The Gathering
+MELTING_POT_CAPTION,At Outer Heaven the cast out and the hunted spirit-folk take you in.,At Outer Heaven the cast out and the hunted spirit-folk take you in.
+INTO_THE_TOWER,The Forgetting,The Forgetting
+INTO_THE_TOWER_CAPTION,A tower stands on the border that steals the memory of any who climb it.,A tower stands on the border that steals the memory of any who climb it.
 DESCENT,Descent,Descent
-DESCENT_CAPTION,The path presses on through Descent.,The path presses on through Descent.
+DESCENT_CAPTION,"Hunted on every road, the band goes down instead of out, into the buried world beneath the...","Hunted on every road, the band goes down instead of out, into the buried world beneath the..."
 THE_CITY_BELOW,The City Below,The City Below
-THE_CITY_BELOW_CAPTION,The path presses on through The City Below.,The path presses on through The City Below.
-MOLTEN_MENACE,Molten Menace,Molten Menace
-MOLTEN_MENACE_CAPTION,The path presses on through Molten Menace.,The path presses on through Molten Menace.
-LABYRINTH,Labyrinth,Labyrinth
-LABYRINTH_CAPTION,The path presses on through Labyrinth.,The path presses on through Labyrinth.
-IN_UTERO,In Utero,In Utero
-IN_UTERO_CAPTION,The path presses on through In Utero.,The path presses on through In Utero.
-LIVING_ROCK,Living Rock,Living Rock
-LIVING_ROCK_CAPTION,The path presses on through Living Rock.,The path presses on through Living Rock.
-TO_THE_HEART,To the Heart,To the Heart
-TO_THE_HEART_CAPTION,The path presses on through To the Heart.,The path presses on through To the Heart.
-DUNGEONS_DEEP,Dungeons Deep,Dungeons Deep
-DUNGEONS_DEEP_CAPTION,The path presses on through Dungeons Deep.,The path presses on through Dungeons Deep.
+THE_CITY_BELOW_CAPTION,"A drowned city of the forgotten dead, ruled by a spirit-magistrate as cruel as any above.","A drowned city of the forgotten dead, ruled by a spirit-magistrate as cruel as any above."
+MOLTEN_MENACE,Rivers of Fire,Rivers of Fire
+MOLTEN_MENACE_CAPTION,To go deeper the band must cross the burning veins of the underworld.,To go deeper the band must cross the burning veins of the underworld.
+LABYRINTH,The Bone Maze,The Bone Maze
+LABYRINTH_CAPTION,"A labyrinth built from the harvested dead, turn after turn of them.","A labyrinth built from the harvested dead, turn after turn of them."
+IN_UTERO,The Forge of Flesh,The Forge of Flesh
+IN_UTERO_CAPTION,A place where bodies are made and unmade.,A place where bodies are made and unmade.
+LIVING_ROCK,The Waking Stone,The Waking Stone
+LIVING_ROCK_CAPTION,"They rouse an ancient bound spirit, who looks at them with something like pity.","They rouse an ancient bound spirit, who looks at them with something like pity."
+TO_THE_HEART,Into the Heart,Into the Heart
+TO_THE_HEART_CAPTION,A pull none of them can name draws the band toward the center of the buried world.,A pull none of them can name draws the band toward the center of the buried world.
+DUNGEONS_DEEP,The Deep Dark,The Deep Dark
+DUNGEONS_DEEP_CAPTION,In the deepest black the band falters.,In the deepest black the band falters.
 KINGSLAYER,Kingslayer,Kingslayer
-KINGSLAYER_CAPTION,The path presses on through Kingslayer.,The path presses on through Kingslayer.
-DOWNWARD_SPIRAL,Downward Spiral,Downward Spiral
-DOWNWARD_SPIRAL_CAPTION,The path presses on through Downward Spiral.,The path presses on through Downward Spiral.
-THE_MAKER,The Maker,The Maker
-THE_MAKER_CAPTION,The path presses on through The Maker.,The path presses on through The Maker.
-ANIMATA,Animata,Animata
-ANIMATA_CAPTION,The path presses on through Animata.,The path presses on through Animata.
-INTRUDER_ALERT,Intruder Alert!,Intruder Alert!
-INTRUDER_ALERT_CAPTION,The path presses on through Intruder Alert!.,The path presses on through Intruder Alert!.
-THE_OXSECIANS,The Oxsecians,The Oxsecians
-THE_OXSECIANS_CAPTION,The path presses on through The Oxsecians.,The path presses on through The Oxsecians.
-SEPARATE_WAYS,Separate Ways,Separate Ways
-SEPARATE_WAYS_CAPTION,The path presses on through Separate Ways.,The path presses on through Separate Ways.
+KINGSLAYER_CAPTION,They corner and kill the corrupt spirit-lord who rules the deep.,They corner and kill the corrupt spirit-lord who rules the deep.
+DOWNWARD_SPIRAL,The Long Fall,The Long Fall
+DOWNWARD_SPIRAL_CAPTION,The floor of the world gives way.,The floor of the world gives way.
+THE_MAKER,The Architect,The Architect
+THE_MAKER_CAPTION,"A hall without end, and in it ten thousand scribes copying names into a single black book with...","A hall without end, and in it ten thousand scribes copying names into a single black book with..."
+ANIMATA,The Soul Engine,The Soul Engine
+ANIMATA_CAPTION,"They find the machine of the harvest, where fallen heroes are rendered into the fuel that keeps...","They find the machine of the harvest, where fallen heroes are rendered into the fuel that keeps..."
+INTRUDER_ALERT,Trespass,Trespass
+INTRUDER_ALERT_CAPTION,Heaven notices them at last.,Heaven notices them at last.
+THE_OXSECIANS,Heaven's Hounds,Heaven's Hounds
+THE_OXSECIANS_CAPTION,A running war against the wardens of the Court Above.,A running war against the wardens of the Court Above.
+SEPARATE_WAYS,The Parting,The Parting
+SEPARATE_WAYS_CAPTION,The truth divides them.,The truth divides them.
 AWAKENING,Awakening,Awakening
-AWAKENING_CAPTION,The path presses on through Awakening.,The path presses on through Awakening.
-STRANGE_NEW_WORLD,Strange New World,Strange New World
-STRANGE_NEW_WORLD_CAPTION,The path presses on through Strange New World.,The path presses on through Strange New World.
-VOICE_FROM_BEYOND,Voice from Beyond,Voice from Beyond
-VOICE_FROM_BEYOND_CAPTION,The path presses on through Voice from Beyond.,The path presses on through Voice from Beyond.
-LAWS_OF_THE_JUNGLE,Laws of the Jungle,Laws of the Jungle
-LAWS_OF_THE_JUNGLE_CAPTION,The path presses on through Laws of the Jungle.,The path presses on through Laws of the Jungle.
+AWAKENING_CAPTION,"Cornered with no way out, the band wakes its true nature, names blazing in the dark of the...","Cornered with no way out, the band wakes its true nature, names blazing in the dark of the..."
+STRANGE_NEW_WORLD,A World Remade,A World Remade
+STRANGE_NEW_WORLD_CAPTION,They climb back to a surface that looks the same and is not.,They climb back to a surface that looks the same and is not.
+VOICE_FROM_BEYOND,The Voice Above,The Voice Above
+VOICE_FROM_BEYOND_CAPTION,For the first time the Court Above speaks to them directly.,For the first time the Court Above speaks to them directly.
+LAWS_OF_THE_JUNGLE,Law of the Wild,Law of the Wild
+LAWS_OF_THE_JUNGLE_CAPTION,"Beyond the reach of any law, the band must decide for itself what justice means, now that...","Beyond the reach of any law, the band must decide for itself what justice means, now that..."
 SEEK_AND_DESTROY,Seek and Destroy,Seek and Destroy
-SEEK_AND_DESTROY_CAPTION,The path presses on through Seek and Destroy.,The path presses on through Seek and Destroy.
-ZERO_SERIES,Zero Series,Zero Series
-ZERO_SERIES_CAPTION,The path presses on through Zero Series.,The path presses on through Zero Series.
-EVOLUTION_PRIME,Evolution Prime,Evolution Prime
-EVOLUTION_PRIME_CAPTION,The path presses on through Evolution Prime.,The path presses on through Evolution Prime.
+SEEK_AND_DESTROY_CAPTION,"They take the war to heaven's hands on the ground, hunting the magistrates and ministers who are...","They take the war to heaven's hands on the ground, hunting the magistrates and ministers who are..."
+ZERO_SERIES,Made Men,Made Men
+ZERO_SERIES_CAPTION,"They discover the Court manufactures false heroes to replace the ones it reaps, and find...","They discover the Court manufactures false heroes to replace the ones it reaps, and find..."
+EVOLUTION_PRIME,The Perfect Soldier,The Perfect Soldier
+EVOLUTION_PRIME_CAPTION,"A flawless made-hero, stronger than any of them, is sent to bring them in.","A flawless made-hero, stronger than any of them, is sent to bring them in."
 SORROW,Sorrow,Sorrow
-SORROW_CAPTION,The path presses on through Sorrow.,The path presses on through Sorrow.
+SORROW_CAPTION,"A brother everyone loved falls, and the war stops being a cause and becomes a wound.","A brother everyone loved falls, and the war stops being a cause and becomes a wound."
 VENGEANCE,Vengeance,Vengeance
-VENGEANCE_CAPTION,The path presses on through Vengeance.,The path presses on through Vengeance.
-REBOOT,Reboot,Reboot
-REBOOT_CAPTION,The path presses on through Reboot.,The path presses on through Reboot.
-RISING_WORLD,Rising World,Rising World
-RISING_WORLD_CAPTION,The path presses on through Rising World.,The path presses on through Rising World.
-BEYOND_THE_LIGHT,Beyond the Light,Beyond the Light
-BEYOND_THE_LIGHT_CAPTION,The path presses on through Beyond the Light.,The path presses on through Beyond the Light.
-THE_BRIDGEHEAD,The Bridgehead,The Bridgehead
-THE_BRIDGEHEAD_CAPTION,The path presses on through The Bridgehead.,The path presses on through The Bridgehead.
-THE_DEPARTED,The Departed,The Departed
-THE_DEPARTED_CAPTION,The path presses on through The Departed.,The path presses on through The Departed.
-THE_LIGHT_OF_DEVOTION,The Light of Devotion,The Light of Devotion
-THE_LIGHT_OF_DEVOTION_CAPTION,The path presses on through The Light of Devotion.,The path presses on through The Light of Devotion.
-MALEVOLENCE_ALIGHTS,Malevolence Alights,Malevolence Alights
-MALEVOLENCE_ALIGHTS_CAPTION,The path presses on through Malevolence Alights.,The path presses on through Malevolence Alights.
-PERMEATING_FEAR,Permeating Fear,Permeating Fear
-PERMEATING_FEAR_CAPTION,The path presses on through Permeating Fear.,The path presses on through Permeating Fear.
-IN_DEVIL_S_GRIP,In Devil's Grip,In Devil's Grip
-IN_DEVIL_S_GRIP_CAPTION,The path presses on through In Devil's Grip.,The path presses on through In Devil's Grip.
-ANIMATA_TEARS,Animata Tears,Animata Tears
-ANIMATA_TEARS_CAPTION,The path presses on through Animata Tears.,The path presses on through Animata Tears.
+VENGEANCE_CAPTION,Grief hardens into something colder.,Grief hardens into something colder.
+REBOOT,The Reset,The Reset
+REBOOT_CAPTION,"The Court reaches to turn the wheel early, to unmake them and start again.","The Court reaches to turn the wheel early, to unmake them and start again."
+RISING_WORLD,The Banner Rises,The Banner Rises
+RISING_WORLD_CAPTION,"At its height Outer Heaven becomes a true power, a fire the wronged can see from far away.","At its height Outer Heaven becomes a true power, a fire the wronged can see from far away."
+BEYOND_THE_LIGHT,The Offer,The Offer
+BEYOND_THE_LIGHT_CAPTION,"The Court Above extends its hand, not as a fist but as mercy.","The Court Above extends its hand, not as a fist but as mercy."
+THE_BRIDGEHEAD,Crossing Over,Crossing Over
+THE_BRIDGEHEAD_CAPTION,"Believing the world can still be mended from within, Timely Rain leads the band to accept the...","Believing the world can still be mended from within, Timely Rain leads the band to accept the..."
+THE_DEPARTED,The Fallen,The Fallen
+THE_DEPARTED_CAPTION,"Sent to fight heaven's wars, the first brothers die gloriously, exactly as designed.","Sent to fight heaven's wars, the first brothers die gloriously, exactly as designed."
+THE_LIGHT_OF_DEVOTION,Devotion's Price,Devotion's Price
+THE_LIGHT_OF_DEVOTION_CAPTION,"Too late, the band understands.","Too late, the band understands."
+MALEVOLENCE_ALIGHTS,Malice Descends,Malice Descends
+MALEVOLENCE_ALIGHTS_CAPTION,"Committed and scattered, the band watches the Court drop its mask at last.","Committed and scattered, the band watches the Court drop its mask at last."
+PERMEATING_FEAR,Creeping Dread,Creeping Dread
+PERMEATING_FEAR_CAPTION,The brothers die one after another in wars no one can win.,The brothers die one after another in wars no one can win.
+IN_DEVIL_S_GRIP,The Devil's Grip,The Devil's Grip
+IN_DEVIL_S_GRIP_CAPTION,"The survivors are cornered, hunted, and betrayed by the very empire they agreed to serve.","The survivors are cornered, hunted, and betrayed by the very empire they agreed to serve."
+ANIMATA_TEARS,The Engine Weeps,The Engine Weeps
+ANIMATA_TEARS_CAPTION,"They reach the Soul Engine again, swollen now with their own fallen.","They reach the Soul Engine again, swollen now with their own fallen."
 COMING_SOON,Coming soon,Próximamente
-PROPOSITION,Proposition,Proposition
-PROPOSITION_CAPTION,The path presses on through Proposition.,The path presses on through Proposition.
-ASH_OF_SOULS,Ash of Souls,Ash of Souls
-ASH_OF_SOULS_CAPTION,The path presses on through Ash of Souls.,The path presses on through Ash of Souls.
-A_TOWER_REBORN,A Tower Reborn,A Tower Reborn
-A_TOWER_REBORN_CAPTION,The path presses on through A Tower Reborn.,The path presses on through A Tower Reborn.
-TERRA_BATTLE,Terra Battle,Terra Battle
-TERRA_BATTLE_CAPTION,The path presses on through Terra Battle.,The path presses on through Terra Battle.
+PROPOSITION,The Bargain,The Bargain
+PROPOSITION_CAPTION,The Court offers the Warden the last deal.,The Court offers the Warden the last deal.
+ASH_OF_SOULS,Ashes,Ashes
+ASH_OF_SOULS_CAPTION,Outer Heaven burns.,Outer Heaven burns.
+A_TOWER_REBORN,The Ledger Reforged,The Ledger Reforged
+A_TOWER_REBORN_CAPTION,The black book reassembles itself to write the band into glory and seal them away for the next...,The black book reassembles itself to write the band into glory and seal them away for the next...
+TERRA_BATTLE,The Last Name,The Last Name
+TERRA_BATTLE_CAPTION,At the Ledger the final choice is yours.,At the Ledger the final choice is yours.

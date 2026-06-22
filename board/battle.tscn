@@ -290,6 +290,13 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="Phase6" type="Node2D" parent="Board/EnemyPhases"]
+visible = false
+z_index = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
 [node name="PlayerUnits" type="Node2D" parent="Board"]
 z_index = 1
 __meta__ = {

@@ -75,7 +75,7 @@ offset_left = -48.0
 offset_top = -48.0
 offset_right = 52.0
 offset_bottom = 52.0
-text = "OXSECIAN BOMBER EX"
+text = "Heaven's Bombardier, Exalted"
 
 [node name="Sprite2D" parent="CanvasLayer/UnitName" index="0"]
 position = Vector2( 48, 48 )

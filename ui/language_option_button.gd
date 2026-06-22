@@ -26,3 +26,6 @@ func _on_LanguageOptionButton_item_selected(index: int) -> void:
 			TranslationServer.set_locale("en")
 		LANGUAGE_ES_INDEX:
 			TranslationServer.set_locale("es")
+
+	GameData.save_data.locale = TranslationServer.get_locale()
+	GameData.save()

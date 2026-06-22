@@ -15,8 +15,10 @@ func _ready() -> void:
 		_quit_button.hide()
 	
 	_set_focus()
-	
-	# TODO: Show continue text if there is valid save data
+
+	# Show "Continue" instead of "Start" once the player has progress on disk.
+	if GameData.has_save_file():
+		_start_button.text = "CONTINUE"
 
 
 func on_load() -> void:

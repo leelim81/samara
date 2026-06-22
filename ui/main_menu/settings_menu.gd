@@ -15,6 +15,9 @@ func _on_ReturnButton_pressed() -> void:
 
 
 func _on_VolumeSlider_on_changed(bus_name: String, volume: float) -> void:
-	# TODO: Save volume in configs
-	
-	pass
+	if bus_name == "Sound effects":
+		GameData.save_data.sound_effects_volume = volume
+	else:
+		GameData.save_data.music_volume = volume
+
+	GameData.save()

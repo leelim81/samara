@@ -15,6 +15,7 @@ var config_file := ConfigFile.new()
 
 func _ready() -> void:
 	load_data()
+	apply_settings()
 
 
 # Loads data into globals
@@ -31,6 +32,27 @@ func load_data():
 			_load_data_from_configs_file()
 	else:
 		_load_data_from_default_resource()
+
+
+# True once the player has progress on disk (used to show "Continue").
+func has_save_file() -> bool:
+	return FileAccess.file_exists(_get_config_file_path())
+
+
+# Applies persisted audio volumes and locale on boot.
+func apply_settings() -> void:
+	_apply_bus_volume("Music", save_data.music_volume)
+	_apply_bus_volume("Sound effects", save_data.sound_effects_volume)
+
+	if save_data.locale != "":
+		TranslationServer.set_locale(save_data.locale)
+
+
+func _apply_bus_volume(bus_name: String, linear: float) -> void:
+	var index := AudioServer.get_bus_index(bus_name)
+
+	if index >= 0:
+		AudioServer.set_bus_volume_db(index, linear_to_db(maxf(linear, 0.0001)))
 
 
 # Returns Error

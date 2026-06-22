@@ -5,17 +5,17 @@
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 2 )
-sword_enemy_count = 0
+sword_enemy_count = 2
 gun_enemy_count = 0
-spear_enemy_count = 0
-staff_enemy_count = 0
-phases_count = 0
+spear_enemy_count = 1
+staff_enemy_count = 3
+phases_count = 4
 
 [resource]
 script = ExtResource( 1 )
 title = "PROPOSITION"
-caption = "COMING_SOON"
+caption = "PROPOSITION_CAPTION"
 difficulty = "79"
-battle_scene_path = ""
-locked = true
+battle_scene_path = "res://battles/terra/proposition.tscn"
+locked = false
 battle_info = SubResource( 1 )

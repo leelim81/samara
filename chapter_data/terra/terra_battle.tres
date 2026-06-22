@@ -5,17 +5,17 @@
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 2 )
-sword_enemy_count = 0
-gun_enemy_count = 0
-spear_enemy_count = 0
-staff_enemy_count = 0
-phases_count = 0
+sword_enemy_count = 2
+gun_enemy_count = 1
+spear_enemy_count = 1
+staff_enemy_count = 1
+phases_count = 3
 
 [resource]
 script = ExtResource( 1 )
 title = "TERRA_BATTLE"
-caption = "COMING_SOON"
+caption = "TERRA_BATTLE_CAPTION"
 difficulty = "80"
-battle_scene_path = ""
-locked = true
+battle_scene_path = "res://battles/terra/terra_battle.tscn"
+locked = false
 battle_info = SubResource( 1 )

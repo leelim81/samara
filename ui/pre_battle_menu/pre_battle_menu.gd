@@ -43,6 +43,10 @@ func _on_SquadButton_pressed() -> void:
 	navigate("res://ui/pre_battle_menu/squad_menu.tscn")
 
 
+func _on_CharactersButton_pressed() -> void:
+	navigate("res://ui/pre_battle_menu/characters_menu.tscn")
+
+
 func _on_QuitButton_pressed() -> void:
 	change_scene_to_file("res://ui/main_menu/stack_based_main_menu.tscn")
 

@@ -467,7 +467,9 @@ def battle_scene(phases, fixed_level, boss2x2):
             flat += [slug] * count
         # cap battle size so a 6-unit party isn't swarmed and enemies don't
         # mutually block flank cells (2x2 bosses are always kept)
-        in_b = [s for s in flat if s in boss2x2]
+        # Cap 2x2 bosses per phase to 2: 3+ tanky 2x2 units crowd the board and
+        # corrupt the 2x2 cell-push logic when they move (assert failures).
+        in_b = [s for s in flat if s in boss2x2][:2]
         in_r = [s for s in flat if s not in boss2x2]
         flat = in_b + in_r[:max(1, 7 - len(in_b))]
         cells = _place(flat, boss2x2)
@@ -618,8 +620,11 @@ def main():
             res, blocks = actions_block(ai_slugs, start_id=6)
             border, steps = "", 6 + len(ai_slugs)
             if is_boss1x1:
-                res.append('[ext_resource path="res://assets/terra/ui/boss_border.png" type="Texture2D" id=9]')
-                border = '[node name="Border" parent="Sprite2D" index="2"]\ntexture = ExtResource( 9 )\n\n'
+                # Border id must come after the skill resources (ids 6..6+n-1);
+                # a fixed id=9 collided with the 4th skill on 4-skill bosses.
+                bid = 6 + len(ai_slugs)
+                res.append('[ext_resource path="res://assets/terra/ui/boss_border.png" type="Texture2D" id=%d]' % bid)
+                border = '[node name="Border" parent="Sprite2D" index="2"]\ntexture = ExtResource( %d )\n\n' % bid
                 steps += 1
             scene = ENEMY_T.format(
                 steps=steps, slug=slug, token=token, node=node_name(e["name"]),

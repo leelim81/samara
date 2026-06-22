@@ -20,7 +20,7 @@ job = ExtResource( 2 )
 texture = ExtResource( 3 )
 
 [node name="UnitName" parent="CanvasLayer" index="3"]
-text = "OXSECIAN BOMB"
+text = "Heaven's Warden, Soldier"
 
 [node name="Action1" parent="AIController" index="0" instance=ExtResource( 5 )]
 behavior = 1

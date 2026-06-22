@@ -13,6 +13,9 @@ func set_values(chapter_data: ChapterData) -> void:
 		modulate = Color(1, 1, 1, 0.45)
 		$VBoxContainer/TitleRow/AudioButton.disabled = true
 		$VBoxContainer/CaptionLabel.text = tr("COMING_SOON")
+	elif GameData.save_data.is_chapter_cleared(chapter_data.title):
+		# Cleared chapters show their difficulty in green as a progress cue.
+		$VBoxContainer/TitleRow/DifficultyLabel.add_theme_color_override("font_color", Color(0.45, 0.85, 0.45))
 
 	var battle_info: BattleInfo = chapter_data.battle_info
 

@@ -54,20 +54,32 @@ offset_right = 597.0
 offset_top = 787.0
 offset_right = 620.0
 offset_bottom = 860.0
+theme_override_constants/separation = 8
 alignment = 1
 
 [node name="SquadButton" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 4 )]
-offset_left = 66.0
-offset_right = 306.0
+custom_minimum_size = Vector2( 180, 0 )
+offset_right = 180.0
 offset_bottom = 73.0
 text = "SQUAD"
+clip_text = true
+
+[node name="CharactersButton" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 4 )]
+custom_minimum_size = Vector2( 180, 0 )
+offset_left = 188.0
+offset_right = 368.0
+offset_bottom = 73.0
+text = "CHARACTERS"
+clip_text = true
 
 [node name="QuitButton" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 4 )]
-offset_left = 314.0
-offset_right = 554.0
+custom_minimum_size = Vector2( 180, 0 )
+offset_left = 376.0
+offset_right = 556.0
 offset_bottom = 73.0
 text = "RETURN_TO_MAIN_MENU"
 clip_text = true
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/SquadButton" to="." method="_on_SquadButton_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/CharactersButton" to="." method="_on_CharactersButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]

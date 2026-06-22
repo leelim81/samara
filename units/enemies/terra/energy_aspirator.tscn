@@ -74,7 +74,7 @@ offset_left = -48.0
 offset_top = -48.0
 offset_right = 52.0
 offset_bottom = 52.0
-text = "ENERGY ASPIRATOR"
+text = "the Soul-Siphon"
 
 [node name="Sprite2D" parent="CanvasLayer/UnitName" index="0"]
 position = Vector2( 48, 48 )

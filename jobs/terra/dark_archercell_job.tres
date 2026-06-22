@@ -10,6 +10,6 @@
 script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ) ]
-job_name = "DARK ARCHERCELL"
+job_name = "Furnace Construct"
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

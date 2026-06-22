@@ -18,17 +18,14 @@ visible = false
 [node name="Apirath1" parent="Board/EnemyPhases/Phase1" index="0" instance=ExtResource( 10 )]
 position = Vector2( 250, 150 )
 
-[node name="Apirath2" parent="Board/EnemyPhases/Phase1" index="1" instance=ExtResource( 10 )]
-position = Vector2( 50, 150 )
+[node name="Kirusk1" parent="Board/EnemyPhases/Phase1" index="1" instance=ExtResource( 11 )]
+position = Vector2( 550, 150 )
 
-[node name="Apirath3" parent="Board/EnemyPhases/Phase1" index="2" instance=ExtResource( 10 )]
-position = Vector2( 450, 150 )
+[node name="MagicAmp1" parent="Board/EnemyPhases/Phase1" index="2" instance=ExtResource( 12 )]
+position = Vector2( 50, 250 )
 
-[node name="Apirath4" parent="Board/EnemyPhases/Phase1" index="3" instance=ExtResource( 10 )]
-position = Vector2( 250, 150 )
-
-[node name="Apirath5" parent="Board/EnemyPhases/Phase1" index="4" instance=ExtResource( 10 )]
-position = Vector2( 50, 150 )
+[node name="PowerAmp1" parent="Board/EnemyPhases/Phase1" index="3" instance=ExtResource( 13 )]
+position = Vector2( 450, 250 )
 
 [node name="SlasherGoblin1" parent="Board/EnemyPhases/Phase1" index="5" instance=ExtResource( 14 )]
 position = Vector2( 150, 350 )

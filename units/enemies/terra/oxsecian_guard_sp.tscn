@@ -9,7 +9,7 @@
 [ext_resource path="res://skills/resources/terra/slash.tres" type="Resource" id=7]
 [ext_resource path="res://skills/resources/terra/sever.tres" type="Resource" id=8]
 [ext_resource path="res://skills/resources/terra/d_stone_shield_sword.tres" type="Resource" id=9]
-[ext_resource path="res://assets/terra/ui/boss_border.png" type="Texture2D" id=9]
+[ext_resource path="res://assets/terra/ui/boss_border.png" type="Texture2D" id=10]
 [node name="OxsecianGuardSP" instance=ExtResource( 1 )]
 level = 55
 turn_counter = 3
@@ -21,10 +21,10 @@ job = ExtResource( 2 )
 texture = ExtResource( 3 )
 
 [node name="Border" parent="Sprite2D" index="2"]
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 
 [node name="UnitName" parent="CanvasLayer" index="3"]
-text = "OXSECIAN GUARD SP"
+text = "Heaven's Guard, Exalted"
 
 [node name="Action1" parent="AIController" index="0" instance=ExtResource( 5 )]
 behavior = 1
