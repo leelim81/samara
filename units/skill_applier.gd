@@ -46,9 +46,11 @@ func apply_skill(unit: Unit,
 
 		if on_damage_absorbed_callback.is_valid():
 			on_damage_absorbed_callback.call(absorbed_damage)
-		
-		_target_unit.inflict_damage(damage)
-		
+
+		var emphasis: int = _damage_emphasis(skill.primary_weapon_type, skill.primary_attribute, _target_unit.get_stats())
+
+		_target_unit.inflict_damage(damage, emphasis)
+
 		if damage > 0:
 			_target_unit.on_attacked()
 	
@@ -178,6 +180,20 @@ func _get_weapon_type_advantage(attacker_weapon_type: int, defender_weapon_type:
 #   - opposed pair (Fire<->Ice, Lightning<->Darkness): 2.0 (double damage)
 #   - same attribute: 1.0 - same_attribute_resistance (a value >1.0 heals)
 #   - otherwise: 1.0
+# Damage-number emphasis: 1 = advantaged (weapon/element), 2 = resisted, 0 = normal.
+func _damage_emphasis(weapon_type: int, attribute: int, defender_stats: Stats) -> int:
+	var multiplier: float = _get_weapon_type_advantage(weapon_type, defender_stats.weapon_type) \
+			* _get_attribute_multiplier(defender_stats, attribute, defender_stats.attribute)
+
+	if multiplier > 1.0:
+		return 1
+
+	if multiplier < 1.0:
+		return 2
+
+	return 0
+
+
 func _get_attribute_multiplier(defender_stats: Stats, attacker_attribute, defender_attribute) -> float:
 	if attacker_attribute == Enums.Attribute.NONE or attacker_attribute == Enums.Attribute.HEALING:
 		return 1.0

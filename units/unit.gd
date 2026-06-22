@@ -449,10 +449,17 @@ func _load_job_textures() -> void:
 
 func set_job(job: Job) -> void:
 	$Job.set_job(job)
-	
+
 	_load_job_textures()
-	
+
 	apply_equip_skills()
+
+
+# Sets the unit's COMBAT level (and stats) for this battle without mutating the
+# underlying persistent Job resource's level. Used for the recommended-level
+# floor in persistent leveling.
+func set_battle_level(level: int) -> void:
+	$Job.set_level(level)
 
 
 func set_drag_mode(drag_mode: int) -> void:
@@ -600,7 +607,7 @@ func calculate_attack_damage(attacker_stats: Stats) -> int:
 	return calculate_damage(attacker_stats, get_stats(), 1.0, attacker_stats.weapon_type, attacker_stats.attribute)
 
 
-func inflict_damage(damage: int) -> void:
+func inflict_damage(damage: int, emphasis: int = 0) -> void:
 	$Job.decrease_health(damage)
 
 	if damage > 0:
@@ -612,7 +619,7 @@ func inflict_damage(damage: int) -> void:
 
 	add_child_at_offset(damage_numbers)
 
-	damage_numbers.play(damage)
+	damage_numbers.play(damage, emphasis)
 
 
 # Quick lunge toward an attack target and back; the visual punch of a

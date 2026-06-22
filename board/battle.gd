@@ -22,12 +22,24 @@ var _view_unit_menu_tween: Tween
 
 @onready var _progress_bar: TextureProgressBar = $CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/TextureProgressBar
 
+# Live battle-spoils HUD (built programmatically; see _build_live_hud).
+var _wave_label: Label
+var _coins_label: Label
+var _exp_label: Label
+var _ko_label: Label
+
 
 func _ready() -> void:
 	set_process(false)
 	
 	GameData.load_data()
 	
+	_build_live_hud()
+	_build_pause_menu()
+
+	if not $Board.spoils_changed.is_connected(_on_spoils_changed):
+		$Board.spoils_changed.connect(_on_spoils_changed)
+
 	$BattleTheme.play()
 
 
@@ -143,19 +155,22 @@ func _on_DefeatScreen_try_again_button_pressed() -> void:
 
 
 func _on_VictoryScreen_continue_button_pressed() -> void:
+	# Award battle EXP to the active squad so levels carry over (persistent leveling).
+	$Board.award_exp_to_squad()
+
 	# Mark this chapter cleared and unlock the next one in the story list.
 	if chapter_data != null and chapter_data is ChapterData:
 		GameData.save_data.clear_chapter_and_unlock_next(chapter_data.title)
-		GameData.save()
+
+	GameData.save()
 
 	if Loader.change_scene_to_file(next_scene, chapter_data) != OK:
 		printerr("Failed to change to %s" % next_scene)
 
 
 func _on_GiveUpButton_pressed() -> void:
-	_on_Board_defeat()
-	
-	$Board.on_give_up()
+	# Route Give Up through the pause menu so it needs confirmation.
+	_open_pause_menu()
 
 
 func _on_DragModeOptionButton_drag_mode_changed(drag_mode: int) -> void:
@@ -174,6 +189,9 @@ func _on_Board_enemy_phase_started(current_enemy_phase: int, enemy_phase_count: 
 
 	$CanvasLayer/EnemyPhaseCenterContainer/Banner/Margin/VBox/SubtitleLabel.text = tr("BATTLE").to_upper()
 	$CanvasLayer/EnemyPhaseCenterContainer/Banner/Margin/VBox/NumberLabel.text = "%d / %d" % [current_enemy_phase, enemy_phase_count]
+
+	if _wave_label != null:
+		_wave_label.text = "WAVE  %d / %d" % [current_enemy_phase, enemy_phase_count]
 
 	# Fade the layer in and pop the card so it lands cleanly
 	var control_tween := create_tween()
@@ -231,4 +249,137 @@ func _on_ViewUnitMenu_go_back(view_unit_menu: Control) -> void:
 	await _view_unit_menu_tween.finished
 
 	view_unit_menu.queue_free()
+
+
+# ---- Live spoils HUD (Terra Battle battle HUD parity) ----
+
+func _build_live_hud() -> void:
+	var box := VBoxContainer.new()
+	box.name = "LiveCounters"
+	box.anchor_left = 1.0
+	box.anchor_right = 1.0
+	box.offset_left = -210.0
+	box.offset_right = -22.0
+	box.offset_top = 126.0
+	box.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	box.add_theme_constant_override("separation", 1)
+
+	$CanvasLayer.add_child(box)
+
+	_wave_label = _make_counter_label()
+	_coins_label = _make_counter_label()
+	_exp_label = _make_counter_label()
+	_ko_label = _make_counter_label()
+
+	box.add_child(_wave_label)
+	box.add_child(_coins_label)
+	box.add_child(_exp_label)
+	box.add_child(_ko_label)
+
+	_update_live_hud()
+
+
+func _make_counter_label() -> Label:
+	var label := Label.new()
+	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	label.add_theme_font_size_override("font_size", 16)
+	label.add_theme_color_override("font_color", Color(0.95, 0.93, 0.86, 0.82))
+	label.add_theme_color_override("font_shadow_color", Color(0, 0, 0, 0.55))
+	label.add_theme_constant_override("shadow_offset_y", 1)
+	return label
+
+
+func _update_live_hud() -> void:
+	if _coins_label == null:
+		return
+
+	var spoils: Dictionary = $Board.get_battle_spoils()
+
+	_coins_label.text = "COINS  %d" % spoils.coins
+	_exp_label.text = "EXP  %d" % spoils.exp
+	_ko_label.text = "KO  %d" % spoils.defeated
+
+
+func _on_spoils_changed(_exp: int, _coins: int, _defeated: int) -> void:
+	_update_live_hud()
+
+
+# ---- In-battle pause menu (Resume / Give Up with confirm) ----
+
+var _pause_overlay: Control
+
+
+func _build_pause_menu() -> void:
+	var layer := CanvasLayer.new()
+	layer.layer = 50
+	add_child(layer)
+
+	_pause_overlay = Control.new()
+	_pause_overlay.anchor_right = 1.0
+	_pause_overlay.anchor_bottom = 1.0
+	_pause_overlay.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+	_pause_overlay.hide()
+	layer.add_child(_pause_overlay)
+
+	var dim := ColorRect.new()
+	dim.color = Color(0.05, 0.06, 0.09, 0.72)
+	dim.anchor_right = 1.0
+	dim.anchor_bottom = 1.0
+	dim.mouse_filter = Control.MOUSE_FILTER_STOP
+	_pause_overlay.add_child(dim)
+
+	var center := CenterContainer.new()
+	center.anchor_right = 1.0
+	center.anchor_bottom = 1.0
+	_pause_overlay.add_child(center)
+
+	var vbox := VBoxContainer.new()
+	vbox.add_theme_constant_override("separation", 20)
+	center.add_child(vbox)
+
+	var title := Label.new()
+	title.text = "PAUSED"
+	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	title.add_theme_font_size_override("font_size", 44)
+	title.add_theme_color_override("font_color", Color(0.96, 0.95, 0.9))
+	vbox.add_child(title)
+
+	var resume := _make_pause_button("RESUME")
+	resume.pressed.connect(_on_pause_resume)
+	vbox.add_child(resume)
+
+	var give_up := _make_pause_button("GIVE UP")
+	give_up.pressed.connect(_on_pause_give_up)
+	vbox.add_child(give_up)
+
+
+func _make_pause_button(label: String) -> Button:
+	var button := Button.new()
+	button.text = label
+	button.custom_minimum_size = Vector2(260, 64)
+	button.add_theme_font_size_override("font_size", 22)
+	return button
+
+
+func _open_pause_menu() -> void:
+	if _is_battle_finished or _pause_overlay == null:
+		return
+
+	_pause_overlay.show()
+	get_tree().paused = true
+
+
+func _on_pause_resume() -> void:
+	get_tree().paused = false
+	_pause_overlay.hide()
+
+
+func _on_pause_give_up() -> void:
+	get_tree().paused = false
+	_pause_overlay.hide()
+
+	_on_Board_defeat()
+
+	$Board.on_give_up()
 

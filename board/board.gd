@@ -25,6 +25,9 @@ signal enemies_appeared
 
 signal unit_selected_for_view(job)
 
+# Emitted whenever battle spoils change (an enemy falls) so the HUD can update live.
+signal spoils_changed(exp, coins, defeated)
+
 # Set to true to use debug units instead of the player's squad
 @export var can_use_debug_units: bool = false
 
@@ -70,6 +73,11 @@ var _is_battle_finished: bool = false
 var _battle_exp: int = 0
 var _battle_coins: int = 0
 var _enemies_defeated: int = 0
+
+# Screen shake (shakes the Board node, not a camera, so HUD/cut-in layers stay put)
+var _shake_tween: Tween
+var _shake_home_set: bool = false
+var _shake_home: Vector2 = Vector2.ZERO
 
 @onready var _grid := $Grid
 
@@ -125,13 +133,20 @@ func _load_player_units() -> void:
 			var index: int = _save_data.active_units[i]
 			
 			var job: Job = _save_data.jobs[index]
-			
-			if fixed_player_units_level > 0:
-				job.level = fixed_player_units_level
-			
+
 			var unit: Unit = _player_units_node.get_child(i)
-			
+
 			unit.set_job(job)
+
+			# Fight at the chapter's recommended level as a floor, but never
+			# below the unit's own persistent level — leveling carries over
+			# (persistent progression) while the campaign stays winnable.
+			var battle_level: int = job.level
+
+			if fixed_player_units_level > 0:
+				battle_level = max(job.level, fixed_player_units_level)
+
+			unit.set_battle_level(battle_level)
 		else:
 			# If there are more units than active units then we free the rest
 			var discarded_unit: Unit = _player_units_node.get_child(i)
@@ -858,9 +873,9 @@ func _remove_pincering_units_from_enemy_queue(unit: Unit, pincer: Pincer) -> voi
 
 func _update_status_effects() -> void:
 	# TODO: Apply trap damage to units standing inside traps
-	
-	# TODO: Move confused units if confusion is implemented
-	
+
+	_move_confused_units()
+
 	$PincerExecutor.start_status_effect_phase()
 	
 	await $PincerExecutor.status_effect_phase_finished
@@ -870,6 +885,41 @@ func _update_status_effects() -> void:
 	await $PincerExecutor.finished_checking_for_dead_units
 	
 	_start_player_turn()
+
+
+# Confused units lurch to a random free adjacent cell on the status phase and
+# can't act. (No skill currently inflicts CONFUSE, so this is normally a no-op.)
+func _move_confused_units() -> void:
+	var units: Array = _player_units_node.get_children() + _enemy_units_node.get_children()
+
+	for unit in units:
+		if not is_instance_valid(unit) or not unit.is_alive():
+			continue
+
+		if not unit.has_status_effect_of_type(Enums.StatusEffectType.CONFUSE):
+			continue
+
+		var cell = _grid.get_cell_from_position(unit.position)
+
+		if cell == null:
+			continue
+
+		var free_neighbors: Array = []
+
+		for direction in [Enums.DIRECTION.UP, Enums.DIRECTION.DOWN, Enums.DIRECTION.LEFT, Enums.DIRECTION.RIGHT]:
+			var neighbor = cell.get_neighbor(direction)
+
+			if neighbor != null and neighbor.unit == null:
+				free_neighbors.append(neighbor)
+
+		if free_neighbors.is_empty():
+			continue
+
+		var target = free_neighbors[randi() % free_neighbors.size()]
+
+		cell.unit = null
+		target.unit = unit
+		unit.position = target.position
 
 
 func _start_drag_timer() -> void:
@@ -1113,6 +1163,32 @@ func _on_Enemy_dead(unit: Unit) -> void:
 
 	_accumulate_spoils(unit)
 
+	shake(8.5 if unit.is2x2() else 4.5, 0.28 if unit.is2x2() else 0.2)
+
+
+# Brief screen shake on impactful moments (enemy/boss death). Returns to a
+# captured home position so repeated shakes never drift the board.
+func shake(intensity: float = 5.0, duration: float = 0.22) -> void:
+	if not _shake_home_set:
+		_shake_home = position
+		_shake_home_set = true
+
+	if is_instance_valid(_shake_tween) and _shake_tween.is_running():
+		_shake_tween.kill()
+
+	position = _shake_home
+
+	_shake_tween = create_tween()
+
+	var steps: int = 6
+
+	for i in steps:
+		var falloff: float = 1.0 - float(i) / float(steps)
+		var offset := Vector2(randf_range(-intensity, intensity), randf_range(-intensity, intensity)) * falloff
+		_shake_tween.tween_property(self, "position", _shake_home + offset, duration / float(steps + 1))
+
+	_shake_tween.tween_property(self, "position", _shake_home, duration / float(steps + 1))
+
 
 # Spoils scale with the enemy's level; bosses (2x2) are worth far more
 func _accumulate_spoils(unit: Unit) -> void:
@@ -1123,6 +1199,8 @@ func _accumulate_spoils(unit: Unit) -> void:
 	_battle_coins += (6 + level * 5) * multiplier
 	_enemies_defeated += 1
 
+	emit_signal("spoils_changed", _battle_exp, _battle_coins, _enemies_defeated)
+
 
 # Battle spoils for the results screen: {exp, coins, defeated}
 func get_battle_spoils() -> Dictionary:
@@ -1131,6 +1209,24 @@ func get_battle_spoils() -> Dictionary:
 		"coins": _battle_coins,
 		"defeated": _enemies_defeated,
 	}
+
+
+# Distributes battle EXP across the active player squad's persistent jobs so
+# levels carry over between battles (persistent leveling).
+func award_exp_to_squad() -> void:
+	if _save_data == null or _battle_exp <= 0:
+		return
+
+	var active: Array = _save_data.active_units
+
+	if active.is_empty():
+		return
+
+	var share: int = int(_battle_exp / active.size())
+
+	for index in active:
+		if index >= 0 and index < _save_data.jobs.size():
+			_save_data.jobs[index].gain_exp(share)
 
 
 func _on_Enemy_action_done(unit: Unit) -> void:

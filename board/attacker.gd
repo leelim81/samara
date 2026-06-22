@@ -106,19 +106,32 @@ func _get_attack_focus(attack: Attack) -> Vector2:
 
 
 func _execute_attack(attack: Attack) -> void:
-	_play_sound(attack.pincering_unit.get_stats().weapon_type)
+	var attacker_stats = attack.pincering_unit.get_stats()
+
+	_play_sound(attacker_stats.weapon_type)
 
 	for targeted_unit in attack.targeted_units:
-		var damage: int = targeted_unit.calculate_attack_damage(attack.pincering_unit.get_stats()) * _random.randf_range(0.9, 1.1)
+		var damage: int = targeted_unit.calculate_attack_damage(attacker_stats) * _random.randf_range(0.9, 1.1)
 
 		var attack_effect: Node2D = attack_effect_packed_scene.instantiate()
 		add_child(attack_effect)
 
 		attack_effect.position = targeted_unit.get_offset_origin()
 
-		targeted_unit.inflict_damage(damage)
+		var emphasis: int = _pincer_emphasis(attacker_stats, targeted_unit.get_stats())
+
+		targeted_unit.inflict_damage(damage, emphasis)
 
 		targeted_unit.on_attacked()
+
+
+# Circle-of-Carnage / elemental advantage on a basic pincer hit (1 = advantage).
+func _pincer_emphasis(attacker_stats, defender_stats) -> int:
+	var weapon_advantage: bool = Enums.WEAPON_RELATIONSHIPS.get(attacker_stats.weapon_type) == defender_stats.weapon_type
+	var element_advantage: bool = attacker_stats.attribute != Enums.Attribute.NONE \
+			and Enums.ATTRIBUTE_RELATIONSHIPS.get(attacker_stats.attribute) == defender_stats.attribute
+
+	return 1 if (weapon_advantage or element_advantage) else 0
 
 
 func _play_sound(weapon_type: int) -> void:
