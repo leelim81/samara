@@ -3,7 +3,7 @@ res://assets/fonts/CinzelDecorativeBold.tres::e84a2b3a7c1cf517613be4fbd95eb0f3::
 res://assets/fonts/EBGaramond24.tres::15d3b4fd885d02586dd1b7bb60bcee71::1781188476::res://.godot/exported/133200997/export-1d25633d0d62487d52cf60f123d876f6-EBGaramond24.res
 res://assets/fonts/Exo2Regular18.tres::9afafee568b0b34cefb5aa30962012b3::1781188476::res://.godot/exported/133200997/export-34ed48810b0572c772eac7e93da9c62d-Exo2Regular18.res
 res://assets/fonts/Exo2Regular.tres::36e6dd6f09191ed21b61d8f000019db7::1781188476::res://.godot/exported/133200997/export-b703ccb9ef739bd957918f89fbd2c380-Exo2Regular.res
-res://default_bus_layout.tres::6feb3aae10a54b4c54ea013f3b46064f::1781188476::res://.godot/exported/133200997/export-19246414aa9fb561ced4b8dce477acec-default_bus_layout.res
+res://default_bus_layout.tres::4af40e605c51cac290dd1617d0fab233::1782118665::res://.godot/exported/133200997/export-19246414aa9fb561ced4b8dce477acec-default_bus_layout.res
 res://theme.tres::24c3bdc372088c4d7dff62c3ea176e9b::1781223379::res://.godot/exported/133200997/export-1b11a992ebcc6f262e4ee4a4db300a0d-theme.res
 res://units/unit.tscn::d641ccd1a328b10587708cebf9780fc2::1781401977::res://.godot/exported/133200997/export-b7c7498bd5985312ef7f2237b7aeaff9-unit.scn
 res://default_env.tres::a52129f071fffbd20a6013a6c0edec1e::1781188476::res://.godot/exported/133200997/export-7cf3fd67ad9f55210191d77b582b8209-default_env.res
@@ -346,7 +346,7 @@ res://jobs/terra/lizardfolk_healer_job.tres::82611c33099ff0577e3edc918808044e::1
 res://jobs/terra/lizardfolk_hero_job.tres::78b5f038452a28fe1503f55ad48a1861::1782115380::res://.godot/exported/133200997/export-629458e1b6a6461de78838772fb1a79e-lizardfolk_hero_job.res
 res://jobs/terra/lizardfolk_knight_job.tres::41bfcc36ae2aaa75b48bd2537efb9133::1782115380::res://.godot/exported/133200997/export-45e508f11777bc08653ff6779d74aac3-lizardfolk_knight_job.res
 res://jobs/terra/lizardfolk_mage_job.tres::dd09ba1387fb15bc9e2a959189bc0960::1782115380::res://.godot/exported/133200997/export-4ff371dff46e6c6077bf579f70670693-lizardfolk_mage_job.res
-res://jobs/terra/lizardfolk_warrior_job.tres::b3a30b4e1421774f32de8c314a62fc4a::1782115380::res://.godot/exported/133200997/export-a04d63b4ca2fa691161c6c3051d5653b-lizardfolk_warrior_job.res
+res://jobs/terra/lizardfolk_warrior_job.tres::d54e64781be8ea9642f33c3d3243e9c3::1782118052::res://.godot/exported/133200997/export-a04d63b4ca2fa691161c6c3051d5653b-lizardfolk_warrior_job.res
 res://jobs/terra/lock_on_job.tres::0cc9289e883d479c8b431d4b028235d1::1782115380::res://.godot/exported/133200997/export-208bf0bd0cbdecd78d8c20625ed58368-lock_on_job.res
 res://jobs/terra/magic_amp_job.tres::c249e34156f8af9a148f747bbf97c19b::1782115380::res://.godot/exported/133200997/export-7ec1b9baa4aa8d4fe2130a0f64e32242-magic_amp_job.res
 res://jobs/terra/mantledrake_job.tres::edb16f1886762bc2e442f67e3d8e17be::1782115380::res://.godot/exported/133200997/export-f53fb0313a5534240a0a70b7757753df-mantledrake_job.res
@@ -773,7 +773,7 @@ res://units/enemies/terra/lizardfolk_healer.tscn::b09bd639ddd8b21ac6f496889990cd
 res://units/enemies/terra/lizardfolk_hero.tscn::fe8e4ba0b9698b767a8b9ba87f588c0d::1782115380::res://.godot/exported/133200997/export-a31f4187892c38d21cf3f333c0ed383d-lizardfolk_hero.scn
 res://units/enemies/terra/lizardfolk_knight.tscn::eaaae2f0d202acbd028fb9f61fe0c268::1782115380::res://.godot/exported/133200997/export-634277d9200ebf12cbbc6d5674a3fb62-lizardfolk_knight.scn
 res://units/enemies/terra/lizardfolk_mage.tscn::763bdd9623689352b9c5f1a9b325b8b3::1782115380::res://.godot/exported/133200997/export-01bf8b25a875ee152967e28b3f033e67-lizardfolk_mage.scn
-res://units/enemies/terra/lizardfolk_warrior.tscn::2206ef0a0104d9db4cbf9d263a6f0354::1782115380::res://.godot/exported/133200997/export-b003729f58de64fc35dca5aa4a054654-lizardfolk_warrior.scn
+res://units/enemies/terra/lizardfolk_warrior.tscn::63c9d76016272380f60b2a85cd6a4986::1782118035::res://.godot/exported/133200997/export-b003729f58de64fc35dca5aa4a054654-lizardfolk_warrior.scn
 res://units/enemies/terra/lock_on.tscn::52b85706d0e4f7050a30fc56c362ce84::1782115380::res://.godot/exported/133200997/export-8ec8ab5172cb869627f4f3ebf78dd4f3-lock_on.scn
 res://units/enemies/terra/magic_amp.tscn::52a855be3fb76627166c8da19a3caa8c::1782115380::res://.godot/exported/133200997/export-f72555a7cc5550b75db7814a085a3f95-magic_amp.scn
 res://units/enemies/terra/mantledrake.tscn::49861d4e51f11efc9177429e2cff8a53::1782115380::res://.godot/exported/133200997/export-b225b09f813876a3ee2835476764138a-mantledrake.scn
