@@ -884,13 +884,15 @@ func _show_pincer_cutin(pincer: Pincer) -> void:
 
 func _set_turn_counter_of_pincering_units(unit: Unit, pincer: Pincer) -> void:
 	for pincering_unit in pincer.pincering_units:
-		if pincering_unit != unit and pincering_unit.has_pincer_action() and pincering_unit.turn_counter != 0:
+		# turn_counter / has_pincer_action are Enemy-only; guard so a non-enemy
+		# pincering unit (possible in odd board states) is harmlessly skipped.
+		if pincering_unit != unit and pincering_unit.has_method("has_pincer_action") and pincering_unit.has_pincer_action() and pincering_unit.turn_counter != 0:
 			pincering_unit.turn_counter = 0
 
 
 func _remove_pincering_units_from_enemy_queue(unit: Unit, pincer: Pincer) -> void:
 	for pincering_unit in pincer.pincering_units:
-		if pincering_unit != unit and pincering_unit.has_pincer_action():
+		if pincering_unit != unit and pincering_unit.has_method("has_pincer_action") and pincering_unit.has_pincer_action():
 			var index := _enemy_queue.find(pincering_unit)
 			
 			if index != -1:

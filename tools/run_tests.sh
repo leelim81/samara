@@ -34,6 +34,7 @@ if [ -f "$SAVE.testbak" ]; then mv "$SAVE.testbak" "$SAVE"; else rm -f "$SAVE"; 
 run "battle: pincer integration"     res://test_pincer.gd               "TEST PASS"
 run "powered point: 100% activation" res://tools/test_powered_point.gd   "test_powered_point: PASS"
 run "powered point: integration"     res://tools/test_powered_point_integration.gd "test_powered_point_integration: PASS"
+run "engine: real drag-move"         res://tools/test_drag_move.gd      "test_drag_move: PASS"
 
 echo "========================="
 if [ "$fail" = "0" ]; then echo "ALL TESTS PASS"; else echo "SOME TESTS FAILED"; fi
