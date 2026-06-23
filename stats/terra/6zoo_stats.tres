@@ -6,11 +6,11 @@
 script = ExtResource( 1 )
 unit_name = "6ZOO"
 unit_type = "MONSTER"
-health_percentage = 5.9582
-attack_percentage = 0.7192
-defense_percentage = 1.9939
-spiritual_attack_percentage = 0.5455
-spiritual_defense_percentage = 1.697
+health_percentage = 6.7339
+attack_percentage = 0.7232
+defense_percentage = 2.0121
+spiritual_attack_percentage = 0.6384
+spiritual_defense_percentage = 1.9515
 status_ailment_vulnerability = 0.75
 status_ailment_vulnerabilities = {
 }

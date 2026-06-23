@@ -6,11 +6,11 @@
 script = ExtResource( 1 )
 unit_name = "INCAPACITATOR"
 unit_type = "MONSTER"
-health_percentage = 1.0864
-attack_percentage = 0.9494
-defense_percentage = 1.038
-spiritual_attack_percentage = 1.0456
-spiritual_defense_percentage = 1.1671
+health_percentage = 1.0125
+attack_percentage = 0.9544
+defense_percentage = 1.043
+spiritual_attack_percentage = 1.0101
+spiritual_defense_percentage = 1.162
 status_ailment_vulnerability = 0.6
 status_ailment_vulnerabilities = {
 }

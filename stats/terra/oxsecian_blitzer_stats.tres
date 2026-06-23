@@ -6,11 +6,11 @@
 script = ExtResource( 1 )
 unit_name = "OXSECIAN BLITZER"
 unit_type = "MONSTER"
-health_percentage = 0.4885
-attack_percentage = 0.7364
-defense_percentage = 1.1242
+health_percentage = 0.9771
+attack_percentage = 0.7424
+defense_percentage = 1.2758
 spiritual_attack_percentage = 0.6576
-spiritual_defense_percentage = 1.2182
+spiritual_defense_percentage = 1.2333
 status_ailment_vulnerability = 0.34
 status_ailment_vulnerabilities = {
 }

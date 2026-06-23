@@ -6,11 +6,11 @@
 script = ExtResource( 1 )
 unit_name = "OXSECIAN AIRGRUNT"
 unit_type = "MONSTER"
-health_percentage = 0.2745
+health_percentage = 0.2805
 attack_percentage = 0.596
 defense_percentage = 0.784
 spiritual_attack_percentage = 0.396
-spiritual_defense_percentage = 0.876
+spiritual_defense_percentage = 0.828
 status_ailment_vulnerability = 0.34
 status_ailment_vulnerabilities = {
 }

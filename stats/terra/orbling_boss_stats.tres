@@ -6,11 +6,11 @@
 script = ExtResource( 1 )
 unit_name = "ORBLING"
 unit_type = "MONSTER"
-health_percentage = 0.2244
-attack_percentage = 1.4
-defense_percentage = 0.2667
+health_percentage = 0.4289
+attack_percentage = 2.0
+defense_percentage = 1.3333
 spiritual_attack_percentage = 0.8
-spiritual_defense_percentage = 1.0
+spiritual_defense_percentage = 1.4667
 status_ailment_vulnerability = 0.0
 status_ailment_vulnerabilities = {
 }

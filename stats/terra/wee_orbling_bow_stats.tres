@@ -6,9 +6,9 @@
 script = ExtResource( 1 )
 unit_name = "WEE_ORBLING"
 unit_type = "MONSTER"
-health_percentage = 0.56
-attack_percentage = 2.6
-defense_percentage = 0.8
+health_percentage = 0.5867
+attack_percentage = 2.8
+defense_percentage = 0.6
 spiritual_attack_percentage = 2.0
 spiritual_defense_percentage = 2.4
 status_ailment_vulnerability = 0.8

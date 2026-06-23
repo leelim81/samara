@@ -6,11 +6,11 @@
 script = ExtResource( 1 )
 unit_name = "REBEL ELECTROCUTOR"
 unit_type = "MONSTER"
-health_percentage = 0.8803
+health_percentage = 1.0244
 attack_percentage = 0.8784
-defense_percentage = 1.6676
+defense_percentage = 1.7568
 spiritual_attack_percentage = 0.9595
-spiritual_defense_percentage = 1.5568
+spiritual_defense_percentage = 1.6405
 status_ailment_vulnerability = 0.28
 status_ailment_vulnerabilities = {
 }

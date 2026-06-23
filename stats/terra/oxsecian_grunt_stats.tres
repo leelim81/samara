@@ -6,7 +6,7 @@
 script = ExtResource( 1 )
 unit_name = "OXSECIAN GRUNT"
 unit_type = "MONSTER"
-health_percentage = 0.2759
+health_percentage = 0.272
 attack_percentage = 0.58
 defense_percentage = 0.772
 spiritual_attack_percentage = 0.328
