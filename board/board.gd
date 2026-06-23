@@ -1275,6 +1275,11 @@ func get_battle_spoils() -> Dictionary:
 	}
 
 
+# Active player units in squad order (for the HUD squad-status icons).
+func get_player_units() -> Array:
+	return _player_units_node.get_children() if _player_units_node != null else []
+
+
 # Distributes battle EXP across the active player squad's persistent jobs so
 # levels carry over between battles (persistent leveling).
 func award_exp_to_squad() -> void:

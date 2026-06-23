@@ -35,6 +35,16 @@ var _ko_label: Label
 	$CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/PowerGauge/Seg3,
 ]
 
+@onready var _squad_icons: Array = [
+	$CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/TextureRect,
+	$CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/TextureRect2,
+	$CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/TextureRect3,
+	$CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/TextureRect4,
+	$CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/TextureRect5,
+	$CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/TextureRect6,
+	$CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/TextureRect7,
+]
+
 
 func _ready() -> void:
 	set_process(false)
@@ -43,6 +53,7 @@ func _ready() -> void:
 	
 	_build_live_hud()
 	_build_pause_menu()
+	_bind_squad_icons()
 
 	if not $Board.spoils_changed.is_connected(_on_spoils_changed):
 		$Board.spoils_changed.connect(_on_spoils_changed)
@@ -119,6 +130,7 @@ func _on_Board_player_turn_started() -> void:
 	_update_turn_count()
 
 	_your_turn_label.visible = true
+	_refresh_squad_icon_states()
 
 
 func _on_Board_victory() -> void:
@@ -273,34 +285,37 @@ func _on_ViewUnitMenu_go_back(view_unit_menu: Control) -> void:
 # ---- Live spoils HUD (Terra Battle battle HUD parity) ----
 
 func _build_live_hud() -> void:
-	var box := VBoxContainer.new()
+	# Terra Battle shows the battle counters across the top-center; a centered
+	# horizontal row just under the top bar mirrors that.
+	var box := HBoxContainer.new()
 	box.name = "LiveCounters"
-	box.anchor_left = 1.0
-	box.anchor_right = 1.0
-	box.offset_left = -210.0
-	box.offset_right = -22.0
-	box.offset_top = 126.0
+	box.anchor_left = 0.5
+	box.anchor_right = 0.5
+	box.offset_left = -220.0
+	box.offset_right = 220.0
+	box.offset_top = 100.0
+	box.alignment = BoxContainer.ALIGNMENT_CENTER
+	box.add_theme_constant_override("separation", 22)
 	box.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	box.add_theme_constant_override("separation", 1)
 
 	$CanvasLayer.add_child(box)
 
-	_wave_label = _make_counter_label()
 	_coins_label = _make_counter_label()
 	_exp_label = _make_counter_label()
 	_ko_label = _make_counter_label()
+	_wave_label = _make_counter_label()
 
-	box.add_child(_wave_label)
 	box.add_child(_coins_label)
 	box.add_child(_exp_label)
 	box.add_child(_ko_label)
+	box.add_child(_wave_label)
 
 	_update_live_hud()
 
 
 func _make_counter_label() -> Label:
 	var label := Label.new()
-	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	label.add_theme_font_size_override("font_size", 16)
 	label.add_theme_color_override("font_color", Color(0.95, 0.93, 0.86, 0.82))
@@ -328,6 +343,37 @@ func _on_spoils_changed(_exp: int, _coins: int, _defeated: int) -> void:
 func _on_power_changed(power: int, _max_power: int) -> void:
 	for i in _power_segments.size():
 		_power_segments[i].value = 100.0 if i < power else 0.0
+
+
+# ---- Squad status icons (bound to the real squad; dim on KO) ----
+
+func _bind_squad_icons() -> void:
+	var save_data = GameData.save_data
+	var active: Array = save_data.active_units
+
+	for i in _squad_icons.size():
+		var icon: TextureRect = _squad_icons[i]
+
+		if i < active.size():
+			var job = save_data.jobs[active[i]]
+			icon.texture = load(Enums.WEAPON_TYPE_TEXTURES[job.stats.weapon_type])
+			icon.modulate = Color.WHITE
+			icon.visible = true
+		else:
+			icon.visible = false
+
+
+func _refresh_squad_icon_states() -> void:
+	var units: Array = $Board.get_player_units()
+
+	for i in _squad_icons.size():
+		if not _squad_icons[i].visible:
+			continue
+
+		if i < units.size() and is_instance_valid(units[i]) and units[i].is_alive():
+			_squad_icons[i].modulate = Color.WHITE
+		else:
+			_squad_icons[i].modulate = Color(0.42, 0.42, 0.46, 0.55)
 
 
 # ---- In-battle pause menu (Resume / Give Up with confirm) ----
