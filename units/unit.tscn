@@ -14,7 +14,7 @@
 [ext_resource path="res://assets/terra/ui/sword.png" type="Texture2D" id=12]
 [ext_resource path="res://assets/sfx/ceramic_drag_2.wav" type="AudioStream" id=13]
 [ext_resource path="res://assets/ui/letter_z.png" type="Texture2D" id=14]
-[ext_resource path="res://assets/enemies/orbling_dracorin.png" type="Texture2D" id=15]
+[ext_resource path="res://assets/terra/tokens/dracorin_token.png" type="Texture2D" id=15]
 [ext_resource path="res://units/job.gd" type="Script" id=16]
 [ext_resource path="res://units/swap_area2d.gd" type="Script" id=17]
 [ext_resource path="res://units/unit.gd" type="Script" id=18]
@@ -543,7 +543,7 @@ __meta__ = {
 }
 
 [node name="Glow" type="Sprite2D" parent="Sprite2D"]
-modulate = Color( 0.752941, 0.627451, 0.384314, 0.85 )
+modulate = Color( 0.21, 0.88, 1, 0.7 )
 show_behind_parent = true
 z_index = -1
 texture = ExtResource( 7 )

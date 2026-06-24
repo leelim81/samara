@@ -3,8 +3,8 @@ extends Button
 
 signal fast_forward_toggled(enabled)
 
-const ACTIVE_COLOR := Color(0.792157, 0.580392, 0.180392)
-const IDLE_COLOR := Color(0.227451, 0.211765, 0.188235)
+const ACTIVE_COLOR := Color(0.98, 0.85, 0.45)
+const IDLE_COLOR := Color(0.92, 0.89, 0.82)
 
 
 func _ready() -> void:

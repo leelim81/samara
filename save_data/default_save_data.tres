@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=8 format=2]
+[gd_resource type="Resource" load_steps=27 format=2]
 
 [ext_resource path="res://save_data/save_data.gd" type="Script" id=1]
 
@@ -8,11 +8,30 @@
 [ext_resource path="res://jobs/terra/shberdan_job.tres" type="Resource" id=5]
 [ext_resource path="res://jobs/terra/daiana_job.tres" type="Resource" id=6]
 [ext_resource path="res://jobs/terra/macuri_job.tres" type="Resource" id=7]
+[ext_resource path="res://jobs/terra/zan_job.tres" type="Resource" id=8]
+[ext_resource path="res://jobs/terra/korin_job.tres" type="Resource" id=9]
+[ext_resource path="res://jobs/terra/samupi_job.tres" type="Resource" id=10]
+[ext_resource path="res://jobs/terra/bagunar_job.tres" type="Resource" id=11]
+[ext_resource path="res://jobs/terra/burbaba_job.tres" type="Resource" id=12]
+[ext_resource path="res://jobs/terra/maralme_job.tres" type="Resource" id=13]
+[ext_resource path="res://jobs/terra/nakupi_job.tres" type="Resource" id=14]
+[ext_resource path="res://jobs/terra/amazora_job.tres" type="Resource" id=15]
+[ext_resource path="res://jobs/terra/kem_job.tres" type="Resource" id=16]
+[ext_resource path="res://jobs/terra/zenzoze_job.tres" type="Resource" id=17]
+[ext_resource path="res://jobs/terra/unasag_job.tres" type="Resource" id=18]
+[ext_resource path="res://jobs/terra/raprow_job.tres" type="Resource" id=19]
+[ext_resource path="res://jobs/terra/harold_job.tres" type="Resource" id=20]
+[ext_resource path="res://jobs/terra/iskar_job.tres" type="Resource" id=21]
+[ext_resource path="res://jobs/terra/manmer_job.tres" type="Resource" id=22]
+[ext_resource path="res://jobs/terra/lan_job.tres" type="Resource" id=23]
+[ext_resource path="res://jobs/terra/eileen_job.tres" type="Resource" id=24]
+[ext_resource path="res://jobs/terra/sorman_job.tres" type="Resource" id=25]
+[ext_resource path="res://jobs/terra/gigojago_job.tres" type="Resource" id=26]
 
 [resource]
 script = ExtResource( 1 )
 version = 1
-jobs = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ]
+jobs = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ) ]
 active_units = [ 0, 1, 2, 3 ]
 music_volume = 1.0
 sound_effects_volume = 1.0

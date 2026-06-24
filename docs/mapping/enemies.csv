@@ -1,0 +1,145 @@
+Samara name (in-battle),Terra Battle enemy (slug),Token image path,Type
+Demon-beast,2boo_mark,assets/terra/tokens/orbling_token.png,Regular
+"Bingwu, the Third Warden",3coo,assets/terra/tokens/3coo_token.png,Boss/named
+Demon-beast,3coo_mark,assets/terra/tokens/orbling_token.png,Regular
+Demon-beast,54b2,assets/terra/tokens/54b2_token.png,Regular
+"Renwu, the Final Warden",6zoo,assets/terra/tokens/6zoo_token.png,Boss/named
+Demon-beast,aeropede,assets/terra/tokens/aeropede_token.png,Regular
+Furnace Construct,analyzer,assets/terra/tokens/orbling_token.png,Regular
+the Weeping Colossus,ancient_sadness,assets/terra/tokens/ancient_sadness_token.png,Boss/named
+Demon-beast,androclops,assets/terra/tokens/androclops_token.png,Regular
+Conscript,antenna_orbling,assets/terra/tokens/antenna_orbling_token.png,Regular
+"Apirath, Warlord of the Crossing",apirath,assets/terra/tokens/apirath_token.png,Boss/named
+the Loom Sentinel,arachnobot,assets/terra/tokens/arachnobot_token.png,Boss/named
+Loom-spawn,arachnochip_ex,assets/terra/tokens/arachnochip_ex_token.png,Regular
+Loom-spawn,arachnochip,assets/terra/tokens/arachnochip_token.png,Regular
+Demon-beast,assassin,assets/terra/tokens/assassin_token.png,Regular
+Demon-beast,aurochs,assets/terra/tokens/aurochs_token.png,Regular
+Beastclan Marksman,beastfolk_archer,assets/terra/tokens/beastfolk_archer_token.png,Regular
+Beastclan Chaplain,beastfolk_healer,assets/terra/tokens/beastfolk_healer_token.png,Regular
+the Beast-Clan Champion,beastfolk_hero,assets/terra/tokens/beastfolk_hero_token.png,Boss/named
+Beastclan Lancer,beastfolk_knight,assets/terra/tokens/beastfolk_knight_token.png,Regular
+Beastclan Adept,beastfolk_mage,assets/terra/tokens/beastfolk_mage_token.png,Regular
+Beastclan Guard,beastfolk_warrior,assets/terra/tokens/beastfolk_warrior_token.png,Regular
+Demon-beast,boltspew,assets/terra/tokens/boltspew_token.png,Regular
+the Sky-Dragon of the Court,celestial_dragon,assets/terra/tokens/celestial_dragon_token.png,Boss/named
+Demon-beast,cryoplatelet,assets/terra/tokens/cryoplatelet_token.png,Regular
+Demon-beast,cursed_claw,assets/terra/tokens/cursed_claw_token.png,Regular
+Demon-beast,cyberclops,assets/terra/tokens/cyberclops_token.png,Regular
+Furnace Construct,dark_ampcell,assets/terra/tokens/dark_ampcell_token.png,Regular
+Furnace Construct,dark_archercell,assets/terra/tokens/dark_archercell_token.png,Regular
+Furnace Construct,dark_mechacell,assets/terra/tokens/dark_mechacell_token.png,Regular
+Lesser Drake,dark_pegawyrm,assets/terra/tokens/dark_pegawyrm_token.png,Regular
+Demon-beast,dark_tortoise,assets/terra/tokens/dark_tortoise_token.png,Regular
+Furnace Construct,darkbot,assets/terra/tokens/darkbot_token.png,Regular
+Demon-beast,defense_amp,assets/terra/tokens/defense_amp_token.png,Regular
+Demon-beast,devourer,assets/terra/tokens/devourer_token.png,Regular
+Storm-imp,dracorin,assets/terra/tokens/dracorin_token.png,Regular
+Demon-beast,electropede,assets/terra/tokens/electropede_token.png,Regular
+Demon-beast,electroseizer,assets/terra/tokens/electroseizer_token.png,Regular
+Demon-beast,electrowatt,assets/terra/tokens/electrowatt_token.png,Regular
+the Heart of the Engine,em_generator,assets/terra/tokens/em_generator_token.png,Boss/named
+the Soul-Siphon,energy_aspirator,assets/terra/tokens/energy_aspirator_token.png,Boss/named
+the Charge Sentinel,enerzerk,assets/terra/tokens/enerzerk_token.png,Boss/named
+Demon-beast,falaan,assets/terra/tokens/falaan_token.png,Regular
+Demon-beast,freeze_sparker,assets/terra/tokens/freeze_sparker_token.png,Regular
+Demon-beast,fungibird,assets/terra/tokens/fungibird_token.png,Regular
+the Greater Nullity,giant_nega,assets/terra/tokens/giant_nega_token.png,Boss/named
+the Thunder Worm,gigaworm,assets/terra/tokens/gigaworm_token.png,Boss/named
+Demon-beast,gnorusk,assets/terra/tokens/gnorusk_token.png,Regular
+the Stone Sentinel,golem,assets/terra/tokens/golem_token.png,Boss/named
+Corrupt Mendicant,gorf,assets/terra/tokens/gorf_token.png,Regular
+Demon-beast,harrier,assets/terra/tokens/harrier_token.png,Regular
+Fire-demon,heat_sparker,assets/terra/tokens/heat_sparker_token.png,Regular
+Demon-beast,hell_bat,assets/terra/tokens/hell_bat_token.png,Regular
+Frost-demon,ice_razor,assets/terra/tokens/ice_razor_token.png,Regular
+Demon-beast,incapacitator,assets/terra/tokens/incapacitator_token.png,Regular
+Demon-beast,kirusk,assets/terra/tokens/kirusk_token.png,Regular
+Demon-beast,laser_unit_h,assets/terra/tokens/laser_unit_h_token.png,Regular
+Demon-beast,laser_unit_v,assets/terra/tokens/laser_unit_v_token.png,Regular
+Demon-beast,leefa,assets/terra/tokens/leefa_token.png,Regular
+Demon-beast,left_creeper,assets/terra/tokens/left_creeper_token.png,Regular
+the Bone Magistrate,lich,assets/terra/tokens/lich_token.png,Boss/named
+Serpentkin Marksman,lizardfolk_archer,assets/terra/tokens/lizardfolk_archer_token.png,Regular
+Serpentkin Chaplain,lizardfolk_healer,assets/terra/tokens/lizardfolk_healer_token.png,Regular
+the Serpent-Clan Champion,lizardfolk_hero,assets/terra/tokens/lizardfolk_hero_token.png,Boss/named
+Serpentkin Lancer,lizardfolk_knight,assets/terra/tokens/lizardfolk_knight_token.png,Regular
+Serpentkin Adept,lizardfolk_mage,assets/terra/tokens/lizardfolk_mage_token.png,Regular
+Serpentkin Guard,lizardfolk_warrior,assets/terra/tokens/lizardfolk_warrior_token.png,Regular
+the Targeting Sentinel,lock_on,assets/terra/tokens/lock_on_token.png,Boss/named
+the Spell-Amplifier,magic_amp,assets/terra/tokens/magic_amp_token.png,Boss/named
+Demon-beast,mantle_slime,assets/terra/tokens/mantle_slime_token.png,Regular
+Demon-beast,mantle_tortoise,assets/terra/tokens/mantle_tortoise_token.png,Regular
+the Mantle Drake,mantledrake,assets/terra/tokens/mantledrake_token.png,Boss/named
+Furnace Construct,mechacell,assets/terra/tokens/mechacell_token.png,Regular
+Furnace Construct,mechaclops,assets/terra/tokens/mechaclops_token.png,Regular
+the Iron Drake,mechadrake,assets/terra/tokens/mechadrake_token.png,Boss/named
+the Reforged Drake,mechadrake_redux,assets/terra/tokens/mechadrake_redux_token.png,Boss/named
+the Frost Cell,megacell,assets/terra/tokens/megacell_token.png,Boss/named
+Demon-beast,mermaid,assets/terra/tokens/mermaid_token.png,Regular
+Demon-beast,nanoworm,assets/terra/tokens/nanoworm_token.png,Regular
+Demon-beast,nebulator,assets/terra/tokens/nebulator_token.png,Regular
+Demon-beast,necromancer,assets/terra/tokens/necromancer_token.png,Regular
+Demon-beast,negale,assets/terra/tokens/negale_token.png,Regular
+Demon-beast,negat,assets/terra/tokens/negat_token.png,Regular
+Demon-beast,negaton,assets/terra/tokens/negaton_token.png,Regular
+the Onyx Dragon,onyx_dragon,assets/terra/tokens/onyx_dragon_token.png,Boss/named
+"Tu-Gong, the Conscript Lord",orbling_boss,assets/terra/tokens/orbling_token.png,Boss/named
+Heaven's Skirmisher Elite,oxsecian_airgrunt,assets/terra/tokens/oxsecian_airgrunt_token.png,Regular
+"Heaven's Warden, Soldier",oxsecian_blitzer,assets/terra/tokens/oxsecian_blitzer_token.png,Boss/named
+"Heaven's Warden, Soldier",oxsecian_bomb,assets/terra/tokens/oxsecian_bomb_token.png,Boss/named
+"Heaven's Bombardier, Exalted",oxsecian_bomber_ex,assets/terra/tokens/oxsecian_bomber_ex_token.png,Boss/named
+"Heaven's Warden, Soldier",oxsecian_fighter,assets/terra/tokens/oxsecian_fighter_token.png,Boss/named
+"Heaven's Warden, Soldier",oxsecian_gas_bomb,assets/terra/tokens/oxsecian_gas_bomb_token.png,Boss/named
+"Heaven's Warden, Soldier",oxsecian_generator,assets/terra/tokens/oxsecian_generator_token.png,Boss/named
+Heaven's Soldier Elite,oxsecian_grunt,assets/terra/tokens/oxsecian_grunt_token.png,Regular
+Heaven's Lancer Elite,oxsecian_grunt_sp,assets/terra/tokens/oxsecian_grunt_sp_token.png,Regular
+Heaven's Sentry Elite,oxsecian_guard,assets/terra/tokens/orbling_token.png,Regular
+"Heaven's Guard, Exalted",oxsecian_guard_sp,assets/terra/tokens/oxsecian_guard_sp_token.png,Boss/named
+Heaven's Marksman Elite,oxsecian_gunner_sp,assets/terra/tokens/oxsecian_gunner_sp_token.png,Regular
+"Heaven's Warden, Soldier",oxsecian_mobile_artillery,assets/terra/tokens/oxsecian_mobile_artillery_token.png,Boss/named
+"Heaven's Warden, Soldier",oxsecian_raider,assets/terra/tokens/oxsecian_raider_token.png,Boss/named
+"Heaven's Warden, Soldier",oxsecian_rps,assets/terra/tokens/oxsecian_rps_token.png,Boss/named
+"Heaven's Warden, Soldier",oxsecian_sniper,assets/terra/tokens/oxsecian_sniper_token.png,Boss/named
+"Heaven's Warden, Soldier",oxsecian_stormer,assets/terra/tokens/oxsecian_stormer_token.png,Boss/named
+Lesser Drake,pegawyrm,assets/terra/tokens/pegawyrm_token.png,Regular
+"Peprope, the Wandering Blade",peprop,assets/terra/tokens/peprop_token.png,Boss/named
+Furnace Construct,pneumatobot_beta,assets/terra/tokens/pneumatobot_beta_token.png,Regular
+the Force-Amplifier,power_amp,assets/terra/tokens/power_amp_token.png,Boss/named
+the Mending Idol,power_pyramid,assets/terra/tokens/power_pyramid_token.png,Boss/named
+Furnace Construct,powercell,assets/terra/tokens/powercell_token.png,Regular
+"Prototype Zero, the First Made Man",prototype_zero,assets/terra/tokens/prototype_zero_token.png,Boss/named
+Furnace Construct,ramcell,assets/terra/tokens/ramcell_token.png,Regular
+Demon-beast,rebel_defender,assets/terra/tokens/rebel_defender_token.png,Regular
+Demon-beast,rebel_electrocutor,assets/terra/tokens/rebel_electrocutor_token.png,Regular
+Demon-beast,rebel_soldier,assets/terra/tokens/rebel_soldier_token.png,Regular
+Furnace Construct,regenercell,assets/terra/tokens/regenercell_token.png,Regular
+the Elder Relic,relic,assets/terra/tokens/relic_token.png,Boss/named
+Demon-beast,right_creeper,assets/terra/tokens/right_creeper_token.png,Regular
+Furnace Construct,robotick,assets/terra/tokens/robotick_token.png,Regular
+Demon-beast,rockfreeze,assets/terra/tokens/rockfreeze_token.png,Regular
+Tiger-demon,sabertooth,assets/terra/tokens/sabertooth_token.png,Regular
+Furnace Construct,shieldcell,assets/terra/tokens/shieldcell_token.png,Regular
+Demon-beast,slasher_goblin,assets/terra/tokens/slasher_goblin_token.png,Regular
+Demon-beast,slasher,assets/terra/tokens/slasher_token.png,Regular
+Mire-beast,slime_slug,assets/terra/tokens/slime_slug_token.png,Regular
+the Devouring Gate,snaptrap,assets/terra/tokens/snaptrap_token.png,Boss/named
+"Thornback, the Spine Demon",spinetrich,assets/terra/tokens/spinetrich_token.png,Boss/named
+the Spined Leviathan,spiny_leviathan,assets/terra/tokens/spiny_leviathan_token.png,Boss/named
+Demon-beast,spitch,assets/terra/tokens/spitch_token.png,Regular
+Stone Marksman,stonefolk_archer,assets/terra/tokens/stonefolk_archer_token.png,Regular
+Stone Lancer,stonefolk_knight,assets/terra/tokens/stonefolk_knight_token.png,Regular
+Stone Guard,stonefolk_warrior,assets/terra/tokens/stonefolk_warrior_token.png,Regular
+Demon-beast,teksura,assets/terra/tokens/teksura_token.png,Regular
+Demon-beast,terminator_y,assets/terra/tokens/terminator_y_token.png,Regular
+Demon-beast,thunder_horn,assets/terra/tokens/thunder_horn_token.png,Regular
+the Devourer of Hours,time_devourer,assets/terra/tokens/time_devourer_token.png,Boss/named
+Demon-beast,transporter,assets/terra/tokens/transporter_token.png,Regular
+Furnace Construct,trilobot,assets/terra/tokens/trilobot_token.png,Regular
+"Vajra, the Thunder Idol",vajra,assets/terra/tokens/orbling_token.png,Boss/named
+Conscript Recruit,wee_orbling_bow,assets/terra/tokens/orbling_token.png,Regular
+Conscript Recruit,wee_orbling_spear,assets/terra/tokens/orbling_token.png,Regular
+Conscript Recruit,wee_orbling_sword,assets/terra/tokens/orbling_token.png,Regular
+"Frostcoil, the Pale Wyrm",whitewyrm,assets/terra/tokens/whitewyrm_token.png,Boss/named
+Demon-beast,wisprat,assets/terra/tokens/wisprat_token.png,Regular
+"Xaepha, the Pale Surgeon",xaepha,assets/terra/tokens/orbling_token.png,Boss/named

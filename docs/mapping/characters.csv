@@ -1,0 +1,29 @@
+Samara name,Terra Battle unit,Slug,Weapon,Status,Token image path,Full image path
+Gan Jiang,Bahl,bahl,Sword,playable base (renamed),assets/terra/tokens/bahl_token.png,assets/terra/full/bahl_full.png
+Mo Ye,Grace,grace,Bow,playable base (renamed),assets/terra/tokens/grace_token.png,assets/terra/full/grace_full.png
+Saen,Kuscah,kuscah,Staff,playable base (renamed),assets/terra/tokens/kuscah_token.png,assets/terra/full/kuscah_full.png
+Jiao,Sh'berdan,shberdan,Spear,playable base (renamed),assets/terra/tokens/shberdan_token.png,assets/terra/full/shberdan_full.png
+Dragon in the Clouds,Daiana,daiana,Staff,playable base (renamed),assets/terra/tokens/daiana_token.png,assets/terra/full/daiana_full.png
+Mu,Ma'curi,macuri,Spear,playable base (renamed),assets/terra/tokens/macuri_token.png,assets/terra/full/macuri_full.png
+Black Whirlwind,Zan the Lava Surfer,zan,Sword,playable recruit (built),assets/terra/tokens/zan_token.png,assets/terra/full/zan_full.png
+the Pilgrim,Korin the Swordsman,korin,Sword,playable recruit (built),assets/terra/tokens/korin_token.png,assets/terra/full/korin_full.png
+Ten Feet of Steel,Samupí the Handsome,samupi,Sword,playable recruit (built),assets/terra/tokens/samupi_token.png,assets/terra/full/samupi_full.png
+Jade Unicorn,Ba'gunar the Highborn,bagunar,Sword,playable recruit (built),assets/terra/tokens/bagunar_token.png,assets/terra/full/bagunar_full.png
+Blue-Faced Beast,Burbaba the Punching Bag,burbaba,Sword,playable recruit (built),assets/terra/tokens/burbaba_token.png,assets/terra/full/burbaba_full.png
+Fiery Thunderbolt,Maralme the Dragon Slayer,maralme,Sword,playable recruit (built),assets/terra/tokens/maralme_token.png,assets/terra/full/maralme_full.png
+Twin Rods,Nakupí the Silken-Haired,nakupi,Sword,playable recruit (built),assets/terra/tokens/nakupi_token.png,assets/terra/full/nakupi_full.png
+the Witch,Amazora the Airy,amazora,Sword,playable recruit (built),assets/terra/tokens/amazora_token.png,assets/terra/full/amazora_full.png
+Panther Head,Kem the Spearman,kem,Spear,playable recruit (built),assets/terra/tokens/kem_token.png,assets/terra/full/kem_full.png
+the Nine-Dragoned,Zenzoze the Dusky,zenzoze,Spear,playable recruit (built),assets/terra/tokens/zenzoze_token.png,assets/terra/full/zenzoze_full.png
+the Living Death-God,U'nasag the Torrent,unasag,Spear,playable recruit (built),assets/terra/tokens/unasag_token.png,assets/terra/full/unasag_full.png
+Lord of the Beautiful Beard,Ra'prow,raprow,Spear,playable recruit (built),assets/terra/tokens/raprow_token.png,assets/terra/full/raprow_full.png
+Little Li Guang,Harold,harold,Bow,playable recruit (built),assets/terra/tokens/harold_token.png,assets/terra/full/harold_full.png
+the Wanderer,Iskar,iskar,Bow,playable recruit (built),assets/terra/tokens/iskar_token.png,assets/terra/full/iskar_full.png
+Featherless Arrow,Manmer,manmer,Bow,playable recruit (built),assets/terra/tokens/manmer_token.png,assets/terra/full/manmer_full.png
+Lan,Dracorin,lan,Bow,playable recruit (built),assets/terra/tokens/lan_token.png,assets/terra/full/lan_full.png
+the Wisdom Star,Eileen,eileen,Staff,playable recruit (built),assets/terra/tokens/eileen_token.png,assets/terra/full/eileen_full.png
+Marvelous Traveler,Sorman,sorman,Staff,playable recruit (built),assets/terra/tokens/sorman_token.png,assets/terra/full/sorman_full.png
+White Streak in the Waves,Gigojago,gigojago,Staff,playable recruit (built),assets/terra/tokens/gigojago_token.png,assets/terra/full/gigojago_full.png
+the Tattooed Monk,Gegonago,gegonago,Staff,token-only,assets/terra/tokens/gegonago_token.png,assets/terra/characters/gegonago-job1.png
+the Skilled Doctor,Amimari,amimari,Staff,token-only,assets/terra/tokens/amimari_token.png,assets/terra/characters/amimari-job1.png
+Timely Rain,Mizell,mizell,Staff,token-only,assets/terra/tokens/mizell_token.png,assets/terra/characters/mizell-job1.png

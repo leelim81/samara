@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/sfx/ceramic_drag_3.wav" type="AudioStream" id=3]
 [ext_resource path="res://assets/terra/ui/hp_bar_fill.png" type="Texture2D" id=4]
 [ext_resource path="res://assets/terra/ui/enemy_border.png" type="Texture2D" id=5]
-[ext_resource path="res://assets/player/yachie.png" type="Texture2D" id=6]
+[ext_resource path="res://assets/terra/tokens/orbling_token.png" type="Texture2D" id=6]
 [ext_resource path="res://assets/terra/ui/unit_square_bg.png" type="Texture2D" id=7]
 [ext_resource path="res://assets/ui/light_blue_panel_transparent.png" type="Texture2D" id=8]
 [ext_resource path="res://units/ai/ai_controller.tscn" type="PackedScene" id=9]
@@ -30,7 +30,7 @@ visible = false
 texture = ExtResource( 7 )
 
 [node name="Glow" parent="Sprite2D" index="0"]
-modulate = Color( 0.709804, 0.321569, 0.298039, 0.7 )
+modulate = Color( 1, 0.35, 0.29, 0.6 )
 
 [node name="Icon" parent="Sprite2D" index="1"]
 texture = ExtResource( 6 )

@@ -4,7 +4,7 @@
 [ext_resource path="res://jobs/haniwa/training_orbling_job.tres" type="Resource" id=2]
 [ext_resource path="res://units/ai/condition.tscn" type="PackedScene" id=3]
 [ext_resource path="res://units/ai/action.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/enemies/orbling_haniwa.png" type="Texture2D" id=5]
+[ext_resource path="res://assets/terra/tokens/orbling_token.png" type="Texture2D" id=5]
 
 [node name="TestEnemy" instance=ExtResource( 1 )]
 turn_counter = 2

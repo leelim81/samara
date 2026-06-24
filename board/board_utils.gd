@@ -126,20 +126,48 @@ static func _find_cell_with_unit(grid: Grid, unit: Unit) -> Cell:
 
 static func _can_reach_cell(cell: Cell, distance: int, movement_range: int, unit: Unit, faction: int) -> bool:
 	var cell_unit: Unit = cell.unit
-	
+
 	return (distance <= movement_range) and _can_enter_cell(unit, cell_unit, faction) and _can_fit_unit(unit, cell)
 
 
-# 2x2 units can enter any cell, because they can push the unit inside said cell
-# Single units ignore cells with 2x2 units, because they cannot swap with them
+# A 2x2 unit can push a 1x1 occupant aside to enter a cell, but it CANNOT
+# displace another 2x2 unit: the pusher no-ops on a 2x2 occupant (see
+# pusher.gd), so claiming such a cell would orphan that unit and desync the
+# board's per-cell bookkeeping (board._push_cells_in_area / _update_2x2_unit_cells).
+# A single unit can only swap with a 1x1 ally. A unit can always (re)enter the
+# cells it already occupies.
 static func _can_enter_cell(unit: Unit, cell_unit: Unit, faction: int) -> bool:
-	return cell_unit == null or \
-			unit.is2x2() or \
-			cell_unit.is_ally(faction) and not cell_unit.is2x2()
+	if cell_unit == null or cell_unit == unit:
+		return true
+
+	if unit.is2x2():
+		return not cell_unit.is2x2()
+
+	return cell_unit.is_ally(faction) and not cell_unit.is2x2()
 
 
+# A 2x2 unit needs a full 2x2 area at this cell: the area must exist on the board
+# AND every cell in its footprint must be occupiable — none held by another 2x2
+# unit, which the pusher cannot move out of the way.
 static func _can_fit_unit(unit: Unit, cell: Cell) -> bool:
-	return unit != null and not (unit.is2x2() and cell.get_cells_in_area().is_empty())
+	if unit == null:
+		return false
+
+	if not unit.is2x2():
+		return true
+
+	var area_cells: Array = cell.get_cells_in_area()
+
+	if area_cells.is_empty():
+		return false
+
+	for area_cell in area_cells:
+		var occupant: Unit = area_cell.unit
+
+		if occupant != null and occupant != unit and occupant.is2x2():
+			return false
+
+	return true
 
 
 static func get_distance_to_cell(start_cell: Cell, end_cell: Cell) -> float:

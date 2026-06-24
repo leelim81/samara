@@ -114,12 +114,12 @@ SKILLS_TAB,Skills,Habilidades
 STATUS_EFFECTS_TAB,Status effects,Estados
 BORDERLANDS,Exile,Exile
 TO_THE_CAPITAL,Toward the Throne,Toward the Throne
-BAHL,Bahl,Bahl
-GRACE,Grace,Grace
-KUSCAH,Kuscah,Kuscah
-SHBERDAN,Sh'berdan,Sh'berdan
-DAIANA,Daiana,Daiana
-MACURI,Ma'curi,Ma'curi
+BAHL,Gan Jiang,Gan Jiang
+GRACE,Mo Ye,Mo Ye
+KUSCAH,Saen,Saen
+SHBERDAN,Jiao,Jiao
+DAIANA,Dragon in the Clouds,Dragon in the Clouds
+MACURI,Mu,Mu
 JOB_DARK_DUELIST,Dark Duelist,Duelista oscura
 JOB_ARCHER,Archer,Arquera
 JOB_ACOLYTE,Acolyte,Acólito
@@ -224,3 +224,22 @@ A_TOWER_REBORN,The Ledger Reforged,The Ledger Reforged
 A_TOWER_REBORN_CAPTION,The black book reassembles itself to write the band into glory and seal them away for the next...,The black book reassembles itself to write the band into glory and seal them away for the next...
 TERRA_BATTLE,The Last Name,The Last Name
 TERRA_BATTLE_CAPTION,At the Ledger the final choice is yours.,At the Ledger the final choice is yours.
+CHAR_BLACK_WHIRLWIND,Black Whirlwind,Black Whirlwind
+CHAR_THE_PILGRIM,the Pilgrim,the Pilgrim
+CHAR_TEN_FEET_OF_STEEL,Ten Feet of Steel,Ten Feet of Steel
+CHAR_JADE_UNICORN,Jade Unicorn,Jade Unicorn
+CHAR_BLUE_FACED_BEAST,Blue-Faced Beast,Blue-Faced Beast
+CHAR_FIERY_THUNDERBOLT,Fiery Thunderbolt,Fiery Thunderbolt
+CHAR_TWIN_RODS,Twin Rods,Twin Rods
+CHAR_THE_WITCH,the Witch,the Witch
+CHAR_PANTHER_HEAD,Panther Head,Panther Head
+CHAR_THE_NINE_DRAGONED,the Nine-Dragoned,the Nine-Dragoned
+CHAR_THE_LIVING_DEATH_GOD,the Living Death-God,the Living Death-God
+CHAR_LORD_OF_THE_BEAUTIFUL_BEARD,Lord of the Beautiful Beard,Lord of the Beautiful Beard
+CHAR_LITTLE_LI_GUANG,Little Li Guang,Little Li Guang
+CHAR_THE_WANDERER,the Wanderer,the Wanderer
+CHAR_FEATHERLESS_ARROW,Featherless Arrow,Featherless Arrow
+CHAR_LAN,Lan,Lan
+CHAR_THE_WISDOM_STAR,the Wisdom Star,the Wisdom Star
+CHAR_MARVELOUS_TRAVELER,Marvelous Traveler,Marvelous Traveler
+CHAR_WHITE_STREAK_IN_THE_WAVES,White Streak in the Waves,White Streak in the Waves
