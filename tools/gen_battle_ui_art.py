@@ -92,27 +92,28 @@ def tile(name, px, radius):
     _save(grad, name, (px, px))
 
 
-# --- glowing rounded-rect border --------------------------------------------
+# --- thin rounded-rect edge + soft halo (TB-style light outer glow) ----------
 def border(name, px, radius, color, hi):
     s = (px * SS, px * SS)
     r = radius * SS
     img = Image.new("RGBA", s, (0, 0, 0, 0))
-    stroke = max(2, round(3.5 * SS))
-    inset = stroke // 2 + SS
-    # soft outer/inner glow: thick ring, blurred
+    edge = max(1, round(1.4 * SS))      # thin crisp edge (~1.4px)
+    inset = SS
+    # soft halo: a wide ring blurred heavily at low alpha (gentle outer glow,
+    # not a thick ring). The big outward halo comes from unit_glow.png.
     glow = Image.new("RGBA", s, (0, 0, 0, 0))
     ImageDraw.Draw(glow).rounded_rectangle([inset, inset, s[0] - 1 - inset, s[1] - 1 - inset],
-                                           radius=r, outline=color + (255,), width=stroke + SS * 2)
-    glow = glow.filter(ImageFilter.GaussianBlur(SS * 1.6))
+                                           radius=r, outline=color + (255,), width=edge + SS * 5)
+    glow = glow.filter(ImageFilter.GaussianBlur(SS * 3.2))
+    glow.putalpha(glow.split()[3].point(lambda a: int(a * 0.42)))
     img = Image.alpha_composite(img, glow)
     d = ImageDraw.Draw(img)
-    # crisp main ring
+    # thin crisp edge at the tile boundary
     d.rounded_rectangle([inset, inset, s[0] - 1 - inset, s[1] - 1 - inset],
-                        radius=r, outline=color + (255,), width=stroke)
-    # 1px inner highlight
-    d.rounded_rectangle([inset + stroke - SS, inset + stroke - SS,
-                         s[0] - 1 - inset - stroke + SS, s[1] - 1 - inset - stroke + SS],
-                        radius=max(1, r - stroke), outline=hi + (210,), width=SS)
+                        radius=r, outline=color + (255,), width=edge)
+    # faint inner highlight line
+    d.rounded_rectangle([inset + edge, inset + edge, s[0] - 1 - inset - edge, s[1] - 1 - inset - edge],
+                        radius=max(1, r - edge), outline=hi + (110,), width=max(1, SS // 2))
     _save(img, name, (px, px))
 
 

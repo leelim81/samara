@@ -179,6 +179,28 @@ func _pin_overlay_layout() -> void:
 	container.add_theme_constant_override("margin_right", 52)
 	container.add_theme_constant_override("margin_bottom", 58)
 
+	# Weapon-type marker — pin small in the top-right corner (web export mangles
+	# the inherited .tscn offsets, which made the glyph oversize/overflow the tile)
+	var hud_control: Control = $CanvasLayer/Control
+	hud_control.anchor_left = 0.0
+	hud_control.anchor_top = 0.0
+	hud_control.anchor_right = 1.0
+	hud_control.anchor_bottom = 1.0
+	hud_control.offset_left = -48.0
+	hud_control.offset_top = -48.0
+	hud_control.offset_right = 49.0
+	hud_control.offset_bottom = 49.0
+
+	var weapon: Control = $CanvasLayer/Control/WeaponType
+	weapon.anchor_left = 1.0
+	weapon.anchor_top = 0.0
+	weapon.anchor_right = 1.0
+	weapon.anchor_bottom = 0.0
+	weapon.offset_left = -25.0
+	weapon.offset_top = 5.0
+	weapon.offset_right = -7.0
+	weapon.offset_bottom = 23.0
+
 
 func _physics_process(_delta: float) -> void:
 	match(current_state):

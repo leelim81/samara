@@ -222,7 +222,7 @@ func _on_Board_enemy_phase_started(current_enemy_phase: int, enemy_phase_count: 
 	$CanvasLayer/EnemyPhaseCenterContainer/Banner/Margin/VBox/NumberLabel.text = "%d / %d" % [current_enemy_phase, enemy_phase_count]
 
 	if _wave_label != null:
-		_wave_label.text = "WAVE  %d / %d" % [current_enemy_phase, enemy_phase_count]
+		_wave_label.text = "%d / %d" % [current_enemy_phase, enemy_phase_count]
 
 	# Fade the layer in and pop the card so it lands cleanly
 	var control_tween := create_tween()
@@ -285,31 +285,48 @@ func _on_ViewUnitMenu_go_back(view_unit_menu: Control) -> void:
 # ---- Live spoils HUD (Terra Battle battle HUD parity) ----
 
 func _build_live_hud() -> void:
-	# Terra Battle shows the battle counters across the top-center; the bar's
-	# bottom CountersRow holds them as a centered row inside the HUD panel.
+	# Terra Battle shows coin / exp / KO counters across the top-center, each as
+	# a small icon followed by a number; CountersRow holds them centered.
 	var box: HBoxContainer = $CanvasLayer/MarginContainer/Hud/CountersRow
+	var icons: Texture2D = load("res://assets/terra/ui/ui_icons.png")
 
-	_coins_label = _make_counter_label()
-	_exp_label = _make_counter_label()
-	_ko_label = _make_counter_label()
-	_wave_label = _make_counter_label()
-
-	box.add_child(_coins_label)
-	box.add_child(_exp_label)
-	box.add_child(_ko_label)
-	box.add_child(_wave_label)
+	# 64px atlas cells: coins(64,128) · sparkle/exp(0,128) · skull/KO(192,128)
+	_coins_label = _make_counter(box, icons, Rect2(64, 128, 64, 64))
+	_exp_label = _make_counter(box, icons, Rect2(0, 128, 64, 64))
+	_ko_label = _make_counter(box, icons, Rect2(192, 128, 64, 64))
+	# Wave is shown in the enemy-phase banner; keep a standalone label so the
+	# phase code can still set it without cluttering the 3-counter row.
+	_wave_label = Label.new()
 
 	_update_live_hud()
 
 
-func _make_counter_label() -> Label:
+func _make_counter(box: HBoxContainer, atlas_tex: Texture2D, region: Rect2) -> Label:
+	var hb := HBoxContainer.new()
+	hb.add_theme_constant_override("separation", 4)
+	hb.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+	var icon := TextureRect.new()
+	var at := AtlasTexture.new()
+	at.atlas = atlas_tex
+	at.region = region
+	icon.texture = at
+	icon.custom_minimum_size = Vector2(17, 17)
+	icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	icon.modulate = Color(0.34, 0.29, 0.22)
+	icon.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	hb.add_child(icon)
+
 	var label := Label.new()
-	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	label.add_theme_font_size_override("font_size", 16)
 	label.add_theme_color_override("font_color", Color(0.286, 0.247, 0.196, 1))
-	label.add_theme_color_override("font_shadow_color", Color(1, 0.98, 0.93, 0.5))
-	label.add_theme_constant_override("shadow_offset_y", 1)
+	hb.add_child(label)
+
+	box.add_child(hb)
 	return label
 
 
@@ -319,9 +336,9 @@ func _update_live_hud() -> void:
 
 	var spoils: Dictionary = $Board.get_battle_spoils()
 
-	_coins_label.text = "COINS  %d" % spoils.coins
-	_exp_label.text = "EXP  %d" % spoils.exp
-	_ko_label.text = "KO  %d" % spoils.defeated
+	_coins_label.text = "%d" % spoils.coins
+	_exp_label.text = "%d" % spoils.exp
+	_ko_label.text = "%d" % spoils.defeated
 
 
 func _on_spoils_changed(_exp: int, _coins: int, _defeated: int) -> void:
@@ -345,7 +362,7 @@ func _bind_squad_icons() -> void:
 
 		if i < active.size():
 			var job = save_data.jobs[active[i]]
-			icon.texture = load(Enums.WEAPON_TYPE_TEXTURES[job.stats.weapon_type])
+			icon.texture = job.portrait
 			icon.modulate = Color.WHITE
 			icon.visible = true
 		else:
