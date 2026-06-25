@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://j0u6tdnmj44e"
+
+[deps]
+
+files=["res://docs/mapping/enemies.Terra Battle enemy (slug).translation", "res://docs/mapping/enemies.Token image path.translation", "res://docs/mapping/enemies.Type.translation"]
+
+source_file="res://docs/mapping/enemies.csv"
+dest_files=["res://docs/mapping/enemies.Terra Battle enemy (slug).translation", "res://docs/mapping/enemies.Token image path.translation", "res://docs/mapping/enemies.Type.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

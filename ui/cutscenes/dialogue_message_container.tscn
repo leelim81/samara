@@ -5,7 +5,21 @@
 [ext_resource path="res://theme.tres" type="Theme" id=3]
 [ext_resource path="res://ui/cutscenes/dialogue_message_container.gd" type="Script" id=4]
 [ext_resource path="res://assets/sfx/casino/place10.wav" type="AudioStream" id=5]
-[ext_resource path="res://assets/terra/ui/unit_player_border.png" type="Texture2D" id=6]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.149, 0.129, 0.108, 1 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 0.752941, 0.627451, 0.384314, 1 )
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+shadow_color = Color( 0.16, 0.11, 0.06, 0.28 )
+shadow_size = 5
+shadow_offset = Vector2( 0, 2 )
 
 [node name="DialogueMessageContainer" type="HBoxContainer"]
 anchor_right = 1.0
@@ -20,33 +34,29 @@ offset_right = 150.0
 offset_bottom = 170.0
 custom_minimum_size = Vector2( 150, 0 )
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
-offset_left = 26.0
-offset_right = 124.0
-offset_bottom = 98.0
+[node name="PortraitFrame" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2( 112, 112 )
 size_flags_horizontal = 4
-texture = ExtResource( 2 )
+theme_override_styles/panel = SubResource( 1 )
 
-[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer/TextureRect"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = -50.0
-offset_right = 50.0
-offset_bottom = 50.0
-custom_minimum_size = Vector2( 100, 100 )
-texture = ExtResource( 6 )
-patch_margin_left = 29
-patch_margin_top = 29
-patch_margin_right = 29
-patch_margin_bottom = 29
+[node name="Portrait" type="TextureRect" parent="VBoxContainer/PortraitFrame"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
 
 [node name="NameLabel" type="Label" parent="VBoxContainer"]
-offset_top = 106.0
+offset_top = 120.0
 offset_right = 150.0
-offset_bottom = 170.0
+offset_bottom = 184.0
+size_flags_vertical = 4
+theme_override_colors/font_color = Color( 0.227451, 0.211765, 0.188235, 1 )
+theme_override_font_sizes/font_size = 19
 text = "Mononobe no Futo"
 horizontal_alignment = 1
 autowrap_mode = 2

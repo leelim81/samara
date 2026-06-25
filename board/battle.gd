@@ -20,8 +20,8 @@ var _is_battle_finished: bool = false
 var _progress_tween: Tween
 var _view_unit_menu_tween: Tween
 
-@onready var _progress_bar: TextureProgressBar = $CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/TextureProgressBar
-@onready var _your_turn_label: Label = $CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/YourTurnLabel
+@onready var _progress_bar: TextureProgressBar = $CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock/TimerRow/MoveTimer
+@onready var _your_turn_label: Label = $CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock/TimerRow/YourTurnLabel
 
 # Live battle-spoils HUD (built programmatically; see _build_live_hud).
 var _wave_label: Label
@@ -30,19 +30,19 @@ var _exp_label: Label
 var _ko_label: Label
 
 @onready var _power_segments: Array = [
-	$CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/PowerGauge/Seg1,
-	$CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/PowerGauge/Seg2,
-	$CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/PowerGauge/Seg3,
+	$CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock/PowerGauge/Seg1,
+	$CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock/PowerGauge/Seg2,
+	$CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock/PowerGauge/Seg3,
 ]
 
 @onready var _squad_icons: Array = [
-	$CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/TextureRect,
-	$CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/TextureRect2,
-	$CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/TextureRect3,
-	$CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/TextureRect4,
-	$CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/TextureRect5,
-	$CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/TextureRect6,
-	$CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/TextureRect7,
+	$CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock/SquadIcons/Icon1,
+	$CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock/SquadIcons/Icon2,
+	$CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock/SquadIcons/Icon3,
+	$CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock/SquadIcons/Icon4,
+	$CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock/SquadIcons/Icon5,
+	$CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock/SquadIcons/Icon6,
+	$CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock/SquadIcons/Icon7,
 ]
 
 
@@ -82,7 +82,7 @@ func on_instance(data: Object) -> void:
 
 
 func _update_turn_count() -> void:
-	var label: Label = $CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer2/TurnCountLabel
+	var label: Label = $CanvasLayer/MarginContainer/Hud/MainRow/TurnBlock/TurnCountLabel
 
 	label.text = "%d" % _player_turn_count
 
@@ -285,20 +285,9 @@ func _on_ViewUnitMenu_go_back(view_unit_menu: Control) -> void:
 # ---- Live spoils HUD (Terra Battle battle HUD parity) ----
 
 func _build_live_hud() -> void:
-	# Terra Battle shows the battle counters across the top-center; a centered
-	# horizontal row just under the top bar mirrors that.
-	var box := HBoxContainer.new()
-	box.name = "LiveCounters"
-	box.anchor_left = 0.5
-	box.anchor_right = 0.5
-	box.offset_left = -220.0
-	box.offset_right = 220.0
-	box.offset_top = 100.0
-	box.alignment = BoxContainer.ALIGNMENT_CENTER
-	box.add_theme_constant_override("separation", 22)
-	box.mouse_filter = Control.MOUSE_FILTER_IGNORE
-
-	$CanvasLayer.add_child(box)
+	# Terra Battle shows the battle counters across the top-center; the bar's
+	# bottom CountersRow holds them as a centered row inside the HUD panel.
+	var box: HBoxContainer = $CanvasLayer/MarginContainer/Hud/CountersRow
 
 	_coins_label = _make_counter_label()
 	_exp_label = _make_counter_label()
@@ -318,8 +307,8 @@ func _make_counter_label() -> Label:
 	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	label.add_theme_font_size_override("font_size", 16)
-	label.add_theme_color_override("font_color", Color(0.95, 0.93, 0.86, 0.82))
-	label.add_theme_color_override("font_shadow_color", Color(0, 0, 0, 0.55))
+	label.add_theme_color_override("font_color", Color(0.286, 0.247, 0.196, 1))
+	label.add_theme_color_override("font_shadow_color", Color(1, 0.98, 0.93, 0.5))
 	label.add_theme_constant_override("shadow_offset_y", 1)
 	return label
 

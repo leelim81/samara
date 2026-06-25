@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://cqow7i5k2w7kg"
+
+[deps]
+
+files=["res://docs/mapping/characters.Terra Battle unit.translation", "res://docs/mapping/characters.Slug.translation", "res://docs/mapping/characters.Weapon.translation", "res://docs/mapping/characters.Status.translation", "res://docs/mapping/characters.Token image path.translation", "res://docs/mapping/characters.Full image path.translation"]
+
+source_file="res://docs/mapping/characters.csv"
+dest_files=["res://docs/mapping/characters.Terra Battle unit.translation", "res://docs/mapping/characters.Slug.translation", "res://docs/mapping/characters.Weapon.translation", "res://docs/mapping/characters.Status.translation", "res://docs/mapping/characters.Token image path.translation", "res://docs/mapping/characters.Full image path.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

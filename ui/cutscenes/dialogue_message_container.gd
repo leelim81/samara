@@ -56,7 +56,7 @@ var _accumulated_time_seconds: float = 0
 
 @onready var _name_label := $VBoxContainer/NameLabel
 @onready var _message_label := $MarginContainer/MarginContainer/MessageLabel
-@onready var _character_icon := $VBoxContainer/TextureRect
+@onready var _character_icon := $VBoxContainer/PortraitFrame/Portrait
 @onready var _nine_patch := $MarginContainer/NinePatchRect
 
 
@@ -80,7 +80,7 @@ func initialize(dialogue_message) -> void:
 	_message_label.text = tr(dialogue_message.line)
 	
 	if _ICONS.has(speaker):
-		$VBoxContainer/TextureRect.texture = load(_ICONS[speaker])
+		_character_icon.texture = load(_ICONS[speaker])
 	
 	_message_label.visible_ratio = 0
 	_accumulated_time_seconds = 0
