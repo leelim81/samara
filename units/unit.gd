@@ -196,10 +196,10 @@ func _pin_overlay_layout() -> void:
 	weapon.anchor_top = 0.0
 	weapon.anchor_right = 1.0
 	weapon.anchor_bottom = 0.0
-	weapon.offset_left = -25.0
+	weapon.offset_left = -34.0
 	weapon.offset_top = 5.0
-	weapon.offset_right = -7.0
-	weapon.offset_bottom = 23.0
+	weapon.offset_right = -6.0
+	weapon.offset_bottom = 33.0
 
 
 func _physics_process(_delta: float) -> void:

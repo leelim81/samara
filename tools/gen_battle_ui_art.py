@@ -24,15 +24,15 @@ SS = 4  # supersample factor
 os.makedirs(BACKUP, exist_ok=True)
 
 # ---- palette (RGBA 0-255) --------------------------------------------------
-ALLY_CYAN      = (54, 224, 255)
-ALLY_CYAN_HI   = (190, 248, 255)
-ENEMY_RED      = (255, 90, 74)
-ENEMY_RED_HI   = (255, 196, 180)
+ALLY_CYAN      = (38, 206, 194)
+ALLY_CYAN_HI   = (180, 250, 240)
+ENEMY_RED      = (255, 96, 70)
+ENEMY_RED_HI   = (255, 198, 178)
 BOSS_GOLD      = (255, 168, 72)
 BOSS_GOLD_HI   = (255, 224, 150)
-TILE_TOP       = (32, 41, 56)
-TILE_BOT       = (13, 19, 28)
-TILE_RIM       = (74, 90, 116, 130)
+TILE_TOP       = (46, 37, 28)
+TILE_BOT       = (24, 18, 13)
+TILE_RIM       = (108, 88, 64, 130)
 HP_TOP         = (122, 240, 142)
 HP_BOT         = (64, 198, 92)
 HP_TRACK       = (15, 21, 28)
@@ -92,28 +92,28 @@ def tile(name, px, radius):
     _save(grad, name, (px, px))
 
 
-# --- thin rounded-rect edge + soft halo (TB-style light outer glow) ----------
+# --- luminous glow rim (visible on the parchment field, not a hard border) ---
 def border(name, px, radius, color, hi):
     s = (px * SS, px * SS)
     r = radius * SS
-    img = Image.new("RGBA", s, (0, 0, 0, 0))
-    edge = max(1, round(1.4 * SS))      # thin crisp edge (~1.4px)
+    rim = round(2.0 * SS)               # ~2px bright edge (reads as glow, not a slab)
     inset = SS
-    # soft halo: a wide ring blurred heavily at low alpha (gentle outer glow,
-    # not a thick ring). The big outward halo comes from unit_glow.png.
-    glow = Image.new("RGBA", s, (0, 0, 0, 0))
-    ImageDraw.Draw(glow).rounded_rectangle([inset, inset, s[0] - 1 - inset, s[1] - 1 - inset],
-                                           radius=r, outline=color + (255,), width=edge + SS * 5)
-    glow = glow.filter(ImageFilter.GaussianBlur(SS * 3.2))
-    glow.putalpha(glow.split()[3].point(lambda a: int(a * 0.42)))
+    # a wide bright ring, blurred, then layered for a strong luminous halo that
+    # stands out against the cream battlefield
+    ring = Image.new("RGBA", s, (0, 0, 0, 0))
+    ImageDraw.Draw(ring).rounded_rectangle([inset, inset, s[0] - 1 - inset, s[1] - 1 - inset],
+                                           radius=r, outline=color + (255,), width=rim + SS * 3)
+    glow = ring.filter(ImageFilter.GaussianBlur(SS * 2.4))
+    img = Image.new("RGBA", s, (0, 0, 0, 0))
     img = Image.alpha_composite(img, glow)
+    img = Image.alpha_composite(img, glow)      # double pass = brighter, visible glow
     d = ImageDraw.Draw(img)
-    # thin crisp edge at the tile boundary
+    # bright luminous rim
     d.rounded_rectangle([inset, inset, s[0] - 1 - inset, s[1] - 1 - inset],
-                        radius=r, outline=color + (255,), width=edge)
-    # faint inner highlight line
-    d.rounded_rectangle([inset + edge, inset + edge, s[0] - 1 - inset - edge, s[1] - 1 - inset - edge],
-                        radius=max(1, r - edge), outline=hi + (110,), width=max(1, SS // 2))
+                        radius=r, outline=color + (255,), width=rim)
+    # glassy inner highlight
+    d.rounded_rectangle([inset + rim, inset + rim, s[0] - 1 - inset - rim, s[1] - 1 - inset - rim],
+                        radius=max(1, r - rim), outline=hi + (170,), width=max(1, SS // 2))
     _save(img, name, (px, px))
 
 
