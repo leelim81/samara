@@ -92,11 +92,11 @@ shadow_size = 10
 shadow_offset = Vector2( 0, 3 )
 
 [sub_resource type="StyleBoxFlat" id=11]
-bg_color = Color( 0.886275, 0.85098, 0.764706, 0.98 )
+bg_color = Color( 0.063, 0.078, 0.105, 0.94 )
 border_width_bottom = 2
-border_color = Color( 0.752941, 0.627451, 0.384314, 0.9 )
-shadow_color = Color( 0.2, 0.15, 0.08, 0.18 )
-shadow_size = 7
+border_color = Color( 0.36, 0.66, 0.72, 0.45 )
+shadow_color = Color( 0, 0, 0, 0.32 )
+shadow_size = 9
 shadow_offset = Vector2( 0, 3 )
 
 [sub_resource type="StyleBoxFlat" id=12]
@@ -104,7 +104,7 @@ content_margin_left = 10.0
 content_margin_top = 6.0
 content_margin_right = 10.0
 content_margin_bottom = 6.0
-bg_color = Color( 0.952941, 0.929412, 0.878431, 1 )
+bg_color = Color( 0.13, 0.15, 0.19, 0.96 )
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -120,7 +120,7 @@ content_margin_left = 10.0
 content_margin_top = 6.0
 content_margin_right = 10.0
 content_margin_bottom = 6.0
-bg_color = Color( 0.925, 0.882, 0.784, 1 )
+bg_color = Color( 0.2, 0.23, 0.28, 0.98 )
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -136,7 +136,7 @@ content_margin_left = 10.0
 content_margin_top = 6.0
 content_margin_right = 10.0
 content_margin_bottom = 6.0
-bg_color = Color( 0.871, 0.816, 0.698, 1 )
+bg_color = Color( 0.08, 0.1, 0.13, 1 )
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -487,7 +487,7 @@ theme_override_constants/separation = 5
 
 [node name="P" type="Label" parent="CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock/PowerGauge"]
 custom_minimum_size = Vector2( 14, 0 )
-theme_override_colors/font_color = Color( 0.6, 0.47, 0.22, 1 )
+theme_override_colors/font_color = Color( 0.96, 0.8, 0.38, 1 )
 theme_override_font_sizes/font_size = 15
 text = "P"
 vertical_alignment = 1
@@ -537,6 +537,7 @@ theme_override_constants/separation = 6
 
 [node name="ClockIcon" type="TextureRect" parent="CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock/TimerRow"]
 custom_minimum_size = Vector2( 20, 20 )
+modulate = Color( 0.82, 0.82, 0.76, 1 )
 size_flags_vertical = 4
 texture = SubResource( 9 )
 expand = true
@@ -559,7 +560,7 @@ stretch_margin_bottom = 4
 [node name="YourTurnLabel" type="Label" parent="CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock/TimerRow"]
 custom_minimum_size = Vector2( 68, 0 )
 size_flags_vertical = 4
-theme_override_colors/font_color = Color( 0.227451, 0.211765, 0.188235, 1 )
+theme_override_colors/font_color = Color( 0.42, 0.92, 0.86, 1 )
 theme_override_font_sizes/font_size = 13
 text = "YOUR TURN"
 vertical_alignment = 1
@@ -622,13 +623,13 @@ alignment = 1
 theme_override_constants/separation = -2
 
 [node name="TurnLabel" type="Label" parent="CanvasLayer/MarginContainer/Hud/MainRow/TurnBlock"]
-theme_override_colors/font_color = Color( 0.36, 0.32, 0.26, 0.85 )
+theme_override_colors/font_color = Color( 0.66, 0.7, 0.7, 0.85 )
 theme_override_font_sizes/font_size = 13
 text = "TURN"
 horizontal_alignment = 1
 
 [node name="TurnCountLabel" type="Label" parent="CanvasLayer/MarginContainer/Hud/MainRow/TurnBlock"]
-theme_override_colors/font_color = Color( 0.43, 0.33, 0.18, 1 )
+theme_override_colors/font_color = Color( 0.93, 0.92, 0.86, 1 )
 theme_override_font_sizes/font_size = 30
 text = "1"
 horizontal_alignment = 1
@@ -644,10 +645,10 @@ theme_override_constants/separation = 8
 
 [node name="DragModeOptionButton" parent="CanvasLayer/MarginContainer/Hud/MainRow/Controls" instance=ExtResource( 23 )]
 custom_minimum_size = Vector2( 72, 40 )
-theme_override_colors/font_color = Color( 0.227451, 0.211765, 0.188235, 1 )
-theme_override_colors/font_hover_color = Color( 0.45, 0.33, 0.12, 1 )
-theme_override_colors/font_focus_color = Color( 0.227451, 0.211765, 0.188235, 1 )
-theme_override_colors/font_pressed_color = Color( 0.45, 0.33, 0.12, 1 )
+theme_override_colors/font_color = Color( 0.9, 0.89, 0.83, 1 )
+theme_override_colors/font_hover_color = Color( 0.98, 0.85, 0.45, 1 )
+theme_override_colors/font_focus_color = Color( 0.9, 0.89, 0.83, 1 )
+theme_override_colors/font_pressed_color = Color( 0.98, 0.85, 0.45, 1 )
 theme_override_styles/focus = SubResource( 12 )
 theme_override_styles/hover = SubResource( 13 )
 theme_override_styles/pressed = SubResource( 14 )
@@ -663,10 +664,10 @@ theme_override_styles/normal = SubResource( 12 )
 
 [node name="PauseButton" parent="CanvasLayer/MarginContainer/Hud/MainRow/Controls" instance=ExtResource( 33 )]
 custom_minimum_size = Vector2( 46, 40 )
-theme_override_colors/font_color = Color( 0.227451, 0.211765, 0.188235, 1 )
-theme_override_colors/font_hover_color = Color( 0.45, 0.33, 0.12, 1 )
-theme_override_colors/font_focus_color = Color( 0.227451, 0.211765, 0.188235, 1 )
-theme_override_colors/font_pressed_color = Color( 0.45, 0.33, 0.12, 1 )
+theme_override_colors/font_color = Color( 0.9, 0.89, 0.83, 1 )
+theme_override_colors/font_hover_color = Color( 0.98, 0.85, 0.45, 1 )
+theme_override_colors/font_focus_color = Color( 0.9, 0.89, 0.83, 1 )
+theme_override_colors/font_pressed_color = Color( 0.98, 0.85, 0.45, 1 )
 theme_override_styles/focus = SubResource( 12 )
 theme_override_styles/hover = SubResource( 13 )
 theme_override_styles/pressed = SubResource( 14 )
@@ -675,10 +676,10 @@ text = "II"
 
 [node name="GiveUpButton" parent="CanvasLayer/MarginContainer/Hud/MainRow/Controls" instance=ExtResource( 33 )]
 custom_minimum_size = Vector2( 92, 40 )
-theme_override_colors/font_color = Color( 0.227451, 0.211765, 0.188235, 1 )
-theme_override_colors/font_hover_color = Color( 0.45, 0.33, 0.12, 1 )
-theme_override_colors/font_focus_color = Color( 0.227451, 0.211765, 0.188235, 1 )
-theme_override_colors/font_pressed_color = Color( 0.45, 0.33, 0.12, 1 )
+theme_override_colors/font_color = Color( 0.9, 0.89, 0.83, 1 )
+theme_override_colors/font_hover_color = Color( 0.98, 0.85, 0.45, 1 )
+theme_override_colors/font_focus_color = Color( 0.9, 0.89, 0.83, 1 )
+theme_override_colors/font_pressed_color = Color( 0.98, 0.85, 0.45, 1 )
 theme_override_styles/focus = SubResource( 12 )
 theme_override_styles/hover = SubResource( 13 )
 theme_override_styles/pressed = SubResource( 14 )

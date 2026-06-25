@@ -552,6 +552,7 @@ texture = ExtResource( 7 )
 texture = ExtResource( 15 )
 
 [node name="Border" type="Sprite2D" parent="Sprite2D"]
+visible = false
 texture = ExtResource( 20 )
 
 [node name="Flash" type="Sprite2D" parent="Sprite2D"]

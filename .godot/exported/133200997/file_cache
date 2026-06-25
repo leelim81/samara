@@ -5,7 +5,7 @@ res://assets/fonts/Exo2Regular18.tres::9afafee568b0b34cefb5aa30962012b3::1782139
 res://assets/fonts/Exo2Regular.tres::36e6dd6f09191ed21b61d8f000019db7::1782139257::res://.godot/exported/133200997/export-b703ccb9ef739bd957918f89fbd2c380-Exo2Regular.res
 res://default_bus_layout.tres::4af40e605c51cac290dd1617d0fab233::1782139258::res://.godot/exported/133200997/export-19246414aa9fb561ced4b8dce477acec-default_bus_layout.res
 res://theme.tres::24c3bdc372088c4d7dff62c3ea176e9b::1782139258::res://.godot/exported/133200997/export-1b11a992ebcc6f262e4ee4a4db300a0d-theme.res
-res://units/unit.tscn::559f3ed2f371e4fad93c2ad21902000a::1782281460::res://.godot/exported/133200997/export-b7c7498bd5985312ef7f2237b7aeaff9-unit.scn
+res://units/unit.tscn::81382a959aeac4045d916b05e10b35bc::1782379195::res://.godot/exported/133200997/export-b7c7498bd5985312ef7f2237b7aeaff9-unit.scn
 res://default_env.tres::a52129f071fffbd20a6013a6c0edec1e::1782139258::res://.godot/exported/133200997/export-7cf3fd67ad9f55210191d77b582b8209-default_env.res
 res://battles/introduction/greaves_of_clay.tscn::35cef8c8052fbe327b1523182043cc21::1781188476::res://.godot/exported/133200997/export-3e280b1055c255ad6cd7b72cbd967b53-greaves_of_clay.scn
 res://battles/terra/borderlands.tscn::f2bc5515940227a83cd8ee6976fb0cc9::1782139258::res://.godot/exported/133200997/export-6fcb1f6894af0a7533062d9604052b24-borderlands.scn
@@ -22,7 +22,7 @@ res://board/highlights/pincer_highlight.tscn::d6138ee3d5859a395ba1137bac70fd9b::
 res://board/highlights/skill_highlight.tscn::d09717cacbfbdcf2d09fd81673d4c1de::1782139258::res://.godot/exported/133200997/export-cac8cbf033af4200127872ddf5249f20-skill_highlight.scn
 res://board/highlights/trail2d.tscn::bc03ac9d13b0b7ba5355931c19e01348::1782139258::res://.godot/exported/133200997/export-5083e77c9bf075877fbdc5a064b7b1be-trail2d.scn
 res://board/attacker.tscn::1c5afdf72e4c59d26b99dcc6dec11dca::1782139258::res://.godot/exported/133200997/export-b84b0efd896669cb451399ba7302f5e7-attacker.scn
-res://board/battle.tscn::2b802a8cbae84301d7282017710087b0::1782320183::res://.godot/exported/133200997/export-17dae8706ba3621e47ba3e0e0e785bc7-battle.scn
+res://board/battle.tscn::fa91e98b4943b4e562e13285e1ae1c9a::1782379389::res://.godot/exported/133200997/export-17dae8706ba3621e47ba3e0e0e785bc7-battle.scn
 res://board/cell.tscn::b15ca9d4b7f2e783e1135f5703fd276f::1781188477::res://.godot/exported/133200997/export-c1cd22ec9f82bfbccb44fff70940950c-cell.scn
 res://board/trap.tscn::699a0650d5d2852cc79c8fc5d3789ab4::1782139258::res://.godot/exported/133200997/export-1b1672cc02f0886e234660d537e34d70-trap.scn
 res://chapter_data/terra/borderlands.tres::03f1c16f08a3e5a3ad02d9387b007630::1782139258::res://.godot/exported/133200997/export-c08a1d504c1cb511edf33e9c2d0d8e32-borderlands.res
