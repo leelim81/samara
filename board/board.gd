@@ -85,11 +85,13 @@ var _shake_home: Vector2 = Vector2.ZERO
 # Power Gauge + Powered Points (Terra Battle)
 const POWERED_POINT_SCENE := preload("res://board/highlights/powered_point.tscn")
 const POWER_MAX: int = 3
-const POWER_PER_PINCER: int = 1
+# Charge added per damaging hit an enemy survives (TB charges per surviving hit,
+# not per pincer; ~3 hits fill one bar). Each full bar spawns a Powered Point.
+const CHARGE_PER_HIT: float = 0.34
 
-var _power: int = 0
-var _powered_cell: Cell = null
-var _powered_disc: Node2D = null
+var _power_charge: float = 0.0
+var _powered_cells: Array = []
+var _powered_discs: Dictionary = {}
 
 @onready var _grid := $Grid
 @onready var _powered_points := $PoweredPoints
@@ -106,7 +108,8 @@ func _ready() -> void:
 	$PincerExecutor.pusher = $Pusher
 
 	$PincerExecutor.powered_point_consumed.connect(_clear_powered_point)
-	emit_signal("power_changed", _power, POWER_MAX)
+	Events.enemy_survived_player_hit.connect(_charge_power)
+	_emit_power()
 
 	if can_use_debug_units:
 		_player_units_node = $DebugUnits
@@ -820,15 +823,8 @@ func _execute_pincers(unit: Unit) -> void:
 			
 			await $PincerExecutor.heal_phase_finished
 
-			# Each completed player pincer charges the Power Gauge; a full gauge
-			# spawns a Powered Point and resets.
-			_power = min(_power + POWER_PER_PINCER, POWER_MAX)
-			emit_signal("power_changed", _power, POWER_MAX)
-
-			if _power >= POWER_MAX:
-				_spawn_powered_point()
-				_power = 0
-				emit_signal("power_changed", _power, POWER_MAX)
+			# The Power Gauge charges per surviving enemy hit during the attack
+			# phase (see _charge_power), not per completed pincer.
 		
 		if _current_turn == Turn.ENEMY:
 			# Removes the unit (besides the active unit) that performed the
@@ -1244,28 +1240,56 @@ func _spawn_powered_point() -> void:
 	if free_cells.is_empty():
 		return
 
-	if _powered_cell != null:
-		_clear_powered_point()
-
 	var cell: Cell = free_cells.pick_random()
 	cell.is_powered = true
-	_powered_cell = cell
+	_powered_cells.push_back(cell)
 
 	var disc: Node2D = POWERED_POINT_SCENE.instantiate()
 	_powered_points.add_child(disc)
 	disc.position = cell.position
-	_powered_disc = disc
+	_powered_discs[cell] = disc
 
 
-# Clears the active Powered Point (a unit on it activated, or it was replaced).
-func _clear_powered_point(_cell = null) -> void:
-	if _powered_cell != null:
-		_powered_cell.is_powered = false
-		_powered_cell = null
+# Clears one Powered Point (a unit on it chained, consuming it).
+func _clear_powered_point(cell = null) -> void:
+	if cell == null or not _powered_cells.has(cell):
+		return
 
-	if is_instance_valid(_powered_disc):
-		_powered_disc.consume()
-		_powered_disc = null
+	cell.is_powered = false
+	_powered_cells.erase(cell)
+
+	var disc = _powered_discs.get(cell)
+	if is_instance_valid(disc):
+		disc.consume()
+	_powered_discs.erase(cell)
+
+	_emit_power()
+
+
+# Charges the Power Gauge per surviving enemy hit; each full bar spawns a
+# Powered Point, up to POWER_MAX on the field at once (Terra Battle rule).
+func _charge_power() -> void:
+	if _current_turn != Turn.PLAYER:
+		return
+
+	_power_charge += CHARGE_PER_HIT
+
+	while _power_charge >= 1.0 and _powered_cells.size() < POWER_MAX:
+		_power_charge -= 1.0
+		_spawn_powered_point()
+
+	# Hold the gauge full when all Powered Points are already on the field.
+	if _powered_cells.size() >= POWER_MAX:
+		_power_charge = 0.0
+	elif _power_charge > 1.0:
+		_power_charge = 1.0
+
+	_emit_power()
+
+
+# HUD fill = full bars (stored Powered Points) + the partial next bar.
+func _emit_power() -> void:
+	emit_signal("power_changed", float(_powered_cells.size()) + _power_charge, POWER_MAX)
 
 
 # Battle spoils for the results screen: {exp, coins, defeated}

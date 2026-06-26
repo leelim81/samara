@@ -15,3 +15,7 @@ signal cutin_requested(textures, text, allied, tint, enter_from_sides)
 # A unit's skill activated during a pincer; the shared skill feed shows its
 # name as one row so callouts stack instead of scattering across the board.
 signal skill_activated(skill)
+
+# A player attack dealt damage to an enemy that SURVIVED the hit. Charges the
+# Power Gauge (Terra Battle charges per surviving hit, not per pincer).
+signal enemy_survived_player_hit

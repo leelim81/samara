@@ -22,7 +22,7 @@ res://board/highlights/pincer_highlight.tscn::d6138ee3d5859a395ba1137bac70fd9b::
 res://board/highlights/skill_highlight.tscn::d09717cacbfbdcf2d09fd81673d4c1de::1782139258::res://.godot/exported/133200997/export-cac8cbf033af4200127872ddf5249f20-skill_highlight.scn
 res://board/highlights/trail2d.tscn::bc03ac9d13b0b7ba5355931c19e01348::1782139258::res://.godot/exported/133200997/export-5083e77c9bf075877fbdc5a064b7b1be-trail2d.scn
 res://board/attacker.tscn::1c5afdf72e4c59d26b99dcc6dec11dca::1782139258::res://.godot/exported/133200997/export-b84b0efd896669cb451399ba7302f5e7-attacker.scn
-res://board/battle.tscn::fa91e98b4943b4e562e13285e1ae1c9a::1782379389::res://.godot/exported/133200997/export-17dae8706ba3621e47ba3e0e0e785bc7-battle.scn
+res://board/battle.tscn::74ddabf568f6e628d7269021ad422672::1782481152::res://.godot/exported/133200997/export-17dae8706ba3621e47ba3e0e0e785bc7-battle.scn
 res://board/cell.tscn::b15ca9d4b7f2e783e1135f5703fd276f::1781188477::res://.godot/exported/133200997/export-c1cd22ec9f82bfbccb44fff70940950c-cell.scn
 res://board/trap.tscn::699a0650d5d2852cc79c8fc5d3789ab4::1782139258::res://.godot/exported/133200997/export-1b1672cc02f0886e234660d537e34d70-trap.scn
 res://chapter_data/terra/borderlands.tres::03f1c16f08a3e5a3ad02d9387b007630::1782139258::res://.godot/exported/133200997/export-c08a1d504c1cb511edf33e9c2d0d8e32-borderlands.res

@@ -314,7 +314,7 @@ func _make_counter(box: HBoxContainer, atlas_tex: Texture2D, region: Rect2) -> L
 	icon.custom_minimum_size = Vector2(17, 17)
 	icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-	icon.modulate = Color(0.82, 0.82, 0.76)
+	icon.modulate = Color(0.3, 0.27, 0.24)
 	icon.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	hb.add_child(icon)
@@ -323,7 +323,7 @@ func _make_counter(box: HBoxContainer, atlas_tex: Texture2D, region: Rect2) -> L
 	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	label.add_theme_font_size_override("font_size", 16)
-	label.add_theme_color_override("font_color", Color(0.91, 0.89, 0.83, 1))
+	label.add_theme_color_override("font_color", Color(0.286, 0.247, 0.196, 1))
 	hb.add_child(label)
 
 	box.add_child(hb)
@@ -346,9 +346,9 @@ func _on_spoils_changed(_exp: int, _coins: int, _defeated: int) -> void:
 
 
 # Power Gauge: light whole segments up to the current power level.
-func _on_power_changed(power: int, _max_power: int) -> void:
+func _on_power_changed(filled: float, _max_bars: int) -> void:
 	for i in _power_segments.size():
-		_power_segments[i].value = 100.0 if i < power else 0.0
+		_power_segments[i].value = clampf((filled - float(i)) * 100.0, 0.0, 100.0)
 
 
 # ---- Squad status icons (bound to the real squad; dim on KO) ----

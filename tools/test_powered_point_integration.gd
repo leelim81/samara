@@ -57,11 +57,11 @@ func _run() -> void:
 
 	# Plant a Powered Point on the LEFT flank cell (where the lead striker lands).
 	left.is_powered = true
-	board._powered_cell = left
+	board._powered_cells.push_back(left)
 	var disc = board.POWERED_POINT_SCENE.instantiate()
 	board._powered_points.add_child(disc)
 	disc.position = left.position
-	board._powered_disc = disc
+	board._powered_discs[left] = disc
 
 	var a = players[0]
 	var b = players[1]
@@ -75,7 +75,7 @@ func _run() -> void:
 		await process_frame
 
 	_check("powered cell consumed (is_powered=false)", not left.is_powered)
-	_check("board._powered_cell cleared", board._powered_cell == null)
+	_check("powered cell removed from active list", not board._powered_cells.has(left))
 	_check("disc freed", not is_instance_valid(disc))
 
 	print("test_powered_point_integration: %s" % ("PASS" if _f == 0 else "FAIL (%d)" % _f))

@@ -15,6 +15,9 @@ const DEFENSE_EXPONENT: float = 0.7
 # Heal skills restore this multiple of their computed magnitude.
 const HEAL_POWER_MULTIPLIER: float = 3.0
 
+# A unit standing on a Powered Point deals/heals this multiple (Terra Battle ×1.5).
+const POWERED_POINT_DAMAGE_MULTIPLIER: float = 1.5
+
 
 @export var target_unit_path: NodePath
 @export var status_effect_node2d_path: NodePath
@@ -37,8 +40,9 @@ func apply_skill(unit: Unit,
 	if (skill.is_attack() or skill.is_healing()) and skill.primary_power > 0:
 		var damage := calculate_damage(unit.get_stats(), _target_unit.get_stats(), skill.primary_power, skill.primary_weapon_type, skill.primary_attribute)
 		
-		damage = int(damage * _random.randf_range(0.9, 1.1))
-		
+		var powered_mult: float = POWERED_POINT_DAMAGE_MULTIPLIER if unit.is_on_powered_point else 1.0
+		damage = int(damage * powered_mult * _random.randf_range(0.9, 1.1))
+
 		if skill.is_healing():
 			damage = -int(damage * HEAL_POWER_MULTIPLIER)
 		
@@ -53,6 +57,10 @@ func apply_skill(unit: Unit,
 
 		if damage > 0:
 			_target_unit.on_attacked()
+
+			# Power Gauge: a player hit an enemy survives charges the gauge (TB).
+			if unit.faction == Unit.PLAYER_FACTION and _target_unit.faction == Unit.ENEMY_FACTION and _target_unit.is_alive():
+				Events.emit_signal("enemy_survived_player_hit")
 	
 	var has_modified_stats: bool = false
 	
