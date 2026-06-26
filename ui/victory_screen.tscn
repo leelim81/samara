@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://theme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/fonts/Exo2-Regular.ttf" type="FontFile" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://ui/audio_button.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/fonts/Exo2SemiBold.tres" type="FontVariation" id=6]
 [ext_resource path="res://assets/sfx/casino/place10.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/fonts/CinzelDecorativeBold.tres" type="FontFile" id=8]
 
 [sub_resource type="CanvasItemMaterial" id=2]
 blend_mode = 1
@@ -67,8 +68,9 @@ theme_override_constants/separation = 18
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2( 0, 150 )
-theme_override_font_sizes/font_size = 64
-theme_override_fonts/font = ExtResource( 6 )
+theme_override_colors/font_color = Color( 0.227451, 0.211765, 0.188235, 1 )
+theme_override_font_sizes/font_size = 54
+theme_override_fonts/font = ExtResource( 8 )
 text = "VICTORY"
 horizontal_alignment = 1
 vertical_alignment = 1

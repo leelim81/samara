@@ -1,5 +1,5 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1782481910
+::res://::1782483666
 default_bus_layout.tres::AudioBusLayout::7454578157151104952::1782139258::0::1::::<><><>0<>0<><>::
 default_env.tres::Environment::-1::1782139258::0::1::::<><><>0<>0<><>::
 enums.gd::GDScript::7378857898191831885::1782139258::0::1::::<>Node<><>0<>0<><>::
@@ -11,7 +11,7 @@ loader.gd::GDScript::8719253697106321466::1782139258::0::1::::<>Node<><>0<>0<><>
 README.md::TextFile::-1::1782139257::0::1::::<><><>0<>0<><>::
 test_pincer.gd::GDScript::6975466719546945190::1782139258::0::1::::<>SceneTree<><>0<>0<><>::
 test_playthrough.gd::GDScript::7104636526798472543::1782195283::0::1::::<>SceneTree<><>0<>0<><>::
-theme.tres::Theme::-1::1782139258::0::1::::<><><>0<>0<><>::res://assets/fonts/Exo2-Regular.ttf
+theme.tres::Theme::-1::1782483666::0::1::::<><><>0<>0<><>::res://assets/fonts/Exo2-Regular.ttf
 tr_check.gd::GDScript::3620470175350752355::1782139258::0::1::::<>SceneTree<><>0<>0<><>::
 utils.gd::GDScript::1582701809732024172::1781188476::0::1::::<>Node<><>0<>0<><>::
 validate_check.gd::GDScript::771167314338269634::1782139258::0::1::::<>SceneTree<><>0<>0<><>::
@@ -1497,7 +1497,7 @@ gen_zero_series.json::JSON::-1::1782139258::0::1::::<><><>0<>0<><>::
 terra_dataset.json::JSON::-1::1782139258::0::1::::<><><>0<>0<><>::
 terra_scope.json::JSON::-1::1782139258::0::1::::<><><>0<>0<><>::
 ::res://tools/out/_cache/::1781415176
-::res://ui/::1782483435
+::res://ui/::1782483923
 audio_button.gd::GDScript::6764393833352807422::1782142585::0::1::::AudioButton<>Button<><>0<>0<><>::
 audio_button.tscn::PackedScene::-1::1782139258::0::1::::<><><>0<>0<><>::res://theme.tres<>res://ui/audio_button.gd<>res://assets/sfx/chess_place_2.wav
 auto_fading_audio_stream_player.gd::GDScript::4707560004415154043::1782139258::0::1::::<>AudioStreamPlayer<><>0<>0<><>::
@@ -1505,7 +1505,7 @@ auto_fading_audio_stream_player.tscn::PackedScene::-1::1782139258::0::1::::<><><
 cutin_banner.gd::GDScript::7042296960881760969::1782139258::0::1::::<>Control<><>0<>0<><>::
 cutin_banner.tscn::PackedScene::-1::1782483435::0::1::::<><><>0<>0<><>::res://ui/cutin_banner.gd<>res://assets/fonts/CinzelDecorativeBold.tres<>res://assets/sfx/wind_whoosh.wav
 defeat_screen.gd::GDScript::4109345727479490147::1782139258::0::1::::<>Control<><>0<>0<><>::
-defeat_screen.tscn::PackedScene::-1::1782139258::0::1::::<><><>0<>0<><>::res://ui/defeat_screen.gd<>res://assets/fonts/Exo2-Regular.ttf<>res://theme.tres<>res://ui/audio_button.tscn
+defeat_screen.tscn::PackedScene::-1::1782483923::0::1::::<><><>0<>0<><>::res://ui/defeat_screen.gd<>res://assets/fonts/Exo2-Regular.ttf<>res://theme.tres<>res://ui/audio_button.tscn<>res://assets/fonts/CinzelDecorativeBold.tres
 drag_mode_option_button.gd::GDScript::2361924365705521306::1782139258::0::1::::<>OptionButton<><>0<>0<><>::
 drag_mode_option_button.tscn::PackedScene::-1::1782139258::0::1::::<><><>0<>0<><>::res://assets/ui/click.png<>res://assets/ui/drag.png<>res://ui/drag_mode_option_button.gd<>res://theme.tres<>res://assets/sfx/chess_place_2.wav
 fast_forward_button.gd::GDScript::1381211220232956200::1782228258::0::1::::<>Button<><>0<>0<><>::
@@ -1525,7 +1525,7 @@ stack_based_menu.gd::GDScript::759300816110901496::1782139258::0::1::::<>Node<><
 stack_based_menu.tscn::PackedScene::-1::1781188477::0::1::::<><><>0<>0<><>::res://ui/stack_based_menu.gd
 stack_based_menu_screen.gd::GDScript::5285762342570029191::1782139258::0::1::::StackBasedMenuScreen<>Control<><>0<>0<><>::
 victory_screen.gd::GDScript::7305674267362175031::1782139258::0::1::::<>Control<><>0<>0<><>::
-victory_screen.tscn::PackedScene::-1::1782139258::0::1::::<><><>0<>0<><>::res://theme.tres<>res://assets/fonts/Exo2-Regular.ttf<>res://assets/vfx/glow_spark.png<>res://ui/victory_screen.gd<>res://ui/audio_button.tscn<>res://assets/fonts/Exo2SemiBold.tres<>res://assets/sfx/casino/place10.wav
+victory_screen.tscn::PackedScene::-1::1782483890::0::1::::<><><>0<>0<><>::res://theme.tres<>res://assets/fonts/Exo2-Regular.ttf<>res://assets/vfx/glow_spark.png<>res://ui/victory_screen.gd<>res://ui/audio_button.tscn<>res://assets/fonts/Exo2SemiBold.tres<>res://assets/sfx/casino/place10.wav<>res://assets/fonts/CinzelDecorativeBold.tres
 view_unit_menu.gd::GDScript::8033667910243138711::1782139258::0::1::::<>StackBasedMenuScreen<><>0<>0<><>::
 view_unit_menu.tscn::PackedScene::184967625376603428::1782483199::0::1::::<><><>0<>0<><>::res://ui/view_unit_menu.gd<>res://ui/skill_pill.tscn<>res://ui/skill_label_container.tscn<>res://assets/fonts/EBGaramond24.tres<>res://assets/fonts/Exo2SemiBold.tres<>res://assets/fonts/Exo2Regular18.tres<>res://assets/terra/ui/stat_atk.png<>res://assets/terra/ui/stat_def.png<>res://assets/terra/ui/stat_satk.png<>res://assets/terra/ui/stat_sdef.png<>res://assets/terra/full/kuscah_full.png<>res://assets/terra/tokens/kuscah_token.png<>res://assets/terra/ui/staff.png<>res://ui/audio_button.tscn
 ::res://ui/cutscenes/::1782483540
@@ -1546,14 +1546,14 @@ support_dialogue_cutscene.tscn::PackedScene::-1::1781188477::0::1::::<><><>0<>0<
 support_dialogue_data.gd::GDScript::694266651348668920::1782139258::0::1::::SupportDialogueData<>RefCounted<><>0<>0<><>::
 support_selection_menu.gd::GDScript::6148587385396911921::1782139258::0::1::::<>Control<><>0<>0<><>::
 support_selection_menu.tscn::PackedScene::-1::1782139258::0::1::::<><><>0<>0<><>::res://theme.tres<>res://ui/cutscenes/support_selection_menu.gd<>res://ui/cutscenes/chapter_clearer.tscn<>res://ui/audio_button.tscn<>res://chapter_data/greaves_of_clay.tres
-::res://ui/main_menu/::1782139258
+::res://ui/main_menu/::1782483865
 credits_menu.gd::GDScript::2408128020184899526::1782139258::0::1::::<>StackBasedMenuScreen<><>0<>0<><>::
 credits_menu.tscn::PackedScene::-1::1782139258::0::1::::<><><>0<>0<><>::res://theme.tres<>res://ui/main_menu/credits_menu.gd<>res://ui/audio_button.tscn
 settings_menu.gd::GDScript::7208621668030606339::1782139258::0::1::::<>StackBasedMenuScreen<><>0<>0<><>::
 settings_menu.tscn::PackedScene::-1::1782139258::0::1::::<><><>0<>0<><>::res://ui/main_menu/settings_menu.gd<>res://theme.tres<>res://ui/language_option_button.gd<>res://ui/main_menu/volume_slider.tscn<>res://ui/audio_button.tscn
 stack_based_main_menu.tscn::PackedScene::-1::1781188477::0::1::::<><><>0<>0<><>::res://ui/stack_based_menu.tscn<>res://ui/main_menu/title_screen.tscn
 title_screen.gd::GDScript::3679602965342316217::1782139258::0::1::::<>StackBasedMenuScreen<><>0<>0<><>::
-title_screen.tscn::PackedScene::-1::1782139258::0::1::::<><><>0<>0<><>::res://theme.tres<>res://ui/main_menu/title_screen.gd<>res://ui/audio_button.tscn
+title_screen.tscn::PackedScene::-1::1782483865::0::1::::<><><>0<>0<><>::res://theme.tres<>res://ui/main_menu/title_screen.gd<>res://ui/audio_button.tscn<>res://assets/fonts/CinzelDecorativeBold.tres
 volume_slider.gd::GDScript::807029375089038957::1782139258::0::1::::<>HSlider<><>0<>0<><>::
 volume_slider.tscn::PackedScene::-1::1782139258::0::1::::<><><>0<>0<><>::res://ui/main_menu/volume_slider.gd<>res://assets/sfx/chess_place_2.wav
 ::res://ui/pre_battle_menu/::1782139258
