@@ -456,7 +456,7 @@ whitewyrm_token.png::CompressedTexture2D::870286647573283653::1782139258::178213
 wisprat_token.png::CompressedTexture2D::5191704533742016140::1782139258::1782139258::1::::<><><>0<>0<>0791267fb1e634b5126e550d3abc0e16<>res://.godot/imported/wisprat_token.png-ef9db055a18d186b959d23f125934021.ctex::
 zan_token.png::CompressedTexture2D::9128083088354830228::1782264856::1782264910::1::::<><><>0<>0<>cc0649dad185c6c5d4f8a897b8aa2dcb<>res://.godot/imported/zan_token.png-c76b1db63e1a1c97830722d79de1b914.ctex::
 zenzoze_token.png::CompressedTexture2D::2969962855279910744::1782264861::1782264910::1::::<><><>0<>0<>1a9a47452da5b8e28b48ec3d08a707ee<>res://.godot/imported/zenzoze_token.png-e3a7cbe5c3f6008c7058c9bd13b1066e.ctex::
-::res://assets/terra/ui/::1782380785
+::res://assets/terra/ui/::1782437754
 attr_triangle.png::CompressedTexture2D::6664521052389689204::1782227736::1782227741::1::::<><><>0<>0<>381b9ac8e85cdce3f4f8a1d2dfdd28dd<>res://.godot/imported/attr_triangle.png-0d48f7f2e347bf1d4b6073d5738853cc.ctex::
 bar_bg.png::CompressedTexture2D::8817391632824205200::1782379419::1782379428::1::::<><><>0<>0<>4406865f4efdee9a131a29db328df2ab<>res://.godot/imported/bar_bg.png-f0da8391a45cc63965acf364401d2223.ctex::
 bar_fill.png::CompressedTexture2D::7959551130236841283::1782227734::1782227741::1::::<><><>0<>0<>77fa0e621091f2c9726e113f5ed21eed<>res://.godot/imported/bar_fill.png-04c97fefc081e6e379c0bec5211801bd.ctex::
@@ -482,9 +482,9 @@ stat_sdef.png::CompressedTexture2D::8306580479355792949::1782139258::1782139258:
 sword.png::CompressedTexture2D::392259404336527074::1782139258::1782139258::1::::<><><>0<>0<>51d9d1b8eb291b98a189628ce44ed5e3<>res://.godot/imported/sword.png-27b344a9387c1077473ec43f0b9198f0.ctex::
 ui_icons.png::CompressedTexture2D::3043568967405194235::1782139258::1782139258::1::::<><><>0<>0<>81886a0875f1dec27a26da87b0b61275<>res://.godot/imported/ui_icons.png-94b33f8dec7ebc20463dce8c9e516556.ctex::
 unit_player_border.png::CompressedTexture2D::8535091980705266749::1782380772::1782380785::1::::<><><>0<>0<>64a91d78043defe364bc8a06439db39b<>res://.godot/imported/unit_player_border.png-1c2288365146fdf4f619e5c192d0dfd6.ctex::
-unit_square_bg.png::CompressedTexture2D::368177042202849577::1782380772::1782380785::1::::<><><>0<>0<>112c86a9681404ba97f8e3d241b61c1d<>res://.godot/imported/unit_square_bg.png-e9eba7a877b026c08e5393f52fe2b381.ctex::
-unit_square_bg_2x2.png::CompressedTexture2D::1799078722795852365::1782380772::1782380785::1::::<><><>0<>0<>00b84d918a743c08d0a537aa2b3f13b5<>res://.godot/imported/unit_square_bg_2x2.png-f719e8136b0b41ba3fad2ca3298dabf9.ctex::
-::res://assets/ui/::1782380785
+unit_square_bg.png::CompressedTexture2D::368177042202849577::1782437745::1782437754::1::::<><><>0<>0<>112c86a9681404ba97f8e3d241b61c1d<>res://.godot/imported/unit_square_bg.png-e9eba7a877b026c08e5393f52fe2b381.ctex::
+unit_square_bg_2x2.png::CompressedTexture2D::1799078722795852365::1782437745::1782437754::1::::<><><>0<>0<>00b84d918a743c08d0a537aa2b3f13b5<>res://.godot/imported/unit_square_bg_2x2.png-f719e8136b0b41ba3fad2ca3298dabf9.ctex::
+::res://assets/ui/::1782437754
 arrow_right.png::CompressedTexture2D::4219284104071158502::1781184353::1782139258::1::::<><><>0<>0<>7ad8d5d676721df34906425ac18ee52b<>res://.godot/imported/arrow_right.png-a04511e5711405d9f976d0045a72cb7a.ctex::
 big_bar_progress_bg.png::CompressedTexture2D::7360412494071876136::1781184353::1782139258::1::::<><><>0<>0<>38093117ee4bf7bbca0a5ed54e3ce70c<>res://.godot/imported/big_bar_progress_bg.png-1b4595f2ee2318ffc6cd27ad759e55ec.ctex::
 blue_panel.png::CompressedTexture2D::5132614006433608458::1781184353::1782139258::1::::<><><>0<>0<>56c3172de5e337ea4e9379b533f1470f<>res://.godot/imported/blue_panel.png-0c660c318aed706498d75889000a2112.ctex::
@@ -528,7 +528,7 @@ sword.png::CompressedTexture2D::318205785329493208::1781184353::1782139258::1:::
 title.png::CompressedTexture2D::284292126033510324::1781184353::1782139258::1::::<><><>0<>0<>e46a68c42cacf8755a64e0392e0333be<>res://.godot/imported/title.png-534804d7bf6a63fbbb0c46e68d8e4660.ctex::
 ui_icons.png::CompressedTexture2D::8008670625202807586::1781184353::1782139258::1::::<><><>0<>0<>bdf6361e32f5b28c62870cdf03eefe6b<>res://.godot/imported/ui_icons.png-ba95d9fa9c0eef28aec73f493d978e3b.ctex::
 unit_circle_gradient.png::CompressedTexture2D::3422998339753131685::1781184353::1782139258::1::::<><><>0<>0<>943f67c0b8f75a9892c0aaa338dfbc66<>res://.godot/imported/unit_circle_gradient.png-27d710fddea09f3d70ab0e1ac5afa9d7.ctex::
-unit_glow.png::CompressedTexture2D::6399285902478232337::1782380773::1782380785::1::::<><><>0<>0<>b52f328b352cd8d3dd6f5acc3cef5895<>res://.godot/imported/unit_glow.png-7a7d99b80e947edb8800213119ab4c73.ctex::
+unit_glow.png::CompressedTexture2D::6399285902478232337::1782437746::1782437754::1::::<><><>0<>0<>b52f328b352cd8d3dd6f5acc3cef5895<>res://.godot/imported/unit_glow.png-7a7d99b80e947edb8800213119ab4c73.ctex::
 unit_player_border.png::CompressedTexture2D::2344155061662472402::1781184353::1782139258::1::::<><><>0<>0<>dc9ced4ed045a1ee80d1a893eed205d8<>res://.godot/imported/unit_player_border.png-e581f5b210cac7c59b0980dae88b31ae.ctex::
 unit_square_bg.png::CompressedTexture2D::7804130924815188619::1781184353::1782139258::1::::<><><>0<>0<>71b7d132c5e6dc2c3a5cc8b89c77aafe<>res://.godot/imported/unit_square_bg.png-8d227a8b5a5b09d6c3c4f7a0674a9271.ctex::
 unit_square_bg_2.png::CompressedTexture2D::5009072976981642167::1781184353::1782139258::1::::<><><>0<>0<>27828422fc44043298a8703f1c7a0c2f<>res://.godot/imported/unit_square_bg_2.png-715dd32086e7ef8d12bebb3ef154e928.ctex::
@@ -638,10 +638,10 @@ trail2d.gd::GDScript::7745615399937602685::1782139258::0::1::::<>Node2D<><>0<>0<
 trail2d.tscn::PackedScene::-1::1782139258::0::1::::<><><>0<>0<><>::res://addons/antialiased_line2d/antialiased_line2d.gd<>res://board/highlights/trail2d.gd
 trails.gd::GDScript::1378118214100076090::1782139258::0::1::::<>Node2D<><>0<>0<><>::
 ::res://build/::1781226515
-::res://build/web/::1782379546
-index.apple-touch-icon.png::CompressedTexture2D::671408193628746592::1782379546::1782139258::1::::<><><>0<>0<>3d824a20facb708d8daf3d0aadcd1099<>res://.godot/imported/index.apple-touch-icon.png-21031f526f7942c8019a62913b80e091.ctex::
-index.icon.png::CompressedTexture2D::4578476410241139680::1782379546::1782139258::1::::<><><>0<>0<>845dd99bdc3abd932d4380b729180570<>res://.godot/imported/index.icon.png-a9d2f4f7433eeddc29dad75f5e7f8710.ctex::
-index.png::CompressedTexture2D::5193192814418057516::1782379546::1782139258::1::::<><><>0<>0<>495bc6d4f9b8f560c72aa0519372ef85<>res://.godot/imported/index.png-7e97af7272d6fa0065ffc53e96463470.ctex::
+::res://build/web/::1782380905
+index.apple-touch-icon.png::CompressedTexture2D::671408193628746592::1782380905::1782139258::1::::<><><>0<>0<>3d824a20facb708d8daf3d0aadcd1099<>res://.godot/imported/index.apple-touch-icon.png-21031f526f7942c8019a62913b80e091.ctex::
+index.icon.png::CompressedTexture2D::4578476410241139680::1782380905::1782139258::1::::<><><>0<>0<>845dd99bdc3abd932d4380b729180570<>res://.godot/imported/index.icon.png-a9d2f4f7433eeddc29dad75f5e7f8710.ctex::
+index.png::CompressedTexture2D::5193192814418057516::1782380905::1782139258::1::::<><><>0<>0<>495bc6d4f9b8f560c72aa0519372ef85<>res://.godot/imported/index.png-7e97af7272d6fa0065ffc53e96463470.ctex::
 ::res://chapter_data/::1782139258
 battle_info.gd::GDScript::6385201418298922054::1782139258::0::1::::BattleInfo<>Resource<><>0<>0<><>::
 chapter_data.gd::GDScript::7983260008866269444::1782139258::0::1::::ChapterData<>Resource<><>0<>0<><>::
@@ -1432,7 +1432,7 @@ script_to_the_heart.json::JSON::-1::1782115380::0::1::::<><><>0<>0<><>::
 script_vengeance.json::JSON::-1::1782115380::0::1::::<><><>0<>0<><>::
 script_voice_from_beyond.json::JSON::-1::1782115380::0::1::::<><><>0<>0<><>::
 script_zero_series.json::JSON::-1::1782115380::0::1::::<><><>0<>0<><>::
-::res://tools/::1782380423
+::res://tools/::1782402848
 audit_art.gd::GDScript::2585363787179767723::1782139258::0::1::::<>SceneTree<><>0<>0<><>::
 find_bad_enemy.gd::GDScript::1745768150649462391::1782139258::0::1::::<>SceneTree<><>0<>0<><>::
 inspect_job.gd::GDScript::193376839692463577::1782139258::0::1::::<>SceneTree<><>0<>0<><>::
@@ -1454,7 +1454,7 @@ test_slice.gd::GDScript::9062405512211046725::1782139258::0::1::::<>SceneTree<><
 test_stats_curve.gd::GDScript::5676127708957624865::1782139258::0::1::::<>SceneTree<><>0<>0<><>::
 test_unitmenu.gd::GDScript::4722407837896034306::1782139258::0::1::::<>SceneTree<><>0<>0<><>::
 test_unlock_chain.gd::GDScript::6789166222520842692::1782139258::0::1::::<>SceneTree<><>0<>0<><>::
-::res://tools/__pycache__/::1782380772
+::res://tools/__pycache__/::1782437745
 ::res://tools/out/::1782139258
 enemy_art_manifest.json::JSON::-1::1782139258::0::1::::<><><>0<>0<><>::
 gen_animata.json::JSON::-1::1782139258::0::1::::<><><>0<>0<><>::
@@ -1574,9 +1574,9 @@ unit_item_container.gd::GDScript::3460599237794002007::1782139258::0::1::::<>HBo
 unit_item_container.tscn::PackedScene::5366760611343276::1782139258::0::1::::<><><>0<>0<><>::res://ui/pre_battle_menu/unit_stats_container.tscn<>res://assets/ui/btn_dark_normal.tres<>res://assets/ui/btn_dark_hover.tres<>res://assets/ui/btn_dark_pressed.tres<>res://ui/pre_battle_menu/unit_icon.tscn<>res://assets/ui/red_panel_border.png<>res://assets/sfx/ceramic_place_1.wav<>res://ui/pre_battle_menu/unit_item_container.gd<>res://ui/audio_button.tscn<>res://assets/fonts/Exo2SemiBold.tres<>res://assets/terra/ui/staff.png
 unit_stats_container.gd::GDScript::2297033996795958088::1782139258::0::1::::<>VBoxContainer<><>0<>0<><>::
 unit_stats_container.tscn::PackedScene::178691135571949120::1782139258::0::1::::<><><>0<>0<><>::res://assets/fonts/Exo2Regular18.tres<>res://ui/pre_battle_menu/unit_stats_container.gd<>res://assets/terra/ui/stat_atk.png<>res://assets/terra/ui/stat_def.png<>res://assets/terra/ui/stat_satk.png<>res://assets/terra/ui/stat_sdef.png
-::res://units/::1782380701
+::res://units/::1782437711
 enemy.gd::GDScript::2531443298731140725::1782139258::0::1::::Enemy<>Unit<><>0<>0<><>::
-enemy.tscn::PackedScene::-1::1782380690::0::1::::<><><>0<>0<><>::res://units/unit.tscn<>res://units/enemy.gd<>res://assets/sfx/ceramic_drag_3.wav<>res://assets/terra/ui/hp_bar_fill.png<>res://assets/terra/ui/enemy_border.png<>res://assets/terra/tokens/orbling_token.png<>res://assets/terra/ui/unit_square_bg.png<>res://assets/ui/light_blue_panel_transparent.png<>res://units/ai/ai_controller.tscn<>res://theme.tres<>res://assets/ui/unit_circle_gradient.png<>res://assets/sfx/pot_break_2.wav<>res://units/job_tool.gd
+enemy.tscn::PackedScene::-1::1782437711::0::1::::<><><>0<>0<><>::res://units/unit.tscn<>res://units/enemy.gd<>res://assets/sfx/ceramic_drag_3.wav<>res://assets/terra/ui/hp_bar_fill.png<>res://assets/terra/ui/enemy_border.png<>res://assets/terra/tokens/orbling_token.png<>res://assets/terra/ui/unit_square_bg.png<>res://assets/ui/light_blue_panel_transparent.png<>res://units/ai/ai_controller.tscn<>res://theme.tres<>res://assets/ui/unit_circle_gradient.png<>res://assets/sfx/pot_break_2.wav<>res://units/job_tool.gd
 hp_bar.gd::GDScript::5278149172001875755::1782139258::0::1::::<>TextureProgressBar<><>0<>0<><>::
 job.gd::GDScript::4018374960739832872::1782139258::0::1::::<>Node<><>0<>0<><>::
 job_tool.gd::GDScript::6919870664565405999::1782139258::0::1::::<>Node<><>0<>1<><>::
@@ -1585,7 +1585,7 @@ status_effects.gd::GDScript::3344235936376689526::1782139258::0::1::::<>Node2D<>
 status_effects_icons.gd::GDScript::4392307881220690778::1782139258::0::1::::<>Control<><>0<>0<><>::
 swap_area2d.gd::GDScript::2737474249706455740::1782139258::0::1::::<>Area2D<><>0<>0<><>::
 unit.gd::GDScript::5317760837349298727::1782380701::0::1::::Unit<>CharacterBody2D<><>0<>0<><>::
-unit.tscn::PackedScene::-1::1782380454::0::1::::<><><>0<>0<><>::res://assets/fonts/Exo2-Regular.ttf<>res://jobs/animal_spirit/yachie_job.tres<>res://units/ui/activated_skill_margin_container.tscn<>res://units/ui/damage_numbers.tscn<>res://units/ui/death_particles.tscn<>res://assets/terra/ui/unit_square_bg.png<>res://assets/ui/unit_glow.png<>res://assets/sfx/youkai_death.wav<>res://assets/sfx/ceramic_place_1.wav<>res://assets/sfx/casino/shove2.wav<>res://assets/sfx/casino/place10.wav<>res://assets/terra/ui/sword.png<>res://assets/sfx/ceramic_drag_2.wav<>res://assets/ui/letter_z.png<>res://assets/terra/tokens/dracorin_token.png<>res://units/job.gd<>res://units/swap_area2d.gd<>res://units/unit.gd<>res://assets/fonts/Exo2SemiBold.tres<>res://assets/terra/ui/unit_player_border.png<>res://assets/terra/ui/hp_bar_fill.png<>res://assets/sfx/ceramic_drag_1.wav<>res://assets/terra/ui/hp_bar_bg.png<>res://units/skill_applier.gd<>res://units/status_effects.gd<>res://units/hp_bar.gd<>res://units/status_effects_icons.gd<>res://assets/sfx/casino/shove1.wav
+unit.tscn::PackedScene::-1::1782437689::0::1::::<><><>0<>0<><>::res://assets/fonts/Exo2-Regular.ttf<>res://jobs/animal_spirit/yachie_job.tres<>res://units/ui/activated_skill_margin_container.tscn<>res://units/ui/damage_numbers.tscn<>res://units/ui/death_particles.tscn<>res://assets/terra/ui/unit_square_bg.png<>res://assets/ui/unit_glow.png<>res://assets/sfx/youkai_death.wav<>res://assets/sfx/ceramic_place_1.wav<>res://assets/sfx/casino/shove2.wav<>res://assets/sfx/casino/place10.wav<>res://assets/terra/ui/sword.png<>res://assets/sfx/ceramic_drag_2.wav<>res://assets/ui/letter_z.png<>res://assets/terra/tokens/dracorin_token.png<>res://units/job.gd<>res://units/swap_area2d.gd<>res://units/unit.gd<>res://assets/fonts/Exo2SemiBold.tres<>res://assets/terra/ui/unit_player_border.png<>res://assets/terra/ui/hp_bar_fill.png<>res://assets/sfx/ceramic_drag_1.wav<>res://assets/terra/ui/hp_bar_bg.png<>res://units/skill_applier.gd<>res://units/status_effects.gd<>res://units/hp_bar.gd<>res://units/status_effects_icons.gd<>res://assets/sfx/casino/shove1.wav
 ::res://units/ai/::1782139258
 action.gd::GDScript::682810832837739716::1782139258::0::1::::Action<>Node<><>0<>0<><>::
 action.tscn::PackedScene::-1::1781188477::0::1::::<><><>0<>0<><>::res://units/ai/action.gd

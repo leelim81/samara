@@ -30,7 +30,8 @@ visible = false
 texture = ExtResource( 7 )
 
 [node name="Glow" parent="Sprite2D" index="0"]
-modulate = Color( 1, 0.376, 0.275, 0.9 )
+modulate = Color( 1, 0.376, 0.275, 1 )
+scale = Vector2( 1.12, 1.12 )
 
 [node name="Icon" parent="Sprite2D" index="1"]
 texture = ExtResource( 6 )
