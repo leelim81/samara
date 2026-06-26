@@ -19,7 +19,7 @@ view_unit_menu_scene = "res://ui/view_unit_menu.tscn"
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.0980392, 0.117647, 0.168627, 1 )
+color = Color(0.937255, 0.909804, 0.847059, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_right = 1.0
@@ -40,9 +40,9 @@ theme_override_constants/separation = 16
 offset_left = 190.0
 offset_right = 430.0
 offset_bottom = 73.0
-theme_override_colors/font_color = Color( 0.882353, 0.917647, 1, 1 )
+theme_override_colors/font_color = Color(0.227451, 0.211765, 0.188235, 1)
 theme_override_colors/font_hover_color = Color( 1, 1, 1, 1 )
-theme_override_colors/font_pressed_color = Color( 0.776471, 0.831373, 0.94, 1 )
+theme_override_colors/font_pressed_color = Color(0.42, 0.39, 0.34, 1)
 theme_override_colors/font_focus_color = Color( 1, 1, 1, 1 )
 theme_override_styles/normal = ExtResource( 5 )
 theme_override_styles/hover = ExtResource( 6 )
@@ -86,9 +86,9 @@ offset_left = 190.0
 offset_top = 787.0
 offset_right = 430.0
 offset_bottom = 860.0
-theme_override_colors/font_color = Color( 0.882353, 0.917647, 1, 1 )
+theme_override_colors/font_color = Color(0.227451, 0.211765, 0.188235, 1)
 theme_override_colors/font_hover_color = Color( 1, 1, 1, 1 )
-theme_override_colors/font_pressed_color = Color( 0.776471, 0.831373, 0.94, 1 )
+theme_override_colors/font_pressed_color = Color(0.42, 0.39, 0.34, 1)
 theme_override_colors/font_focus_color = Color( 1, 1, 1, 1 )
 theme_override_styles/normal = ExtResource( 5 )
 theme_override_styles/hover = ExtResource( 6 )

@@ -17,7 +17,7 @@
 
 [sub_resource type="Gradient" id="grad"]
 offsets = PackedFloat32Array(0, 1)
-colors = PackedColorArray(0.164706, 0.2, 0.290196, 1, 0.054902, 0.070588, 0.105882, 1)
+colors = PackedColorArray(0.937255, 0.909804, 0.847059, 1, 0.866667, 0.811765, 0.690196, 1)
 
 [sub_resource type="GradientTexture2D" id="bgtex"]
 gradient = SubResource("grad")
@@ -32,12 +32,12 @@ content_margin_left = 5.0
 content_margin_top = 5.0
 content_margin_right = 5.0
 content_margin_bottom = 5.0
-bg_color = Color(0.0941176, 0.121569, 0.180392, 1)
+bg_color = Color(0.937255, 0.909804, 0.847059, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.388235, 0.831373, 0.831373, 0.85)
+border_color = Color(0.369, 0.478, 0.322, 0.85)
 corner_radius_top_left = 12
 corner_radius_top_right = 12
 corner_radius_bottom_right = 12
@@ -51,7 +51,7 @@ corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
 [sub_resource type="StyleBoxFlat" id="hp_fill"]
-bg_color = Color(0.454902, 0.819608, 0.396078, 1)
+bg_color = Color(0.369, 0.478, 0.322, 1)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
@@ -91,7 +91,7 @@ theme_override_constants/separation = 14
 
 [node name="NameLabel" type="Label" parent="Margin/Root"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.964706, 0.945098, 0.901961, 1)
+theme_override_colors/font_color = Color(0.227451, 0.211765, 0.188235, 1)
 theme_override_fonts/font = ExtResource("4_name")
 theme_override_font_sizes/font_size = 44
 text = "ACOLYTE"
@@ -152,7 +152,7 @@ stretch_mode = 5
 [node name="SpeciesLabel" type="Label" parent="Margin/Root/Header/Info/ThumbRow/ThumbMeta/SpeciesRow"]
 layout_mode = 2
 size_flags_vertical = 4
-theme_override_colors/font_color = Color(0.682353, 0.737255, 0.831373, 1)
+theme_override_colors/font_color = Color(0.42, 0.39, 0.34, 1)
 theme_override_fonts/font = ExtResource("6_regular")
 theme_override_font_sizes/font_size = 20
 text = "Human"
@@ -174,7 +174,7 @@ theme_override_constants/separation = 10
 
 [node name="HPTag" type="Label" parent="Margin/Root/Header/Info/HPBlock/HPRow"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.937255, 0.290196, 0.341176, 1)
+theme_override_colors/font_color = Color(0.611765, 0.231373, 0.180392, 1)
 theme_override_fonts/font = ExtResource("5_semibold")
 theme_override_font_sizes/font_size = 22
 text = "HP"
@@ -182,7 +182,7 @@ text = "HP"
 [node name="HPValue" type="Label" parent="Margin/Root/Header/Info/HPBlock/HPRow"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0.952941, 0.964706, 1, 1)
+theme_override_colors/font_color = Color(0.227451, 0.211765, 0.188235, 1)
 theme_override_fonts/font = ExtResource("5_semibold")
 theme_override_font_sizes/font_size = 22
 text = "586"
@@ -216,7 +216,7 @@ stretch_mode = 5
 [node name="Value" type="Label" parent="Margin/Root/Header/Info/StatsGrid/AtkStat"]
 layout_mode = 2
 size_flags_vertical = 4
-theme_override_colors/font_color = Color(0.952941, 0.964706, 1, 1)
+theme_override_colors/font_color = Color(0.227451, 0.211765, 0.188235, 1)
 theme_override_fonts/font = ExtResource("5_semibold")
 theme_override_font_sizes/font_size = 24
 text = "24"
@@ -229,7 +229,7 @@ theme_override_constants/separation = 8
 custom_minimum_size = Vector2(28, 28)
 layout_mode = 2
 size_flags_vertical = 4
-self_modulate = Color(0.560784, 0.705882, 1, 1)
+self_modulate = Color(0.74902, 0.627451, 0.384314, 1)
 texture = ExtResource("8_def")
 expand_mode = 1
 stretch_mode = 5
@@ -237,7 +237,7 @@ stretch_mode = 5
 [node name="Value" type="Label" parent="Margin/Root/Header/Info/StatsGrid/DefStat"]
 layout_mode = 2
 size_flags_vertical = 4
-theme_override_colors/font_color = Color(0.952941, 0.964706, 1, 1)
+theme_override_colors/font_color = Color(0.227451, 0.211765, 0.188235, 1)
 theme_override_fonts/font = ExtResource("5_semibold")
 theme_override_font_sizes/font_size = 24
 text = "34"
@@ -250,7 +250,7 @@ theme_override_constants/separation = 8
 custom_minimum_size = Vector2(28, 28)
 layout_mode = 2
 size_flags_vertical = 4
-self_modulate = Color(1, 0.603922, 0.835294, 1)
+self_modulate = Color(0.6, 0.470588, 0.290196, 1)
 texture = ExtResource("9_satk")
 expand_mode = 1
 stretch_mode = 5
@@ -258,7 +258,7 @@ stretch_mode = 5
 [node name="Value" type="Label" parent="Margin/Root/Header/Info/StatsGrid/SatkStat"]
 layout_mode = 2
 size_flags_vertical = 4
-theme_override_colors/font_color = Color(0.952941, 0.964706, 1, 1)
+theme_override_colors/font_color = Color(0.227451, 0.211765, 0.188235, 1)
 theme_override_fonts/font = ExtResource("5_semibold")
 theme_override_font_sizes/font_size = 24
 text = "58"
@@ -271,7 +271,7 @@ theme_override_constants/separation = 8
 custom_minimum_size = Vector2(28, 28)
 layout_mode = 2
 size_flags_vertical = 4
-self_modulate = Color(0.498039, 0.878431, 0.752941, 1)
+self_modulate = Color(0.369, 0.478, 0.322, 1)
 texture = ExtResource("10_sdef")
 expand_mode = 1
 stretch_mode = 5
@@ -279,14 +279,14 @@ stretch_mode = 5
 [node name="Value" type="Label" parent="Margin/Root/Header/Info/StatsGrid/SdefStat"]
 layout_mode = 2
 size_flags_vertical = 4
-theme_override_colors/font_color = Color(0.952941, 0.964706, 1, 1)
+theme_override_colors/font_color = Color(0.227451, 0.211765, 0.188235, 1)
 theme_override_fonts/font = ExtResource("5_semibold")
 theme_override_font_sizes/font_size = 24
 text = "52"
 
 [node name="SkillsHeader" type="Label" parent="Margin/Root"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.560784, 0.62549, 0.737255, 1)
+theme_override_colors/font_color = Color(0.42, 0.39, 0.34, 1)
 theme_override_fonts/font = ExtResource("6_regular")
 theme_override_font_sizes/font_size = 16
 text = "SKILLS"
