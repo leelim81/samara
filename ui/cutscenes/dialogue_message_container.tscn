@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/terra/ui/panel_card.png" type="Texture2D" id=1]
 [ext_resource path="res://assets/terra/ui/unit_square_bg.png" type="Texture2D" id=2]
 [ext_resource path="res://theme.tres" type="Theme" id=3]
 [ext_resource path="res://ui/cutscenes/dialogue_message_container.gd" type="Script" id=4]
 [ext_resource path="res://assets/sfx/casino/place10.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/fonts/EBGaramond24.tres" type="FontFile" id=6]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.149, 0.129, 0.108, 1 )
@@ -56,7 +57,8 @@ offset_right = 150.0
 offset_bottom = 184.0
 size_flags_vertical = 4
 theme_override_colors/font_color = Color( 0.227451, 0.211765, 0.188235, 1 )
-theme_override_font_sizes/font_size = 19
+theme_override_fonts/font = ExtResource( 6 )
+theme_override_font_sizes/font_size = 20
 text = "Mononobe no Futo"
 horizontal_alignment = 1
 autowrap_mode = 2
@@ -91,6 +93,9 @@ offset_right = 538.0
 offset_bottom = 146.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
+theme_override_colors/font_color = Color( 0.227451, 0.211765, 0.188235, 1 )
+theme_override_fonts/font = ExtResource( 6 )
+theme_override_font_sizes/font_size = 26
 text = "We are going in too deep."
 autowrap_mode = 2
 

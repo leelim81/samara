@@ -52,15 +52,16 @@ func setup(skill) -> void:
 
 
 func _color_for(skill_type: int) -> Color:
+	# Illuminated Scroll palette — warm, distinct, read on the dark streak.
 	match skill_type:
 		Enums.SkillType.HEAL, Enums.SkillType.CURE_AILMENT:
-			return Color(0.56, 0.97, 0.62)
+			return Color(0.58, 0.82, 0.55)  # sage green — restore
 		Enums.SkillType.BUFF:
-			return Color(0.72, 0.76, 1.0)
+			return Color(0.92, 0.78, 0.46)  # gold — empower
 		Enums.SkillType.DEBUFF:
-			return Color(0.86, 0.62, 1.0)
+			return Color(0.86, 0.56, 0.55)  # dusty rose — afflict
 		_:
-			return Color(0.45, 0.88, 1.0)
+			return Color(0.95, 0.9, 0.8)    # warm cream — strike
 
 
 # Slide in from the left, hold, then drift out and free
