@@ -18,7 +18,7 @@ job = ExtResource( 2 )
 texture = ExtResource( 3 )
 
 [node name="UnitName" parent="CanvasLayer" index="3"]
-text = "the Targeting Sentinel"
+text = "the Targeting Array"
 
 [node name="Action1" parent="AIController" index="0" instance=ExtResource( 5 )]
 behavior = 1

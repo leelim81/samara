@@ -10,6 +10,6 @@
 script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ) ]
-job_name = "Frost-demon"
+job_name = "Dread Static"
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

@@ -22,7 +22,7 @@ texture = ExtResource( 3 )
 texture = ExtResource( 9 )
 
 [node name="UnitName" parent="CanvasLayer" index="3"]
-text = "Peprope, the Wandering Blade"
+text = "Peprope, the Masterless Blade"
 
 [node name="Action1" parent="AIController" index="0" instance=ExtResource( 5 )]
 behavior = 1

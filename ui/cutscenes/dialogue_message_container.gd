@@ -43,7 +43,36 @@ const _ICONS: Dictionary = {
 	"Lan": "res://assets/terra/tokens/lan_token.png",
 	"the Wisdom Star": "res://assets/terra/tokens/eileen_token.png",
 	"Marvelous Traveler": "res://assets/terra/tokens/sorman_token.png",
-	"White Streak in the Waves": "res://assets/terra/tokens/gigojago_token.png"
+	"White Streak in the Waves": "res://assets/terra/tokens/gigojago_token.png",
+	# SIGNAL / 108 (modern) re-skin tags -> original roster tokens
+	"Auditor": "res://assets/terra/tokens/bahl_token.png",
+	"Echo": "res://assets/terra/tokens/grace_token.png",
+	"Patch": "res://assets/terra/tokens/kuscah_token.png",
+	"Undertow": "res://assets/terra/tokens/shberdan_token.png",
+	"Stormfront": "res://assets/terra/tokens/daiana_token.png",
+	"Hauler": "res://assets/terra/tokens/macuri_token.png",
+	"Inkwork": "res://assets/terra/tokens/gegonago_token.png",
+	"Triage": "res://assets/terra/tokens/amimari_token.png",
+	"Soft Rain": "res://assets/terra/tokens/mizell_token.png",
+	"Burnout": "res://assets/terra/tokens/kem_token.png",
+	"Blackout": "res://assets/terra/tokens/zan_token.png",
+	"Sixteen-Bar": "res://assets/terra/tokens/korin_token.png",
+	"Wetware": "res://assets/terra/tokens/eileen_token.png",
+	"Rebar": "res://assets/terra/tokens/samupi_token.png",
+	"Bluechip": "res://assets/terra/tokens/bagunar_token.png",
+	"Deadeye": "res://assets/terra/tokens/harold_token.png",
+	"Bruise": "res://assets/terra/tokens/burbaba_token.png",
+	"Shortfuse": "res://assets/terra/tokens/maralme_token.png",
+	"Nightstick": "res://assets/terra/tokens/nakupi_token.png",
+	"Fastpass": "res://assets/terra/tokens/sorman_token.png",
+	"Drifter": "res://assets/terra/tokens/iskar_token.png",
+	"Nine Dragons": "res://assets/terra/tokens/zenzoze_token.png",
+	"Riptide": "res://assets/terra/tokens/gigojago_token.png",
+	"Deadman": "res://assets/terra/tokens/unasag_token.png",
+	"Cleaver": "res://assets/terra/tokens/amazora_token.png",
+	"Longarm": "res://assets/terra/tokens/raprow_token.png",
+	"Slingshot": "res://assets/terra/tokens/manmer_token.png",
+	"Courier": "res://assets/terra/tokens/lan_token.png"
 }
 
 signal text_fully_visible

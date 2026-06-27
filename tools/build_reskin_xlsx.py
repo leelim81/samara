@@ -1,8 +1,15 @@
 #!/usr/bin/env python3
-"""Build the Water Margin x Black Myth re-skin mapping workbook.
+"""Build the SIGNAL / 108 — Off-Network re-skin mapping workbook.
+
+Modern Water Margin x The World Ends With You re-skin: a drowned near-future
+megacity (NEO-LIANG) run by a civic super-app (HARMONY); the wrongfully dead
+wake Off-Network, names scrubbed, and are conscripted into a hidden Game where
+you pair up or are deleted. 108 of the erased gather in the Margins and learn
+their deaths were scheduled in the Index before they ever died.
 
 Tabs: Overview, Storyline, Chapter Names, Narration, Characters, Enemies, Banter.
 Each shows original (Terra Battle) text beside the re-skin text. No formulas.
+This is a TEXT + NAME + ART overlay only. No stage or battle layout data changes.
 """
 import json
 import os
@@ -12,7 +19,7 @@ from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
 from openpyxl.utils import get_column_letter
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-OUT = os.path.join(ROOT, "Water_Margin_Reskin.xlsx")
+OUT = os.path.join(ROOT, "Signal_108_Reskin.xlsx")
 data = json.load(open(os.path.join(ROOT, "tools", "out", "terra_dataset.json")))
 
 
@@ -38,99 +45,100 @@ def orig_banter(s):
 
 
 # Bespoke boss names + appearance, keyed by exact original name.
+# Apex Wardens -> Administrators; named bosses -> daemons / titan-Static / Compliance brass.
 BOSS = {
-    "1AOO": ("Jiawu, the First Warden", "A colossal jade-and-iron sentinel of the high court, faceless, a greatsword graven with struck-out names."),
-    "2BOO": ("Yiwu, the Second Warden", "Twin to the first, a towering celestial bulwark whose spear ends a dozen lives a sweep."),
-    "3COO": ("Bingwu, the Third Warden", "The third apex sentinel, a vast archer-construct raining bolts of cold law."),
-    "6ZOO": ("Renwu, the Final Warden", "The last and largest sentinel, blade wide as a gate, the door heaven hides behind."),
-    "54B2": ("the Wayward Star", "A fallen celestial soldier turned against its makers, sword half-corrupted with rust and light."),
-    "???": ("the Nameless", "A foe whose entry in the Ledger is blank, a swordsman with no face and no record."),
-    "Ancient Key": ("the Gatekeeper Idol", "A floating relic-construct shaped like a vast key, warden of a deeper door."),
-    "Ancient Sadness": ("the Weeping Colossus", "A mountain of sorrow given form, weeping the grief of every harvested soul."),
-    "Antlion": ("the Pit-Maw Behemoth", "A vast burrowing horror whose jaws make a grave of the battlefield."),
-    "Apirath": ("Apirath, Warlord of the Crossing", "A towering staff-warlord of the bridgehead, robed in living stormcloud."),
-    "Arachnobot": ("the Loom Sentinel", "An iron spider strung with soul-thread, weaving the harvested into walls."),
-    "Ba'gunar": ("Bagunar, the Storm Renegade", "A lightning-clad swordsman, once heaven's blade, now a turncoat at the gate."),
-    "Beastfolk Hero": ("the Beast-Clan Champion", "The proudest warrior of the beast-clans, sword raised against men and heaven alike."),
-    "Burnbot Redux": ("the Reforged Furnace", "A rebuilt furnace-construct, hotter and crueler than its first death, venting blue flame."),
-    "Celestial Dragon": ("the Sky-Dragon of the Court", "A serpentine dragon of cloud and gold, the Court Above's own mount loosed on traitors."),
-    "Cerberus": ("the Three-Headed Hound", "A fire-maned hound of three heads chained to the gate of the deep."),
-    "Craggy Leviathan": ("the Stone Leviathan", "A continent-shouldered beast of crag and barnacle, risen from the buried sea."),
-    "Cybergolem": ("the First Construct", "An early furnace-construct of riveted iron, heaven's crudest hand."),
-    "Cyberwyrm": ("the Iron Wyrmling", "A young mechanical wyrm sheathed in lightning-traced plate."),
-    "Dark Dragon": ("the Shadow Dragon", "A drake of living darkness, its breath a hole cut clean in the world."),
-    "EM Generator": ("the Heart of the Engine", "The pulsing core of the soul-engine, a construct that drinks lightning and life."),
-    "Energos": ("Energos, the Gravity Eater", "A void-cored colossus that bends weight and light around its hunger."),
-    "Energy Aspirator": ("the Soul-Siphon", "A bladed construct that drains the breath from the living to feed the high court."),
-    "Enerzerk": ("the Charge Sentinel", "A crackling archer-construct overcharged past safety, every bolt a thunderclap."),
-    "Flame Urchin": ("the Ember Maw", "A spiked sphere of living coal, every quill a lance of fire."),
-    "Fortified Oxsecian Bulwark": ("the Bulwark of Heaven", "A fortress-construct of the celestial host, walls for skin, storms for arrows."),
-    "Giant Nega": ("the Greater Nullity", "A vast wound in creation, a beast made of the absence the Court leaves behind."),
-    "Gigaworm": ("the Thunder Worm", "A mountain-long worm wreathed in static, swallowing the ground it crosses."),
-    "Golem": ("the Stone Sentinel", "A hulking guardian of carved seal-stone, slow, patient, unstoppable."),
-    "Ice Golem": ("the Glacier Sentinel", "A golem cut from black ice, breathing a cold that stops the heart."),
-    "Ice Urchin": ("the Rime Maw", "A spiked sphere of black ice, quills of killing frost."),
-    "Jade Guardian": ("the Jade Warden", "A serene guardian-statue of green jade and frost, beautiful and merciless."),
-    "Jag": ("Jag, the Cinder Exile", "A lean fire-sorcerer cast from the court, robes smoldering at the hem."),
-    "Kraken": ("the Drowned King", "A many-armed horror of the buried sea, dragging ships and souls down together."),
-    "Layla": ("Layla, the Frost Sovereign", "A regal ice-sorceress of the high court, a winter given a crown."),
-    "Lich": ("the Bone Magistrate", "A withered undead official still stamping warrants in the city of the dead."),
-    "Lizardfolk Hero": ("the Serpent-Clan Champion", "The serpent-clans' chosen spear, cold-eyed and unbeaten until now."),
-    "Lizardfolk Warrior": ("the Serpent-Clan Warlord", "A towering serpent-clan champion swollen with stolen lightning."),
-    "Lock-On+": ("the Targeting Sentinel", "A multi-eyed construct that paints every foe for its spears."),
-    "Lock-On 333+": ("the Greater Targeting Sentinel", "An upgraded targeting-construct, three hundred eyes and no mercy."),
-    "Magic Amp": ("the Spell-Amplifier", "A floating relic that doubles the curses of all around it; break it first."),
-    "Power Amp": ("the Force-Amplifier", "A floating relic that doubles the strength of all around it; break it first."),
-    "Mantle Mammoth": ("the Magma Mammoth", "A tusked colossus of molten mantle-rock, each step a small eruption."),
-    "Mantledrake": ("the Mantle Drake", "A lava-veined drake newly hatched from the burning deep."),
-    "Marilith": ("the Six-Armed Fury", "A six-armed serpent-demoness with a blade in every hand."),
-    "Mechabird": ("the Iron Roc", "A mechanical bird of prey wreathed in shadow, talons of cold iron."),
-    "Mechadrake": ("the Iron Drake", "A clockwork dragon strung with lightning, scales of riveted plate."),
+    "1AOO": ("Administrator: Ward Zero", "A colossal matte enforcement construct in HARMONY civic-green, faceless, a riot-blade laser-etched with the struck-out names of prior cycles."),
+    "2BOO": ("Administrator: Ward One", "Twin to the first, a towering civic bulwark whose pike clears a lane a dozen souls wide."),
+    "3COO": ("Administrator: Ward Two", "The third apex enforcer, a vast rail-archer raining bolts of cold policy."),
+    "6ZOO": ("The Conductor, First of the Erased", "The last and largest construct, blade wide as a service gate; the very first outcast, promoted to run them all."),
+    "54B2": ("Defector Unit 54-B", "A Compliance enforcer turned against its handlers, blade half-corrupted with rust and arc-light."),
+    "???": ("Null, the Closed Record", "A foe whose row in the Index is blank, a blade-fighter with no face and no record."),
+    "Ancient Key": ("the Keymaster Daemon", "A floating relic-process shaped like a vast access key, warden of a deeper door."),
+    "Ancient Sadness": ("Grief Prime", "A mountain of sorrow given form, weeping the harvested grief of an entire ward."),
+    "Antlion": ("the Sinkhole Daemon", "A vast burrowing process whose jaws make a null-pit of the field."),
+    "Apirath": ("Apirath, Toll Administrator", "A towering caster-administrator of the bridgehead, robed in living surge-cloud."),
+    "Arachnobot": ("the Loom Server", "An iron spider strung with soul-thread, weaving the harvested into walls."),
+    "Ba'gunar": ("Bagunar, the Defector", "An arc-clad blade, once Compliance, now a turncoat at the gate."),
+    "Beastfolk Hero": ("the Feral Alpha", "The proudest of the feral signals, blade raised against the living and the system alike."),
+    "Burnbot Redux": ("the Reforged Furnace-Server", "A rebuilt furnace-construct, hotter and crueler than its first crash, venting blue flame."),
+    "Celestial Dragon": ("HARMONY's Sky-Drake", "A serpentine drake of cloud and gold, the Spire's own mount loosed on defectors."),
+    "Cerberus": ("the Three-Port Watchdog", "A fire-maned hound of three heads chained to the gateway of the deep."),
+    "Craggy Leviathan": ("the Concrete Leviathan", "A district-shouldered beast of crag and rebar, risen from the buried foundations."),
+    "Cybergolem": ("the First Construct", "An early furnace-construct of riveted iron, the system's crudest hand."),
+    "Cyberwyrm": ("the Cable Wyrmling", "A young mechanical wyrm sheathed in arc-traced plate."),
+    "Dark Dragon": ("the Null Dragon", "A drake of living null-black, its breath a hole cut clean in the render."),
+    "EM Generator": ("the Core Generator", "The pulsing heart of the soul-engine, a construct that drinks current and life."),
+    "Energos": ("Energos, the Gravity Sink", "A void-cored colossus that bends weight and light around its hunger."),
+    "Energy Aspirator": ("the Signal-Siphon", "A bladed construct that drains the signal from the living to feed the Spire."),
+    "Enerzerk": ("the Overcharge Sentinel", "A crackling rail-archer overcharged past safety, every bolt a thunderclap."),
+    "Flame Urchin": ("the Ember Mine", "A spiked sphere of live coal, every quill a lance of fire."),
+    "Fortified Oxsecian Bulwark": ("the Compliance Bulwark", "A fortress-construct of the enforcement corps, walls for skin, storms for arrows."),
+    "Giant Nega": ("the Greater Nullity", "A vast wound in the render, a beast made of the absence the system leaves behind."),
+    "Gigaworm": ("the Static Worm", "A district-long worm wreathed in static, swallowing the ground it crosses."),
+    "Golem": ("the Concrete Sentinel", "A hulking guardian of poured concrete, slow, patient, unstoppable."),
+    "Ice Golem": ("the Cryo Sentinel", "A golem cut from black ice, breathing a cold that stops the heart."),
+    "Ice Urchin": ("the Rime Mine", "A spiked sphere of black ice, quills of killing frost."),
+    "Jade Guardian": ("the Jade-Green Warden", "A serene guardian-statue in civic-green and frost, beautiful and merciless."),
+    "Jag": ("Jag, the Cinder Runner", "A lean fire-coder cast out of the corps, jacket smoldering at the hem."),
+    "Kraken": ("the Drowned Server-King", "A many-armed horror of the buried canals, dragging hulls and souls down together."),
+    "Layla": ("Layla, the Frost Administrator", "A regal cryo-administrator of the Spire, a winter given a badge."),
+    "Lich": ("the Bone Bureaucrat", "A withered undead clerk still stamping warrants in the server-necropolis."),
+    "Lizardfolk Hero": ("the Coilware Champion", "The coilware clade's chosen blade, cold-eyed and unbeaten until now."),
+    "Lizardfolk Warrior": ("the Coilware Warlord", "A towering coilware champion swollen with stolen current."),
+    "Lock-On+": ("the Targeting Array", "A multi-eyed construct that paints every foe for its lances."),
+    "Lock-On 333+": ("the Greater Targeting Array", "An upgraded targeting-construct, three hundred eyes and no mercy."),
+    "Magic Amp": ("the Curse-Amplifier", "A floating node that doubles the debuffs of all around it; crash it first."),
+    "Power Amp": ("the Force-Amplifier", "A floating node that doubles the strength of all around it; crash it first."),
+    "Mantle Mammoth": ("the Magma Hauler", "A tusked colossus of molten foundation-rock, each step a small eruption."),
+    "Mantledrake": ("the Magma Drake", "A lava-veined drake newly compiled from the burning deep."),
+    "Marilith": ("the Six-Armed Daemon", "A six-armed serpent-daemon with a blade in every hand."),
+    "Mechabird": ("the Iron Drone-Hawk", "A mechanical bird of prey wreathed in null-shadow, talons of cold iron."),
+    "Mechadrake": ("the Cable Drake", "A clockwork dragon strung with arc-current, scales of riveted plate."),
     "Mechadrake Redux": ("the Reforged Drake", "A rebuilt iron dragon, darker and deadlier, breathing shadow now instead of sparks."),
-    "Megacell": ("the Frost Cell", "A swollen ice-construct that splits and reforms, hard to put down for good."),
-    "Mothbot Queen": ("the Loom Matron", "A great moth-construct that births lesser sentinels, scattering iron dust."),
-    "Negabeast": ("the Nullity Beast", "A beast made of the absence the Court leaves, eating color and sound."),
-    "Onyx Dragon": ("the Onyx Dragon", "A full-grown drake of black crystal and shadow, ancient and proud."),
+    "Megacell": ("the Splitting Cell", "A swollen cryo-construct that splits and reforms, hard to put down for good."),
+    "Mothbot Queen": ("the Loom Matron", "A great moth-construct that spawns lesser sentinels, scattering iron dust."),
+    "Negabeast": ("the Nullity Beast", "A beast made of the absence the system leaves, eating color and sound."),
+    "Onyx Dragon": ("the Onyx Dragon", "A full-grown drake of black crystal and null-shadow, ancient and proud."),
     "Young Onyx Dragon": ("the Onyx Dragon, Fledgling", "The same drake half-grown, black scales not yet hardened, no less deadly."),
-    "Orbling": ("Tu-Gong, the Conscript Lord", "A swollen iron-bound orb crowned in a golden flame-frame, the first foe to wear a general's seal."),
-    "Oxsecian Airgrunt": ("Heaven's Skirmisher Elite", "An elite flying warden-construct of the celestial host."),
-    "Oxsecian Bomber": ("Heaven's Bombardier", "A warden-construct laden with celestial fire-shells."),
-    "Oxsecian Bomber EX": ("Heaven's Bombardier, Exalted", "An upgraded bombardier-construct, twice the shells, twice the ruin."),
-    "Oxsecian Fighter EX": ("Heaven's Vanguard, Exalted", "A peak warden-construct, the celestial host's frontline made monstrous."),
-    "Oxsecian Grunt": ("Heaven's Soldier Elite", "An elite warden-construct of the high court's standing army."),
-    "Oxsecian Grunt SP": ("Heaven's Lancer Elite", "An elite spear-warden of the celestial host."),
-    "Oxsecian Guard": ("Heaven's Sentry Elite", "An elite shield-warden posted at heaven's gates."),
-    "Oxsecian Guard SP": ("Heaven's Guard, Exalted", "A heavier sentry-construct, a wall that swings a sword."),
-    "Oxsecian Gunner SP": ("Heaven's Marksman Elite", "An elite bow-warden of the celestial host."),
-    "Pepropé": ("Peprope, the Wandering Blade", "A masterless sword-spirit haunting the deep roads."),
-    "Phaarz": ("Phaarz, the Devourer", "A cosmic horror of the outer dark, a mouth wider than a hall."),
-    "Phoenix": ("the Vermilion Phoenix", "A reborn firebird of the south, rising burning from its own ash."),
-    "Pneumatobot": ("the Bellows Sentinel", "A pneumatic construct hissing steam, fists like driven pistons."),
-    "Power Pyramid": ("the Mending Idol", "A floating stone idol pouring stolen life into its guardians; silence it first."),
-    "Prototype Zero": ("Prototype Zero, the First Made Man", "The Court's earliest counterfeit hero, flawless, hollow, and very nearly perfect."),
-    "Quiverer": ("the Shuddering Mass", "A vast trembling horror of fused flesh, too large to be only one thing."),
-    "Reaver": ("the Reaver Prime", "A towering harvest-construct that strips the soul from the body and files it away."),
-    "Relic": ("the Elder Relic", "An age-old celestial machine, half temple and half weapon, gravity pooling at its feet."),
-    "Sabertooth King": ("Baihu, the White Tiger Lord", "A great pale tiger-demon hung with the spears of the hunters it ate."),
-    "Scar": ("Scar, the Broken General", "A ruined warlord stitched back together by the Court, fighting on a grudge it gave him."),
-    "Slugosaur": ("the Mire Behemoth", "A mountain of toxic flesh dragging itself up from the drowned deeps."),
-    "Snaptrap": ("the Devouring Gate", "A vast trap-construct disguised as a doorway, all teeth on the inside."),
-    "Spinetrich": ("Thornback, the Spine Demon", "A four-legged horror of barbed spines and crackling charge, too wide to flank head-on."),
-    "Spiny Leviathan": ("the Spined Leviathan", "A barbed sea-titan of the buried deep, robed in killing dark."),
-    "Stonefiend": ("the Magma Fiend", "A lesser stone-demon cracked open by inner fire."),
-    "Stonefolk Mage": ("the Stone Archmage", "A master of the stonefolk wielding the mountain's own fire."),
+    "Orbling": ("Foreman Tu, the Conscript Boss", "A swollen iron-bound orb crowned in a gold flame-frame, the first foe to wear an Administrator badge."),
+    "Oxsecian Airgrunt": ("Compliance Skirmisher, Elite", "An elite flying enforcement-construct of the corps."),
+    "Oxsecian Bomber": ("Compliance Bombardier", "An enforcement-construct laden with shaped charges."),
+    "Oxsecian Bomber EX": ("Compliance Bombardier, Mk II", "An upgraded bombardier-construct, twice the charges, twice the ruin."),
+    "Oxsecian Fighter EX": ("Compliance Vanguard, Mk II", "A peak enforcement-construct, the corps frontline made monstrous."),
+    "Oxsecian Grunt": ("Compliance Soldier, Elite", "An elite enforcement-construct of the standing corps."),
+    "Oxsecian Grunt SP": ("Compliance Lancer, Elite", "An elite pike-enforcer of the corps."),
+    "Oxsecian Guard": ("Compliance Sentry, Elite", "An elite shield-enforcer posted at the Spire gates."),
+    "Oxsecian Guard SP": ("Compliance Guard, Mk II", "A heavier sentry-construct, a wall that swings a blade."),
+    "Oxsecian Gunner SP": ("Compliance Marksman, Elite", "An elite rail-bow enforcer of the corps."),
+    "Pepropé": ("Peprope, the Masterless Blade", "A masterless blade-signal haunting the deep service tunnels."),
+    "Phaarz": ("Phaarz, the Maw", "A cosmic horror of the outer null, a mouth wider than a server hall."),
+    "Phoenix": ("the Reboot Phoenix", "A rebooting firebird, rising burning from its own crash-dump."),
+    "Pneumatobot": ("the Piston Sentinel", "A pneumatic construct hissing steam, fists like driven pistons."),
+    "Power Pyramid": ("the Mending Node", "A floating node pouring stolen life into its guardians; silence it first."),
+    "Prototype Zero": ("Prototype Zero, the First Synthetic", "The system's earliest forged hero, flawless, hollow, and very nearly perfect."),
+    "Quiverer": ("the Shuddering Mass", "A vast trembling horror of fused signal, too large to be only one thing."),
+    "Reaver": ("the Render Reaver", "A towering harvest-construct that strips the soul from the body and files it away."),
+    "Relic": ("the Legacy Relic", "An age-old system machine, half server-shrine and half weapon, gravity pooling at its feet."),
+    "Sabertooth King": ("Baihu, the White-Tiger Daemon", "A great pale tiger-daemon hung with the lances of the hunters it ate."),
+    "Scar": ("Scar, the Patched General", "A ruined enforcer hot-patched back together by the system, fighting on a grudge it gave him."),
+    "Slugosaur": ("the Sludge Behemoth", "A mountain of toxic spam-flesh dragging itself up from the drowned deeps."),
+    "Snaptrap": ("the Honeypot", "A vast trap-construct disguised as a doorway, all teeth on the inside."),
+    "Spinetrich": ("Thornback, the Spike Daemon", "A four-legged horror of barbed spines and crackling charge, too wide to flank head-on."),
+    "Spiny Leviathan": ("the Spined Leviathan", "A barbed titan of the buried deep, robed in null-dark."),
+    "Stonefiend": ("the Magma Fiend", "A lesser concrete-daemon cracked open by inner fire."),
+    "Stonefolk Mage": ("the Concrete Caster", "A master of the concrete clade wielding the foundation's own fire."),
     "Tiamat": ("the Five-Headed Tiamat", "A primordial dragon-queen of many heads, each a different doom."),
-    "Time Devourer": ("the Devourer of Hours", "A horror that eats the moments around it, leaving the field older and slower."),
+    "Time Devourer": ("the Latency Devourer", "A horror that eats the moments around it, leaving the field laggy and slow."),
     "Toxoid": ("the Plague Lancer", "A festering construct that lances its foes with rot."),
-    "Vajra": ("Vajra, the Thunder Idol", "A many-armed celestial idol crowned in lightning, a living temple-bell of war."),
+    "Vajra": ("Vajra, the Arc Idol", "A many-armed idol crowned in arc-lightning, a living substation of war."),
     "Whitewyrm": ("Frostcoil, the Pale Wyrm", "A pale serpent-drake breathing rime, coiled across the whole road."),
-    "Xaepha": ("Xaepha, the Pale Surgeon", "A serene celestial horror that unmakes and remakes the dying in its own image."),
+    "Xaepha": ("Xaepha, the Patch Surgeon", "A serene horror that unmakes and re-renders the dying in its own image."),
 }
 
-WEAP_DESC = {"Sword": "a heavy saber", "Bow": "a horn bow", "Spear": "a long spear",
-             "Staff": "a charm-staff", "": "bare claws", None: "bare claws"}
-ATTR_TINT = {"Fire": "fire-wreathed ", "Ice": "frost-rimed ", "Lightning": "storm-charged ",
-             "Darkness": "shadow-shrouded "}
+WEAP_DESC = {"Sword": "a jagged blade", "Bow": "a rail-bow", "Spear": "a long pike",
+             "Staff": "a charged rod", "": "bare claws", None: "bare claws"}
+ATTR_TINT = {"Fire": "fever-red ", "Ice": "frost-gray ", "Lightning": "arc-lit ",
+             "Darkness": "null-black "}
 
 
 def reskin_enemy(name, is_boss):
@@ -139,53 +147,53 @@ def reskin_enemy(name, is_boss):
     n = name.lower()
 
     def role():
-        for k, v in [("mage", "Adept"), ("wizard", "Adept"), ("healer", "Chaplain"),
-                     ("archer", "Marksman"), ("knight", "Lancer"), ("warrior", "Guard"),
-                     ("hero", "Champion"), ("sword", "Blade"), ("spear", "Spearman"),
-                     ("bow", "Marksman"), ("staff", "Adept")]:
+        for k, v in [("mage", "Caster"), ("wizard", "Caster"), ("healer", "Medic"),
+                     ("archer", "Marksman"), ("knight", "Heavy"), ("warrior", "Bruiser"),
+                     ("hero", "Champion"), ("sword", "Blade"), ("spear", "Lancer"),
+                     ("bow", "Marksman"), ("staff", "Caster")]:
             if k in n:
                 return v
         return ""
 
     r = role()
     if "wee orbling" in n:
-        base = "Conscript Recruit"
+        base = "Stray Signal"
     elif "orbling" in n:
-        base = ("Conscript " + r).strip()
+        base = ("Conscript " + r).strip() if r else "Conscript Static"
     elif "stonefolk" in n:
-        base = "Stone " + (r or "Soldier")
+        base = "Compliance " + (r or "Drone")
     elif "beastfolk" in n:
-        base = "Beastclan " + (r or "Reaver")
+        base = "Feral " + (r or "Static")
     elif "lizardfolk" in n:
-        base = "Serpentkin " + (r or "Warrior")
+        base = "Coilware " + (r or "Static")
     elif "oxsecian" in n:
-        base = "Heaven's Warden, " + (r or "Soldier")
+        base = "Compliance Unit, " + (r or "Drone")
     elif any(b in n for b in ("bot", "borg", "mech", "cell", "generator", "lock-on", "analyzer")):
-        base = "Furnace Construct"
+        base = "Render Construct"
     elif "gorf" in n:
-        base = "Corrupt Mendicant"
+        base = "Leech Static"
     elif "dracorin" in n:
-        base = "Storm-imp"
+        base = "Surge Static"
     elif "sabertooth" in n:
-        base = "Tiger-demon"
+        base = "Predator Static"
     elif any(f in n for f in ("pyro", "flame", "fire", "burn", "magma", "lava", "heat", "ember", "scorch")):
-        base = "Fire-demon"
+        base = "Rage Static"
     elif any(f in n for f in ("frost", "ice", "blizzard", "chill")):
-        base = "Frost-demon"
+        base = "Dread Static"
     elif any(f in n for f in ("toad", "slug", "crawler", "grub", "ooze")):
-        base = "Mire-beast"
+        base = "Rot Static"
     elif any(f in n for f in ("drake", "wyrm", "dragon", "serpent")):
-        base = "Lesser Drake"
+        base = "Wyrm Static"
     elif any(f in n for f in ("spider", "arachno", "web", "loom")):
-        base = "Loom-spawn"
+        base = "Loom Static"
     elif any(f in n for f in ("mummy", "wraith", "ghost", "spectre", "revenant", "shade")):
-        base = "Revenant"
+        base = "Revenant Static"
     elif n in ("archer", "warrior", "knight", "healer", "mage", "wizard"):
-        base = "Imperial " + (r or "Soldier")
+        base = "Compliance " + (r or "Drone")
     elif r:
-        base = "Demon-beast " + r
+        base = "Static " + r
     else:
-        base = "Demon-beast"
+        base = "Static"
     return base + (" (boss)" if is_boss else "")
 
 
@@ -193,388 +201,387 @@ def reskin_appearance(reskin, weapon, attribute):
     w = WEAP_DESC.get(weapon, "bare claws")
     t = ATTR_TINT.get(attribute, "")
     r = reskin.lower()
-    if r.startswith("conscript recruit"):
-        return f"A green press-ganged recruit in ill-fitting issue, {w}."
+    if r.startswith("stray signal"):
+        return "A barely-rendered flicker of a person, half there, twitching with static."
     if r.startswith("conscript"):
-        return f"A gaunt press-ganged soldier in mismatched imperial issue, {w}."
-    if r.startswith("stone"):
-        return f"A grey figure of seal-animated stone, {t}{w}."
-    if r.startswith("beastclan"):
-        return f"A fur-and-fang beast-clan warrior, {w}."
-    if r.startswith("serpentkin"):
-        return f"A cold-eyed scaled serpent-clan fighter, {w}."
-    if r.startswith("heaven's warden"):
-        return f"A faceless celestial enforcer in white-jade lacquer, {w}."
-    if r.startswith("furnace construct"):
-        return f"A riveted iron automaton venting furnace heat, {w}."
-    if r.startswith("corrupt mendicant"):
-        return "A bloated mendicant-spirit chanting false blessings over a healing staff."
-    if r.startswith("storm-imp"):
-        return "A crackling lesser imp wreathed in static, a lightning-strung bow."
-    if r.startswith("tiger-demon"):
-        return f"A striped tiger-demon walking upright, {w}."
-    if r.startswith("fire-demon"):
-        return f"A beast of living coal and smoke, {w}."
-    if r.startswith("frost-demon"):
-        return f"A rime-crusted beast breathing cold, {w}."
-    if r.startswith("mire-beast"):
-        return f"A sluggish horror of toxic mire-flesh, {w}."
-    if r.startswith("lesser drake"):
-        return f"A young {t}drake, {w}."
-    if r.startswith("loom-spawn"):
-        return f"A skittering soul-spider of iron and thread, {w}."
-    if r.startswith("revenant"):
-        return f"A bandage-wrapped revenant of the harvested dead, {w}."
-    if r.startswith("imperial"):
-        return f"An imperial regular in lacquered issue, {w}."
-    return f"A {t}yaoguai of fang and shadow, {w}."
+        return f"A gaunt, half-deleted echo in gray gig-corps issue, {w}."
+    if r.startswith("compliance"):
+        return f"A faceless enforcer in HARMONY civic-green riot-lacquer, {t}{w}."
+    if r.startswith("feral"):
+        return f"A snarling clot of feral Noise, fur of dead pixels, {w}."
+    if r.startswith("coilware"):
+        return f"A cold scaled construct of coiled cable and chrome, {w}."
+    if r.startswith("render construct"):
+        return f"A riveted server-drone venting heat, indicator-lights for eyes, {w}."
+    if r.startswith("leech static"):
+        return "A bloated leech of stolen signal, mending the enemy line with pilfered light."
+    if r.startswith("surge static"):
+        return "A crackling imp of loose current arcing along a charged frame."
+    if r.startswith("predator static"):
+        return f"A striped predator-shape of congealed dread, {w}."
+    if r.startswith("rage static"):
+        return f"A red siren-headed brute of boiling outrage, {w}."
+    if r.startswith("dread static"):
+        return f"A hunched gray weight of cold dread, frost-rimed, {w}."
+    if r.startswith("rot static"):
+        return f"A sluggish slick of decay and spam, {w}."
+    if r.startswith("wyrm static"):
+        return f"A long {t}serpent of corrupted data, {w}."
+    if r.startswith("loom static"):
+        return f"A skittering spider of fiber-optic thread, {w}."
+    if r.startswith("revenant static"):
+        return f"A flickering ghost of a deleted record, {w}."
+    return f"A {t}knot of half-rendered Noise, {w}."
 
 
 RESKIN_NAME = {
-    1: "Exile", 2: "Toward the Throne", 3: "The Gathering", 4: "The Forgetting",
-    5: "Descent", 6: "The City Below", 7: "Rivers of Fire", 8: "The Bone Maze",
-    9: "The Forge of Flesh", 10: "The Waking Stone", 11: "Into the Heart",
-    12: "The Deep Dark", 13: "Kingslayer", 14: "The Long Fall", 15: "The Architect",
-    16: "The Soul Engine", 17: "Trespass", 18: "Heaven's Hounds", 19: "The Parting",
-    20: "Awakening", 21: "A World Remade", 22: "The Voice Above", 23: "Law of the Wild",
-    24: "Seek and Destroy", 25: "Made Men", 26: "The Perfect Soldier", 27: "Sorrow",
-    28: "Vengeance", 29: "The Reset", 30: "The Banner Rises", 31: "The Offer",
-    32: "Crossing Over", 33: "The Fallen", 34: "Devotion's Price", 35: "Malice Descends",
-    36: "Creeping Dread", 37: "The Devil's Grip", 38: "The Engine Weeps", 39: "The Bargain",
-    40: "Ashes", 41: "The Ledger Reforged", 42: "The Last Name",
+    1: "Off-Network", 2: "Toward the Spire", 3: "Welcome to the Margins", 4: "The Memory Hole",
+    5: "Going Under", 6: "The Sunken Wards", 7: "Live Wires", 8: "Server Necropolis",
+    9: "The Body Shop", 10: "Legacy Process", 11: "Toward the Core",
+    12: "Into the Black", 13: "Adminkill", 14: "Freefall", 15: "The Index",
+    16: "The Render Floor", 17: "Flagged", 18: "Compliance", 19: "Forking",
+    20: "Root Access", 21: "Re-render", 22: "The Conductor Speaks", 23: "No Service",
+    24: "Search and Delete", 25: "Synthetic Heroes", 26: "Flawless", 27: "Dead Air",
+    28: "Burn It Down", 29: "Rolled Back", 30: "Trending", 31: "The Terms",
+    32: "Going Legit", 33: "Glorious Deaths", 34: "Loyalty Tax", 35: "The Mask Drops",
+    36: "Attrition", 37: "Locked Out", 38: "Ghosts in the Machine", 39: "The Last Offer",
+    40: "Ashes", 41: "Index Reborn", 42: "Strike / Preserve",
 }
 
 RESKIN_NARR = {
-    1: "Branded and cast out for naming one corruption too many, you take the long road to Outer Heaven, the ruin where the realm keeps everything it has thrown away. You did not set out to become an outlaw. Something chose that for you.",
-    2: "The road to the capital runs through starving villages and fat magistrates. The rot is not hidden. It is the order of things. You gather your first brothers along the way.",
-    3: "At Outer Heaven the cast out and the hunted spirit-folk take you in. A band forms around you, men and yaoguai who have nothing left but each other. For the first time you are not alone against the realm.",
-    4: "A tower stands on the border that steals the memory of any who climb it. A brother goes up whole and comes down hollow. Something larger than the magistrates is at work here, something that does not want you to remember.",
-    5: "Hunted on every road, the band goes down instead of out, into the buried world beneath the realm, where the law cannot follow.",
-    6: "A drowned city of the forgotten dead, ruled by a spirit-magistrate as cruel as any above. The rot, you begin to see, does not start at the top. It goes all the way down.",
-    7: "To go deeper the band must cross the burning veins of the underworld. The fire tests more than flesh. It tests whether men this different can hold a line for one another.",
-    8: "A labyrinth built from the harvested dead, turn after turn of them. Someone has been collecting souls down here for a very long time.",
-    9: "A place where bodies are made and unmade. The band watches the dead rendered down and rebuilt, and turns away sick, not yet understanding what they have seen.",
-    10: "They rouse an ancient bound spirit, who looks at them with something like pity. I have met you before, it says. You also called yourselves free.",
-    11: "A pull none of them can name draws the band toward the center of the buried world. Even those who would turn back find their feet carrying them down.",
-    12: "In the deepest black the band falters. Fear and doubt do the work no enemy could, and brother turns on brother before the dark is crossed.",
-    13: "They corner and kill the corrupt spirit-lord who rules the deep. The victory is sweet, and it is wrong somehow, too clean, as if a door had been left open for them.",
-    14: "The floor of the world gives way. The band falls past every depth they thought was the bottom, down to the place where the truth is kept.",
-    15: "A hall without end, and in it ten thousand scribes copying names into a single black book with no last page. Your suffering was not foreseen. It was written. Your rebellion is not a wound in heaven. It is the harvest. And beside your name is a date entered a hundred lifetimes ago.",
-    16: "They find the machine of the harvest, where fallen heroes are rendered into the fuel that keeps a starving heaven alive. Everything they have lost has been feeding the thing that took it.",
-    17: "Heaven notices them at last. From the high court the first enforcers descend, and the band learns it has been seen all along.",
-    18: "A running war against the wardens of the Court Above. Heaven can be fought, the band proves. It cannot yet be beaten.",
-    19: "The truth divides them. Some would burn heaven to its roots. Some still ache to be forgiven and welcomed home. Brothers who bled together take separate roads.",
-    20: "Cornered with no way out, the band wakes its true nature, names blazing in the dark of the Ledger, and remembers, in flashes, the lifetimes it has already lost.",
-    21: "They climb back to a surface that looks the same and is not. Knowing what feeds on the world's pain, they cannot unsee the rot in any face that passes.",
-    22: "For the first time the Court Above speaks to them directly. Not with armies. With reason, and patience, and the first soft shape of a bargain.",
-    23: "Beyond the reach of any law, the band must decide for itself what justice means, now that heaven's has been revealed as a lie told to fatten them.",
-    24: "They take the war to heaven's hands on the ground, hunting the magistrates and ministers who are only the lower fingers of the Court.",
-    25: "They discover the Court manufactures false heroes to replace the ones it reaps, and find themselves fighting hollow copies of legends, some wearing faces they know.",
-    26: "A flawless made-hero, stronger than any of them, is sent to bring them in. It is a mirror of what each of them could become, if only they would accept the glory on offer.",
-    27: "A brother everyone loved falls, and the war stops being a cause and becomes a wound. Grief moves through Outer Heaven like winter.",
-    28: "Grief hardens into something colder. The band does terrible things in its dead's name, and for a while the line between them and the empire is hard to find.",
-    29: "The Court reaches to turn the wheel early, to unmake them and start again. The band claws its way out of being forgotten by inches.",
-    30: "At its height Outer Heaven becomes a true power, a fire the wronged can see from far away. This is the summit. After a summit there is only the descent.",
-    31: "The Court Above extends its hand, not as a fist but as mercy. Names cleared, honor restored, a place in the order, if only the band will serve. Redemption, with a hook inside it.",
-    32: "Believing the world can still be mended from within, Timely Rain leads the band to accept the Pardon. They cross to heaven's side under heaven's banner. It is the most human thing he ever does.",
-    33: "Sent to fight heaven's wars, the first brothers die gloriously, exactly as designed. The harvest has begun, and it is wearing the clothes of duty.",
-    34: "Too late, the band understands. Every loyal death feeds the Ledger. The love that holds them together is the very blade being drawn across their throats.",
-    35: "Committed and scattered, the band watches the Court drop its mask at last. War comes down from above, open and without pretense.",
-    36: "The brothers die one after another in wars no one can win. Despair spreads through what remains of Outer Heaven faster than any enemy.",
-    37: "The survivors are cornered, hunted, and betrayed by the very empire they agreed to serve. There is nowhere left to run that has not already been promised to heaven.",
-    38: "They reach the Soul Engine again, swollen now with their own fallen. There is a way to break it, and the price of breaking it is more than most of them will pay.",
-    39: "The Court offers the Warden the last deal. Finish the harvest, and you and all your brothers ascend as eternal legends, remembered and sung forever. The wheel will simply turn again on someone else.",
-    40: "Outer Heaven burns. Nearly all the brothers are gone now. Only a handful climb on toward the Ledger, carrying the dead in their names if nowhere else.",
-    41: "The black book reassembles itself to write the band into glory and seal them away for the next turn of the wheel. It only needs a hand to close it. Your hand.",
-    42: "At the Ledger the final choice is yours. Let the names be written, and be remembered forever while the world keeps bleeding. Or strike them out, every one, your own among them, and be free, and be no one. Better forgotten and free than remembered and owned.",
+    1: "You died on a Tuesday, mid-sentence, the discrepancy still open on your screen. You expected the dark. Instead the city just kept going without you, your face smearing off every camera, your name dropping out of every record. A brand starts counting down on the back of your hand, and a soft, kind voice says welcome to the Game. The long stairs down end in the Margins, where the signal dies and the dead get to work.",
+    2: "The road to the Spire runs through wards taxed to the bone so an Administrator can gild his lobby. The rot is not hidden. It is the service agreement. You gather your first partners along the way, two by two, because alone out here you are not even something the city can see.",
+    3: "In the Margins the deleted and the deplatformed take you in. A band forms around you, dead clerks and feral signals who have nothing left but each other. For the first time you are not one flickering soul against the whole network.",
+    4: "A tower on the ward line wipes the memory of anyone who badges in. A partner walks in whole and comes out hollow, unable to name his own mother. This is bigger than the Administrators. Something does not want you to remember.",
+    5: "Hunted on every indexed street, the band goes down instead of out, into the dead infrastructure beneath the city, where the cameras cannot follow.",
+    6: "A drowned district of the forgotten dead, run by a Ward boss as cruel as anything topside. The rot, you start to see, does not begin at the Spire. It goes all the way down.",
+    7: "To go deeper the band has to cross the live underworld, a span of loose current one soul wide. The arc tests more than nerve. It tests whether two souls this different will hold a sync for one another.",
+    8: "A server-floor built from the harvested dead, rack after rack of them. Someone has been collecting souls down here for a very long time.",
+    9: "A place where bodies are rendered and rebuilt. The band watches the dead taken apart and assembled into something else, and turns away sick, not yet understanding what they have seen.",
+    10: "They wake an old dormant process, and it looks at them with something like pity. I have run you before, it says. You also called yourselves free.",
+    11: "A pull none of them can name draws the band toward the center of the buried network. Even the ones who want to turn back find their feet carrying them down.",
+    12: "In the deepest dead zone the band falters. Fear and doubt do the work no enemy could, and partner turns on partner before the dark is crossed.",
+    13: "They corner and crash the corrupt Ward boss who runs the deep. The win is sweet, and it is wrong somehow, too clean, as if a door had been left open for them.",
+    14: "The floor of the world gives out. The band falls past every depth they thought was the bottom, down to where the truth is kept.",
+    15: "A table without end, and in it every name, every date, every manner of death, and beside each one a number, the expected yield. Your suffering was not foreseen. It was scheduled. Your rebellion is not a wound in the system. It is the harvest. And beside your name is a date entered before you ever logged on.",
+    16: "They find the machine of the harvest, where the fallen are rendered into the fuel that keeps the Administration alive. Everything they have lost has been feeding the thing that took it.",
+    17: "The network notices them at last. From the Spire the first Compliance units descend, and the band learns it has been logged all along.",
+    18: "A running war against HARMONY's enforcers. The Administration can be fought, the band proves. It cannot yet be beaten.",
+    19: "The truth splits them. Some would crash the whole network. Some still ache to be reinstated, to be let back into the light. Partners who synced through everything choose separate forks.",
+    20: "Cornered with no way out, the band wakes its true nature, names blazing in the dark of the Ledger, and remembers, in flashes, the cycles it has already lost.",
+    21: "They climb back to a surface that looks the same and is not. Knowing what feeds on the city's pain, they cannot unsee the rot behind any smiling face that passes.",
+    22: "For the first time the top of the Administration speaks to them directly. Not with units. With reason, and patience, and the first soft shape of a deal.",
+    23: "Off the index, past the reach of any rule, the band has to decide for itself what justice means, now that the city's has been exposed as a lie told to fatten them.",
+    24: "They take the war to the Administration's hands on the ground, hunting the Ward bosses and middle-managers who are only the lower fingers of the Spire.",
+    25: "They learn the Administration forges synthetic heroes to replace the ones it reaps, and find themselves fighting hollow copies of legends, some wearing faces they know.",
+    26: "A flawless synthetic, stronger than any of them, is pushed to bring them in. It is a mirror of what each of them could become, if only they would accept the deal on offer.",
+    27: "A partner everyone loved is rendered, and the war stops being a cause and becomes a wound. Grief moves through Margin Hall like a power cut, one dark room at a time.",
+    28: "Grief hardens into something colder. The band does terrible things in its dead's name, and for a while you cannot tell where they end and the Administration begins.",
+    29: "The Administration reaches to roll the cycle back early, to unmake them and start clean. The band claws its way out of being forgotten one byte at a time.",
+    30: "At its height Margin Hall becomes a real signal, a fire the wronged can see from clear across the city. This is the peak. After a peak there is only the fall.",
+    31: "The Administration extends its hand, not as a fist but as mercy. Names cleared, records restored, a seat in the order, if only the band will serve. Reinstatement, with a hook inside it.",
+    32: "Believing the system can still be fixed from inside, Soft Rain leads the band to accept the Terms. They cross over under HARMONY's banner, badged as sanctioned Compliance. It is the most human thing he ever does.",
+    33: "Sent to run the Administration's ops, the first partners die gloriously, exactly as designed. The harvest has begun, and it is wearing a service badge.",
+    34: "Too late, the band understands. Every loyal death tops up the Index. The bond that holds them together is the very blade being drawn across their throats.",
+    35: "Committed and scattered, the band watches the Administration drop its mask at last. War comes down from the Spire, open and without pretense. And every enforcer they crash, they find, was erased once too, promoted and told they alone got the real pardon.",
+    36: "The partners are deleted one after another, on schedule, in wars no one can win. Despair spreads through what is left of Margin Hall faster than any unit.",
+    37: "The survivors are cornered, hunted, and locked out by the very Administration they agreed to serve. There is nowhere left to run that has not already been promised to the Spire.",
+    38: "They reach the Render Floor again, swollen now with their own fallen, every lost face humming inside the iron. There is a way to crash it, and the price of crashing it is more than most of them will pay.",
+    39: "The Administration makes the Auditor the last offer. Finish the harvest, and you and all your partners ascend as eternal legends, remembered and streamed forever. The cycle will simply roll again on someone else.",
+    40: "Margin Hall is gone. Nearly all the partners are deleted now. Only a handful climb on toward the Index, carrying the dead in their names if nowhere else.",
+    41: "The table rewrites itself to enter the band as legends and seal them for the next turn of the cycle. It only needs a hand to commit. Your hand.",
+    42: "At the Index the last choice is yours. Preserve the names, and be remembered forever while the city keeps bleeding. Or strike them out, every one, your own first, the one move the model never saw coming, and be free, and be no one. Better deleted and free than indexed and owned.",
 }
 
-# (original, reskin, role / weapon, background [no spoiler], appearance 1/2/3)
+# (original, reskin tag, role / weapon, background [no spoiler], appearance 1/2/3)
+# The reskin tag in [1] is the on-screen handle (banter speaker + portrait key).
+# The real name carried beneath the tag lives in the Background field and in text.csv.
 CHARACTERS = [
-    ("Bahl", "Gan Jiang", "Sword / lead", "A master swordsmith turned honest officer, ruined by a forged charge for refusing to forge weapons for a cruel lord. He arrives at Outer Heaven branded and quiet, still believing a blade, and a life, can be made true.",
-     "Travel-worn robes of a stripped official, a fresh brand on one cheek, a single plain sword of his own making at his hip. Hair bound back, eyes tired but level.",
-     "Scavenged armor reforged piece by piece, a dark coat bearing Outer Heaven's mark, the plain blade now joined by a second that seems to swallow light. He carries himself like a man done waiting for justice.",
-     "Black lacquered plate veined with cold blue fire, twin swords crossed at his back, faint lines like struck-through script crawling across bared skin. Less a man now than a verdict waiting to be spoken."),
-    ("Grace", "Mo Ye", "Bow / lead", "Wife and equal of the great swordsmith, an archer whose aim was said to be guided by the forge-fire itself. Wronged alongside him, she walks into exile with a steadier hand and colder eyes.",
-     "A plain hunting coat over mourning grey, a longbow of black horn, a quiver of iron-tipped shafts. She watches far more than she speaks.",
-     "Layered silk and lamellar in ash and crimson, the black bow strung with a cord that hums faintly, her gaze ringed with quiet fury.",
-     "A war-robe that moves like smoke, the bow grown into a vast moon-curve of dark metal, each loosed arrow trailing a thread of pale fire. Beautiful, and final."),
-    ("Kuscah", "Saen", "Healer / fox-spirit", "A fox-spirit who stayed in the world of men when her kind fled it, drawn by a curiosity she will not admit is kindness. She mends the band's wounds with a sharp word for every stitch.",
-     "A slight figure in worn travelling robes, three russet tails barely hidden, a healer's satchel and a crooked grin.",
-     "Richer robes the color of autumn, five tails now, charms and talismans braided into her hair, her touch leaving faint warm light.",
-     "Shrine-maiden's regalia gone wild, seven tails of living flame fanned behind her, healing pouring from her hands like a tide. The little fox has become something temples would fear."),
-    ("Sh'berdan", "Jiao", "Spear / serpent-spirit", "The last of a river-serpent clan a magistrate hunted to extinction for sport. Cold and patient, he trusts the band only after they bleed beside him, and never quite forgives the world that made him.",
-     "A lean figure wrapped in scaled hide, a long fishing-spear, eyes with a vertical slit and no warmth in them.",
-     "Coiling armor of green-black scale, a barbed war-spear, his movements gone liquid and fast.",
-     "Half-risen into his true shape, a flood-serpent crowned in horn, the spear a fang of storm-iron, water itself answering his anger."),
-    ("Daiana", "Dragon in the Clouds", "Mage / storm-sorcerer", "A wandering Taoist who reads the heavens and was first to suspect the stars themselves are a cage. Calm, cryptic, and grimmer with every omen that proves true.",
-     "Faded grey Taoist robes, a worn talisman-sword, a wine gourd, eyes always half on the sky.",
-     "Deep indigo robes sewn with constellations, a sword bound in paper charms, thunder muttering in his wake.",
-     "Robes of moving stormcloud, lightning crawling between his fingers, a halo of black cloud and circling characters above him. The sky obeys him now, and it frightens him."),
-    ("Ma'curi", "Mu", "Spear / ox-spirit", "A labor-spirit of the fields and quarries, worked to death and risen in slow fury. Gentle past all reason until pushed, then immovable as the mountain he was made to dig.",
-     "A huge stooped figure in a yoke and rags, a length of iron bar for a weapon, sad patient eyes.",
-     "Plates of scavenged iron bound to his hide, a true ox-headed glaive, the yoke worn now like a trophy.",
-     "A towering horned colossus wreathed in furnace heat, the glaive a slab of black iron, the broken yoke fused into his shoulders like a crown."),
-    ("Gegonago", "the Tattooed Monk", "Staff & fists", "A wandering monk thrown out of every temple for drinking, brawling, and saying true things at the wrong moment. Beneath the noise is a clarity that unsettles everyone, including himself.",
-     "A ragged kasaya half-open over tattooed arms, a heavy iron staff, a wine gourd never far.",
-     "Robes the color of dried blood, the staff bound in iron rings, sacred script inked across his whole back.",
-     "Bare to the waist and blazing with golden tattoos come alive, the staff grown to a pillar, an aura like a furious buddha. Enlightenment, with its fists up."),
-    ("Amimari", "the Skilled Doctor", "Healer", "A physician who can close any wound but the one in the world. Soft-spoken and exact, haunted by how many he saves only to send back into the fire.",
-     "Plain scholar's robes, a case of needles and herbs, ink-stained fingers.",
-     "Finer robes with a physician's sash, a folding tray of gleaming instruments, calm authority.",
-     "Robes of white and gold, a lattice of glowing needles orbiting his hands, life itself bending to his craft."),
-    ("Mizell", "Timely Rain", "Leader / sword", "A minor clerk famous for his open hand and open door, who gave away coin and mercy until the order he served destroyed him for it. Everyone who meets him would follow him anywhere. That is his gift, and the danger in him.",
-     "Modest official's robes worn with care, a plain sword he barely draws, a face people trust on sight.",
-     "A captain's coat over fine armor, a banner-sword at his side, the bearing of a man others have begun to call lord.",
-     "Robes of imperial cut he would never have chosen, a great banner rising behind him, light gathering at his shoulders like a borrowed halo. The most beloved man in the realm, and the most used."),
-    ("(new recruit)", "Panther Head", "Spear", "The realm's finest arms instructor, framed and branded after a powerful lord coveted his wife. He clings to discipline and the hope of clearing his name, a hope the world keeps turning against him.",
-     "A drilled, upright veteran in a stripped instructor's uniform, brand on his cheek, a serpent-headed spear held with parade precision.",
-     "Battle-worn lamellar over black, the spear longer and crueler, his control now edged with something cold.",
-     "Armor like coiled muscle in black and steel, the spear a streak of grey light, a man with nothing left to restore and nothing to lose."),
-    ("(new recruit)", "Black Whirlwind", "Twin axes", "An escaped convict of monstrous strength and bottomless loyalty, equal parts little brother and natural disaster. He loves the band with his whole heart, which is exactly the problem.",
-     "A huge half-naked brute in convict's irons, a battered axe in each fist, a gap-toothed grin.",
-     "Iron-studded leathers, twin black axes notched from use, the irons worn now as bracers.",
-     "A storm of dark muscle and iron, axes wreathed in red haze, eyes lit with a joy that has nothing to do with mercy."),
-    ("(new recruit)", "the Pilgrim", "Blades", "A man who killed a beast with his bare hands and a far worse thing for love, then took monk's robes to carry the weight. He asks, with every cut, whether vengeance is justice or only more fuel.",
-     "Traveler's robes over a fighter's frame, a single saber, the still eyes of a man who has decided something.",
-     "Half-monk, half-warrior, twin sabers, prayer-beads wound around one wrist like a leash on himself.",
-     "A dark pilgrim wreathed in incense smoke, blades that sing, a tiger's shadow moving when he moves."),
-    ("(new recruit)", "the Wisdom Star", "Strategist", "A village schoolteacher with a mind like a closing trap, who joined the outlaws for a justice the classroom could not give. He sees three moves ahead, and will spend the story wishing he had seen four.",
-     "A lean scholar with a feather fan and a sly smile, brush and abacus at his belt.",
-     "Strategist's robes with a commander's seal, the fan now lacquered black, maps always within reach.",
-     "Robes sewn with shifting diagrams, the fan trailing lines of light that bend the battle around him, a quiet man moving armies like beads."),
-    ("(new recruit)", "Ten Feet of Steel", "Sword", "A warrior-noblewoman whose family was destroyed in a single night, then taken in by the very band that broke them. She fights like vengeance with nowhere to land, loyal and unforgiving at once.",
-     "Light riding armor over green, a slender straight sword, a rider's hard grace.",
-     "Layered green lamellar, paired swords, a war-scarf snapping behind her.",
+    ("Bahl", "Auditor", "Sword / lead", "A HARMONY mortality-stats auditor who found a discrepancy, a ward dying off the network faster than it was dying for real, and was murdered for asking about it. He wakes Off-Network with the brand already ticking, and a write-key the system never quite managed to revoke. Silent, level, still believing a record, and a life, can be made true.",
+     "A travel-worn analyst stripped of his lanyard, a fresh brand counting down on one hand, a single plain blade scavenged from a maintenance locker. Hair bound back, eyes tired but level.",
+     "Scavenged riot-plate reforged piece by piece, a dark coat bearing the Margins tag, the plain blade joined by a second that seems to swallow light. He carries himself like a man done waiting for the system to clear him.",
+     "Black lacquer veined with cold magenta arc-light, twin blades crossed at his back, faint lines like struck-through code crawling across bared skin. Less a man now than a verdict waiting to commit."),
+    ("Grace", "Echo", "Bow / lead", "An analyst and the Auditor's partner, a markswoman whose aim was said to be guided by the same instinct that read the numbers. Erased the same night, she walks into the Margins with a steadier hand and colder eyes; the other half of the first Pact.",
+     "A plain hunting coat over mourning gray, a rail-bow of black composite, a quiver of iron-tipped bolts. She watches far more than she speaks.",
+     "Layered armor in ash and magenta, the bow strung with a cord that hums, her gaze ringed with quiet fury.",
+     "A war-coat that moves like smoke, the bow grown into a vast moon-curve of dark metal, each loosed bolt trailing a thread of pale fire. Beautiful, and final."),
+    ("Kuscah", "Patch", "Medic / fixer", "A back-alley street-medic who stayed in the Margins when her crew bailed, drawn by a curiosity she will not admit is kindness. She mends the band's signal with a sharp word for every stitch.",
+     "A slight figure in worn layers, three russet braids barely hidden, a fixer's kit and a crooked grin.",
+     "Richer gear the color of autumn, charms and stims braided into her hair, her touch leaving faint warm light.",
+     "Street-shrine regalia gone wild, signal pouring from her hands like a tide. The little fixer has become something the corps would fear."),
+    ("Sh'berdan", "Undertow", "Spear / canal-clan", "Last of a canal-clan a Ward drowned to clear a development zone. Cold and patient, he trusts the band only after they bleed beside him, and never quite forgives the city that made him.",
+     "A lean figure wrapped in scaled gear, a long boat-pike, eyes with a vertical slit and no warmth in them.",
+     "Coiling armor of green-black plate, a barbed war-pike, his movements gone liquid and fast.",
+     "Half-risen into his true shape, a flood-serpent crowned in horn, the pike a fang of storm-iron, water itself answering his anger."),
+    ("Daiana", "Stormfront", "Caster / signal-diviner", "A data-diviner who reads the city's signal-weather and was first to suspect the sky itself is edited. Calm, cryptic, and grimmer with every reading that proves true.",
+     "Faded gray field-coat, a worn talisman-rod, a flask, eyes always half on the haze.",
+     "Deep indigo coat sewn with constellations of LEDs, a rod bound in static-tape, thunder muttering in her wake.",
+     "A coat of moving stormcloud, arc-current crawling between her fingers, a halo of black cloud and circling glyphs above her. The sky obeys her now, and it frightens her."),
+    ("Ma'curi", "Hauler", "Spear / dock-labor", "A freight-loader worked to death in the under-docks and risen in slow fury. Gentle past all reason until pushed, then immovable as the cargo he was made to haul.",
+     "A huge stooped figure in a loading-harness and rags, a length of rebar for a weapon, sad patient eyes.",
+     "Plates of scavenged steel bound to his frame, a true cargo-hook glaive, the harness worn now like a trophy.",
+     "A towering colossus wreathed in furnace heat, the glaive a slab of black iron, the broken harness fused into his shoulders like a crown."),
+    ("Gegonago", "Inkwork", "Staff & fists", "A defrocked street-preacher thrown out of every shelter for drinking, brawling, and saying true things at the wrong moment. His tattoos are the one record he refuses to let them scrub.",
+     "A ragged coat half-open over tattooed arms, a heavy steel staff, a flask never far.",
+     "Gear the color of dried blood, the staff bound in iron rings, banned slogans and struck-out names inked across his whole back.",
+     "Bare to the waist and blazing with tattoos come alive, the staff grown to a pillar, an aura like a martyr lit up on every screen in the ward. Conviction, with its fists up."),
+    ("Amimari", "Triage", "Medic", "A struck-off ER doctor who can close any wound but the one in the city. Soft-spoken and exact, haunted by how many he saves only to send back into the fire.",
+     "A plain clinician's coat, a kit of needles and stims, ink-stained fingers.",
+     "Finer gear with a triage sash, a folding tray of gleaming instruments, calm authority.",
+     "A coat of white and gold, a lattice of glowing needles orbiting his hands, life itself bending to his craft."),
+    ("Mizell", "Soft Rain", "Leader / sword", "A debt-relief caseworker famous for quietly clearing strangers' balances, until HARMONY flagged him for it. Everyone who meets him would follow him anywhere. That is his gift, and the danger in him; he is magnetic, merciful, and fatally sure the system can be fixed from inside.",
+     "A modest civic coat worn with care, a plain blade he barely draws, a face people trust on sight.",
+     "A captain's jacket over light armor, a banner-blade at his side, the bearing of a man others have begun to call lead.",
+     "A coat of HARMONY cut he would never have chosen, a great banner rising behind him, light gathering at his shoulders like a borrowed spotlight. The most beloved soul in the Margins, and the most used."),
+    ("(new recruit)", "Burnout", "Spear", "The city's top close-protection instructor, framed and deadlisted after a Spire executive coveted his wife. Lam Chongzhi clings to protocol and the dream of a cleared record, a hope the system keeps turning against him. The one who teaches the Pact.",
+     "A drilled, upright veteran in a stripped instructor's uniform, brand on his hand, a serpent-headed pike held with parade precision.",
+     "Battle-worn riot-lamellar over black, the pike longer and crueler, his control now edged with something cold.",
+     "Armor like coiled muscle in black and steel, the pike a streak of gray light, a man with nothing left to restore and nothing to lose."),
+    ("(new recruit)", "Blackout", "Twin batons", "A repo-collector of monstrous strength and bottomless loyalty, records wiped young, equal parts little brother and natural disaster. Lei Kui loves the band with his whole heart, which is exactly the problem.",
+     "A huge half-stripped brute in collector's cuffs, a battered shock-baton in each fist, a gap-toothed grin.",
+     "Iron-studded leathers, twin black batons notched from use, the cuffs worn now as bracers.",
+     "A storm of dark muscle and iron, batons wreathed in red haze, eyes lit with a joy that has nothing to do with mercy."),
+    ("(new recruit)", "Sixteen-Bar", "Blades", "An underground combat-streamer who once beat a Static bare-handed on camera, then did a far worse thing for love and walked it off as penance. Sung Wu asks, with every cut, whether vengeance is justice or only more fuel. His archived highlight reels are the only proof he was ever real.",
+     "Street clothes over a fighter's frame, a single blade, the still eyes of a man who has decided something.",
+     "Half-ascetic, half-brawler, twin blades, a strand of dead memory-chips wound around one wrist like a leash on himself.",
+     "A dark figure wreathed in vape-smoke and neon, blades that sing, a tiger's shadow moving when he moves."),
+    ("(new recruit)", "Wetware", "Strategist", "A disgraced HARMONY systems architect who helped build the Index and defected when she found her own daughter's death pre-written. Ng Yong sees three moves ahead, and will spend the story wishing she had seen four. She cracks the Ledger, and stops reading aloud when she reaches her own name.",
+     "A lean architect with a folding tablet and a sly smile, stylus and side-arm at her belt.",
+     "Strategist's gear with an admin token, the tablet now lacquered black, schematics always within reach.",
+     "A coat sewn with shifting diagrams, the tablet trailing lines of light that bend the battle around her, a quiet woman moving squads like cursors."),
+    ("(new recruit)", "Rebar", "Sword", "A protection-detail heir whose family was wiped in a single night, then taken in by the very band that broke them. Wu Saam fights like vengeance with nowhere to land, loyal and unforgiving at once.",
+     "Light riding armor over green, a slender straight blade, a rider's hard grace.",
+     "Layered green lamellar, paired blades, a war-scarf snapping behind her.",
      "Armor like jade and iron, twin blades blurring into a single green arc, beautiful and merciless, the storm her old life never let her be."),
-    ("(new recruit)", "Jade Unicorn", "Sword / second leader", "The richest and most accomplished martial master in the realm, with everything to lose and no reason to rebel, until the Court took it all to prove that even a perfect life is theirs to erase. Proud, principled, terrible once finally roused.",
-     "Fine silk over light armor, a single immaculate sword, the bearing of a man used to being obeyed.",
-     "A general's lamellar chased with silver, a longer blade, his courtesy now armored in grief.",
-     "White and jade war-plate lit as if from within, a sword like a sliver of moon, every motion a finished sentence."),
-    ("(new recruit)", "Little Li Guang", "Bow", "A young garrison commander whose loyalty to a friend outweighed his loyalty to a corrupt throne, the finest archer alive and entirely too aware of it. Charming, sharp, quick to laugh and quicker to aim.",
-     "A trim officer's coat, a fine recurve bow, an easy grin and a full quiver.",
-     "Embroidered war-silks, a horn-and-sinew bow of greater draw, arrows fletched in red.",
-     "A captain's regalia trailing ribbons, a bow that hums when drawn, every shaft splitting the last in flight."),
-    ("(new recruit)", "Blue-Faced Beast", "Saber", "A general's descendant born with a blue mark across his face and a run of bad luck to match, who lost an imperial commission, a fortune, and his name to schemes not his own. Bitter, dutiful, forever a step from a redemption that keeps moving away.",
-     "A worn officer's robe over scarred mail, a heavy saber, the blue mark stark on his cheek.",
+    ("(new recruit)", "Bluechip", "Sword / second leader", "The city's richest and most accomplished man, with everything to lose and no reason to rebel, until HARMONY took it all to prove that even a perfect life is theirs to delete. Lo Junyi is proud, principled, and terrible once finally roused.",
+     "Fine tailoring over light armor, a single immaculate blade, the bearing of a man used to being obeyed.",
+     "An executive's lamellar chased with silver, a longer blade, his courtesy now armored in grief.",
+     "White and jade war-plate lit as if from within, a blade like a sliver of moon, every motion a finished sentence."),
+    ("(new recruit)", "Deadeye", "Bow", "An ex-military drone marksman whose loyalty to a friend outweighed her loyalty to a corrupt order, the finest shot alive and entirely too aware of it. Hua Rongnie is charming, sharp, quick to laugh and quicker to aim; her old service record is the only proof she existed.",
+     "A trim flight-jacket, a fine recurve rail-bow, an easy grin and a full quiver.",
+     "Embroidered flight-silks, a heavier-draw rail-bow, bolts fletched in red.",
+     "A pilot's regalia trailing ribbons, a bow that hums when drawn, every bolt splitting the last in flight."),
+    ("(new recruit)", "Bruise", "Saber", "A general's descendant born with a blue birthmark across his face and a run of bad luck to match, who lost a commission, a fortune, and his name to schemes not his own. Yeung Chi is bitter, dutiful, forever a step from a clearance that keeps moving away.",
+     "A worn officer's coat over scarred mail, a heavy saber, the blue mark stark on his cheek.",
      "Dark campaign armor, a broader saber, his luck no better but his edge much worse.",
      "Black-and-indigo plate, a saber wreathed in cold light, the mark blazing like a brand he finally wears on purpose."),
-    ("(new recruit)", "Fiery Thunderbolt", "Mace", "An imperial garrison general with a temper like a struck match, tricked into rebellion by a ruse so cruel it left him nothing to return to. All force and little patience, loyal as a landslide.",
-     "Battered general's armor, a wolf-tooth mace, a face a breath from shouting.",
+    ("(new recruit)", "Shortfuse", "Mace", "A garrison commander with a temper like a struck match, tricked into rebellion by a ruse so cruel it left him nothing to return to. Chun Ming is all force and little patience, loyal as a landslide.",
+     "Battered garrison armor, a wolf-tooth mace, a face a breath from shouting.",
      "Heavier plate scorched at the edges, a spiked mace trailing sparks, his rage finding aim.",
      "Armor glowing at the seams like cooling iron, a mace that strikes thunder, a storm on a short fuse."),
-    ("(new recruit)", "Twin Rods", "Twin maces", "A celebrated imperial marshal sent to crush the outlaws, beaten by them, and then won over by them. Disciplined and honorable, a soldier who changed sides only once he saw which side the cruelty was on.",
-     "Marshal's lacquered armor, a steel rod in each hand, a commander's hard calm.",
-     "Darkened campaign plate, longer rods ringed in iron, his discipline turned on his old masters.",
-     "Black armor figured with coiling dragons, twin rods crackling on impact, a marshal who finally serves something worth the medals."),
-    ("(new recruit)", "Marvelous Traveler", "Speed / support", "A jailer with a Taoist gift that lets him outrun horses, the band's eyes and messenger across a realm that wants them dead. Wry and restless, first to know everything and last to sit still.",
-     "A traveler's light robe, paper talismans bound to his calves, worn sandals.",
-     "Robes cut for speed, charms braided up both legs, a blur at the edge of sight.",
-     "Wind-torn robes trailing light, talismans burning as he moves, less a runner now than a rumor arriving."),
-    ("(new recruit)", "the Wanderer", "Agile / bow", "A masterless retainer of uncommon grace, deadly with a bow, a wrestling hold, or a well-told lie, devoted to the one lord who never wronged him. Light on the surface, with a blade of loyalty underneath.",
-     "A handsome rogue in travelling clothes, a short bow, tattoos peeking from his collar.",
-     "Fitted silks for movement, a stronger bow, a full sleeve of inked figures.",
-     "Robes that flow around the fight, a bow drawn faster than the eye, tattoos alight as he twists between blades."),
-    ("(new recruit)", "the Nine-Dragoned", "Staff / spear", "A wealthy young squire who tattooed nine dragons across his body and threw his fortune away for the outlaw road, the first true brother and the most eager. Brave and generous and a little reckless, learning the cost as he goes.",
+    ("(new recruit)", "Nightstick", "Twin maces", "A decorated enforcement marshal sent to crush the outlaws, beaten by them, and then won over by them. Fu Yin is disciplined and honorable, a soldier who changed sides only once he saw which side the cruelty was on.",
+     "A marshal's lacquered armor, a steel baton in each hand, a commander's hard calm.",
+     "Darkened campaign plate, longer batons ringed in iron, his discipline turned on his old masters.",
+     "Black armor figured with coiling dragons, twin batons crackling on impact, a marshal who finally serves something worth the medals."),
+    ("(new recruit)", "Fastpass", "Speed / support", "A transit-runner with a gift that outruns the trains, the band's eyes and messenger across a city that wants them dead. Doi Chung is wry and restless, first to know everything and last to sit still.",
+     "A runner's light shell, transit-tags clipped to both legs, worn sneakers.",
+     "Gear cut for speed, tags braided up both legs, a blur at the edge of sight.",
+     "Wind-torn gear trailing light, tags burning as he moves, less a runner now than a rumor arriving."),
+    ("(new recruit)", "Drifter", "Agile / bow", "A masterless fixer of uncommon grace, deadly with a bow, a hold, or a well-told lie, devoted to the one boss who never wronged him. Yin Ching is light on the surface, with a blade of loyalty underneath.",
+     "A handsome rogue in street clothes, a short bow, tattoos peeking from his collar.",
+     "Fitted gear for movement, a stronger bow, a full sleeve of inked figures.",
+     "A coat that flows around the fight, a bow drawn faster than the eye, tattoos alight as he twists between blades."),
+    ("(new recruit)", "Nine Dragons", "Staff / spear", "A rich young heir who tattooed nine dragons across his body and threw his fortune away for the outlaw road, the first true partner and the most eager. Si Chun is brave and generous and a little reckless, learning the cost as he goes.",
      "A youth in fine but careless dress, a long staff, nine blue dragons curling over bared arms.",
      "Practical armor over the tattoos, a bladed staff, the recklessness tempered into nerve.",
-     "War-gear that bares the dragons on purpose, a spear that moves like the ink come loose, nine dragons seeming to fight beside him."),
-    ("(new recruit)", "White Streak in the Waves", "Water / swimmer", "A fish-seller and peerless swimmer who can hold his breath longer than a man should live, fighting best where others drown. Loyal and soft-spoken on land, lethal in any depth.",
-     "A fisherman's wrap, a long knife, hair slicked from the river.",
+     "War-gear that bares the dragons on purpose, a pike that moves like the ink come loose, nine dragons seeming to fight beside him."),
+    ("(new recruit)", "Riptide", "Water / swimmer", "A canal fish-seller and peerless diver who can hold his breath longer than a man should live, fighting best where others drown. Cheung Seon is loyal and soft-spoken on land, lethal in any depth.",
+     "A diver's wrap, a long knife, hair slicked from the canal.",
      "A light scaled vest, a barbed harpoon, lines of tattoo like gills across his ribs.",
-     "A figure half made of water, a trident of pale bone, the river rising to fight wherever he stands."),
-    ("(new recruit)", "the Living Death-God", "Water-warrior", "The wildest of three fisherman brothers from the marsh-villages the Court bled dry, who took to outlawry with a grin and a grudge. Fearless to the edge of madness, happiest in a losing fight he intends to win.",
-     "A fisherman's vest and scars, a boarding-blade, a reckless laugh.",
+     "A figure half made of water, a trident of pale bone, the canal rising to fight wherever he stands."),
+    ("(new recruit)", "Deadman", "Water-warrior", "The wildest of three dock brothers from the canal-villages HARMONY bled dry, who took to outlawry with a grin and a grudge. Yuen Chat is fearless to the edge of madness, happiest in a losing fight he intends to win.",
+     "A diver's vest and scars, a boarding-blade, a reckless laugh.",
      "Bound leathers and a long oar-spear, eyes lit with mischief.",
      "A storm-god of the shallows, trident wreathed in spray, daring death so loudly it backs away."),
-    ("(new recruit)", "the Witch", "Dual blades", "Keeper of an infamous roadside inn with a dark trade behind it, ferocious and unbothered, the kind of woman the realm made and then feared. Crude and fearless, and fiercely protective of her own.",
-     "A working-woman's robe, a cleaver in each hand, a knowing smirk.",
+    ("(new recruit)", "Cleaver", "Dual blades", "Keeper of an infamous roadside spot with a dark trade behind it, ferocious and unbothered, the kind of woman the city made and then feared. Suen Yi is crude and fearless, and fiercely protective of her own.",
+     "A working-woman's apron, a cleaver in each hand, a knowing smirk.",
      "Blood-red sashes and leather, paired curved blades, charms warding her hair.",
-     "Robes like dried blood, twin blades that drink the light, a demoness the road learned not to test."),
-    ("(new recruit)", "Lord of the Beautiful Beard", "Halberd", "An honest county constable whose mercy to the wrong fugitives cost him everything, famous for a beard the realm wrote songs about. Upright and warm, the last good officer of a rotten office.",
-     "A constable's neat robe, a long halberd, a magnificent dark beard.",
-     "Field armor over the robe, a heavier halberd, the beard braided for war.",
-     "A general's bearing, a halberd haloed in light, the beard streaming like a banner of the man he stayed."),
-    ("(new recruit)", "Featherless Arrow", "Stone-thrower", "A bandit chief who never lost a fight he could end with a thrown stone, who joined the band for a cause bigger than the next ambush. Easy-going, deadly accurate, allergic to ceremony.",
+     "Gear like dried blood, twin blades that drink the light, a terror the road learned not to test."),
+    ("(new recruit)", "Longarm", "Halberd", "An honest beat cop whose mercy to the wrong fugitives cost him everything, famous for a beard the precinct wrote jokes about. Chu Tung is upright and warm, the last good officer of a rotten precinct.",
+     "A cop's neat coat, a long halberd, a magnificent dark beard.",
+     "Field armor over the coat, a heavier halberd, the beard braided for war.",
+     "A commander's bearing, a halberd haloed in light, the beard streaming like a banner of the man he stayed."),
+    ("(new recruit)", "Slingshot", "Stone-thrower", "A street chief who never lost a fight he could end with a thrown stone, who joined the band for a cause bigger than the next score. Cheung Ching is easy-going, deadly accurate, allergic to ceremony.",
      "A traveller's coat hung with pouches of smooth stones, a sling, a lazy grin.",
      "Reinforced leathers, heavier shot, throws that crack shields.",
-     "A coat that ripples with motion, stones that fly like loosed arrows, a hail no wall can fully turn."),
-    ("(new recruit)", "Lan", "Bow / crane-spirit", "A crane-spirit who once carried prayers between earth and the Court Above, and stopped when she learned where the prayers really went. Aloof and precise, mourning a heaven she used to serve.",
-     "A pale figure in feathered grey, a slender bow, eyes that look through you.",
-     "White-and-silver plumage hardening into armor, a longbow of bonewhite, wings half-furled.",
-     "A towering crane-maiden haloed in cold light, arrows like frozen prayer, the messenger who turned on her masters."),
+     "A coat that ripples with motion, stones that fly like loosed bolts, a hail no wall can fully turn."),
+    ("(new recruit)", "Courier", "Bow / crane-clan", "A message-courier who once ferried encrypted prayers and data between the city and the high servers, and stopped when she learned where they really went. Lan is aloof and precise, mourning a network she used to serve.",
+     "A pale figure in feathered gray, a slender bow, eyes that look through you.",
+     "White-and-silver plumage hardening into armor, a longbow of bone-white, wings half-furled.",
+     "A towering crane-courier haloed in cold light, bolts like frozen messages, the runner who turned on her senders."),
 ]
 
 STORYLINE = [
-    ("Setting", "A dying far-future world where the air thins and gravity slowly fails.", "A Chinese mythic realm rotting under a corrupt celestial bureaucracy, the Court Above."),
-    ("Premise", "A band of adventurers journeys to find the sleeping creator-god, the Maker, deep underground.", "A wronged officer gathers outlaws and spirit-folk at Outer Heaven to fight a corrupt empire, not knowing the empire is only heaven's lower hand."),
-    ("The hidden power", "The Maker, a creator who may have abandoned the world.", "The Court Above, a heaven that no longer judges but feeds on the righteous fury of the wronged, through a book called the Ledger."),
-    ("The twist", "The nature of the world and the Maker is revealed mid-journey.", "Their suffering was authored to grow and harvest them. The rebellion is the harvest. It has happened many times before. The protagonist is the Warden, the hinge the cycle turns on."),
-    ("The protagonist", "A chosen adventurer (Bahl or Grace).", "Gan Jiang or Mo Ye, the legendary swordsmith couple, secretly the Warden who gathers and seals the heroes each cycle."),
-    ("The brotherhood", "A growing party of heroes and recruited monsters.", "The 108 Marked: the outlaw heroes of Water Margin alongside oppressed yaoguai (spirit-folk)."),
-    ("The trap", "Late-game escalation against a final threat.", "The Pardon, an offer of amnesty and honor that is the final mechanism of the harvest."),
-    ("The ending", "Defeat the final threat.", "A choice at the Ledger: be written into eternal glory (the cycle repeats and links back to the start) or strike out every name including your own (freedom through oblivion, leaving a door open for a sequel)."),
-    ("Themes", "Pilgrimage, creation, survival in a decaying world.", "Righteousness harvested as a resource; the longing to be remembered as the trap; loyalty as both virtue and the lever of doom; forgetting as freedom."),
+    ("Setting", "A dying far-future world where the air thins and gravity slowly fails.", "NEO-LIANG, a drowned near-future megacity run on the surface by HARMONY, a beloved civic super-app, and underneath by something older and hungrier."),
+    ("Premise", "A band of adventurers journeys to find the sleeping creator-god, the Maker, deep underground.", "An erased auditor gathers the deleted and deplatformed in the Margins to fight a corrupt Administration, not knowing the Administration is only the system's lower hand."),
+    ("The hidden power", "The Maker, a creator who may have abandoned the world.", "The Index, HARMONY's hidden master table that no longer merely forecasts citizens but schedules their deaths and feeds on the grief, through the harvest the band calls the Ledger."),
+    ("The twist", "The nature of the world and the Maker is revealed mid-journey.", "Their suffering was scheduled to grow and harvest them; the rebellion is the harvest; a soul that dies hoping yields the most fuel; the enforcers are promoted ex-victims; and the protagonist is the Auditor, the write-key the cycle turns on."),
+    ("The protagonist", "A chosen adventurer (Bahl or Grace).", "The Auditor (and Echo), the partner pair whose unrevoked write-key gives ten seconds of root at the Index."),
+    ("The brotherhood", "A growing party of heroes and recruited monsters.", "The 108 Erased: outlaw heroes alongside feral signals (Static) and the deleted underclass of Neo-Liang."),
+    ("The trap", "Late-game escalation against a final threat.", "Reinstatement, an offer of amnesty, cleared names, and a Compliance badge that is the final mechanism of the harvest."),
+    ("The ending", "Defeat the final threat.", "A choice at the Index: Preserve every name (remembered forever, the cycle repeats) or Strike out every name including your own (free through deletion, the one move the model never forecast)."),
+    ("Themes", "Pilgrimage, creation, survival in a decaying world.", "Grief harvested as a resource; the longing to be remembered and reinstated as the trap; loyalty as both virtue and the lever of doom; being deleted as the only freedom."),
 ]
 
 # (original enemy family, reskin, role; layout/stats unchanged, name+art only)
 ENEMIES = [
-    ("Wee Orbling / Orbling", "Conscript / press-gang soldier", "The basic swarming foe: starving men forced into imperial service."),
-    ("Gorf (frog healer)", "Corrupt mendicant / healing imp", "Backline support that mends the enemy line; kill it first."),
-    ("Dracorin (lightning bow)", "Storm-imp archer", "Ranged elemental striker, a lesser yaoguai of the wild places."),
-    ("Sabertooth", "Tiger-demon soldier", "Hard-hitting beast-spirit of the magistrate's hunts."),
-    ("Spinetrich (2x2 boss)", "Demon-general", "An early greater yaoguai, a 2x2 boss in the same footprint."),
-    ("Stonefolk (warriors, knights, mages)", "Imperial soldiery", "Regular troops of the corrupt empire: the magistrate's armies."),
-    ("Burnbot / machine enemies", "Celestial construct / automaton", "The Court's tireless made-things, deeper underground."),
-    ("Oxsecian soldiers (machine ranks)", "Heaven's Wardens", "Celestial enforcers sent once heaven notices the band."),
-    ("Zero Series / clones", "Made Men (counterfeit heroes)", "Hollow copies the Court forges to replace harvested stars."),
-    ("Chapter Heroes / named bosses", "Demon-lords, corrupt ministers, celestial generals", "Re-skinned per chapter; same stats and grid placement, new name and face."),
+    ("Wee Orbling / Orbling", "Stray Signal / Conscript Static", "The basic swarming foe: barely-rendered gig-corps echoes of the worked-to-death."),
+    ("Gorf (frog healer)", "Leech Static", "Backline support that mends the enemy line with stolen signal; crash it first."),
+    ("Dracorin (lightning bow)", "Surge Static", "Ranged elemental striker, a loose-current Noise of the dead zones."),
+    ("Sabertooth", "Predator Static", "Hard-hitting beast-shape of congealed dread."),
+    ("Spinetrich (2x2 boss)", "Thornback, the Spike Daemon", "An early greater daemon, a 2x2 boss in the same footprint."),
+    ("Stonefolk (warriors, knights, mages)", "Compliance corps", "Faceless enforcers of HARMONY: the Administration's riot squads."),
+    ("Burnbot / machine enemies", "Render Construct", "The system's tireless server-drones, deeper underground."),
+    ("Oxsecian soldiers (machine ranks)", "Compliance Units", "Spire enforcers sent once the network notices the band."),
+    ("Zero Series / clones", "Synthetic Heroes", "Hollow copies the system forges to replace harvested stars."),
+    ("Chapter Heroes / named bosses", "Administrators, Ward bosses, titan-Static", "Re-skinned per chapter; same stats and grid placement, new name and face."),
 ]
 
 # Re-skin party banter for every chapter: {chapter: [(speaker, line), ...]}
 RESKIN_BANTER = {
-    1: [("PANTHER HEAD", "These are half-starved soldiers and road-spirits. Dangerous in a mob, harmless alone. Catch one between two of us and it folds. Never fight a man one to one when you can fight him two to one."),
-        ("BLACK WHIRLWIND", "Pairs, formations, whatever you want to call it. Anyone in my row or my column when I swing, they swing too. More brothers, more axes, more fun!"),
-        ("SAEN", "And don't linger when you step. The ground out here won't hold a living foot for long, just a few heartbeats before it drags you under. Quick steps, get clear, and I will mend whatever is left of you."),
-        ("THE TATTOOED MONK", "Read the brand on your cheek, brother. The Court already wrote you off. Out here the only law is the one we keep between us. Now move, before the boy starts swinging at us.")],
-    2: [("TIMELY RAIN", "Look at them. Taxed to the bone so a magistrate can gild his roof. This is the order we are told to honor."),
-        ("PANTHER HEAD", "Honor it or not, the order has soldiers. Keep your pity behind your guard."),
-        ("BLACK WHIRLWIND", "I have something for the magistrate's roof. Two of them, in fact."),
-        ("SAEN", "Try not to bleed on the villagers, big man. They have little enough.")],
-    3: [("THE TATTOOED MONK", "So this is Outer Heaven. A heap of rubble full of thieves, monks, and talking foxes."),
-        ("SAEN", "And one monk who is all three. We will fit right in."),
-        ("TIMELY RAIN", "It is not much. But every man here was thrown away by the realm, and not one of them threw the next man out. That is more than the capital can say."),
-        ("JIAO", "Words. Hold the wall when the soldiers come, and then I will call it home.")],
-    4: [("THE WISDOM STAR", "He climbed the tower whole and came down unable to name his own mother. That is not madness. Madness leaves a shape. This left nothing."),
-        ("DRAGON IN THE CLOUDS", "The stars above that tower do not move correctly. Someone is editing the sky."),
-        ("PANTHER HEAD", "Then we do not climb it. We go around."),
-        ("THE TATTOOED MONK", "A thing that eats memory is afraid of being remembered. Mark that. We will need it later.")],
-    5: [("TEN FEET OF STEEL", "Every road above is watched. So we take the one road no magistrate will follow."),
-        ("SAEN", "Down. Lovely. My kind has stories about down, and none of them end with everyone walking home."),
-        ("MU", "I will go first. The dark and I are old friends.")],
-    6: [("THE PILGRIM", "A city of the dead, and it still has a magistrate taking his cut. Even here."),
-        ("TIMELY RAIN", "Then even here, someone needs telling no."),
-        ("JIAO", "The dead obey him out of habit. Break the habit and you break the man."),
-        ("BLACK WHIRLWIND", "Breaking things. Finally, something I am good at.")],
-    7: [("PANTHER HEAD", "The bridge is one man wide over a river of fire. We cross in pairs, or we do not cross."),
-        ("SAEN", "Then pick a partner you trust not to drop you. I recommend not the axe one."),
-        ("BLACK WHIRLWIND", "I would never drop a brother. ...On purpose.")],
-    8: [("THE WISDOM STAR", "Count the bones. There are more dead in these walls than there are living in three provinces."),
-        ("DRAGON IN THE CLOUDS", "Someone has been gathering souls down here since before the dynasty had a name."),
-        ("WARDEN", "Gathering them for what."),
-        ("THE TATTOOED MONK", "That, little one, is the only question worth the walk.")],
-    9: [("THE SKILLED DOCTOR", "I have set ten thousand bones. I have never seen a body taken apart and built into another and called repaired."),
-        ("SAEN", "Do not look, Doctor. You of all of us cannot afford the nightmares."),
-        ("THE PILGRIM", "Whoever does this is not cruel. Cruelty is hot. This is cold. This is a craft.")],
-    10: [("DRAGON IN THE CLOUDS", "It is older than the underworld. Speak to it gently."),
-         ("THE TATTOOED MONK", "It looked at us the way a man watches the same play for the hundredth time."),
-         ("PANTHER HEAD", "It called us free, and it laughed. I did not like the laugh.")],
-    11: [("TEN FEET OF STEEL", "My feet are walking on their own. Tell me yours are too."),
-         ("JIAO", "All of ours. Something below is reeling us in like fish."),
-         ("TIMELY RAIN", "Then we go and look the fisherman in the eye.")],
-    12: [("BLACK WHIRLWIND", "I cannot see my own hands. Where are you? Where is everyone?"),
-         ("SAEN", "Here. I am here. Breathe, you great child."),
-         ("PANTHER HEAD", "Hold the line in here and you can hold it anywhere. Hold the line."),
-         ("THE WISDOM STAR", "The dark is not the enemy. What it lets us believe about each other is the enemy.")],
-    13: [("THE PILGRIM", "He fell easily. Lords do not fall easily."),
-         ("THE WISDOM STAR", "No. They do not. A door was left open, and we walked through it thanking the man who held it."),
-         ("TIMELY RAIN", "One tyrant fewer is still one tyrant fewer."),
-         ("DRAGON IN THE CLOUDS", "Unless you were meant to kill him. Then it is one favor done for someone you have not met.")],
-    14: [("SAEN", "Floor. There is no floor. Why is there no floor."),
-         ("MU", "I have you. I have all of you. Hold."),
-         ("THE TATTOOED MONK", "Down to the truth at last. Try to land facing it.")],
-    15: [("THE WISDOM STAR", "It is all here. Every grief any of us ever carried. Written. In advance."),
-         ("PANTHER HEAD", "My wife. Her death is an entry. A line in a ledger."),
-         ("TIMELY RAIN", "There is a mistake. There has to be a mistake."),
-         ("THE TATTOOED MONK", "No mistake, brother. We are not rebels. We are the crop. I told you the dark feared being remembered. This is why.")],
-    16: [("THE SKILLED DOCTOR", "So this is where they go. Everyone I could not save, and everyone I could. The same furnace in the end."),
-         ("JIAO", "My whole clan. Fed to this, to keep a fat heaven breathing."),
-         ("THE PILGRIM", "Then we do not avenge them by dying well. We avenge them by breaking the machine.")],
-    17: [("DRAGON IN THE CLOUDS", "The sky just turned its head. It is looking at us now. All of it."),
-         ("TEN FEET OF STEEL", "Good. I am tired of fighting its servants. Let it come itself."),
-         ("PANTHER HEAD", "It will not come itself. It will send better and better hands until ours give out. Pace yourselves.")],
-    18: [("BLACK WHIRLWIND", "These ones do not bleed right. White stuff. Smells like incense and rules."),
-         ("SAEN", "Wardens. Heaven's dogs. Hit them until the leash breaks."),
-         ("THE WISDOM STAR", "We cannot win this yet. We can only teach heaven that we are expensive. Make every dog cost it.")],
-    19: [("TIMELY RAIN", "If we burn heaven down, what stands the world up the next morning? There has to be a way back into the light."),
-         ("TEN FEET OF STEEL", "There was never a way back. You are grieving a door that was painted on a wall."),
-         ("THE TATTOOED MONK", "Let them choose, Rain. A man dragged to freedom is only a prisoner with a new warden."),
-         ("PANTHER HEAD", "Some of them are leaving. Let them. We were always going to lose people. I only hoped it would be to swords.")],
-    20: [("DRAGON IN THE CLOUDS", "Our names are burning. Look. We were stars before we were ever men."),
-         ("SAEN", "I remember doing this. The fox remembers the trap. We have been here before."),
-         ("WARDEN", "How many times."),
-         ("THE WISDOM STAR", "Enough that the question is not how do we win. It is how did we always lose.")],
-    21: [("THE PILGRIM", "The sun is the same. The fields are the same. I will never see either the same way again."),
-         ("SAEN", "That is the curse of waking. The dream was kinder."),
-         ("TIMELY RAIN", "Then we wake the others. A realm cannot be farmed if the cattle know the farmer.")],
-    22: [("THE WISDOM STAR", "It is too reasonable. Tyrants shout. This one reasons. Be most afraid of the calm ones."),
-         ("DRAGON IN THE CLOUDS", "It offered me the whole sky's knowledge, to stop asking the one question it fears."),
-         ("PANTHER HEAD", "It will offer each of us the thing we want most. Decide now what that is, so you know its face when it smiles at you.")],
-    23: [("THE TATTOOED MONK", "Heaven's justice was a lie. So what is ours? Anyone? While we still have the breath to mean it."),
-         ("TEN FEET OF STEEL", "Mine is simple. Whoever takes a family pays a family. I have waited a long time to collect."),
-         ("TIMELY RAIN", "Then we are no better than the Court, keeping our own ledger of debts."),
-         ("THE PILGRIM", "He is right. I have a ledger too. I have read where it ends. It ends with me alone.")],
-    24: [("THE WISDOM STAR", "The ministers are only fingers. A hand without fingers cannot grip. We start with the fingers."),
-         ("BLACK WHIRLWIND", "Less talk about hands. More cutting off hands."),
-         ("MU", "He is not wrong. For once.")],
-    25: [("SAEN", "That one has Rain's face. That one has yours, Panther. They are wearing us."),
-         ("PANTHER HEAD", "Then I will teach the copy what the original learned the hard way."),
-         ("THE WISDOM STAR", "They are hollow. Whatever the Court loved in us, it could not forge. Aim for where the heart should be.")],
-    26: [("TEN FEET OF STEEL", "It does not tire. It does not doubt. It is everything heaven wishes we were."),
-         ("THE TATTOOED MONK", "And that is why it is losing. It cannot improvise. It was never afraid, so it never learned."),
-         ("TIMELY RAIN", "It is what we become if we take the glory. Remember its eyes. There is no one home.")],
-    27: [("THE SKILLED DOCTOR", "There was nothing left to set. Nothing left to close. I am sorry. I am so sorry."),
-         ("BLACK WHIRLWIND", "...He let me sit at his fire. The first one who ever did."),
-         ("TIMELY RAIN", "We carry him in his name, and we say it loud, so the dark cannot pretend he was never here.")],
-    28: [("TEN FEET OF STEEL", "Burn it. Burn all of it. They burned mine."),
-         ("THE PILGRIM", "This is the part I warned you about. Where we stop being able to tell the story to children."),
-         ("PANTHER HEAD", "She is right to want it. We are wrong to do it. Both are true. Stand down. Stand down."),
-         ("SAEN", "Listen to him. I do not want to mend what we are about to become.")],
-    29: [("DRAGON IN THE CLOUDS", "The world is forgetting us. Hold to your name. Say it, keep saying it. It is the only rope."),
-         ("THE WISDOM STAR", "It is wiping the board early. We frightened it. Take comfort in that, and keep walking."),
-         ("MU", "I am Mu. I am Mu. I carried you all. I am Mu.")],
-    30: [("TIMELY RAIN", "Look at them come. The wronged, from every province, walking to us. We are not outlaws anymore. We are hope."),
-         ("THE WISDOM STAR", "Hope is a fine word. It is also a tall target."),
-         ("PANTHER HEAD", "Enjoy the height, Rain. I have learned what the realm does to anything that stands up straight.")],
-    31: [("TIMELY RAIN", "They are offering a Pardon. Our names cleared. Our dead honored. A seat at the table we were thrown from."),
-         ("THE TATTOOED MONK", "We saw the table, Rain. It is in a hall of scribes, and we are the meal."),
-         ("PANTHER HEAD", "And yet. To have my name back. To not die a criminal. I am ashamed how much I want it."),
-         ("THE WISDOM STAR", "That shame is the hook. They are not buying our swords. They are buying our longing.")],
-    32: [("TIMELY RAIN", "I have decided. We accept. We change it from within, or we die having tried the kinder road."),
-         ("TEN FEET OF STEEL", "This is a mistake with a banner on it."),
-         ("THE PILGRIM", "It is. And I will walk into it beside you, because you are my brother, and that is exactly how they planned to use us."),
-         ("WARDEN", "Then we go in with our eyes open.")],
-    33: [("THE SKILLED DOCTOR", "They are calling these deaths glorious. I am the one who washes them. There is nothing glorious under the cloth."),
-         ("BLACK WHIRLWIND", "We won the battle. We won every battle. So why are there fewer of us at every fire?"),
-         ("THE WISDOM STAR", "Because winning was never the point, brother. The dying was.")],
-    34: [("DRAGON IN THE CLOUDS", "I watched a brother's soul leave the field and fly up. Up, to the book. We are feeding it by obeying."),
-         ("PANTHER HEAD", "Every order we follow loyally is a knife we hand them. Our virtue is the blade."),
-         ("TIMELY RAIN", "...What have I led them into. What have I done.")],
-    35: [("TEN FEET OF STEEL", "No more masks. No more mercy. Finally an honest enemy."),
-         ("DRAGON IN THE CLOUDS", "The sky is open and full of hands. Stand close. Stand close and make them earn us."),
-         ("BLACK WHIRLWIND", "I never liked the quiet kind of war anyway.")],
-    36: [("SAEN", "Another empty bedroll. I am running out of names to not say at the fire."),
-         ("THE PILGRIM", "This is how it ends. Not in one great fall. In subtraction. One, then one, then one."),
-         ("PANTHER HEAD", "Then we make ourselves expensive to the last man. Heads up. We are not subtracted yet.")],
-    37: [("THE WISDOM STAR", "The empire we served just closed the gate behind us. We are inside the trap, and the trap is inside the war."),
-         ("TEN FEET OF STEEL", "Good. Cornered animals are the only kind worth being."),
-         ("MU", "They forgot something. They put all of us in one place. Now we only have to break one wall.")],
-    38: [("THE SKILLED DOCTOR", "It is full of them. I can hear it. Every face I could not save, humming inside the iron."),
-         ("THE TATTOOED MONK", "Then we let them out. All of them. But the breaking will cost a breaker. Whose hand goes on the iron."),
-         ("PANTHER HEAD", "Mine. I have nothing left it can take. Point me at it.")],
-    39: [("DRAGON IN THE CLOUDS", "It is speaking only to you now. The rest of us are not even in the room to it."),
-         ("THE WISDOM STAR", "Whatever it offers you, Warden, do the sum first. Glory for us, the wheel for everyone after us. That is the price."),
-         ("TIMELY RAIN", "If my name buys the next generation's chains, then strike it out. I mean it. Strike it out.")],
-    40: [("SAEN", "Outer Heaven is gone. The rubble we made a home of is rubble again."),
-         ("BLACK WHIRLWIND", "Was it real, though? The brothers? The fire? Tell me it was real."),
-         ("PANTHER HEAD", "Strike it out. My name, all of them. Let us be no one. Better forgotten and free than remembered and owned. Promise me.")],
-    41: [("DRAGON IN THE CLOUDS", "It is rewriting itself. It wants the last entries. It wants us, gold against the black."),
-         ("THE WISDOM STAR", "It needs a hand to close it. It always has. That is what a Warden is. That is what you have always been."),
-         ("WARDEN", "I know what I am now. The question is what I do with one honest moment.")],
-    42: [("THE TATTOOED MONK", "(memory) The dark was always afraid of being remembered. So forget us. Forget us, and it starves."),
-         ("PANTHER HEAD", "(memory) Strike it out."),
-         ("WARDEN", "Ending B: Then let us be no one."),
-         ("WARDEN", "Ending A: ...Let them be remembered.")],
+    1: [("BURNOUT", "These are half-deleted signals and gig-corps echoes. Dangerous in a swarm, nothing alone. Catch one between two of us and it crashes. Never fight one to one when you can fight two to one."),
+        ("BLACKOUT", "Pairs, pacts, whatever you want to call it. Anyone in my row or my column when I swing, they swing too. More partners, more batons, more fun."),
+        ("PATCH", "And do not stand still when you move. The dead zone will not hold a soul in place for long, a few heartbeats before it garbage-collects you. Quick steps, get clear, and I will patch whatever is left."),
+        ("INKWORK", "Read the brand on your hand, partner. The system already wrote you off. Down here the only rule is the one we keep between us. Now move, before the big one starts swinging at us.")],
+    2: [("SOFT RAIN", "Look at them. Taxed to the bone so an Administrator can gild his lobby. This is the order we are told to honor."),
+        ("BURNOUT", "Honor it or not, the order has units. Keep your pity behind your guard."),
+        ("BLACKOUT", "I have something for the Administrator's lobby. Two of them, in fact."),
+        ("PATCH", "Try not to bleed on the residents, big man. They have little enough left to bill.")],
+    3: [("INKWORK", "So this is the Margins. A drowned interchange full of dead clerks, defrocked preachers, and feral signals."),
+        ("PATCH", "And one preacher who is all three. We will fit right in."),
+        ("SOFT RAIN", "It is not much. But everyone here was thrown away by the city, and not one of them threw the next one out. That is more than the Spire can say."),
+        ("UNDERTOW", "Words. Hold the wall when the units come, and then I will call it home.")],
+    4: [("WETWARE", "He badged into that tower whole and came out unable to name his own mother. That is not damage. Damage leaves a shape. This left nothing."),
+        ("STORMFRONT", "The signal-sky above it does not move correctly. Someone is editing it."),
+        ("BURNOUT", "Then we do not go in. We go around."),
+        ("INKWORK", "A thing that eats memory is afraid of being remembered. Mark that. We will need it later.")],
+    5: [("REBAR", "Every indexed street is watched. So we take the one road no Administrator will follow."),
+        ("PATCH", "Down. Lovely. My kind has stories about down, and none of them end with everyone walking home."),
+        ("HAULER", "I will go first. The dark and I are old friends.")],
+    6: [("SIXTEEN-BAR", "A district of the dead, and it still has a Ward boss taking his cut. Even here."),
+        ("SOFT RAIN", "Then even here, someone needs telling no."),
+        ("UNDERTOW", "The dead obey him out of habit. Break the habit and you break the man."),
+        ("BLACKOUT", "Breaking things. Finally, something I am good at.")],
+    7: [("BURNOUT", "The span is one soul wide over a river of live current. We cross in pairs, or we do not cross."),
+        ("PATCH", "Then pick a partner you trust not to drop you. I recommend not the baton one."),
+        ("BLACKOUT", "I would never drop a partner. ...On purpose.")],
+    8: [("WETWARE", "Count the racks. There are more dead stored in these walls than there are living in three districts."),
+        ("STORMFRONT", "Someone has been collecting souls down here since before HARMONY had a name."),
+        ("AUDITOR", "Collecting them for what."),
+        ("INKWORK", "That, partner, is the only question worth the walk.")],
+    9: [("TRIAGE", "I have closed ten thousand wounds. I have never seen a body taken apart and built into another and called repaired."),
+        ("PATCH", "Do not look, Doc. You of all of us cannot afford the nightmares."),
+        ("SIXTEEN-BAR", "Whoever does this is not cruel. Cruelty runs hot. This is cold. This is a process.")],
+    10: [("STORMFRONT", "It is older than the dead network. Speak to it gently."),
+         ("INKWORK", "It looked at us the way you watch a clip you have seen a hundred times."),
+         ("BURNOUT", "It called us free, and it laughed. I did not like the laugh.")],
+    11: [("REBAR", "My feet are walking on their own. Tell me yours are too."),
+         ("UNDERTOW", "All of ours. Something below is reeling us in like a download."),
+         ("SOFT RAIN", "Then we go and look the one holding the line in the eye.")],
+    12: [("BLACKOUT", "I cannot see my own hands. Where are you. Where is everyone."),
+         ("PATCH", "Here. I am here. Breathe, you big child."),
+         ("BURNOUT", "Hold the sync in here and you can hold it anywhere. Hold the line."),
+         ("WETWARE", "The dark is not the enemy. What it lets us believe about each other is the enemy.")],
+    13: [("SIXTEEN-BAR", "He crashed easily. Bosses do not crash easily."),
+         ("WETWARE", "No. They do not. A door was left open, and we walked through it thanking the one who held it."),
+         ("SOFT RAIN", "One tyrant fewer is still one tyrant fewer."),
+         ("STORMFRONT", "Unless you were meant to crash him. Then it is one favor done for someone you have not met.")],
+    14: [("PATCH", "Floor. There is no floor. Why is there no floor."),
+         ("HAULER", "I have you. I have all of you. Hold."),
+         ("INKWORK", "Down to the truth at last. Try to land facing it.")],
+    15: [("WETWARE", "It is all here. Every grief any of us ever carried. Logged. In advance."),
+         ("BURNOUT", "My wife. Her death is a row. A line item, with a yield."),
+         ("SOFT RAIN", "There is a mistake. There has to be a mistake."),
+         ("INKWORK", "No mistake, partner. We are not rebels. We are the crop. I told you the dark feared being remembered. This is why.")],
+    16: [("TRIAGE", "So this is where they go. Everyone I could not save, and everyone I could. The same render in the end."),
+         ("UNDERTOW", "My whole clan. Fed to this, to keep a fat Administration breathing."),
+         ("SIXTEEN-BAR", "Then we do not avenge them by dying well. We avenge them by crashing the machine.")],
+    17: [("STORMFRONT", "The network just turned its head. It is looking at us now. All of it."),
+         ("REBAR", "Good. I am tired of fighting its units. Let it come itself."),
+         ("BURNOUT", "It will not come itself. It will push better and better hands until ours give out. Pace yourselves.")],
+    18: [("BLACKOUT", "These ones do not crash right. White noise. Smells like air freshener and rules."),
+         ("PATCH", "Compliance. The Administration's dogs. Hit them until the leash breaks."),
+         ("WETWARE", "We cannot win this yet. We can only teach the system that we are expensive. Make every dog cost it.")],
+    19: [("SOFT RAIN", "If we crash the whole network, what stands the city up the next morning. There has to be a way back into the light."),
+         ("REBAR", "There was never a way back. You are grieving a door that was painted on a wall."),
+         ("INKWORK", "Let them choose, Rain. A soul dragged to freedom is just a prisoner with a new handler."),
+         ("BURNOUT", "Some of them are forking off. Let them. We were always going to lose people. I only hoped it would be to a fight.")],
+    20: [("STORMFRONT", "Our names are burning. Look. We were signals before we were ever people."),
+         ("PATCH", "I remember doing this. The fox remembers the trap. We have been here before."),
+         ("AUDITOR", "How many times."),
+         ("WETWARE", "Enough that the question is not how do we win. It is how did we always lose.")],
+    21: [("SIXTEEN-BAR", "The sun is the same. The streets are the same. I will never see either the same way again."),
+         ("PATCH", "That is the curse of waking up. The feed was kinder."),
+         ("SOFT RAIN", "Then we wake the others. A city cannot be farmed if the cattle know the farmer.")],
+    22: [("WETWARE", "It is too reasonable. Tyrants shout. This one reasons. Be most afraid of the calm ones."),
+         ("STORMFRONT", "It offered me the whole network's knowledge, to stop asking the one question it fears."),
+         ("BURNOUT", "It will offer each of us the thing we want most. Decide now what that is, so you know its face when it smiles at you.")],
+    23: [("INKWORK", "The system's justice was a lie. So what is ours. Anyone. While we still have the breath to mean it."),
+         ("REBAR", "Mine is simple. Whoever deletes a family pays a family. I have waited a long time to collect."),
+         ("SOFT RAIN", "Then we are no better than the Administration, keeping our own ledger of debts."),
+         ("SIXTEEN-BAR", "He is right. I have a ledger too. I have read where it ends. It ends with me alone.")],
+    24: [("WETWARE", "The middle-managers are only fingers. A hand without fingers cannot grip. We start with the fingers."),
+         ("BLACKOUT", "Less talk about hands. More deleting hands."),
+         ("HAULER", "He is not wrong. For once.")],
+    25: [("PATCH", "That one has Rain's face. That one has yours, Burnout. They are wearing us."),
+         ("BURNOUT", "Then I will teach the copy what the original learned the hard way."),
+         ("WETWARE", "They are hollow. Whatever the system loved in us, it could not forge. Aim for where the heart should be.")],
+    26: [("REBAR", "It does not tire. It does not doubt. It is everything HARMONY wishes we were."),
+         ("INKWORK", "And that is why it is losing. It cannot improvise. It was never afraid, so it never learned."),
+         ("SOFT RAIN", "It is what we become if we take the deal. Remember its eyes. There is no one home.")],
+    27: [("TRIAGE", "There was nothing left to close. Nothing left to patch. I am sorry. I am so sorry."),
+         ("BLACKOUT", "...He let me sit at his fire. The first one who ever did."),
+         ("SOFT RAIN", "We carry him in his name, and we say it loud, so the dark cannot pretend he was never here.")],
+    28: [("REBAR", "Burn it. Burn all of it. They burned mine."),
+         ("SIXTEEN-BAR", "This is the part I warned you about. Where we stop being able to tell the story to children."),
+         ("BURNOUT", "She is right to want it. We are wrong to do it. Both are true. Stand down. Stand down."),
+         ("PATCH", "Listen to him. I do not want to patch what we are about to become.")],
+    29: [("STORMFRONT", "The city is forgetting us. Hold to your name. Say it, keep saying it. It is the only rope."),
+         ("WETWARE", "It is wiping the board early. We frightened it. Take comfort in that, and keep walking."),
+         ("HAULER", "I am Hauler. I am Mu. I carried you all. I am Mu.")],
+    30: [("SOFT RAIN", "Look at them come. The wronged, from every district, walking to us. We are not outlaws anymore. We are hope."),
+         ("WETWARE", "Hope is a fine word. It is also a tall target."),
+         ("BURNOUT", "Enjoy the height, Rain. I have learned what the city does to anything that stands up straight.")],
+    31: [("SOFT RAIN", "They are offering Reinstatement. Our names cleared. Our dead honored. A seat at the table we were thrown from."),
+         ("INKWORK", "We saw the table, Rain. It is on a server floor, and we are the meal."),
+         ("BURNOUT", "And yet. To have my name back. To not die a criminal. I am ashamed how much I want it."),
+         ("WETWARE", "That shame is the hook. They are not buying our blades. They are buying our longing.")],
+    32: [("SOFT RAIN", "I have decided. We accept. We fix it from inside, or we die having tried the kinder road."),
+         ("REBAR", "This is a mistake with a banner on it."),
+         ("SIXTEEN-BAR", "It is. And I will walk into it beside you, because you are my partner, and that is exactly how they planned to use us."),
+         ("AUDITOR", "Then we go in with our eyes open.")],
+    33: [("TRIAGE", "They are calling these deaths glorious. I am the one who logs them. There is nothing glorious under the sheet."),
+         ("BLACKOUT", "We won the op. We won every op. So why are there fewer of us at every fire."),
+         ("WETWARE", "Because winning was never the point, partner. The dying was.")],
+    34: [("STORMFRONT", "I watched a partner's signal leave the field and fly up. Up, to the table. We are feeding it by obeying."),
+         ("BURNOUT", "Every order we follow loyally is a knife we hand them. Our loyalty is the blade."),
+         ("SOFT RAIN", "...What have I led them into. What have I done.")],
+    35: [("REBAR", "No more masks. No more mercy. Finally an honest enemy."),
+         ("WETWARE", "Look under the visor of the one you just crashed. Erased, like us. Promoted, and told he alone got the real pardon. The whole corps is us, one cycle on."),
+         ("STORMFRONT", "The sky is open and full of hands. Stand close. Stand close and make them earn us."),
+         ("BLACKOUT", "I never liked the quiet kind of war anyway.")],
+    36: [("PATCH", "Another empty bunk. I am running out of names to not say at the fire."),
+         ("SIXTEEN-BAR", "This is how it ends. Not in one great crash. In subtraction. One, then one, then one."),
+         ("BURNOUT", "Then we make ourselves expensive to the last soul. Heads up. We are not subtracted yet.")],
+    37: [("WETWARE", "The Administration we served just revoked our access. We are inside the trap, and the trap is inside the war."),
+         ("REBAR", "Good. Cornered things are the only kind worth being."),
+         ("HAULER", "They forgot something. They put all of us in one place. Now we only have to crash one wall.")],
+    38: [("TRIAGE", "It is full of them. I can hear it. Every face I could not save, humming inside the iron."),
+         ("INKWORK", "Then we let them out. All of them. But the crashing will cost a crasher. Whose hand goes on the iron."),
+         ("BURNOUT", "Mine. I have nothing left it can take. Point me at it.")],
+    39: [("STORMFRONT", "It is speaking only to you now. The rest of us are not even in the room to it."),
+         ("WETWARE", "Whatever it offers you, Auditor, do the sum first. Glory for us, the cycle for everyone after us. That is the price."),
+         ("SOFT RAIN", "If my name buys the next generation's chains, then strike it out. I mean it. Strike it out.")],
+    40: [("PATCH", "Margin Hall is gone. The rubble we made a home of is rubble again."),
+         ("BLACKOUT", "Was it real, though. The partners. The fire. Tell me it was real."),
+         ("BURNOUT", "Strike it out. My name, all of them. Let us be no one. Better deleted and free than indexed and owned. Promise me.")],
+    41: [("STORMFRONT", "It is rewriting itself. It wants the last entries. It wants us, gold against the black."),
+         ("WETWARE", "It needs a hand to commit. It always has. That is what an Auditor is. That is what you have always been."),
+         ("AUDITOR", "I know what I am now. The question is what I do with one honest moment.")],
+    42: [("INKWORK", "(memory) The dark was always afraid of being remembered. So forget us. Forget us, and it starves."),
+         ("BURNOUT", "(memory) Strike it out."),
+         ("AUDITOR", "Ending B: Then let us be no one."),
+         ("AUDITOR", "Ending A: ...Let them be remembered.")],
 }
 
 # ----------------------------------------------------------------- build
@@ -622,11 +629,11 @@ def sheet(name, headers, rows, widths, bold_cols=()):
 ov = wb.active
 ov.title = "Overview"
 ov.sheet_view.showGridLines = False
-ov["A1"] = "Water Margin x Black Myth  —  Re-skin Mapping"
+ov["A1"] = "SIGNAL / 108 — Off-Network  —  Re-skin Mapping"
 ov["A1"].font = TITLE_FONT
 notes = [
     "",
-    "This workbook maps the original Terra Battle text to the new Water Margin (Chinese dark-myth) re-skin.",
+    "This workbook maps the original Terra Battle text to the new SIGNAL / 108 (modern Water Margin x The World Ends With You) re-skin.",
     "The re-skin is a TEXT + NAME + ART overlay only. No stage or battle layout data changes.",
     "",
     "Tabs:",
@@ -638,12 +645,13 @@ notes = [
     "  - Bosses:        every boss mirrored with stats, a bespoke name, and an appearance",
     "  - Banter:        party banter for all 42 chapters, original (Ch.1-3) vs re-skin",
     "",
-    "Conventions: original yaoguai use abstract oriental names; Water Margin heroes use the English of",
-    "their Chinese epithet (Panther Head = Lin Chong, Timely Rain = Song Jiang, etc.).",
+    "Conventions: heroes use a modern street-tag (the handle is also the dialogue speaker + portrait key);",
+    "the real name they fight to keep indexed is carried in the Background field (e.g. Burnout = Lam Chongzhi).",
+    "Generic enemies are Static (Noise from the city's grief); bosses are Administrators / Ward bosses / titan-Static.",
     "",
     "REVIEW: cells shaded amber are my best guesses or open decisions worth a look:",
     "   - Characters: heroes marked '(new recruit)' have no game unit yet, so they need a unit + art.",
-    "   - Banter (Ch.42): the two ending-variant Warden lines (a story choice, not final).",
+    "   - Banter (Ch.42): the two ending-variant Auditor lines (a story choice, not final).",
     "Enemies / Bosses: stats are mirrored exactly from the game; names and looks are my draft for review.",
 ]
 for i, line in enumerate(notes, start=2):
@@ -657,7 +665,7 @@ ov.cell(sr, 1).font = BOLD
 ov.column_dimensions["A"].width = 110
 
 # Storyline
-sheet("Storyline", ["Aspect", "Original (Terra Battle)", "Re-skin (Water Margin x Black Myth)"],
+sheet("Storyline", ["Aspect", "Original (Terra Battle)", "Re-skin (SIGNAL / 108)"],
       STORYLINE, [22, 60, 70], bold_cols=(1,))
 
 # Chapter Names

@@ -314,7 +314,7 @@ func _make_counter(box: HBoxContainer, atlas_tex: Texture2D, region: Rect2) -> L
 	icon.custom_minimum_size = Vector2(17, 17)
 	icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-	icon.modulate = Color(0.3, 0.27, 0.24)
+	icon.modulate = Color(0.66, 0.72, 0.76)
 	icon.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	hb.add_child(icon)
@@ -323,7 +323,7 @@ func _make_counter(box: HBoxContainer, atlas_tex: Texture2D, region: Rect2) -> L
 	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	label.add_theme_font_size_override("font_size", 16)
-	label.add_theme_color_override("font_color", Color(0.286, 0.247, 0.196, 1))
+	label.add_theme_color_override("font_color", Color(0.82, 0.85, 0.88, 1))
 	hb.add_child(label)
 
 	box.add_child(hb)

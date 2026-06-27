@@ -112,14 +112,14 @@ SKILL_ACTIVATION_RATE_MODIFIER,Skill activation rate,Tasa de activación de habi
 STATUS_EFFECT_RESISTANCE,%+.0f%% resistance to %s,%+.0f%% de resistencia a %s
 SKILLS_TAB,Skills,Habilidades
 STATUS_EFFECTS_TAB,Status effects,Estados
-BORDERLANDS,Exile,Exile
-TO_THE_CAPITAL,Toward the Throne,Toward the Throne
-BAHL,Gan Jiang,Gan Jiang
-GRACE,Mo Ye,Mo Ye
-KUSCAH,Saen,Saen
-SHBERDAN,Jiao,Jiao
-DAIANA,Dragon in the Clouds,Dragon in the Clouds
-MACURI,Mu,Mu
+BORDERLANDS,Off-Network,Off-Network
+TO_THE_CAPITAL,Toward the Spire,Toward the Spire
+BAHL,Auditor,Auditor
+GRACE,Echo (Mo Ye),Echo (Mo Ye)
+KUSCAH,Patch (Saen),Patch (Saen)
+SHBERDAN,Undertow (Jiao),Undertow (Jiao)
+DAIANA,Stormfront,Stormfront
+MACURI,Hauler (Mu),Hauler (Mu)
 JOB_DARK_DUELIST,Dark Duelist,Duelista oscura
 JOB_ARCHER,Archer,Arquera
 JOB_ACOLYTE,Acolyte,Acólito
@@ -141,105 +141,105 @@ FIRE,Fire,Fuego
 THUNDER_ARROWS,Thunder Arrows,Flechas de trueno
 THRUST_AWAY,Thrust Away,Empujón
 DISCHARGE,Discharge,Descarga
-BORDERLANDS_CAPTION,"Branded and cast out for naming one corruption too many, you take the long road to Outer Heaven...","Branded and cast out for naming one corruption too many, you take the long road to Outer Heaven..."
-TO_THE_CAPITAL_CAPTION,The road to the capital runs through starving villages and fat magistrates.,The road to the capital runs through starving villages and fat magistrates.
-MELTING_POT,The Gathering,The Gathering
-MELTING_POT_CAPTION,At Outer Heaven the cast out and the hunted spirit-folk take you in.,At Outer Heaven the cast out and the hunted spirit-folk take you in.
-INTO_THE_TOWER,The Forgetting,The Forgetting
-INTO_THE_TOWER_CAPTION,A tower stands on the border that steals the memory of any who climb it.,A tower stands on the border that steals the memory of any who climb it.
-DESCENT,Descent,Descent
-DESCENT_CAPTION,"Hunted on every road, the band goes down instead of out, into the buried world beneath the...","Hunted on every road, the band goes down instead of out, into the buried world beneath the..."
-THE_CITY_BELOW,The City Below,The City Below
-THE_CITY_BELOW_CAPTION,"A drowned city of the forgotten dead, ruled by a spirit-magistrate as cruel as any above.","A drowned city of the forgotten dead, ruled by a spirit-magistrate as cruel as any above."
-MOLTEN_MENACE,Rivers of Fire,Rivers of Fire
-MOLTEN_MENACE_CAPTION,To go deeper the band must cross the burning veins of the underworld.,To go deeper the band must cross the burning veins of the underworld.
-LABYRINTH,The Bone Maze,The Bone Maze
-LABYRINTH_CAPTION,"A labyrinth built from the harvested dead, turn after turn of them.","A labyrinth built from the harvested dead, turn after turn of them."
-IN_UTERO,The Forge of Flesh,The Forge of Flesh
-IN_UTERO_CAPTION,A place where bodies are made and unmade.,A place where bodies are made and unmade.
-LIVING_ROCK,The Waking Stone,The Waking Stone
-LIVING_ROCK_CAPTION,"They rouse an ancient bound spirit, who looks at them with something like pity.","They rouse an ancient bound spirit, who looks at them with something like pity."
-TO_THE_HEART,Into the Heart,Into the Heart
-TO_THE_HEART_CAPTION,A pull none of them can name draws the band toward the center of the buried world.,A pull none of them can name draws the band toward the center of the buried world.
-DUNGEONS_DEEP,The Deep Dark,The Deep Dark
-DUNGEONS_DEEP_CAPTION,In the deepest black the band falters.,In the deepest black the band falters.
-KINGSLAYER,Kingslayer,Kingslayer
-KINGSLAYER_CAPTION,They corner and kill the corrupt spirit-lord who rules the deep.,They corner and kill the corrupt spirit-lord who rules the deep.
-DOWNWARD_SPIRAL,The Long Fall,The Long Fall
-DOWNWARD_SPIRAL_CAPTION,The floor of the world gives way.,The floor of the world gives way.
-THE_MAKER,The Architect,The Architect
-THE_MAKER_CAPTION,"A hall without end, and in it ten thousand scribes copying names into a single black book with...","A hall without end, and in it ten thousand scribes copying names into a single black book with..."
-ANIMATA,The Soul Engine,The Soul Engine
-ANIMATA_CAPTION,"They find the machine of the harvest, where fallen heroes are rendered into the fuel that keeps...","They find the machine of the harvest, where fallen heroes are rendered into the fuel that keeps..."
-INTRUDER_ALERT,Trespass,Trespass
-INTRUDER_ALERT_CAPTION,Heaven notices them at last.,Heaven notices them at last.
-THE_OXSECIANS,Heaven's Hounds,Heaven's Hounds
-THE_OXSECIANS_CAPTION,A running war against the wardens of the Court Above.,A running war against the wardens of the Court Above.
-SEPARATE_WAYS,The Parting,The Parting
-SEPARATE_WAYS_CAPTION,The truth divides them.,The truth divides them.
-AWAKENING,Awakening,Awakening
+BORDERLANDS_CAPTION,"You died on a Tuesday, mid-sentence, the discrepancy still open on your screen.","You died on a Tuesday, mid-sentence, the discrepancy still open on your screen."
+TO_THE_CAPITAL_CAPTION,The road to the Spire runs through wards taxed to the bone so an Administrator can gild his lobby.,The road to the Spire runs through wards taxed to the bone so an Administrator can gild his lobby.
+MELTING_POT,Welcome to the Margins,Welcome to the Margins
+MELTING_POT_CAPTION,In the Margins the deleted and the deplatformed take you in.,In the Margins the deleted and the deplatformed take you in.
+INTO_THE_TOWER,The Memory Hole,The Memory Hole
+INTO_THE_TOWER_CAPTION,A tower on the ward line wipes the memory of anyone who badges in.,A tower on the ward line wipes the memory of anyone who badges in.
+DESCENT,Going Under,Going Under
+DESCENT_CAPTION,"Hunted on every indexed street, the band goes down instead of out, into the dead infrastructure...","Hunted on every indexed street, the band goes down instead of out, into the dead infrastructure..."
+THE_CITY_BELOW,The Sunken Wards,The Sunken Wards
+THE_CITY_BELOW_CAPTION,"A drowned district of the forgotten dead, run by a Ward boss as cruel as anything topside.","A drowned district of the forgotten dead, run by a Ward boss as cruel as anything topside."
+MOLTEN_MENACE,Live Wires,Live Wires
+MOLTEN_MENACE_CAPTION,"To go deeper the band has to cross the live underworld, a span of loose current one soul wide.","To go deeper the band has to cross the live underworld, a span of loose current one soul wide."
+LABYRINTH,Server Necropolis,Server Necropolis
+LABYRINTH_CAPTION,"A server-floor built from the harvested dead, rack after rack of them.","A server-floor built from the harvested dead, rack after rack of them."
+IN_UTERO,The Body Shop,The Body Shop
+IN_UTERO_CAPTION,A place where bodies are rendered and rebuilt.,A place where bodies are rendered and rebuilt.
+LIVING_ROCK,Legacy Process,Legacy Process
+LIVING_ROCK_CAPTION,"They wake an old dormant process, and it looks at them with something like pity.","They wake an old dormant process, and it looks at them with something like pity."
+TO_THE_HEART,Toward the Core,Toward the Core
+TO_THE_HEART_CAPTION,A pull none of them can name draws the band toward the center of the buried network.,A pull none of them can name draws the band toward the center of the buried network.
+DUNGEONS_DEEP,Into the Black,Into the Black
+DUNGEONS_DEEP_CAPTION,In the deepest dead zone the band falters.,In the deepest dead zone the band falters.
+KINGSLAYER,Adminkill,Adminkill
+KINGSLAYER_CAPTION,They corner and crash the corrupt Ward boss who runs the deep.,They corner and crash the corrupt Ward boss who runs the deep.
+DOWNWARD_SPIRAL,Freefall,Freefall
+DOWNWARD_SPIRAL_CAPTION,The floor of the world gives out.,The floor of the world gives out.
+THE_MAKER,The Index,The Index
+THE_MAKER_CAPTION,"A table without end, and in it every name, every date, every manner of death, and beside each...","A table without end, and in it every name, every date, every manner of death, and beside each..."
+ANIMATA,The Render Floor,The Render Floor
+ANIMATA_CAPTION,"They find the machine of the harvest, where the fallen are rendered into the fuel that keeps the...","They find the machine of the harvest, where the fallen are rendered into the fuel that keeps the..."
+INTRUDER_ALERT,Flagged,Flagged
+INTRUDER_ALERT_CAPTION,The network notices them at last.,The network notices them at last.
+THE_OXSECIANS,Compliance,Compliance
+THE_OXSECIANS_CAPTION,A running war against HARMONY's enforcers.,A running war against HARMONY's enforcers.
+SEPARATE_WAYS,Forking,Forking
+SEPARATE_WAYS_CAPTION,The truth splits them.,The truth splits them.
+AWAKENING,Root Access,Root Access
 AWAKENING_CAPTION,"Cornered with no way out, the band wakes its true nature, names blazing in the dark of the...","Cornered with no way out, the band wakes its true nature, names blazing in the dark of the..."
-STRANGE_NEW_WORLD,A World Remade,A World Remade
+STRANGE_NEW_WORLD,Re-render,Re-render
 STRANGE_NEW_WORLD_CAPTION,They climb back to a surface that looks the same and is not.,They climb back to a surface that looks the same and is not.
-VOICE_FROM_BEYOND,The Voice Above,The Voice Above
-VOICE_FROM_BEYOND_CAPTION,For the first time the Court Above speaks to them directly.,For the first time the Court Above speaks to them directly.
-LAWS_OF_THE_JUNGLE,Law of the Wild,Law of the Wild
-LAWS_OF_THE_JUNGLE_CAPTION,"Beyond the reach of any law, the band must decide for itself what justice means, now that...","Beyond the reach of any law, the band must decide for itself what justice means, now that..."
-SEEK_AND_DESTROY,Seek and Destroy,Seek and Destroy
-SEEK_AND_DESTROY_CAPTION,"They take the war to heaven's hands on the ground, hunting the magistrates and ministers who are...","They take the war to heaven's hands on the ground, hunting the magistrates and ministers who are..."
-ZERO_SERIES,Made Men,Made Men
-ZERO_SERIES_CAPTION,"They discover the Court manufactures false heroes to replace the ones it reaps, and find...","They discover the Court manufactures false heroes to replace the ones it reaps, and find..."
-EVOLUTION_PRIME,The Perfect Soldier,The Perfect Soldier
-EVOLUTION_PRIME_CAPTION,"A flawless made-hero, stronger than any of them, is sent to bring them in.","A flawless made-hero, stronger than any of them, is sent to bring them in."
-SORROW,Sorrow,Sorrow
-SORROW_CAPTION,"A brother everyone loved falls, and the war stops being a cause and becomes a wound.","A brother everyone loved falls, and the war stops being a cause and becomes a wound."
-VENGEANCE,Vengeance,Vengeance
+VOICE_FROM_BEYOND,The Conductor Speaks,The Conductor Speaks
+VOICE_FROM_BEYOND_CAPTION,For the first time the top of the Administration speaks to them directly.,For the first time the top of the Administration speaks to them directly.
+LAWS_OF_THE_JUNGLE,No Service,No Service
+LAWS_OF_THE_JUNGLE_CAPTION,"Off the index, past the reach of any rule, the band has to decide for itself what justice means...","Off the index, past the reach of any rule, the band has to decide for itself what justice means..."
+SEEK_AND_DESTROY,Search and Delete,Search and Delete
+SEEK_AND_DESTROY_CAPTION,"They take the war to the Administration's hands on the ground, hunting the Ward bosses and...","They take the war to the Administration's hands on the ground, hunting the Ward bosses and..."
+ZERO_SERIES,Synthetic Heroes,Synthetic Heroes
+ZERO_SERIES_CAPTION,"They learn the Administration forges synthetic heroes to replace the ones it reaps, and find...","They learn the Administration forges synthetic heroes to replace the ones it reaps, and find..."
+EVOLUTION_PRIME,Flawless,Flawless
+EVOLUTION_PRIME_CAPTION,"A flawless synthetic, stronger than any of them, is pushed to bring them in.","A flawless synthetic, stronger than any of them, is pushed to bring them in."
+SORROW,Dead Air,Dead Air
+SORROW_CAPTION,"A partner everyone loved is rendered, and the war stops being a cause and becomes a wound.","A partner everyone loved is rendered, and the war stops being a cause and becomes a wound."
+VENGEANCE,Burn It Down,Burn It Down
 VENGEANCE_CAPTION,Grief hardens into something colder.,Grief hardens into something colder.
-REBOOT,The Reset,The Reset
-REBOOT_CAPTION,"The Court reaches to turn the wheel early, to unmake them and start again.","The Court reaches to turn the wheel early, to unmake them and start again."
-RISING_WORLD,The Banner Rises,The Banner Rises
-RISING_WORLD_CAPTION,"At its height Outer Heaven becomes a true power, a fire the wronged can see from far away.","At its height Outer Heaven becomes a true power, a fire the wronged can see from far away."
-BEYOND_THE_LIGHT,The Offer,The Offer
-BEYOND_THE_LIGHT_CAPTION,"The Court Above extends its hand, not as a fist but as mercy.","The Court Above extends its hand, not as a fist but as mercy."
-THE_BRIDGEHEAD,Crossing Over,Crossing Over
-THE_BRIDGEHEAD_CAPTION,"Believing the world can still be mended from within, Timely Rain leads the band to accept the...","Believing the world can still be mended from within, Timely Rain leads the band to accept the..."
-THE_DEPARTED,The Fallen,The Fallen
-THE_DEPARTED_CAPTION,"Sent to fight heaven's wars, the first brothers die gloriously, exactly as designed.","Sent to fight heaven's wars, the first brothers die gloriously, exactly as designed."
-THE_LIGHT_OF_DEVOTION,Devotion's Price,Devotion's Price
+REBOOT,Rolled Back,Rolled Back
+REBOOT_CAPTION,"The Administration reaches to roll the cycle back early, to unmake them and start clean.","The Administration reaches to roll the cycle back early, to unmake them and start clean."
+RISING_WORLD,Trending,Trending
+RISING_WORLD_CAPTION,"At its height Margin Hall becomes a real signal, a fire the wronged can see from clear across...","At its height Margin Hall becomes a real signal, a fire the wronged can see from clear across..."
+BEYOND_THE_LIGHT,The Terms,The Terms
+BEYOND_THE_LIGHT_CAPTION,"The Administration extends its hand, not as a fist but as mercy.","The Administration extends its hand, not as a fist but as mercy."
+THE_BRIDGEHEAD,Going Legit,Going Legit
+THE_BRIDGEHEAD_CAPTION,"Believing the system can still be fixed from inside, Soft Rain leads the band to accept the Terms.","Believing the system can still be fixed from inside, Soft Rain leads the band to accept the Terms."
+THE_DEPARTED,Glorious Deaths,Glorious Deaths
+THE_DEPARTED_CAPTION,"Sent to run the Administration's ops, the first partners die gloriously, exactly as designed.","Sent to run the Administration's ops, the first partners die gloriously, exactly as designed."
+THE_LIGHT_OF_DEVOTION,Loyalty Tax,Loyalty Tax
 THE_LIGHT_OF_DEVOTION_CAPTION,"Too late, the band understands.","Too late, the band understands."
-MALEVOLENCE_ALIGHTS,Malice Descends,Malice Descends
-MALEVOLENCE_ALIGHTS_CAPTION,"Committed and scattered, the band watches the Court drop its mask at last.","Committed and scattered, the band watches the Court drop its mask at last."
-PERMEATING_FEAR,Creeping Dread,Creeping Dread
-PERMEATING_FEAR_CAPTION,The brothers die one after another in wars no one can win.,The brothers die one after another in wars no one can win.
-IN_DEVIL_S_GRIP,The Devil's Grip,The Devil's Grip
-IN_DEVIL_S_GRIP_CAPTION,"The survivors are cornered, hunted, and betrayed by the very empire they agreed to serve.","The survivors are cornered, hunted, and betrayed by the very empire they agreed to serve."
-ANIMATA_TEARS,The Engine Weeps,The Engine Weeps
-ANIMATA_TEARS_CAPTION,"They reach the Soul Engine again, swollen now with their own fallen.","They reach the Soul Engine again, swollen now with their own fallen."
+MALEVOLENCE_ALIGHTS,The Mask Drops,The Mask Drops
+MALEVOLENCE_ALIGHTS_CAPTION,"Committed and scattered, the band watches the Administration drop its mask at last.","Committed and scattered, the band watches the Administration drop its mask at last."
+PERMEATING_FEAR,Attrition,Attrition
+PERMEATING_FEAR_CAPTION,"The partners are deleted one after another, on schedule, in wars no one can win.","The partners are deleted one after another, on schedule, in wars no one can win."
+IN_DEVIL_S_GRIP,Locked Out,Locked Out
+IN_DEVIL_S_GRIP_CAPTION,"The survivors are cornered, hunted, and locked out by the very Administration they agreed to serve.","The survivors are cornered, hunted, and locked out by the very Administration they agreed to serve."
+ANIMATA_TEARS,Ghosts in the Machine,Ghosts in the Machine
+ANIMATA_TEARS_CAPTION,"They reach the Render Floor again, swollen now with their own fallen, every lost face humming...","They reach the Render Floor again, swollen now with their own fallen, every lost face humming..."
 COMING_SOON,Coming soon,Próximamente
-PROPOSITION,The Bargain,The Bargain
-PROPOSITION_CAPTION,The Court offers the Warden the last deal.,The Court offers the Warden the last deal.
+PROPOSITION,The Last Offer,The Last Offer
+PROPOSITION_CAPTION,The Administration makes the Auditor the last offer.,The Administration makes the Auditor the last offer.
 ASH_OF_SOULS,Ashes,Ashes
-ASH_OF_SOULS_CAPTION,Outer Heaven burns.,Outer Heaven burns.
-A_TOWER_REBORN,The Ledger Reforged,The Ledger Reforged
-A_TOWER_REBORN_CAPTION,The black book reassembles itself to write the band into glory and seal them away for the next...,The black book reassembles itself to write the band into glory and seal them away for the next...
-TERRA_BATTLE,The Last Name,The Last Name
-TERRA_BATTLE_CAPTION,At the Ledger the final choice is yours.,At the Ledger the final choice is yours.
-CHAR_BLACK_WHIRLWIND,Black Whirlwind,Black Whirlwind
-CHAR_THE_PILGRIM,the Pilgrim,the Pilgrim
-CHAR_TEN_FEET_OF_STEEL,Ten Feet of Steel,Ten Feet of Steel
-CHAR_JADE_UNICORN,Jade Unicorn,Jade Unicorn
-CHAR_BLUE_FACED_BEAST,Blue-Faced Beast,Blue-Faced Beast
-CHAR_FIERY_THUNDERBOLT,Fiery Thunderbolt,Fiery Thunderbolt
-CHAR_TWIN_RODS,Twin Rods,Twin Rods
-CHAR_THE_WITCH,the Witch,the Witch
-CHAR_PANTHER_HEAD,Panther Head,Panther Head
-CHAR_THE_NINE_DRAGONED,the Nine-Dragoned,the Nine-Dragoned
-CHAR_THE_LIVING_DEATH_GOD,the Living Death-God,the Living Death-God
-CHAR_LORD_OF_THE_BEAUTIFUL_BEARD,Lord of the Beautiful Beard,Lord of the Beautiful Beard
-CHAR_LITTLE_LI_GUANG,Little Li Guang,Little Li Guang
-CHAR_THE_WANDERER,the Wanderer,the Wanderer
-CHAR_FEATHERLESS_ARROW,Featherless Arrow,Featherless Arrow
-CHAR_LAN,Lan,Lan
-CHAR_THE_WISDOM_STAR,the Wisdom Star,the Wisdom Star
-CHAR_MARVELOUS_TRAVELER,Marvelous Traveler,Marvelous Traveler
-CHAR_WHITE_STREAK_IN_THE_WAVES,White Streak in the Waves,White Streak in the Waves
+ASH_OF_SOULS_CAPTION,Margin Hall is gone.,Margin Hall is gone.
+A_TOWER_REBORN,Index Reborn,Index Reborn
+A_TOWER_REBORN_CAPTION,The table rewrites itself to enter the band as legends and seal them for the next turn of the cycle.,The table rewrites itself to enter the band as legends and seal them for the next turn of the cycle.
+TERRA_BATTLE,Strike / Preserve,Strike / Preserve
+TERRA_BATTLE_CAPTION,At the Index the last choice is yours.,At the Index the last choice is yours.
+CHAR_BLACK_WHIRLWIND,Blackout (Lei Kui),Blackout (Lei Kui)
+CHAR_THE_PILGRIM,Sixteen-Bar (Sung Wu),Sixteen-Bar (Sung Wu)
+CHAR_TEN_FEET_OF_STEEL,Rebar (Wu Saam),Rebar (Wu Saam)
+CHAR_JADE_UNICORN,Bluechip (Lo Junyi),Bluechip (Lo Junyi)
+CHAR_BLUE_FACED_BEAST,Bruise (Yeung Chi),Bruise (Yeung Chi)
+CHAR_FIERY_THUNDERBOLT,Shortfuse (Chun Ming),Shortfuse (Chun Ming)
+CHAR_TWIN_RODS,Nightstick (Fu Yin),Nightstick (Fu Yin)
+CHAR_THE_WITCH,Cleaver (Suen Yi),Cleaver (Suen Yi)
+CHAR_PANTHER_HEAD,Burnout (Lam Chongzhi),Burnout (Lam Chongzhi)
+CHAR_THE_NINE_DRAGONED,Nine Dragons (Si Chun),Nine Dragons (Si Chun)
+CHAR_THE_LIVING_DEATH_GOD,Deadman (Yuen Chat),Deadman (Yuen Chat)
+CHAR_LORD_OF_THE_BEAUTIFUL_BEARD,Longarm (Chu Tung),Longarm (Chu Tung)
+CHAR_LITTLE_LI_GUANG,Deadeye (Hua Rongnie),Deadeye (Hua Rongnie)
+CHAR_THE_WANDERER,Drifter (Yin Ching),Drifter (Yin Ching)
+CHAR_FEATHERLESS_ARROW,Slingshot (Cheung Ching),Slingshot (Cheung Ching)
+CHAR_LAN,Courier (Lan),Courier (Lan)
+CHAR_THE_WISDOM_STAR,Wetware (Ng Yong),Wetware (Ng Yong)
+CHAR_MARVELOUS_TRAVELER,Fastpass (Doi Chung),Fastpass (Doi Chung)
+CHAR_WHITE_STREAK_IN_THE_WAVES,Riptide (Cheung Seon),Riptide (Cheung Seon)

@@ -74,7 +74,7 @@ offset_left = -48.0
 offset_top = -48.0
 offset_right = 52.0
 offset_bottom = 52.0
-text = "the Stone Sentinel"
+text = "the Concrete Sentinel"
 
 [node name="Sprite2D" parent="CanvasLayer/UnitName" index="0"]
 position = Vector2( 48, 48 )

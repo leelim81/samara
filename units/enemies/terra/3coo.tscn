@@ -75,7 +75,7 @@ offset_left = -48.0
 offset_top = -48.0
 offset_right = 52.0
 offset_bottom = 52.0
-text = "Bingwu, the Third Warden"
+text = "Administrator: Ward Two"
 
 [node name="Sprite2D" parent="CanvasLayer/UnitName" index="0"]
 position = Vector2( 48, 48 )

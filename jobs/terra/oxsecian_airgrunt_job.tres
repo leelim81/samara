@@ -10,6 +10,6 @@
 script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ) ]
-job_name = "Heaven's Skirmisher Elite"
+job_name = "Compliance Skirmisher, Elite"
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

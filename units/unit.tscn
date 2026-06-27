@@ -543,7 +543,7 @@ __meta__ = {
 }
 
 [node name="Glow" type="Sprite2D" parent="Sprite2D"]
-modulate = Color( 0.3, 0.58, 0.54, 0.7 )
+modulate = Color( 0.27, 0.82, 0.65, 0.82 )
 scale = Vector2( 1.06, 1.06 )
 show_behind_parent = true
 z_index = -1

@@ -23,7 +23,7 @@ texture = ExtResource( 3 )
 texture = ExtResource( 9 )
 
 [node name="UnitName" parent="CanvasLayer" index="3"]
-text = "Heaven's Sentry Elite"
+text = "Compliance Sentry, Elite"
 
 [node name="Action1" parent="AIController" index="0" instance=ExtResource( 5 )]
 behavior = 1

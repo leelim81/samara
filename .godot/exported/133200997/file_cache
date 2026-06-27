@@ -5,7 +5,7 @@ res://assets/fonts/Exo2Regular18.tres::9afafee568b0b34cefb5aa30962012b3::1782139
 res://assets/fonts/Exo2Regular.tres::36e6dd6f09191ed21b61d8f000019db7::1782139257::res://.godot/exported/133200997/export-b703ccb9ef739bd957918f89fbd2c380-Exo2Regular.res
 res://default_bus_layout.tres::4af40e605c51cac290dd1617d0fab233::1782139258::res://.godot/exported/133200997/export-19246414aa9fb561ced4b8dce477acec-default_bus_layout.res
 res://theme.tres::26fcd257249892e91a6c4cbf355c2a9d::1782483666::res://.godot/exported/133200997/export-1b11a992ebcc6f262e4ee4a4db300a0d-theme.res
-res://units/unit.tscn::a2f13d65aaf22ef4abad434aa3a20ac0::1782437689::res://.godot/exported/133200997/export-b7c7498bd5985312ef7f2237b7aeaff9-unit.scn
+res://units/unit.tscn::d1af845cd9c27b81d3c846ed6d4c0538::1782528870::res://.godot/exported/133200997/export-b7c7498bd5985312ef7f2237b7aeaff9-unit.scn
 res://default_env.tres::a52129f071fffbd20a6013a6c0edec1e::1782139258::res://.godot/exported/133200997/export-7cf3fd67ad9f55210191d77b582b8209-default_env.res
 res://battles/introduction/greaves_of_clay.tscn::35cef8c8052fbe327b1523182043cc21::1781188476::res://.godot/exported/133200997/export-3e280b1055c255ad6cd7b72cbd967b53-greaves_of_clay.scn
 res://battles/terra/borderlands.tscn::f2bc5515940227a83cd8ee6976fb0cc9::1782139258::res://.godot/exported/133200997/export-6fcb1f6894af0a7533062d9604052b24-borderlands.scn
@@ -197,7 +197,7 @@ res://units/enemies/training_orbling.tscn::78cfe64d029ff03707cd1edda0ab3b28::178
 res://units/ui/activated_skill_margin_container.tscn::2256a1778bc3f04a8328a462a8181ad9::1782139258::res://.godot/exported/133200997/export-655e716e2649fcfea54d7b29814b6c1b-activated_skill_margin_container.scn
 res://units/ui/damage_numbers.tscn::c84450174316b59c4bee65c97d2d16c6::1782139258::res://.godot/exported/133200997/export-0a9b8c40e9d330022b7ee15e539549f0-damage_numbers.scn
 res://units/ui/death_particles.tscn::0b6e7bcae64bb0eccad8100572d466ff::1782139258::res://.godot/exported/133200997/export-b7945f64ad196d3b8c023daec4d4fa97-death_particles.scn
-res://units/enemy.tscn::745030682864549573d83c78832d8a8d::1782437711::res://.godot/exported/133200997/export-f54d83d198d18fb0db3742a1af0d85ab-enemy.scn
+res://units/enemy.tscn::ba7d2437fa3532663b52e92dbe99af38::1782528870::res://.godot/exported/133200997/export-f54d83d198d18fb0db3742a1af0d85ab-enemy.scn
 res://assets/fonts/Exo2SemiBold.tres::15daf3dc4f73d26620766fdf757518f6::1782139257::res://.godot/exported/133200997/export-a1e2dc45573c466368fa0fd656efcf00-Exo2SemiBold.res
 res://ui/cutin_banner.tscn::4735bfe8a4a8b0525ac996835e993577::1782483435::res://.godot/exported/133200997/export-a8309ff8a54973c2370f75a3f35190d4-cutin_banner.scn
 res://ui/fast_forward_button.tscn::9ec40d48ab8e21beb08cdecdab73dffa::1782139258::res://.godot/exported/133200997/export-e3ba2b47c0c3b93061d7ef6bb991d26c-fast_forward_button.scn
