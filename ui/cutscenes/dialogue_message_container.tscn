@@ -56,7 +56,7 @@ offset_top = 120.0
 offset_right = 150.0
 offset_bottom = 184.0
 size_flags_vertical = 4
-theme_override_colors/font_color = Color( 0.227451, 0.211765, 0.188235, 1 )
+theme_override_colors/font_color = Color(0.863, 0.878, 0.894, 1)
 theme_override_fonts/font = ExtResource( 6 )
 theme_override_font_sizes/font_size = 20
 text = "Mononobe no Futo"
@@ -70,6 +70,7 @@ offset_bottom = 170.0
 size_flags_horizontal = 3
 
 [node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer"]
+modulate = Color( 0.17, 0.19, 0.23, 1 )
 offset_right = 562.0
 offset_bottom = 170.0
 texture = ExtResource( 1 )
@@ -93,7 +94,7 @@ offset_right = 538.0
 offset_bottom = 146.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
-theme_override_colors/font_color = Color( 0.227451, 0.211765, 0.188235, 1 )
+theme_override_colors/font_color = Color(0.863, 0.878, 0.894, 1)
 theme_override_fonts/font = ExtResource( 6 )
 theme_override_font_sizes/font_size = 26
 text = "We are going in too deep."

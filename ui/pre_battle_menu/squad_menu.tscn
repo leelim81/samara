@@ -13,7 +13,7 @@
 
 [sub_resource type="Gradient" id="grad"]
 offsets = PackedFloat32Array(0, 1)
-colors = PackedColorArray(0.937255, 0.909804, 0.847059, 1, 0.866667, 0.811765, 0.690196, 1)
+colors = PackedColorArray(0.105, 0.122, 0.149, 1, 0.05, 0.06, 0.08, 1)
 
 [sub_resource type="GradientTexture2D" id="bgtex"]
 gradient = SubResource("grad")
@@ -60,7 +60,7 @@ theme_override_constants/separation = 12
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.227451, 0.211765, 0.188235, 1)
+theme_override_colors/font_color = Color(0.863, 0.878, 0.894, 1)
 theme_override_fonts/font = ExtResource("6_title")
 theme_override_font_sizes/font_size = 42
 text = "SQUAD"
@@ -69,7 +69,7 @@ vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.42, 0.39, 0.34, 1)
+theme_override_colors/font_color = Color(0.604, 0.64, 0.667, 1)
 theme_override_fonts/font = ExtResource("7_desc")
 theme_override_font_sizes/font_size = 19
 text = "SQUAD_DESCRIPTION"
@@ -80,8 +80,8 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(240, 46)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0.227451, 0.211765, 0.188235, 1)
-theme_override_colors/font_placeholder_color = Color(0.42, 0.39, 0.34, 1)
+theme_override_colors/font_color = Color(0.863, 0.878, 0.894, 1)
+theme_override_colors/font_placeholder_color = Color(0.604, 0.64, 0.667, 1)
 max_length = 10
 alignment = 1
 placeholder_text = "SQUAD NAME"
@@ -123,9 +123,9 @@ theme_override_constants/separation = 12
 custom_minimum_size = Vector2(240, 64)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0.227451, 0.211765, 0.188235, 1)
+theme_override_colors/font_color = Color(0.863, 0.878, 0.894, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0.42, 0.39, 0.34, 1)
+theme_override_colors/font_pressed_color = Color(0.604, 0.64, 0.667, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = ExtResource("8_btnn")
 theme_override_styles/hover = ExtResource("9_btnh")
@@ -137,9 +137,9 @@ text = "ADD_UNIT"
 custom_minimum_size = Vector2(240, 64)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0.227451, 0.211765, 0.188235, 1)
+theme_override_colors/font_color = Color(0.863, 0.878, 0.894, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0.42, 0.39, 0.34, 1)
+theme_override_colors/font_pressed_color = Color(0.604, 0.64, 0.667, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = ExtResource("8_btnn")
 theme_override_styles/hover = ExtResource("9_btnh")

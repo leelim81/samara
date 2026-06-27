@@ -16,7 +16,7 @@ blend_mode = 1
 _data = [ Vector2( 0, 0.985227 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -3.22727, 0.0, 0, 0 ]
 
 [sub_resource type="StyleBoxFlat" id=4]
-bg_color = Color( 0.984314, 0.968627, 0.929412, 0.96 )
+bg_color = Color( 0.122, 0.141, 0.173, 0.96 )
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -39,7 +39,7 @@ script = ExtResource( 4 )
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.937255, 0.909804, 0.847059, 0.92 )
+color = Color(0.082, 0.094, 0.114, 0.95)
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 material = SubResource( 2 )
@@ -68,7 +68,7 @@ theme_override_constants/separation = 18
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2( 0, 150 )
-theme_override_colors/font_color = Color( 0.227451, 0.211765, 0.188235, 1 )
+theme_override_colors/font_color = Color(0.863, 0.878, 0.894, 1)
 theme_override_font_sizes/font_size = 54
 theme_override_fonts/font = ExtResource( 8 )
 text = "VICTORY"
@@ -94,7 +94,7 @@ size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 28
 text = "EXP"
 [node name="Value" type="Label" parent="MarginContainer/VBoxContainer/ResultsPanel/Margin/Rows/ExpRow"]
-theme_override_colors/font_color = Color( 0.227451, 0.211765, 0.188235, 1 )
+theme_override_colors/font_color = Color(0.863, 0.878, 0.894, 1)
 theme_override_font_sizes/font_size = 30
 theme_override_fonts/font = ExtResource( 6 )
 text = "0"
@@ -118,7 +118,7 @@ size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 28
 text = "DEFEATED"
 [node name="Value" type="Label" parent="MarginContainer/VBoxContainer/ResultsPanel/Margin/Rows/DefeatedRow"]
-theme_override_colors/font_color = Color( 0.227451, 0.211765, 0.188235, 1 )
+theme_override_colors/font_color = Color(0.863, 0.878, 0.894, 1)
 theme_override_font_sizes/font_size = 30
 theme_override_fonts/font = ExtResource( 6 )
 text = "0"
@@ -129,11 +129,11 @@ horizontal_alignment = 2
 [node name="TurnRow" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ResultsPanel/Margin/Rows"]
 [node name="Name" type="Label" parent="MarginContainer/VBoxContainer/ResultsPanel/Margin/Rows/TurnRow"]
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color( 0.227451, 0.211765, 0.188235, 0.7 )
+theme_override_colors/font_color = Color( 0.863, 0.878, 0.894, 0.6 )
 theme_override_font_sizes/font_size = 20
 text = "TURNS"
 [node name="Value" type="Label" parent="MarginContainer/VBoxContainer/ResultsPanel/Margin/Rows/TurnRow"]
-theme_override_colors/font_color = Color( 0.227451, 0.211765, 0.188235, 0.7 )
+theme_override_colors/font_color = Color( 0.863, 0.878, 0.894, 0.6 )
 theme_override_font_sizes/font_size = 20
 text = "0"
 horizontal_alignment = 2
@@ -141,11 +141,11 @@ horizontal_alignment = 2
 [node name="TimeRow" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ResultsPanel/Margin/Rows"]
 [node name="Name" type="Label" parent="MarginContainer/VBoxContainer/ResultsPanel/Margin/Rows/TimeRow"]
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color( 0.227451, 0.211765, 0.188235, 0.7 )
+theme_override_colors/font_color = Color( 0.863, 0.878, 0.894, 0.6 )
 theme_override_font_sizes/font_size = 20
 text = "DRAG TIME"
 [node name="Value" type="Label" parent="MarginContainer/VBoxContainer/ResultsPanel/Margin/Rows/TimeRow"]
-theme_override_colors/font_color = Color( 0.227451, 0.211765, 0.188235, 0.7 )
+theme_override_colors/font_color = Color( 0.863, 0.878, 0.894, 0.6 )
 theme_override_font_sizes/font_size = 20
 text = "0.0 s"
 horizontal_alignment = 2

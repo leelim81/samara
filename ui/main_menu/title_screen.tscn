@@ -15,7 +15,7 @@ settings_scene = "res://ui/main_menu/SettingsMenu.tscn"
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color(0.937255, 0.909804, 0.847059, 1)
+color = Color(0.082, 0.094, 0.114, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_right = 1.0
@@ -40,11 +40,11 @@ alignment = 1
 custom_minimum_size = Vector2(280, 1)
 layout_mode = 2
 size_flags_horizontal = 4
-color = Color(0.227451, 0.211765, 0.188235, 0.45)
+color = Color(0.863, 0.878, 0.894, 0.4)
 
 [node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer2/TitleBlock"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.227451, 0.211765, 0.188235, 1)
+theme_override_colors/font_color = Color(0.863, 0.878, 0.894, 1)
 theme_override_fonts/font = ExtResource("5")
 theme_override_font_sizes/font_size = 60
 text = "TERRA
@@ -55,11 +55,11 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(280, 1)
 layout_mode = 2
 size_flags_horizontal = 4
-color = Color(0.227451, 0.211765, 0.188235, 0.45)
+color = Color(0.863, 0.878, 0.894, 0.4)
 
 [node name="SubtitleLabel" type="Label" parent="MarginContainer/VBoxContainer2/TitleBlock"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.227451, 0.211765, 0.188235, 0.6)
+theme_override_colors/font_color = Color(0.863, 0.878, 0.894, 0.55)
 theme_override_font_sizes/font_size = 16
 text = "A  F A N  R E C R E A T I O N"
 horizontal_alignment = 1
@@ -91,7 +91,7 @@ text = "QUIT"
 
 [node name="FooterLabel" type="Label" parent="MarginContainer/VBoxContainer2"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.227451, 0.211765, 0.188235, 0.45)
+theme_override_colors/font_color = Color(0.863, 0.878, 0.894, 0.4)
 theme_override_font_sizes/font_size = 13
 text = "Personal, non-commercial fan project. Terra Battle is a property of Mistwalker Corporation."
 horizontal_alignment = 1
