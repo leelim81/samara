@@ -11,5 +11,6 @@ script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ) ]
 job_name = "CHAR_THE_PILGRIM"
+description = "An underground combat-streamer who once beat a Static bare-handed on camera, then did a far worse thing for love and walked it off as penance. Sung Wu asks, with every cut, whether vengeance is justice or only more fuel. His archived highlight reels are the only proof he was ever real."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

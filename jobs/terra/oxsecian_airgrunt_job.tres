@@ -11,5 +11,6 @@ script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ) ]
 job_name = "Compliance Skirmisher, Elite"
+description = "An elite flying enforcement-construct of the corps."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

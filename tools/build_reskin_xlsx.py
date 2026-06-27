@@ -100,7 +100,7 @@ BOSS = {
     "Negabeast": ("the Nullity Beast", "A beast made of the absence the system leaves, eating color and sound."),
     "Onyx Dragon": ("the Onyx Dragon", "A full-grown drake of black crystal and null-shadow, ancient and proud."),
     "Young Onyx Dragon": ("the Onyx Dragon, Fledgling", "The same drake half-grown, black scales not yet hardened, no less deadly."),
-    "Orbling": ("Foreman Tu, the Conscript Boss", "A swollen iron-bound orb crowned in a gold flame-frame, the first foe to wear an Administrator badge."),
+    "Orbling": ("Foreman Tu, the First Badge", "A swollen iron-bound orb crowned in a gold flame-frame, the first foe to wear an Administrator badge."),
     "Oxsecian Airgrunt": ("Compliance Skirmisher, Elite", "An elite flying enforcement-construct of the corps."),
     "Oxsecian Bomber": ("Compliance Bombardier", "An enforcement-construct laden with shaped charges."),
     "Oxsecian Bomber EX": ("Compliance Bombardier, Mk II", "An upgraded bombardier-construct, twice the charges, twice the ruin."),
@@ -583,6 +583,15 @@ RESKIN_BANTER = {
          ("AUDITOR", "Ending B: Then let us be no one."),
          ("AUDITOR", "Ending A: ...Let them be remembered.")],
 }
+
+# Override narration/banter from the elevated JSON (narrative polish pass) if present.
+# These files are the editable content source; the inline dicts above are the fallback.
+_NARR_JSON = os.path.join(ROOT, "tools", "reskin_narration.json")
+_BANTER_JSON = os.path.join(ROOT, "tools", "reskin_banter.json")
+if os.path.exists(_NARR_JSON):
+    RESKIN_NARR.update({int(k): v for k, v in json.load(open(_NARR_JSON)).items()})
+if os.path.exists(_BANTER_JSON):
+    RESKIN_BANTER.update({int(k): [tuple(p) for p in v] for k, v in json.load(open(_BANTER_JSON)).items()})
 
 # ----------------------------------------------------------------- build
 HEAD_FILL = PatternFill("solid", fgColor="1F2937")

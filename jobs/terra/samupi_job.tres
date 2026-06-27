@@ -11,5 +11,6 @@ script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ) ]
 job_name = "CHAR_TEN_FEET_OF_STEEL"
+description = "A protection-detail heir whose family was wiped in a single night, then taken in by the very band that broke them. Wu Saam fights like vengeance with nowhere to land, loyal and unforgiving at once."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

@@ -13,5 +13,6 @@ script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ]
 job_name = "Feral Bruiser"
+description = "A snarling clot of feral Noise, fur of dead pixels, a jagged blade."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

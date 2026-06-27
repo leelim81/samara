@@ -11,5 +11,6 @@ script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ) ]
 job_name = "CHAR_TWIN_RODS"
+description = "A decorated enforcement marshal sent to crush the outlaws, beaten by them, and then won over by them. Fu Yin is disciplined and honorable, a soldier who changed sides only once he saw which side the cruelty was on."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

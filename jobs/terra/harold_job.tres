@@ -11,5 +11,6 @@ script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ) ]
 job_name = "CHAR_LITTLE_LI_GUANG"
+description = "An ex-military drone marksman whose loyalty to a friend outweighed her loyalty to a corrupt order, the finest shot alive and entirely too aware of it. Hua Rongnie is charming, sharp, quick to laugh and quicker to aim; her old service record is the only proof she existed."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

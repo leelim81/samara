@@ -12,5 +12,6 @@ script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ), ExtResource( 6 ) ]
 job_name = "the Signal-Siphon"
+description = "A bladed construct that drains the signal from the living to feed the Spire."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

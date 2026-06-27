@@ -20,9 +20,23 @@ extends StackBasedMenuScreen
 @onready var _skills_header: Label = $Margin/Root/SkillsHeader
 @onready var _return_button: Button = $Margin/Root/ReturnButton
 
+# SIGNAL / 108 species relabel: raw unit_type -> modern display.
+# The band are Erased (dead people) or Feral Signals (spirit-folk who joined);
+# enemies are Static / Constructs. The only STONEFOLK/LIZARDFOLK units are heroes
+# (Stormfront, Hauler, Undertow) - enemy stone/lizard units are MONSTER -> Static.
+const _SPECIES: Dictionary = {
+	"HUMAN": "Erased",
+	"STONEFOLK": "Erased",
+	"ANIMAL_SPIRIT": "Feral Signal",
+	"LIZARDFOLK": "Feral Signal",
+	"MONSTER": "Static",
+	"HANIWA": "Construct",
+}
+
 # Created lazily and reused across initialize() calls.
 var _element_label: Label = null
 var _exp_label: Label = null
+var _desc_label: Label = null
 
 
 # Called from squad menu
@@ -41,13 +55,14 @@ func initialize_from_data(job: Job, base_stats: Stats, current_stats: Stats, lev
 	_art.texture = job.full_portrait
 	_token.texture = job.portrait
 
-	_species_label.text = base_stats.unit_type.capitalize()
+	_species_label.text = _SPECIES.get(base_stats.unit_type, base_stats.unit_type.capitalize())
 	_weapon_icon.texture = load(Enums.WEAPON_TYPE_TEXTURES[base_stats.weapon_type])
 
 	_lv_label.text = "LV %d" % level
 
 	_update_element_label(base_stats.attribute)
 	_update_exp_label(job, level)
+	_update_desc_label(job)
 
 	# In battle the panel reflects the unit's live stats; otherwise its base
 	var display_stats: Stats = current_stats if (is_in_battle and current_stats != null) else base_stats
@@ -146,6 +161,23 @@ func _update_exp_label(job: Job, level: int) -> void:
 	else:
 		var to_next: int = Leveling.exp_for_level(level + 1) - job.current_exp
 		_exp_label.text = "NEXT  %d EXP" % maxi(0, to_next)
+
+
+func _update_desc_label(job: Job) -> void:
+	var text: String = job.description if ("description" in job) else ""
+
+	if _desc_label == null:
+		_desc_label = Label.new()
+		_desc_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		_desc_label.add_theme_font_size_override("font_size", 14)
+		_desc_label.add_theme_color_override("font_color", Color(0.45, 0.42, 0.38))
+		var root: Node = _skills_header.get_parent()
+		root.add_child(_desc_label)
+		# Sit between the header block and the skills section.
+		root.move_child(_desc_label, _skills_header.get_index())
+
+	_desc_label.visible = text.strip_edges() != ""
+	_desc_label.text = text
 
 
 func _element_name(attribute: int) -> String:

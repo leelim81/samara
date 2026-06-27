@@ -10,6 +10,7 @@
 script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ) ]
-job_name = "Foreman Tu, the Conscript Boss"
+job_name = "Foreman Tu, the First Badge"
+description = "A swollen iron-bound orb crowned in a gold flame-frame, the first foe to wear an Administrator badge."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

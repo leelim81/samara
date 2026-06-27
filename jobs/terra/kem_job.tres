@@ -11,5 +11,6 @@ script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ) ]
 job_name = "CHAR_PANTHER_HEAD"
+description = "The city's top close-protection instructor, framed and deadlisted after a Spire executive coveted his wife. Lam Chongzhi clings to protocol and the dream of a cleared record, a hope the system keeps turning against him. The one who teaches the Pact."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

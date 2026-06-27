@@ -11,5 +11,6 @@ script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ) ]
 job_name = "CHAR_JADE_UNICORN"
+description = "The city's richest and most accomplished man, with everything to lose and no reason to rebel, until HARMONY took it all to prove that even a perfect life is theirs to delete. Lo Junyi is proud, principled, and terrible once finally roused."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

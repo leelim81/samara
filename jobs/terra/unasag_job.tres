@@ -11,5 +11,6 @@ script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ) ]
 job_name = "CHAR_THE_LIVING_DEATH_GOD"
+description = "The wildest of three dock brothers from the canal-villages HARMONY bled dry, who took to outlawry with a grin and a grudge. Yuen Chat is fearless to the edge of madness, happiest in a losing fight he intends to win."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

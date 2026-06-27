@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cvunitmenu01"]
+[gd_scene load_steps=21 format=3 uid="uid://cvunitmenu01"]
 
 [ext_resource type="Script" path="res://ui/view_unit_menu.gd" id="1_menu"]
 [ext_resource type="PackedScene" path="res://ui/skill_pill.tscn" id="2_pill"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" path="res://assets/terra/tokens/kuscah_token.png" id="12_token"]
 [ext_resource type="Texture2D" path="res://assets/terra/ui/staff.png" id="13_weapon"]
 [ext_resource type="PackedScene" path="res://ui/audio_button.tscn" id="14_return"]
+[ext_resource type="Texture2D" path="res://assets/ui/art_scrim.png" id="15_scrim"]
 
 [sub_resource type="Gradient" id="grad"]
 offsets = PackedFloat32Array(0, 1)
@@ -108,6 +109,14 @@ size_flags_vertical = 1
 texture = ExtResource("11_art")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="Scrim" type="TextureRect" parent="Margin/Root/Header/FullArt"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("15_scrim")
+expand_mode = 1
+stretch_mode = 6
 
 [node name="Info" type="VBoxContainer" parent="Margin/Root/Header"]
 layout_mode = 2

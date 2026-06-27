@@ -11,5 +11,6 @@ script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ) ]
 job_name = "Grief Prime"
+description = "A mountain of sorrow given form, weeping the harvested grief of an entire ward."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

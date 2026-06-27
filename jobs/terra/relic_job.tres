@@ -14,5 +14,6 @@ script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ]
 job_name = "the Legacy Relic"
+description = "An age-old system machine, half server-shrine and half weapon, gravity pooling at its feet."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

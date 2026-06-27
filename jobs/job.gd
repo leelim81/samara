@@ -18,6 +18,9 @@ const _SKILL_UNLOCK_LEVELS: Array = [1, 15, 35, 65]
 
 @export var full_portrait: Texture2D = null
 
+# Flavor bio (heroes) or appearance (enemies), shown on the unit detail screen.
+@export_multiline var description: String = ""
+
 # Total accumulated EXP (player characters only; enemies set level directly).
 # The level is derived from this via Leveling.level_for_exp().
 @export var current_exp: int = 0

@@ -11,5 +11,6 @@ script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ) ]
 job_name = "CHAR_WHITE_STREAK_IN_THE_WAVES"
+description = "A canal fish-seller and peerless diver who can hold his breath longer than a man should live, fighting best where others drown. Cheung Seon is loyal and soft-spoken on land, lethal in any depth."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

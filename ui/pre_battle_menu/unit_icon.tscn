@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/terra/ui/unit_square_bg.png" type="Texture2D" id=1]
 [ext_resource path="res://assets/ui/unit_glow.png" type="Texture2D" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/terra/tokens/orbling_token.png" type="Texture2D" id=4]
 [ext_resource path="res://ui/pre_battle_menu/unit_icon.gd" type="Script" id=5]
 [ext_resource path="res://assets/terra/ui/unit_player_border.png" type="Texture2D" id=6]
+[ext_resource path="res://assets/ui/portrait_scrim.png" type="Texture2D" id=7]
 
 [node name="UnitIcon" type="NinePatchRect"]
 anchor_right = 0.139
@@ -56,6 +57,14 @@ custom_minimum_size = Vector2( 98, 98 )
 texture = ExtResource( 4 )
 expand = true
 stretch_mode = 5
+
+[node name="Scrim" type="TextureRect" parent="MarginContainer/TextureRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
 
 [node name="WeaponTypeTexture" type="TextureRect" parent="."]
 anchor_left = 0.5

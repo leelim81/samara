@@ -11,5 +11,6 @@ script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ) ]
 job_name = "GRACE"
+description = "An analyst and the Auditor's partner, a markswoman whose aim was said to be guided by the same instinct that read the numbers. Erased the same night, she walks into the Margins with a steadier hand and colder eyes; the other half of the first Pact."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

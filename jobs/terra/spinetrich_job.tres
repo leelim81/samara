@@ -14,5 +14,6 @@ script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ]
 job_name = "Thornback, the Spike Daemon"
+description = "A four-legged horror of barbed spines and crackling charge, too wide to flank head-on."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

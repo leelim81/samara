@@ -13,5 +13,6 @@ script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ]
 job_name = "the Feral Alpha"
+description = "The proudest of the feral signals, blade raised against the living and the system alike."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

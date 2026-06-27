@@ -11,5 +11,6 @@ script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ) ]
 job_name = "Wyrm Static"
+description = "A long null-black serpent of corrupted data, a jagged blade."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )
