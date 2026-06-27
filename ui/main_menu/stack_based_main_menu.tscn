@@ -8,4 +8,3 @@ root_screen_node_path = NodePath("TitleScreen")
 
 [node name="TitleScreen" parent="." index="0" instance=ExtResource( 2 )]
 settings_scene = "res://ui/main_menu/settings_menu.tscn"
-credits_scene = "res://ui/main_menu/credits_menu.tscn"

@@ -11,7 +11,6 @@ anchor_bottom = 1.0
 theme = ExtResource("1")
 script = ExtResource("2")
 settings_scene = "res://ui/main_menu/SettingsMenu.tscn"
-credits_scene = "res://ui/main_menu/CreditsMenu.tscn"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -86,10 +85,6 @@ text = "CONTINUE"
 layout_mode = 2
 text = "SETTINGS"
 
-[node name="CreditsButton" parent="MarginContainer/VBoxContainer2/VBoxContainer" instance=ExtResource("4")]
-layout_mode = 2
-text = "CREDITS"
-
 [node name="QuitButton" parent="MarginContainer/VBoxContainer2/VBoxContainer" instance=ExtResource("4")]
 layout_mode = 2
 text = "QUIT"
@@ -106,5 +101,4 @@ autowrap_mode = 2
 [connection signal="pressed" from="MarginContainer/VBoxContainer2/VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer2/VBoxContainer/ContinueButton" to="." method="_on_ContinueButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer2/VBoxContainer/SettingsButton" to="." method="_on_SettingsButton_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer2/VBoxContainer/CreditsButton" to="." method="_on_CreditsButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer2/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]

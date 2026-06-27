@@ -2,7 +2,6 @@ extends StackBasedMenuScreen
 
 
 @export var settings_scene: String # (String, FILE, "*.tscn")
-@export var credits_scene: String # (String, FILE, "*.tscn")
 
 var _last_active_button: Button = null
 
@@ -49,12 +48,6 @@ func _on_SettingsButton_pressed() -> void:
 	_last_active_button = $MarginContainer/VBoxContainer2/VBoxContainer/SettingsButton
 	
 	navigate(settings_scene)
-
-
-func _on_CreditsButton_pressed() -> void:
-	_last_active_button = $MarginContainer/VBoxContainer2/VBoxContainer/CreditsButton
-	
-	navigate(credits_scene)
 
 
 func _on_QuitButton_pressed() -> void:
