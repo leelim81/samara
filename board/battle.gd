@@ -290,10 +290,12 @@ func _build_live_hud() -> void:
 	var box: HBoxContainer = $CanvasLayer/MarginContainer/Hud/CountersRow
 	var icons: Texture2D = load("res://assets/terra/ui/ui_icons.png")
 
-	# 64px atlas cells: coins(64,128) · sparkle/exp(0,128) · skull/KO(192,128)
-	_coins_label = _make_counter(box, icons, Rect2(64, 128, 64, 64))
-	_exp_label = _make_counter(box, icons, Rect2(0, 128, 64, 64))
-	_ko_label = _make_counter(box, icons, Rect2(192, 128, 64, 64))
+	# 64px atlas cells: coins(64,128) · sparkle/exp(0,128) · skull/KO(192,128).
+	# Semantic icon tints (gold / jade / seal-red) make the row readable on the
+	# dark bar and tell the three apart at a glance.
+	_coins_label = _make_counter(box, icons, Rect2(64, 128, 64, 64), Color(0.86, 0.72, 0.42))
+	_exp_label = _make_counter(box, icons, Rect2(0, 128, 64, 64), Color(0.46, 0.8, 0.68))
+	_ko_label = _make_counter(box, icons, Rect2(192, 128, 64, 64), Color(0.85, 0.46, 0.4))
 	# Wave is shown in the enemy-phase banner; keep a standalone label so the
 	# phase code can still set it without cluttering the 3-counter row.
 	_wave_label = Label.new()
@@ -301,7 +303,7 @@ func _build_live_hud() -> void:
 	_update_live_hud()
 
 
-func _make_counter(box: HBoxContainer, atlas_tex: Texture2D, region: Rect2) -> Label:
+func _make_counter(box: HBoxContainer, atlas_tex: Texture2D, region: Rect2, tint: Color) -> Label:
 	var hb := HBoxContainer.new()
 	hb.add_theme_constant_override("separation", 4)
 	hb.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -314,7 +316,7 @@ func _make_counter(box: HBoxContainer, atlas_tex: Texture2D, region: Rect2) -> L
 	icon.custom_minimum_size = Vector2(17, 17)
 	icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-	icon.modulate = Color(0.66, 0.72, 0.76)
+	icon.modulate = tint
 	icon.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	hb.add_child(icon)
@@ -323,7 +325,7 @@ func _make_counter(box: HBoxContainer, atlas_tex: Texture2D, region: Rect2) -> L
 	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	label.add_theme_font_size_override("font_size", 16)
-	label.add_theme_color_override("font_color", Color(0.82, 0.85, 0.88, 1))
+	label.add_theme_color_override("font_color", Color(0.92, 0.93, 0.95, 1))
 	hb.add_child(label)
 
 	box.add_child(hb)
