@@ -47,8 +47,8 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.863, 0.878, 0.894, 1)
 theme_override_fonts/font = ExtResource("5")
 theme_override_font_sizes/font_size = 60
-text = "TERRA
-BATTLE"
+text = "HEAVEN'S
+MANDATE"
 horizontal_alignment = 1
 
 [node name="BottomRule" type="ColorRect" parent="MarginContainer/VBoxContainer2/TitleBlock"]

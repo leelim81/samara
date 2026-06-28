@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Terra Battle (Fan Recreation)"
+config/name="Heaven's Mandate"
 run/main_scene="res://ui/main_menu/stack_based_main_menu.tscn"
 config/features=PackedStringArray("4.6")
 boot_splash/bg_color=Color(0.937255, 0.909804, 0.847059, 1)
