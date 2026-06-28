@@ -1,6 +1,6 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1782629540
-default_bus_layout.tres::AudioBusLayout::7454578157151104952::1782629539::0::1::::<><><>0<>0<><>::
+::res://::1782630360
+default_bus_layout.tres::AudioBusLayout::7454578157151104952::1782630359::0::1::::<><><>0<>0<><>::
 default_env.tres::Environment::-1::1782139258::0::1::::<><><>0<>0<><>::
 enums.gd::GDScript::7378857898191831885::1782139258::0::1::::<>Node<><>0<>0<><>::
 events.gd::GDScript::7402218315576955497::1782481654::0::1::::<>Node<><>0<>0<><>::
@@ -480,7 +480,7 @@ stat_def.png::CompressedTexture2D::6676957921304914804::1782139258::1782139258::
 stat_satk.png::CompressedTexture2D::2001165554646867230::1782139258::1782139258::1::::<><><>0<>0<>ee2841fa030fffa81f7ad2a69293c725<>res://.godot/imported/stat_satk.png-d10e99e92b41be7365f32c0e6f378843.ctex::
 stat_sdef.png::CompressedTexture2D::8306580479355792949::1782139258::1782139258::1::::<><><>0<>0<>5d130d2812f308a93c76787f33ef1135<>res://.godot/imported/stat_sdef.png-00565421e02d1b5a74f5872e2a730ea4.ctex::
 sword.png::CompressedTexture2D::392259404336527074::1782139258::1782139258::1::::<><><>0<>0<>51d9d1b8eb291b98a189628ce44ed5e3<>res://.godot/imported/sword.png-27b344a9387c1077473ec43f0b9198f0.ctex::
-ui_icons.png::CompressedTexture2D::3043568967405194235::1782139258::1782139258::1::::<><><>0<>0<>81886a0875f1dec27a26da87b0b61275<>res://.godot/imported/ui_icons.png-94b33f8dec7ebc20463dce8c9e516556.ctex::
+ui_icons.png::CompressedTexture2D::3043568967405194235::1782630274::1782630377::1::::<><><>0<>0<>81886a0875f1dec27a26da87b0b61275<>res://.godot/imported/ui_icons.png-94b33f8dec7ebc20463dce8c9e516556.ctex::
 unit_player_border.png::CompressedTexture2D::8535091980705266749::1782574028::1782569347::1::::<><><>0<>0<>64a91d78043defe364bc8a06439db39b<>res://.godot/imported/unit_player_border.png-1c2288365146fdf4f619e5c192d0dfd6.ctex::
 unit_square_bg.png::CompressedTexture2D::368177042202849577::1782574028::1782569347::1::::<><><>0<>0<>112c86a9681404ba97f8e3d241b61c1d<>res://.godot/imported/unit_square_bg.png-e9eba7a877b026c08e5393f52fe2b381.ctex::
 unit_square_bg_2x2.png::CompressedTexture2D::1799078722795852365::1782574028::1782569347::1::::<><><>0<>0<>00b84d918a743c08d0a537aa2b3f13b5<>res://.godot/imported/unit_square_bg_2x2.png-f719e8136b0b41ba3fad2ca3298dabf9.ctex::
@@ -640,10 +640,10 @@ trail2d.gd::GDScript::7745615399937602685::1782139258::0::1::::<>Node2D<><>0<>0<
 trail2d.tscn::PackedScene::-1::1782139258::0::1::::<><><>0<>0<><>::res://addons/antialiased_line2d/antialiased_line2d.gd<>res://board/highlights/trail2d.gd
 trails.gd::GDScript::1378118214100076090::1782139258::0::1::::<>Node2D<><>0<>0<><>::
 ::res://build/::1781226515
-::res://build/web/::1782612089
-index.apple-touch-icon.png::CompressedTexture2D::671408193628746592::1782612089::1782139258::1::::<><><>0<>0<>3d824a20facb708d8daf3d0aadcd1099<>res://.godot/imported/index.apple-touch-icon.png-21031f526f7942c8019a62913b80e091.ctex::
-index.icon.png::CompressedTexture2D::4578476410241139680::1782612089::1782139258::1::::<><><>0<>0<>845dd99bdc3abd932d4380b729180570<>res://.godot/imported/index.icon.png-a9d2f4f7433eeddc29dad75f5e7f8710.ctex::
-index.png::CompressedTexture2D::5193192814418057516::1782612089::1782139258::1::::<><><>0<>0<>495bc6d4f9b8f560c72aa0519372ef85<>res://.godot/imported/index.png-7e97af7272d6fa0065ffc53e96463470.ctex::
+::res://build/web/::1782630007
+index.apple-touch-icon.png::CompressedTexture2D::671408193628746592::1782630007::1782139258::1::::<><><>0<>0<>3d824a20facb708d8daf3d0aadcd1099<>res://.godot/imported/index.apple-touch-icon.png-21031f526f7942c8019a62913b80e091.ctex::
+index.icon.png::CompressedTexture2D::4578476410241139680::1782630007::1782139258::1::::<><><>0<>0<>845dd99bdc3abd932d4380b729180570<>res://.godot/imported/index.icon.png-a9d2f4f7433eeddc29dad75f5e7f8710.ctex::
+index.png::CompressedTexture2D::5193192814418057516::1782630007::1782139258::1::::<><><>0<>0<>495bc6d4f9b8f560c72aa0519372ef85<>res://.godot/imported/index.png-7e97af7272d6fa0065ffc53e96463470.ctex::
 ::res://chapter_data/::1782139258
 battle_info.gd::GDScript::6385201418298922054::1782139258::0::1::::BattleInfo<>Resource<><>0<>0<><>::
 chapter_data.gd::GDScript::7983260008866269444::1782139258::0::1::::ChapterData<>Resource<><>0<>0<><>::
