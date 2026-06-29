@@ -11,6 +11,6 @@ script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ) ]
 job_name = "CHAR_THE_WITCH"
-description = "Keeper of an infamous roadside spot with a dark trade behind it, ferocious and unbothered, the kind of woman the city made and then feared. Suen Yi is crude and fearless, and fiercely protective of her own."
+description = "Sun Erniang, the Witch. In the legend she and her husband kept a roadside inn with a butcher's trade behind it, and feared no one. Here she keeps an infamous roadside spot with a dark trade behind it, the kind of woman the city made and then feared. Crude, fearless, and fiercely protective of her own."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

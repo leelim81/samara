@@ -11,6 +11,6 @@ script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ) ]
 job_name = "CHAR_TEN_FEET_OF_STEEL"
-description = "A protection-detail heir whose family was wiped in a single night, then taken in by the very band that broke them. Wu Saam fights like vengeance with nowhere to land, loyal and unforgiving at once."
+description = "Hu Sanniang, Ten Feet of Steel. In the legend the warrior woman who fought the brotherhood, lost her whole family to its war, and was bound into it anyway. Here her protection-detail family is wiped in a single night, and she is taken in by the very band that broke them. She fights like vengeance with nowhere to land, loyal and unforgiving at once."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

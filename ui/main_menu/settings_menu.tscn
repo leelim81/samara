@@ -110,7 +110,7 @@ script = ExtResource( 3 )
 offset_top = -43.0
 offset_right = 620.0
 offset_bottom = -1.0
-text = "CLICK_ONCE"
+text = "CLICK_TO_MOVE"
 
 [node name="ReturnButton" parent="MarginContainer/VBoxContainer" instance=ExtResource( 5 )]
 offset_left = 190.0

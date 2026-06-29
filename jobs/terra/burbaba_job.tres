@@ -11,6 +11,6 @@ script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ) ]
 job_name = "CHAR_BLUE_FACED_BEAST"
-description = "A general's descendant born with a blue birthmark across his face and a run of bad luck to match, who lost a commission, a fortune, and his name to schemes not his own. Yeung Chi is bitter, dutiful, forever a step from a clearance that keeps moving away."
+description = "Yang Zhi, the Blue-Faced Beast. In the legend a born officer marked by a blue birthmark and a run of ruinous luck, who lost everything to schemes never his own. Here the story holds: a lost commission, a lost fortune, a lost name. Bitter and dutiful, forever a step from a clearance that keeps moving away."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

@@ -11,6 +11,6 @@ script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ) ]
 job_name = "KUSCAH"
-description = "A back-alley street-medic who stayed in the Margins when her crew bailed, drawn by a curiosity she will not admit is kindness. She mends the band's signal with a sharp word for every stitch."
+description = "Saen, a fox-spirit who runs a back-alley clinic. She stayed in the Margins when her crew bailed, drawn by a curiosity she will not admit is kindness. She mends the band's signal with a sharp word for every stitch. Gallows humor, warm hands."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

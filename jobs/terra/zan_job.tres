@@ -11,6 +11,6 @@ script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ) ]
 job_name = "CHAR_BLACK_WHIRLWIND"
-description = "A repo-collector of monstrous strength and bottomless loyalty, records wiped young, equal parts little brother and natural disaster. Lei Kui loves the band with his whole heart, which is exactly the problem."
+description = "Li Kui, the Black Whirlwind. In the legend he fought with two axes and no fear and no brakes, loyal to his chief past all sense. Here a repo-collector of monstrous strength and wiped records, equal parts little brother and natural disaster. He loves the band with his whole heart. That is exactly the problem."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

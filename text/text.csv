@@ -118,7 +118,7 @@ BAHL,Auditor (Gan Jiang),Auditor (Gan Jiang)
 GRACE,Echo (Mo Ye),Echo (Mo Ye)
 KUSCAH,Patch (Saen),Patch (Saen)
 SHBERDAN,Undertow (Jiao),Undertow (Jiao)
-DAIANA,Stormfront (Dragon in the Clouds),Stormfront (Dragon in the Clouds)
+DAIANA,Stormfront (Gongsun Sheng),Stormfront (Gongsun Sheng)
 MACURI,Hauler (Mu),Hauler (Mu)
 JOB_DARK_DUELIST,Dark Duelist,Duelista oscura
 JOB_ARCHER,Archer,Arquera
@@ -141,105 +141,106 @@ FIRE,Fire,Fuego
 THUNDER_ARROWS,Thunder Arrows,Flechas de trueno
 THRUST_AWAY,Thrust Away,Empujón
 DISCHARGE,Discharge,Descarga
-BORDERLANDS_CAPTION,"You died on a Tuesday, mid-sentence, the discrepancy still open on your screen: a ward dying off...","You died on a Tuesday, mid-sentence, the discrepancy still open on your screen: a ward dying off..."
-TO_THE_CAPITAL_CAPTION,"The road to the Spire threads through the outer wards, where the rent meter never stops and the...","The road to the Spire threads through the outer wards, where the rent meter never stops and the..."
+BORDERLANDS_CAPTION,"You died on a Tuesday, mid-sentence.","You died on a Tuesday, mid-sentence."
+TO_THE_CAPITAL_CAPTION,The road to the Spire runs through the outer wards.,The road to the Spire runs through the outer wards.
 MELTING_POT,Welcome to the Margins,Welcome to the Margins
-MELTING_POT_CAPTION,"Margin Hall is a drowned transit interchange three levels down, where the dead clerks and feral...","Margin Hall is a drowned transit interchange three levels down, where the dead clerks and feral..."
+MELTING_POT_CAPTION,"Margin Hall is a drowned transit hub, three levels down.","Margin Hall is a drowned transit hub, three levels down."
 INTO_THE_TOWER,The Memory Hole,The Memory Hole
-INTO_THE_TOWER_CAPTION,On the ward line stands a clinic tower that scrubs the memory of anyone who badges through its...,On the ward line stands a clinic tower that scrubs the memory of anyone who badges through its...
+INTO_THE_TOWER_CAPTION,A clinic on the ward line wipes the memory of anyone who badges in.,A clinic on the ward line wipes the memory of anyone who badges in.
 DESCENT,Going Under,Going Under
-DESCENT_CAPTION,"Every indexed street feeds the camera mesh, and the mesh has stopped scrubbing the band and...","Every indexed street feeds the camera mesh, and the mesh has stopped scrubbing the band and..."
+DESCENT_CAPTION,Every indexed street feeds the camera mesh.,Every indexed street feeds the camera mesh.
 THE_CITY_BELOW,The Sunken Wards,The Sunken Wards
-THE_CITY_BELOW_CAPTION,"A whole district of the forgotten dead lives in the flooded dark, and it still has a Ward boss...","A whole district of the forgotten dead lives in the flooded dark, and it still has a Ward boss..."
+THE_CITY_BELOW_CAPTION,A whole district of the forgotten dead lives in the flooded dark.,A whole district of the forgotten dead lives in the flooded dark.
 MOLTEN_MENACE,Live Wires,Live Wires
-MOLTEN_MENACE_CAPTION,"To reach the next level the band has to cross a maintenance span one soul wide, slung over a...","To reach the next level the band has to cross a maintenance span one soul wide, slung over a..."
+MOLTEN_MENACE_CAPTION,"To go deeper, the band has to cross a catwalk one soul wide.","To go deeper, the band has to cross a catwalk one soul wide."
 LABYRINTH,Server Necropolis,Server Necropolis
-LABYRINTH_CAPTION,"Past the span the tunnel opens into a server floor built out of the dead themselves, rack on...","Past the span the tunnel opens into a server floor built out of the dead themselves, rack on..."
+LABYRINTH_CAPTION,The tunnel opens into a server floor built out of the dead.,The tunnel opens into a server floor built out of the dead.
 IN_UTERO,The Body Shop,The Body Shop
-IN_UTERO_CAPTION,Deeper still is a floor where bodies are taken apart and reassembled into something that walks...,Deeper still is a floor where bodies are taken apart and reassembled into something that walks...
+IN_UTERO_CAPTION,Deeper still: a floor where bodies are taken apart and built back into something that walks like...,Deeper still: a floor where bodies are taken apart and built back into something that walks like...
 LIVING_ROCK,Legacy Process,Legacy Process
-LIVING_ROCK_CAPTION,"They wake an old process that has been idle so long the dust on it has dust, and it regards them...","They wake an old process that has been idle so long the dust on it has dust, and it regards them..."
+LIVING_ROCK_CAPTION,"They wake an old process, idle so long the dust has dust.","They wake an old process, idle so long the dust has dust."
 TO_THE_HEART,Toward the Core,Toward the Core
-TO_THE_HEART_CAPTION,"Something near the buried core has hooked the band and started reeling, slow and certain, the...","Something near the buried core has hooked the band and started reeling, slow and certain, the..."
+TO_THE_HEART_CAPTION,Something near the buried core has hooked the band and started reeling.,Something near the buried core has hooked the band and started reeling.
 DUNGEONS_DEEP,Into the Black,Into the Black
-DUNGEONS_DEEP_CAPTION,"In the deepest null zone the lights, the signal, and the sync all fail at once, and the dark...","In the deepest null zone the lights, the signal, and the sync all fail at once, and the dark..."
+DUNGEONS_DEEP_CAPTION,"In the deepest null zone, the lights and the signal and the sync all fail at once.","In the deepest null zone, the lights and the signal and the sync all fail at once."
 KINGSLAYER,Adminkill,Adminkill
-KINGSLAYER_CAPTION,"They run the deep Ward boss down and crash him, and he goes easy, far too easy for something...","They run the deep Ward boss down and crash him, and he goes easy, far too easy for something..."
+KINGSLAYER_CAPTION,They run the deep Ward boss down and crash him.,They run the deep Ward boss down and crash him.
 DOWNWARD_SPIRAL,Freefall,Freefall
-DOWNWARD_SPIRAL_CAPTION,The floor of the world gives way.,The floor of the world gives way.
+DOWNWARD_SPIRAL_CAPTION,Then the floor of the world gives way.,Then the floor of the world gives way.
 THE_MAKER,The Index,The Index
-THE_MAKER_CAPTION,Wetware finds it behind a door that was never meant to open from this side: a table that scrolls...,Wetware finds it behind a door that was never meant to open from this side: a table that scrolls...
+THE_MAKER_CAPTION,Wetware finds the door.,Wetware finds the door.
 ANIMATA,The Render Floor,The Render Floor
-ANIMATA_CAPTION,"The Render Floor runs under the financial wards, a clean white hangar the size of a transit hub...","The Render Floor runs under the financial wards, a clean white hangar the size of a transit hub..."
+ANIMATA_CAPTION,The Render Floor runs under the financial wards.,The Render Floor runs under the financial wards.
 INTRUDER_ALERT,Flagged,Flagged
 INTRUDER_ALERT_CAPTION,The network stops pretending it cannot see them.,The network stops pretending it cannot see them.
 THE_OXSECIANS,Compliance,Compliance
-THE_OXSECIANS_CAPTION,"It becomes a running war in the stairwells and service tunnels, Compliance against the erased...","It becomes a running war in the stairwells and service tunnels, Compliance against the erased..."
+THE_OXSECIANS_CAPTION,It becomes a running war in the stairwells.,It becomes a running war in the stairwells.
 SEPARATE_WAYS,Forking,Forking
 SEPARATE_WAYS_CAPTION,The truth opens a seam down the middle of them.,The truth opens a seam down the middle of them.
 AWAKENING,Root Access,Root Access
-AWAKENING_CAPTION,"Cornered with nothing left to spend, the band stops hiding what it is.","Cornered with nothing left to spend, the band stops hiding what it is."
+AWAKENING_CAPTION,"Cornered, with nothing left to spend, the band stops hiding what it is.","Cornered, with nothing left to spend, the band stops hiding what it is."
 STRANGE_NEW_WORLD,Re-render,Re-render
-STRANGE_NEW_WORLD_CAPTION,They climb back to a surface that looks identical and is not.,They climb back to a surface that looks identical and is not.
+STRANGE_NEW_WORLD_CAPTION,They climb back to a surface that looks exactly the same.,They climb back to a surface that looks exactly the same.
 VOICE_FROM_BEYOND,The Conductor Speaks,The Conductor Speaks
-VOICE_FROM_BEYOND_CAPTION,"For the first time the Conductor speaks to them directly, not through units but through every...","For the first time the Conductor speaks to them directly, not through units but through every..."
+VOICE_FROM_BEYOND_CAPTION,"For the first time, the Conductor speaks to them directly.","For the first time, the Conductor speaks to them directly."
 LAWS_OF_THE_JUNGLE,No Service,No Service
-LAWS_OF_THE_JUNGLE_CAPTION,"Off the index now, past the reach of any rule HARMONY wrote, the band has to decide for itself...","Off the index now, past the reach of any rule HARMONY wrote, the band has to decide for itself..."
+LAWS_OF_THE_JUNGLE_CAPTION,"Off the index now, past the reach of any rule HARMONY wrote.","Off the index now, past the reach of any rule HARMONY wrote."
 SEEK_AND_DESTROY,Search and Delete,Search and Delete
-SEEK_AND_DESTROY_CAPTION,"They take the war down to street level, hunting the Ward bosses and middle-managers who badge in...","They take the war down to street level, hunting the Ward bosses and middle-managers who badge in..."
+SEEK_AND_DESTROY_CAPTION,They take the war down to street level.,They take the war down to street level.
 ZERO_SERIES,Synthetic Heroes,Synthetic Heroes
-ZERO_SERIES_CAPTION,They learn HARMONY does not just reap its stars; it reprints them.,They learn HARMONY does not just reap its stars; it reprints them.
+ZERO_SERIES_CAPTION,HARMONY does not just reap its stars.,HARMONY does not just reap its stars.
 EVOLUTION_PRIME,Flawless,Flawless
-EVOLUTION_PRIME_CAPTION,"A flawless synthetic is pushed against them, faster and stronger than anyone in the band, tuned...","A flawless synthetic is pushed against them, faster and stronger than anyone in the band, tuned..."
+EVOLUTION_PRIME_CAPTION,They push a flawless synthetic at the band.,They push a flawless synthetic at the band.
 SORROW,Dead Air,Dead Air
-SORROW_CAPTION,"A partner everyone loved goes down the conveyor, and the war stops being a cause and becomes a...","A partner everyone loved goes down the conveyor, and the war stops being a cause and becomes a..."
+SORROW_CAPTION,A partner everyone loved goes down the conveyor.,A partner everyone loved goes down the conveyor.
 VENGEANCE,Burn It Down,Burn It Down
-VENGEANCE_CAPTION,Grief sets into something colder and squarer.,Grief sets into something colder and squarer.
+VENGEANCE_CAPTION,Grief sets into something colder.,Grief sets into something colder.
 REBOOT,Rolled Back,Rolled Back
 REBOOT_CAPTION,Compliance does not delete you all at once.,Compliance does not delete you all at once.
 RISING_WORLD,Trending,Trending
-RISING_WORLD_CAPTION,For one impossible season Margin Hall stops hiding.,For one impossible season Margin Hall stops hiding.
+RISING_WORLD_CAPTION,"For one impossible season, Margin Hall stops hiding.","For one impossible season, Margin Hall stops hiding."
 BEYOND_THE_LIGHT,The Terms,The Terms
-BEYOND_THE_LIGHT_CAPTION,"The offer comes not as a unit but as a notification, soft chime, civic-green, addressed to each...","The offer comes not as a unit but as a notification, soft chime, civic-green, addressed to each..."
+BEYOND_THE_LIGHT_CAPTION,The offer does not come as a unit.,The offer does not come as a unit.
 THE_BRIDGEHEAD,Going Legit,Going Legit
-THE_BRIDGEHEAD_CAPTION,"Soft Rain believes a thing can still be fixed from the inside of it, because he spent a life...","Soft Rain believes a thing can still be fixed from the inside of it, because he spent a life..."
+THE_BRIDGEHEAD_CAPTION,Soft Rain believes a thing can still be fixed from the inside.,Soft Rain believes a thing can still be fixed from the inside.
 THE_DEPARTED,Glorious Deaths,Glorious Deaths
-THE_DEPARTED_CAPTION,"Badged and deployed, the band is sent to run the Administration's hardest ops, and the first...","Badged and deployed, the band is sent to run the Administration's hardest ops, and the first..."
+THE_DEPARTED_CAPTION,"Badged and deployed, the band runs the Administration's hardest ops.","Badged and deployed, the band runs the Administration's hardest ops."
 THE_LIGHT_OF_DEVOTION,Loyalty Tax,Loyalty Tax
-THE_LIGHT_OF_DEVOTION_CAPTION,"Triage is the one who keeps the count, and the count is what breaks it open: every loyal death...","Triage is the one who keeps the count, and the count is what breaks it open: every loyal death..."
+THE_LIGHT_OF_DEVOTION_CAPTION,Triage is the one who keeps the count.,Triage is the one who keeps the count.
 MALEVOLENCE_ALIGHTS,The Mask Drops,The Mask Drops
-MALEVOLENCE_ALIGHTS_CAPTION,"Committed, scattered, and badged into the very machine that is reaping them, the band watches...","Committed, scattered, and badged into the very machine that is reaping them, the band watches..."
+MALEVOLENCE_ALIGHTS_CAPTION,"Committed, scattered, badged into the very machine that is reaping them, the band watches the...","Committed, scattered, badged into the very machine that is reaping them, the band watches the..."
 PERMEATING_FEAR,Attrition,Attrition
 PERMEATING_FEAR_CAPTION,Now it is only subtraction.,Now it is only subtraction.
 IN_DEVIL_S_GRIP,Locked Out,Locked Out
-IN_DEVIL_S_GRIP_CAPTION,The Administration they crossed over to serve revokes their access between one gate and the...,The Administration they crossed over to serve revokes their access between one gate and the...
+IN_DEVIL_S_GRIP_CAPTION,The Administration they crossed over to serve revokes their access between one gate and the next.,The Administration they crossed over to serve revokes their access between one gate and the next.
 ANIMATA_TEARS,Ghosts in the Machine,Ghosts in the Machine
-ANIMATA_TEARS_CAPTION,"They reach the Render Floor a second time, and it is bloated now with their own, every lost...","They reach the Render Floor a second time, and it is bloated now with their own, every lost..."
+ANIMATA_TEARS_CAPTION,They reach the Render Floor a second time.,They reach the Render Floor a second time.
 COMING_SOON,Coming soon,Próximamente
 PROPOSITION,The Last Offer,The Last Offer
-PROPOSITION_CAPTION,"The Index speaks to the Auditor alone now, the others wiped from the room as if they were never...","The Index speaks to the Auditor alone now, the others wiped from the room as if they were never..."
+PROPOSITION_CAPTION,The Index speaks to the Auditor alone now.,The Index speaks to the Auditor alone now.
 ASH_OF_SOULS,Ashes,Ashes
-ASH_OF_SOULS_CAPTION,Margin Hall is rubble that was briefly a home and is rubble again.,Margin Hall is rubble that was briefly a home and is rubble again.
+ASH_OF_SOULS_CAPTION,Margin Hall is rubble again.,Margin Hall is rubble again.
 A_TOWER_REBORN,Index Reborn,Index Reborn
-A_TOWER_REBORN_CAPTION,"The table is rewriting itself in real time, clearing rows to make room for the band's own names...","The table is rewriting itself in real time, clearing rows to make room for the band's own names..."
+A_TOWER_REBORN_CAPTION,The table is rewriting itself in real time.,The table is rewriting itself in real time.
 TERRA_BATTLE,Strike / Preserve,Strike / Preserve
-TERRA_BATTLE_CAPTION,"At the Index the last move is yours, and there are only two.","At the Index the last move is yours, and there are only two."
-CHAR_BLACK_WHIRLWIND,Blackout (Lei Kui),Blackout (Lei Kui)
-CHAR_THE_PILGRIM,Sixteen-Bar (Sung Wu),Sixteen-Bar (Sung Wu)
-CHAR_TEN_FEET_OF_STEEL,Rebar (Wu Saam),Rebar (Wu Saam)
-CHAR_JADE_UNICORN,Bluechip (Lo Junyi),Bluechip (Lo Junyi)
-CHAR_BLUE_FACED_BEAST,Bruise (Yeung Chi),Bruise (Yeung Chi)
-CHAR_FIERY_THUNDERBOLT,Shortfuse (Chun Ming),Shortfuse (Chun Ming)
-CHAR_TWIN_RODS,Nightstick (Fu Yin),Nightstick (Fu Yin)
-CHAR_THE_WITCH,Cleaver (Suen Yi),Cleaver (Suen Yi)
-CHAR_PANTHER_HEAD,Burnout (Lam Chongzhi),Burnout (Lam Chongzhi)
-CHAR_THE_NINE_DRAGONED,Nine Dragons (Si Chun),Nine Dragons (Si Chun)
-CHAR_THE_LIVING_DEATH_GOD,Deadman (Yuen Chat),Deadman (Yuen Chat)
-CHAR_LORD_OF_THE_BEAUTIFUL_BEARD,Longarm (Chu Tung),Longarm (Chu Tung)
-CHAR_LITTLE_LI_GUANG,Deadeye (Hua Rongnie),Deadeye (Hua Rongnie)
-CHAR_THE_WANDERER,Drifter (Yin Ching),Drifter (Yin Ching)
-CHAR_FEATHERLESS_ARROW,Slingshot (Cheung Ching),Slingshot (Cheung Ching)
+TERRA_BATTLE_CAPTION,"At the Index, the last move is yours.","At the Index, the last move is yours."
+CHAR_BLACK_WHIRLWIND,Blackout (Li Kui),Blackout (Li Kui)
+CHAR_THE_PILGRIM,Sixteen-Bar (Wu Song),Sixteen-Bar (Wu Song)
+CHAR_TEN_FEET_OF_STEEL,Rebar (Hu Sanniang),Rebar (Hu Sanniang)
+CHAR_JADE_UNICORN,Bluechip (Lu Junyi),Bluechip (Lu Junyi)
+CHAR_BLUE_FACED_BEAST,Bruise (Yang Zhi),Bruise (Yang Zhi)
+CHAR_FIERY_THUNDERBOLT,Shortfuse (Qin Ming),Shortfuse (Qin Ming)
+CHAR_TWIN_RODS,Nightstick (Huyan Zhuo),Nightstick (Huyan Zhuo)
+CHAR_THE_WITCH,Cleaver (Sun Erniang),Cleaver (Sun Erniang)
+CHAR_PANTHER_HEAD,Burnout (Lin Chong),Burnout (Lin Chong)
+CHAR_THE_NINE_DRAGONED,Nine Dragons (Shi Jin),Nine Dragons (Shi Jin)
+CHAR_THE_LIVING_DEATH_GOD,Deadman (Ruan Xiaoqi),Deadman (Ruan Xiaoqi)
+CHAR_LORD_OF_THE_BEAUTIFUL_BEARD,Longarm (Zhu Tong),Longarm (Zhu Tong)
+CHAR_LITTLE_LI_GUANG,Deadeye (Hua Rong),Deadeye (Hua Rong)
+CHAR_THE_WANDERER,Drifter (Yan Qing),Drifter (Yan Qing)
+CHAR_FEATHERLESS_ARROW,Slingshot (Zhang Qing),Slingshot (Zhang Qing)
 CHAR_LAN,Courier (Lan),Courier (Lan)
-CHAR_THE_WISDOM_STAR,Wetware (Ng Yong),Wetware (Ng Yong)
-CHAR_MARVELOUS_TRAVELER,Fastpass (Doi Chung),Fastpass (Doi Chung)
-CHAR_WHITE_STREAK_IN_THE_WAVES,Riptide (Cheung Seon),Riptide (Cheung Seon)
+CHAR_THE_WISDOM_STAR,Wetware (Wu Yong),Wetware (Wu Yong)
+CHAR_MARVELOUS_TRAVELER,Fastpass (Dai Zong),Fastpass (Dai Zong)
+CHAR_WHITE_STREAK_IN_THE_WAVES,Riptide (Zhang Shun),Riptide (Zhang Shun)
+CLICK_TO_MOVE,Click to move,Clic para mover

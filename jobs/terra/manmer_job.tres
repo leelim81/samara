@@ -11,6 +11,6 @@ script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ) ]
 job_name = "CHAR_FEATHERLESS_ARROW"
-description = "A street chief who never lost a fight he could end with a thrown stone, who joined the band for a cause bigger than the next score. Cheung Ching is easy-going, deadly accurate, allergic to ceremony."
+description = "Zhang Qing, the Featherless Arrow. In the legend he never lost a fight he could end with a single thrown stone. Here a street chief who joined the band for a cause bigger than the next score. Easy-going, deadly accurate, and allergic to ceremony."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

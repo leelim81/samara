@@ -20,7 +20,7 @@ dialogue_scene_path = "res://ui/cutscenes/dialogue_cutscene.tscn"
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.937255, 0.909804, 0.847059, 1 )
+color = Color( 0.082, 0.094, 0.114, 1 )
 
 [node name="Background" type="TextureRect" parent="."]
 visible = false

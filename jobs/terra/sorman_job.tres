@@ -11,6 +11,6 @@ script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ) ]
 job_name = "CHAR_MARVELOUS_TRAVELER"
-description = "A transit-runner with a gift that outruns the trains, the band's eyes and messenger across a city that wants them dead. Doi Chung is wry and restless, first to know everything and last to sit still."
+description = "Dai Zong, the Marvelous Traveler. In the legend he marched five hundred li in a day by a charm tied to his legs, the brotherhood's courier and eyes. Here a transit-runner whose gift outruns the trains, first to know everything and last to sit still. Wry, restless, always already gone."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

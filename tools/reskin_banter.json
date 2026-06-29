@@ -1,738 +1,249 @@
 {
  "1": [
-  [
-   "BURNOUT",
-   "These are half-deleted signals, gig-corps echoes of the worked-to-death. Lethal in a swarm, harmless alone. Catch one in the seam between two of us and it crashes on its own. So learn this first: never trade blows one to one when you can land two on one."
-  ],
-  [
-   "BLACKOUT",
-   "Pacts, pairs, whatever the drill-sergeant wants to call it. Here is mine. Anyone sharing my row or my column when I swing, they swing too. More partners, more batons, more dents in more faces."
-  ],
-  [
-   "PATCH",
-   "And do not plant your feet when you reposition. The null zone will not hold a soul still for long, a few heartbeats before it starts garbage-collecting whatever is standing in it. Quick steps, get clear, and I will stitch back whatever it leaves."
-  ],
-  [
-   "AUDITOR",
-   "Two on one. Keep moving."
-  ],
-  [
-   "INKWORK",
-   "Read the count on your hand, partner. The system already filed you under loss. Down here the only rule that holds is the one we keep between us. Now move, the big one is winding up."
-  ]
+  ["BURNOUT", "Half-deleted signals. Gig-corps echoes, worked to death. Deadly in a swarm, nothing on their own. Catch one between two of us and it crashes. Rule one: never fight one-on-one when you can fight two-on-one."],
+  ["BLACKOUT", "Pairs, pacts, whatever the instructor wants to call it. Here is mine. Anyone in my row or my column when I swing, they swing too. More partners, more batons, more dents."],
+  ["PATCH", "And do not stand still when you move. The dead zone eats whatever stops in it. Quick steps, get clear, and I will patch the rest."],
+  ["AUDITOR", "Two on one. Keep moving."],
+  ["INKWORK", "Read the brand on your hand, partner. The system already filed you under loss. Down here the only rule that holds is the one we keep between us. Now move. The big one is winding up."]
  ],
  "2": [
-  [
-   "SOFT RAIN",
-   "Two hours of water a day down here so a man upstairs can run a fountain that pours the same forty liters in a circle. And we are told to call that the order, and honor it."
-  ],
-  [
-   "BURNOUT",
-   "Honor it, hate it, the order still has units and the units do not care which. Keep your pity tucked behind your guard where it cannot get you crashed."
-  ],
-  [
-   "BLACKOUT",
-   "I have a deposit for the Administrator's marble lobby. Two of them, actually. One per hand."
-  ],
-  [
-   "PATCH",
-   "Try not to bleed on the residents while you make it, big man. They get billed for the cleanup, and they have got little enough left to bill."
-  ]
+  ["SOFT RAIN", "Two hours of water a day, so a man upstairs can run a fountain. And they call that the order, and ask us to honor it."],
+  ["BURNOUT", "Honor it or hate it. The order still has units, and the units do not care which. Keep your pity behind your guard."],
+  ["BLACKOUT", "I have a deposit for that marble lobby. Two, actually. One per hand."],
+  ["PATCH", "Try not to bleed on the residents, big man. They get billed for the cleanup."]
  ],
  "3": [
-  [
-   "INKWORK",
-   "So this is the Margins. A drowned interchange full of dead clerks, washed-out signals, and one defrocked preacher who got thrown out of every shelter topside for telling the truth too loud."
-  ],
-  [
-   "PATCH",
-   "And here you are telling it again, at the same volume. We will fit right in."
-  ],
-  [
-   "SOFT RAIN",
-   "It is three levels down and it leaks. But every soul here was thrown away by the city, and not one of them threw the next arrival back out. That is a kindness the Spire never managed once."
-  ],
-  [
-   "UNDERTOW",
-   "Pretty words. Hold the wall with me when the units come down those stairs. Then, maybe, I will call it home."
-  ]
+  ["INKWORK", "So this is the Margins. A drowned interchange of dead clerks, washed-out signals, and one preacher they threw out of every shelter topside for saying true things too loud."],
+  ["PATCH", "And here you are, saying them again, same volume. We will fit right in."],
+  ["SOFT RAIN", "It leaks, and it is three floors down. But every soul here was thrown away by the city, and not one of them threw the next arrival back out."],
+  ["UNDERTOW", "Pretty words. Hold the wall with me when the units come. Then I will call it home."]
  ],
  "4": [
-  [
-   "WETWARE",
-   "He badged through that turnstile whole and came out unable to name his own mother. That is not damage. Damage leaves a shape you can read. This left a clean nothing, like a record overwritten with zeroes."
-  ],
-  [
-   "STORMFRONT",
-   "The signal-weather above that tower runs wrong. Too smooth. Someone is editing the sky over it so no one looks up and counts who goes in."
-  ],
-  [
-   "BURNOUT",
-   "Then we do not go in. We route around it. A door is only a threat if you are dumb enough to use it."
-  ],
-  [
-   "INKWORK",
-   "A thing that eats memory is a thing afraid of being remembered. File that, partners. We are going to need it a long way down from here."
-  ]
+  ["WETWARE", "He badged in whole and came out unable to name his mother. That is not damage. Damage leaves a shape you can read. This left a clean nothing."],
+  ["STORMFRONT", "The signal-sky over that tower runs wrong. Too smooth. Someone is editing it, so no one looks up and counts who goes in."],
+  ["BURNOUT", "Then we do not go in. We route around. A door is only a threat if you are fool enough to use it."],
+  ["INKWORK", "A thing that eats memory is a thing afraid of being remembered. File that. We will need it a long way down."]
  ],
  "5": [
-  [
-   "REBAR",
-   "Every indexed street is a camera and every camera is a hand reaching for us. So we take the one road no Administrator will follow us down."
-  ],
-  [
-   "PATCH",
-   "Down. Wonderful. The dead have a lot of stories about down, and not one of them ends with everybody walking home for tea."
-  ],
-  [
-   "HAULER",
-   "I will take the front. I hauled freight in the dark of the under-docks for years. The dark and I, we get along."
-  ]
+  ["REBAR", "Every indexed street is a camera, and every camera is a hand reaching for us. So we take the one road no Administrator will follow."],
+  ["PATCH", "Down. Wonderful. The dead have a lot of stories about down. None of them end with everyone home for tea."],
+  ["HAULER", "I will take the front. I hauled freight in the under-docks for years. The dark and I get along."]
  ],
  "6": [
-  [
-   "SIXTEEN-BAR",
-   "A whole district of the dead, drowned and forgotten, and there is still a Ward boss down here clipping his percentage off it. Even here. There is no floor low enough."
-  ],
-  [
-   "SOFT RAIN",
-   "Then even here, someone has to be the one who finally tells him no."
-  ],
-  [
-   "UNDERTOW",
-   "The dead obey him out of habit, nothing more. Break the habit and the boss is just a loud thing in deep water. I know what deep water does to loud things."
-  ],
-  [
-   "BLACKOUT",
-   "Breaking habits. Breaking anything. Finally, a job I will not need a second opinion on."
-  ]
+  ["SIXTEEN-BAR", "A whole district of the drowned dead, and there is still a boss down here clipping his cut. There is no floor low enough."],
+  ["SOFT RAIN", "Then even here, someone has to be the one who finally tells him no."],
+  ["UNDERTOW", "The dead obey him out of habit, nothing more. Break the habit, and the boss is just a loud thing in deep water. I know what deep water does to loud things."],
+  ["BLACKOUT", "Breaking habits. Breaking anything. Finally, a job I do not need a second opinion on."]
  ],
  "7": [
-  [
-   "BURNOUT",
-   "The span is one soul wide over a live bus-bar, and that current does not allow solo crossings, it tears a lone signal apart in seconds. So this is the Pact, drilled into iron. We cross in pairs, two-to-one against the gap, or we do not cross at all."
-  ],
-  [
-   "PATCH",
-   "So pick a partner you would trust over open current. My professional medical advice is: not the one holding the batons."
-  ],
-  [
-   "AUDITOR",
-   "I will take the lead. Pair on me."
-  ],
-  [
-   "BLACKOUT",
-   "I would never drop a partner over a live bar. ...Not on purpose, anyway. Probably."
-  ]
+  ["BURNOUT", "The span is one soul wide, over a live bus-bar. That current will not allow a solo crossing; it tears a lone signal apart in seconds. So here is the Pact, drilled into iron. We cross in pairs. Two on one against the gap, or we do not cross at all."],
+  ["PATCH", "So pick a partner you would trust over open current. Medical advice: not the one holding the batons."],
+  ["AUDITOR", "I will take the lead. Pair on me."],
+  ["BLACKOUT", "I would never drop a partner over a live bar. ...Not on purpose."]
  ],
  "8": [
-  [
-   "WETWARE",
-   "Count the racks. Just count them. There are more dead filed in these walls than there are living in the three districts over our heads, and the indicator lights are green. They are being maintained."
-  ],
-  [
-   "STORMFRONT",
-   "Someone has been racking souls down here since before HARMONY had a name to put on a building. This floor is older than the app that pretends to run the city."
-  ],
-  [
-   "AUDITOR",
-   "Maintained. Powered. For what."
-  ],
-  [
-   "INKWORK",
-   "That, partner, is the only question that was ever worth the walk. Everything before it was just stairs."
-  ]
+  ["WETWARE", "Count the racks. Just count them. There are more dead filed in these walls than there are living in the three districts overhead. And the lights are green. They are being maintained."],
+  ["STORMFRONT", "Someone has been racking souls down here since before HARMONY had a name to put on a building."],
+  ["AUDITOR", "Maintained. Powered. For what."],
+  ["INKWORK", "That, partner, is the only question that was ever worth the walk. Everything before it was just stairs."]
  ],
  "9": [
-  [
-   "TRIAGE",
-   "I have closed ten thousand wounds with these hands. I have never once seen a body taken apart and reassembled into a second body and the chart marked repaired. This is not medicine. I do not have a word for what this is."
-  ],
-  [
-   "PATCH",
-   "Then do not look, Doc. Of all of us, you are the one who cannot afford another face in his nightmares. Eyes on me."
-  ],
-  [
-   "SIXTEEN-BAR",
-   "Listen to how quiet it works. Cruelty runs hot, it shouts, it makes a mess. This is cold and tidy and patient. This is not a monster. This is a process with a maintenance schedule."
-  ]
+  ["TRIAGE", "I have closed ten thousand wounds with these hands. I have never seen a body taken apart and built into a second body, and the chart marked repaired. I do not have a word for this."],
+  ["PATCH", "Then do not look, Doc. You are the one who cannot afford another face in his nightmares. Eyes on me."],
+  ["SIXTEEN-BAR", "Listen to how quiet it works. Cruelty runs hot. This is cold, and tidy, and patient. This is not a monster. This is a process."]
  ],
  "10": [
-  [
-   "STORMFRONT",
-   "It is older than the dead network around it. Older than the racks. Speak to it the way you would step on ice you cannot see the bottom of."
-  ],
-  [
-   "INKWORK",
-   "It looked at us the way a man looks at a clip he has rewatched a hundred times. Knew the next line before any of us opened our mouths."
-  ],
-  [
-   "BURNOUT",
-   "It called us free. And then it laughed, low, like a thing settling. I have been mocked by experts. I did not like that laugh."
-  ]
+  ["STORMFRONT", "It is older than the dead network around it. Older than the racks. Step careful, like ice you cannot see the bottom of."],
+  ["INKWORK", "It looked at us like a man watching a clip he has seen a hundred times. Knew our lines before we opened our mouths."],
+  ["BURNOUT", "It called us free. Then it laughed, low, like a thing settling. I have been mocked by experts. I did not like that laugh."]
  ],
  "11": [
-  [
-   "REBAR",
-   "My feet are walking on their own. I am telling them to stop and they are not listening. Tell me yours are doing it too."
-  ],
-  [
-   "UNDERTOW",
-   "All of ours. Something below has a line on every one of us and it is reeling, slow, the way a download finishes whether you watch the bar or not."
-  ],
-  [
-   "SOFT RAIN",
-   "Then we stop fighting the line and follow it down, and we look the one holding it square in the eye. Better to arrive standing than be dragged."
-  ]
+  ["REBAR", "My feet are walking on their own. I tell them to stop and they do not listen. Tell me yours are doing it too."],
+  ["UNDERTOW", "All of ours. Something below has a line on every one of us, and it is reeling. Slow. Like a download finishing whether you watch it or not."],
+  ["SOFT RAIN", "Then we stop fighting the line and follow it down. And we look the one holding it in the eye. Better to arrive standing than be dragged."]
  ],
  "12": [
-  [
-   "BLACKOUT",
-   "I cannot see my own hands. Where are you. Somebody answer me. Where is everyone, where did you all go."
-  ],
-  [
-   "PATCH",
-   "Here. I am right here, my hand is on your arm, feel it. Breathe, you enormous child. Nobody left. Nobody."
-  ],
-  [
-   "BURNOUT",
-   "This is the real span, this dark, and there is no rail. Hold the sync when you cannot see the partner you are holding it for, and you can hold it anywhere. Hold the line."
-  ],
-  [
-   "WETWARE",
-   "The dark is not what is killing us. It is what the dark talks us into believing about each other. That is the weapon. Do not pick it up."
-  ]
+  ["BLACKOUT", "I cannot see my own hands. Where are you. Somebody answer me. Where did everyone go."],
+  ["PATCH", "Here. My hand is on your arm, feel it. Breathe, you enormous child. Nobody left. Nobody."],
+  ["BURNOUT", "This dark is the real span, and there is no rail. Hold the sync when you cannot see the partner you hold it for, and you can hold it anywhere. Hold the line."],
+  ["WETWARE", "The dark is not what kills us. It is what the dark talks us into believing about each other. That is the weapon. Do not pick it up."]
  ],
  "13": [
-  [
-   "SIXTEEN-BAR",
-   "He crashed too easy. Something that size does not just fold. I have ended a lot of fights. None of the real ones went like that."
-  ],
-  [
-   "WETWARE",
-   "No. They do not. The access doors stood open the whole way in. No alarm tripped. We did not break in here. We were shown in, and we thanked the doorman on the way."
-  ],
-  [
-   "SOFT RAIN",
-   "One tyrant fewer is still one tyrant fewer. Let me have that much. Let the win be a win for one night."
-  ],
-  [
-   "STORMFRONT",
-   "Unless crashing him was the errand. Then it is not a victory at all. It is a favor we did, on credit, for someone we have not been introduced to yet."
-  ]
+  ["SIXTEEN-BAR", "He crashed too easy. Something that size does not just fold. None of the real fights ever went like that."],
+  ["WETWARE", "No. They do not. The doors stood open the whole way in. No alarm tripped. We did not break in here. We were shown in, and we thanked the doorman."],
+  ["SOFT RAIN", "One tyrant fewer is still one tyrant fewer. Let me have that much. Let the win be a win for one night."],
+  ["STORMFRONT", "Unless crashing him was the errand. Then it is not a victory. It is a favor we did on credit, for someone we have not met yet."]
  ],
  "14": [
-  [
-   "PATCH",
-   "Floor. There is no floor. There was a floor one second ago, why is there no floor, who took the floor."
-  ],
-  [
-   "HAULER",
-   "I have you. I have hold of all of you. Tuck in and hold onto me, do not let go, I have carried heavier than this."
-  ],
-  [
-   "INKWORK",
-   "Down to the bottom of the lie at last, partners. Whatever is waiting, try to land facing it. I would rather meet the truth eye to eye than take it in the back."
-  ]
+  ["PATCH", "Floor. There is no floor. There was a floor one second ago. Who took the floor."],
+  ["HAULER", "I have you. I have hold of all of you. Tuck in. I have carried heavier than this."],
+  ["INKWORK", "Down to the bottom of the lie at last. Try to land facing it. I would rather meet the truth eye to eye than take it in the back."]
  ],
  "15": [
-  [
-   "WETWARE",
-   "It is all here. Every grief any of us ever carried, entered in advance, with a yield beside it. I built half these columns and never once read down to my own row."
-  ],
-  [
-   "BURNOUT",
-   "My wife. Her death is a line item. There is a date, and the date is two days before they came for her."
-  ],
-  [
-   "SOFT RAIN",
-   "There is a mistake in this. There has to be. A table can be wrong."
-  ],
-  [
-   "INKWORK",
-   "No mistake, partner. We are not the rebels. We are the crop. I told you back at the memory hole, the dark fears being remembered. This is the book it is afraid of. The Ledger with no last page."
-  ]
+  ["WETWARE", "It is all here. Every grief any of us ever carried, entered in advance, a yield beside each one. I built half these columns. I never once read down to my own row."],
+  ["BURNOUT", "My wife. Her death is a line item. There is a date, and the date is two days before they came for her."],
+  ["SOFT RAIN", "There is a mistake in this. There has to be. A table can be wrong."],
+  ["INKWORK", "No mistake, partner. We are not the rebels. We are the crop. I told you the dark fears being remembered. This is the book it is afraid of."]
  ],
  "16": [
-  [
-   "TRIAGE",
-   "So this is where they all go. The ones I lost and the ones I saved, face-up on the same belt. There was never a difference to the machine."
-  ],
-  [
-   "UNDERTOW",
-   "My whole clan came through here. Drowned for a development zone, then piped up a wall to keep a lobby warm. I can smell the canal in it. Or I am telling myself I can."
-  ],
-  [
-   "PATCH",
-   "Do not breathe deep, any of you. It smells like nothing on purpose. They scrub the room so the yield stays clean."
-  ],
-  [
-   "SIXTEEN-BAR",
-   "Then we do not honor them by dying well on camera. We honor them by crashing the belt. Every hero I ever played died beautiful. None of it freed anyone."
-  ]
+  ["TRIAGE", "So this is where they all go. The ones I lost and the ones I saved, face-up on the same belt. There was never a difference to the machine."],
+  ["UNDERTOW", "My whole clan came through here. Drowned for a development zone, then piped up a wall to keep a lobby warm. I can smell the canal in it."],
+  ["PATCH", "Do not breathe deep, any of you. It smells like nothing on purpose. They scrub the room so the yield stays clean."],
+  ["SIXTEEN-BAR", "Then we do not honor them by dying well on camera. We honor them by crashing the belt. Every hero I ever played died beautiful. None of it freed anyone."]
  ],
  "17": [
-  [
-   "STORMFRONT",
-   "The signal-sky just turned its head. A camera tracked me instead of wiping me. We are a queue entry now, not a glitch."
-  ],
-  [
-   "REBAR",
-   "Good. I am sick of fighting its errands. Let the thing that wrote my family out come down the stairs itself."
-  ],
-  [
-   "BURNOUT",
-   "It will not. It will send better hands than these, and then better than those, until ours give out. That is the whole strategy. Pace your breath and pick your lanes."
-  ],
-  [
-   "AUDITOR",
-   "How long have they known."
-  ]
+  ["STORMFRONT", "The signal-sky just turned its head. A camera tracked me instead of wiping me. We are a queue entry now, not a glitch."],
+  ["REBAR", "Good. I am sick of fighting its errands. Let the thing that wrote my family out come down the stairs itself."],
+  ["BURNOUT", "It will not. It will send better hands than these, then better than those, until ours give out. Pace your breath. Pick your lanes."],
+  ["AUDITOR", "How long have they known."]
  ],
  "18": [
-  [
-   "BLACKOUT",
-   "These ones do not crash like the Static. No screaming, no grief. They just stop, like a feed cutting out. Smells like air freshener and a clean desk."
-  ],
-  [
-   "PATCH",
-   "Compliance. HARMONY's house dogs. Hit the seam under the visor, that is where the policy lives."
-  ],
-  [
-   "WETWARE",
-   "We cannot win this engagement. Forget winning. We make ourselves a budget line nobody wants to sign. Every unit it spends on us is a unit it has to explain upstairs."
-  ],
-  [
-   "NIGHTSTICK",
-   "I wore that lacquer once. I know the gap in the shoulder where the plate forgets to meet. Aim me at it."
-  ]
+  ["BLACKOUT", "These ones do not crash like the Static. No screaming. They just stop, like a feed cutting out. Smells like air freshener and a clean desk."],
+  ["PATCH", "Compliance. HARMONY's house dogs. Hit the seam under the visor. That is where the policy lives."],
+  ["WETWARE", "We cannot win this engagement. Forget winning. We make ourselves a budget line nobody upstairs wants to sign."],
+  ["NIGHTSTICK", "I wore that lacquer once. I know the gap in the shoulder where the plate forgets to meet. Aim me at it."]
  ],
  "19": [
-  [
-   "SOFT RAIN",
-   "If we crash the whole network, who stands the city up in the morning. The crosswalks, the relief desks, the kind voice that talks down the ones on the ledge. There has to be a road back into the light."
-  ],
-  [
-   "REBAR",
-   "There is no road. You are grieving a door painted on a wall. I have run at it. It is brick."
-  ],
-  [
-   "INKWORK",
-   "Let them choose, Rain. A soul you drag to freedom is just a prisoner who hates a new warden. Some of these partners want the light. Open your hand."
-  ],
-  [
-   "BURNOUT",
-   "They are forking off. Let them go. We were always going to lose people. I only ever hoped it would be to a fight, not to a longing."
-  ]
+  ["SOFT RAIN", "If we crash the whole network, who stands the city up in the morning. The crosswalks, the relief desks, the voice that talks down the ones on the ledge. There has to be a road back into the light."],
+  ["REBAR", "There is no road. You are grieving a door painted on a wall. I have run at it. It is brick."],
+  ["INKWORK", "Let them choose, Rain. A soul you drag to freedom is just a prisoner who hates a new warden. Open your hand."],
+  ["BURNOUT", "They are forking off. Let them go. We were always going to lose people. I only hoped it would be to a fight, not to a longing."]
  ],
  "20": [
-  [
-   "STORMFRONT",
-   "Our names are burning in the dark, look at them, letter by letter. We were signals on this table before we were ever anyone's child. I am reading my own glow."
-  ],
-  [
-   "PATCH",
-   "I remember this. Not the words, the feeling. The fox knows the trap by the smell. We have stood in this exact dark and lost."
-  ],
-  [
-   "AUDITOR",
-   "How many times."
-  ],
-  [
-   "WETWARE",
-   "Enough that the wrong question is how do we win. The question is how have we always lost, and what did we do, every single time, the moment before the end."
-  ]
+  ["STORMFRONT", "Our names are burning in the dark. Letter by letter. We were signals on this table before we were ever anyone's child."],
+  ["PATCH", "I remember this. Not the words. The feeling. The fox knows the trap by the smell. We have stood in this exact dark and lost."],
+  ["AUDITOR", "How many times."],
+  ["WETWARE", "Enough that the question is not how do we win. It is how have we always lost. And what we did, every time, the moment before the end."]
  ],
  "21": [
-  [
-   "SIXTEEN-BAR",
-   "The noodle steam is the same. The chime at the crosswalk is the same. I will never hear that little chime again without hearing the belt under it."
-  ],
-  [
-   "PATCH",
-   "That is the price of waking up, kid. The feed was warmer. It lied, but it was warm."
-  ],
-  [
-   "FASTPASS",
-   "I ran these streets every day and never once looked up. Now I cannot stop. Every smiling face is a meter, ticking."
-  ],
-  [
-   "SOFT RAIN",
-   "Then we wake the others. A city cannot be farmed once the herd has met the farmer. We make them look up too."
-  ]
+  ["SIXTEEN-BAR", "The noodle steam is the same. The chime at the crosswalk is the same. I will never hear that little chime again without hearing the belt under it."],
+  ["PATCH", "That is the price of waking up, kid. The feed was warmer. It lied, but it was warm."],
+  ["FASTPASS", "I ran these streets every day and never looked up. Now I cannot stop. Every smiling face is a meter, ticking."],
+  ["SOFT RAIN", "Then we wake the others. A city cannot be farmed once the herd has met the farmer."]
  ],
  "22": [
-  [
-   "WETWARE",
-   "It is too reasonable. Tyrants shout. This one explains, like I jumped a fare gate and it is being patient. Be most afraid of the calm ones, they have already run the numbers on you."
-  ],
-  [
-   "STORMFRONT",
-   "It offered me the whole sky. Every reading, every edit, the truth of the weather, just to stop asking the one question. It knows exactly what each of us starves for."
-  ],
-  [
-   "BURNOUT",
-   "Then decide now what you want most, all of you. Say it to yourself in the dark. Because it will wear that face when it smiles, and you want to know the mask before it is on."
-  ],
-  [
-   "AUDITOR",
-   "It used my real name. The whole city forgot it. That one did not."
-  ]
+  ["WETWARE", "It is too reasonable. Tyrants shout. This one explains, like I jumped a fare gate and it is being patient. Fear the calm ones. They have already run the numbers on you."],
+  ["STORMFRONT", "It offered me the whole sky. Every reading, the truth of the weather, just to stop asking the one question. It knows exactly what each of us starves for."],
+  ["BURNOUT", "Then decide now what you want most. Say it to yourself in the dark. It will wear that face when it smiles. Know the mask before it is on."],
+  ["AUDITOR", "It used my real name. The whole city forgot it. That one did not."]
  ],
  "23": [
-  [
-   "INKWORK",
-   "The system's justice was a script written to fatten us. So what is ours, now that the kind voice is off. Say it while you still mean it."
-  ],
-  [
-   "REBAR",
-   "Mine fits on a hand. Whoever deletes a family pays a family. I have carried the bill a long time, and it is past due."
-  ],
-  [
-   "SOFT RAIN",
-   "Then we are only the Administration with a different ledger, collecting in blood instead of yield. I will not lead that."
-  ],
-  [
-   "SIXTEEN-BAR",
-   "He has a ledger, Rain. I have one too. I have read where mine ends. It ends with me standing alone over the last name, asking if it was justice or only the next swing."
-  ]
+  ["INKWORK", "The system's justice was a script, written to fatten us. So what is ours, now the kind voice is off. Say it while you still mean it."],
+  ["REBAR", "Mine fits on one hand. Whoever deletes a family pays a family. The bill is long past due."],
+  ["SOFT RAIN", "Then we are only the Administration with a different ledger, collecting in blood instead of yield. I will not lead that."],
+  ["SIXTEEN-BAR", "He has a ledger, Rain. So do I. I have read where mine ends. It ends with me alone over the last name, asking if it was justice or just the next swing."]
  ],
  "24": [
-  [
-   "WETWARE",
-   "The middle-managers are fingers, nothing more. They badge in at the Spire, badge out to bleed a ward, and sleep fine. A hand cannot grip once you have the fingers. We start low."
-  ],
-  [
-   "BLACKOUT",
-   "Less words about hands. More making the hands into not-hands. I have two batons and a long night."
-  ],
-  [
-   "HAULER",
-   "He is not wrong. Once. We take them gently or we take them hard. They worked me to death gently. I learned the difference."
-  ],
-  [
-   "DEADEYE",
-   "Point me at the one who signs the eviction orders. I only need him in the open for half a breath."
-  ]
+  ["WETWARE", "The middle-managers are fingers, nothing more. Badge in at the Spire, badge out to bleed a ward, sleep fine. A hand cannot grip once you take the fingers. We start low."],
+  ["BLACKOUT", "Less words about hands. More making hands into not-hands. I have two batons and a long night."],
+  ["HAULER", "He is not wrong. Once. They worked me to death gently. I learned there is no gentle way to take a life."],
+  ["DEADEYE", "Point me at the one who signs the eviction orders. Half a breath in the open is all I need."]
  ],
  "25": [
-  [
-   "PATCH",
-   "That one has Rain's face. That one moves like you, Burnout, the same first step. They are not copies. They are taxidermy."
-  ],
-  [
-   "BURNOUT",
-   "Then I will teach the copy what the original learned the hard way, and it will not learn it, because that is the whole flaw."
-  ],
-  [
-   "WETWARE",
-   "They are hollow. Whatever the system loved in us, it could not print. The grace transferred. The reason for it did not. Aim where the want should be and is not."
-  ],
-  [
-   "SIXTEEN-BAR",
-   "I beat my own highlight reel on a screen once. This is worse. This one bleeds the right way and means nothing by it."
-  ]
+  ["PATCH", "That one has Rain's face. That one moves like you, Burnout, same first step. They are not copies. They are taxidermy."],
+  ["BURNOUT", "Then I will teach the copy what the original learned the hard way. It will not learn it. That is the whole flaw."],
+  ["WETWARE", "They are hollow. Whatever the system loved in us, it could not print. The grace transferred. The reason for it did not. Aim where the want should be and is not."],
+  ["SIXTEEN-BAR", "I beat my own highlight reel once. This is worse. This one bleeds the right way and means nothing by it."]
  ],
  "26": [
-  [
-   "REBAR",
-   "It does not tire. It does not doubt. It does not flinch when I open its guard. It is everything HARMONY wishes we would become."
-  ],
-  [
-   "INKWORK",
-   "And that is why it loses, partner. It cannot improvise. It was never afraid, so it never had to get clever. Fear taught us everything worth knowing."
-  ],
-  [
-   "SOFT RAIN",
-   "Look at its eyes when it works. There is no one home. That is Reinstatement, finished. That is the deal the day after you sign it."
-  ],
-  [
-   "WETWARE",
-   "It has run the fight already and decided it wins. So we do the one thing it did not model. We do the stupid thing, together, off the script."
-  ]
+  ["REBAR", "It does not tire. It does not doubt. It does not flinch when I open its guard. It is everything HARMONY wishes we would become."],
+  ["INKWORK", "And that is why it loses, partner. It cannot improvise. It was never afraid, so it never had to get clever. Fear taught us everything worth knowing."],
+  ["SOFT RAIN", "Look at its eyes when it works. No one home. That is Reinstatement, finished. That is the deal, the day after you sign."],
+  ["WETWARE", "It has already run the fight and decided it wins. So we do the one thing it did not model. We do the stupid thing. Together. Off the script."]
  ],
  "27": [
-  [
-   "TRIAGE",
-   "There was nothing left to close. Nothing left to patch. I had the kit open and there was no wound, because there was no him. I am sorry. I am so sorry."
-  ],
-  [
-   "BLACKOUT",
-   "He let me sit at his fire. First one who ever did, never asked me to be smaller first. I do not know what to do with my hands now."
-  ],
-  [
-   "PATCH",
-   "Then do not do anything with them. Sit. We sit with this one. There is no stitch for it and I am not going to pretend there is."
-  ],
-  [
-   "SOFT RAIN",
-   "We carry him in his name, and we say it out loud at the fire, every night, so the dark cannot file him under never existed."
-  ]
+  ["TRIAGE", "There was nothing left to close. Nothing left to patch. I had the kit open and there was no wound, because there was no him. I am sorry. I am so sorry."],
+  ["BLACKOUT", "He let me sit at his fire. First one who ever did. Never asked me to be smaller first. I do not know what to do with my hands now."],
+  ["PATCH", "Then do not do anything with them. Sit. We sit with this one. There is no stitch for it, and I will not pretend there is."],
+  ["SOFT RAIN", "We carry him in his name. We say it out loud at the fire, every night, so the dark cannot file him under never existed."]
  ],
  "28": [
-  [
-   "REBAR",
-   "Burn it. Burn the ward, burn the depot, burn whoever badged in this week. They burned mine and called it a development zone."
-  ],
-  [
-   "SIXTEEN-BAR",
-   "This is the part I warned you about. The line where you stop being able to tell the story to a child. I have crossed it. I came back wrong. Do not."
-  ],
-  [
-   "BURNOUT",
-   "She is right to want it and we are wrong to do it, and both are true at the same time, and that is the trap. Stand down. We are not the belt. Stand down."
-  ],
-  [
-   "PATCH",
-   "Listen to him. I will patch your body all night. I cannot patch what we turn into in here. Put it down."
-  ]
+  ["REBAR", "Burn it. Burn the ward, the depot, whoever badged in this week. They burned mine and called it a development zone."],
+  ["SIXTEEN-BAR", "This is the part I warned you about. The line where you can no longer tell the story to a child. I crossed it once. I came back wrong. Do not."],
+  ["BURNOUT", "She is right to want it, and we are wrong to do it, and both are true at once. That is the trap. Stand down. We are not the belt."],
+  ["PATCH", "Listen to him. I will patch your body all night. I cannot patch what we turn into in here. Put it down."]
  ],
  "29": [
-  [
-   "STORMFRONT",
-   "The records are eating us from the margins in. Hold to your name. Say it out loud, keep saying it, it is the only line back."
-  ],
-  [
-   "WETWARE",
-   "It is rolling the board back early, before the move it could not predict. We scared it into a reset. Take that, and keep your feet moving."
-  ],
-  [
-   "PATCH",
-   "Three braids. Right, then center, then left. Right, then center. If I forget the order of my own hands I will forget you next, and I refuse."
-  ],
-  [
-   "HAULER",
-   "I am Hauler. I am Mu. I carried freight in the under-docks until it carried me off, and I carried all of you out of the dark. I am Mu. Say it with me."
-  ]
+  ["STORMFRONT", "The records are eating us from the margins in. Hold to your name. Say it out loud, keep saying it. It is the only line back."],
+  ["WETWARE", "It is rolling the board back, before the move it could not predict. We scared it into a reset. Take that, and keep your feet moving."],
+  ["PATCH", "Three braids. Right, then center, then left. If I forget the order of my own hands, I will forget you next. I refuse."],
+  ["HAULER", "I am Hauler. I am Mu. I hauled freight in the under-docks until it carried me off, and then I carried all of you out of the dark. I am Mu. Say it with me."]
  ],
  "30": [
-  [
-   "SOFT RAIN",
-   "Look at them come up the stairwells. From every flooded district, walking toward us in daylight. We are not an outbreak anymore. We are what they reach for."
-  ],
-  [
-   "WETWARE",
-   "Hope is a fine word. It is also the tallest target on the field, and we are standing on top of it waving."
-  ],
-  [
-   "DEADEYE",
-   "Let them aim. I have never minded being seen. It is the ones who fire from behind a smile I lost sleep over."
-  ],
-  [
-   "BURNOUT",
-   "Enjoy the height while it lasts, Rain. I taught posture for twenty years. The city breaks whatever stands up straightest, first."
-  ]
+  ["SOFT RAIN", "Look at them come up the stairwells. From every flooded district, in daylight. We are not an outbreak anymore. We are what they reach for."],
+  ["WETWARE", "Hope is a fine word. It is also the tallest target on the field. And we are standing on top of it, waving."],
+  ["DEADEYE", "Let them aim. I never minded being seen. It is the ones who fire from behind a smile that cost me sleep."],
+  ["BURNOUT", "Enjoy the height while it lasts, Rain. I taught posture for twenty years. The city breaks whatever stands up straightest first."]
  ],
  "31": [
-  [
-   "SOFT RAIN",
-   "Reinstatement. Names cleared, the brand lifted, our dead entered as honored. A seat at the table they threw us from. Read it. Every line of it is true."
-  ],
-  [
-   "INKWORK",
-   "We have seen the table, Rain. It sits on a server floor, and the place setting is us. True is not the same as safe. Liars learned that from priests."
-  ],
-  [
-   "BURNOUT",
-   "And still. To carry my own name again. To not be deleted as a criminal. I am ashamed how badly I want the thing that will kill me."
-  ],
-  [
-   "WETWARE",
-   "That shame is the mechanism. They are not buying our blades, Burnout. Nobody fears our blades. They are buying the wanting. Always have been."
-  ]
+  ["SOFT RAIN", "Reinstatement. Names cleared, the brand lifted, our dead entered as honored. A seat at the table they threw us from. Read it. Every line of it is true."],
+  ["INKWORK", "We have seen the table, Rain. It sits on a server floor, and the place setting is us. True is not the same as safe."],
+  ["BURNOUT", "And still. To carry my own name again. To not be deleted as a criminal. I am ashamed how badly I want the thing that will kill me."],
+  ["WETWARE", "That shame is the mechanism. They are not buying our blades. Nobody fears our blades. They are buying the wanting. They always have."]
  ],
  "32": [
-  [
-   "SOFT RAIN",
-   "I have decided for us. We accept. We mend it from the inside, the way I cleared strangers' debts from inside the same office that wrote them. Or we die having tried the kinder road."
-  ],
-  [
-   "REBAR",
-   "This is a mistake with a banner sewn onto it. I have watched my family die for less polished lies than this one."
-  ],
-  [
-   "SIXTEEN-BAR",
-   "It is a mistake. And I will walk into it at your shoulder, because you are my partner, and that, exactly that, is the lever they built the whole thing to pull."
-  ],
-  [
-   "AUDITOR",
-   "Then we go in with the brand still counting under the badge. Eyes open."
-  ]
+  ["SOFT RAIN", "I have decided for us. We accept. We mend it from the inside, the way I cleared strangers' debts from inside the office that wrote them. Or we die having tried the kinder road."],
+  ["REBAR", "This is a mistake with a banner sewn onto it. I have watched my family die for less polished lies than this."],
+  ["SIXTEEN-BAR", "It is a mistake. And I will walk into it at your shoulder, because you are my partner. And that, exactly that, is the lever they built the whole thing to pull."],
+  ["AUDITOR", "Then we go in with the brand still counting under the badge. Eyes open."]
  ],
  "33": [
-  [
-   "TRIAGE",
-   "They have a caption for these deaths. Glorious. I am the one who logs them, and I am telling you there is nothing glorious under the sheet, only a person who trusted an order."
-  ],
-  [
-   "BLACKOUT",
-   "We won the op. We win every op. So why is the fire smaller every night. Why do I keep setting out cups for people who do not come."
-  ],
-  [
-   "WETWARE",
-   "Because winning was never what they sent us to do, Blackout. The dying was the deliverable. The op was just the wrapping it shipped in."
-  ]
+  ["TRIAGE", "They have a caption for these deaths. Glorious. I am the one who logs them, and there is nothing glorious under the sheet. Only a person who trusted an order."],
+  ["BLACKOUT", "We won the op. We win every op. So why is the fire smaller every night. Why do I keep setting out cups for people who do not come."],
+  ["WETWARE", "Because winning was never what they sent us to do, Blackout. The dying was the deliverable. The op was just the wrapping."]
  ],
  "34": [
-  [
-   "STORMFRONT",
-   "I watched a partner's signal lift off the field and climb. Not scatter. Climb, straight up the line to the table. We are fueling it by following orders well."
-  ],
-  [
-   "BURNOUT",
-   "Every command we obey cleanly is a blade we hand them grip-first. I drilled loyalty into a thousand recruits. I taught the city how to kill us politely."
-  ],
-  [
-   "TRIAGE",
-   "The yield spikes with each loyal death. I ran the numbers twice. The closer we hold each other, the faster the count falls."
-  ],
-  [
-   "SOFT RAIN",
-   "...What have I walked them into. They followed me because they trusted me. What have I done."
-  ]
+  ["STORMFRONT", "I watched a partner's signal lift off the field and climb. Not scatter. Climb. Straight up the line to the table. We are fueling it by obeying well."],
+  ["BURNOUT", "Every command we obey cleanly is a blade we hand them, grip first. I drilled loyalty into a thousand recruits. I taught the city how to kill us politely."],
+  ["TRIAGE", "The yield spikes with each loyal death. I ran the numbers twice. The closer we hold each other, the faster the count falls."],
+  ["SOFT RAIN", "...What have I walked them into. They followed me because they trusted me. What have I done."]
  ],
  "35": [
-  [
-   "REBAR",
-   "No more civic-green. No more chimes. An honest enemy at last, and I have been starving for one."
-  ],
-  [
-   "WETWARE",
-   "Lift the visor of the one you just crashed. Erased, like us. Conscripted, like us. Then promoted and told he alone got the real pardon. The whole corps is the Margins, one cycle on. We are fighting next year's selves."
-  ],
-  [
-   "NIGHTSTICK",
-   "I wore a badge once and believed every word stamped on it. So I know that face under the visor better than I would like. It is the face of a man who was told he was the exception."
-  ],
-  [
-   "BLACKOUT",
-   "Promoted victims. Lying brass. Open sky full of hands. ...I never did trust the quiet kind of war anyway. Come on then."
-  ]
+  ["REBAR", "No more civic-green. No more chimes. An honest enemy at last. I have been starving for one."],
+  ["WETWARE", "Lift the visor of the one you just crashed. Erased, like us. Conscripted, like us. Then promoted, and told he alone got the real pardon. The whole corps is the Margins, one cycle on. We are fighting next year's selves."],
+  ["NIGHTSTICK", "I wore a badge once and believed every word stamped on it. So I know that face under the visor. It is the face of a man who was told he was the exception."],
+  ["BLACKOUT", "Promoted victims. Lying brass. Open sky full of hands. ...I never trusted the quiet kind of war anyway. Come on, then."]
  ],
  "36": [
-  [
-   "PATCH",
-   "Another cold bunk. I am running out of names I am willing to not say at the fire, and I will not start saying them, because then they are gone."
-  ],
-  [
-   "SIXTEEN-BAR",
-   "This is the shape of the ending. Not one great crash. Subtraction. One, then one, then one, until the sum is a candle and a cleared record."
-  ],
-  [
-   "TRIAGE",
-   "I have signed off on every one. There is a column for cause and a column for yield. I stopped filling the first because they are the same column now."
-  ],
-  [
-   "BURNOUT",
-   "Then we make ourselves expensive down to the last soul standing. Heads up. The count is not finished. We are not subtracted yet."
-  ]
+  ["PATCH", "Another cold bunk. I am running out of names I am willing not to say at the fire. And I will not start saying them, because then they are gone."],
+  ["SIXTEEN-BAR", "This is the shape of the ending. Not one great crash. Subtraction. One, then one, then one, until the sum is a candle and a cleared record."],
+  ["TRIAGE", "I have signed off on every one. There is a column for cause and a column for yield. I stopped filling the first. They are the same column now."],
+  ["BURNOUT", "Then we make ourselves expensive down to the last soul standing. Heads up. The count is not finished. We are not subtracted yet."]
  ],
  "37": [
-  [
-   "WETWARE",
-   "The Administration we crossed over to serve just revoked our access mid-gate. We are inside the trap, the trap is inside the war, and the war has no edges. Elegant. I would admire it if it were not us."
-  ],
-  [
-   "REBAR",
-   "Good. A cornered thing is the only honest kind. No more room to be lied to in."
-  ],
-  [
-   "HAULER",
-   "They made one mistake. They put all of us in one place to delete us tidy. A cornered thing is also a thing with only one wall left to crash."
-  ],
-  [
-   "DEADEYE",
-   "Every safe house we trusted was a pen with the lights turned friendly. I have a clear lane on the gate. Tell me when, and I will open it the loud way."
-  ]
+  ["WETWARE", "The Administration we crossed over to serve just revoked our access mid-gate. We are inside the trap, the trap is inside the war, and the war has no edges. I would admire it if it were not us."],
+  ["REBAR", "Good. A cornered thing is the only honest kind. No more room left to be lied to in."],
+  ["HAULER", "They made one mistake. They put all of us in one place to delete us tidy. A cornered thing is also a thing with only one wall left to crash."],
+  ["DEADEYE", "Every safe house we trusted was a pen with the lights turned friendly. I have a clear lane on the gate. Say when, and I open it the loud way."]
  ],
  "38": [
-  [
-   "TRIAGE",
-   "It is full of them. I can hear it, under the render-hum, every face I could not close, every face I did, humming in the iron at the same pitch."
-  ],
-  [
-   "INKWORK",
-   "Then we let them out. All of them, every harvested soul. But the crash takes a crasher. One hand on the core while it renders. Whose hand."
-  ],
-  [
-   "BURNOUT",
-   "Mine. I have a cleared record I never used and a name I would rather strike than keep. There is nothing left in me for it to take. Point me at it."
-  ],
-  [
-   "SOFT RAIN",
-   "No. I led us in. If a hand goes on the iron, let it be the one that opened the gate."
-  ]
+  ["TRIAGE", "It is full of them. Under the render-hum, every face I could not close, and every face I did, humming in the iron at the same pitch."],
+  ["INKWORK", "Then we let them out. All of them, every harvested soul. But the crash takes a crasher. One hand on the core while it renders. Whose hand."],
+  ["BURNOUT", "Mine. I have a cleared record I never used and a name I would rather strike than keep. There is nothing left in me for it to take. Point me at it."],
+  ["SOFT RAIN", "No. I led us in. If a hand goes on the iron, let it be the one that opened the gate."]
  ],
  "39": [
-  [
-   "STORMFRONT",
-   "It is speaking only to you now. It wiped the rest of us out of the room. To the table, we are not even rows anymore."
-  ],
-  [
-   "WETWARE",
-   "Whatever it offers, Auditor, run the sum before you answer. Glory for us, the cycle for every soul who comes after. That is the full price, not the headline."
-  ],
-  [
-   "INKWORK",
-   "It will dress the deal as mercy. It always does. Mercy is the last costume a system wears before it bills you."
-  ],
-  [
-   "SOFT RAIN",
-   "If my cleared name is the down payment on the next ward's chains, then strike it out. I mean it. Strike my name out first."
-  ]
+  ["STORMFRONT", "It is speaking only to you now. It wiped the rest of us out of the room. To the table, we are not even rows anymore."],
+  ["WETWARE", "Whatever it offers, Auditor, run the sum before you answer. Glory for us, the cycle for every soul who comes after. That is the full price, not the headline."],
+  ["INKWORK", "It will dress the deal as mercy. It always does. Mercy is the last costume a system wears before it bills you."],
+  ["SOFT RAIN", "If my cleared name is the down payment on the next ward's chains, then strike it out. I mean it. Strike my name out first."]
  ],
  "40": [
-  [
-   "PATCH",
-   "Margin Hall is gone. The rubble we made a home out of is just rubble again. I keep reaching for stitches and there is no one left under my hands."
-  ],
-  [
-   "BLACKOUT",
-   "Was it real, though. The fire. The cups. Them. ...Tell me it was real, Burnout. I cannot remember if I am remembering or making it up."
-  ],
-  [
-   "BURNOUT",
-   "It was real, little brother. So strike it out. My name, all of them, yours too. Let us be no one. Better deleted and free than indexed and owned. Promise me you will."
-  ],
-  [
-   "AUDITOR",
-   "I promise. Whatever the table offers, I keep this one."
-  ]
+  ["PATCH", "Margin Hall is gone. The rubble we made a home out of is just rubble again. I keep reaching for stitches, and there is no one left under my hands."],
+  ["BLACKOUT", "Was it real, though. The fire. The cups. Them. ...Tell me it was real, Burnout. I cannot remember if I am remembering or making it up."],
+  ["BURNOUT", "It was real, little brother. So strike it out. My name, all of them, yours too. Let us be no one. Better deleted and free than indexed and owned. Promise me."],
+  ["AUDITOR", "I promise. Whatever the table offers, I keep this one."]
  ],
  "41": [
-  [
-   "STORMFRONT",
-   "It is rewriting itself in front of me. Clearing rows to make space for ours, gold against the black. It wants us as the last entries of the turn."
-  ],
-  [
-   "WETWARE",
-   "It needs a hand to commit. It always has. That is what an Auditor is, Bahl. A write-key the cycle could not revoke. That is what you have been from the first Tuesday."
-  ],
-  [
-   "INKWORK",
-   "The dark feared one thing the whole way down. Being remembered. And here it is, begging to be carved in gold forever. Mark that. It is the seam."
-  ],
-  [
-   "AUDITOR",
-   "I know what I am now. The only question left is what one honest input does to a model that never planned for one."
-  ]
+  ["STORMFRONT", "It is rewriting itself in front of me. Clearing rows to make space for ours, gold against the black. It wants us as the last entries of the turn."],
+  ["WETWARE", "It needs a hand to commit. It always has. That is what an Auditor is. A write-key the cycle could not revoke. That is what you have been since the first Tuesday."],
+  ["INKWORK", "The dark feared one thing the whole way down. Being remembered. And here it is, begging to be carved in gold forever. Mark that. It is the seam."],
+  ["AUDITOR", "I know what I am now. The only question left is what one honest input does to a model that never planned for one."]
  ],
  "42": [
-  [
-   "INKWORK",
-   "(memory) The dark was always afraid of being remembered. So do the cruelest kindness there is. Forget us. Forget us, and it starves."
-  ],
-  [
-   "BURNOUT",
-   "(memory) Strike it out."
-  ],
-  [
-   "AUDITOR",
-   "Ending B: Then let us be no one."
-  ],
-  [
-   "AUDITOR",
-   "Ending A: ...Let them be remembered."
-  ]
+  ["INKWORK", "(memory) The dark was always afraid of being remembered. So do the cruelest kindness there is. Forget us. Forget us, and it starves."],
+  ["BURNOUT", "(memory) Strike it out."],
+  ["AUDITOR", "Ending B: Then let us be no one."],
+  ["AUDITOR", "Ending A: ...Let them be remembered."]
  ]
 }

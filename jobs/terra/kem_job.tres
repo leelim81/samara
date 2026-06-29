@@ -11,6 +11,6 @@ script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ) ]
 job_name = "CHAR_PANTHER_HEAD"
-description = "The city's top close-protection instructor, framed and deadlisted after a Spire executive coveted his wife. Lam Chongzhi clings to protocol and the dream of a cleared record, a hope the system keeps turning against him. The one who teaches the Pact."
+description = "Lin Chong, the Panther Head. In the legend the empire's finest arms-instructor, framed and exiled after a powerful man coveted his wife, driven at last to the outlaw road. Here that story repeats, badge for badge. He clings to protocol and the dream of a cleared record, a hope the system keeps turning against him. He is the one who teaches the Pact. Clipped, precise, and full of a fury he keeps on a short leash."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

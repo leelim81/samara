@@ -11,6 +11,6 @@ script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ) ]
 job_name = "SHBERDAN"
-description = "Last of a canal-clan a Ward drowned to clear a development zone. Cold and patient, he trusts the band only after they bleed beside him, and never quite forgives the city that made him."
+description = "Jiao, last of a canal-clan a Ward drowned to clear a development zone. The jiao is the flood-serpent of the deep water, and the water still answers his anger. Cold and patient, he trusts the band only after they bleed beside him, and never quite forgives the city that made him."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

@@ -11,6 +11,6 @@ script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ) ]
 job_name = "BAHL"
-description = "A HARMONY mortality-stats auditor who found a discrepancy, a ward dying off the network faster than it was dying for real, and was murdered for asking about it. He wakes Off-Network with the brand already ticking, and a write-key the system never quite managed to revoke. Silent, level, still believing a record, and a life, can be made true."
+description = "Gan Jiang, the master smith of the old story, who forged a pair of blades no power could match and signed his name into the steel. Here he audited HARMONY's mortality numbers, found a ward dying off the network faster than it died in life, and was murdered for asking why. He wakes Off-Network with the brand already ticking and a write-key the system never managed to revoke. Silent and level. Still believes a record, and a life, can be made true."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

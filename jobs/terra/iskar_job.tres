@@ -11,6 +11,6 @@ script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ) ]
 job_name = "CHAR_THE_WANDERER"
-description = "A masterless fixer of uncommon grace, deadly with a bow, a hold, or a well-told lie, devoted to the one boss who never wronged him. Yin Ching is light on the surface, with a blade of loyalty underneath."
+description = "Yan Qing, the Wanderer. In the legend the graceful jack-of-all-trades, deadly with a bow, a wrestling hold, or a song, devoted to the one master who never wronged him. Here a masterless fixer of the same uncommon grace. Light on the surface, with a blade of loyalty underneath."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

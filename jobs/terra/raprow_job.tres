@@ -11,6 +11,6 @@ script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ) ]
 job_name = "CHAR_LORD_OF_THE_BEAUTIFUL_BEARD"
-description = "An honest beat cop whose mercy to the wrong fugitives cost him everything, famous for a beard the precinct wrote jokes about. Chu Tung is upright and warm, the last good officer of a rotten precinct."
+description = "Zhu Tong, Lord of the Beautiful Beard. In the legend the honest constable whose mercy to fugitives cost him his post and his freedom. Here an honest beat cop whose mercy to the wrong people cost him everything, famous for a beard the precinct wrote jokes about. Upright and warm, the last good officer of a rotten precinct."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )
