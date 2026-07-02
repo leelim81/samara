@@ -1,16 +1,31 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://ui/main_menu/settings_menu.gd" type="Script" id=1]
 [ext_resource path="res://theme.tres" type="Theme" id=2]
 [ext_resource path="res://ui/language_option_button.gd" type="Script" id=3]
 [ext_resource path="res://ui/main_menu/volume_slider.tscn" type="PackedScene" id=4]
 [ext_resource path="res://ui/audio_button.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/fonts/EBGaramond24.tres" type="FontFile" id=6]
+
+[sub_resource type="StyleBoxFlat" id=1]
+content_margin_left = 26.0
+content_margin_top = 22.0
+content_margin_right = 26.0
+content_margin_bottom = 22.0
+bg_color = Color( 0.122, 0.141, 0.173, 0.95 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.74902, 0.627451, 0.384314, 0.35 )
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
 
 [node name="SettingsMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-scale = Vector2( 0.999086, 1 )
-pivot_offset = Vector2( -1280, -112 )
 theme = ExtResource( 2 )
 script = ExtResource( 1 )
 
@@ -23,36 +38,44 @@ color = Color(0.082, 0.094, 0.114, 1)
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme_override_constants/margin_right = 50
-theme_override_constants/margin_top = 50
+theme_override_constants/margin_top = 40
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_bottom = 50
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-offset_left = 50.0
-offset_top = 50.0
-offset_right = 670.0
-offset_bottom = 910.0
+theme_override_constants/separation = 12
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+theme_override_colors/font_color = Color(0.863, 0.878, 0.894, 1)
+theme_override_fonts/font = ExtResource( 6 )
+theme_override_font_sizes/font_size = 42
+text = "SETTINGS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TitleRule" type="ColorRect" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2( 280, 1 )
+size_flags_horizontal = 4
+color = Color( 0.753, 0.627, 0.384, 0.55 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
-offset_right = 620.0
-offset_bottom = 779.0
 size_flags_vertical = 3
-theme_override_constants/separation = 64
+theme_override_constants/separation = 18
 alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
-offset_top = 257.0
-offset_right = 620.0
-offset_bottom = 289.0
+[node name="Card" type="PanelContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+theme_override_styles/panel = SubResource( 1 )
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
-offset_top = 1.0
-offset_right = 240.0
-offset_bottom = 30.0
+[node name="Rows" type="VBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/Card"]
+theme_override_constants/separation = 34
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/Card/Rows"]
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/Card/Rows/HBoxContainer"]
 custom_minimum_size = Vector2( 240, 0 )
 text = "MUSIC_VOLUME"
 
-[node name="VolumeSlider" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 4 )]
+[node name="VolumeSlider" parent="MarginContainer/VBoxContainer/VBoxContainer/Card/Rows/HBoxContainer" instance=ExtResource( 4 )]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -61,20 +84,16 @@ offset_left = 248.0
 offset_top = 0.0
 offset_right = 620.0
 offset_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
-offset_top = 353.0
-offset_right = 620.0
-offset_bottom = 385.0
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/Card/Rows"]
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2"]
-offset_top = 1.0
-offset_right = 240.0
-offset_bottom = 30.0
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/Card/Rows/HBoxContainer2"]
 custom_minimum_size = Vector2( 240, 0 )
 text = "SOUND_EFFECTS"
 
-[node name="VolumeSlider2" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2" instance=ExtResource( 4 )]
+[node name="VolumeSlider2" parent="MarginContainer/VBoxContainer/VBoxContainer/Card/Rows/HBoxContainer2" instance=ExtResource( 4 )]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -83,44 +102,40 @@ offset_left = 248.0
 offset_top = 0.0
 offset_right = 620.0
 offset_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
 _bus_name = "Sound effects"
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
-offset_top = 449.0
-offset_right = 620.0
-offset_bottom = 522.0
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/Card/Rows"]
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer3"]
-offset_top = 22.0
-offset_right = 372.0
-offset_bottom = 51.0
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/Card/Rows/HBoxContainer3"]
 size_flags_horizontal = 3
 text = "LANGUAGE"
+vertical_alignment = 1
 
-[node name="LanguageOptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer3"]
-offset_left = 380.0
-offset_right = 620.0
-offset_bottom = 73.0
+[node name="LanguageOptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/VBoxContainer/Card/Rows/HBoxContainer3"]
 custom_minimum_size = Vector2( 240, 0 )
 text = "English"
 selected = 0
 script = ExtResource( 3 )
 
-[node name="CheckButton" type="CheckButton" parent="MarginContainer/VBoxContainer/VBoxContainer"]
-offset_top = -43.0
-offset_right = 620.0
-offset_bottom = -1.0
+[node name="DragRow" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/Card/Rows"]
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/Card/Rows/DragRow"]
+size_flags_horizontal = 3
 text = "CLICK_TO_MOVE"
+vertical_alignment = 1
+
+[node name="CheckButton" type="CheckButton" parent="MarginContainer/VBoxContainer/VBoxContainer/Card/Rows/DragRow"]
+size_flags_horizontal = 8
 
 [node name="ReturnButton" parent="MarginContainer/VBoxContainer" instance=ExtResource( 5 )]
-offset_left = 190.0
-offset_top = 787.0
-offset_right = 430.0
-offset_bottom = 860.0
+custom_minimum_size = Vector2( 240, 73 )
+size_flags_horizontal = 4
 text = "RETURN"
 
-[connection signal="on_changed" from="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VolumeSlider" to="." method="_on_VolumeSlider_on_changed"]
-[connection signal="on_changed" from="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2/VolumeSlider2" to="." method="_on_VolumeSlider_on_changed"]
-[connection signal="item_selected" from="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer3/LanguageOptionButton" to="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer3/LanguageOptionButton" method="_on_LanguageOptionButton_item_selected"]
+[connection signal="on_changed" from="MarginContainer/VBoxContainer/VBoxContainer/Card/Rows/HBoxContainer/VolumeSlider" to="." method="_on_VolumeSlider_on_changed"]
+[connection signal="on_changed" from="MarginContainer/VBoxContainer/VBoxContainer/Card/Rows/HBoxContainer2/VolumeSlider2" to="." method="_on_VolumeSlider_on_changed"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/VBoxContainer/Card/Rows/HBoxContainer3/LanguageOptionButton" to="MarginContainer/VBoxContainer/VBoxContainer/Card/Rows/HBoxContainer3/LanguageOptionButton" method="_on_LanguageOptionButton_item_selected"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ReturnButton" to="." method="_on_ReturnButton_pressed"]
-[connection signal="toggled" from="MarginContainer/VBoxContainer/VBoxContainer/CheckButton" to="." method="_on_DragModeCheckButton_toggled"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/VBoxContainer/Card/Rows/DragRow/CheckButton" to="." method="_on_DragModeCheckButton_toggled"]

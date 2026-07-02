@@ -19,7 +19,6 @@
 [ext_resource path="res://assets/fonts/Exo2SemiBold.tres" type="FontVariation" id=39]
 [ext_resource path="res://assets/music/Unlocated_Hell.mp3" type="AudioStream" id=21]
 [ext_resource path="res://assets/ui/city_bg.png" type="Texture2D" id=22]
-[ext_resource path="res://ui/drag_mode_option_button.tscn" type="PackedScene" id=23]
 [ext_resource path="res://board/attacker.tscn" type="PackedScene" id=24]
 [ext_resource path="res://units/unit.tscn" type="PackedScene" id=25]
 [ext_resource path="res://ui/defeat_screen.tscn" type="PackedScene" id=26]
@@ -643,19 +642,8 @@ mouse_filter = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 8
 
-[node name="DragModeOptionButton" parent="CanvasLayer/MarginContainer/Hud/MainRow/Controls" instance=ExtResource( 23 )]
-custom_minimum_size = Vector2( 72, 40 )
-theme_override_colors/font_color = Color( 0.86, 0.88, 0.9, 1 )
-theme_override_colors/font_hover_color = Color( 0.95, 0.82, 0.5, 1 )
-theme_override_colors/font_focus_color = Color( 0.86, 0.88, 0.9, 1 )
-theme_override_colors/font_pressed_color = Color( 0.95, 0.82, 0.5, 1 )
-theme_override_styles/focus = SubResource( 12 )
-theme_override_styles/hover = SubResource( 13 )
-theme_override_styles/pressed = SubResource( 14 )
-theme_override_styles/normal = SubResource( 12 )
-
 [node name="FastForwardButton" parent="CanvasLayer/MarginContainer/Hud/MainRow/Controls" instance=ExtResource( 38 )]
-custom_minimum_size = Vector2( 50, 40 )
+custom_minimum_size = Vector2( 46, 40 )
 theme_override_colors/font_hover_color = Color( 0.95, 0.82, 0.5, 1 )
 theme_override_styles/focus = SubResource( 12 )
 theme_override_styles/hover = SubResource( 13 )
@@ -673,18 +661,6 @@ theme_override_styles/hover = SubResource( 13 )
 theme_override_styles/pressed = SubResource( 14 )
 theme_override_styles/normal = SubResource( 12 )
 text = "II"
-
-[node name="GiveUpButton" parent="CanvasLayer/MarginContainer/Hud/MainRow/Controls" instance=ExtResource( 33 )]
-custom_minimum_size = Vector2( 92, 40 )
-theme_override_colors/font_color = Color( 0.86, 0.88, 0.9, 1 )
-theme_override_colors/font_hover_color = Color( 0.95, 0.82, 0.5, 1 )
-theme_override_colors/font_focus_color = Color( 0.86, 0.88, 0.9, 1 )
-theme_override_colors/font_pressed_color = Color( 0.95, 0.82, 0.5, 1 )
-theme_override_styles/focus = SubResource( 12 )
-theme_override_styles/hover = SubResource( 13 )
-theme_override_styles/pressed = SubResource( 14 )
-theme_override_styles/normal = SubResource( 12 )
-text = "GIVE_UP"
 
 [node name="CountersRow" type="HBoxContainer" parent="CanvasLayer/MarginContainer/Hud"]
 custom_minimum_size = Vector2( 0, 20 )
@@ -776,10 +752,8 @@ bus = "Music"
 [connection signal="tree_exiting" from="Board/PincerExecutor" to="Board/PincerExecutor" method="_on_PincerExecutor_tree_exiting"]
 [connection signal="timeout" from="Board/PincerExecutor/SkillActivationTimer" to="Board/PincerExecutor" method="_on_SkillActivationTimer_timeout"]
 [connection signal="timeout" from="Board/PincerExecutor/DeathAnimationTimer" to="Board/PincerExecutor" method="_on_DeathAnimationTimer_timeout"]
-[connection signal="drag_mode_changed" from="CanvasLayer/MarginContainer/Hud/MainRow/Controls/DragModeOptionButton" to="." method="_on_DragModeOptionButton_drag_mode_changed"]
 [connection signal="fast_forward_toggled" from="CanvasLayer/MarginContainer/Hud/MainRow/Controls/FastForwardButton" to="." method="_on_FastForwardButton_fast_forward_toggled"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/Hud/MainRow/Controls/PauseButton" to="." method="_on_PauseButton_pressed"]
-[connection signal="pressed" from="CanvasLayer/MarginContainer/Hud/MainRow/Controls/GiveUpButton" to="." method="_on_GiveUpButton_pressed"]
 [connection signal="quit_button_pressed" from="CanvasLayer/DefeatScreen" to="." method="_on_DefeatScreen_quit_button_pressed"]
 [connection signal="try_again_button_pressed" from="CanvasLayer/DefeatScreen" to="." method="_on_DefeatScreen_try_again_button_pressed"]
 [connection signal="continue_button_pressed" from="CanvasLayer/VictoryScreen" to="." method="_on_VictoryScreen_continue_button_pressed"]

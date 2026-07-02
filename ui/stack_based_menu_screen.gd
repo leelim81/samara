@@ -37,6 +37,18 @@ func on_load() -> void:
 	print("%s loaded" % [name])
 	
 	_restore_focus(self)
+	
+	_play_enter_animation()
+
+
+# Soft content fade so screens land gently after the loader fade lifts
+func _play_enter_animation() -> void:
+	modulate.a = 0.0
+	
+	var tween := create_tween()
+	tween.tween_property(self, "modulate:a", 1.0, 0.18) \
+			.set_trans(Tween.TRANS_SINE) \
+			.set_ease(Tween.EASE_OUT)
 
 
 # Disables focus from all the buttons in the scene, recursively

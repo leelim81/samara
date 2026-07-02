@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://theme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/fonts/Exo2-Regular.ttf" type="FontFile" id=2]
@@ -14,6 +14,18 @@ blend_mode = 1
 
 [sub_resource type="Curve" id=3]
 _data = [ Vector2( 0, 0.985227 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -3.22727, 0.0, 0, 0 ]
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.16, 0.185, 0.225, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.753, 0.627, 0.384, 0.8 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0.122, 0.141, 0.173, 0.96 )
@@ -39,21 +51,22 @@ script = ExtResource( 4 )
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color(0.082, 0.094, 0.114, 0.95)
+color = Color(0.082, 0.094, 0.114, 0.97)
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 material = SubResource( 2 )
-position = Vector2( 352, 240 )
-scale = Vector2( 0.5, 0.5 )
-amount = 16
+position = Vector2( 360, 165 )
+scale = Vector2( 0.42, 0.42 )
+amount = 14
 texture = ExtResource( 3 )
 emission_shape = 2
-emission_rect_extents = Vector2( 320, 16 )
-spread = 180.0
-gravity = Vector2( 0, -30 )
-initial_velocity = 120.0
+emission_rect_extents = Vector2( 300, 12 )
+direction = Vector2( 0, -1 )
+spread = 60.0
+gravity = Vector2( 0, -26 )
+initial_velocity = 70.0
 scale_amount_curve = SubResource( 3 )
-color = Color( 1, 0.498039, 0.309804, 1 )
+color = Color( 0.86, 0.72, 0.42, 1 )
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_right = 1.0
@@ -143,7 +156,7 @@ horizontal_alignment = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color( 0.863, 0.878, 0.894, 0.6 )
 theme_override_font_sizes/font_size = 20
-text = "DRAG TIME"
+text = "TIME"
 [node name="Value" type="Label" parent="MarginContainer/VBoxContainer/ResultsPanel/Margin/Rows/TimeRow"]
 theme_override_colors/font_color = Color( 0.863, 0.878, 0.894, 0.6 )
 theme_override_font_sizes/font_size = 20
@@ -154,8 +167,9 @@ horizontal_alignment = 2
 size_flags_vertical = 3
 
 [node name="ContinueButton" parent="MarginContainer/VBoxContainer" instance=ExtResource( 5 )]
-custom_minimum_size = Vector2( 240, 73 )
+custom_minimum_size = Vector2( 260, 73 )
 size_flags_horizontal = 4
+theme_override_styles/normal = SubResource( 5 )
 text = "CONTINUE"
 
 [node name="CountAudio" type="AudioStreamPlayer" parent="."]

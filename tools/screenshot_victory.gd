@@ -46,6 +46,21 @@ func _run() -> void:
 
 	board.emit_signal("victory")
 
+	# SceneTreeTimers don't tick reliably under the --script harness, so the
+	# game's 1.5s "let the death dissolve finish" await can hang here. Give it
+	# 100 frames, then force the overlay like _on_Board_victory would.
+	var victory_screen = battle.get_node("CanvasLayer/VictoryScreen")
+
+	for i in 100:
+		await process_frame
+
+		if victory_screen.visible:
+			break
+
+	if not victory_screen.visible:
+		victory_screen.show()
+		victory_screen.focus_default_button()
+
 	var shot := 0
 
 	for i in 200:

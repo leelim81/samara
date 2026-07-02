@@ -55,6 +55,10 @@ func _ready() -> void:
 	_build_pause_menu()
 	_bind_squad_icons()
 
+	# Apply the saved drag mode from settings. The in-battle switcher is gone,
+	# and the old OptionButton never emitted on its initial select() anyway.
+	$Board.update_drag_mode(GameData.save_data.drag_mode)
+
 	if not $Board.spoils_changed.is_connected(_on_spoils_changed):
 		$Board.spoils_changed.connect(_on_spoils_changed)
 
@@ -183,26 +187,50 @@ func _on_VictoryScreen_continue_button_pressed() -> void:
 	$Board.award_exp_to_squad()
 
 	# Mark this chapter cleared and unlock the next one in the story list.
+	# Story recruitment happens inside clear_chapter_and_unlock_next; remember
+	# the roster size so newly joined heroes can be announced.
+	var jobs_before: int = GameData.save_data.jobs.size()
+
 	if chapter_data != null and chapter_data is ChapterData:
 		GameData.save_data.clear_chapter_and_unlock_next(chapter_data.title)
 
 	GameData.save()
 
+	var joined_names: Array = []
+
+	for i in range(jobs_before, GameData.save_data.jobs.size()):
+		joined_names.push_back(tr(GameData.save_data.jobs[i].job_name))
+
+	if joined_names.is_empty():
+		_go_to_next_scene()
+	else:
+		_show_new_ally_dialog(joined_names)
+
+
+func _go_to_next_scene() -> void:
 	if Loader.change_scene_to_file(next_scene, chapter_data) != OK:
 		printerr("Failed to change to %s" % next_scene)
 
 
-func _on_GiveUpButton_pressed() -> void:
-	# Route Give Up through the pause menu so it needs confirmation.
-	_open_pause_menu()
+# Announce story joins before leaving the battle, so the recruitment drip is
+# a visible reward and not a silent roster change.
+func _show_new_ally_dialog(joined_names: Array) -> void:
+	var dialog := AcceptDialog.new()
+
+	dialog.title = "New Ally" if joined_names.size() == 1 else "New Allies"
+	dialog.dialog_text = "Joined Outer Heaven:\n\n" + "\n".join(joined_names)
+	dialog.ok_button_text = "Continue"
+	dialog.exclusive = true
+
+	dialog.confirmed.connect(_go_to_next_scene)
+	dialog.canceled.connect(_go_to_next_scene)
+
+	add_child(dialog)
+	dialog.popup_centered()
 
 
 func _on_PauseButton_pressed() -> void:
 	_open_pause_menu()
-
-
-func _on_DragModeOptionButton_drag_mode_changed(drag_mode: int) -> void:
-	$Board.update_drag_mode(drag_mode)
 
 
 func _on_FastForwardButton_fast_forward_toggled(enabled: bool) -> void:
@@ -367,8 +395,36 @@ func _bind_squad_icons() -> void:
 			icon.texture = job.portrait
 			icon.modulate = Color.WHITE
 			icon.visible = true
+			_frame_squad_icon(icon)
 		else:
 			icon.visible = false
+
+
+# Raw portrait crops read as noise at 26px; a dark plate with a faint gold
+# rim turns each one into a deliberate chip on the HUD bar.
+func _frame_squad_icon(icon: TextureRect) -> void:
+	if icon.has_node("Plate"):
+		return
+
+	var plate := Panel.new()
+	plate.name = "Plate"
+	plate.show_behind_parent = true
+	plate.anchor_right = 1.0
+	plate.anchor_bottom = 1.0
+	plate.offset_left = -2.0
+	plate.offset_top = -2.0
+	plate.offset_right = 2.0
+	plate.offset_bottom = 2.0
+	plate.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+	var style := StyleBoxFlat.new()
+	style.bg_color = Color(0.055, 0.065, 0.085, 0.9)
+	style.set_border_width_all(1)
+	style.border_color = Color(0.753, 0.627, 0.384, 0.4)
+	style.set_corner_radius_all(6)
+	plate.add_theme_stylebox_override("panel", style)
+
+	icon.add_child(plate)
 
 
 func _refresh_squad_icon_states() -> void:
@@ -398,11 +454,14 @@ func _build_pause_menu() -> void:
 	_pause_overlay.anchor_right = 1.0
 	_pause_overlay.anchor_bottom = 1.0
 	_pause_overlay.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+	# The CanvasLayer breaks theme propagation from the Battle root, so the
+	# overlay needs the game theme set explicitly.
+	_pause_overlay.theme = load("res://theme.tres")
 	_pause_overlay.hide()
 	layer.add_child(_pause_overlay)
 
 	var dim := ColorRect.new()
-	dim.color = Color(0.05, 0.06, 0.09, 0.72)
+	dim.color = Color(0.03, 0.04, 0.06, 0.85)
 	dim.anchor_right = 1.0
 	dim.anchor_bottom = 1.0
 	dim.mouse_filter = Control.MOUSE_FILTER_STOP
@@ -413,31 +472,66 @@ func _build_pause_menu() -> void:
 	center.anchor_bottom = 1.0
 	_pause_overlay.add_child(center)
 
+	var panel := PanelContainer.new()
+	var card := StyleBoxFlat.new()
+	card.bg_color = Color(0.122, 0.141, 0.173, 0.97)
+	card.set_border_width_all(1)
+	card.border_color = Color(0.753, 0.627, 0.384, 0.55)
+	card.set_corner_radius_all(14)
+	card.shadow_color = Color(0, 0, 0, 0.35)
+	card.shadow_size = 18
+	card.content_margin_left = 48.0
+	card.content_margin_right = 48.0
+	card.content_margin_top = 36.0
+	card.content_margin_bottom = 40.0
+	panel.add_theme_stylebox_override("panel", card)
+	center.add_child(panel)
+
 	var vbox := VBoxContainer.new()
-	vbox.add_theme_constant_override("separation", 20)
-	center.add_child(vbox)
+	vbox.add_theme_constant_override("separation", 18)
+	panel.add_child(vbox)
 
 	var title := Label.new()
 	title.text = "PAUSED"
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	title.add_theme_font_size_override("font_size", 44)
-	title.add_theme_color_override("font_color", Color(0.96, 0.95, 0.9))
+	title.add_theme_font_override("font", load("res://assets/fonts/CinzelDecorativeBold.tres"))
+	title.add_theme_font_size_override("font_size", 38)
+	title.add_theme_color_override("font_color", Color(0.92, 0.9, 0.84))
 	vbox.add_child(title)
 
-	var resume := _make_pause_button("RESUME")
+	var rule := ColorRect.new()
+	rule.color = Color(0.753, 0.627, 0.384, 0.4)
+	rule.custom_minimum_size = Vector2(0, 1)
+	vbox.add_child(rule)
+
+	var spacer := Control.new()
+	spacer.custom_minimum_size = Vector2(0, 4)
+	vbox.add_child(spacer)
+
+	var resume := _make_pause_button("RESUME", true)
 	resume.pressed.connect(_on_pause_resume)
 	vbox.add_child(resume)
 
-	var give_up := _make_pause_button("GIVE UP")
+	var give_up := _make_pause_button("GIVE UP", false)
+	give_up.add_theme_color_override("font_color", Color(0.85, 0.48, 0.42))
 	give_up.pressed.connect(_on_pause_give_up)
 	vbox.add_child(give_up)
 
 
-func _make_pause_button(label: String) -> Button:
+func _make_pause_button(label: String, primary: bool) -> Button:
 	var button := Button.new()
 	button.text = label
-	button.custom_minimum_size = Vector2(260, 64)
-	button.add_theme_font_size_override("font_size", 22)
+	button.custom_minimum_size = Vector2(280, 62)
+	button.add_theme_font_size_override("font_size", 21)
+
+	if primary:
+		var style := StyleBoxFlat.new()
+		style.bg_color = Color(0.16, 0.185, 0.225, 1)
+		style.set_border_width_all(1)
+		style.border_color = Color(0.753, 0.627, 0.384, 0.8)
+		style.set_corner_radius_all(10)
+		button.add_theme_stylebox_override("normal", style)
+
 	return button
 
 

@@ -39,11 +39,6 @@ func _on_StartButton_pressed() -> void:
 	change_scene_to_file("res://ui/pre_battle_menu/stack_based_pre_battle_menu.tscn")
 
 
-func _on_ContinueButton_pressed() -> void:
-	# TODO: Load data
-	pass # Replace with function body.
-
-
 func _on_SettingsButton_pressed() -> void:
 	_last_active_button = $MarginContainer/VBoxContainer2/VBoxContainer/SettingsButton
 	

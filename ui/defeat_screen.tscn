@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://ui/defeat_screen.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/Exo2-Regular.ttf" type="FontFile" id=2]
@@ -10,6 +10,30 @@
 size = 64
 font_data = ExtResource( 2 )
 
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.16, 0.185, 0.225, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.753, 0.627, 0.384, 0.8 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Gradient" id=3]
+offsets = PackedFloat32Array( 0, 0.55, 1 )
+colors = PackedColorArray( 0.35, 0.11, 0.08, 0.22, 0.16, 0.06, 0.05, 0.08, 0, 0, 0, 0 )
+
+[sub_resource type="GradientTexture2D" id=4]
+gradient = SubResource( 3 )
+width = 720
+height = 960
+fill = 1
+fill_from = Vector2( 0.5, 0.32 )
+fill_to = Vector2( 0.5, 1.05 )
+
 [node name="DefeatScreen" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -20,6 +44,14 @@ script = ExtResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color(0.082, 0.094, 0.114, 0.95)
+
+[node name="RedWash" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = SubResource( 4 )
+expand = true
+stretch_mode = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_right = 1.0
@@ -54,6 +86,9 @@ offset_left = 190.0
 offset_top = 698.0
 offset_right = 430.0
 offset_bottom = 771.0
+custom_minimum_size = Vector2( 260, 73 )
+size_flags_horizontal = 4
+theme_override_styles/normal = SubResource( 2 )
 text = "TRY_AGAIN"
 
 [node name="QuitButton" parent="MarginContainer/VBoxContainer" instance=ExtResource( 4 )]
@@ -61,7 +96,9 @@ offset_left = 190.0
 offset_top = 787.0
 offset_right = 430.0
 offset_bottom = 860.0
-text = "QUIT"
+custom_minimum_size = Vector2( 260, 73 )
+size_flags_horizontal = 4
+text = "RETURN"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/TryAgainButton" to="." method="_on_TryAgainButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]

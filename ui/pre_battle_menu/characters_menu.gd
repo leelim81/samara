@@ -10,7 +10,7 @@ extends StackBasedMenuScreen
 
 @onready var _list_container: VBoxContainer = $MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer
 @onready var _header_label: Label = $MarginContainer/VBoxContainer/HeaderLabel
-@onready var _sort_option: OptionButton = $MarginContainer/VBoxContainer/SortOption
+@onready var _sort_option: OptionButton = $MarginContainer/VBoxContainer/SortRow/SortOption
 
 # Sort keys (Terra Battle sorts the collection by these).
 enum _Sort { LEVEL, HP, ATK, DEF, MATK, MDEF }

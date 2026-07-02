@@ -44,7 +44,7 @@ GAUGE_TRACK_RIM= (92, 106, 122)
 GRID_LINE      = (208, 222, 230, 28)
 GRID_FRAME     = (90, 200, 168, 75)
 PLATE_DARK     = (11, 14, 20, 235)
-PLATE_RIM      = (150, 170, 200, 140)
+PLATE_RIM      = (206, 118, 92, 170)  # warm vermilion rim: countdown = enemy signal
 
 
 def _save(img, name, size):
@@ -186,6 +186,41 @@ def countdown_plate(name, px=44):
     _save(img, name, (px, px))
 
 
+# --- sword weapon glyph (white silhouette, 128px like gun/spear/staff) ------
+def sword_glyph(name, px=128):
+    """The stock TB sword is a bare blade that reads as a white bar at HUD
+    size; give it a crossguard, grip and pommel so the silhouette says
+    "sword" at 27px."""
+    s = (px * SS, px * SS)
+    img = Image.new("RGBA", s, (0, 0, 0, 0))
+    d = ImageDraw.Draw(img)
+    W = (255, 255, 255, 255)
+    cx = s[0] // 2
+    u = SS  # 1 target px
+
+    # Tapered blade: tip at top, shoulders at the guard
+    tip_y, guard_y = 8 * u, 76 * u
+    half_w = 11 * u
+    d.polygon([
+        (cx, tip_y),
+        (cx + half_w, tip_y + 26 * u),
+        (cx + half_w, guard_y),
+        (cx - half_w, guard_y),
+        (cx - half_w, tip_y + 26 * u),
+    ], fill=W)
+    # Fuller (blood groove) carved out of the blade
+    d.line([(cx, tip_y + 14 * u), (cx, guard_y - 6 * u)], fill=(0, 0, 0, 0), width=3 * u)
+    # Crossguard: rounded horizontal bar
+    d.rounded_rectangle([cx - 30 * u, guard_y, cx + 30 * u, guard_y + 10 * u],
+                        radius=5 * u, fill=W)
+    # Grip
+    d.rounded_rectangle([cx - 5 * u, guard_y + 10 * u, cx + 5 * u, guard_y + 32 * u],
+                        radius=3 * u, fill=W)
+    # Pommel
+    d.ellipse([cx - 9 * u, guard_y + 30 * u, cx + 9 * u, guard_y + 48 * u], fill=W)
+    _save(img, name, (px, px))
+
+
 # --- attribute corner triangle (white, tinted in code) ----------------------
 def attr_triangle(name, px=16):
     s = (px * SS, px * SS)
@@ -222,6 +257,7 @@ def main():
     grid("grid.png")
     vignette("battle_vignette.png")
     countdown_plate("countdown_plate.png")
+    sword_glyph("sword.png")
     attr_triangle("attr_triangle.png")
     chevron("chevron_marker.png")
     print("Done.")

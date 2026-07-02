@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://csquadmenu01"]
+[gd_scene load_steps=14 format=3 uid="uid://csquadmenu01"]
 
 [ext_resource type="Theme" path="res://theme.tres" id="1_theme"]
 [ext_resource type="StyleBox" path="res://assets/ui/btn_dark_normal.tres" id="8_btnn"]
@@ -10,6 +10,17 @@
 [ext_resource type="PackedScene" path="res://ui/audio_button.tscn" id="5_button"]
 [ext_resource type="FontFile" path="res://assets/fonts/EBGaramond24.tres" id="6_title"]
 [ext_resource type="FontFile" path="res://assets/fonts/Exo2Regular18.tres" id="7_desc"]
+
+[sub_resource type="StyleBoxFlat" id="nameedit"]
+content_margin_left = 12.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+bg_color = Color(0.122, 0.141, 0.173, 0.9)
+border_width_bottom = 2
+border_color = Color(0.753, 0.627, 0.384, 0.7)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
 
 [sub_resource type="Gradient" id="grad"]
 offsets = PackedFloat32Array(0, 1)
@@ -82,6 +93,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.863, 0.878, 0.894, 1)
 theme_override_colors/font_placeholder_color = Color(0.604, 0.64, 0.667, 1)
+theme_override_styles/normal = SubResource("nameedit")
 max_length = 10
 alignment = 1
 placeholder_text = "SQUAD NAME"

@@ -2,7 +2,7 @@ extends StackBasedMenuScreen
 
 
 @onready var _return_button: Button = $MarginContainer/VBoxContainer/ReturnButton
-@onready var _drag_mode_check: CheckButton = $MarginContainer/VBoxContainer/VBoxContainer/CheckButton
+@onready var _drag_mode_check: CheckButton = $MarginContainer/VBoxContainer/VBoxContainer/Card/Rows/DragRow/CheckButton
 
 
 func on_load() -> void:

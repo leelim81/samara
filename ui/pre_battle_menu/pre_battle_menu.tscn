@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://theme.tres" type="Theme" id=1]
 [ext_resource path="res://ui/pre_battle_menu/pre_battle_menu.gd" type="Script" id=2]
 [ext_resource path="res://ui/pre_battle_menu/battle_button_container.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ui/audio_button.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/fonts/EBGaramond24.tres" type="FontFile" id=5]
 
 [node name="PreBattleMenu" type="Control"]
 anchor_right = 1.0
@@ -30,23 +31,33 @@ offset_left = 50.0
 offset_top = 50.0
 offset_right = 670.0
 offset_bottom = 910.0
+theme_override_constants/separation = 12
 alignment = 1
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 offset_right = 620.0
 offset_bottom = 64.0
-custom_minimum_size = Vector2( 0, 64 )
+theme_override_colors/font_color = Color(0.863, 0.878, 0.894, 1)
+theme_override_fonts/font = ExtResource( 5 )
+theme_override_font_sizes/font_size = 42
 text = "BATTLES"
 horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
-offset_top = 72.0
-offset_right = 620.0
-offset_bottom = 779.0
-size_flags_horizontal = 3
+[node name="TitleRule" type="ColorRect" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2( 280, 1 )
+size_flags_horizontal = 4
+color = Color( 0.753, 0.627, 0.384, 0.55 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]
 size_flags_vertical = 3
+horizontal_scroll_mode = 0
 
-[node name="BattleButtonContainer" parent="MarginContainer/VBoxContainer/VBoxContainer2" instance=ExtResource( 3 )]
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer"]
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="BattleButtonContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer2" instance=ExtResource( 3 )]
 offset_left = 22.0
 offset_right = 597.0
 
