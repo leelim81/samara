@@ -3,22 +3,24 @@ extends Control
 # Chapter data with scene title
 # Set by Loader in on_instance(), but exported to be able to test this scene
 # locally
-@export var chapter_data: Resource 
+@export var chapter_data: Resource
 
 @export var text_label_packed_scene: PackedScene
 
 # Next scene
 @export var dialogue_scene_path: String # (String, FILE, "*.tscn")
 
-@export var new_character_every_x_seconds: float = 0.0
-
 @export var title_suffix: String = ""
+
+# TB/FF-style narration: each block fades in as a whole, and pages cross-fade,
+# instead of a per-character typewriter. The typewriter read as jarring on the
+# big centred italic block.
+@export var fade_in_seconds: float = 0.9
+@export var fade_out_seconds: float = 0.5
 
 var _current_page: int = 0
 var _current_paragraph: int = 0
 var _current_label: Label
-
-var _accumulated_time_seconds: float = 0
 
 # Array<Array>
 var _pages: Array
@@ -27,29 +29,26 @@ var _is_local: bool = true
 
 var _is_dialogue_skipped: bool = false
 
+var _tween: Tween
+var _is_fading_in: bool = false
+
 @onready var _text_container: VBoxContainer = $MarginContainer/VBoxContainer/TextVBoxContainer
 
 
 func _ready() -> void:
-	set_process(false)
-	
 	_free_container_children()
-	
+
 	_read_pages()
-	
+
 	if _is_local and not _pages.is_empty():
 		_start_showing_text()
 
 
-func _process(delta: float) -> void:
-	_slowly_make_text_visible(delta, _current_label)
-
-
 func on_instance(data: Object) -> void:
 	assert(data is ChapterData)
-	
+
 	chapter_data = data
-	
+
 	_is_local = false
 
 
@@ -85,51 +84,55 @@ func _read_pages() -> void:
 
 func _add_page(key: String) -> void:
 	var page: String = tr(key)
-	
+
 	var lines: Array = page.split("\n", true) # Allow empty
-	
+
 	_pages.push_back(lines)
 
 
 func _start_showing_text() -> void:
 	_set_parameters_from_chapter_data()
-	
+
 	_show_next_paragraph()
 
 
 func _show_next_paragraph() -> void:
 	var paragraph: String = _pages[_current_page][_current_paragraph]
-	
+
 	if paragraph.is_empty():
 		# If empty, adds an empty label so that it serves as a line break
-		_current_label = text_label_packed_scene.instantiate()
-		_current_label.text = ""
-		_current_label.visible_ratio = 1
-		
-		_text_container.add_child(_current_label)
-		
+		var spacer: Label = text_label_packed_scene.instantiate()
+		spacer.text = ""
+
+		_text_container.add_child(spacer)
+
 		# Note: Potentially recursive call
 		_advance_to_next_paragraph()
 	else:
 		_current_label = text_label_packed_scene.instantiate()
 		_current_label.text = tr(paragraph)
-		_current_label.visible_ratio = 0
-		
+		_current_label.modulate.a = 0.0
+
 		_text_container.add_child(_current_label)
-		
-		set_process(true)
+
+		_fade_in_current_label()
 
 
-# Increases percent visible of the given label. When it is >= 1 it is set to 1.0
-func _slowly_make_text_visible(delta: float, label: Label) -> void:
-	_accumulated_time_seconds += delta
-	
-	if _accumulated_time_seconds > new_character_every_x_seconds:
-		label.visible_characters += 1
-		_accumulated_time_seconds = 0
-	
-	if label.visible_ratio >= 1:
-		_set_text_fully_visible()
+# Fades the current block in as a whole (TB/FF narration style).
+func _fade_in_current_label() -> void:
+	_is_fading_in = true
+
+	_kill_tween()
+
+	_tween = create_tween()
+	_tween.tween_property(_current_label, "modulate:a", 1.0, fade_in_seconds) \
+			.set_trans(Tween.TRANS_SINE) \
+			.set_ease(Tween.EASE_IN_OUT)
+	_tween.tween_callback(_on_fade_in_finished)
+
+
+func _on_fade_in_finished() -> void:
+	_is_fading_in = false
 
 
 func _input(event: InputEvent) -> void:
@@ -149,22 +152,27 @@ func _evaluate_input(event: InputEvent) -> void:
 func _on_press_ui_select() -> void:
 	if _current_label == null:
 		return
-	
-	if _current_label.visible_ratio >= 1:
-		_advance_to_next_paragraph()
+
+	if _is_fading_in:
+		# First tap snaps the fading-in block fully visible...
+		_finish_fade_in()
 	else:
-		_set_text_fully_visible()
+		# ...the next tap advances to the following block.
+		_advance_to_next_paragraph()
 
 
-func _set_text_fully_visible() -> void:
-	_current_label.visible_ratio = 1
-	
-	set_process(false)
+func _finish_fade_in() -> void:
+	_kill_tween()
+
+	if _current_label != null:
+		_current_label.modulate.a = 1.0
+
+	_is_fading_in = false
 
 
 func _advance_to_next_paragraph() -> void:
 	_current_paragraph += 1
-	
+
 	if _current_paragraph >= _pages[_current_page].size():
 		_advance_to_next_page()
 	else:
@@ -174,38 +182,65 @@ func _advance_to_next_paragraph() -> void:
 func _advance_to_next_page() -> void:
 	_current_page += 1
 	_current_paragraph = 0
-	
+
 	if _current_page >= _pages.size():
 		_skip_dialogue()
 	else:
-		_free_container_children()
-		
-		_show_next_paragraph()
+		_fade_out_and_show_next_page()
+
+
+# Fades the current block out before the next page fades in, so pages
+# cross-fade instead of hard-cutting.
+func _fade_out_and_show_next_page() -> void:
+	_is_fading_in = false
+
+	_kill_tween()
+
+	_tween = create_tween()
+	_tween.tween_property(_text_container, "modulate:a", 0.0, fade_out_seconds) \
+			.set_trans(Tween.TRANS_SINE)
+	_tween.tween_callback(_show_next_page)
+
+
+func _show_next_page() -> void:
+	_free_container_children()
+
+	_text_container.modulate.a = 1.0
+
+	_show_next_paragraph()
 
 
 # Frees any default or test text containers that you may have added
 func _free_container_children() -> void:
 	for child in _text_container.get_children():
+		_text_container.remove_child(child)
 		child.queue_free()
 
 
 func _skip_dialogue() -> void:
 	if not _is_dialogue_skipped:
 		_is_dialogue_skipped = true
-		
+
+		_kill_tween()
+
 		if Loader.change_scene_to_file(dialogue_scene_path, chapter_data) != OK:
 			printerr("Failed to change scene")
-		
-		set_process(false)
+
+
+func _kill_tween() -> void:
+	if _tween != null and _tween.is_valid():
+		_tween.kill()
+
+	_tween = null
 
 
 func _set_parameters_from_chapter_data() -> void:
 	if chapter_data.dialogue_background != null:
 		$Background.texture = chapter_data.dialogue_background
-	
+
 	if chapter_data.dialogue_audio_stream != null:
 		$AudioStreamPlayer.stream = chapter_data.dialogue_audio_stream
-		
+
 		$AudioStreamPlayer.play()
 
 
