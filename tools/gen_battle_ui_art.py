@@ -35,6 +35,8 @@ TILE_BOT       = (26, 32, 41)
 TILE_RIM       = (140, 158, 170, 95)
 HP_TOP         = (104, 200, 150)
 HP_BOT         = (52, 148, 108)
+HP_ENEMY_TOP   = (238, 122, 88)
+HP_ENEMY_BOT   = (176, 58, 38)
 HP_TRACK       = (15, 21, 28)
 HP_TRACK_RIM   = (44, 56, 70)
 GOLD_TOP       = (255, 226, 134)
@@ -221,6 +223,34 @@ def sword_glyph(name, px=128):
     _save(img, name, (px, px))
 
 
+# --- outlined weapon badges (battle-card overlays, TB-style spill-out) ------
+def weapon_badges():
+    """TB's card weapon icons overhang the tile and survive any backdrop
+    because they carry a dark outline. Build <name>_badge.png from each base
+    glyph: near-black dilated outline + soft shadow under the white glyph.
+    Regenerates from the plain glyphs, so re-running never fattens the rim."""
+    for name in ("sword", "gun", "spear", "staff"):
+        src = os.path.join(TERRA, "%s.png" % name)
+        glyph = Image.open(src).convert("RGBA")
+        alpha = glyph.split()[3]
+
+        # Outline = alpha dilated a few px, painted dark
+        rim = alpha.filter(ImageFilter.MaxFilter(7))
+        outline = Image.new("RGBA", glyph.size, (0, 0, 0, 0))
+        outline.paste((16, 18, 24, 255), mask=rim)
+
+        # Soft drop shadow for lift off busy art
+        shadow = Image.new("RGBA", glyph.size, (0, 0, 0, 0))
+        shadow.paste((0, 0, 0, 140), mask=rim)
+        shadow = shadow.filter(ImageFilter.GaussianBlur(4))
+
+        img = Image.new("RGBA", glyph.size, (0, 0, 0, 0))
+        img.alpha_composite(shadow, (2, 3))
+        img.alpha_composite(outline)
+        img.alpha_composite(glyph)
+        _save(img, "%s_badge.png" % name, glyph.size)
+
+
 # --- drag-mode gesture glyphs (assets/ui/, white, tinted at use sites) ------
 def _save_abs(img, abspath, size):
     """Like _save but for files outside assets/terra/ui/."""
@@ -292,7 +322,9 @@ def main():
     border("boss_border.png", 98, 16, BOSS_GOLD, BOSS_GOLD_HI)
     border("boss_border_2x2.png", 196, 30, BOSS_GOLD, BOSS_GOLD_HI)
     bar("hp_bar_fill.png", (104, 8), HP_TOP, HP_BOT)
+    bar("hp_bar_fill_enemy.png", (104, 8), HP_ENEMY_TOP, HP_ENEMY_BOT)
     bar("hp_bar_bg.png", (104, 8), HP_TRACK, HP_TRACK, rim=HP_TRACK_RIM)
+    weapon_badges()
     bar("bar_fill.png", (119, 16), GOLD_TOP, GOLD_BOT)
     bar("bar_bg.png", (119, 16), GAUGE_TRACK, GAUGE_TRACK, rim=GAUGE_TRACK_RIM)
     grid("grid.png")

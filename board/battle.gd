@@ -21,7 +21,7 @@ var _progress_tween: Tween
 var _view_unit_menu_tween: Tween
 
 @onready var _progress_bar: TextureProgressBar = $CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock/TimerRow/MoveTimer
-@onready var _your_turn_label: Label = $CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock/TimerRow/YourTurnLabel
+@onready var _your_turn_label: Label = $CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock/TimerRow/MoveTimer/YourTurnLabel
 
 # Live battle-spoils HUD (built programmatically; see _build_live_hud).
 var _wave_label: Label
@@ -86,20 +86,6 @@ func on_instance(data: Object) -> void:
 	chapter_data = data
 
 
-func _update_turn_count() -> void:
-	var label: Label = $CanvasLayer/MarginContainer/Hud/MainRow/TurnBlock/TurnCountLabel
-
-	label.text = "%d" % _player_turn_count
-
-	label.pivot_offset = label.size / 2.0
-	label.scale = Vector2(1.35, 1.35)
-
-	var pop_tween := create_tween()
-	pop_tween.tween_property(label, "scale", Vector2.ONE, 0.35) \
-			.set_trans(Tween.TRANS_BACK) \
-			.set_ease(Tween.EASE_OUT)
-
-
 ## Signals
 
 func _on_Board_drag_timer_started(timer: Timer) -> void:
@@ -130,9 +116,8 @@ func _on_Board_drag_timer_reset() -> void:
 
 
 func _on_Board_player_turn_started() -> void:
+	# Kept for the victory-screen stats; TB's HUD shows no turn counter.
 	_player_turn_count += 1
-
-	_update_turn_count()
 
 	_your_turn_label.visible = true
 	_refresh_squad_icon_states()
@@ -323,46 +308,72 @@ func _on_ViewUnitMenu_go_back(view_unit_menu: Control) -> void:
 # ---- Live spoils HUD (Terra Battle battle HUD parity) ----
 
 func _build_live_hud() -> void:
-	# Terra Battle shows coin / exp / KO counters across the top-center, each as
-	# a small icon followed by a number; CountersRow holds them centered.
-	var box: HBoxContainer = $CanvasLayer/MarginContainer/Hud/CountersRow
+	# Terra Battle stacks the spoils in the HUD middle as two columns:
+	# coins over "EXP n" on the left, defeated-count on the right. Build the
+	# same shape into CountersBlock.
+	var block: HBoxContainer = $CanvasLayer/MarginContainer/Hud/MainRow/CountersBlock
 	var icons: Texture2D = load("res://assets/terra/ui/ui_icons.png")
 
-	# 64px atlas cells: coins(64,128) · sparkle/exp(0,128) · skull/KO(192,128).
-	# Semantic icon tints (gold / jade / seal-red) make the row readable on the
-	# dark bar and tell the three apart at a glance.
-	_coins_label = _make_counter(box, icons, Rect2(64, 128, 64, 64), Color(0.86, 0.72, 0.42))
-	_exp_label = _make_counter(box, icons, Rect2(0, 128, 64, 64), Color(0.46, 0.8, 0.68))
-	_ko_label = _make_counter(box, icons, Rect2(192, 128, 64, 64), Color(0.85, 0.46, 0.4))
+	var col_a := VBoxContainer.new()
+	col_a.add_theme_constant_override("separation", 6)
+	col_a.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	block.add_child(col_a)
+
+	var col_b := VBoxContainer.new()
+	col_b.add_theme_constant_override("separation", 6)
+	col_b.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	block.add_child(col_b)
+
+	# 64px atlas cells: coins(64,128) · skull/KO(192,128). EXP is a text
+	# prefix like TB's "EXP 720" row.
+	_coins_label = _make_counter_row(col_a, _atlas_icon(icons, Rect2(64, 128, 64, 64), Color(0.86, 0.72, 0.42)), "")
+	_exp_label = _make_counter_row(col_a, null, "EXP")
+	_ko_label = _make_counter_row(col_b, _atlas_icon(icons, Rect2(192, 128, 64, 64), Color(0.85, 0.46, 0.4)), "")
 	# Wave is shown in the enemy-phase banner; keep a standalone label so the
-	# phase code can still set it without cluttering the 3-counter row.
+	# phase code can still set it without cluttering the HUD.
 	_wave_label = Label.new()
 
 	_update_live_hud()
 
 
-func _make_counter(box: HBoxContainer, atlas_tex: Texture2D, region: Rect2, tint: Color) -> Label:
-	var hb := HBoxContainer.new()
-	hb.add_theme_constant_override("separation", 4)
-	hb.mouse_filter = Control.MOUSE_FILTER_IGNORE
-
+func _atlas_icon(atlas_tex: Texture2D, region: Rect2, tint: Color) -> TextureRect:
 	var icon := TextureRect.new()
 	var at := AtlasTexture.new()
 	at.atlas = atlas_tex
 	at.region = region
 	icon.texture = at
-	icon.custom_minimum_size = Vector2(17, 17)
+	icon.custom_minimum_size = Vector2(18, 18)
 	icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	icon.modulate = tint
 	icon.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	hb.add_child(icon)
+	return icon
+
+
+# One HUD spoils row: an icon OR a small text prefix (e.g. "EXP"), then the
+# white value label that gets updated live. Returns the value label.
+func _make_counter_row(box: VBoxContainer, icon: TextureRect, prefix: String) -> Label:
+	var hb := HBoxContainer.new()
+	hb.add_theme_constant_override("separation", 6)
+	hb.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+	if icon != null:
+		hb.add_child(icon)
+
+	if not prefix.is_empty():
+		var prefix_label := Label.new()
+		prefix_label.text = prefix
+		prefix_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		prefix_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		prefix_label.add_theme_font_size_override("font_size", 13)
+		prefix_label.add_theme_color_override("font_color", Color(0.86, 0.72, 0.42, 1))
+		hb.add_child(prefix_label)
 
 	var label := Label.new()
 	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	label.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	label.add_theme_font_size_override("font_size", 16)
+	label.add_theme_font_size_override("font_size", 17)
 	label.add_theme_color_override("font_color", Color(0.92, 0.93, 0.95, 1))
 	hb.add_child(label)
 

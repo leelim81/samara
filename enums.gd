@@ -58,6 +58,15 @@ const WEAPON_TYPE_TEXTURES: Dictionary = {
 	WeaponType.STAFF: "res://assets/terra/ui/staff.png"
 }
 
+# Outlined + shadowed variants for the battle-card overlays, which overhang
+# the tile onto arbitrary backgrounds (TB-style). Menus keep the plain set.
+const WEAPON_TYPE_BADGE_TEXTURES: Dictionary = {
+	WeaponType.SWORD: "res://assets/terra/ui/sword_badge.png",
+	WeaponType.SPEAR: "res://assets/terra/ui/spear_badge.png",
+	WeaponType.GUN: "res://assets/terra/ui/gun_badge.png",
+	WeaponType.STAFF: "res://assets/terra/ui/staff_badge.png"
+}
+
 enum StatusEffectType {
 	NONE,
 	

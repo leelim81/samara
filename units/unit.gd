@@ -173,14 +173,29 @@ func _pin_overlay_layout() -> void:
 	container.offset_top = -48.0
 	container.offset_right = 48.0
 	container.offset_bottom = 48.0
-	# Enemy turn countdown sits in the top-left corner
-	container.add_theme_constant_override("margin_left", 9)
-	container.add_theme_constant_override("margin_top", 1)
-	container.add_theme_constant_override("margin_right", 52)
-	container.add_theme_constant_override("margin_bottom", 58)
 
-	# Weapon-type marker — pin small in the top-right corner (web export mangles
-	# the inherited .tscn offsets, which made the glyph oversize/overflow the tile)
+	# Enemy turn countdown: TB-style big outlined numeral overhanging the
+	# tile's top-left corner (no plate). Negative margins push the content
+	# rect past the tile edge. A 2x2 unit's origin sits at its FIRST cell's
+	# center (the sprite is shifted +51.5), so its top-left corner is the
+	# same as a 1x1's — only the numeral size differs.
+	var turn_count: Label = $Control/Container/TurnCount
+
+	if is2x2():
+		container.add_theme_constant_override("margin_left", -12)
+		container.add_theme_constant_override("margin_top", -16)
+		container.add_theme_constant_override("margin_right", 50)
+		container.add_theme_constant_override("margin_bottom", 54)
+		turn_count.add_theme_font_size_override("font_size", 50)
+	else:
+		container.add_theme_constant_override("margin_left", -12)
+		container.add_theme_constant_override("margin_top", -16)
+		container.add_theme_constant_override("margin_right", 54)
+		container.add_theme_constant_override("margin_bottom", 58)
+		turn_count.add_theme_font_size_override("font_size", 42)
+
+	# Weapon-type badge — TB-style: big, overhanging the tile's top-right
+	# corner (web export mangles the inherited .tscn offsets, so pin in code)
 	var hud_control: Control = $CanvasLayer/Control
 	hud_control.anchor_left = 0.0
 	hud_control.anchor_top = 0.0
@@ -196,10 +211,20 @@ func _pin_overlay_layout() -> void:
 	weapon.anchor_top = 0.0
 	weapon.anchor_right = 1.0
 	weapon.anchor_bottom = 0.0
-	weapon.offset_left = -34.0
-	weapon.offset_top = 5.0
-	weapon.offset_right = -6.0
-	weapon.offset_bottom = 33.0
+
+	# 2x2 scenes move the whole CanvasLayer +48,+48 to re-center overlays on
+	# the big card, so the badge offsets compensate to land on the card's
+	# top-right corner (card spans -49..147 in unit space, origin = first cell).
+	if is2x2():
+		weapon.offset_left = 11.0
+		weapon.offset_top = -63.0
+		weapon.offset_right = 57.0
+		weapon.offset_bottom = -17.0
+	else:
+		weapon.offset_left = -38.0
+		weapon.offset_top = -14.0
+		weapon.offset_right = 8.0
+		weapon.offset_bottom = 32.0
 
 
 func _physics_process(_delta: float) -> void:
@@ -465,7 +490,7 @@ func release() -> void:
 
 
 func _load_job_textures() -> void:
-	$CanvasLayer/Control/WeaponType.texture = load(Enums.WEAPON_TYPE_TEXTURES[$Job.job.stats.weapon_type])
+	$CanvasLayer/Control/WeaponType.texture = load(Enums.WEAPON_TYPE_BADGE_TEXTURES[$Job.job.stats.weapon_type])
 	_icon.texture = $Job.job.portrait
 
 	$CanvasLayer/UnitName.text = tr($Job.job.job_name)

@@ -110,10 +110,10 @@ border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
 border_color = Color( 0.752941, 0.627451, 0.384314, 0.6 )
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
 
 [sub_resource type="StyleBoxFlat" id=13]
 content_margin_left = 10.0
@@ -126,10 +126,10 @@ border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
 border_color = Color( 0.752941, 0.627451, 0.384314, 0.95 )
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
 
 [sub_resource type="StyleBoxFlat" id=14]
 content_margin_left = 10.0
@@ -142,10 +142,10 @@ border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
 border_color = Color( 0.752941, 0.627451, 0.384314, 0.9 )
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
 
 [node name="Battle" type="MarginContainer"]
 anchor_right = 1.0
@@ -446,7 +446,7 @@ bus = "Sound effects"
 
 [node name="HudBar" type="Panel" parent="CanvasLayer"]
 offset_right = 720.0
-offset_bottom = 118.0
+offset_bottom = 100.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource( 11 )
 __meta__ = {
@@ -455,7 +455,7 @@ __meta__ = {
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
 offset_right = 720.0
-offset_bottom = 118.0
+offset_bottom = 100.0
 mouse_filter = 2
 size_flags_vertical = 0
 theme = ExtResource( 1 )
@@ -472,7 +472,7 @@ mouse_filter = 2
 theme_override_constants/separation = 8
 
 [node name="MainRow" type="HBoxContainer" parent="CanvasLayer/MarginContainer/Hud"]
-custom_minimum_size = Vector2( 0, 70 )
+custom_minimum_size = Vector2( 0, 80 )
 mouse_filter = 2
 theme_override_constants/separation = 12
 
@@ -533,7 +533,7 @@ stretch_margin_bottom = 4
 
 [node name="TimerRow" type="HBoxContainer" parent="CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock"]
 custom_minimum_size = Vector2( 0, 22 )
-theme_override_constants/separation = 6
+theme_override_constants/separation = 5
 
 [node name="ClockIcon" type="TextureRect" parent="CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock/TimerRow"]
 custom_minimum_size = Vector2( 20, 20 )
@@ -543,8 +543,13 @@ texture = SubResource( 9 )
 expand = true
 stretch_mode = 6
 
+[node name="LeftTick" type="ColorRect" parent="CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock/TimerRow"]
+custom_minimum_size = Vector2( 9, 3 )
+size_flags_vertical = 4
+color = Color( 0.85, 0.72, 0.42, 1 )
+
 [node name="MoveTimer" type="TextureProgressBar" parent="CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock/TimerRow"]
-custom_minimum_size = Vector2( 0, 10 )
+custom_minimum_size = Vector2( 0, 20 )
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -557,13 +562,22 @@ stretch_margin_top = 4
 stretch_margin_right = 5
 stretch_margin_bottom = 4
 
-[node name="YourTurnLabel" type="Label" parent="CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock/TimerRow"]
-custom_minimum_size = Vector2( 68, 0 )
-size_flags_vertical = 4
-theme_override_colors/font_color = Color( 0.37, 0.83, 0.65, 1 )
-theme_override_font_sizes/font_size = 13
-text = "YOUR TURN"
+[node name="YourTurnLabel" type="Label" parent="CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock/TimerRow/MoveTimer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_colors/font_color = Color( 0.42, 0.9, 0.72, 1 )
+theme_override_colors/font_outline_color = Color( 0.05, 0.06, 0.08, 1 )
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 14
+text = "Your turn"
+horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="RightTick" type="ColorRect" parent="CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock/TimerRow"]
+custom_minimum_size = Vector2( 9, 3 )
+size_flags_vertical = 4
+color = Color( 0.85, 0.72, 0.42, 1 )
 
 [node name="SquadIcons" type="HBoxContainer" parent="CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock"]
 custom_minimum_size = Vector2( 0, 26 )
@@ -615,55 +629,26 @@ stretch_mode = 6
 mouse_filter = 2
 size_flags_horizontal = 3
 
-[node name="TurnBlock" type="VBoxContainer" parent="CanvasLayer/MarginContainer/Hud/MainRow"]
-custom_minimum_size = Vector2( 72, 0 )
+[node name="CountersBlock" type="HBoxContainer" parent="CanvasLayer/MarginContainer/Hud/MainRow"]
 mouse_filter = 2
 size_flags_vertical = 4
-alignment = 1
-theme_override_constants/separation = -2
-
-[node name="TurnLabel" type="Label" parent="CanvasLayer/MarginContainer/Hud/MainRow/TurnBlock"]
-theme_override_colors/font_color = Color( 0.64, 0.7, 0.74, 0.9 )
-theme_override_font_sizes/font_size = 13
-text = "TURN"
-horizontal_alignment = 1
-
-[node name="TurnCountLabel" type="Label" parent="CanvasLayer/MarginContainer/Hud/MainRow/TurnBlock"]
-theme_override_colors/font_color = Color( 0.92, 0.86, 0.7, 1 )
-theme_override_font_sizes/font_size = 30
-text = "1"
-horizontal_alignment = 1
+theme_override_constants/separation = 30
 
 [node name="RightSpacer" type="Control" parent="CanvasLayer/MarginContainer/Hud/MainRow"]
 mouse_filter = 2
 size_flags_horizontal = 3
 
-[node name="Controls" type="HBoxContainer" parent="CanvasLayer/MarginContainer/Hud/MainRow"]
+[node name="RightBlock" type="VBoxContainer" parent="CanvasLayer/MarginContainer/Hud/MainRow"]
 mouse_filter = 2
 size_flags_vertical = 4
+theme_override_constants/separation = 5
+
+[node name="ButtonsRow" type="HBoxContainer" parent="CanvasLayer/MarginContainer/Hud/MainRow/RightBlock"]
 theme_override_constants/separation = 8
+alignment = 1
 
-[node name="DragModeOptionButton" parent="CanvasLayer/MarginContainer/Hud/MainRow/Controls" instance=ExtResource( 23 )]
-custom_minimum_size = Vector2( 124, 40 )
-theme_override_colors/font_color = Color( 0.86, 0.88, 0.9, 1 )
-theme_override_colors/font_hover_color = Color( 0.95, 0.82, 0.5, 1 )
-theme_override_colors/font_focus_color = Color( 0.86, 0.88, 0.9, 1 )
-theme_override_colors/font_pressed_color = Color( 0.95, 0.82, 0.5, 1 )
-theme_override_styles/focus = SubResource( 12 )
-theme_override_styles/hover = SubResource( 13 )
-theme_override_styles/pressed = SubResource( 14 )
-theme_override_styles/normal = SubResource( 12 )
-
-[node name="FastForwardButton" parent="CanvasLayer/MarginContainer/Hud/MainRow/Controls" instance=ExtResource( 38 )]
-custom_minimum_size = Vector2( 46, 40 )
-theme_override_colors/font_hover_color = Color( 0.95, 0.82, 0.5, 1 )
-theme_override_styles/focus = SubResource( 12 )
-theme_override_styles/hover = SubResource( 13 )
-theme_override_styles/pressed = SubResource( 14 )
-theme_override_styles/normal = SubResource( 12 )
-
-[node name="PauseButton" parent="CanvasLayer/MarginContainer/Hud/MainRow/Controls" instance=ExtResource( 33 )]
-custom_minimum_size = Vector2( 46, 40 )
+[node name="PauseButton" parent="CanvasLayer/MarginContainer/Hud/MainRow/RightBlock/ButtonsRow" instance=ExtResource( 33 )]
+custom_minimum_size = Vector2( 58, 36 )
 theme_override_colors/font_color = Color( 0.86, 0.88, 0.9, 1 )
 theme_override_colors/font_hover_color = Color( 0.95, 0.82, 0.5, 1 )
 theme_override_colors/font_focus_color = Color( 0.86, 0.88, 0.9, 1 )
@@ -674,11 +659,24 @@ theme_override_styles/pressed = SubResource( 14 )
 theme_override_styles/normal = SubResource( 12 )
 text = "II"
 
-[node name="CountersRow" type="HBoxContainer" parent="CanvasLayer/MarginContainer/Hud"]
-custom_minimum_size = Vector2( 0, 20 )
-mouse_filter = 2
-alignment = 1
-theme_override_constants/separation = 28
+[node name="FastForwardButton" parent="CanvasLayer/MarginContainer/Hud/MainRow/RightBlock/ButtonsRow" instance=ExtResource( 38 )]
+custom_minimum_size = Vector2( 58, 36 )
+theme_override_colors/font_hover_color = Color( 0.95, 0.82, 0.5, 1 )
+theme_override_styles/focus = SubResource( 12 )
+theme_override_styles/hover = SubResource( 13 )
+theme_override_styles/pressed = SubResource( 14 )
+theme_override_styles/normal = SubResource( 12 )
+
+[node name="DragModeOptionButton" parent="CanvasLayer/MarginContainer/Hud/MainRow/RightBlock" instance=ExtResource( 23 )]
+custom_minimum_size = Vector2( 124, 34 )
+theme_override_colors/font_color = Color( 0.86, 0.88, 0.9, 1 )
+theme_override_colors/font_hover_color = Color( 0.95, 0.82, 0.5, 1 )
+theme_override_colors/font_focus_color = Color( 0.86, 0.88, 0.9, 1 )
+theme_override_colors/font_pressed_color = Color( 0.95, 0.82, 0.5, 1 )
+theme_override_styles/focus = SubResource( 12 )
+theme_override_styles/hover = SubResource( 13 )
+theme_override_styles/pressed = SubResource( 14 )
+theme_override_styles/normal = SubResource( 12 )
 
 [node name="EnemyPhaseCenterContainer" type="CenterContainer" parent="CanvasLayer"]
 visible = false
@@ -764,9 +762,9 @@ bus = "Music"
 [connection signal="tree_exiting" from="Board/PincerExecutor" to="Board/PincerExecutor" method="_on_PincerExecutor_tree_exiting"]
 [connection signal="timeout" from="Board/PincerExecutor/SkillActivationTimer" to="Board/PincerExecutor" method="_on_SkillActivationTimer_timeout"]
 [connection signal="timeout" from="Board/PincerExecutor/DeathAnimationTimer" to="Board/PincerExecutor" method="_on_DeathAnimationTimer_timeout"]
-[connection signal="drag_mode_changed" from="CanvasLayer/MarginContainer/Hud/MainRow/Controls/DragModeOptionButton" to="." method="_on_DragModeOptionButton_drag_mode_changed"]
-[connection signal="fast_forward_toggled" from="CanvasLayer/MarginContainer/Hud/MainRow/Controls/FastForwardButton" to="." method="_on_FastForwardButton_fast_forward_toggled"]
-[connection signal="pressed" from="CanvasLayer/MarginContainer/Hud/MainRow/Controls/PauseButton" to="." method="_on_PauseButton_pressed"]
+[connection signal="drag_mode_changed" from="CanvasLayer/MarginContainer/Hud/MainRow/RightBlock/DragModeOptionButton" to="." method="_on_DragModeOptionButton_drag_mode_changed"]
+[connection signal="fast_forward_toggled" from="CanvasLayer/MarginContainer/Hud/MainRow/RightBlock/ButtonsRow/FastForwardButton" to="." method="_on_FastForwardButton_fast_forward_toggled"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/Hud/MainRow/RightBlock/ButtonsRow/PauseButton" to="." method="_on_PauseButton_pressed"]
 [connection signal="quit_button_pressed" from="CanvasLayer/DefeatScreen" to="." method="_on_DefeatScreen_quit_button_pressed"]
 [connection signal="try_again_button_pressed" from="CanvasLayer/DefeatScreen" to="." method="_on_DefeatScreen_try_again_button_pressed"]
 [connection signal="continue_button_pressed" from="CanvasLayer/VictoryScreen" to="." method="_on_VictoryScreen_continue_button_pressed"]
