@@ -580,47 +580,47 @@ size_flags_vertical = 4
 color = Color( 0.85, 0.72, 0.42, 1 )
 
 [node name="SquadIcons" type="HBoxContainer" parent="CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock"]
-custom_minimum_size = Vector2( 0, 26 )
+custom_minimum_size = Vector2( 0, 30 )
 theme_override_constants/separation = 4
 
 [node name="Icon1" type="TextureRect" parent="CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock/SquadIcons"]
-custom_minimum_size = Vector2( 26, 26 )
+custom_minimum_size = Vector2( 30, 30 )
 texture = SubResource( 8 )
 expand = true
 stretch_mode = 6
 
 [node name="Icon2" type="TextureRect" parent="CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock/SquadIcons"]
-custom_minimum_size = Vector2( 26, 26 )
+custom_minimum_size = Vector2( 30, 30 )
 texture = SubResource( 8 )
 expand = true
 stretch_mode = 6
 
 [node name="Icon3" type="TextureRect" parent="CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock/SquadIcons"]
-custom_minimum_size = Vector2( 26, 26 )
+custom_minimum_size = Vector2( 30, 30 )
 texture = SubResource( 8 )
 expand = true
 stretch_mode = 6
 
 [node name="Icon4" type="TextureRect" parent="CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock/SquadIcons"]
-custom_minimum_size = Vector2( 26, 26 )
+custom_minimum_size = Vector2( 30, 30 )
 texture = SubResource( 8 )
 expand = true
 stretch_mode = 6
 
 [node name="Icon5" type="TextureRect" parent="CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock/SquadIcons"]
-custom_minimum_size = Vector2( 26, 26 )
+custom_minimum_size = Vector2( 30, 30 )
 texture = SubResource( 8 )
 expand = true
 stretch_mode = 6
 
 [node name="Icon6" type="TextureRect" parent="CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock/SquadIcons"]
-custom_minimum_size = Vector2( 26, 26 )
+custom_minimum_size = Vector2( 30, 30 )
 texture = SubResource( 8 )
 expand = true
 stretch_mode = 6
 
 [node name="Icon7" type="TextureRect" parent="CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock/SquadIcons"]
-custom_minimum_size = Vector2( 26, 26 )
+custom_minimum_size = Vector2( 30, 30 )
 texture = SubResource( 8 )
 expand = true
 stretch_mode = 6
@@ -629,10 +629,20 @@ stretch_mode = 6
 mouse_filter = 2
 size_flags_horizontal = 3
 
-[node name="CountersBlock" type="HBoxContainer" parent="CanvasLayer/MarginContainer/Hud/MainRow"]
+[node name="MiddleBlock" type="VBoxContainer" parent="CanvasLayer/MarginContainer/Hud/MainRow"]
 mouse_filter = 2
 size_flags_vertical = 4
-theme_override_constants/separation = 30
+theme_override_constants/separation = 9
+
+[node name="CountersRow" type="HBoxContainer" parent="CanvasLayer/MarginContainer/Hud/MainRow/MiddleBlock"]
+mouse_filter = 2
+alignment = 1
+theme_override_constants/separation = 20
+
+[node name="TriangleRow" type="HBoxContainer" parent="CanvasLayer/MarginContainer/Hud/MainRow/MiddleBlock"]
+mouse_filter = 2
+alignment = 1
+theme_override_constants/separation = 4
 
 [node name="RightSpacer" type="Control" parent="CanvasLayer/MarginContainer/Hud/MainRow"]
 mouse_filter = 2

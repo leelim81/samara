@@ -188,38 +188,29 @@ def countdown_plate(name, px=44):
     _save(img, name, (px, px))
 
 
-# --- sword weapon glyph (white silhouette, 128px like gun/spear/staff) ------
-def sword_glyph(name, px=128):
-    """The stock TB sword is a bare blade that reads as a white bar at HUD
-    size; give it a crossguard, grip and pommel so the silhouette says
-    "sword" at 27px."""
+# --- vendored weapon glyphs (game-icons.net, CC BY 3.0) ----------------------
+def vendored_weapons():
+    """The four base weapon glyphs are processed game-icons.net art
+    (broadsword/pistol-gun/trident/wizard-staff by Lorc & John Colburn,
+    CC BY 3.0 — see tools/gameicons/). Copy the processed 128px PNGs into
+    the game so a full regen never clobbers them with drawn stand-ins."""
+    src_dir = os.path.join(ROOT, "tools", "gameicons")
+    for name in ("sword", "gun", "spear", "staff"):
+        src = os.path.join(src_dir, "%s.png" % name)
+        img = Image.open(src).convert("RGBA")
+        _save(img, "%s.png" % name, img.size)
+
+
+# --- weapon-advantage arrow (Circle of Carnage HUD diagram) ------------------
+def advantage_arrow(name, px=18):
+    """Small right chevron between weapon glyphs in the HUD triangle."""
     s = (px * SS, px * SS)
     img = Image.new("RGBA", s, (0, 0, 0, 0))
     d = ImageDraw.Draw(img)
-    W = (255, 255, 255, 255)
-    cx = s[0] // 2
-    u = SS  # 1 target px
-
-    # Tapered blade: tip at top, shoulders at the guard
-    tip_y, guard_y = 8 * u, 76 * u
-    half_w = 11 * u
-    d.polygon([
-        (cx, tip_y),
-        (cx + half_w, tip_y + 26 * u),
-        (cx + half_w, guard_y),
-        (cx - half_w, guard_y),
-        (cx - half_w, tip_y + 26 * u),
-    ], fill=W)
-    # Fuller (blood groove) carved out of the blade
-    d.line([(cx, tip_y + 14 * u), (cx, guard_y - 6 * u)], fill=(0, 0, 0, 0), width=3 * u)
-    # Crossguard: rounded horizontal bar
-    d.rounded_rectangle([cx - 30 * u, guard_y, cx + 30 * u, guard_y + 10 * u],
-                        radius=5 * u, fill=W)
-    # Grip
-    d.rounded_rectangle([cx - 5 * u, guard_y + 10 * u, cx + 5 * u, guard_y + 32 * u],
-                        radius=3 * u, fill=W)
-    # Pommel
-    d.ellipse([cx - 9 * u, guard_y + 30 * u, cx + 9 * u, guard_y + 48 * u], fill=W)
+    W = (255, 255, 255, 235)
+    u = SS
+    d.polygon([(5 * u, 2 * u), (14 * u, 9 * u), (5 * u, 16 * u),
+               (8 * u, 9 * u)], fill=W)
     _save(img, name, (px, px))
 
 
@@ -330,7 +321,8 @@ def main():
     grid("grid.png")
     vignette("battle_vignette.png")
     countdown_plate("countdown_plate.png")
-    sword_glyph("sword.png")
+    vendored_weapons()
+    advantage_arrow("advantage_arrow.png")
     gesture_glyphs()
     attr_triangle("attr_triangle.png")
     chevron("chevron_marker.png")

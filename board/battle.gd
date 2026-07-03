@@ -308,32 +308,68 @@ func _on_ViewUnitMenu_go_back(view_unit_menu: Control) -> void:
 # ---- Live spoils HUD (Terra Battle battle HUD parity) ----
 
 func _build_live_hud() -> void:
-	# Terra Battle stacks the spoils in the HUD middle as two columns:
-	# coins over "EXP n" on the left, defeated-count on the right. Build the
-	# same shape into CountersBlock.
-	var block: HBoxContainer = $CanvasLayer/MarginContainer/Hud/MainRow/CountersBlock
+	# HUD middle block: the live spoils on top, the Circle of Carnage weapon
+	# diagram underneath (the empty bar space now earns its keep).
+	var counters: HBoxContainer = $CanvasLayer/MarginContainer/Hud/MainRow/MiddleBlock/CountersRow
 	var icons: Texture2D = load("res://assets/terra/ui/ui_icons.png")
-
-	var col_a := VBoxContainer.new()
-	col_a.add_theme_constant_override("separation", 6)
-	col_a.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	block.add_child(col_a)
-
-	var col_b := VBoxContainer.new()
-	col_b.add_theme_constant_override("separation", 6)
-	col_b.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	block.add_child(col_b)
 
 	# 64px atlas cells: coins(64,128) · skull/KO(192,128). EXP is a text
 	# prefix like TB's "EXP 720" row.
-	_coins_label = _make_counter_row(col_a, _atlas_icon(icons, Rect2(64, 128, 64, 64), Color(0.86, 0.72, 0.42)), "")
-	_exp_label = _make_counter_row(col_a, null, "EXP")
-	_ko_label = _make_counter_row(col_b, _atlas_icon(icons, Rect2(192, 128, 64, 64), Color(0.85, 0.46, 0.4)), "")
+	_coins_label = _make_counter_row(counters, _atlas_icon(icons, Rect2(64, 128, 64, 64), Color(0.86, 0.72, 0.42)), "")
+	_exp_label = _make_counter_row(counters, null, "EXP")
+	_ko_label = _make_counter_row(counters, _atlas_icon(icons, Rect2(192, 128, 64, 64), Color(0.85, 0.46, 0.4)), "")
 	# Wave is shown in the enemy-phase banner; keep a standalone label so the
 	# phase code can still set it without cluttering the HUD.
 	_wave_label = Label.new()
 
+	_build_weapon_triangle()
+
 	_update_live_hud()
+
+
+# The Circle of Carnage (per the TB wiki): sword > bow/gun > spear > sword,
+# one-directional, double damage; staff is neutral. The chain is read from
+# Enums.WEAPON_RELATIONSHIPS so the diagram can never drift from the actual
+# damage rule in skill_applier.gd.
+func _build_weapon_triangle() -> void:
+	var row: HBoxContainer = $CanvasLayer/MarginContainer/Hud/MainRow/MiddleBlock/TriangleRow
+	var arrow_tex: Texture2D = load("res://assets/terra/ui/advantage_arrow.png")
+
+	var weapon_type: int = Enums.WeaponType.SWORD
+
+	for i in Enums.WEAPON_RELATIONSHIPS.size() + 1:
+		var glyph := TextureRect.new()
+		glyph.texture = load(Enums.WEAPON_TYPE_TEXTURES[weapon_type])
+		glyph.custom_minimum_size = Vector2(21, 21)
+		glyph.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		glyph.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		glyph.modulate = Color(0.88, 0.9, 0.92, 1)
+		glyph.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		glyph.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		row.add_child(glyph)
+
+		if i == Enums.WEAPON_RELATIONSHIPS.size():
+			break
+
+		var arrow := TextureRect.new()
+		arrow.texture = arrow_tex
+		arrow.custom_minimum_size = Vector2(13, 13)
+		arrow.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		arrow.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		arrow.modulate = Color(0.86, 0.72, 0.42, 1)
+		arrow.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		arrow.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		row.add_child(arrow)
+
+		weapon_type = Enums.WEAPON_RELATIONSHIPS[weapon_type]
+
+	var mult := Label.new()
+	mult.text = " x2"
+	mult.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	mult.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	mult.add_theme_font_size_override("font_size", 13)
+	mult.add_theme_color_override("font_color", Color(0.86, 0.72, 0.42, 1))
+	row.add_child(mult)
 
 
 func _atlas_icon(atlas_tex: Texture2D, region: Rect2, tint: Color) -> TextureRect:
@@ -351,9 +387,9 @@ func _atlas_icon(atlas_tex: Texture2D, region: Rect2, tint: Color) -> TextureRec
 	return icon
 
 
-# One HUD spoils row: an icon OR a small text prefix (e.g. "EXP"), then the
+# One HUD spoils entry: an icon OR a small text prefix (e.g. "EXP"), then the
 # white value label that gets updated live. Returns the value label.
-func _make_counter_row(box: VBoxContainer, icon: TextureRect, prefix: String) -> Label:
+func _make_counter_row(box: Container, icon: TextureRect, prefix: String) -> Label:
 	var hb := HBoxContainer.new()
 	hb.add_theme_constant_override("separation", 6)
 	hb.mouse_filter = Control.MOUSE_FILTER_IGNORE
