@@ -17,4 +17,5 @@ title = "LIVING_ROCK"
 caption = "LIVING_ROCK_CAPTION"
 difficulty = "24-25"
 battle_scene_path = "res://battles/terra/living_rock.tscn"
+unlocked_job_paths = [ "res://jobs/terra/samupi_job.tres" ]
 battle_info = SubResource( 1 )

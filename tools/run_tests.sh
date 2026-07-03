@@ -35,6 +35,8 @@ run "battle: pincer integration"     res://test_pincer.gd               "TEST PA
 run "powered point: 100% activation" res://tools/test_powered_point.gd   "test_powered_point: PASS"
 run "powered point: integration"     res://tools/test_powered_point_integration.gd "test_powered_point_integration: PASS"
 run "engine: real drag-move"         res://tools/test_drag_move.gd      "test_drag_move: PASS"
+run "story: full chapter chain"      res://tools/test_full_chain.gd     "FULL CHAIN: PASS"
+run "story: recruitment drip"        res://tools/test_recruit_drip.gd   "test_recruit_drip: PASS"
 
 echo "========================="
 if [ "$fail" = "0" ]; then echo "ALL TESTS PASS"; else echo "SOME TESTS FAILED"; fi

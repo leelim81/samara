@@ -20,17 +20,16 @@ extends StackBasedMenuScreen
 @onready var _skills_header: Label = $Margin/Root/SkillsHeader
 @onready var _return_button: Button = $Margin/Root/ReturnButton
 
-# SIGNAL / 108 species relabel: raw unit_type -> modern display.
-# The band are Erased (dead people) or Feral Signals (spirit-folk who joined);
-# enemies are Static / Constructs. The only STONEFOLK/LIZARDFOLK units are heroes
-# (Stormfront, Hauler, Undertow) - enemy stone/lizard units are MONSTER -> Static.
+# Outer Heaven species relabel: raw unit_type -> display (see docs/outer_heaven_bible.md).
+# Heroes are Deviants (the mispredicted) or Spirits; enemies are Beasts / Machines.
+# The only STONEFOLK/LIZARDFOLK units are heroes - enemy stone/lizard units are MONSTER.
 const _SPECIES: Dictionary = {
-	"HUMAN": "Erased",
-	"STONEFOLK": "Erased",
-	"ANIMAL_SPIRIT": "Feral Signal",
-	"LIZARDFOLK": "Feral Signal",
-	"MONSTER": "Static",
-	"HANIWA": "Construct",
+	"HUMAN": "Deviant",
+	"STONEFOLK": "Deviant",
+	"ANIMAL_SPIRIT": "Spirit",
+	"LIZARDFOLK": "Spirit",
+	"MONSTER": "Beast",
+	"HANIWA": "Machine",
 }
 
 # Created lazily and reused across initialize() calls.
@@ -170,7 +169,7 @@ func _update_desc_label(job: Job) -> void:
 		_desc_label = Label.new()
 		_desc_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		_desc_label.add_theme_font_size_override("font_size", 14)
-		_desc_label.add_theme_color_override("font_color", Color(0.45, 0.42, 0.38))
+		_desc_label.add_theme_color_override("font_color", Color(0.604, 0.64, 0.667))
 		var root: Node = _skills_header.get_parent()
 		root.add_child(_desc_label)
 		# Sit between the header block and the skills section.

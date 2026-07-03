@@ -17,4 +17,5 @@ title = "LABYRINTH"
 caption = "LABYRINTH_CAPTION"
 difficulty = "19-20"
 battle_scene_path = "res://battles/terra/labyrinth.tscn"
+unlocked_job_paths = [ "res://jobs/terra/zan_job.tres" ]
 battle_info = SubResource( 1 )

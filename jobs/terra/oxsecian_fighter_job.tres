@@ -10,7 +10,7 @@
 script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ) ]
-job_name = "Compliance Unit, Drone"
-description = "A faceless enforcer in HARMONY civic-green riot-lacquer, a rail-bow."
+job_name = "Enforcement Unit, Trooper"
+description = "A faceless Commission war frame in gray plate, a compound bow."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

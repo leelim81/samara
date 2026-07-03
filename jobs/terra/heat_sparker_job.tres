@@ -10,7 +10,7 @@
 script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ) ]
-job_name = "Rage Static"
-description = "A red siren-headed brute of boiling outrage, a long pike."
+job_name = "Ember Beast"
+description = "A beast of coal and temper, smoke rising off its back, a long pike."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

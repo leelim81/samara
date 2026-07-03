@@ -10,7 +10,7 @@
 script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ) ]
-job_name = "Compliance Marksman, Elite"
-description = "An elite rail-bow enforcer of the corps."
+job_name = "Enforcement Marksman, Elite"
+description = "An elite rail-bow frame of the corps."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

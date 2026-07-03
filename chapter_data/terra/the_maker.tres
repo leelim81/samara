@@ -17,4 +17,5 @@ title = "THE_MAKER"
 caption = "THE_MAKER_CAPTION"
 difficulty = "36-37"
 battle_scene_path = "res://battles/terra/the_maker.tscn"
+unlocked_job_paths = [ "res://jobs/terra/burbaba_job.tres" ]
 battle_info = SubResource( 1 )

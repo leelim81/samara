@@ -11,6 +11,6 @@ script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ) ]
 job_name = "CHAR_THE_PILGRIM"
-description = "Wu Song, the Pilgrim. In the legend he killed a man-eating tiger bare-handed, then took a darker revenge and walked it off as a wandering penitent. Here an underground combat-streamer who once beat a Static bare-handed on camera, then did a worse thing for love. With every cut he asks whether vengeance is justice or only more fuel. His archived reels are the only proof he was ever real."
+description = "Wu Song, the Pilgrim. Killed a tiger bare-handed, three drinks in, on camera. Buried a brother, avenged him badly, and walked it off in borrowed monk's gear. Pride like armor, and a strict personal rule about drink counts he breaks on schedule."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

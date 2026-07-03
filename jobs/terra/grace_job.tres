@@ -11,6 +11,6 @@ script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ) ]
 job_name = "GRACE"
-description = "Mo Ye, the other half of the first Pact. In the old story the great blades would not set until she gave herself to the furnace; his craft and her sacrifice made the pair. The Auditor's partner in life and in the numbers, erased the same night. She walks into the Margins with a steadier hand and colder eyes, and she watches far more than she says."
+description = "Yan Qing, the Wanderer. A street performer, wrestler, and crossbow shot with an angle for everything and, underneath, a loyalty that never moves. She talks like nothing matters. Watch what she does instead."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

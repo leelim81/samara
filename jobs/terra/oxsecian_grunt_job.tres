@@ -10,7 +10,7 @@
 script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ) ]
-job_name = "Compliance Soldier, Elite"
-description = "An elite enforcement-construct of the standing corps."
+job_name = "Enforcement Trooper, Elite"
+description = "An elite war frame of the standing corps."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

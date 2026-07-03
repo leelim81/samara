@@ -17,4 +17,5 @@ title = "TO_THE_HEART"
 caption = "TO_THE_HEART_CAPTION"
 difficulty = "27-28"
 battle_scene_path = "res://battles/terra/to_the_heart.tscn"
+unlocked_job_paths = [ "res://jobs/terra/eileen_job.tres" ]
 battle_info = SubResource( 1 )

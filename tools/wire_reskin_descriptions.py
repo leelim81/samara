@@ -27,13 +27,16 @@ def clean(t):
 
 # hero re-skin tag -> job slug (mirrors the _ICONS portrait map)
 TAG_SLUG = {
-    "Auditor": "bahl", "Echo": "grace", "Patch": "kuscah", "Undertow": "shberdan",
-    "Stormfront": "daiana", "Hauler": "macuri", "Inkwork": "gegonago", "Triage": "amimari",
-    "Soft Rain": "mizell", "Burnout": "kem", "Blackout": "zan", "Sixteen-Bar": "korin",
-    "Wetware": "eileen", "Rebar": "samupi", "Bluechip": "bagunar", "Deadeye": "harold",
-    "Bruise": "burbaba", "Shortfuse": "maralme", "Nightstick": "nakupi", "Fastpass": "sorman",
-    "Drifter": "iskar", "Nine Dragons": "zenzoze", "Riptide": "gigojago", "Deadman": "unasag",
-    "Cleaver": "amazora", "Longarm": "raprow", "Slingshot": "manmer", "Courier": "lan",
+    "Nine Dragons": "bahl", "the Wanderer": "grace", "the Skilled Doctor": "kuscah",
+    "Red-Haired Devil": "shberdan", "Dragon in the Clouds": "daiana", "the Unrestrained": "macuri",
+    "the Tattooed Monk": "gegonago", "the Tigress": "amimari", "Timely Rain": "mizell",
+    "Panther Head": "kem", "Black Whirlwind": "zan", "the Pilgrim": "korin",
+    "the Wisdom Star": "eileen", "Ten Feet of Steel": "samupi", "Jade Unicorn": "bagunar",
+    "Little Li Guang": "harold", "Blue-Faced Beast": "burbaba", "Fiery Thunderbolt": "maralme",
+    "Twin Rods": "nakupi", "Marvelous Traveler": "sorman", "Two-Headed Snake": "iskar",
+    "Gold Lancer": "zenzoze", "White Streak in the Waves": "gigojago", "the Living Death-God": "unasag",
+    "the Witch": "amazora", "Lord of the Beautiful Beard": "raprow", "Featherless Arrow": "manmer",
+    "Twin-Tailed Scorpion": "lan",
 }
 HERO_DESC = {}
 for c in R.CHARACTERS:

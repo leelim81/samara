@@ -11,6 +11,6 @@ script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ) ]
 job_name = "CHAR_THE_NINE_DRAGONED"
-description = "Shi Jin, the Nine-Dragoned, named for the nine dragons tattooed across his body. In the legend the rich young heir who threw his fortune away for the outlaw road and never looked back. Here the first true partner and the most eager. Brave and generous and a little reckless, learning the cost as he goes."
+description = "Xu Ning, the Gold Lancer, drill instructor of a lance lineage older than the plates. He came to teach the crew how to open Commission armor and stayed to see it done properly. Feet wider. Class is always in session."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

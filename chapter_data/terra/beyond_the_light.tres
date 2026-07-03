@@ -17,4 +17,5 @@ title = "BEYOND_THE_LIGHT"
 caption = "BEYOND_THE_LIGHT_CAPTION"
 difficulty = "72-73"
 battle_scene_path = "res://battles/terra/beyond_the_light.tscn"
+unlocked_job_paths = [ "res://jobs/terra/lan_job.tres" ]
 battle_info = SubResource( 1 )

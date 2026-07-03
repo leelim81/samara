@@ -10,7 +10,7 @@
 script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ) ]
-job_name = "Surge Static"
-description = "A crackling imp of loose current arcing along a charged frame."
+job_name = "Storm Imp"
+description = "A crackling little storm spirit, all spark and spite."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

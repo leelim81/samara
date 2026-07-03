@@ -11,6 +11,6 @@ script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ) ]
 job_name = "CHAR_LAN"
-description = "Lan, of the crane-clan. The cranes carried messages between the city and the high servers, until she learned where the messages really went. Aloof and precise, she mourns a network she used to serve. Now she carries word for the dead instead."
+description = "Xie Bao, the Twin-Tailed Scorpion. The other hunter, the one who starts the sentences. Between her and her brother nothing in the hills goes untracked, including the things being herded."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

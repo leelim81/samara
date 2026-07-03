@@ -17,4 +17,5 @@ title = "THE_OXSECIANS"
 caption = "THE_OXSECIANS_CAPTION"
 difficulty = "42-43"
 battle_scene_path = "res://battles/terra/the_oxsecians.tscn"
+unlocked_job_paths = [ "res://jobs/terra/harold_job.tres" ]
 battle_info = SubResource( 1 )

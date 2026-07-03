@@ -11,7 +11,7 @@
 script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ), ExtResource( 6 ) ]
-job_name = "Conscript Static"
-description = "A gaunt, half-deleted echo in gray gig-corps issue, a rail-bow."
+job_name = "Patrol Drone"
+description = "A floating Commission patrol orb, lens glowing, a compound bow."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

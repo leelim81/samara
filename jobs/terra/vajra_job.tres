@@ -11,7 +11,7 @@
 script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ), ExtResource( 6 ) ]
-job_name = "Vajra, the Arc Idol"
-description = "A many-armed idol crowned in arc-lightning, a living substation of war."
+job_name = "Vajra, the Storm Idol"
+description = "A many-armed idol crowned in lightning, a living substation of war."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

@@ -12,7 +12,7 @@
 script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ]
-job_name = "HARMONY's Sky-Drake"
-description = "A serpentine drake of cloud and gold, the Spire's own mount loosed on defectors."
+job_name = "the Leashed Sky-Drake"
+description = "A serpent of cloud and gold, collared by the tower and loosed on Deviants."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

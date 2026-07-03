@@ -13,7 +13,7 @@
 script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ]
-job_name = "the Latency Devourer"
-description = "A horror that eats the moments around it, leaving the field laggy and slow."
+job_name = "the Moment-Eater"
+description = "A horror that eats the moments around it, leaving the field slow and wrong."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

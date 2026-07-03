@@ -17,4 +17,5 @@ title = "THE_CITY_BELOW"
 caption = "THE_CITY_BELOW_CAPTION"
 difficulty = "15-16"
 battle_scene_path = "res://battles/terra/the_city_below.tscn"
+unlocked_job_paths = [ "res://jobs/terra/kem_job.tres" ]
 battle_info = SubResource( 1 )

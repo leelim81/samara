@@ -17,4 +17,5 @@ title = "STRANGE_NEW_WORLD"
 caption = "STRANGE_NEW_WORLD_CAPTION"
 difficulty = "49-50"
 battle_scene_path = "res://battles/terra/strange_new_world.tscn"
+unlocked_job_paths = [ "res://jobs/terra/gigojago_job.tres" ]
 battle_info = SubResource( 1 )

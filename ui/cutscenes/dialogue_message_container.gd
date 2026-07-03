@@ -2,11 +2,10 @@ extends HBoxContainer
 
 
 # Speaker (translation key OR re-skin display name) -> portrait token.
-# TODO: Use a resource. The Water Margin re-skin authors banter with the
-# re-skin display name as the speaker (see tools/wire_reskin_into_game.py),
-# so the display names below map back to the original roster art. Speakers
-# without an entry (the "(new recruit)" heroes that have no token art yet)
-# render with the blank unit square.
+# TODO: Use a resource. The Outer Heaven re-skin authors banter with the
+# hero's Water Margin epithet as the speaker (see tools/wire_reskin_into_game.py
+# and docs/outer_heaven_bible.md), so the epithets below map to the roster art.
+# Speakers without an entry render with the blank unit square.
 const _ICONS: Dictionary = {
 	# Original roster translation keys (used by non-reskinned dialogues)
 	"BAHL": "res://assets/terra/tokens/bahl_token.png",
@@ -15,64 +14,35 @@ const _ICONS: Dictionary = {
 	"SHBERDAN": "res://assets/terra/tokens/shberdan_token.png",
 	"DAIANA": "res://assets/terra/tokens/daiana_token.png",
 	"MACURI": "res://assets/terra/tokens/macuri_token.png",
-	# Water Margin re-skin display names -> original roster tokens
-	"Gan Jiang": "res://assets/terra/tokens/bahl_token.png",
-	"Mo Ye": "res://assets/terra/tokens/grace_token.png",
-	"Saen": "res://assets/terra/tokens/kuscah_token.png",
-	"Jiao": "res://assets/terra/tokens/shberdan_token.png",
+	# Outer Heaven re-skin epithets -> roster tokens (see docs/outer_heaven_bible.md casting)
+	"Nine Dragons": "res://assets/terra/tokens/bahl_token.png",
+	"the Wanderer": "res://assets/terra/tokens/grace_token.png",
+	"the Skilled Doctor": "res://assets/terra/tokens/kuscah_token.png",
+	"Red-Haired Devil": "res://assets/terra/tokens/shberdan_token.png",
 	"Dragon in the Clouds": "res://assets/terra/tokens/daiana_token.png",
-	"Mu": "res://assets/terra/tokens/macuri_token.png",
+	"the Unrestrained": "res://assets/terra/tokens/macuri_token.png",
 	"the Tattooed Monk": "res://assets/terra/tokens/gegonago_token.png",
-	"the Skilled Doctor": "res://assets/terra/tokens/amimari_token.png",
+	"the Tigress": "res://assets/terra/tokens/amimari_token.png",
 	"Timely Rain": "res://assets/terra/tokens/mizell_token.png",
+	"Panther Head": "res://assets/terra/tokens/kem_token.png",
 	"Black Whirlwind": "res://assets/terra/tokens/zan_token.png",
 	"the Pilgrim": "res://assets/terra/tokens/korin_token.png",
+	"the Wisdom Star": "res://assets/terra/tokens/eileen_token.png",
 	"Ten Feet of Steel": "res://assets/terra/tokens/samupi_token.png",
 	"Jade Unicorn": "res://assets/terra/tokens/bagunar_token.png",
+	"Little Li Guang": "res://assets/terra/tokens/harold_token.png",
 	"Blue-Faced Beast": "res://assets/terra/tokens/burbaba_token.png",
 	"Fiery Thunderbolt": "res://assets/terra/tokens/maralme_token.png",
 	"Twin Rods": "res://assets/terra/tokens/nakupi_token.png",
-	"the Witch": "res://assets/terra/tokens/amazora_token.png",
-	"Panther Head": "res://assets/terra/tokens/kem_token.png",
-	"the Nine-Dragoned": "res://assets/terra/tokens/zenzoze_token.png",
-	"the Living Death-God": "res://assets/terra/tokens/unasag_token.png",
-	"Lord of the Beautiful Beard": "res://assets/terra/tokens/raprow_token.png",
-	"Little Li Guang": "res://assets/terra/tokens/harold_token.png",
-	"the Wanderer": "res://assets/terra/tokens/iskar_token.png",
-	"Featherless Arrow": "res://assets/terra/tokens/manmer_token.png",
-	"Lan": "res://assets/terra/tokens/lan_token.png",
-	"the Wisdom Star": "res://assets/terra/tokens/eileen_token.png",
 	"Marvelous Traveler": "res://assets/terra/tokens/sorman_token.png",
+	"Two-Headed Snake": "res://assets/terra/tokens/iskar_token.png",
+	"Gold Lancer": "res://assets/terra/tokens/zenzoze_token.png",
 	"White Streak in the Waves": "res://assets/terra/tokens/gigojago_token.png",
-	# SIGNAL / 108 (modern) re-skin tags -> original roster tokens
-	"Auditor": "res://assets/terra/tokens/bahl_token.png",
-	"Echo": "res://assets/terra/tokens/grace_token.png",
-	"Patch": "res://assets/terra/tokens/kuscah_token.png",
-	"Undertow": "res://assets/terra/tokens/shberdan_token.png",
-	"Stormfront": "res://assets/terra/tokens/daiana_token.png",
-	"Hauler": "res://assets/terra/tokens/macuri_token.png",
-	"Inkwork": "res://assets/terra/tokens/gegonago_token.png",
-	"Triage": "res://assets/terra/tokens/amimari_token.png",
-	"Soft Rain": "res://assets/terra/tokens/mizell_token.png",
-	"Burnout": "res://assets/terra/tokens/kem_token.png",
-	"Blackout": "res://assets/terra/tokens/zan_token.png",
-	"Sixteen-Bar": "res://assets/terra/tokens/korin_token.png",
-	"Wetware": "res://assets/terra/tokens/eileen_token.png",
-	"Rebar": "res://assets/terra/tokens/samupi_token.png",
-	"Bluechip": "res://assets/terra/tokens/bagunar_token.png",
-	"Deadeye": "res://assets/terra/tokens/harold_token.png",
-	"Bruise": "res://assets/terra/tokens/burbaba_token.png",
-	"Shortfuse": "res://assets/terra/tokens/maralme_token.png",
-	"Nightstick": "res://assets/terra/tokens/nakupi_token.png",
-	"Fastpass": "res://assets/terra/tokens/sorman_token.png",
-	"Drifter": "res://assets/terra/tokens/iskar_token.png",
-	"Nine Dragons": "res://assets/terra/tokens/zenzoze_token.png",
-	"Riptide": "res://assets/terra/tokens/gigojago_token.png",
-	"Deadman": "res://assets/terra/tokens/unasag_token.png",
-	"Cleaver": "res://assets/terra/tokens/amazora_token.png",
-	"Longarm": "res://assets/terra/tokens/raprow_token.png",
-	"Slingshot": "res://assets/terra/tokens/manmer_token.png",
-	"Courier": "res://assets/terra/tokens/lan_token.png"
+	"the Living Death-God": "res://assets/terra/tokens/unasag_token.png",
+	"the Witch": "res://assets/terra/tokens/amazora_token.png",
+	"Lord of the Beautiful Beard": "res://assets/terra/tokens/raprow_token.png",
+	"Featherless Arrow": "res://assets/terra/tokens/manmer_token.png",
+	"Twin-Tailed Scorpion": "res://assets/terra/tokens/lan_token.png"
 }
 
 signal text_fully_visible

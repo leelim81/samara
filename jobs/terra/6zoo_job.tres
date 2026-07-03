@@ -13,7 +13,7 @@
 script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ]
-job_name = "The Conductor, First of the Erased"
-description = "The last and largest construct, blade wide as a service gate; the very first outcast, promoted to run them all."
+job_name = "the First Warden"
+description = "The oldest guardian machine, blade wide as a service gate, built when the jars were young."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

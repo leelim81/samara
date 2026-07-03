@@ -17,4 +17,5 @@ title = "MELTING_POT"
 caption = "MELTING_POT_CAPTION"
 difficulty = "7-8"
 battle_scene_path = "res://battles/terra/melting_pot.tscn"
+unlocked_job_paths = [ "res://jobs/terra/daiana_job.tres" ]
 battle_info = SubResource( 1 )

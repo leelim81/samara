@@ -12,7 +12,7 @@
 script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ]
-job_name = "Frostcoil, the Pale Wyrm"
+job_name = "the Pale Wyrm"
 description = "A pale serpent-drake breathing rime, coiled across the whole road."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

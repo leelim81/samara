@@ -12,7 +12,7 @@
 script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ]
-job_name = "Coilware Heavy"
-description = "A cold scaled construct of coiled cable and chrome, a long pike."
+job_name = "Serpent-Folk Heavy"
+description = "A scaled river-clan fighter, cold-eyed, a long pike."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

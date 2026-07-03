@@ -11,6 +11,6 @@ script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ) ]
 job_name = "DAIANA"
-description = "Gongsun Sheng, the Dragon in the Clouds. In the legend the Taoist who called down wind and thunder for the brotherhood. Here a data-diviner who reads the city's signal-weather, first to suspect the sky itself is edited. Calm, cryptic, and grimmer with every reading that proves true."
+description = "Gongsun Sheng, the Dragon in the Clouds. She reads the city's weather: floods, crowds, knocks on doors. The Commission called her a fraud because her readings kept being right. Serene, cryptic, and the first to notice the crew's luck has a shape."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

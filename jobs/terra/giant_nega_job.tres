@@ -11,7 +11,7 @@
 script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ), ExtResource( 6 ) ]
-job_name = "the Greater Nullity"
-description = "A vast wound in the render, a beast made of the absence the system leaves behind."
+job_name = "the Greater Hollow"
+description = "A vast walking absence, a beast made of everything the city erased."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

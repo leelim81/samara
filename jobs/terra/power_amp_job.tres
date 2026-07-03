@@ -11,7 +11,7 @@
 script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ), ExtResource( 6 ) ]
-job_name = "the Force-Amplifier"
-description = "A floating node that doubles the strength of all around it; crash it first."
+job_name = "the War Node"
+description = "A floating node that doubles the strength of everything around it; break it first."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

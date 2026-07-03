@@ -17,4 +17,5 @@ title = "ANIMATA"
 caption = "ANIMATA_CAPTION"
 difficulty = "38-39"
 battle_scene_path = "res://battles/terra/animata.tscn"
+unlocked_job_paths = [ "res://jobs/terra/maralme_job.tres" ]
 battle_info = SubResource( 1 )

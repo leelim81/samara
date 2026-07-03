@@ -17,4 +17,5 @@ title = "THE_BRIDGEHEAD"
 caption = "THE_BRIDGEHEAD_CAPTION"
 difficulty = "72-73"
 battle_scene_path = "res://battles/terra/the_bridgehead.tscn"
+unlocked_job_paths = [ "res://jobs/terra/amazora_job.tres" ]
 battle_info = SubResource( 1 )

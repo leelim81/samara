@@ -19,7 +19,7 @@ from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
 from openpyxl.utils import get_column_letter
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-OUT = os.path.join(ROOT, "Signal_108_Reskin.xlsx")
+OUT = os.path.join(ROOT, "Outer_Heaven_Reskin.xlsx")
 data = json.load(open(os.path.join(ROOT, "tools", "out", "terra_dataset.json")))
 
 
@@ -45,100 +45,100 @@ def orig_banter(s):
 
 
 # Bespoke boss names + appearance, keyed by exact original name.
-# Apex Wardens -> Administrators; named bosses -> daemons / titan-Static / Compliance brass.
+# Officers and machines for the Commission, beasts as beasts, council guardians late.
 BOSS = {
-    "1AOO": ("Administrator: Ward Zero", "A colossal matte enforcement construct in HARMONY civic-green, faceless, a riot-blade laser-etched with the struck-out names of prior cycles."),
-    "2BOO": ("Administrator: Ward One", "Twin to the first, a towering civic bulwark whose pike clears a lane a dozen souls wide."),
-    "3COO": ("Administrator: Ward Two", "The third apex enforcer, a vast rail-archer raining bolts of cold policy."),
-    "6ZOO": ("The Conductor, First of the Erased", "The last and largest construct, blade wide as a service gate; the very first outcast, promoted to run them all."),
-    "54B2": ("Defector Unit 54-B", "A Compliance enforcer turned against its handlers, blade half-corrupted with rust and arc-light."),
-    "???": ("Null, the Closed Record", "A foe whose row in the Index is blank, a blade-fighter with no face and no record."),
-    "Ancient Key": ("the Keymaster Daemon", "A floating relic-process shaped like a vast access key, warden of a deeper door."),
-    "Ancient Sadness": ("Grief Prime", "A mountain of sorrow given form, weeping the harvested grief of an entire ward."),
-    "Antlion": ("the Sinkhole Daemon", "A vast burrowing process whose jaws make a null-pit of the field."),
-    "Apirath": ("Apirath, Toll Administrator", "A towering caster-administrator of the bridgehead, robed in living surge-cloud."),
-    "Arachnobot": ("the Loom Server", "An iron spider strung with soul-thread, weaving the harvested into walls."),
-    "Ba'gunar": ("Bagunar, the Defector", "An arc-clad blade, once Compliance, now a turncoat at the gate."),
-    "Beastfolk Hero": ("the Feral Alpha", "The proudest of the feral signals, blade raised against the living and the system alike."),
-    "Burnbot Redux": ("the Reforged Furnace-Server", "A rebuilt furnace-construct, hotter and crueler than its first crash, venting blue flame."),
-    "Celestial Dragon": ("HARMONY's Sky-Drake", "A serpentine drake of cloud and gold, the Spire's own mount loosed on defectors."),
-    "Cerberus": ("the Three-Port Watchdog", "A fire-maned hound of three heads chained to the gateway of the deep."),
-    "Craggy Leviathan": ("the Concrete Leviathan", "A district-shouldered beast of crag and rebar, risen from the buried foundations."),
-    "Cybergolem": ("the First Construct", "An early furnace-construct of riveted iron, the system's crudest hand."),
-    "Cyberwyrm": ("the Cable Wyrmling", "A young mechanical wyrm sheathed in arc-traced plate."),
-    "Dark Dragon": ("the Null Dragon", "A drake of living null-black, its breath a hole cut clean in the render."),
-    "EM Generator": ("the Core Generator", "The pulsing heart of the soul-engine, a construct that drinks current and life."),
-    "Energos": ("Energos, the Gravity Sink", "A void-cored colossus that bends weight and light around its hunger."),
-    "Energy Aspirator": ("the Signal-Siphon", "A bladed construct that drains the signal from the living to feed the Spire."),
-    "Enerzerk": ("the Overcharge Sentinel", "A crackling rail-archer overcharged past safety, every bolt a thunderclap."),
-    "Flame Urchin": ("the Ember Mine", "A spiked sphere of live coal, every quill a lance of fire."),
-    "Fortified Oxsecian Bulwark": ("the Compliance Bulwark", "A fortress-construct of the enforcement corps, walls for skin, storms for arrows."),
-    "Giant Nega": ("the Greater Nullity", "A vast wound in the render, a beast made of the absence the system leaves behind."),
-    "Gigaworm": ("the Static Worm", "A district-long worm wreathed in static, swallowing the ground it crosses."),
+    "1AOO": ("Council Warden Alpha", "A tower-tall guardian machine unfolded from the Commission's bones, blade etched with the names of prior cycles."),
+    "2BOO": ("Council Warden Beta", "Twin to the first, a walking wall whose pike clears a lane a dozen souls wide."),
+    "3COO": ("Council Warden Gamma", "The third tower guardian, a vast rail-archer raining cold bolts of policy."),
+    "6ZOO": ("the First Warden", "The oldest guardian machine, blade wide as a service gate, built when the jars were young."),
+    "54B2": ("Defector Frame 54", "A war frame that slipped its handlers, half rust, half grudge."),
+    "???": ("the Unwritten", "A Southbank blade with no file, no flag, and no fear. The system reads nothing at all."),
+    "Ancient Key": ("the Vault Key", "A floating relic shaped like a vast key, warden of the door the tower pretends is not there."),
+    "Ancient Sadness": ("Old Grief", "A mountain of sorrow given shape, weeping for wards it could not save."),
+    "Antlion": ("the Sinkhole Beast", "A burrowing horror whose jaws turn the field into a funnel of falling ground."),
+    "Apirath": ("Apirath, the Toll-Keeper", "A towering bridge spirit robed in living stormcloud, collecting what crossings cost."),
+    "Arachnobot": ("the Loom Machine", "An iron spider strung with cable and wire, weaving walls out of what it catches."),
+    "Ba'gunar": ("the Jade Unicorn, Cornered", "Lu Junyi with nothing left to lose and excellent fencing lessons, fighting like a man mid-question."),
+    "Beastfolk Hero": ("the Beast-Clan Champion", "The proudest fighter of the horned clans, blade raised against city and crew alike."),
+    "Burnbot Redux": ("the Furnace Engine, Relit", "A rebuilt furnace machine, hotter and crueler than its first fire, venting blue flame."),
+    "Celestial Dragon": ("the Leashed Sky-Drake", "A serpent of cloud and gold, collared by the tower and loosed on Deviants."),
+    "Cerberus": ("the Three-Headed Watchdog", "A fire-maned hound of three heads chained to the gate of the deep."),
+    "Craggy Leviathan": ("the Quarry Leviathan", "A district-shouldered beast of crag and rebar, risen from the buried foundations."),
+    "Cybergolem": ("the First Works Machine", "An early city machine of riveted iron, the Commission's crudest hand."),
+    "Cyberwyrm": ("the Cable Wyrm", "A young mechanical wyrm sheathed in braided cable and plate."),
+    "Dark Dragon": ("the Night Dragon", "A drake of living dark, its breath a hole cut clean in the air."),
+    "EM Generator": ("the Core Generator", "The humming heart of the under-grid, a machine that drinks current and life alike."),
+    "Energos": ("the Gravity Engine", "A void-cored colossus that bends weight and light around its hunger."),
+    "Energy Aspirator": ("the Siphon Machine", "A bladed machine that drains the strength from the living to feed the tower."),
+    "Enerzerk": ("the Overcharged Sentinel", "A crackling rail-archer overcharged past every safety, each bolt a thunderclap."),
+    "Flame Urchin": ("the Ember Urchin", "A spiked sphere of live coal, every quill a lance of fire."),
+    "Fortified Oxsecian Bulwark": ("the Enforcement Bulwark", "A fortress machine of the war corps, walls for skin, storms for arrows."),
+    "Giant Nega": ("the Greater Hollow", "A vast walking absence, a beast made of everything the city erased."),
+    "Gigaworm": ("the Tunnel Worm", "A district-long worm that swallows the ground it crosses."),
     "Golem": ("the Concrete Sentinel", "A hulking guardian of poured concrete, slow, patient, unstoppable."),
-    "Ice Golem": ("the Cryo Sentinel", "A golem cut from black ice, breathing a cold that stops the heart."),
-    "Ice Urchin": ("the Rime Mine", "A spiked sphere of black ice, quills of killing frost."),
-    "Jade Guardian": ("the Jade-Green Warden", "A serene guardian-statue in civic-green and frost, beautiful and merciless."),
-    "Jag": ("Jag, the Cinder Runner", "A lean fire-coder cast out of the corps, jacket smoldering at the hem."),
-    "Kraken": ("the Drowned Server-King", "A many-armed horror of the buried canals, dragging hulls and souls down together."),
-    "Layla": ("Layla, the Frost Administrator", "A regal cryo-administrator of the Spire, a winter given a badge."),
-    "Lich": ("the Bone Bureaucrat", "A withered undead clerk still stamping warrants in the server-necropolis."),
-    "Lizardfolk Hero": ("the Coilware Champion", "The coilware clade's chosen blade, cold-eyed and unbeaten until now."),
-    "Lizardfolk Warrior": ("the Coilware Warlord", "A towering coilware champion swollen with stolen current."),
-    "Lock-On+": ("the Targeting Array", "A multi-eyed construct that paints every foe for its lances."),
-    "Lock-On 333+": ("the Greater Targeting Array", "An upgraded targeting-construct, three hundred eyes and no mercy."),
-    "Magic Amp": ("the Curse-Amplifier", "A floating node that doubles the debuffs of all around it; crash it first."),
-    "Power Amp": ("the Force-Amplifier", "A floating node that doubles the strength of all around it; crash it first."),
-    "Mantle Mammoth": ("the Magma Hauler", "A tusked colossus of molten foundation-rock, each step a small eruption."),
-    "Mantledrake": ("the Magma Drake", "A lava-veined drake newly compiled from the burning deep."),
-    "Marilith": ("the Six-Armed Daemon", "A six-armed serpent-daemon with a blade in every hand."),
-    "Mechabird": ("the Iron Drone-Hawk", "A mechanical bird of prey wreathed in null-shadow, talons of cold iron."),
-    "Mechadrake": ("the Cable Drake", "A clockwork dragon strung with arc-current, scales of riveted plate."),
-    "Mechadrake Redux": ("the Reforged Drake", "A rebuilt iron dragon, darker and deadlier, breathing shadow now instead of sparks."),
-    "Megacell": ("the Splitting Cell", "A swollen cryo-construct that splits and reforms, hard to put down for good."),
-    "Mothbot Queen": ("the Loom Matron", "A great moth-construct that spawns lesser sentinels, scattering iron dust."),
-    "Negabeast": ("the Nullity Beast", "A beast made of the absence the system leaves, eating color and sound."),
-    "Onyx Dragon": ("the Onyx Dragon", "A full-grown drake of black crystal and null-shadow, ancient and proud."),
+    "Ice Golem": ("the Ice Sentinel", "A golem cut from black lake ice, breathing a cold that stops the heart."),
+    "Ice Urchin": ("the Frost Urchin", "A spiked sphere of black ice, quills of killing frost."),
+    "Jade Guardian": ("the Jade Warden", "A serene guardian statue in green and frost, beautiful and merciless."),
+    "Jag": ("Jag, the Cinder Runner", "A lean fire-runner cast out of the enforcement corps, jacket smoldering at the hem."),
+    "Kraken": ("the Under-Lake Kraken", "A many-armed horror of the drowned canals, dragging hulls and swimmers down together."),
+    "Layla": ("Layla, the Frost Officer", "A regal Commission officer of the cold floors, a winter given a badge."),
+    "Lich": ("the Bone Clerk", "A withered dead bureaucrat still stamping warrants in the buried archive."),
+    "Lizardfolk Hero": ("the Serpent-Folk Champion", "The river clans' chosen blade, cold-eyed and unbeaten until now."),
+    "Lizardfolk Warrior": ("the Serpent-Folk Warlord", "A towering river-clan champion swollen with stolen strength."),
+    "Lock-On+": ("the Targeting Array", "A multi-eyed machine that paints every foe for its lances."),
+    "Lock-On 333+": ("the Greater Targeting Array", "An upgraded targeting machine, three hundred eyes and no mercy."),
+    "Magic Amp": ("the Curse Node", "A floating node that doubles the harm of everything around it; break it first."),
+    "Power Amp": ("the War Node", "A floating node that doubles the strength of everything around it; break it first."),
+    "Mantle Mammoth": ("the Magma Mammoth", "A tusked colossus of molten foundation-rock, each step a small eruption."),
+    "Mantledrake": ("the Magma Drake", "A lava-veined drake newly woken from the burning deep."),
+    "Marilith": ("the Six-Armed Serpent", "A six-armed serpent spirit with a blade in every hand."),
+    "Mechabird": ("the Iron Hawk", "A mechanical bird of prey, talons of cold iron, patient as a warrant."),
+    "Mechadrake": ("the Iron Drake", "A clockwork dragon strung with live current, scales of riveted plate."),
+    "Mechadrake Redux": ("the Iron Drake, Rebuilt", "The same dragon rebuilt darker and deadlier, breathing shadow instead of sparks."),
+    "Megacell": ("the Splitting Mass", "A swollen cold mass that splits and reforms, hard to put down for good."),
+    "Mothbot Queen": ("the Drone-Moth Queen", "A great machine moth that spawns lesser drones, scattering iron dust."),
+    "Negabeast": ("the Hollow Beast", "A beast made of absence, eating color and sound as it comes."),
+    "Onyx Dragon": ("the Onyx Dragon", "A full-grown drake of black crystal, ancient and proud."),
     "Young Onyx Dragon": ("the Onyx Dragon, Fledgling", "The same drake half-grown, black scales not yet hardened, no less deadly."),
-    "Orbling": ("Foreman Tu, the First Badge", "A swollen iron-bound orb crowned in a gold flame-frame, the first foe to wear an Administrator badge."),
-    "Oxsecian Airgrunt": ("Compliance Skirmisher, Elite", "An elite flying enforcement-construct of the corps."),
-    "Oxsecian Bomber": ("Compliance Bombardier", "An enforcement-construct laden with shaped charges."),
-    "Oxsecian Bomber EX": ("Compliance Bombardier, Mk II", "An upgraded bombardier-construct, twice the charges, twice the ruin."),
-    "Oxsecian Fighter EX": ("Compliance Vanguard, Mk II", "A peak enforcement-construct, the corps frontline made monstrous."),
-    "Oxsecian Grunt": ("Compliance Soldier, Elite", "An elite enforcement-construct of the standing corps."),
-    "Oxsecian Grunt SP": ("Compliance Lancer, Elite", "An elite pike-enforcer of the corps."),
-    "Oxsecian Guard": ("Compliance Sentry, Elite", "An elite shield-enforcer posted at the Spire gates."),
-    "Oxsecian Guard SP": ("Compliance Guard, Mk II", "A heavier sentry-construct, a wall that swings a blade."),
-    "Oxsecian Gunner SP": ("Compliance Marksman, Elite", "An elite rail-bow enforcer of the corps."),
-    "Pepropé": ("Peprope, the Masterless Blade", "A masterless blade-signal haunting the deep service tunnels."),
-    "Phaarz": ("Phaarz, the Maw", "A cosmic horror of the outer null, a mouth wider than a server hall."),
-    "Phoenix": ("the Reboot Phoenix", "A rebooting firebird, rising burning from its own crash-dump."),
-    "Pneumatobot": ("the Piston Sentinel", "A pneumatic construct hissing steam, fists like driven pistons."),
+    "Orbling": ("Removal Foreman Tu", "The removal squad's foreman, a swollen patrol orb wearing its work order like a crown."),
+    "Oxsecian Airgrunt": ("Enforcement Skirmisher, Elite", "An elite flying war frame of the enforcement corps."),
+    "Oxsecian Bomber": ("Enforcement Bombardier", "A war frame laden with shaped charges."),
+    "Oxsecian Bomber EX": ("Enforcement Bombardier, Mk II", "An upgraded bombardier frame, twice the charges, twice the ruin."),
+    "Oxsecian Fighter EX": ("Enforcement Vanguard, Mk II", "A peak war frame, the corps' front line made monstrous."),
+    "Oxsecian Grunt": ("Enforcement Trooper, Elite", "An elite war frame of the standing corps."),
+    "Oxsecian Grunt SP": ("Enforcement Lancer, Elite", "An elite pike frame of the corps."),
+    "Oxsecian Guard": ("Enforcement Sentry, Elite", "An elite shield frame posted at the tower gates."),
+    "Oxsecian Guard SP": ("Enforcement Guard, Mk II", "A heavier sentry frame, a wall that swings a blade."),
+    "Oxsecian Gunner SP": ("Enforcement Marksman, Elite", "An elite rail-bow frame of the corps."),
+    "Pepropé": ("Peprope, the Stray Blade", "A masterless blade spirit haunting the service tunnels, the kind the Commission calls stray."),
+    "Phaarz": ("Phaarz, the Maw", "A deep-world horror, a mouth wider than a market hall."),
+    "Phoenix": ("the Phoenix", "A firebird that rises burning from its own ashes, again and again."),
+    "Pneumatobot": ("the Piston Machine", "A pneumatic machine hissing steam, fists like driven pistons."),
     "Power Pyramid": ("the Mending Node", "A floating node pouring stolen life into its guardians; silence it first."),
-    "Prototype Zero": ("Prototype Zero, the First Synthetic", "The system's earliest forged hero, flawless, hollow, and very nearly perfect."),
-    "Quiverer": ("the Shuddering Mass", "A vast trembling horror of fused signal, too large to be only one thing."),
-    "Reaver": ("the Render Reaver", "A towering harvest-construct that strips the soul from the body and files it away."),
-    "Relic": ("the Legacy Relic", "An age-old system machine, half server-shrine and half weapon, gravity pooling at its feet."),
-    "Sabertooth King": ("Baihu, the White-Tiger Daemon", "A great pale tiger-daemon hung with the lances of the hunters it ate."),
-    "Scar": ("Scar, the Patched General", "A ruined enforcer hot-patched back together by the system, fighting on a grudge it gave him."),
-    "Slugosaur": ("the Sludge Behemoth", "A mountain of toxic spam-flesh dragging itself up from the drowned deeps."),
-    "Snaptrap": ("the Honeypot", "A vast trap-construct disguised as a doorway, all teeth on the inside."),
-    "Spinetrich": ("Thornback, the Spike Daemon", "A four-legged horror of barbed spines and crackling charge, too wide to flank head-on."),
-    "Spiny Leviathan": ("the Spined Leviathan", "A barbed titan of the buried deep, robed in null-dark."),
-    "Stonefiend": ("the Magma Fiend", "A lesser concrete-daemon cracked open by inner fire."),
-    "Stonefolk Mage": ("the Concrete Caster", "A master of the concrete clade wielding the foundation's own fire."),
-    "Tiamat": ("the Five-Headed Tiamat", "A primordial dragon-queen of many heads, each a different doom."),
-    "Time Devourer": ("the Latency Devourer", "A horror that eats the moments around it, leaving the field laggy and slow."),
-    "Toxoid": ("the Plague Lancer", "A festering construct that lances its foes with rot."),
-    "Vajra": ("Vajra, the Arc Idol", "A many-armed idol crowned in arc-lightning, a living substation of war."),
-    "Whitewyrm": ("Frostcoil, the Pale Wyrm", "A pale serpent-drake breathing rime, coiled across the whole road."),
-    "Xaepha": ("Xaepha, the Patch Surgeon", "A serene horror that unmakes and re-renders the dying in its own image."),
+    "Prototype Zero": ("the Flawless One", "A synthetic fighter built from everyone's best day: flawless, hollow, and very nearly perfect."),
+    "Quiverer": ("the Shuddering Mass", "A vast trembling horror of fused flesh, too large to be only one thing."),
+    "Reaver": ("the Harvest Engine", "A towering machine that strips minds from bodies and files them below."),
+    "Relic": ("the Old Relic", "An age-old machine, half shrine and half weapon, gravity pooling at its feet."),
+    "Sabertooth King": ("the White Tiger", "A pale tiger-beast hung with the gear of the hunters it ate. The models say it cannot exist."),
+    "Scar": ("Scar, the Patched Veteran", "A ruined enforcer patched back together by the tower, fighting on a grudge it was issued."),
+    "Slugosaur": ("the Sludge Behemoth", "A mountain of marsh rot dragging itself up from the drowned deeps."),
+    "Snaptrap": ("the Trapmaw", "A vast trap-beast disguised as a doorway, all teeth on the inside."),
+    "Spinetrich": ("the Thornback", "A four-legged horror of barbed spines and crackling charge, too wide to flank head-on."),
+    "Spiny Leviathan": ("the Spined Leviathan", "A barbed titan of the buried deep, robed in dark water."),
+    "Stonefiend": ("the Magma Fiend", "A lesser stone spirit cracked open by inner fire."),
+    "Stonefolk Mage": ("the Badge-Squad Caster", "A Commission squad caster wielding the foundation's own fire."),
+    "Tiamat": ("the Five-Headed Dragon", "A primordial dragon-queen of many heads, each a different doom."),
+    "Time Devourer": ("the Moment-Eater", "A horror that eats the moments around it, leaving the field slow and wrong."),
+    "Toxoid": ("the Plague Lancer", "A festering thing that lances its foes with rot."),
+    "Vajra": ("Vajra, the Storm Idol", "A many-armed idol crowned in lightning, a living substation of war."),
+    "Whitewyrm": ("the Pale Wyrm", "A pale serpent-drake breathing rime, coiled across the whole road."),
+    "Xaepha": ("Xaepha, the Remaker", "A serene horror that unmakes the dying and rebuilds them in its own image."),
 }
 
-WEAP_DESC = {"Sword": "a jagged blade", "Bow": "a rail-bow", "Spear": "a long pike",
+WEAP_DESC = {"Sword": "a heavy blade", "Bow": "a compound bow", "Spear": "a long pike",
              "Staff": "a charged rod", "": "bare claws", None: "bare claws"}
-ATTR_TINT = {"Fire": "fever-red ", "Ice": "frost-gray ", "Lightning": "arc-lit ",
-             "Darkness": "null-black "}
+ATTR_TINT = {"Fire": "flame-scarred ", "Ice": "frost-rimed ", "Lightning": "storm-lit ",
+             "Darkness": "night-black "}
 
 
 def reskin_enemy(name, is_boss):
@@ -157,43 +157,43 @@ def reskin_enemy(name, is_boss):
 
     r = role()
     if "wee orbling" in n:
-        base = "Stray Signal"
+        base = "Scout Drone"
     elif "orbling" in n:
-        base = ("Conscript " + r).strip() if r else "Conscript Static"
+        base = ("Patrol Drone, " + r) if r else "Patrol Drone"
     elif "stonefolk" in n:
-        base = "Compliance " + (r or "Drone")
+        base = "Badge Squad " + (r or "Trooper")
     elif "beastfolk" in n:
-        base = "Feral " + (r or "Static")
+        base = "Beast-Clan " + (r or "Raider")
     elif "lizardfolk" in n:
-        base = "Coilware " + (r or "Static")
+        base = "Serpent-Folk " + (r or "Raider")
     elif "oxsecian" in n:
-        base = "Compliance Unit, " + (r or "Drone")
+        base = "Enforcement Unit, " + (r or "Trooper")
     elif any(b in n for b in ("bot", "borg", "mech", "cell", "generator", "lock-on", "analyzer")):
-        base = "Render Construct"
+        base = "Works Machine"
     elif "gorf" in n:
-        base = "Leech Static"
+        base = "Marsh Leech"
     elif "dracorin" in n:
-        base = "Surge Static"
+        base = "Storm Imp"
     elif "sabertooth" in n:
-        base = "Predator Static"
+        base = "Saber Tiger"
     elif any(f in n for f in ("pyro", "flame", "fire", "burn", "magma", "lava", "heat", "ember", "scorch")):
-        base = "Rage Static"
+        base = "Ember Beast"
     elif any(f in n for f in ("frost", "ice", "blizzard", "chill")):
-        base = "Dread Static"
+        base = "Frost Beast"
     elif any(f in n for f in ("toad", "slug", "crawler", "grub", "ooze")):
-        base = "Rot Static"
+        base = "Sludge Beast"
     elif any(f in n for f in ("drake", "wyrm", "dragon", "serpent")):
-        base = "Wyrm Static"
+        base = "Young Wyrm"
     elif any(f in n for f in ("spider", "arachno", "web", "loom")):
-        base = "Loom Static"
+        base = "Weaver"
     elif any(f in n for f in ("mummy", "wraith", "ghost", "spectre", "revenant", "shade")):
-        base = "Revenant Static"
+        base = "Restless Spirit"
     elif n in ("archer", "warrior", "knight", "healer", "mage", "wizard"):
-        base = "Compliance " + (r or "Drone")
+        base = "Badge Squad " + (r or "Trooper")
     elif r:
-        base = "Static " + r
+        base = "Stray " + r
     else:
-        base = "Static"
+        base = "Stray Beast"
     return base + (" (boss)" if is_boss else "")
 
 
@@ -201,51 +201,53 @@ def reskin_appearance(reskin, weapon, attribute):
     w = WEAP_DESC.get(weapon, "bare claws")
     t = ATTR_TINT.get(attribute, "")
     r = reskin.lower()
-    if r.startswith("stray signal"):
-        return "A barely-rendered flicker of a person, half there, twitching with static."
-    if r.startswith("conscript"):
-        return f"A gaunt, half-deleted echo in gray gig-corps issue, {w}."
-    if r.startswith("compliance"):
-        return f"A faceless enforcer in HARMONY civic-green riot-lacquer, {t}{w}."
-    if r.startswith("feral"):
-        return f"A snarling clot of feral Noise, fur of dead pixels, {w}."
-    if r.startswith("coilware"):
-        return f"A cold scaled construct of coiled cable and chrome, {w}."
-    if r.startswith("render construct"):
-        return f"A riveted server-drone venting heat, indicator-lights for eyes, {w}."
-    if r.startswith("leech static"):
-        return "A bloated leech of stolen signal, mending the enemy line with pilfered light."
-    if r.startswith("surge static"):
-        return "A crackling imp of loose current arcing along a charged frame."
-    if r.startswith("predator static"):
-        return f"A striped predator-shape of congealed dread, {w}."
-    if r.startswith("rage static"):
-        return f"A red siren-headed brute of boiling outrage, {w}."
-    if r.startswith("dread static"):
-        return f"A hunched gray weight of cold dread, frost-rimed, {w}."
-    if r.startswith("rot static"):
-        return f"A sluggish slick of decay and spam, {w}."
-    if r.startswith("wyrm static"):
-        return f"A long {t}serpent of corrupted data, {w}."
-    if r.startswith("loom static"):
-        return f"A skittering spider of fiber-optic thread, {w}."
-    if r.startswith("revenant static"):
-        return f"A flickering ghost of a deleted record, {w}."
-    return f"A {t}knot of half-rendered Noise, {w}."
+    if r.startswith("scout drone"):
+        return "A knee-high patrol orb, one lens, all curiosity and no mercy."
+    if r.startswith("patrol drone"):
+        return f"A floating Commission patrol orb, lens glowing, {w}."
+    if r.startswith("badge squad"):
+        return f"A Commission street officer in riot gear, badge lit, {t}{w}."
+    if r.startswith("enforcement unit"):
+        return f"A faceless Commission war frame in gray plate, {t}{w}."
+    if r.startswith("beast-clan"):
+        return f"A horned undercity raider in patched furs, {w}."
+    if r.startswith("serpent-folk"):
+        return f"A scaled river-clan fighter, cold-eyed, {w}."
+    if r.startswith("works machine"):
+        return f"A riveted city-works machine, warning lights for eyes, {w}."
+    if r.startswith("marsh leech"):
+        return "A bloated lake leech that knits enemy wounds shut; deal with it first."
+    if r.startswith("storm imp"):
+        return "A crackling little storm spirit, all spark and spite."
+    if r.startswith("saber tiger"):
+        return f"A striped hunting beast of the old wilds, {w}."
+    if r.startswith("ember beast"):
+        return f"A beast of coal and temper, smoke rising off its back, {w}."
+    if r.startswith("frost beast"):
+        return f"A hunched beast rimed in lake ice, breath like winter, {w}."
+    if r.startswith("sludge beast"):
+        return f"A slow slick of marsh rot with an appetite, {w}."
+    if r.startswith("young wyrm"):
+        return f"A young {t}serpent-dragon of the deep waterways, {w}."
+    if r.startswith("weaver"):
+        return f"A long-legged weaver spirit trailing silk, {w}."
+    if r.startswith("restless spirit"):
+        return f"A flickering ghost the city never buried properly, {w}."
+    return f"A {t}stray beast of the undercity, {w}."
 
 
 RESKIN_NAME = {
-    1: "Off-Network", 2: "Toward the Spire", 3: "Welcome to the Margins", 4: "The Memory Hole",
-    5: "Going Under", 6: "The Sunken Wards", 7: "Live Wires", 8: "Server Necropolis",
-    9: "The Body Shop", 10: "Legacy Process", 11: "Toward the Core",
-    12: "Into the Black", 13: "Adminkill", 14: "Freefall", 15: "The Index",
-    16: "The Render Floor", 17: "Flagged", 18: "Compliance", 19: "Forking",
-    20: "Root Access", 21: "Re-render", 22: "The Conductor Speaks", 23: "No Service",
-    24: "Search and Delete", 25: "Synthetic Heroes", 26: "Flawless", 27: "Dead Air",
-    28: "Burn It Down", 29: "Rolled Back", 30: "Trending", 31: "The Terms",
-    32: "Going Legit", 33: "Glorious Deaths", 34: "Loyalty Tax", 35: "The Mask Drops",
-    36: "Attrition", 37: "Locked Out", 38: "Ghosts in the Machine", 39: "The Last Offer",
-    40: "Ashes", 41: "Index Reborn", 42: "Strike / Preserve",
+    1: "Off the Path", 2: "Bail Money", 3: "The Fraud Who Was Right", 4: "The Unicorn",
+    5: "The Park at the Bottom", 6: "The Instructor", 7: "Three Punches", 8: "Repossession",
+    9: "The Tiger", 10: "Ten Feet of Steel", 11: "The Consultant",
+    12: "The Quiet Doors", 13: "The Birthday Convoy", 14: "Complimentary Drinks", 15: "The Fence Below",
+    16: "Thunderbolt", 17: "The Marshal", 18: "The Range-Master", 19: "The Voice Memo",
+    20: "The Runner", 21: "The River Gate", 22: "The Execution Ground", 23: "The Wild Belt",
+    24: "After the Cheering", 25: "Copies", 26: "Flawless", 27: "The Kitchen Goes Dark",
+    28: "What Grief Does", 29: "The Last Good Cop", 30: "Folk Heroes", 31: "Beast Country",
+    32: "The Southbank", 33: "Written Into War", 34: "The Offer", 35: "The Vote",
+    36: "The War We Wanted", 37: "The Water Gate", 38: "Counting", 39: "Ascension Day",
+    40: "The Harvest", 41: "The Last Cup", 42: "Outer Heaven",
 }
 
 RESKIN_NARR = {
@@ -297,144 +299,144 @@ RESKIN_NARR = {
 # The reskin tag in [1] is the on-screen handle (banter speaker + portrait key).
 # The real name carried beneath the tag lives in the Background field and in text.csv.
 CHARACTERS = [
-    ("Bahl", "Auditor", "Sword / lead", "Gan Jiang, the master smith of the old story, who forged a pair of blades no power could match and signed his name into the steel. Here he audited HARMONY's mortality numbers, found a ward dying off the network faster than it died in life, and was murdered for asking why. He wakes Off-Network with the brand already ticking and a write-key the system never managed to revoke. Silent and level. Still believes a record, and a life, can be made true.",
-     "A travel-worn analyst stripped of his lanyard, a fresh brand counting down on one hand, a single plain blade scavenged from a maintenance locker. Hair bound back, eyes tired but level.",
-     "Scavenged riot-plate reforged piece by piece, a dark coat bearing the Margins tag, the plain blade joined by a second that seems to swallow light. He carries himself like a man done waiting for the system to clear him.",
-     "Black lacquer veined with cold magenta arc-light, twin blades crossed at his back, faint lines like struck-through code crawling across bared skin. Less a man now than a verdict waiting to commit."),
-    ("Grace", "Echo", "Bow / lead", "Mo Ye, the other half of the first Pact. In the old story the great blades would not set until she gave herself to the furnace; his craft and her sacrifice made the pair. The Auditor's partner in life and in the numbers, erased the same night. She walks into the Margins with a steadier hand and colder eyes, and she watches far more than she says.",
-     "A plain hunting coat over mourning gray, a rail-bow of black composite, a quiver of iron-tipped bolts. She watches far more than she speaks.",
-     "Layered armor in ash and magenta, the bow strung with a cord that hums, her gaze ringed with quiet fury.",
-     "A war-coat that moves like smoke, the bow grown into a vast moon-curve of dark metal, each loosed bolt trailing a thread of pale fire. Beautiful, and final."),
-    ("Kuscah", "Patch", "Medic / fixer", "Saen, a fox-spirit who runs a back-alley clinic. She stayed in the Margins when her crew bailed, drawn by a curiosity she will not admit is kindness. She mends the band's signal with a sharp word for every stitch. Gallows humor, warm hands.",
-     "A slight figure in worn layers, three russet braids barely hidden, a fixer's kit and a crooked grin.",
-     "Richer gear the color of autumn, charms and stims braided into her hair, her touch leaving faint warm light.",
-     "Street-shrine regalia gone wild, signal pouring from her hands like a tide. The little fixer has become something the corps would fear."),
-    ("Sh'berdan", "Undertow", "Spear / canal-clan", "Jiao, last of a canal-clan a Ward drowned to clear a development zone. The jiao is the flood-serpent of the deep water, and the water still answers his anger. Cold and patient, he trusts the band only after they bleed beside him, and never quite forgives the city that made him.",
-     "A lean figure wrapped in scaled gear, a long boat-pike, eyes with a vertical slit and no warmth in them.",
-     "Coiling armor of green-black plate, a barbed war-pike, his movements gone liquid and fast.",
-     "Half-risen into his true shape, a flood-serpent crowned in horn, the pike a fang of storm-iron, water itself answering his anger."),
-    ("Daiana", "Stormfront", "Caster / signal-diviner", "Gongsun Sheng, the Dragon in the Clouds. In the legend the Taoist who called down wind and thunder for the brotherhood. Here a data-diviner who reads the city's signal-weather, first to suspect the sky itself is edited. Calm, cryptic, and grimmer with every reading that proves true.",
-     "Faded gray field-coat, a worn talisman-rod, a flask, eyes always half on the haze.",
-     "Deep indigo coat sewn with constellations of LEDs, a rod bound in static-tape, thunder muttering in her wake.",
-     "A coat of moving stormcloud, arc-current crawling between her fingers, a halo of black cloud and circling glyphs above her. The sky obeys her now, and it frightens her."),
-    ("Ma'curi", "Hauler", "Spear / dock-labor", "Mu, an ox-spirit worked to death in the under-docks and risen in slow fury. Gentle past all reason until he is pushed, then immovable as the cargo he was made to haul. He carried freight in the dark for years. Now he carries the band.",
-     "A huge stooped figure in a loading-harness and rags, a length of rebar for a weapon, sad patient eyes.",
-     "Plates of scavenged steel bound to his frame, a true cargo-hook glaive, the harness worn now like a trophy.",
-     "A towering colossus wreathed in furnace heat, the glaive a slab of black iron, the broken harness fused into his shoulders like a crown."),
-    ("Gegonago", "Inkwork", "Staff & fists", "Lu Zhishen, the Tattooed Monk. In the legend a brawling holy man thrown out of every monastery for drinking and telling the truth too loud, strong enough to uproot a tree bare-handed. Here a defrocked street-preacher cast out of every shelter for the same sins. His tattoos are the one record he refuses to let them scrub.",
-     "A ragged coat half-open over tattooed arms, a heavy steel staff, a flask never far.",
-     "Gear the color of dried blood, the staff bound in iron rings, banned slogans and struck-out names inked across his whole back.",
-     "Bare to the waist and blazing with tattoos come alive, the staff grown to a pillar, an aura like a martyr lit up on every screen in the ward. Conviction, with its fists up."),
-    ("Amimari", "Triage", "Medic", "An Daoquan, the Skilled Doctor. In the legend no wound was beyond his needle. Here a struck-off ER doctor who can close any wound but the one in the city. Soft-spoken and exact, haunted by how many he saves only to send back into the fire.",
-     "A plain clinician's coat, a kit of needles and stims, ink-stained fingers.",
+    ("Bahl", "Nine Dragons", "Sword / lead", "Shi Jin, called Nine Dragons for the ink on his arms. He was three exams from his assigned future when the Commission revised it without asking. Brave, generous, a little reckless, and learning what each of those costs. Hates being called kid. Counts his dragons when he is nervous.",
+     "A tattooed rookie in a school jacket he no longer owns, gripping a training sword like it owes him answers.",
+     "Street armor over the ink, a real blade now, the recklessness tempering into nerve.",
+     "War-gear that bares the nine dragons on purpose, a blade quick as a signature, a rookie no longer."),
+    ("Grace", "the Wanderer", "Bow / lead", "Yan Qing, the Wanderer. A street performer, wrestler, and crossbow shot with an angle for everything and, underneath, a loyalty that never moves. She talks like nothing matters. Watch what she does instead.",
+     "A charming drifter in a busker's coat, a short crossbow, tattoos peeking from the collar.",
+     "Fitted gear for fast rooftops, a stronger crossbow, a full sleeve of inked figures.",
+     "A coat that moves like an act, a crossbow drawn faster than the eye, every angle already played."),
+    ("Kuscah", "the Skilled Doctor", "Staff / medic", "An Daoquan, the Skilled Doctor, struck off the register for treating the unregistered. No wound he cannot close, no patient he will not scold. The complaining is how he says he cares.",
+     "A rumpled clinician's coat, a kit of needles and bad opinions, ink-stained fingers.",
      "Finer gear with a triage sash, a folding tray of gleaming instruments, calm authority.",
-     "A coat of white and gold, a lattice of glowing needles orbiting his hands, life itself bending to his craft."),
-    ("Mizell", "Soft Rain", "Leader / sword", "Song Jiang, the Timely Rain. In the legend his generosity fell on the desperate like rain in a drought, and every outlaw in the land followed him. Here a debt-relief caseworker who quietly cleared strangers' balances until HARMONY flagged him for it. Everyone who meets him would follow him anywhere. That is his gift, and the trap inside him: he is sure, to the end, that the system can be fixed from inside.",
-     "A modest civic coat worn with care, a plain blade he barely draws, a face people trust on sight.",
-     "A captain's jacket over light armor, a banner-blade at his side, the bearing of a man others have begun to call lead.",
-     "A coat of HARMONY cut he would never have chosen, a great banner rising behind him, light gathering at his shoulders like a borrowed spotlight. The most beloved soul in the Margins, and the most used."),
-    ("(new recruit)", "Burnout", "Spear", "Lin Chong, the Panther Head. In the legend the empire's finest arms-instructor, framed and exiled after a powerful man coveted his wife, driven at last to the outlaw road. Here that story repeats, badge for badge. He clings to protocol and the dream of a cleared record, a hope the system keeps turning against him. He is the one who teaches the Pact. Clipped, precise, and full of a fury he keeps on a short leash.",
-     "A drilled, upright veteran in a stripped instructor's uniform, brand on his hand, a serpent-headed pike held with parade precision.",
-     "Battle-worn riot-lamellar over black, the pike longer and crueler, his control now edged with something cold.",
-     "Armor like coiled muscle in black and steel, the pike a streak of gray light, a man with nothing left to restore and nothing to lose."),
-    ("(new recruit)", "Blackout", "Twin batons", "Li Kui, the Black Whirlwind. In the legend he fought with two axes and no fear and no brakes, loyal to his chief past all sense. Here a repo-collector of monstrous strength and wiped records, equal parts little brother and natural disaster. He loves the band with his whole heart. That is exactly the problem.",
-     "A huge half-stripped brute in collector's cuffs, a battered shock-baton in each fist, a gap-toothed grin.",
-     "Iron-studded leathers, twin black batons notched from use, the cuffs worn now as bracers.",
-     "A storm of dark muscle and iron, batons wreathed in red haze, eyes lit with a joy that has nothing to do with mercy."),
-    ("(new recruit)", "Sixteen-Bar", "Blades", "Wu Song, the Pilgrim. In the legend he killed a man-eating tiger bare-handed, then took a darker revenge and walked it off as a wandering penitent. Here an underground combat-streamer who once beat a Static bare-handed on camera, then did a worse thing for love. With every cut he asks whether vengeance is justice or only more fuel. His archived reels are the only proof he was ever real.",
-     "Street clothes over a fighter's frame, a single blade, the still eyes of a man who has decided something.",
-     "Half-ascetic, half-brawler, twin blades, a strand of dead memory-chips wound around one wrist like a leash on himself.",
-     "A dark figure wreathed in vape-smoke and neon, blades that sing, a tiger's shadow moving when he moves."),
-    ("(new recruit)", "Wetware", "Strategist", "Wu Yong, the Wisdom Star. In the legend the strategist whose plans never failed the brotherhood. Here a HARMONY systems architect who helped build the Index, then defected when she found her own daughter's death already written in it. She sees three moves ahead, and will spend the war wishing she had seen four. She cracks the Ledger, and stops reading aloud when she reaches her own name.",
-     "A lean architect with a folding tablet and a sly smile, stylus and side-arm at her belt.",
-     "Strategist's gear with an admin token, the tablet now lacquered black, schematics always within reach.",
-     "A coat sewn with shifting diagrams, the tablet trailing lines of light that bend the battle around her, a quiet woman moving squads like cursors."),
-    ("(new recruit)", "Rebar", "Sword", "Hu Sanniang, Ten Feet of Steel. In the legend the warrior woman who fought the brotherhood, lost her whole family to its war, and was bound into it anyway. Here her protection-detail family is wiped in a single night, and she is taken in by the very band that broke them. She fights like vengeance with nowhere to land, loyal and unforgiving at once.",
-     "Light riding armor over green, a slender straight blade, a rider's hard grace.",
-     "Layered green lamellar, paired blades, a war-scarf snapping behind her.",
-     "Armor like jade and iron, twin blades blurring into a single green arc, beautiful and merciless, the storm her old life never let her be."),
-    ("(new recruit)", "Bluechip", "Sword / second leader", "Lu Junyi, the Jade Unicorn. In the legend the richest, most accomplished man of his age, with everything to lose and no reason to rebel, until he was framed into it. Here HARMONY takes it all to prove that even a perfect life is theirs to delete. Proud, formal, principled. Terrible once he is finally roused.",
-     "Fine tailoring over light armor, a single immaculate blade, the bearing of a man used to being obeyed.",
-     "An executive's lamellar chased with silver, a longer blade, his courtesy now armored in grief.",
-     "White and jade war-plate lit as if from within, a blade like a sliver of moon, every motion a finished sentence."),
-    ("(new recruit)", "Deadeye", "Bow", "Hua Rong, named for Li Guang, the archer of old who could split a stone with an arrow. In the legend his aim settled an argument with one impossible shot. Here an ex-military drone marksman who chose a friend over a corrupt order, the finest shot alive and entirely too aware of it. Quick to laugh, quicker to aim. Her old service record is the only proof she existed.",
-     "A trim flight-jacket, a fine recurve rail-bow, an easy grin and a full quiver.",
-     "Embroidered flight-silks, a heavier-draw rail-bow, bolts fletched in red.",
-     "A pilot's regalia trailing ribbons, a bow that hums when drawn, every bolt splitting the last in flight."),
-    ("(new recruit)", "Bruise", "Saber", "Yang Zhi, the Blue-Faced Beast. In the legend a born officer marked by a blue birthmark and a run of ruinous luck, who lost everything to schemes never his own. Here the story holds: a lost commission, a lost fortune, a lost name. Bitter and dutiful, forever a step from a clearance that keeps moving away.",
+     "A white-and-gold coat, needles orbiting his hands like patient little stars, life bending to his craft."),
+    ("Sh'berdan", "Red-Haired Devil", "Spear / courier", "Liu Tang, the Red-Haired Devil. A courier for everything the trains refuse: medicine, letters, other people's chances. Allergic to plans, loyal past argument, and fond of exactly one bondsman he has never met.",
+     "A wiry runner with shocking red hair, a boat-hook pike, and a smuggler's grin.",
+     "Reinforced courier leathers, a barbed pike, pockets full of other people's mail.",
+     "A storm-red figure the checkpoints gave up on, the pike a streak of rust and lightning."),
+    ("Daiana", "Dragon in the Clouds", "Staff / diviner", "Gongsun Sheng, the Dragon in the Clouds. She reads the city's weather: floods, crowds, knocks on doors. The Commission called her a fraud because her readings kept being right. Serene, cryptic, and the first to notice the crew's luck has a shape.",
+     "A faded field-coat, a worn talisman rod, eyes always half on the haze.",
+     "An indigo coat sewn with small lights, a rod bound in charm-tape, thunder muttering behind her.",
+     "A coat of moving stormcloud, lightning walking between her fingers, the sky finally answering."),
+    ("Ma'curi", "the Unrestrained", "Spear / hauler", "Mu Hong, the Unrestrained. He fed half a district before the Commission drowned it, and kept feeding it after. Gentle past all reason until pushed, then immovable. Carries crates, carries people, carries on.",
+     "A huge stooped man in a loading harness, a cargo hook for a weapon, kind tired eyes.",
+     "Scavenged plate bound to his frame, a true hook-glaive, the harness worn like a trophy.",
+     "A towering figure wreathed in kitchen steam and furnace heat, the glaive a slab of black iron."),
+    ("Ba'gunar", "Jade Unicorn", "Sword / executive", "Lu Junyi, the Jade Unicorn. He built the perfect life, and his own operations chief filed it away in one afternoon. Boardroom manners, fencing-champion hands, and a very precise anger. Terrible once finally roused.",
+     "Immaculate tailoring gone one day unwashed, a single perfect blade, the bearing of a man used to being obeyed.",
+     "An executive's armor chased with silver, a longer blade, his courtesy now armored in grief.",
+     "White and jade war-plate lit as if from within, a blade like a sliver of moon, every motion a signed verdict."),
+    ("Kem", "Panther Head", "Spear / instructor", "Lin Chong, the Panther Head. Eleven years the Commission's finest arms instructor, until the Director's son wanted his wife and a predicted crime took the rest. Speaks in short, controlled sentences. His fury stays on a leash. He teaches anyone who asks.",
+     "A drilled, upright veteran in a stripped instructor's uniform, a spear held with parade precision.",
+     "Battle-worn armor over black, the spear longer and crueler, his control edged with something cold.",
+     "Armor like coiled muscle in black and steel, the spear a streak of gray light, a teacher with nothing left to grade."),
+    ("Zan", "Black Whirlwind", "Sword / demolition", "Li Kui, the Black Whirlwind. Repossession man, strongest hands in the undercity, heart aimed permanently at Timely Rain. His plans have one step. His loyalty has none; it is just there, all the way down.",
+     "A huge grinning bruiser in a repo crew vest, a crowbar in each fist.",
+     "Iron-studded leathers, two black cleavers notched from use, the vest worn like a flag.",
+     "A storm of dark muscle and iron, twin cleavers blurring, joy and mayhem indistinguishable."),
+    ("Korin", "the Pilgrim", "Sword / fighter", "Wu Song, the Pilgrim. Killed a tiger bare-handed, three drinks in, on camera. Buried a brother, avenged him badly, and walked it off in borrowed monk's gear. Pride like armor, and a strict personal rule about drink counts he breaks on schedule.",
+     "Street clothes over a fighter's frame, one blade, the still eyes of a man who has decided something.",
+     "Half ascetic, half brawler, twin blades, a monk's beads wound around one wrist like a leash on himself.",
+     "A dark pilgrim wreathed in incense and neon, blades that sing, a tiger's shadow moving when he moves."),
+    ("Samupí", "Ten Feet of Steel", "Sword / scrapyard", "Hu Sanniang, Ten Feet of Steel. Runs the last honest scrapyard on the lake road and settles fights with a tow cable. Yard rules apply everywhere: anything unattended gets towed, including brawling colleagues.",
+     "Work coveralls and rigging gloves, a slender straight blade, a coil of tow cable on one shoulder.",
+     "Layered green lamellar, paired blades, the cable now hooked and weighted for war.",
+     "Armor like jade and iron, twin blades and a singing cable, beautiful and unforgiving."),
+    ("Eileen", "the Wisdom Star", "Staff / strategist", "Wu Yong, the Wisdom Star. She built the Commission's prediction models until she read a file she could not unread. Sees three moves ahead and says so; will spend the war wishing she saw four. Plans are how she prays.",
+     "A lean analyst with a folding tablet and a sly, tired smile.",
+     "Strategist's gear with a stolen admin token, the tablet lacquered black, schematics always within reach.",
+     "A coat sewn with shifting diagrams, the battle bending around her like a solved equation."),
+    ("Burbaba", "Blue-Faced Beast", "Sword / captain", "Yang Zhi, the Blue-Faced Beast, born marked and born unlucky. Decorated captain, demoted, ruined, and flagged for a crime the system wrote around him. Keeps a ledger of his bad luck. Duty is the one thing that never left.",
      "A worn officer's coat over scarred mail, a heavy saber, the blue mark stark on his cheek.",
      "Dark campaign armor, a broader saber, his luck no better but his edge much worse.",
-     "Black-and-indigo plate, a saber wreathed in cold light, the mark blazing like a brand he finally wears on purpose."),
-    ("(new recruit)", "Shortfuse", "Mace", "Qin Ming, the Fiery Thunderbolt. In the legend his temper was a struck match and his weapon a thunder-club, tricked into rebellion by a ruse that left him nothing to return to. Here it goes the same way. All force and little patience, loyal as a landslide.",
-     "Battered garrison armor, a wolf-tooth mace, a face a breath from shouting.",
+     "Black-and-indigo plate, a saber wreathed in cold light, the mark worn at last like a banner."),
+    ("Maralme", "Fiery Thunderbolt", "Sword / champion", "Qin Ming, the Fiery Thunderbolt. Garrison champion, temper first, orders second. The Commission burned his garrison for the crime of losing to the crew, so now he fights for the crew. Loudly. Apologizes by hitting things for you.",
+     "Battered garrison armor, a wolf-tooth mace, a face one breath from shouting.",
      "Heavier plate scorched at the edges, a spiked mace trailing sparks, his rage finding aim.",
-     "Armor glowing at the seams like cooling iron, a mace that strikes thunder, a storm on a short fuse."),
-    ("(new recruit)", "Nightstick", "Twin maces", "Huyan Zhuo, the Twin Rods. In the legend the imperial marshal sent to crush the outlaws, beaten by them, then won over by them. Here a decorated enforcement marshal who changed sides exactly once, the day he saw which side the cruelty was on. Disciplined and honorable, with two batons and no more illusions.",
+     "Armor glowing at the seams like cooling iron, a mace that strikes thunder, a storm with a cause."),
+    ("Nakupí", "Twin Rods", "Sword / marshal", "Huyan Zhuo, the Twin Rods. A marshal with a career of medals who changed sides exactly once, the day he saw which side the cruelty was on. Courteous, disciplined, and finally serving something worth the parade.",
      "A marshal's lacquered armor, a steel baton in each hand, a commander's hard calm.",
-     "Darkened campaign plate, longer batons ringed in iron, his discipline turned on his old masters.",
-     "Black armor figured with coiling dragons, twin batons crackling on impact, a marshal who finally serves something worth the medals."),
-    ("(new recruit)", "Fastpass", "Speed / support", "Dai Zong, the Marvelous Traveler. In the legend he marched five hundred li in a day by a charm tied to his legs, the brotherhood's courier and eyes. Here a transit-runner whose gift outruns the trains, first to know everything and last to sit still. Wry, restless, always already gone.",
-     "A runner's light shell, transit-tags clipped to both legs, worn sneakers.",
+     "Darkened campaign plate, longer batons ringed in iron, discipline aimed at his old masters.",
+     "Black armor figured with coiling dragons, twin batons that crack like verdicts."),
+    ("Harold", "Little Li Guang", "Bow / marksman", "Hua Rong, called Little Li Guang after the old archer who split stones. The finest shot in the enforcement ranks, retired by his own conscience at four hundred meters. Quick to laugh, quicker to aim, never lets anyone forget either.",
+     "A trim flight jacket, a fine recurve bow, an easy grin and a full quiver.",
+     "Embroidered flight silks, a heavier-draw bow, arrows fletched in red.",
+     "A marksman's regalia trailing ribbons, a bow that hums when drawn, every arrow splitting the last."),
+    ("Sorman", "Marvelous Traveler", "Staff / runner", "Dai Zong, the Marvelous Traveler. The fastest legs in the city, method undisclosed. First to know everything, last to sit still, and everyone alive owes him a noodle. Payable in advance.",
+     "A runner's light shell, transit tags clipped to both legs, ruined sneakers.",
      "Gear cut for speed, tags braided up both legs, a blur at the edge of sight.",
-     "Wind-torn gear trailing light, tags burning as he moves, less a runner now than a rumor arriving."),
-    ("(new recruit)", "Drifter", "Agile / bow", "Yan Qing, the Wanderer. In the legend the graceful jack-of-all-trades, deadly with a bow, a wrestling hold, or a song, devoted to the one master who never wronged him. Here a masterless fixer of the same uncommon grace. Light on the surface, with a blade of loyalty underneath.",
-     "A handsome rogue in street clothes, a short bow, tattoos peeking from his collar.",
-     "Fitted gear for movement, a stronger bow, a full sleeve of inked figures.",
-     "A coat that flows around the fight, a bow drawn faster than the eye, tattoos alight as he twists between blades."),
-    ("(new recruit)", "Nine Dragons", "Staff / spear", "Shi Jin, the Nine-Dragoned, named for the nine dragons tattooed across his body. In the legend the rich young heir who threw his fortune away for the outlaw road and never looked back. Here the first true partner and the most eager. Brave and generous and a little reckless, learning the cost as he goes.",
-     "A youth in fine but careless dress, a long staff, nine blue dragons curling over bared arms.",
-     "Practical armor over the tattoos, a bladed staff, the recklessness tempered into nerve.",
-     "War-gear that bares the dragons on purpose, a pike that moves like the ink come loose, nine dragons seeming to fight beside him."),
-    ("(new recruit)", "Riptide", "Water / swimmer", "Zhang Shun, the White Streak in the Waves. In the legend no man alive could match him underwater, where he drowned his enemies one by one. Here a canal fish-seller and peerless diver who can hold his breath longer than a man should live. Soft-spoken on land, lethal in any depth.",
+     "Wind-torn gear trailing light, less a runner now than a rumor arriving."),
+    ("Gigojago", "White Streak in the Waves", "Staff / diver", "Zhang Shun, the White Streak in the Waves. Fish-market royalty and the best diver the river ever raised. Quiet on land, unbeatable in water, forever inviting people to swim. The water's honest, he says. So is he.",
      "A diver's wrap, a long knife, hair slicked from the canal.",
-     "A light scaled vest, a barbed harpoon, lines of tattoo like gills across his ribs.",
-     "A figure half made of water, a trident of pale bone, the canal rising to fight wherever he stands."),
-    ("(new recruit)", "Deadman", "Water-warrior", "Ruan Xiaoqi, the Living King Yama. In the legend the wildest of the fisher brothers took the outlaw road with a grin and a grudge, naming himself for the lord of the dead. Here it is the same: the wildest of three dock brothers from the canal-villages HARMONY bled dry. Fearless to the edge of madness, happiest in a losing fight he means to win.",
-     "A diver's vest and scars, a boarding-blade, a reckless laugh.",
+     "A light scaled vest, a barbed harpoon, tattoo lines like gills across his ribs.",
+     "A figure half made of river, a pale trident, the water rising to fight wherever he stands."),
+    ("Manmer", "Featherless Arrow", "Bow / thrower", "Zhang Qing, the Featherless Arrow. Never lost a fight he could end with one thrown stone, and he has never needed two. Easy-going, deadly accurate, and firmly against ceremony, including standing up.",
+     "A traveler's coat hung with pouches of smooth stones, a sling, a lazy grin.",
+     "Reinforced leathers, heavier shot, throws that crack riot shields.",
+     "A coat that ripples with motion, stones that fly like loosed bolts, a hail no wall fully turns."),
+    ("U'nasag", "the Living Death-God", "Spear / fisherman", "Ruan Xiaoqi, the Living Death-God, wildest of the fisher brothers. The Commission seized the fleet; he considers that a personal invitation. Fearless to the edge of madness, happiest in a losing fight he intends to win.",
+     "A diver's vest and old scars, a boarding blade, a reckless laugh.",
      "Bound leathers and a long oar-spear, eyes lit with mischief.",
-     "A storm-god of the shallows, trident wreathed in spray, daring death so loudly it backs away."),
-    ("(new recruit)", "Cleaver", "Dual blades", "Sun Erniang, the Witch. In the legend she and her husband kept a roadside inn with a butcher's trade behind it, and feared no one. Here she keeps an infamous roadside spot with a dark trade behind it, the kind of woman the city made and then feared. Crude, fearless, and fiercely protective of her own.",
-     "A working-woman's apron, a cleaver in each hand, a knowing smirk.",
-     "Blood-red sashes and leather, paired curved blades, charms warding her hair.",
-     "Gear like dried blood, twin blades that drink the light, a terror the road learned not to test."),
-    ("(new recruit)", "Longarm", "Halberd", "Zhu Tong, Lord of the Beautiful Beard. In the legend the honest constable whose mercy to fugitives cost him his post and his freedom. Here an honest beat cop whose mercy to the wrong people cost him everything, famous for a beard the precinct wrote jokes about. Upright and warm, the last good officer of a rotten precinct.",
-     "A cop's neat coat, a long halberd, a magnificent dark beard.",
+     "A storm-god of the shallows, spear wreathed in spray, daring death so loudly it backs off."),
+    ("Ra'prow", "Lord of the Beautiful Beard", "Spear / constable", "Zhu Tong, Lord of the Beautiful Beard. An honest constable audited out of his badge for years of quiet mercy. Still walks his beat; the beat just moved. Reads monsters their rights. The beard is not negotiable.",
+     "A constable's neat coat, a long halberd, a magnificent dark beard.",
      "Field armor over the coat, a heavier halberd, the beard braided for war.",
-     "A commander's bearing, a halberd haloed in light, the beard streaming like a banner of the man he stayed."),
-    ("(new recruit)", "Slingshot", "Stone-thrower", "Zhang Qing, the Featherless Arrow. In the legend he never lost a fight he could end with a single thrown stone. Here a street chief who joined the band for a cause bigger than the next score. Easy-going, deadly accurate, and allergic to ceremony.",
-     "A traveller's coat hung with pouches of smooth stones, a sling, a lazy grin.",
-     "Reinforced leathers, heavier shot, throws that crack shields.",
-     "A coat that ripples with motion, stones that fly like loosed bolts, a hail no wall can fully turn."),
-    ("(new recruit)", "Courier", "Bow / crane-clan", "Lan, of the crane-clan. The cranes carried messages between the city and the high servers, until she learned where the messages really went. Aloof and precise, she mourns a network she used to serve. Now she carries word for the dead instead.",
-     "A pale figure in feathered gray, a slender bow, eyes that look through you.",
-     "White-and-silver plumage hardening into armor, a longbow of bone-white, wings half-furled.",
-     "A towering crane-courier haloed in cold light, bolts like frozen messages, the runner who turned on her senders."),
+     "A commander's bearing, a halberd haloed in lamplight, the beard streaming like a banner of the man he stayed."),
+    ("Iskar", "Two-Headed Snake", "Bow / hunter", "Xie Zhen, the Two-Headed Snake. A mountain hunter who reads beast-sign like weather reports, terse as a snapped twig. His sister finishes his sentences, usually about a week later.",
+     "A hillside hunter in weathered green, a heavy bow, a forked hunting spear across his back.",
+     "Layered hunting gear hung with beast-sign charms, arrows cut for big game.",
+     "A quiet shape the mountain itself seems to cover for, every arrow a finished argument."),
+    ("Lan", "Twin-Tailed Scorpion", "Bow / hunter", "Xie Bao, the Twin-Tailed Scorpion. The other hunter, the one who starts the sentences. Between her and her brother nothing in the hills goes untracked, including the things being herded.",
+     "A younger hunter in weathered green, a short bow, twin forked knives at her belt.",
+     "Hardened hunting gear, heavier bow, a coil of snare-wire that has ended arguments.",
+     "A grinning shadow dropping out of pines, arrows and knives arriving in the same breath."),
+    ("Amazora", "the Witch", "Sword / innkeeper", "Sun Erniang, the Witch. Kept the border inn every road warned you about and every traveler ended up loving. Feeds both sides, threatens to sell the rude ones, means the menu. Fiercely protective of her own.",
+     "A working woman's apron, a cleaver in each hand, a knowing smirk.",
+     "Blood-red sashes and leather, paired curved blades, charms warding her hair.",
+     "Gear like dried chili and old iron, twin blades that drink the lamplight, a terror the road respects."),
+    ("Zenzoze", "Gold Lancer", "Spear / instructor", "Xu Ning, the Gold Lancer, drill instructor of a lance lineage older than the plates. He came to teach the crew how to open Commission armor and stayed to see it done properly. Feet wider. Class is always in session.",
+     "A precise instructor in a worn training coat, a gold-tasseled lance kept immaculate.",
+     "Lacquered lamellar in gold and black, the lance quicker than the eye it teaches.",
+     "A gleaming column of drill-ground calm, the lance opening armor at the collar, like a lie."),
+    ("Gegonago", "the Tattooed Monk", "Staff / fists (story)", "Lu Zhishen, the Tattooed Monk. Hit an extortionist three times; the man stopped being alive; the monastery's robes fit well enough. Keeps score of everything, believes in soup, and loves his sworn brother louder than any bell.",
+     "A ragged coat half open over tattooed arms, a heavy iron staff, a flask never far.",
+     "Robes the color of dried blood, the staff bound in iron rings, banned prayers inked across his back.",
+     "Bare to the waist, tattoos blazing, the staff a pillar; conviction with its fists up."),
+    ("Amimari", "the Tigress", "Staff / cook (story)", "Gu Dasao, the Tigress. Runs Outer Heaven's kitchen like a garrison and its children like a queen. Feeds you or fights you, frequently both, always in that order.",
+     "An apron over patched armor, a soup ladle and a boning knife, both spotless.",
+     "A kitchen-queen's regalia of sashes and steel, cleaver at her hip, laughter that carries.",
+     "The kitchen made flesh: warmth, steel, and absolutely no seconds until everyone has had firsts."),
+    ("Mizell", "Timely Rain", "Leader (story)", "Song Jiang, called Timely Rain, because his help arrives like rain in a drought. An ex-clerk who spent his savings posting bail for strangers. Everyone who meets him would follow him anywhere. He keeps a ledger of everyone he owes. It has one hundred and eight lines.",
+     "A modest clerk's coat worn with care, a plain blade he never draws, a face people trust on sight.",
+     "A captain's jacket he did not ask for, the bearing of a man others have decided to follow.",
+     "A coat of office he would never have chosen, a banner rising behind him, the most beloved soul on the lake and the most spent."),
 ]
 
 STORYLINE = [
-    ("Setting", "A dying far-future world where the air thins and gravity slowly fails.", "NEO-LIANG, a drowned near-future megacity run on the surface by HARMONY, a beloved civic super-app, and underneath by something older and hungrier."),
-    ("Premise", "A band of adventurers journeys to find the sleeping creator-god, the Maker, deep underground.", "An erased auditor gathers the deleted and deplatformed in the Margins to fight a corrupt Administration, not knowing the Administration is only the system's lower hand."),
-    ("The hidden power", "The Maker, a creator who may have abandoned the world.", "The Index, HARMONY's hidden master table that no longer merely forecasts citizens but schedules their deaths and feeds on the grief, through the harvest the band calls the Ledger."),
-    ("The twist", "The nature of the world and the Maker is revealed mid-journey.", "Their suffering was scheduled to grow and harvest them; the rebellion is the harvest; a soul that dies hoping yields the most fuel; the enforcers are promoted ex-victims; and the protagonist is the Auditor, the write-key the cycle turns on."),
-    ("The protagonist", "A chosen adventurer (Bahl or Grace).", "The Auditor (and Echo), the partner pair whose unrevoked write-key gives ten seconds of root at the Index."),
-    ("The brotherhood", "A growing party of heroes and recruited monsters.", "The 108 Erased: outlaw heroes alongside feral signals (Static) and the deleted underclass of Neo-Liang."),
-    ("The trap", "Late-game escalation against a final threat.", "Reinstatement, an offer of amnesty, cleared names, and a Compliance badge that is the final mechanism of the harvest."),
-    ("The ending", "Defeat the final threat.", "A choice at the Index: Preserve every name (remembered forever, the cycle repeats) or Strike out every name including your own (free through deletion, the one move the model never forecast)."),
-    ("Themes", "Pilgrimage, creation, survival in a decaying world.", "Grief harvested as a resource; the longing to be remembered and reinstated as the trap; loyalty as both virtue and the lever of doom; being deleted as the only freedom."),
+    ("Setting", "A dying far-future world where the air thins and gravity slowly fails.", "One reactor-lit megacity where machines, magic, monsters and spirits coexist: plates above, undercity below, and a drowned amusement park on the under-lake called Outer Heaven."),
+    ("Premise", "A band of adventurers journeys to find the sleeping creator-god, the Maker, deep underground.", "The Commission, the AI that assigns every life at birth and arrests crimes before they happen, keeps flagging good people as Deviants. The flagged wash up at Outer Heaven and become a brotherhood."),
+    ("The hidden power", "The Maker, a creator who may have abandoned the world.", "The Commission is not an AI. It is a council of human brains, centuries old, in jars under the tower, running the world on their own bias and calling it peace."),
+    ("The twist", "The nature of the world and the Maker is revealed mid-journey.", "Outer Heaven is a farm. The injustices were manufactured, the monsters and wars were the filter, and the amnesty is the final selection round. The survivors' brains are the harvest."),
+    ("The protagonist", "A chosen adventurer (Bahl or Grace).", "Nine Dragons (Shi Jin), the tattooed rookie whose future was revised over breakfast, with the Wanderer and the Skilled Doctor beside him from the first stairwell."),
+    ("The brotherhood", "A growing party of heroes and recruited monsters.", "The heroes of the old story, joining one at a time as the city fails each of them: Panther Head, Black Whirlwind, the Pilgrim, and the rest of the ledger's one hundred and eight lines."),
+    ("The trap", "Late-game escalation against a final threat.", "Full amnesty and enforcer badges, if Outer Heaven destroys the Southbank, the one brotherhood the Commission cannot read. The predicted are sent to erase the free."),
+    ("The ending", "Defeat the final threat.", "At the harvest the survivors refuse the jars the only way left: one shared cup, on their own terms. The harvest fails, the Commission starts the next cycle, and a kid retells the legend with a last line nobody wrote."),
+    ("Themes", "Pilgrimage, creation, survival in a decaying world.", "Free will against prediction; two heavens, the jar and the sky; kindness weaponized and reclaimed; a story as the one thing a vault cannot harvest."),
 ]
 
 # (original enemy family, reskin, role; layout/stats unchanged, name+art only)
 ENEMIES = [
-    ("Wee Orbling / Orbling", "Stray Signal / Conscript Static", "The basic swarming foe: barely-rendered gig-corps echoes of the worked-to-death."),
-    ("Gorf (frog healer)", "Leech Static", "Backline support that mends the enemy line with stolen signal; crash it first."),
-    ("Dracorin (lightning bow)", "Surge Static", "Ranged elemental striker, a loose-current Noise of the dead zones."),
-    ("Sabertooth", "Predator Static", "Hard-hitting beast-shape of congealed dread."),
-    ("Spinetrich (2x2 boss)", "Thornback, the Spike Daemon", "An early greater daemon, a 2x2 boss in the same footprint."),
-    ("Stonefolk (warriors, knights, mages)", "Compliance corps", "Faceless enforcers of HARMONY: the Administration's riot squads."),
-    ("Burnbot / machine enemies", "Render Construct", "The system's tireless server-drones, deeper underground."),
-    ("Oxsecian soldiers (machine ranks)", "Compliance Units", "Spire enforcers sent once the network notices the band."),
-    ("Zero Series / clones", "Synthetic Heroes", "Hollow copies the system forges to replace harvested stars."),
-    ("Chapter Heroes / named bosses", "Administrators, Ward bosses, titan-Static", "Re-skinned per chapter; same stats and grid placement, new name and face."),
+    ("Wee Orbling / Orbling", "Scout Drone / Patrol Drone", "The Commission's basic swarming patrol hardware, first to arrive when someone is flagged."),
+    ("Gorf (frog healer)", "Marsh Leech", "Backline support that knits the enemy line back together; deal with it first."),
+    ("Dracorin (lightning bow)", "Storm Imp", "A crackling little storm spirit of the deep waterways."),
+    ("Sabertooth", "Saber Tiger", "A hunting beast of the old wilds, driven down survey lines toward the crew."),
+    ("Spinetrich (2x2 boss)", "the Thornback", "An early great beast, a 2x2 boss in the same footprint."),
+    ("Stonefolk (warriors, knights, mages)", "Badge Squads", "Commission street enforcement: riot gear, lit badges, quotas."),
+    ("Burnbot / machine enemies", "Works Machines", "The city's tireless maintenance and security machines, deeper underground."),
+    ("Oxsecian soldiers (machine ranks)", "Enforcement Units", "The Commission's faceless war frames, deployed once Outer Heaven is noticed."),
+    ("Zero Series / clones", "Replicas", "Synthetic fighters trained on footage of the crew's own victories."),
+    ("Chapter Heroes / named bosses", "Officers, beasts, council guardians", "Re-skinned per chapter; same stats and grid placement, new name and face."),
 ]
 
 # Re-skin party banter for every chapter: {chapter: [(speaker, line), ...]}
@@ -638,30 +640,27 @@ def sheet(name, headers, rows, widths, bold_cols=()):
 ov = wb.active
 ov.title = "Overview"
 ov.sheet_view.showGridLines = False
-ov["A1"] = "SIGNAL / 108 — Off-Network  —  Re-skin Mapping"
+ov["A1"] = "HEAVEN'S MANDATE — Outer Heaven — Re-skin Mapping"
 ov["A1"].font = TITLE_FONT
 notes = [
     "",
-    "This workbook maps the original Terra Battle text to the new SIGNAL / 108 (modern Water Margin x The World Ends With You) re-skin.",
+    "This workbook maps the original Terra Battle text to the Outer Heaven re-skin",
+    "(Water Margin x Psycho-Pass in an FF7-style city; see docs/outer_heaven_bible.md).",
     "The re-skin is a TEXT + NAME + ART overlay only. No stage or battle layout data changes.",
     "",
     "Tabs:",
     "  - Storyline:     the premise mapped, original vs re-skin",
     "  - Chapter Names: all 42 chapter titles, original vs re-skin",
-    "  - Narration:     per-chapter opening narration, original (from the game files) vs re-skin (all 42)",
-    "  - Characters:    full hero roster + background (no spoiler) + appearance at each of the 3 power tiers",
+    "  - Narration:     per-chapter opening narration (all 42)",
+    "  - Characters:    full roster: epithet, real name, background, appearance at the 3 power tiers",
     "  - Enemies:       every non-boss unit mirrored with its stats, re-skin name, and look",
     "  - Bosses:        every boss mirrored with stats, a bespoke name, and an appearance",
-    "  - Banter:        party banter for all 42 chapters, original (Ch.1-3) vs re-skin",
+    "  - Banter:        pre-battle party banter for all 42 chapters",
     "",
-    "Conventions: heroes use a modern street-tag (the handle is also the dialogue speaker + portrait key);",
-    "the real name they fight to keep indexed is carried in the Background field (e.g. Burnout = Lam Chongzhi).",
-    "Generic enemies are Static (Noise from the city's grief); bosses are Administrators / Ward bosses / titan-Static.",
-    "",
-    "REVIEW: cells shaded amber are my best guesses or open decisions worth a look:",
-    "   - Characters: heroes marked '(new recruit)' have no game unit yet, so they need a unit + art.",
-    "   - Banter (Ch.42): the two ending-variant Auditor lines (a story choice, not final).",
-    "Enemies / Bosses: stats are mirrored exactly from the game; names and looks are my draft for review.",
+    "Conventions: heroes use their Water Margin epithet as the on-screen handle (also the",
+    "dialogue speaker + portrait key); the real name lives in the Background field and text.csv.",
+    "Proper-noun budget: the Commission, Outer Heaven, Deviant, the 108, the council. Nothing else invented.",
+    "Voice rules: plain words, openers under 80 words, banter under ~20 words a line, no lore in banter.",
 ]
 for i, line in enumerate(notes, start=2):
     ov[f"A{i}"] = line
@@ -742,6 +741,24 @@ for n in range(1, 43):
         osp, ol = orig[i] if i < len(orig) else ("", "")
         rsp, rl = resk[i] if i < len(resk) else ("", "")
         banter_rows.append((n if i == 0 else "", RESKIN_NAME[n] if i == 0 else "", osp, ol, rsp, rl))
+# Post-battle aftermath beats (script + dialogue), from tools/reskin_post_battle.json
+_PB_JSON = os.path.join(ROOT, "tools", "reskin_post_battle.json")
+pb_rows = []
+if os.path.exists(_PB_JSON):
+    _pb = {int(k): v for k, v in json.load(open(_PB_JSON)).items()}
+    for n in sorted(_pb):
+        v = _pb[n]
+        first = True
+        if v.get("script"):
+            pb_rows.append((n, RESKIN_NAME[n], "script", "", v["script"]))
+            first = False
+        for spk, line in v.get("dialogue", []):
+            pb_rows.append((n if first else "", RESKIN_NAME[n] if first else "", "dialogue", spk, line))
+            first = False
+sheet("Post-Battle",
+      ["#", "Chapter (re-skin)", "Kind", "Speaker", "Text"],
+      pb_rows, [5, 20, 10, 18, 100], bold_cols=(2, 4))
+
 ws_banter = sheet("Banter",
                   ["#", "Chapter (re-skin)", "Original Speaker", "Original Line", "Re-skin Speaker", "Re-skin Line"],
                   banter_rows, [5, 20, 16, 50, 18, 64], bold_cols=(2, 5))

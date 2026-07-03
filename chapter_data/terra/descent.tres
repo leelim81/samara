@@ -17,4 +17,5 @@ title = "DESCENT"
 caption = "DESCENT_CAPTION"
 difficulty = "12-13"
 battle_scene_path = "res://battles/terra/descent.tscn"
+unlocked_job_paths = [ "res://jobs/terra/macuri_job.tres" ]
 battle_info = SubResource( 1 )

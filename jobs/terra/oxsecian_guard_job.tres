@@ -12,7 +12,7 @@
 script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ]
-job_name = "Compliance Sentry, Elite"
-description = "An elite shield-enforcer posted at the Spire gates."
+job_name = "Enforcement Sentry, Elite"
+description = "An elite shield frame posted at the tower gates."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

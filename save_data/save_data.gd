@@ -94,10 +94,50 @@ func clear_chapter_and_unlock_next(title: String) -> void:
 	var chapter_list: ChapterList = load("res://chapter_data/main_story_chapter_list.tres")
 
 	for i in chapter_list.chapters.size():
-		if chapter_list.chapters[i].title == title and i + 1 < chapter_list.chapters.size():
-			unlock_chapter(chapter_list.chapters[i + 1].title)
+		if chapter_list.chapters[i].title == title:
+			_grant_chapter_jobs(chapter_list.chapters[i])
+
+			if i + 1 < chapter_list.chapters.size():
+				unlock_chapter(chapter_list.chapters[i + 1].title)
 
 			break
+
+
+# Story recruitment: grant the chapter's joining hero(es), skipping any the
+# player already owns (so replays and old saves never create duplicates).
+# New units join at the party's highest level so they arrive battle-ready.
+func _grant_chapter_jobs(chapter_data: ChapterData) -> void:
+	if chapter_data.unlocked_job_paths.is_empty():
+		return
+
+	var level: int = 1
+
+	for job in jobs:
+		level = max(level, job.level)
+
+	for path in chapter_data.unlocked_job_paths:
+		if _owns_job(path):
+			continue
+
+		var job: Job = load(path)
+
+		if job == null:
+			push_warning("Chapter grant: missing job resource %s" % path)
+			continue
+
+		add_job(job, level)
+
+		print("New ally joined the roster: %s" % path)
+
+
+func _owns_job(path: String) -> bool:
+	for job in jobs:
+		var owned_path: String = job.source_path if job.source_path != "" else job.resource_path
+
+		if owned_path == path:
+			return true
+
+	return false
 
 
 func add_job(job: Job, level: int) -> void:

@@ -10,7 +10,7 @@
 script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ) ]
-job_name = "Leech Static"
-description = "A bloated leech of stolen signal, mending the enemy line with pilfered light."
+job_name = "Marsh Leech"
+description = "A bloated lake leech that knits enemy wounds shut; deal with it first."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

@@ -11,6 +11,6 @@ script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ) ]
 job_name = "CHAR_THE_WISDOM_STAR"
-description = "Wu Yong, the Wisdom Star. In the legend the strategist whose plans never failed the brotherhood. Here a HARMONY systems architect who helped build the Index, then defected when she found her own daughter's death already written in it. She sees three moves ahead, and will spend the war wishing she had seen four. She cracks the Ledger, and stops reading aloud when she reaches her own name."
+description = "Wu Yong, the Wisdom Star. She built the Commission's prediction models until she read a file she could not unread. Sees three moves ahead and says so; will spend the war wishing she saw four. Plans are how she prays."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

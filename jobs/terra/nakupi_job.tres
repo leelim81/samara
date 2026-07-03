@@ -11,6 +11,6 @@ script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ) ]
 job_name = "CHAR_TWIN_RODS"
-description = "Huyan Zhuo, the Twin Rods. In the legend the imperial marshal sent to crush the outlaws, beaten by them, then won over by them. Here a decorated enforcement marshal who changed sides exactly once, the day he saw which side the cruelty was on. Disciplined and honorable, with two batons and no more illusions."
+description = "Huyan Zhuo, the Twin Rods. A marshal with a career of medals who changed sides exactly once, the day he saw which side the cruelty was on. Courteous, disciplined, and finally serving something worth the parade."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

@@ -24,7 +24,7 @@ texture = ExtResource( 3 )
 texture = ExtResource( 10 )
 
 [node name="UnitName" parent="CanvasLayer" index="3"]
-text = "Compliance Guard, Mk II"
+text = "Enforcement Guard, Mk II"
 
 [node name="Action1" parent="AIController" index="0" instance=ExtResource( 5 )]
 behavior = 1

@@ -12,7 +12,7 @@
 script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ]
-job_name = "the Overcharge Sentinel"
-description = "A crackling rail-archer overcharged past safety, every bolt a thunderclap."
+job_name = "the Overcharged Sentinel"
+description = "A crackling rail-archer overcharged past every safety, each bolt a thunderclap."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

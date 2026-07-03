@@ -17,4 +17,5 @@ title = "INTO_THE_TOWER"
 caption = "INTO_THE_TOWER_CAPTION"
 difficulty = "9-10"
 battle_scene_path = "res://battles/terra/into_the_tower.tscn"
+unlocked_job_paths = [ "res://jobs/terra/bagunar_job.tres" ]
 battle_info = SubResource( 1 )

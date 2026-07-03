@@ -17,4 +17,5 @@ title = "ZERO_SERIES"
 caption = "ZERO_SERIES_CAPTION"
 difficulty = "58-59"
 battle_scene_path = "res://battles/terra/zero_series.tscn"
+unlocked_job_paths = [ "res://jobs/terra/unasag_job.tres" ]
 battle_info = SubResource( 1 )

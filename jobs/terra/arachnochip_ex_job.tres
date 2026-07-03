@@ -10,7 +10,7 @@
 script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ) ]
-job_name = "Loom Static"
-description = "A skittering spider of fiber-optic thread, a rail-bow."
+job_name = "Weaver"
+description = "A long-legged weaver spirit trailing silk, a compound bow."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

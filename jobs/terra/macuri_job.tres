@@ -11,6 +11,6 @@ script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ) ]
 job_name = "MACURI"
-description = "Mu, an ox-spirit worked to death in the under-docks and risen in slow fury. Gentle past all reason until he is pushed, then immovable as the cargo he was made to haul. He carried freight in the dark for years. Now he carries the band."
+description = "Mu Hong, the Unrestrained. He fed half a district before the Commission drowned it, and kept feeding it after. Gentle past all reason until pushed, then immovable. Carries crates, carries people, carries on."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

@@ -15,6 +15,11 @@ extends Resource
 # Placeholder chapter: shown in the menu but not yet playable (no battle data)
 @export var locked: bool = false
 
+# res:// paths of job .tres files granted when this chapter is cleared.
+# Grants are idempotent (owned jobs are skipped), so replays are safe.
+# Stamped by tools/wire_chapter_joins.py from docs/outer_heaven_bible.md.
+@export var unlocked_job_paths: Array = [] # (Array, String)
+
 @export var script_background: Texture2D
 @export var dialogue_background: Texture2D
 @export var post_battle_script_background: Texture2D

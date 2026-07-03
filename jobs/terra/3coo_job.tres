@@ -13,7 +13,7 @@
 script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ]
-job_name = "Administrator: Ward Two"
-description = "The third apex enforcer, a vast rail-archer raining bolts of cold policy."
+job_name = "Council Warden Gamma"
+description = "The third tower guardian, a vast rail-archer raining cold bolts of policy."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

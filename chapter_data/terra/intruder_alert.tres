@@ -17,4 +17,5 @@ title = "INTRUDER_ALERT"
 caption = "INTRUDER_ALERT_CAPTION"
 difficulty = "40-41"
 battle_scene_path = "res://battles/terra/intruder_alert.tscn"
+unlocked_job_paths = [ "res://jobs/terra/nakupi_job.tres" ]
 battle_info = SubResource( 1 )

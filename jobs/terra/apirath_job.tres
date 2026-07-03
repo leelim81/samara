@@ -13,7 +13,7 @@
 script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ]
-job_name = "Apirath, Toll Administrator"
-description = "A towering caster-administrator of the bridgehead, robed in living surge-cloud."
+job_name = "Apirath, the Toll-Keeper"
+description = "A towering bridge spirit robed in living stormcloud, collecting what crossings cost."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

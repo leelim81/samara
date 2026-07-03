@@ -11,6 +11,6 @@ script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ) ]
 job_name = "BAHL"
-description = "Gan Jiang, the master smith of the old story, who forged a pair of blades no power could match and signed his name into the steel. Here he audited HARMONY's mortality numbers, found a ward dying off the network faster than it died in life, and was murdered for asking why. He wakes Off-Network with the brand already ticking and a write-key the system never managed to revoke. Silent and level. Still believes a record, and a life, can be made true."
+description = "Shi Jin, called Nine Dragons for the ink on his arms. He was three exams from his assigned future when the Commission revised it without asking. Brave, generous, a little reckless, and learning what each of those costs. Hates being called kid. Counts his dragons when he is nervous."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

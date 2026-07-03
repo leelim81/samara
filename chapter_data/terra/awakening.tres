@@ -17,4 +17,5 @@ title = "AWAKENING"
 caption = "AWAKENING_CAPTION"
 difficulty = "47-47"
 battle_scene_path = "res://battles/terra/awakening.tscn"
+unlocked_job_paths = [ "res://jobs/terra/sorman_job.tres" ]
 battle_info = SubResource( 1 )

@@ -17,4 +17,5 @@ title = "RISING_WORLD"
 caption = "RISING_WORLD_CAPTION"
 difficulty = "69-70"
 battle_scene_path = "res://battles/terra/rising_world.tscn"
+unlocked_job_paths = [ "res://jobs/terra/iskar_job.tres" ]
 battle_info = SubResource( 1 )

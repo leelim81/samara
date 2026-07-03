@@ -36,3 +36,6 @@ sfx/non_distributable.godot/
 # Regenerable caches (re-create via tools/fetch_enemy_art.py + build_dataset.py)
 tools/out/_cache/
 assets/terra/enemies/
+
+# Python bytecode (tooling)
+tools/__pycache__/

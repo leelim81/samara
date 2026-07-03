@@ -17,4 +17,5 @@ title = "LAWS_OF_THE_JUNGLE"
 caption = "LAWS_OF_THE_JUNGLE_CAPTION"
 difficulty = "53-54"
 battle_scene_path = "res://battles/terra/laws_of_the_jungle.tscn"
+unlocked_job_paths = [ "res://jobs/terra/manmer_job.tres" ]
 battle_info = SubResource( 1 )

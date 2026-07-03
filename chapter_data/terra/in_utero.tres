@@ -17,4 +17,5 @@ title = "IN_UTERO"
 caption = "IN_UTERO_CAPTION"
 difficulty = "21-22"
 battle_scene_path = "res://battles/terra/in_utero.tscn"
+unlocked_job_paths = [ "res://jobs/terra/korin_job.tres" ]
 battle_info = SubResource( 1 )

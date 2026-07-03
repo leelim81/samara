@@ -1,0 +1,49 @@
+{
+ "4": {
+  "dialogue": [
+   ["JADE UNICORN", "You fight like people with nothing to lose."],
+   ["THE WANDERER", "You fenced like a man with one thing left. Come find the rest of us."],
+   ["JADE UNICORN", "...My calendar appears to be open."]
+  ]
+ },
+ "16": {
+  "dialogue": [
+   ["FIERY THUNDERBOLT", "They burned my garrison. For LOSING."],
+   ["THE WISDOM STAR", "I know. I am sorry. The file is real."],
+   ["FIERY THUNDERBOLT", "Then I keep the ashes. And you people keep me."],
+   ["BLACK WHIRLWIND", "Welcome. You're the second angriest now."]
+  ]
+ },
+ "17": {
+  "dialogue": [
+   ["TWIN RODS", "The rematch is postponed. Indefinitely. I saw what my orders protect."],
+   ["PANTHER HEAD", "And?"],
+   ["TWIN RODS", "A marshal keeps his word to the right side, once he finds it. Both batons, instructor."],
+   ["TIMELY RAIN", "Soup first, marshal. Then the war."]
+  ]
+ },
+ "22": {
+  "script": "The stay of execution holds exactly as long as it needs to. By the time the Commission untangles a court order from a courier's forgery, the platform is empty, the river gate is shut, and the crowd is chanting a name it was invited to forget. Timely Rain rides home under a borrowed coat, laughing and crying in the same breath. The city saw. Whatever happens now, the city saw."
+ },
+ "27": {
+  "script": "They hold the market until the last beast breaks and runs. It does not feel like winning. That night the kitchen stays lit anyway: Black Whirlwind cooks, badly, on purpose, and nobody corrects the seasoning. Timely Rain writes one name on the park wall in his best clerk's hand. The soup is terrible. Everyone has seconds."
+ },
+ "36": {
+  "script": "Four minutes, he said. He holds it for eleven. Two families cross. The bridge stands. Qin Ming does not. The report files itself before his mace stops ringing: asset expended, within parameters. At Outer Heaven the wall gains a name, and the Witch cooks for the loud ones, quietly."
+ },
+ "37": {
+  "script": "Old Fang dies at his own dock, spear up, unread to the end. His last words are for the crew, not the Commission: they promised you heaven too? At the water gate, White Streak holds the sluice until the last child is through, and then the river takes its king home. Red-Haired Devil goes with him, arguing about plans to the last. The water is honest. It keeps them."
+ },
+ "39": {
+  "script": "Nobody kneels. The crew walks out of the vault with the one thing the Commission never priced: everyone knowing. Behind them the jars watch, patient as arithmetic. Ahead, the whole city, still lit, still lovely, still farmed. The Wisdom Star starts the plan on the stairs, voice level, eyes wet."
+ },
+ "40": {
+  "script": "Twin Rods holds the yard with both batons swinging, medals face-down where he dropped them. The Living Death-God meets a wall of guardians laughing and does not come out the other side. Gold Lancer's last lesson holds the stairwell to the letter. Feet wider. Armor opens at the collar. Class dismissed. The survivors reach the lake road carrying the truth. It is heavier than it looks."
+ },
+ "41": {
+  "script": "The engine dies two floors under the tower, and every taken mind goes free at once, like windows opening. Then the park. The wave pool. One cup, passed around unhurried, like the end of any good dinner. Timely Rain drinks first, smiling like rain finally landing. Black Whirlwind, for once in his life, waits his turn. The Commission's models scream at a decision with no pattern, no precedent, no price. The stars go out on their own terms. All of them. Together."
+ },
+ "42": {
+  "script": "And the last stars, she says, went out on their own. Her little brother makes her tell it twice. Below the new district, under the new lights, something very old checks its math again, and again, and cannot find the error. The ledger is ash. The park is quiet. The story is everywhere. Somewhere in the city, somebody's future got revised this morning, and somebody else just offered them soup."
+ }
+}

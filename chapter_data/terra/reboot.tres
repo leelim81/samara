@@ -17,4 +17,5 @@ title = "REBOOT"
 caption = "REBOOT_CAPTION"
 difficulty = "67-68"
 battle_scene_path = "res://battles/terra/reboot.tscn"
+unlocked_job_paths = [ "res://jobs/terra/raprow_job.tres" ]
 battle_info = SubResource( 1 )

@@ -10,7 +10,7 @@
 script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ) ]
-job_name = "Feral Medic"
-description = "A snarling clot of feral Noise, fur of dead pixels, a charged rod."
+job_name = "Beast-Clan Medic"
+description = "A horned undercity raider in patched furs, a charged rod."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )
