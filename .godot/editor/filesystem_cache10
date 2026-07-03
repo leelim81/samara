@@ -1,5 +1,5 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1783008966
+::res://::1783011378
 default_bus_layout.tres::AudioBusLayout::7454578157151104952::1782641424::0::1::::<><><>0<>0<><>::
 default_env.tres::Environment::-1::1782139258::0::1::::<><><>0<>0<><>::
 enums.gd::GDScript::7378857898191831885::1782139258::0::1::::<>Node<><>0<>0<><>::
@@ -1347,7 +1347,7 @@ status_effect_particles.tscn::PackedScene::-1::1782139258::0::1::::<><><>0<>0<><
 attack_bonus.tres::Resource::-1::1782139258::0::1::::<><><>0<>0<><>::res://status_effects/stats_modifiers/stats_modifier.gd<>res://assets/ui/ui_icons.png
 defense_bonus.tres::Resource::-1::1782139258::0::1::::<><><>0<>0<><>::res://status_effects/stats_modifiers/stats_modifier.gd<>res://assets/ui/ui_icons.png
 stats_modifier.gd::GDScript::3023443445005794740::1782139258::0::1::::StatsModifier<>StatusEffect<><>0<>0<><>::
-::res://text/::1783010993
+::res://text/::1783011356
 text.csv::Translation::5469814563785475641::1783011242::1783011356::1::::<><><>0<>0<>4a1e8cba94ba725d598e8a285a89ab91<>res://text/text.en.translation<*>res://text/text.es.translation::
 text.en.translation::OptimizedTranslation::1155592887559522599::1783011356::0::1::::<><><>0<>0<><>::
 text.es.translation::OptimizedTranslation::8000219418293422463::1783011356::0::1::::<><><>0<>0<><>::
@@ -1447,13 +1447,11 @@ script_vengeance.json::JSON::-1::1783008813::0::1::::<><><>0<>0<><>::
 script_voice_from_beyond.json::JSON::-1::1783008813::0::1::::<><><>0<>0<><>::
 script_voice_from_beyond_post_battle.json::JSON::-1::1783008813::0::1::::<><><>0<>0<><>::
 script_zero_series.json::JSON::-1::1783008813::0::1::::<><><>0<>0<><>::
-::res://tools/::1783010993
+::res://tools/::1783040768
 audit_art.gd::GDScript::2585363787179767723::1782139258::0::1::::<>SceneTree<><>0<>0<><>::
 build_translations.gd::GDScript::3129852484046695516::1782641554::0::1::::<>SceneTree<><>0<>0<><>::
 find_bad_enemy.gd::GDScript::1745768150649462391::1782139258::0::1::::<>SceneTree<><>0<>0<><>::
 inspect_job.gd::GDScript::193376839692463577::1782139258::0::1::::<>SceneTree<><>0<>0<><>::
-probe_timer.gd::GDScript::8095912411779570047::1783010298::0::1::::<>SceneTree<><>0<>0<><>::
-probe_victory.gd::GDScript::4821918277745140518::1783010263::0::1::::<>SceneTree<><>0<>0<><>::
 reskin_banter.json::JSON::-1::1783006718::0::1::::<><><>0<>0<><>::
 reskin_narration.json::JSON::-1::1783008649::0::1::::<><><>0<>0<><>::
 reskin_post_battle.json::JSON::-1::1783008627::0::1::::<><><>0<>0<><>::
@@ -1465,7 +1463,7 @@ shot_pause.gd::GDScript::1766401535170144336::1783009151::0::1::::<>SceneTree<><
 shot_powerpoint.gd::GDScript::3364118251717886671::1782147755::0::1::::<>SceneTree<><>0<>0<><>::
 shot_scene.gd::GDScript::5309918801739343519::1782830006::0::1::::<>SceneTree<><>0<>0<><>::
 shot_unitmenu.gd::GDScript::6069864387906778558::1782139258::0::1::::<>SceneTree<><>0<>0<><>::
-test_campaign_drip.gd::GDScript::4094879608658120319::1783008869::0::1::::<>SceneTree<><>0<>0<><>::
+test_campaign_drip.gd::GDScript::4094879608658120319::1783040768::0::1::::<>SceneTree<><>0<>0<><>::
 test_damage.gd::GDScript::3970527948164926117::1782139258::0::1::::<>SceneTree<><>0<>0<><>::
 test_drag_move.gd::GDScript::6296590025700830::1782195435::0::1::::<>SceneTree<><>0<>0<><>::
 test_drag_playthrough.gd::GDScript::7748500552912459507::1782226491::0::1::::<>SceneTree<><>0<>0<><>::
