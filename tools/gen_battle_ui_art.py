@@ -255,30 +255,32 @@ def advantage_arrow(name, px=18):
 
 
 # --- Circle of Carnage ring (TB-style: 3 icons threaded on a loop) ----------
-def carnage_ring(name, w=156, h=40):
-    """Background for the HUD's weapon-advantage circle: a flattened loop —
-    open arc at each end — with a small chevron ahead of each of the three
-    icon slots. Battle.gd overlays the actual weapon glyphs at the slots
-    (x centers 44 / 82 / 120, y center 20 at 1x) reading the chain from
-    Enums.WEAPON_RELATIONSHIPS, so the order stays engine-driven."""
-    G = (219, 184, 107, 225)  # gold, matching the HUD trim
+def carnage_ring(name, w=150, h=36):
+    """Background for the HUD's weapon-advantage circle, drawn like TB's:
+    a flattened loop whose line sweeps under the icons and wraps at both
+    ends, with a small chevron ahead of each of the three icon slots.
+    Battle.gd overlays the weapon glyphs at slot centers x = 42 / 78 / 114
+    (y center 15 at 1x) reading the chain from Enums.WEAPON_RELATIONSHIPS,
+    so the order stays engine-driven."""
+    C = (226, 228, 232, 210)  # pale line, like the reference
     s = (w * SS, h * SS)
     img = Image.new("RGBA", s, (0, 0, 0, 0))
     d = ImageDraw.Draw(img)
     u = SS
 
-    # Wrap arcs: open parentheses closing the loop left and right
-    d.arc([6 * u, 6 * u, 38 * u, 34 * u], start=100, end=260, fill=G, width=2 * u)
-    d.arc([118 * u, 6 * u, 150 * u, 34 * u], start=280, end=80, fill=G, width=2 * u)
+    # The loop: under-line sweeping the full row, wrapping up at both ends
+    d.arc([4 * u, 6 * u, 26 * u, 32 * u], start=90, end=245, fill=C, width=2 * u)
+    d.arc([124 * u, 6 * u, 146 * u, 32 * u], start=295, end=90, fill=C, width=2 * u)
+    d.line([(15 * u, 32 * u), (135 * u, 32 * u)], fill=C, width=2 * u)
 
     # A chevron ahead of each icon slot
-    for cx in (28, 66, 104):
+    for cx in (27, 63, 99):
         d.polygon([
-            ((cx - 4) * u, 13 * u),
-            ((cx + 3) * u, 20 * u),
-            ((cx - 4) * u, 27 * u),
-            ((cx - 2) * u, 20 * u),
-        ], fill=G)
+            ((cx - 4) * u, 8 * u),
+            ((cx + 3) * u, 15 * u),
+            ((cx - 4) * u, 22 * u),
+            ((cx - 2) * u, 15 * u),
+        ], fill=C)
 
     _save(img, name, (w, h))
 

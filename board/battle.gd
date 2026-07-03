@@ -20,19 +20,19 @@ var _is_battle_finished: bool = false
 var _progress_tween: Tween
 var _view_unit_menu_tween: Tween
 
-@onready var _progress_bar: TextureProgressBar = $CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock/TimerRow/MoveTimer
-@onready var _your_turn_label: Label = $CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock/TimerRow/MoveTimer/YourTurnLabel
+@onready var _progress_bar: TextureProgressBar = $CanvasLayer/MarginContainer/Hud/Row2/C1/TimerRow/TimerBar
+@onready var _your_turn_label: Label = $CanvasLayer/MarginContainer/Hud/Row2/C1/TimerRow/TimerBar/YourTurnLabel
 
-# Live battle-spoils HUD (built programmatically; see _build_live_hud).
+# Live battle-spoils HUD (static grid labels; see the Row1/Row2 columns).
 var _wave_label: Label
-var _coins_label: Label
-var _exp_label: Label
-var _ko_label: Label
+@onready var _coins_label: Label = $CanvasLayer/MarginContainer/Hud/Row1/C2/CoinPair/Value
+@onready var _exp_label: Label = $CanvasLayer/MarginContainer/Hud/Row2/C2/ExpPair/Value
+@onready var _ko_label: Label = $CanvasLayer/MarginContainer/Hud/Row1/C3/KoPair/Value
 
 @onready var _power_segments: Array = [
-	$CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock/PowerGauge/Seg1,
-	$CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock/PowerGauge/Seg2,
-	$CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock/PowerGauge/Seg3,
+	$CanvasLayer/MarginContainer/Hud/Row1/C1/PGauge/Seg1,
+	$CanvasLayer/MarginContainer/Hud/Row1/C1/PGauge/Seg2,
+	$CanvasLayer/MarginContainer/Hud/Row1/C1/PGauge/Seg3,
 ]
 
 func _ready() -> void:
@@ -80,6 +80,7 @@ func _on_Board_drag_timer_started(timer: Timer) -> void:
 	_timer = timer
 	
 	_progress_bar.value = _progress_bar.max_value
+	_your_turn_label.visible = false
 	
 	set_process(true)
 
@@ -92,15 +93,30 @@ func _on_Board_drag_timer_stopped(time_left_seconds: float) -> void:
 	
 	_timer = null
 
-
-func _on_Board_drag_timer_reset() -> void:
+	# Back to the idle "Your turn" pill: empty the bar, restore the text
+	# (the enemy-phase handler hides it again when the turn passes).
 	if _progress_tween != null:
 		_progress_tween.kill()
 
 	_progress_tween = create_tween()
-	_progress_tween.tween_property(_progress_bar, "value", _progress_bar.max_value, 0.5) \
-			.set_trans(Tween.TRANS_LINEAR)
-	_progress_tween.parallel().tween_property(_progress_bar, "tint_progress", Color.WHITE, 0.5)
+	_progress_tween.tween_property(_progress_bar, "value", 0.0, 0.3) \
+			.set_trans(Tween.TRANS_SINE)
+	_progress_tween.parallel().tween_property(_progress_bar, "tint_progress", Color.WHITE, 0.3)
+
+	_your_turn_label.visible = true
+
+
+func _on_Board_drag_timer_reset() -> void:
+	# Fired at the start of each player turn: settle into the idle state —
+	# dark pill with the "Your turn" text (TB's bar only fills while a drag
+	# timer is actually running).
+	if _progress_tween != null:
+		_progress_tween.kill()
+
+	_progress_tween = create_tween()
+	_progress_tween.tween_property(_progress_bar, "value", 0.0, 0.3) \
+			.set_trans(Tween.TRANS_SINE)
+	_progress_tween.parallel().tween_property(_progress_bar, "tint_progress", Color.WHITE, 0.3)
 
 
 func _on_Board_player_turn_started() -> void:
@@ -295,28 +311,9 @@ func _on_ViewUnitMenu_go_back(view_unit_menu: Control) -> void:
 # ---- Live spoils HUD (Terra Battle battle HUD parity) ----
 
 func _build_live_hud() -> void:
-	# TB-style spoils in the HUD middle: two stacked columns with big white
-	# numbers — coins over "EXP n" on the left, KO beside them.
-	var block: HBoxContainer = $CanvasLayer/MarginContainer/Hud/MainRow/CountersBlock
-	var icons: Texture2D = load("res://assets/terra/ui/ui_icons.png")
-
-	var col_a := VBoxContainer.new()
-	col_a.add_theme_constant_override("separation", 4)
-	col_a.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	block.add_child(col_a)
-
-	var col_b := VBoxContainer.new()
-	col_b.alignment = BoxContainer.ALIGNMENT_CENTER
-	col_b.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	block.add_child(col_b)
-
-	# 64px atlas cells: coins(64,128) · skull/KO(192,128). EXP is a teal text
-	# prefix like TB's "EXP 2854" row; counter glyphs read white like TB's.
-	_coins_label = _make_counter_row(col_a, _atlas_icon(icons, Rect2(64, 128, 64, 64), Color(0.86, 0.72, 0.42)), "")
-	_exp_label = _make_counter_row(col_a, null, "EXP")
-	_ko_label = _make_counter_row(col_b, _atlas_icon(icons, Rect2(192, 128, 64, 64), Color(0.88, 0.9, 0.92)), "")
-	# Wave is shown in the enemy-phase banner; keep a standalone label so the
-	# phase code can still set it without cluttering the HUD.
+	# The spoils labels live in the .tscn grid now; only the standalone wave
+	# label (used by the enemy-phase banner code) and the carnage glyphs are
+	# built here.
 	_wave_label = Label.new()
 
 	_build_carnage_circle()
@@ -330,70 +327,24 @@ func _build_live_hud() -> void:
 # glyphs are overlaid here reading the chain from Enums.WEAPON_RELATIONSHIPS
 # so the diagram can never drift from the actual damage rule.
 func _build_carnage_circle() -> void:
-	var circle: Control = $CanvasLayer/MarginContainer/Hud/MainRow/RightBlock/CarnageCircle
-	var slot_centers := [44.0, 82.0, 120.0]
+	var circle: Control = $CanvasLayer/MarginContainer/Hud/Row2/C4/CarnageCircle
+	var slot_centers := [42.0, 78.0, 114.0]
 
 	var weapon_type: int = Enums.WeaponType.SWORD
 
 	for i in slot_centers.size():
 		var glyph := TextureRect.new()
 		glyph.texture = load(Enums.WEAPON_TYPE_TEXTURES[weapon_type])
-		glyph.custom_minimum_size = Vector2(24, 24)
+		glyph.custom_minimum_size = Vector2(22, 22)
 		glyph.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		glyph.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		glyph.modulate = Color(0.92, 0.93, 0.95, 1)
 		glyph.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		glyph.position = Vector2(slot_centers[i] - 12.0, 8.0)
-		glyph.size = Vector2(24, 24)
+		glyph.position = Vector2(slot_centers[i] - 11.0, 4.0)
+		glyph.size = Vector2(22, 22)
 		circle.add_child(glyph)
 
 		weapon_type = Enums.WEAPON_RELATIONSHIPS[weapon_type]
-
-
-func _atlas_icon(atlas_tex: Texture2D, region: Rect2, tint: Color) -> TextureRect:
-	var icon := TextureRect.new()
-	var at := AtlasTexture.new()
-	at.atlas = atlas_tex
-	at.region = region
-	icon.texture = at
-	icon.custom_minimum_size = Vector2(20, 20)
-	icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-	icon.modulate = tint
-	icon.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-	icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	return icon
-
-
-# One HUD spoils entry: an icon OR a small text prefix (e.g. "EXP"), then the
-# white value label that gets updated live. Returns the value label.
-func _make_counter_row(box: Container, icon: TextureRect, prefix: String) -> Label:
-	var hb := HBoxContainer.new()
-	hb.add_theme_constant_override("separation", 7)
-	hb.mouse_filter = Control.MOUSE_FILTER_IGNORE
-
-	if icon != null:
-		hb.add_child(icon)
-
-	if not prefix.is_empty():
-		var prefix_label := Label.new()
-		prefix_label.text = prefix
-		prefix_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-		prefix_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		prefix_label.add_theme_font_size_override("font_size", 14)
-		prefix_label.add_theme_color_override("font_color", Color(0.42, 0.9, 0.72, 1))
-		hb.add_child(prefix_label)
-
-	var label := Label.new()
-	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	label.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	label.add_theme_font_size_override("font_size", 20)
-	label.add_theme_font_override("font", load("res://assets/fonts/Exo2SemiBold.tres"))
-	label.add_theme_color_override("font_color", Color(0.94, 0.95, 0.96, 1))
-	hb.add_child(label)
-
-	box.add_child(hb)
-	return label
 
 
 func _update_live_hud() -> void:

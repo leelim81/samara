@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://theme.tres" type="Theme" id=1]
 [ext_resource path="res://board/cell.tscn" type="PackedScene" id=2]
@@ -56,6 +56,16 @@ colors = PackedColorArray( 0.8, 0.22, 0.15, 0, 0.82, 0.24, 0.16, 0.7, 0.9, 0.35,
 flags = 5
 atlas = ExtResource( 36 )
 region = Rect2( 256, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=17]
+flags = 5
+atlas = ExtResource( 36 )
+region = Rect2( 64, 128, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=18]
+flags = 5
+atlas = ExtResource( 36 )
+region = Rect2( 192, 128, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=8]
 flags = 5
@@ -479,7 +489,7 @@ bus = "Sound effects"
 
 [node name="HudBar" type="Panel" parent="CanvasLayer"]
 offset_right = 720.0
-offset_bottom = 98.0
+offset_bottom = 112.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource( 11 )
 __meta__ = {
@@ -488,14 +498,14 @@ __meta__ = {
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
 offset_right = 720.0
-offset_bottom = 98.0
+offset_bottom = 112.0
 mouse_filter = 2
 size_flags_vertical = 0
 theme = ExtResource( 1 )
-theme_override_constants/margin_right = 18
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_left = 18
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_bottom = 10
 __meta__ = {
 "_edit_lock_": true
 }
@@ -504,182 +514,279 @@ __meta__ = {
 mouse_filter = 2
 theme_override_constants/separation = 8
 
-[node name="MainRow" type="HBoxContainer" parent="CanvasLayer/MarginContainer/Hud"]
-custom_minimum_size = Vector2( 0, 80 )
+[node name="Row1" type="HBoxContainer" parent="CanvasLayer/MarginContainer/Hud"]
+custom_minimum_size = Vector2( 0, 42 )
 mouse_filter = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 4
 
-[node name="StatusBlock" type="VBoxContainer" parent="CanvasLayer/MarginContainer/Hud/MainRow"]
-custom_minimum_size = Vector2( 244, 0 )
+[node name="C1" type="Control" parent="CanvasLayer/MarginContainer/Hud/Row1"]
+custom_minimum_size = Vector2( 240, 0 )
 mouse_filter = 2
-size_flags_vertical = 4
-theme_override_constants/separation = 5
 
-[node name="PowerGauge" type="HBoxContainer" parent="CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock"]
-theme_override_constants/separation = 5
-
-[node name="P" type="Label" parent="CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock/PowerGauge"]
-custom_minimum_size = Vector2( 14, 0 )
-theme_override_colors/font_color = Color( 0.42, 0.9, 0.72, 1 )
-theme_override_font_sizes/font_size = 17
-text = "P"
-vertical_alignment = 1
-
-[node name="Seg1" type="TextureProgressBar" parent="CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock/PowerGauge"]
-custom_minimum_size = Vector2( 56, 14 )
-size_flags_vertical = 4
-max_value = 100.0
-value = 0.0
-texture_under = ExtResource( 12 )
-texture_progress = ExtResource( 8 )
-nine_patch_stretch = true
-stretch_margin_left = 5
-stretch_margin_top = 4
-stretch_margin_right = 5
-stretch_margin_bottom = 4
-
-[node name="Seg2" type="TextureProgressBar" parent="CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock/PowerGauge"]
-custom_minimum_size = Vector2( 56, 14 )
-size_flags_vertical = 4
-max_value = 100.0
-value = 0.0
-texture_under = ExtResource( 12 )
-texture_progress = ExtResource( 8 )
-nine_patch_stretch = true
-stretch_margin_left = 5
-stretch_margin_top = 4
-stretch_margin_right = 5
-stretch_margin_bottom = 4
-
-[node name="Seg3" type="TextureProgressBar" parent="CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock/PowerGauge"]
-custom_minimum_size = Vector2( 56, 14 )
-size_flags_vertical = 4
-max_value = 100.0
-value = 0.0
-texture_under = ExtResource( 12 )
-texture_progress = ExtResource( 8 )
-nine_patch_stretch = true
-stretch_margin_left = 5
-stretch_margin_top = 4
-stretch_margin_right = 5
-stretch_margin_bottom = 4
-
-[node name="TimerRow" type="HBoxContainer" parent="CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock"]
-custom_minimum_size = Vector2( 0, 22 )
-theme_override_constants/separation = 5
-
-[node name="ClockIcon" type="TextureRect" parent="CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock/TimerRow"]
-custom_minimum_size = Vector2( 20, 20 )
-modulate = Color( 0.66, 0.72, 0.76, 1 )
-size_flags_vertical = 4
-texture = SubResource( 9 )
-expand = true
-stretch_mode = 6
-
-[node name="LeftTick" type="ColorRect" parent="CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock/TimerRow"]
-custom_minimum_size = Vector2( 9, 3 )
-size_flags_vertical = 4
-color = Color( 0.85, 0.72, 0.42, 1 )
-
-[node name="MoveTimer" type="TextureProgressBar" parent="CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock/TimerRow"]
-custom_minimum_size = Vector2( 0, 20 )
-mouse_filter = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-value = 50.0
-texture_under = ExtResource( 12 )
-texture_progress = ExtResource( 8 )
-nine_patch_stretch = true
-stretch_margin_left = 5
-stretch_margin_top = 4
-stretch_margin_right = 5
-stretch_margin_bottom = 4
-
-[node name="YourTurnLabel" type="Label" parent="CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock/TimerRow/MoveTimer"]
+[node name="PGauge" type="HBoxContainer" parent="CanvasLayer/MarginContainer/Hud/Row1/C1"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-theme_override_colors/font_color = Color( 0.42, 0.9, 0.72, 1 )
-theme_override_colors/font_outline_color = Color( 0.05, 0.06, 0.08, 1 )
-theme_override_constants/outline_size = 5
-theme_override_font_sizes/font_size = 14
-text = "Your turn"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="RightTick" type="ColorRect" parent="CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock/TimerRow"]
-custom_minimum_size = Vector2( 9, 3 )
-size_flags_vertical = 4
-color = Color( 0.85, 0.72, 0.42, 1 )
-
-[node name="LeftSpacer" type="Control" parent="CanvasLayer/MarginContainer/Hud/MainRow"]
-mouse_filter = 2
-size_flags_horizontal = 3
-
-[node name="CountersBlock" type="HBoxContainer" parent="CanvasLayer/MarginContainer/Hud/MainRow"]
-mouse_filter = 2
-size_flags_vertical = 4
-theme_override_constants/separation = 24
-
-[node name="RightSpacer" type="Control" parent="CanvasLayer/MarginContainer/Hud/MainRow"]
-mouse_filter = 2
-size_flags_horizontal = 3
-
-[node name="RightBlock" type="VBoxContainer" parent="CanvasLayer/MarginContainer/Hud/MainRow"]
-mouse_filter = 2
-size_flags_vertical = 4
 theme_override_constants/separation = 6
 
-[node name="ButtonsRow" type="HBoxContainer" parent="CanvasLayer/MarginContainer/Hud/MainRow/RightBlock"]
-theme_override_constants/separation = 8
-alignment = 2
+[node name="P" type="Label" parent="CanvasLayer/MarginContainer/Hud/Row1/C1/PGauge"]
+custom_minimum_size = Vector2( 22, 0 )
+theme_override_colors/font_color = Color( 0.42, 0.9, 0.72, 1 )
+theme_override_fonts/font = ExtResource( 39 )
+theme_override_font_sizes/font_size = 28
+text = "P"
+vertical_alignment = 1
 
-[node name="DragModeOptionButton" parent="CanvasLayer/MarginContainer/Hud/MainRow/RightBlock/ButtonsRow" instance=ExtResource( 23 )]
-custom_minimum_size = Vector2( 116, 34 )
+[node name="Seg1" type="TextureProgressBar" parent="CanvasLayer/MarginContainer/Hud/Row1/C1/PGauge"]
+custom_minimum_size = Vector2( 64, 21 )
 size_flags_vertical = 4
-theme_override_colors/font_color = Color( 0.86, 0.88, 0.9, 1 )
-theme_override_colors/font_hover_color = Color( 0.95, 0.82, 0.5, 1 )
-theme_override_colors/font_focus_color = Color( 0.86, 0.88, 0.9, 1 )
-theme_override_colors/font_pressed_color = Color( 0.95, 0.82, 0.5, 1 )
-theme_override_styles/focus = SubResource( 12 )
-theme_override_styles/hover = SubResource( 13 )
-theme_override_styles/pressed = SubResource( 14 )
-theme_override_styles/normal = SubResource( 12 )
+max_value = 100.0
+value = 0.0
+texture_under = ExtResource( 12 )
+texture_progress = ExtResource( 8 )
+nine_patch_stretch = true
+stretch_margin_left = 7
+stretch_margin_top = 6
+stretch_margin_right = 7
+stretch_margin_bottom = 6
 
-[node name="PauseButton" parent="CanvasLayer/MarginContainer/Hud/MainRow/RightBlock/ButtonsRow" instance=ExtResource( 33 )]
-custom_minimum_size = Vector2( 54, 34 )
+[node name="Seg2" type="TextureProgressBar" parent="CanvasLayer/MarginContainer/Hud/Row1/C1/PGauge"]
+custom_minimum_size = Vector2( 64, 21 )
+size_flags_vertical = 4
+max_value = 100.0
+value = 0.0
+texture_under = ExtResource( 12 )
+texture_progress = ExtResource( 8 )
+nine_patch_stretch = true
+stretch_margin_left = 7
+stretch_margin_top = 6
+stretch_margin_right = 7
+stretch_margin_bottom = 6
+
+[node name="Seg3" type="TextureProgressBar" parent="CanvasLayer/MarginContainer/Hud/Row1/C1/PGauge"]
+custom_minimum_size = Vector2( 64, 21 )
+size_flags_vertical = 4
+max_value = 100.0
+value = 0.0
+texture_under = ExtResource( 12 )
+texture_progress = ExtResource( 8 )
+nine_patch_stretch = true
+stretch_margin_left = 7
+stretch_margin_top = 6
+stretch_margin_right = 7
+stretch_margin_bottom = 6
+
+[node name="SpacerA1" type="Control" parent="CanvasLayer/MarginContainer/Hud/Row1"]
+custom_minimum_size = Vector2( 56, 0 )
+mouse_filter = 2
+
+[node name="C2" type="Control" parent="CanvasLayer/MarginContainer/Hud/Row1"]
+custom_minimum_size = Vector2( 112, 0 )
+mouse_filter = 2
+
+[node name="CoinPair" type="HBoxContainer" parent="CanvasLayer/MarginContainer/Hud/Row1/C2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="Icon" type="TextureRect" parent="CanvasLayer/MarginContainer/Hud/Row1/C2/CoinPair"]
+custom_minimum_size = Vector2( 24, 24 )
+modulate = Color( 0.86, 0.72, 0.42, 1 )
+size_flags_vertical = 4
+texture = SubResource( 17 )
+expand = true
+stretch_mode = 6
+
+[node name="Value" type="Label" parent="CanvasLayer/MarginContainer/Hud/Row1/C2/CoinPair"]
+theme_override_colors/font_color = Color( 0.94, 0.95, 0.96, 1 )
+theme_override_fonts/font = ExtResource( 39 )
+theme_override_font_sizes/font_size = 24
+text = "0"
+vertical_alignment = 1
+
+[node name="C3" type="Control" parent="CanvasLayer/MarginContainer/Hud/Row1"]
+custom_minimum_size = Vector2( 112, 0 )
+mouse_filter = 2
+
+[node name="KoPair" type="HBoxContainer" parent="CanvasLayer/MarginContainer/Hud/Row1/C3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="Icon" type="TextureRect" parent="CanvasLayer/MarginContainer/Hud/Row1/C3/KoPair"]
+custom_minimum_size = Vector2( 24, 24 )
+modulate = Color( 0.88, 0.9, 0.92, 1 )
+size_flags_vertical = 4
+texture = SubResource( 18 )
+expand = true
+stretch_mode = 6
+
+[node name="Value" type="Label" parent="CanvasLayer/MarginContainer/Hud/Row1/C3/KoPair"]
+theme_override_colors/font_color = Color( 0.94, 0.95, 0.96, 1 )
+theme_override_fonts/font = ExtResource( 39 )
+theme_override_font_sizes/font_size = 24
+text = "0"
+vertical_alignment = 1
+
+[node name="SpacerB1" type="Control" parent="CanvasLayer/MarginContainer/Hud/Row1"]
+mouse_filter = 2
+size_flags_horizontal = 3
+
+[node name="C4" type="Control" parent="CanvasLayer/MarginContainer/Hud/Row1"]
+custom_minimum_size = Vector2( 150, 0 )
+mouse_filter = 2
+
+[node name="Buttons" type="HBoxContainer" parent="CanvasLayer/MarginContainer/Hud/Row1/C4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 2
+theme_override_constants/separation = 8
+
+[node name="PauseButton" parent="CanvasLayer/MarginContainer/Hud/Row1/C4/Buttons" instance=ExtResource( 33 )]
+custom_minimum_size = Vector2( 50, 40 )
 size_flags_vertical = 4
 theme_override_colors/font_color = Color( 0.92, 0.93, 0.95, 1 )
 theme_override_colors/font_hover_color = Color( 0.95, 0.82, 0.5, 1 )
 theme_override_colors/font_focus_color = Color( 0.92, 0.93, 0.95, 1 )
 theme_override_colors/font_pressed_color = Color( 0.95, 0.82, 0.5, 1 )
+theme_override_font_sizes/font_size = 17
 theme_override_styles/focus = SubResource( 15 )
 theme_override_styles/hover = SubResource( 13 )
 theme_override_styles/pressed = SubResource( 14 )
 theme_override_styles/normal = SubResource( 15 )
 text = "II"
 
-[node name="FastForwardButton" parent="CanvasLayer/MarginContainer/Hud/MainRow/RightBlock/ButtonsRow" instance=ExtResource( 38 )]
-custom_minimum_size = Vector2( 54, 34 )
+[node name="FastForwardButton" parent="CanvasLayer/MarginContainer/Hud/Row1/C4/Buttons" instance=ExtResource( 38 )]
+custom_minimum_size = Vector2( 50, 40 )
 size_flags_vertical = 4
 theme_override_colors/font_hover_color = Color( 0.95, 0.82, 0.5, 1 )
+theme_override_font_sizes/font_size = 17
 theme_override_styles/focus = SubResource( 16 )
 theme_override_styles/hover = SubResource( 13 )
 theme_override_styles/pressed = SubResource( 14 )
 theme_override_styles/normal = SubResource( 16 )
 
-[node name="CarnageCircle" type="Control" parent="CanvasLayer/MarginContainer/Hud/MainRow/RightBlock"]
-custom_minimum_size = Vector2( 156, 40 )
+[node name="Row2" type="HBoxContainer" parent="CanvasLayer/MarginContainer/Hud"]
+custom_minimum_size = Vector2( 0, 38 )
 mouse_filter = 2
-size_flags_horizontal = 8
+theme_override_constants/separation = 4
 
-[node name="Ring" type="TextureRect" parent="CanvasLayer/MarginContainer/Hud/MainRow/RightBlock/CarnageCircle"]
+[node name="C1" type="Control" parent="CanvasLayer/MarginContainer/Hud/Row2"]
+custom_minimum_size = Vector2( 240, 0 )
+mouse_filter = 2
+
+[node name="TimerRow" type="HBoxContainer" parent="CanvasLayer/MarginContainer/Hud/Row2/C1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 44.0
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="ClockIcon" type="TextureRect" parent="CanvasLayer/MarginContainer/Hud/Row2/C1/TimerRow"]
+custom_minimum_size = Vector2( 22, 22 )
+modulate = Color( 0.88, 0.84, 0.66, 1 )
+size_flags_vertical = 4
+texture = SubResource( 9 )
+expand = true
+stretch_mode = 6
+
+[node name="TimerBar" type="TextureProgressBar" parent="CanvasLayer/MarginContainer/Hud/Row2/C1/TimerRow"]
+custom_minimum_size = Vector2( 0, 18 )
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+value = 0.0
+texture_under = ExtResource( 12 )
+texture_progress = ExtResource( 8 )
+nine_patch_stretch = true
+stretch_margin_left = 7
+stretch_margin_top = 6
+stretch_margin_right = 7
+stretch_margin_bottom = 6
+
+[node name="YourTurnLabel" type="Label" parent="CanvasLayer/MarginContainer/Hud/Row2/C1/TimerRow/TimerBar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_colors/font_color = Color( 0.42, 0.9, 0.72, 1 )
+theme_override_colors/font_outline_color = Color( 0.05, 0.06, 0.08, 1 )
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 14
+text = "Your turn"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpacerA2" type="Control" parent="CanvasLayer/MarginContainer/Hud/Row2"]
+custom_minimum_size = Vector2( 56, 0 )
+mouse_filter = 2
+
+[node name="C2" type="Control" parent="CanvasLayer/MarginContainer/Hud/Row2"]
+custom_minimum_size = Vector2( 112, 0 )
+mouse_filter = 2
+
+[node name="ExpPair" type="HBoxContainer" parent="CanvasLayer/MarginContainer/Hud/Row2/C2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="Prefix" type="Label" parent="CanvasLayer/MarginContainer/Hud/Row2/C2/ExpPair"]
+theme_override_colors/font_color = Color( 0.42, 0.9, 0.72, 1 )
+theme_override_font_sizes/font_size = 15
+text = "EXP"
+vertical_alignment = 1
+
+[node name="Value" type="Label" parent="CanvasLayer/MarginContainer/Hud/Row2/C2/ExpPair"]
+theme_override_colors/font_color = Color( 0.94, 0.95, 0.96, 1 )
+theme_override_fonts/font = ExtResource( 39 )
+theme_override_font_sizes/font_size = 24
+text = "0"
+vertical_alignment = 1
+
+[node name="C3" type="Control" parent="CanvasLayer/MarginContainer/Hud/Row2"]
+custom_minimum_size = Vector2( 112, 0 )
+mouse_filter = 2
+
+[node name="DragModeOptionButton" parent="CanvasLayer/MarginContainer/Hud/Row2/C3" instance=ExtResource( 23 )]
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 0.0
+offset_top = -18.0
+offset_right = 122.0
+offset_bottom = 18.0
+custom_minimum_size = Vector2( 122, 36 )
+theme_override_colors/font_color = Color( 0.86, 0.88, 0.9, 1 )
+theme_override_colors/font_hover_color = Color( 0.95, 0.82, 0.5, 1 )
+theme_override_colors/font_focus_color = Color( 0.86, 0.88, 0.9, 1 )
+theme_override_colors/font_pressed_color = Color( 0.95, 0.82, 0.5, 1 )
+theme_override_font_sizes/font_size = 15
+theme_override_styles/focus = SubResource( 12 )
+theme_override_styles/hover = SubResource( 13 )
+theme_override_styles/pressed = SubResource( 14 )
+theme_override_styles/normal = SubResource( 12 )
+
+[node name="SpacerB2" type="Control" parent="CanvasLayer/MarginContainer/Hud/Row2"]
+mouse_filter = 2
+size_flags_horizontal = 3
+
+[node name="C4" type="Control" parent="CanvasLayer/MarginContainer/Hud/Row2"]
+custom_minimum_size = Vector2( 150, 0 )
+mouse_filter = 2
+
+[node name="CarnageCircle" type="Control" parent="CanvasLayer/MarginContainer/Hud/Row2/C4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Ring" type="TextureRect" parent="CanvasLayer/MarginContainer/Hud/Row2/C4/CarnageCircle"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 texture = ExtResource( 42 )
 expand = true
-stretch_mode = 0
+stretch_mode = 5
 
 [node name="EnemyPhaseCenterContainer" type="CenterContainer" parent="CanvasLayer"]
 visible = false
@@ -765,9 +872,9 @@ bus = "Music"
 [connection signal="tree_exiting" from="Board/PincerExecutor" to="Board/PincerExecutor" method="_on_PincerExecutor_tree_exiting"]
 [connection signal="timeout" from="Board/PincerExecutor/SkillActivationTimer" to="Board/PincerExecutor" method="_on_SkillActivationTimer_timeout"]
 [connection signal="timeout" from="Board/PincerExecutor/DeathAnimationTimer" to="Board/PincerExecutor" method="_on_DeathAnimationTimer_timeout"]
-[connection signal="drag_mode_changed" from="CanvasLayer/MarginContainer/Hud/MainRow/RightBlock/ButtonsRow/DragModeOptionButton" to="." method="_on_DragModeOptionButton_drag_mode_changed"]
-[connection signal="fast_forward_toggled" from="CanvasLayer/MarginContainer/Hud/MainRow/RightBlock/ButtonsRow/FastForwardButton" to="." method="_on_FastForwardButton_fast_forward_toggled"]
-[connection signal="pressed" from="CanvasLayer/MarginContainer/Hud/MainRow/RightBlock/ButtonsRow/PauseButton" to="." method="_on_PauseButton_pressed"]
+[connection signal="drag_mode_changed" from="CanvasLayer/MarginContainer/Hud/Row2/C3/DragModeOptionButton" to="." method="_on_DragModeOptionButton_drag_mode_changed"]
+[connection signal="fast_forward_toggled" from="CanvasLayer/MarginContainer/Hud/Row1/C4/Buttons/FastForwardButton" to="." method="_on_FastForwardButton_fast_forward_toggled"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/Hud/Row1/C4/Buttons/PauseButton" to="." method="_on_PauseButton_pressed"]
 [connection signal="quit_button_pressed" from="CanvasLayer/DefeatScreen" to="." method="_on_DefeatScreen_quit_button_pressed"]
 [connection signal="try_again_button_pressed" from="CanvasLayer/DefeatScreen" to="." method="_on_DefeatScreen_try_again_button_pressed"]
 [connection signal="continue_button_pressed" from="CanvasLayer/VictoryScreen" to="." method="_on_VictoryScreen_continue_button_pressed"]
