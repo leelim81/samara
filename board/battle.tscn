@@ -27,6 +27,7 @@
 [ext_resource path="res://assets/sfx/bells.wav" type="AudioStream" id=29]
 [ext_resource path="res://assets/sfx/spell_1.wav" type="AudioStream" id=30]
 [ext_resource path="res://board/highlights/delayed_skill_highlighter.tscn" type="PackedScene" id=32]
+[ext_resource path="res://ui/drag_mode_option_button.tscn" type="PackedScene" id=23]
 [ext_resource path="res://ui/audio_button.tscn" type="PackedScene" id=33]
 [ext_resource path="res://ui/fast_forward_button.tscn" type="PackedScene" id=38]
 [ext_resource path="res://assets/sfx/chess_place_2.wav" type="AudioStream" id=34]
@@ -642,6 +643,17 @@ mouse_filter = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 8
 
+[node name="DragModeOptionButton" parent="CanvasLayer/MarginContainer/Hud/MainRow/Controls" instance=ExtResource( 23 )]
+custom_minimum_size = Vector2( 124, 40 )
+theme_override_colors/font_color = Color( 0.86, 0.88, 0.9, 1 )
+theme_override_colors/font_hover_color = Color( 0.95, 0.82, 0.5, 1 )
+theme_override_colors/font_focus_color = Color( 0.86, 0.88, 0.9, 1 )
+theme_override_colors/font_pressed_color = Color( 0.95, 0.82, 0.5, 1 )
+theme_override_styles/focus = SubResource( 12 )
+theme_override_styles/hover = SubResource( 13 )
+theme_override_styles/pressed = SubResource( 14 )
+theme_override_styles/normal = SubResource( 12 )
+
 [node name="FastForwardButton" parent="CanvasLayer/MarginContainer/Hud/MainRow/Controls" instance=ExtResource( 38 )]
 custom_minimum_size = Vector2( 46, 40 )
 theme_override_colors/font_hover_color = Color( 0.95, 0.82, 0.5, 1 )
@@ -752,6 +764,7 @@ bus = "Music"
 [connection signal="tree_exiting" from="Board/PincerExecutor" to="Board/PincerExecutor" method="_on_PincerExecutor_tree_exiting"]
 [connection signal="timeout" from="Board/PincerExecutor/SkillActivationTimer" to="Board/PincerExecutor" method="_on_SkillActivationTimer_timeout"]
 [connection signal="timeout" from="Board/PincerExecutor/DeathAnimationTimer" to="Board/PincerExecutor" method="_on_DeathAnimationTimer_timeout"]
+[connection signal="drag_mode_changed" from="CanvasLayer/MarginContainer/Hud/MainRow/Controls/DragModeOptionButton" to="." method="_on_DragModeOptionButton_drag_mode_changed"]
 [connection signal="fast_forward_toggled" from="CanvasLayer/MarginContainer/Hud/MainRow/Controls/FastForwardButton" to="." method="_on_FastForwardButton_fast_forward_toggled"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/Hud/MainRow/Controls/PauseButton" to="." method="_on_PauseButton_pressed"]
 [connection signal="quit_button_pressed" from="CanvasLayer/DefeatScreen" to="." method="_on_DefeatScreen_quit_button_pressed"]

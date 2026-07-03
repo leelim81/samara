@@ -55,8 +55,9 @@ func _ready() -> void:
 	_build_pause_menu()
 	_bind_squad_icons()
 
-	# Apply the saved drag mode from settings. The in-battle switcher is gone,
-	# and the old OptionButton never emitted on its initial select() anyway.
+	# Apply the saved drag mode up front: the HUD OptionButton's initial
+	# select() never emits, so without this the saved mode wouldn't take
+	# effect until the player re-picked it.
 	$Board.update_drag_mode(GameData.save_data.drag_mode)
 
 	if not $Board.spoils_changed.is_connected(_on_spoils_changed):
@@ -231,6 +232,15 @@ func _show_new_ally_dialog(joined_names: Array) -> void:
 
 func _on_PauseButton_pressed() -> void:
 	_open_pause_menu()
+
+
+func _on_DragModeOptionButton_drag_mode_changed(drag_mode: int) -> void:
+	$Board.update_drag_mode(drag_mode)
+
+	# Same setting as the settings-menu toggle: persist it, so switching on the
+	# HUD (e.g. moving between mouse and touch play) sticks across battles.
+	GameData.save_data.drag_mode = drag_mode
+	GameData.save()
 
 
 func _on_FastForwardButton_fast_forward_toggled(enabled: bool) -> void:

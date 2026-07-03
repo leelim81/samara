@@ -221,6 +221,47 @@ def sword_glyph(name, px=128):
     _save(img, name, (px, px))
 
 
+# --- drag-mode gesture glyphs (assets/ui/, white, tinted at use sites) ------
+def _save_abs(img, abspath, size):
+    """Like _save but for files outside assets/terra/ui/."""
+    if os.path.exists(abspath):
+        shutil.copy2(abspath, os.path.join(BACKUP, os.path.basename(abspath)))
+    img = img.resize(size, Image.LANCZOS)
+    img.save(abspath)
+    print("  wrote %-30s %s" % (abspath, size))
+
+
+def _gesture_finger(d):
+    """Shared pointing-finger silhouette (128-space): index finger + fist."""
+    W = (255, 255, 255, 255)
+    d.rounded_rectangle([52, 34, 70, 88], radius=9, fill=W)      # index finger
+    d.rounded_rectangle([52, 76, 98, 112], radius=18, fill=W)    # folded hand
+
+
+def gesture_glyphs(px=32):
+    """Replace the desktop-mouse drag-mode icons with device-neutral gesture
+    glyphs: tap ripples = click-to-move, motion arrow = hold-to-drag. Same
+    finger silhouette in both so they read as two states of one control."""
+    W = (255, 255, 255, 255)
+    s = (px * SS, px * SS)
+
+    # click.png — pointing finger with tap ripples above the fingertip
+    img = Image.new("RGBA", s, (0, 0, 0, 0))
+    d = ImageDraw.Draw(img)
+    _gesture_finger(d)
+    for r in (20, 34):
+        d.arc([61 - r, 30 - r, 61 + r, 30 + r], start=185, end=355, fill=W, width=8)
+    _save_abs(img, os.path.join(ROOT, "assets", "ui", "click.png"), (px, px))
+
+    # drag.png — same finger with a bold rightward motion arrow
+    img = Image.new("RGBA", s, (0, 0, 0, 0))
+    d = ImageDraw.Draw(img)
+    _gesture_finger(d)
+    d.rounded_rectangle([28, 16, 88, 28], radius=6, fill=W)      # arrow shaft
+    d.polygon([(86, 6), (86, 38), (110, 22)], fill=W)            # arrow head
+    _save_abs(img, os.path.join(ROOT, "assets", "ui", "drag.png"), (px, px))
+
+
 # --- attribute corner triangle (white, tinted in code) ----------------------
 def attr_triangle(name, px=16):
     s = (px * SS, px * SS)
@@ -258,6 +299,7 @@ def main():
     vignette("battle_vignette.png")
     countdown_plate("countdown_plate.png")
     sword_glyph("sword.png")
+    gesture_glyphs()
     attr_triangle("attr_triangle.png")
     chevron("chevron_marker.png")
     print("Done.")

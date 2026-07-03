@@ -10,9 +10,12 @@ signal drag_mode_changed(drag_mode)
 func _ready() -> void:
 	# Items are built in code: the Godot 3 scene "items" property is not
 	# understood by Godot 4's OptionButton.
+	# Gesture glyphs (tap ripples / motion arrow) + one-word labels so the
+	# control reads the same on touch and mouse. tr() because item text set
+	# from code is not auto-translated.
 	clear()
-	add_icon_item(preload("res://assets/ui/click.png"), "CLICK", CLICK_MODE_INDEX)
-	add_icon_item(preload("res://assets/ui/drag.png"), "HOLD", HOLD_MODE_INDEX)
+	add_icon_item(preload("res://assets/ui/click.png"), tr("TAP"), CLICK_MODE_INDEX)
+	add_icon_item(preload("res://assets/ui/drag.png"), tr("HOLD"), HOLD_MODE_INDEX)
 
 	var save_data: SaveData = GameData.save_data
 
