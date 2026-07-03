@@ -190,15 +190,55 @@ def countdown_plate(name, px=44):
 
 # --- vendored weapon glyphs (game-icons.net, CC BY 3.0) ----------------------
 def vendored_weapons():
-    """The four base weapon glyphs are processed game-icons.net art
-    (broadsword/pistol-gun/trident/wizard-staff by Lorc & John Colburn,
-    CC BY 3.0 — see tools/gameicons/). Copy the processed 128px PNGs into
-    the game so a full regen never clobbers them with drawn stand-ins."""
+    """Three base weapon glyphs are processed game-icons.net art
+    (broadsword/wizard-staff by Lorc, pistol by John Colburn, CC BY 3.0 —
+    see tools/gameicons/). The spear is drawn by spear_glyph() below in the
+    same style, mirroring the original TB icon's diagonal leaf-head spear
+    (no game-icons spear reads as a plain spear at HUD size). Copy the
+    processed 128px PNGs into the game so a full regen never clobbers them."""
     src_dir = os.path.join(ROOT, "tools", "gameicons")
-    for name in ("sword", "gun", "spear", "staff"):
+    for name in ("sword", "gun", "staff"):
         src = os.path.join(src_dir, "%s.png" % name)
         img = Image.open(src).convert("RGBA")
         _save(img, "%s.png" % name, img.size)
+    spear_glyph()
+
+
+def spear_glyph(px=128):
+    """Diagonal spear like the original TB glyph — long shaft, leaf-shaped
+    head, binding collar — drawn at the new icon family's weight. Written to
+    tools/gameicons/spear.png (canonical source) and installed like the rest."""
+    s = (px * SS, px * SS)
+    img = Image.new("RGBA", s, (0, 0, 0, 0))
+    d = ImageDraw.Draw(img)
+    W = (255, 255, 255, 255)
+    u = SS
+
+    # Axis runs bottom-left grip -> top-right head, like TB's original
+    d.line([(22 * u, 106 * u), (84 * u, 44 * u)], fill=W, width=8 * u)
+    # Butt cap
+    d.ellipse([(18 * u, 102 * u), (28 * u, 112 * u)], fill=W)
+    # Binding collar where the head is socketed
+    d.ellipse([(76 * u, 38 * u), (92 * u, 54 * u)], fill=W)
+
+    # Leaf head: kite polygon along the axis, tip at the top-right corner
+    tip = (114 * u, 14 * u)
+    base = (80 * u, 48 * u)
+    mid = ((tip[0] + base[0] * 2) // 3, (tip[1] + base[1] * 2) // 3)
+    half_w = 13 * u
+    # perpendicular of the (1,-1) axis is (1,1)/sqrt2 ~= (0.707, 0.707)
+    p = int(half_w * 0.707)
+    d.polygon([
+        tip,
+        (mid[0] + p, mid[1] + p),
+        base,
+        (mid[0] - p, mid[1] - p),
+    ], fill=W)
+
+    out_path = os.path.join(ROOT, "tools", "gameicons", "spear.png")
+    img_small = img.resize((px, px), Image.LANCZOS)
+    img_small.save(out_path)
+    _save(img, "spear.png", (px, px))
 
 
 # --- weapon-advantage arrow (Circle of Carnage HUD diagram) ------------------
