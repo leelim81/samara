@@ -35,17 +35,6 @@ var _ko_label: Label
 	$CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock/PowerGauge/Seg3,
 ]
 
-@onready var _squad_icons: Array = [
-	$CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock/SquadIcons/Icon1,
-	$CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock/SquadIcons/Icon2,
-	$CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock/SquadIcons/Icon3,
-	$CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock/SquadIcons/Icon4,
-	$CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock/SquadIcons/Icon5,
-	$CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock/SquadIcons/Icon6,
-	$CanvasLayer/MarginContainer/Hud/MainRow/StatusBlock/SquadIcons/Icon7,
-]
-
-
 func _ready() -> void:
 	set_process(false)
 	
@@ -53,7 +42,6 @@ func _ready() -> void:
 	
 	_build_live_hud()
 	_build_pause_menu()
-	_bind_squad_icons()
 
 	# Apply the saved drag mode up front: the HUD OptionButton's initial
 	# select() never emits, so without this the saved mode wouldn't take
@@ -120,7 +108,6 @@ func _on_Board_player_turn_started() -> void:
 	_player_turn_count += 1
 
 	_your_turn_label.visible = true
-	_refresh_squad_icon_states()
 
 
 func _on_Board_victory() -> void:
@@ -308,68 +295,59 @@ func _on_ViewUnitMenu_go_back(view_unit_menu: Control) -> void:
 # ---- Live spoils HUD (Terra Battle battle HUD parity) ----
 
 func _build_live_hud() -> void:
-	# HUD middle block: the live spoils on top, the Circle of Carnage weapon
-	# diagram underneath (the empty bar space now earns its keep).
-	var counters: HBoxContainer = $CanvasLayer/MarginContainer/Hud/MainRow/MiddleBlock/CountersRow
+	# TB-style spoils in the HUD middle: two stacked columns with big white
+	# numbers — coins over "EXP n" on the left, KO beside them.
+	var block: HBoxContainer = $CanvasLayer/MarginContainer/Hud/MainRow/CountersBlock
 	var icons: Texture2D = load("res://assets/terra/ui/ui_icons.png")
 
-	# 64px atlas cells: coins(64,128) · skull/KO(192,128). EXP is a text
-	# prefix like TB's "EXP 720" row.
-	_coins_label = _make_counter_row(counters, _atlas_icon(icons, Rect2(64, 128, 64, 64), Color(0.86, 0.72, 0.42)), "")
-	_exp_label = _make_counter_row(counters, null, "EXP")
-	_ko_label = _make_counter_row(counters, _atlas_icon(icons, Rect2(192, 128, 64, 64), Color(0.85, 0.46, 0.4)), "")
+	var col_a := VBoxContainer.new()
+	col_a.add_theme_constant_override("separation", 4)
+	col_a.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	block.add_child(col_a)
+
+	var col_b := VBoxContainer.new()
+	col_b.alignment = BoxContainer.ALIGNMENT_CENTER
+	col_b.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	block.add_child(col_b)
+
+	# 64px atlas cells: coins(64,128) · skull/KO(192,128). EXP is a teal text
+	# prefix like TB's "EXP 2854" row; counter glyphs read white like TB's.
+	_coins_label = _make_counter_row(col_a, _atlas_icon(icons, Rect2(64, 128, 64, 64), Color(0.86, 0.72, 0.42)), "")
+	_exp_label = _make_counter_row(col_a, null, "EXP")
+	_ko_label = _make_counter_row(col_b, _atlas_icon(icons, Rect2(192, 128, 64, 64), Color(0.88, 0.9, 0.92)), "")
 	# Wave is shown in the enemy-phase banner; keep a standalone label so the
 	# phase code can still set it without cluttering the HUD.
 	_wave_label = Label.new()
 
-	_build_weapon_triangle()
+	_build_carnage_circle()
 
 	_update_live_hud()
 
 
-# The Circle of Carnage (per the TB wiki): sword > bow/gun > spear > sword,
-# one-directional, double damage; staff is neutral. The chain is read from
-# Enums.WEAPON_RELATIONSHIPS so the diagram can never drift from the actual
-# damage rule in skill_applier.gd.
-func _build_weapon_triangle() -> void:
-	var row: HBoxContainer = $CanvasLayer/MarginContainer/Hud/MainRow/MiddleBlock/TriangleRow
-	var arrow_tex: Texture2D = load("res://assets/terra/ui/advantage_arrow.png")
+# The Circle of Carnage (per the TB wiki): sword > gun > spear > sword,
+# one-directional, double damage; staff neutral. TB shows it as three icons
+# threaded on a loop — carnage_ring.png draws the arcs and chevrons, and the
+# glyphs are overlaid here reading the chain from Enums.WEAPON_RELATIONSHIPS
+# so the diagram can never drift from the actual damage rule.
+func _build_carnage_circle() -> void:
+	var circle: Control = $CanvasLayer/MarginContainer/Hud/MainRow/RightBlock/CarnageCircle
+	var slot_centers := [44.0, 82.0, 120.0]
 
 	var weapon_type: int = Enums.WeaponType.SWORD
 
-	for i in Enums.WEAPON_RELATIONSHIPS.size() + 1:
+	for i in slot_centers.size():
 		var glyph := TextureRect.new()
 		glyph.texture = load(Enums.WEAPON_TYPE_TEXTURES[weapon_type])
-		glyph.custom_minimum_size = Vector2(21, 21)
+		glyph.custom_minimum_size = Vector2(24, 24)
 		glyph.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		glyph.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-		glyph.modulate = Color(0.88, 0.9, 0.92, 1)
-		glyph.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		glyph.modulate = Color(0.92, 0.93, 0.95, 1)
 		glyph.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		row.add_child(glyph)
-
-		if i == Enums.WEAPON_RELATIONSHIPS.size():
-			break
-
-		var arrow := TextureRect.new()
-		arrow.texture = arrow_tex
-		arrow.custom_minimum_size = Vector2(13, 13)
-		arrow.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-		arrow.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-		arrow.modulate = Color(0.86, 0.72, 0.42, 1)
-		arrow.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-		arrow.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		row.add_child(arrow)
+		glyph.position = Vector2(slot_centers[i] - 12.0, 8.0)
+		glyph.size = Vector2(24, 24)
+		circle.add_child(glyph)
 
 		weapon_type = Enums.WEAPON_RELATIONSHIPS[weapon_type]
-
-	var mult := Label.new()
-	mult.text = " x2"
-	mult.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	mult.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	mult.add_theme_font_size_override("font_size", 13)
-	mult.add_theme_color_override("font_color", Color(0.86, 0.72, 0.42, 1))
-	row.add_child(mult)
 
 
 func _atlas_icon(atlas_tex: Texture2D, region: Rect2, tint: Color) -> TextureRect:
@@ -378,7 +356,7 @@ func _atlas_icon(atlas_tex: Texture2D, region: Rect2, tint: Color) -> TextureRec
 	at.atlas = atlas_tex
 	at.region = region
 	icon.texture = at
-	icon.custom_minimum_size = Vector2(18, 18)
+	icon.custom_minimum_size = Vector2(20, 20)
 	icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	icon.modulate = tint
@@ -391,7 +369,7 @@ func _atlas_icon(atlas_tex: Texture2D, region: Rect2, tint: Color) -> TextureRec
 # white value label that gets updated live. Returns the value label.
 func _make_counter_row(box: Container, icon: TextureRect, prefix: String) -> Label:
 	var hb := HBoxContainer.new()
-	hb.add_theme_constant_override("separation", 6)
+	hb.add_theme_constant_override("separation", 7)
 	hb.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 	if icon != null:
@@ -402,15 +380,16 @@ func _make_counter_row(box: Container, icon: TextureRect, prefix: String) -> Lab
 		prefix_label.text = prefix
 		prefix_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 		prefix_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		prefix_label.add_theme_font_size_override("font_size", 13)
-		prefix_label.add_theme_color_override("font_color", Color(0.86, 0.72, 0.42, 1))
+		prefix_label.add_theme_font_size_override("font_size", 14)
+		prefix_label.add_theme_color_override("font_color", Color(0.42, 0.9, 0.72, 1))
 		hb.add_child(prefix_label)
 
 	var label := Label.new()
 	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	label.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	label.add_theme_font_size_override("font_size", 17)
-	label.add_theme_color_override("font_color", Color(0.92, 0.93, 0.95, 1))
+	label.add_theme_font_size_override("font_size", 20)
+	label.add_theme_font_override("font", load("res://assets/fonts/Exo2SemiBold.tres"))
+	label.add_theme_color_override("font_color", Color(0.94, 0.95, 0.96, 1))
 	hb.add_child(label)
 
 	box.add_child(hb)
@@ -436,65 +415,6 @@ func _on_spoils_changed(_exp: int, _coins: int, _defeated: int) -> void:
 func _on_power_changed(filled: float, _max_bars: int) -> void:
 	for i in _power_segments.size():
 		_power_segments[i].value = clampf((filled - float(i)) * 100.0, 0.0, 100.0)
-
-
-# ---- Squad status icons (bound to the real squad; dim on KO) ----
-
-func _bind_squad_icons() -> void:
-	var save_data = GameData.save_data
-	var active: Array = save_data.active_units
-
-	for i in _squad_icons.size():
-		var icon: TextureRect = _squad_icons[i]
-
-		if i < active.size():
-			var job = save_data.jobs[active[i]]
-			icon.texture = job.portrait
-			icon.modulate = Color.WHITE
-			icon.visible = true
-			_frame_squad_icon(icon)
-		else:
-			icon.visible = false
-
-
-# Raw portrait crops read as noise at 26px; a dark plate with a faint gold
-# rim turns each one into a deliberate chip on the HUD bar.
-func _frame_squad_icon(icon: TextureRect) -> void:
-	if icon.has_node("Plate"):
-		return
-
-	var plate := Panel.new()
-	plate.name = "Plate"
-	plate.show_behind_parent = true
-	plate.anchor_right = 1.0
-	plate.anchor_bottom = 1.0
-	plate.offset_left = -2.0
-	plate.offset_top = -2.0
-	plate.offset_right = 2.0
-	plate.offset_bottom = 2.0
-	plate.mouse_filter = Control.MOUSE_FILTER_IGNORE
-
-	var style := StyleBoxFlat.new()
-	style.bg_color = Color(0.055, 0.065, 0.085, 0.9)
-	style.set_border_width_all(1)
-	style.border_color = Color(0.753, 0.627, 0.384, 0.4)
-	style.set_corner_radius_all(6)
-	plate.add_theme_stylebox_override("panel", style)
-
-	icon.add_child(plate)
-
-
-func _refresh_squad_icon_states() -> void:
-	var units: Array = $Board.get_player_units()
-
-	for i in _squad_icons.size():
-		if not _squad_icons[i].visible:
-			continue
-
-		if i < units.size() and is_instance_valid(units[i]) and units[i].is_alive():
-			_squad_icons[i].modulate = Color.WHITE
-		else:
-			_squad_icons[i].modulate = Color(0.42, 0.42, 0.46, 0.55)
 
 
 # ---- In-battle pause menu (Resume / Give Up with confirm) ----

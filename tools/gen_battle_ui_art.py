@@ -254,6 +254,35 @@ def advantage_arrow(name, px=18):
     _save(img, name, (px, px))
 
 
+# --- Circle of Carnage ring (TB-style: 3 icons threaded on a loop) ----------
+def carnage_ring(name, w=156, h=40):
+    """Background for the HUD's weapon-advantage circle: a flattened loop —
+    open arc at each end — with a small chevron ahead of each of the three
+    icon slots. Battle.gd overlays the actual weapon glyphs at the slots
+    (x centers 44 / 82 / 120, y center 20 at 1x) reading the chain from
+    Enums.WEAPON_RELATIONSHIPS, so the order stays engine-driven."""
+    G = (219, 184, 107, 225)  # gold, matching the HUD trim
+    s = (w * SS, h * SS)
+    img = Image.new("RGBA", s, (0, 0, 0, 0))
+    d = ImageDraw.Draw(img)
+    u = SS
+
+    # Wrap arcs: open parentheses closing the loop left and right
+    d.arc([6 * u, 6 * u, 38 * u, 34 * u], start=100, end=260, fill=G, width=2 * u)
+    d.arc([118 * u, 6 * u, 150 * u, 34 * u], start=280, end=80, fill=G, width=2 * u)
+
+    # A chevron ahead of each icon slot
+    for cx in (28, 66, 104):
+        d.polygon([
+            ((cx - 4) * u, 13 * u),
+            ((cx + 3) * u, 20 * u),
+            ((cx - 4) * u, 27 * u),
+            ((cx - 2) * u, 20 * u),
+        ], fill=G)
+
+    _save(img, name, (w, h))
+
+
 # --- outlined weapon badges (battle-card overlays, TB-style spill-out) ------
 def weapon_badges():
     """TB's card weapon icons overhang the tile and survive any backdrop
@@ -363,6 +392,7 @@ def main():
     countdown_plate("countdown_plate.png")
     vendored_weapons()
     advantage_arrow("advantage_arrow.png")
+    carnage_ring("carnage_ring.png")
     gesture_glyphs()
     attr_triangle("attr_triangle.png")
     chevron("chevron_marker.png")
