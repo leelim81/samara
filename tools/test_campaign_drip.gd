@@ -131,6 +131,10 @@ func _play_chapter(chapter: ChapterData) -> String:
 				verdict = "FAIL no-flank"
 				break
 
+			# Pass the turn so enemy AI keeps moving; a frozen board can never
+			# produce a new flank (corner-camping 2x2 bosses especially).
+			await board._execute_pincers(players[0])
+
 			continue
 
 		no_flank_streak = 0
