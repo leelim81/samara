@@ -40,12 +40,12 @@ res://jobs/haniwa/dracorin_job.tres::606356429fcac0f310ec080f7ec7cf88::178228146
 res://jobs/haniwa/haniwa_orbling_job.tres::d883f6aaec3bc0722cf9f243b2df4e74::1782281460::res://.godot/exported/133200997/export-d880728f9a364408c22f26c949df3f0d-haniwa_orbling_job.res
 res://jobs/haniwa/training_boss_job.tres::ca1d10236176c172a39af51f2c0e4b2b::1782281460::res://.godot/exported/133200997/export-e6166b58e25663da16a0657f3d51e676-training_boss_job.res
 res://jobs/haniwa/training_orbling_job.tres::bbc1e38286829473eada5ea4feec4736::1782281460::res://.godot/exported/133200997/export-07e45f6c1bd56c2c6f01da1f31deb80d-training_orbling_job.res
-res://jobs/terra/bahl_job.tres::68a8451400ff1e08be273b9749e49ab5::1783007430::res://.godot/exported/133200997/export-33e0290e30466f3dc0d113fc46497963-bahl_job.res
+res://jobs/terra/bahl_job.tres::4c09932584bf628a4940df6e438c3383::1783139606::res://.godot/exported/133200997/export-33e0290e30466f3dc0d113fc46497963-bahl_job.res
 res://jobs/terra/daiana_job.tres::71b6123a1893a8da2fea824158396095::1783007430::res://.godot/exported/133200997/export-628776d9d120bb73fe21f0a57df3e949-daiana_job.res
 res://jobs/terra/dracorin_job.tres::34453976af6e9607f8bf81b2fcffc5b4::1783007432::res://.godot/exported/133200997/export-8c4e8b8587ec954c3ac9229138f14932-dracorin_job.res
 res://jobs/terra/gorf_job.tres::9f5bb8cef3e834086febb59293b96866::1783007432::res://.godot/exported/133200997/export-13ad1969cf010878319cf55e74825fb8-gorf_job.res
-res://jobs/terra/grace_job.tres::0940fdf31471192042fafb74eda29b1d::1783007692::res://.godot/exported/133200997/export-668c669bbf71c2d0f87e7bc735b9382a-grace_job.res
-res://jobs/terra/kuscah_job.tres::98c2759782b4963e991ef047f5189fc7::1783007430::res://.godot/exported/133200997/export-3142fc71396369e7fbc961d88f91a063-kuscah_job.res
+res://jobs/terra/grace_job.tres::a4dba722fe52921497e3f10e3cf79d91::1783139606::res://.godot/exported/133200997/export-668c669bbf71c2d0f87e7bc735b9382a-grace_job.res
+res://jobs/terra/kuscah_job.tres::320ae904fb4de078c263003219c5ebea::1783139019::res://.godot/exported/133200997/export-3142fc71396369e7fbc961d88f91a063-kuscah_job.res
 res://jobs/terra/macuri_job.tres::3fbf7e72655609f371a1bbac8c429a1a::1783007430::res://.godot/exported/133200997/export-e4b91540999f73962427678de121de52-macuri_job.res
 res://jobs/terra/orbling_boss_job.tres::c1a088c1e97a3701522d2ce0e0b020bc::1783007432::res://.godot/exported/133200997/export-ab547af9ff2409f27afc8ce2b3eaa16e-orbling_boss_job.res
 res://jobs/terra/sabertooth_job.tres::6bba98361dbe94624bfbe980b9aa2544::1783007432::res://.godot/exported/133200997/export-783e3cf8d49d5c774767652a8134ad23-sabertooth_job.res
@@ -151,7 +151,7 @@ res://ui/cutscenes/dialogue_message_container.tscn::45d78d3ed5efb2d78405f60308ba
 res://ui/cutscenes/post_battle_dialogue_cutscene.tscn::938ee9c1a33248a2e2067efdbce397a7::1781188477::res://.godot/exported/133200997/export-0a4cf4303736e2899c593b57fb920ee3-post_battle_dialogue_cutscene.scn
 res://ui/cutscenes/post_battle_script_cutscene.tscn::d3dedb1841736b9af20c86c1bf57684d::1781188477::res://.godot/exported/133200997/export-184598b8fa8d01db54b839f9446e454d-post_battle_script_cutscene.scn
 res://ui/cutscenes/script_cutscene.tscn::d41839ee197ac928ab6d243a2b75a75f::1783011161::res://.godot/exported/133200997/export-3a91405058fb5dfaced88c4b9bf595a7-script_cutscene.scn
-res://ui/cutscenes/script_label.tscn::3b0014e15a63494f7f1699a0b624f600::1783011137::res://.godot/exported/133200997/export-03dc91c53673047402cafd07140aa145-script_label.scn
+res://ui/cutscenes/script_label.tscn::e5609a5739d58f916292d2ee5fa7ec7d::1783135580::res://.godot/exported/133200997/export-03dc91c53673047402cafd07140aa145-script_label.scn
 res://ui/main_menu/settings_menu.tscn::ba0fc224d161cbed3f40ed4a057b3cc9::1783010623::res://.godot/exported/133200997/export-453872fdc36a5027a762ac5f50db4b6e-settings_menu.scn
 res://ui/main_menu/stack_based_main_menu.tscn::d723ae68f3a92755c016c0b25e248661::1782528300::res://.godot/exported/133200997/export-a1aa7b539d65b968a35f10776bb00c92-stack_based_main_menu.scn
 res://ui/main_menu/title_screen.tscn::6a1956e9c64ac56260c09bfbb95c65a9::1783010565::res://.godot/exported/133200997/export-b2154635bd8649a65d06739824a12101-title_screen.scn
@@ -854,7 +854,7 @@ res://board/highlights/powered_point.tscn::af900de94caf598c5808bcda29835363::178
 res://jobs/terra/amazora_job.tres::c78ff7315c52d42ac36317a4d41fe775::1783007430::res://.godot/exported/133200997/export-307baa0e5b16ea8ef024a9ab4b1c1dac-amazora_job.res
 res://jobs/terra/bagunar_job.tres::b1d269b8a760e5778571cfad3afc252a::1783007430::res://.godot/exported/133200997/export-b136f9d263ad8503b76e08c85412ff4f-bagunar_job.res
 res://jobs/terra/burbaba_job.tres::b34e9b8d2c78c7fcbbe813b3cb657a1b::1783007430::res://.godot/exported/133200997/export-f7765692cc1330df9d0e5280bd6e6e6b-burbaba_job.res
-res://jobs/terra/eileen_job.tres::06bc37775f78781dd240030fc301de47::1783007430::res://.godot/exported/133200997/export-17085d55300a28fa9c97518e08ecce6d-eileen_job.res
+res://jobs/terra/eileen_job.tres::c67c78f58fcb94d1ecb3b85b0a34b234::1783139019::res://.godot/exported/133200997/export-17085d55300a28fa9c97518e08ecce6d-eileen_job.res
 res://jobs/terra/gigojago_job.tres::2146bcbbdc11ab30a7687874553d6e8b::1783007430::res://.godot/exported/133200997/export-776c3fa1b31007c78aa156a57578ca5e-gigojago_job.res
 res://jobs/terra/harold_job.tres::88254e153789ad2f7dc5665d940df27f::1783007430::res://.godot/exported/133200997/export-6cef83be3058b1b2bb9c8f4b9c7da689-harold_job.res
 res://jobs/terra/iskar_job.tres::f3ff57c635206fd771365a48de48bde0::1783007692::res://.godot/exported/133200997/export-d823001647a432230d143c44c167fdfe-iskar_job.res
@@ -889,3 +889,8 @@ res://stats/terra/sorman_stats.tres::95328635f900b14214fa51534c8f1357::178226486
 res://stats/terra/unasag_stats.tres::1c9ba8f9a42600faa4bd61da86cf30b0::1782264862::res://.godot/exported/133200997/export-7a3edf6ef9f5762ffc4749c9e7b491c4-unasag_stats.res
 res://stats/terra/zan_stats.tres::1c95407b346fd0d1b3bc55a693867cd7::1782264856::res://.godot/exported/133200997/export-1043b3304ddde8aba08baded05b2a543-zan_stats.res
 res://stats/terra/zenzoze_stats.tres::2525f13c953ca21557666a7e7a7c53d6::1782264861::res://.godot/exported/133200997/export-0547640ca2c8baea3035924b7ff7e9d5-zenzoze_stats.res
+res://assets/fonts/EBGaramondUpright.tres::8b6a5aa20f1f44a2d9c2f03e02451a34::1783135568::res://.godot/exported/133200997/export-8685ab04a37cfdc31cfe1fd641e0fd77-EBGaramondUpright.res
+res://board/highlights/capsule.tscn::cddbc88db66959285d82fa5df607c3fb::1783139294::res://.godot/exported/133200997/export-0a44b7f17fa32287e47c631155e160a9-capsule.scn
+res://skills/resources/terra/extend_chain.tres::2e605b20d6e30c519bc3dd8614307564::1783138995::res://.godot/exported/133200997/export-8920c983963058c2d085e8827c34f841-extend_chain.res
+res://companions/resources/terra/earth_sword.tres::664b0e82841ef54951d73e3d05d5998f::1783139598::res://.godot/exported/133200997/export-d3459521d62ef565c291f6a32beb8af9-earth_sword.res
+res://companions/resources/terra/guardian_charm.tres::e164b358c7669349849c0e9d26480b74::1783139601::res://.godot/exported/133200997/export-967384b361445c4caf24598711f8b24d-guardian_charm.res
