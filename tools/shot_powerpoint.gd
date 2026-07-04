@@ -28,4 +28,18 @@ func _run() -> void:
 	img.save_png("/tmp/powerpoint.png")
 	print("SHOT SAVED")
 
+	# Consume it with the boost armed: burst ring + rising POWER tag + the
+	# HUD "P" pulse (Events.power_boost_changed drives battle's cue).
+	var events = root.get_node("/root/Events")
+	events.power_boost_active = true
+
+	if not board._powered_cells.is_empty():
+		board._clear_powered_point(board._powered_cells[0])
+
+	for i in 12:
+		await process_frame
+
+	root.get_viewport().get_texture().get_image().save_png("/tmp/powerpoint_consume.png")
+	print("CONSUME SHOT SAVED")
+
 	quit(0)

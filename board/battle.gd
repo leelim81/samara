@@ -54,6 +54,8 @@ func _ready() -> void:
 	if not $Board.power_changed.is_connected(_on_power_changed):
 		$Board.power_changed.connect(_on_power_changed)
 
+	Events.power_boost_changed.connect(_on_power_boost_changed)
+
 	$BattleTheme.play()
 
 
@@ -360,6 +362,29 @@ func _update_live_hud() -> void:
 
 func _on_spoils_changed(_exp: int, _coins: int, _defeated: int) -> void:
 	_update_live_hud()
+
+
+# While the chained-Powered-Point boost is armed (x1.5 + guaranteed skills,
+# rest of the player turn), the HUD "P" burns bright so the state reads at
+# a glance — TB shows the charge, we should too.
+var _boost_pulse: Tween
+
+@onready var _p_label: Label = $CanvasLayer/MarginContainer/Hud/Row1/C1/PGauge/P
+
+
+func _on_power_boost_changed(active: bool) -> void:
+	if _boost_pulse != null:
+		_boost_pulse.kill()
+		_boost_pulse = null
+
+	if active:
+		_boost_pulse = create_tween().set_loops()
+		_boost_pulse.tween_property(_p_label, "modulate", Color(2.2, 2.2, 2.0, 1.0), 0.35) \
+				.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+		_boost_pulse.tween_property(_p_label, "modulate", Color.WHITE, 0.35) \
+				.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	else:
+		_p_label.modulate = Color.WHITE
 
 
 # Power Gauge: light whole segments up to the current power level.
