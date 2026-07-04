@@ -188,12 +188,57 @@ def reskin_enemy(name, is_boss):
         base = "Weaver"
     elif any(f in n for f in ("mummy", "wraith", "ghost", "spectre", "revenant", "shade")):
         base = "Restless Spirit"
+    # --- named foes / lesser council wardens ---
+    elif "54b2" in n:
+        base = "Defector Frame"
+    elif "2boo" in n or "3coo" in n or "1aoo" in n:
+        base = "Council Warden, Lesser"
+    # --- Commission machinery (mechanical names, no weapon word) ---
+    elif any(k in n for k in ("clops", "laser", "terminator", "transporter", "incapacit",
+                              "android", "cyber", "robot", "turret", "teksura", "sentry")):
+        base = "Enforcement Machine"
+    elif any(k in n for k in ("cryo", "freeze", "rime", "platelet")):
+        base = "Frost Beast"
+    elif any(k in n for k in ("bolt", "electro", "watt", "spark", "dynamo", "volt")):
+        base = "Arc Machine"
+    elif "pede" in n:
+        base = "Iron Crawler"
+    elif "nano" in n:
+        base = "Swarm Machine"
+    elif "amp" in n:
+        base = "Force Node"
+    # --- the Hollow (void / nega family) ---
+    elif any(k in n for k in ("nega", "nebul", "devour", "void", "null")):
+        base = "the Hollow"
+    # --- Southbank (the mirror outlaws) ---
+    elif "rebel" in n:
+        base = "Southbank " + (r or "Fighter")
+    # --- undead ---
+    elif any(k in n for k in ("necro", "lich", "bone", "skeleton", "zombie")):
+        base = "Bone Caster"
+    # --- more beast families ---
+    elif any(k in n for k in ("tortoise", "turtle", "shell")):
+        base = "Shell Beast"
+    elif any(k in n for k in ("horn", "auroch", "bull", "rhino", "rusk", "tusk")):
+        base = "Horned Beast"
+    elif any(k in n for k in ("bat", "bird", "harrier", "raven", "wing", "aero")):
+        base = "Sky Beast"
+    elif any(k in n for k in ("mermaid", "siren", "naiad")):
+        base = "River Siren"
+    elif "creeper" in n:
+        base = "Creeper"
+    elif any(k in n for k in ("slash", "claw", "assassin", "goblin", "cutthroat")):
+        base = "Blade Beast"
+    elif "slime" in n:
+        base = "Sludge Beast"
+    elif any(k in n for k in ("wisp", "spitch", "leefa", "falaan")):
+        base = "Fen Spirit"
     elif n in ("archer", "warrior", "knight", "healer", "mage", "wizard"):
         base = "Badge Squad " + (r or "Trooper")
     elif r:
         base = "Stray " + r
     else:
-        base = "Stray Beast"
+        base = "Undercity Beast"
     return base + (" (boss)" if is_boss else "")
 
 
@@ -233,7 +278,41 @@ def reskin_appearance(reskin, weapon, attribute):
         return f"A long-legged weaver spirit trailing silk, {w}."
     if r.startswith("restless spirit"):
         return f"A flickering ghost the city never buried properly, {w}."
-    return f"A {t}stray beast of the undercity, {w}."
+    if r.startswith("enforcement machine"):
+        return f"A heavy Commission war-machine, servos hissing, {t}{w}."
+    if r.startswith("arc machine"):
+        return f"A crackling Commission unit sheathed in live current, {w}."
+    if r.startswith("iron crawler"):
+        return f"A many-legged iron crawler that skitters along the walls, {w}."
+    if r.startswith("swarm machine"):
+        return "A cloud of tiny machines that moves and strikes as one."
+    if r.startswith("force node"):
+        return "A floating node that hardens everything around it; break it first."
+    if r.startswith("the hollow"):
+        return f"A walking piece of absence, eating color and sound, {w}."
+    if r.startswith("southbank"):
+        return f"A Southbank outlaw, no flag in any file, {t}{w}."
+    if r.startswith("bone caster"):
+        return f"A dead thing still working the dark, {w}."
+    if r.startswith("shell beast"):
+        return f"A slab-shelled beast that shrugs off blows, {w}."
+    if r.startswith("horned beast"):
+        return f"A heavy horned beast of the old wilds, {w}."
+    if r.startswith("sky beast"):
+        return f"A winged thing out of the reactor haze, {w}."
+    if r.startswith("river siren"):
+        return "A pale water-spirit that sings the unwary under."
+    if r.startswith("creeper"):
+        return f"A low creeping horror that hugs the ground, {w}."
+    if r.startswith("blade beast"):
+        return f"A lean cutthroat shape all edges, {w}."
+    if r.startswith("fen spirit"):
+        return f"A marsh-wisp of the drowned undercity, {w}."
+    if r.startswith("council warden"):
+        return f"A lesser tower guardian, unfinished but lethal, {w}."
+    if r.startswith("defector frame"):
+        return "A war frame that slipped its handlers, half rust, half grudge."
+    return f"A {t}beast of the undercity, {w}."
 
 
 RESKIN_NAME = {

@@ -11,7 +11,7 @@
 script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ), ExtResource( 6 ) ]
-job_name = "Stray Beast"
-description = "A stray beast of the undercity, a compound bow."
+job_name = "Council Warden, Lesser"
+description = "A lesser tower guardian, unfinished but lethal, a compound bow."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

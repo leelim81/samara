@@ -10,7 +10,7 @@
 script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ) ]
-job_name = "Stray Beast"
-description = "A storm-lit stray beast of the undercity, a charged rod."
+job_name = "Swarm Machine"
+description = "A cloud of tiny machines that moves and strikes as one."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

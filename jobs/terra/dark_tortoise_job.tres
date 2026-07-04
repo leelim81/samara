@@ -11,7 +11,7 @@
 script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ), ExtResource( 6 ) ]
-job_name = "Stray Beast"
-description = "A stray beast of the undercity, a long pike."
+job_name = "Shell Beast"
+description = "A slab-shelled beast that shrugs off blows, a long pike."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )
