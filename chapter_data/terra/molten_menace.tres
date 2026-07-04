@@ -17,4 +17,5 @@ title = "MOLTEN_MENACE"
 caption = "MOLTEN_MENACE_CAPTION"
 difficulty = "17-18"
 battle_scene_path = "res://battles/terra/molten_menace.tscn"
+unlocked_job_paths = [ "res://jobs/terra/gegonago_job.tres" ]
 battle_info = SubResource( 1 )

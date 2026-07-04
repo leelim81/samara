@@ -4,7 +4,7 @@ extends SceneTree
 #   - clearing chapters grants the joining hero listed in that chapter's
 #     unlocked_job_paths (wired by tools/wire_chapter_joins.py)
 #   - replaying a cleared chapter grants no duplicates
-#   - the full 42-chapter run ends with all 25 playable heroes
+#   - the full 42-chapter run ends with all 26 playable heroes
 # Run: godot --headless --script res://tools/test_recruit_drip.gd
 
 
@@ -49,12 +49,12 @@ func _initialize() -> void:
 		print("FAIL: replaying ch.4 changed job count to %d" % sd.jobs.size())
 		ok = false
 
-	# Clear the rest of the story: roster must end at 25.
+	# Clear the rest of the story: roster must end at 26.
 	for i in range(5, cl.chapters.size()):
 		sd.clear_chapter_and_unlock_next(cl.chapters[i].title)
 
-	if sd.jobs.size() != 25:
-		print("FAIL: after ch.42 have %d jobs, expected 25" % sd.jobs.size())
+	if sd.jobs.size() != 26:
+		print("FAIL: after ch.42 have %d jobs, expected 26" % sd.jobs.size())
 		ok = false
 
 	# Grants join at party max level, never below 1.
@@ -66,7 +66,7 @@ func _initialize() -> void:
 		ok = false
 
 	if ok:
-		print("test_recruit_drip: PASS (3 starters, +22 joins, no dupes, roster 25)")
+		print("test_recruit_drip: PASS (3 starters, +23 joins, no dupes, roster 26)")
 		quit(0)
 	else:
 		print("test_recruit_drip: FAIL")

@@ -19,6 +19,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Starters (bahl, grace, kuscah) live in save_data/default_save_data.tres.
 GRANTS = {
     2: "shberdan", 3: "daiana", 4: "bagunar", 5: "macuri", 6: "kem",
+    7: "gegonago",
     8: "zan", 9: "korin", 10: "samupi", 11: "eileen", 15: "burbaba",
     16: "maralme", 17: "nakupi", 18: "harold", 20: "sorman", 21: "gigojago",
     23: "manmer", 25: "unasag", 29: "raprow", 30: "iskar", 31: "lan",

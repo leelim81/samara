@@ -52,12 +52,12 @@ Display name format in text.csv: `Epithet (Real Name)`. Speaker tags in banter =
 | lan | Twin-Tailed Scorpion | Xie Bao | hunter sibling (a woman in this telling, matching art) | Bow | ch.31 | Starts sentences her brother finishes |
 | amazora | the Witch | Sun Erniang | fearless inn-keeper of the dark road | Sword | ch.32 | Menu threats ("you'd sell well"); fierce mother-hen |
 | zenzoze | Gold Lancer | Xu Ning | master lancer recruited to beat armor | Spear | ch.34 | Drill-sergeant precision; proud of his lineage |
+| gegonago | the Tattooed Monk | Lu Zhishen | Three-punch manslaughter, fake monkhood; Panther's sworn brother | Spear (tanky bruiser) | ch.7 | Scoreboard for everything; theology via punching |
 
 **NPC voices (token-only, never granted as units):**
 | slug | Epithet | Real name | Role |
 |---|---|---|---|
 | mizell | Timely Rain | Song Jiang | Heart of Outer Heaven; unwitting shepherd; leads the refusal. Voice: remembers debts as gifts; deflects praise |
-| gegonago | the Tattooed Monk | Lu Zhishen | Three-punch manslaughter, fake monkhood; Panther's sworn brother. Voice: scoreboard for everything; theology via punching |
 | amimari | the Tigress | Gu Dasao | Runs Outer Heaven's kitchen; dies ch.27. Voice: feeds you or fights you, often both |
 
 **Other named NPCs:** the Director (the Commission's human face; Gao Qiu role) · his son **Young Gao** (wants Panther Head's wife) · **Old Fang** (leader of **the Southbank**, the mirror brotherhood — truly unpredictable, hence hunted) · the founder's voice (in the vault recording).
@@ -65,7 +65,7 @@ Display name format in text.csv: `Epithet (Real Name)`. Speaker tags in banter =
 ## Recruitment grants (drives the join wire script)
 
 Start (default save): bahl, grace, kuscah. Grants on clearing chapter N (slug of chapter in story order):
-2→shberdan · 3→daiana · 4→bagunar · 5→macuri · 6→kem · 8→zan · 9→korin · 10→samupi · 11→eileen · 15→burbaba · 16→maralme · 17→nakupi · 18→harold · 20→sorman · 21→gigojago · 23→manmer · 25→unasag · 29→raprow · 30→iskar · 31→lan · 32→amazora · 34→zenzoze. (22 grants + 3 starters = 25.) No grants 35–42.
+2→shberdan · 3→daiana · 4→bagunar · 5→macuri · 6→kem · 7→gegonago · 8→zan · 9→korin · 10→samupi · 11→eileen · 15→burbaba · 16→maralme · 17→nakupi · 18→harold · 20→sorman · 21→gigojago · 23→manmer · 25→unasag · 29→raprow · 30→iskar · 31→lan · 32→amazora · 34→zenzoze. (23 grants + 3 starters = 26.) No grants 35–42.
 
 ## Banter availability (speaker gates)
 
@@ -87,7 +87,7 @@ Format: `# — New title — [debut/grant] — beat`. (Original TB name in paren
 4. **The Unicorn** (Into the Tower) — [bagunar; boss = Jade Unicorn, fight-then-join] — The perfect CEO framed by his own COO the day after a "risk consultancy" predicted his fall. He fights the crew in the tower lobby, cornered; beaten, he believes them.
 5. **The Park at the Bottom** (Descent) — [macuri; NPCs Timely Rain + Tigress debut] — Down to the under-lake. The Unrestrained carries them through a flooded district that used to be his. Outer Heaven revealed: dead water park, warm kitchen. Seed: the ledger with 108 ruled lines.
 6. **The Instructor** (The City Below) — [kem] — Panther Head: flagged for a murder he hasn't committed (94%), wife coveted by Young Gao, exile transfer through the undercity. Act 1 centerpiece. (Calibration sample.)
-7. **Three Punches** (Molten Menace) — [NPC Tattooed Monk debut; no grant] — The Monk's episode: extortionist, three punches, stolen robes; he ambushes Panther Head's prison transfer at the furnace works and walks him out. Sworn-brother pair begins.
+7. **Three Punches** (Molten Menace) — [gegonago joins — the Tattooed Monk, playable spear bruiser] — The Monk's episode: extortionist, three punches, stolen robes; he ambushes Panther Head's prison transfer at the furnace works and walks him out. Sworn-brother pair begins; he joins the roster.
 8. **Repossession** (Labyrinth) — [zan] — Black Whirlwind refuses to repossess Timely Rain's bail office; brings the repossession order back "in pieces, for filing." One-step plans.
 9. **The Tiger** (In Utero) — [korin] — The Pilgrim's viral bare-handed tiger takedown in the abandoned bio-farm — a beast the Commission's models said could not exist. Unregistered heroism = Deviance.
 10. **Ten Feet of Steel** (Living Rock) — [samupi] — Scrapyard battle with a stone beast; she lassos Black Whirlwind out of danger mid-brawl and stays. Act 1 closes: Outer Heaven is a home now.
