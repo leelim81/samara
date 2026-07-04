@@ -142,7 +142,7 @@ Recruitment is also announced mechanically: on victory, newly granted heroes pop
 
 Pairs: Monk×Panther (scoreboard vs leash) · Whirlwind×Timely Rain (devotion) · Whirlwind×White Streak (land vs water) · Pilgrim×Doctor (drink counts vs medical advice) · Wisdom Star×Red-Haired Devil (plans vs no-plans) · Ten Feet×Whirlwind (the tow cable) · Traveler×everyone (invoices) · Snake×Scorpion (split sentences) · Witch×Unrestrained (feeding people competitively) · Jade Unicorn×Wanderer (old money vs street money).
 
-Gags that evolve: the Monk's scoreboard (percent flags → kills → ch.41: "I stopped counting") · the Doctor's good thread (ch.1 joke → ch.38 he uses it on the wall of names) · Whirlwind's one-step plans (→ ch.41 his plan has two steps and breaks your heart) · the Traveler's invoices (→ ch.41 "this one's free") · White Streak's swim invitations (→ ch.37 the river takes him home) · "the luck has a shape" (joke → dread → truth).
+Gags that evolve: the Monk's scoreboard (percent flags → kills → ch.42 "final score") · the Doctor's "nobody bleed" scolding (ch.1 "it had better be the drone" → ch.38 he fetches his good thread for bad news) · Whirlwind's one-step plans (→ ch.41 his plan has two steps and breaks your heart) · the Traveler's noodle invoices · White Streak's swim invitations (→ ch.37 the river takes him home) · "the luck has a shape" (joke → dread → truth).
 
 ## Enemy & boss naming scheme (plain words)
 

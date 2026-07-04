@@ -3,10 +3,10 @@
   ["THE WANDERER", "Drones hunt in pairs, kid. So do we. Get on its other side."],
   ["NINE DRAGONS", "I have a name."],
   ["THE WANDERER", "You have nine, and they're all dragons. Move."],
-  ["THE SKILLED DOCTOR", "Pin it, break it, nobody bleed. I left my good thread at home."]
+  ["THE SKILLED DOCTOR", "I'm a doctor, not backup. If anyone bleeds today, it had better be the drone."]
  ],
  "2": [
-  ["RED-HAIRED DEVIL", "You three following me? I bite, and I owe bail money."],
+  ["RED-HAIRED DEVIL", "Stop following me. I bite, and I already owe bail money."],
   ["THE WANDERER", "Everyone we like owes bail money. Who's your bondsman?"],
   ["RED-HAIRED DEVIL", "Man called Timely Rain. Never met him. He paid anyway."],
   ["THE SKILLED DOCTOR", "A stranger who pays? Now I've heard folklore."]
@@ -170,7 +170,7 @@
   ["TIMELY RAIN", "Line up. Children first, grief second. Her rules."]
  ],
  "28": [
-  ["THE PILGRIM", "Don't. Whatever you're going to say, the tiger heard it first."],
+  ["THE PILGRIM", "Don't say it. I know how this road ends. I walked it for my brother."],
   ["THE SKILLED DOCTOR", "I'm not saying anything. I'm setting your hand. It's broken."],
   ["THE PILGRIM", "It's fine."],
   ["THE SKILLED DOCTOR", "It's broken, and you're not. That's my report. We go home now."]
