@@ -1375,6 +1375,8 @@ func _consume_chained_capsules(pincer: Pincer) -> void:
 		if cell.capsule_type == Enums.CapsuleType.NONE:
 			continue
 
+		var reward_tag: String = ""
+
 		match cell.capsule_type:
 			Enums.CapsuleType.RECOVERY:
 				for unit in _player_units_node.get_children():
@@ -1382,21 +1384,26 @@ func _consume_chained_capsules(pincer: Pincer) -> void:
 						var heal: int = int(unit.get_max_health() * RECOVERY_CAPSULE_HEAL_RATIO)
 
 						unit.inflict_damage(-heal)
+
+				reward_tag = "+HP"
 			Enums.CapsuleType.COIN:
-				_battle_coins += _capsule_coin_amounts.get(cell, 50)
+				var coins: int = _capsule_coin_amounts.get(cell, 50)
+
+				_battle_coins += coins
+				reward_tag = "+%d COINS" % coins
 
 				emit_signal("spoils_changed", _battle_exp, _battle_coins, _enemies_defeated)
 
-		_clear_capsule(cell)
+		_clear_capsule(cell, reward_tag)
 
 
-func _clear_capsule(cell: Cell) -> void:
+func _clear_capsule(cell: Cell, reward_tag: String = "") -> void:
 	cell.capsule_type = Enums.CapsuleType.NONE
 	_capsule_coin_amounts.erase(cell)
 
 	var disc = _capsule_discs.get(cell)
 	if is_instance_valid(disc):
-		disc.consume()
+		disc.consume(reward_tag)
 	_capsule_discs.erase(cell)
 
 

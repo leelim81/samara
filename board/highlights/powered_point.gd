@@ -33,7 +33,14 @@ func _flash_ring(from_scale: float, to_scale: float, duration: float, color: Col
 	ring.texture = load("res://assets/ui/cell_highlight.png")
 	ring.modulate = color
 	ring.scale = Vector2(from_scale, from_scale)
-	add_child(ring)
+
+	# Parent to the board layer when possible so the burst outlives this
+	# disc's queue_free during the consume pop.
+	var host: Node = get_parent() if get_parent() != null else self
+	host.add_child(ring)
+
+	if host != self:
+		ring.position = position
 
 	var tween := ring.create_tween()
 	tween.tween_property(ring, "scale", Vector2(to_scale, to_scale), duration) \
