@@ -15,7 +15,8 @@ const DEFENSE_EXPONENT: float = 0.7
 # Heal skills restore this multiple of their computed magnitude.
 const HEAL_POWER_MULTIPLIER: float = 3.0
 
-# A unit standing on a Powered Point deals/heals this multiple (Terra Battle ×1.5).
+# While the Powered Point boost is active (one was chained this turn), all
+# damage and healing are multiplied by this (Terra Battle ×1.5).
 const POWERED_POINT_DAMAGE_MULTIPLIER: float = 1.5
 
 
@@ -40,7 +41,7 @@ func apply_skill(unit: Unit,
 	if (skill.is_attack() or skill.is_healing()) and skill.primary_power > 0:
 		var damage := calculate_damage(unit.get_stats(), _target_unit.get_stats(), skill.primary_power, skill.primary_weapon_type, skill.primary_attribute)
 		
-		var powered_mult: float = POWERED_POINT_DAMAGE_MULTIPLIER if unit.is_on_powered_point else 1.0
+		var powered_mult: float = POWERED_POINT_DAMAGE_MULTIPLIER if Events.power_boost_active else 1.0
 		damage = int(damage * powered_mult * _random.randf_range(0.9, 1.1))
 
 		if skill.is_healing():

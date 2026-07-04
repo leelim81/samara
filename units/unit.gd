@@ -64,10 +64,6 @@ var faction: int = INVALID_FACTION
 # Says if a unit has escaped or used a escape skill
 var is_escaped: bool = false
 
-# Set by the board for the duration of one skill-activation roll when this unit
-# stands on a Powered Point; forces its active skills to fire (100% activation).
-var is_on_powered_point: bool = false
-
 var _random := RandomNumberGenerator.new()
 
 # Array<StatusEffect>
@@ -734,9 +730,10 @@ func activate_skills() -> Array:
 		if skill.area_of_effect == Enums.AreaOfEffect.EQUIP or skill.skill_type == Enums.SkillType.COUNTER:
 			continue
 		
-		if is_on_powered_point:
-			# Powered Point: guaranteed activation (TB rule). Status-effect
-			# infliction is rolled separately during execution, so it is unaffected.
+		if Events.power_boost_active:
+			# A Powered Point was chained this turn: every skill is guaranteed
+			# to activate (TB rule). Status-effect infliction is rolled
+			# separately during execution, so it is unaffected.
 			activated_skills.push_back(skill)
 		else:
 			var activation: float = _random.randf() + $Job.current_stats.skill_activation_rate_modifier
@@ -789,9 +786,27 @@ func on_attacked() -> void:
 
 func recalculate_stats() -> void:
 	$Job.reset_stats()
-	
+
+	# Stat buffs/debuffs first, then cap them (Terra Battle: stat buffs are
+	# capped at +100%, stat debuffs at -30%), then special effects like
+	# Demoralize (which zeroes attack and must not be un-capped back up).
 	for status_effect in _status_effects:
-		status_effect.modify_stats($Job.base_stats, $Job.current_stats)
+		if status_effect is StatsModifier:
+			status_effect.modify_stats($Job.base_stats, $Job.current_stats)
+
+	_apply_stat_caps($Job.base_stats, $Job.current_stats)
+
+	for status_effect in _status_effects:
+		if not status_effect is StatsModifier:
+			status_effect.modify_stats($Job.base_stats, $Job.current_stats)
+
+
+# Terra Battle caps: total stat buffs +100% (x2), total stat debuffs -30% (x0.7)
+func _apply_stat_caps(base_stats: Stats, current_stats: Stats) -> void:
+	current_stats.attack = clampi(current_stats.attack, int(base_stats.attack * 0.7), base_stats.attack * 2)
+	current_stats.defense = clampi(current_stats.defense, int(base_stats.defense * 0.7), base_stats.defense * 2)
+	current_stats.spiritual_attack = clampi(current_stats.spiritual_attack, int(base_stats.spiritual_attack * 0.7), base_stats.spiritual_attack * 2)
+	current_stats.spiritual_defense = clampi(current_stats.spiritual_defense, int(base_stats.spiritual_defense * 0.7), base_stats.spiritual_defense * 2)
 
 
 func is_dead() -> bool:

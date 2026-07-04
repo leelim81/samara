@@ -16,6 +16,11 @@ var chain_families: Dictionary
 
 var pincer_orientation: int = Enums.PincerOrientation.HORIZONTAL
 
+# Array<Cell>. Powered Points lying on the pincer/chain lines, i.e. "chained"
+# Powered Points (filled by Pincerer.find_chains). Chaining one boosts all
+# damage and healing x1.5 for the rest of the player turn.
+var chained_powered_cells: Array = []
+
 # Start position and end position so the pincer highlight
 # uses these positions and it works correctly for 2x2 units
 var start_position: Vector2

@@ -12,24 +12,27 @@ func update_preview(unit: Unit, cell: Cell) -> void:
 	
 	# Could be a dictionary, but it's not too important
 	var last_cells_with_ally_for_each_direction: Array = []
-	
-	# This code is similar to find_chains() in Pincerer
+
+	# This code is similar to find_chains() in Pincerer. The line extends to the
+	# farthest chainable ally OR Powered Point; only enemies break the chain.
 	for direction in Enums.DIRECTION.values():
 		var neighbor: Cell = cell.get_neighbor(direction)
-		
+
 		var last_cell_with_ally: Cell = null
-		
+
 		while neighbor != null:
-			if neighbor.unit != null:
-				if neighbor.unit.is_ally(unit.faction):
-					if neighbor.unit.can_act():
-						last_cell_with_ally = neighbor
-				else:
-					# Found an enemy unit, stop searching
-					break
-			
+			if neighbor.unit != null and neighbor.unit.is_enemy(unit.faction):
+				# Found an enemy unit, stop searching
+				break
+
+			if neighbor.is_powered:
+				last_cell_with_ally = neighbor
+
+			if neighbor.unit != null and neighbor.unit.is_ally(unit.faction) and neighbor.unit.can_act():
+				last_cell_with_ally = neighbor
+
 			neighbor = neighbor.get_neighbor(direction)
-		
+
 		if last_cell_with_ally != null:
 			last_cells_with_ally_for_each_direction.push_back(last_cell_with_ally)
 	

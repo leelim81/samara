@@ -110,12 +110,12 @@ SKILLS_TAB,Skills,Habilidades
 STATUS_EFFECTS_TAB,Status effects,Estados
 BORDERLANDS,Off the Path,Off the Path
 TO_THE_CAPITAL,Bail Money,Bail Money
-BAHL,Nine Dragons (Shi Jin),Nine Dragons (Shi Jin)
-GRACE,the Wanderer (Yan Qing),the Wanderer (Yan Qing)
-KUSCAH,the Skilled Doctor (An Daoquan),the Skilled Doctor (An Daoquan)
-SHBERDAN,Red-Haired Devil (Liu Tang),Red-Haired Devil (Liu Tang)
-DAIANA,Dragon in the Clouds (Gongsun Sheng),Dragon in the Clouds (Gongsun Sheng)
-MACURI,the Unrestrained (Mu Hong),the Unrestrained (Mu Hong)
+BAHL,Shi Jin (Nine Dragons),Shi Jin (Nine Dragons)
+GRACE,Yan Qing (the Wanderer),Yan Qing (the Wanderer)
+KUSCAH,An Daoquan (the Skilled Doctor),An Daoquan (the Skilled Doctor)
+SHBERDAN,Liu Tang (Red-Haired Devil),Liu Tang (Red-Haired Devil)
+DAIANA,Gongsun Sheng (Dragon in the Clouds),Gongsun Sheng (Dragon in the Clouds)
+MACURI,Mu Hong (the Unrestrained),Mu Hong (the Unrestrained)
 JOB_DARK_DUELIST,Dark Duelist,Duelista oscura
 JOB_ARCHER,Archer,Arquera
 JOB_ACOLYTE,Acolyte,Acólito
@@ -220,24 +220,52 @@ A_TOWER_REBORN,The Last Cup,The Last Cup
 A_TOWER_REBORN_CAPTION,There is one way to starve a harvest: leave it nothing ripe.,There is one way to starve a harvest: leave it nothing ripe.
 TERRA_BATTLE,Outer Heaven,Outer Heaven
 TERRA_BATTLE_CAPTION,Years now.,Years now.
-CHAR_BLACK_WHIRLWIND,Black Whirlwind (Li Kui),Black Whirlwind (Li Kui)
-CHAR_THE_PILGRIM,the Pilgrim (Wu Song),the Pilgrim (Wu Song)
-CHAR_TEN_FEET_OF_STEEL,Ten Feet of Steel (Hu Sanniang),Ten Feet of Steel (Hu Sanniang)
-CHAR_JADE_UNICORN,Jade Unicorn (Lu Junyi),Jade Unicorn (Lu Junyi)
-CHAR_BLUE_FACED_BEAST,Blue-Faced Beast (Yang Zhi),Blue-Faced Beast (Yang Zhi)
-CHAR_FIERY_THUNDERBOLT,Fiery Thunderbolt (Qin Ming),Fiery Thunderbolt (Qin Ming)
-CHAR_TWIN_RODS,Twin Rods (Huyan Zhuo),Twin Rods (Huyan Zhuo)
-CHAR_THE_WITCH,the Witch (Sun Erniang),the Witch (Sun Erniang)
-CHAR_PANTHER_HEAD,Panther Head (Lin Chong),Panther Head (Lin Chong)
-CHAR_THE_NINE_DRAGONED,Gold Lancer (Xu Ning),Gold Lancer (Xu Ning)
-CHAR_THE_LIVING_DEATH_GOD,the Living Death-God (Ruan Xiaoqi),the Living Death-God (Ruan Xiaoqi)
-CHAR_LORD_OF_THE_BEAUTIFUL_BEARD,Lord of the Beautiful Beard (Zhu Tong),Lord of the Beautiful Beard (Zhu Tong)
-CHAR_LITTLE_LI_GUANG,Little Li Guang (Hua Rong),Little Li Guang (Hua Rong)
-CHAR_THE_WANDERER,Two-Headed Snake (Xie Zhen),Two-Headed Snake (Xie Zhen)
-CHAR_FEATHERLESS_ARROW,Featherless Arrow (Zhang Qing),Featherless Arrow (Zhang Qing)
-CHAR_LAN,Twin-Tailed Scorpion (Xie Bao),Twin-Tailed Scorpion (Xie Bao)
-CHAR_THE_WISDOM_STAR,the Wisdom Star (Wu Yong),the Wisdom Star (Wu Yong)
-CHAR_MARVELOUS_TRAVELER,Marvelous Traveler (Dai Zong),Marvelous Traveler (Dai Zong)
-CHAR_WHITE_STREAK_IN_THE_WAVES,White Streak in the Waves (Zhang Shun),White Streak in the Waves (Zhang Shun)
+CHAR_BLACK_WHIRLWIND,Li Kui (Black Whirlwind),Li Kui (Black Whirlwind)
+CHAR_THE_PILGRIM,Wu Song (the Pilgrim),Wu Song (the Pilgrim)
+CHAR_TEN_FEET_OF_STEEL,Hu Sanniang (Ten Feet of Steel),Hu Sanniang (Ten Feet of Steel)
+CHAR_JADE_UNICORN,Lu Junyi (Jade Unicorn),Lu Junyi (Jade Unicorn)
+CHAR_BLUE_FACED_BEAST,Yang Zhi (Blue-Faced Beast),Yang Zhi (Blue-Faced Beast)
+CHAR_FIERY_THUNDERBOLT,Qin Ming (Fiery Thunderbolt),Qin Ming (Fiery Thunderbolt)
+CHAR_TWIN_RODS,Huyan Zhuo (Twin Rods),Huyan Zhuo (Twin Rods)
+CHAR_THE_WITCH,Sun Erniang (the Witch),Sun Erniang (the Witch)
+CHAR_PANTHER_HEAD,Lin Chong (Panther Head),Lin Chong (Panther Head)
+CHAR_THE_NINE_DRAGONED,Xu Ning (Gold Lancer),Xu Ning (Gold Lancer)
+CHAR_THE_LIVING_DEATH_GOD,Ruan Xiaoqi (the Living Death-God),Ruan Xiaoqi (the Living Death-God)
+CHAR_LORD_OF_THE_BEAUTIFUL_BEARD,Zhu Tong (Lord of the Beautiful Beard),Zhu Tong (Lord of the Beautiful Beard)
+CHAR_LITTLE_LI_GUANG,Hua Rong (Little Li Guang),Hua Rong (Little Li Guang)
+CHAR_THE_WANDERER,Xie Zhen (Two-Headed Snake),Xie Zhen (Two-Headed Snake)
+CHAR_FEATHERLESS_ARROW,Zhang Qing (Featherless Arrow),Zhang Qing (Featherless Arrow)
+CHAR_LAN,Xie Bao (Twin-Tailed Scorpion),Xie Bao (Twin-Tailed Scorpion)
+CHAR_THE_WISDOM_STAR,Wu Yong (the Wisdom Star),Wu Yong (the Wisdom Star)
+CHAR_MARVELOUS_TRAVELER,Dai Zong (Marvelous Traveler),Dai Zong (Marvelous Traveler)
+CHAR_WHITE_STREAK_IN_THE_WAVES,Zhang Shun (White Streak in the Waves),Zhang Shun (White Streak in the Waves)
 CLICK_TO_MOVE,Click to move,Clic para mover
 SORT_BY,Sort,Ordenar
+Nine Dragons,Shi Jin,Shi Jin
+the Wanderer,Yan Qing,Yan Qing
+the Skilled Doctor,An Daoquan,An Daoquan
+Red-Haired Devil,Liu Tang,Liu Tang
+Dragon in the Clouds,Gongsun Sheng,Gongsun Sheng
+the Unrestrained,Mu Hong,Mu Hong
+Jade Unicorn,Lu Junyi,Lu Junyi
+Panther Head,Lin Chong,Lin Chong
+Black Whirlwind,Li Kui,Li Kui
+the Pilgrim,Wu Song,Wu Song
+Ten Feet of Steel,Hu Sanniang,Hu Sanniang
+the Wisdom Star,Wu Yong,Wu Yong
+Blue-Faced Beast,Yang Zhi,Yang Zhi
+Fiery Thunderbolt,Qin Ming,Qin Ming
+Twin Rods,Huyan Zhuo,Huyan Zhuo
+Little Li Guang,Hua Rong,Hua Rong
+Marvelous Traveler,Dai Zong,Dai Zong
+White Streak in the Waves,Zhang Shun,Zhang Shun
+Featherless Arrow,Zhang Qing,Zhang Qing
+the Living Death-God,Ruan Xiaoqi,Ruan Xiaoqi
+Lord of the Beautiful Beard,Zhu Tong,Zhu Tong
+Two-Headed Snake,Xie Zhen,Xie Zhen
+Twin-Tailed Scorpion,Xie Bao,Xie Bao
+the Witch,Sun Erniang,Sun Erniang
+Gold Lancer,Xu Ning,Xu Ning
+Timely Rain,Song Jiang,Song Jiang
+the Tattooed Monk,Lu Zhishen,Lu Zhishen
+the Tigress,Gu Dasao,Gu Dasao

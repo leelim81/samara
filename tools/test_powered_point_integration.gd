@@ -1,9 +1,10 @@
 extends SceneTree
 # End-to-end Powered Point test through the real combat pipeline: spawn a Powered
 # Point on one flank cell, teleport a striker onto it, run a real pincer, and
-# assert the point is CONSUMED. The consume firing proves the whole chain:
-# pincer_executor detected the unit on the powered cell, set is_on_powered_point
-# (forcing 100% activation), emitted powered_point_consumed, and board cleared it.
+# assert the point is CONSUMED. The consume proves the whole chain: the powered
+# cell lies on the pincer/chain line, so Pincerer collected it into
+# chained_powered_cells, Board set Events.power_boost_active (turn-wide x1.5 +
+# guaranteed skill activation) and cleared the point.
 #   godot --headless --script res://tools/test_powered_point_integration.gd
 
 var _f := 0

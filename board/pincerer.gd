@@ -75,13 +75,19 @@ func find_chains(grid:Grid, pincer: Pincer) -> void:
 	# Get the cells from the recorded positions because if the unit is being
 	# pushed while checking the chains then you may get the wrong cell
 	var cells: Array = [grid.get_cell_from_position(pincer.start_position), grid.get_cell_from_position(pincer.end_position)]
-	
+
+	pincer.chained_powered_cells = []
+
 	for cell in cells:
-		_find_chain(cell, Enums.DIRECTION.RIGHT, chain_families, faction)
-		_find_chain(cell, Enums.DIRECTION.LEFT, chain_families, faction)
-		_find_chain(cell, Enums.DIRECTION.UP, chain_families, faction)
-		_find_chain(cell, Enums.DIRECTION.DOWN, chain_families, faction)
-	
+		# A pincering unit standing on a Powered Point chains it as well
+		if cell.is_powered and not pincer.chained_powered_cells.has(cell):
+			pincer.chained_powered_cells.push_back(cell)
+
+		_find_chain(cell, Enums.DIRECTION.RIGHT, chain_families, faction, pincer.chained_powered_cells)
+		_find_chain(cell, Enums.DIRECTION.LEFT, chain_families, faction, pincer.chained_powered_cells)
+		_find_chain(cell, Enums.DIRECTION.UP, chain_families, faction, pincer.chained_powered_cells)
+		_find_chain(cell, Enums.DIRECTION.DOWN, chain_families, faction, pincer.chained_powered_cells)
+
 	pincer.chain_families = chain_families
 
 
@@ -207,35 +213,39 @@ func _check_neighbors_for_pincers(grid: Grid, start_x: int, start_y: int, factio
 		return null
 
 
-# Finds a chain from a given cell
-func _find_chain(cell: Cell, direction: int, chain_families: Dictionary, faction: int) -> void:
+# Finds a chain from a given cell.
+# Terra Battle rule: a unit is chained if it is in the same row or column as a
+# pincering unit and there are no ENEMIES (or obstacles) between them — empty
+# cells and allies that can't act do NOT break the chain. Powered Points lying
+# on the line are chained too, and collected into chained_powered_cells.
+func _find_chain(cell: Cell, direction: int, chain_families: Dictionary, faction: int, chained_powered_cells: Array) -> void:
 	var neighbor = cell.get_neighbor(direction)
-	
+
 	var chain_level: int = 0
-	
+
 	while(neighbor != null):
 		var chained_unit: Unit = neighbor.unit
-		
-		if chained_unit != null:
-			if chained_unit.is_ally(faction) and chained_unit.can_act():
-				var chains: Array = chain_families[cell.unit]
-				
-				if chains.size() < chain_level + 1:
-					chains.push_back([])
-				
-				var chain: Array = chains[chain_level]
-				
-				if not _is_in_any_chain(chained_unit, chain_families):
-					chain_level += 1
-					
-					chain.push_back(chained_unit)
-			else:
-				# Found an enemy unit, stop searching
-				break
-		else:
-			# Empty cell breaks the chain — Terra Battle requires contiguous
-			# allies (no gaps) between the pincering unit and a chained unit.
+
+		if chained_unit != null and chained_unit.is_enemy(faction):
+			# Enemies break the chain, stop searching
 			break
+
+		if neighbor.is_powered and not chained_powered_cells.has(neighbor):
+			chained_powered_cells.push_back(neighbor)
+
+		if chained_unit != null and chained_unit.is_ally(faction) and chained_unit.can_act() \
+				and not chain_families.has(chained_unit):
+			var chains: Array = chain_families[cell.unit]
+
+			if chains.size() < chain_level + 1:
+				chains.push_back([])
+
+			var chain: Array = chains[chain_level]
+
+			if not _is_in_any_chain(chained_unit, chain_families):
+				chain_level += 1
+
+				chain.push_back(chained_unit)
 
 		neighbor = neighbor.get_neighbor(direction)
 

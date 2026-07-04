@@ -107,7 +107,7 @@ func _ready() -> void:
 	
 	$PincerExecutor.pusher = $Pusher
 
-	$PincerExecutor.powered_point_consumed.connect(_clear_powered_point)
+	Events.power_boost_active = false
 	Events.enemy_survived_player_hit.connect(_charge_power)
 	_emit_power()
 
@@ -356,11 +356,15 @@ func _start_turn_zero_enemy_turn() -> void:
 
 func _start_player_turn(has_same_cell: bool = false) -> void:
 	print("Starting player turn")
-	
+
 	$PincerExecutor.initialize(_grid, _enemy_units_node.get_children(), _player_units_node.get_children())
 	_pincer_queue.clear()
-	
+
 	_current_turn = Turn.PLAYER
+
+	# The Powered Point boost lasts "for the rest of the turn": a fresh player
+	# turn always starts without it.
+	Events.power_boost_active = false
 	
 	if _player_units_node.get_children().size() < SaveData.MIN_SQUAD_SIZE or _has_less_than_min_squad_size_alive(_player_units_node.get_children()):
 		print("Defeat!")
@@ -511,9 +515,12 @@ func _disable_units(units: Array) -> void:
 
 func _start_enemy_turn() -> void:
 	print("Starting enemy turn")
-	
+
 	_current_turn = Turn.ENEMY
-	
+
+	# The Powered Point boost only lasts until the end of the player turn
+	Events.power_boost_active = false
+
 	_disable_unit_selection()
 	
 	_enemy_queue.clear()
@@ -786,6 +793,15 @@ func _execute_pincers(unit: Unit) -> void:
 			continue
 
 		print("Evaluating pincer")
+
+		# Chaining a Powered Point (it lies on a pincer/chain line) consumes it
+		# and boosts ALL damage and healing x1.5 for the rest of the player
+		# turn, with every skill guaranteed to activate (Terra Battle rule).
+		if _current_turn == Turn.PLAYER:
+			for powered_cell in pincer.chained_powered_cells:
+				Events.power_boost_active = true
+
+				_clear_powered_point(powered_cell)
 
 		_show_pincer_cutin(pincer)
 
@@ -1250,7 +1266,7 @@ func _spawn_powered_point() -> void:
 	_powered_discs[cell] = disc
 
 
-# Clears one Powered Point (a unit on it chained, consuming it).
+# Clears one Powered Point (it was chained by a pincer, consuming it).
 func _clear_powered_point(cell = null) -> void:
 	if cell == null or not _powered_cells.has(cell):
 		return

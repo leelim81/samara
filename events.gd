@@ -19,3 +19,8 @@ signal skill_activated(skill)
 # A player attack dealt damage to an enemy that SURVIVED the hit. Charges the
 # Power Gauge (Terra Battle charges per surviving hit, not per pincer).
 signal enemy_survived_player_hit
+
+# True from the moment a Powered Point is chained until the end of the player
+# turn (Terra Battle): ALL damage and healing are boosted x1.5 and every skill
+# is guaranteed to activate. Board sets and clears this flag.
+var power_boost_active: bool = false

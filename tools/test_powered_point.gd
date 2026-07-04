@@ -1,7 +1,8 @@
 extends SceneTree
-# Verifies the Powered-Point rule: a unit flagged is_on_powered_point activates
-# its active skills 100% (even a 0%-rate skill), while EQUIP/COUNTER skills stay
-# excluded; with the flag off, a 0%-rate skill never fires.
+# Verifies the Powered-Point rule: while the turn-wide power boost is active
+# (Events.power_boost_active, set when a Powered Point is chained), every unit
+# activates its active skills 100% (even a 0%-rate skill), while EQUIP/COUNTER
+# skills stay excluded; with the boost off, a 0%-rate skill never fires.
 # Run: godot --headless --script res://tools/test_powered_point.gd
 
 var _f := 0
@@ -39,8 +40,12 @@ func _run() -> void:
 	job.level = 90
 	unit.set_job(job)
 
+	# --script SceneTree scripts can't resolve autoload globals at compile
+	# time, so fetch the Events singleton by node path.
+	var events = root.get_node("/root/Events")
+
 	# Not powered: a 0%-rate skill never fires.
-	unit.is_on_powered_point = false
+	events.power_boost_active = false
 	var fired_when_off := false
 	for i in 60:
 		if atk in unit.activate_skills():
@@ -48,7 +53,7 @@ func _run() -> void:
 	_check("0%-rate skill never fires when NOT on a powered point", not fired_when_off)
 
 	# Powered: the 0%-rate skill fires every single time.
-	unit.is_on_powered_point = true
+	events.power_boost_active = true
 	var fired_every_time := true
 	for i in 60:
 		if not (atk in unit.activate_skills()):

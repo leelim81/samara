@@ -11,8 +11,10 @@ var unit: Unit = null
 # Trap inside this cell
 var trap: Trap = null
 
-# True while a Powered Point occupies this cell (a unit here gets 100% skill
-# activation — see board._spawn_powered_point / unit.activate_skills).
+# True while a Powered Point occupies this cell. Chaining it (the cell lies on
+# a pincer/chain line) boosts all damage/healing x1.5 and guarantees skill
+# activation for the rest of the player turn — see Pincerer.find_chains and
+# board._spawn_powered_point.
 var is_powered: bool = false
 
 # Array of Cell. Only valid, non-null neighbors

@@ -28,17 +28,34 @@ func start(pincer: Pincer) -> void:
 	_run_attack_sequence()
 
 
+# Terra Battle attack order: both pincering units first, then the chained
+# units, interleaved level by level (first character of each direction of the
+# first pincering unit, then of the second, then the second characters, ...).
 func _queue_attacks(pincer: Pincer) -> Array:
 	var attack_queue := []
-	
-	# Pincering unit followed by its chain
+
 	for pincering_unit in pincer.pincering_units:
 		_queue_attack(attack_queue, pincer.pincered_units, pincering_unit)
-		
-		# Only player pincers have chaining
-		if pincering_unit.faction == Unit.PLAYER_FACTION:
-			_queue_chain_attacks(attack_queue, pincer.chain_families[pincering_unit], pincer.pincered_units, pincering_unit)
-	
+
+	# Only player pincers have chaining
+	if pincer.pincering_units.front().faction == Unit.PLAYER_FACTION:
+		var level: int = 0
+		var found_chain_level: bool = true
+
+		while found_chain_level:
+			found_chain_level = false
+
+			for pincering_unit in pincer.pincering_units:
+				var chains: Array = pincer.chain_families[pincering_unit]
+
+				if level < chains.size():
+					found_chain_level = true
+
+					for unit in chains[level]:
+						_queue_attack(attack_queue, pincer.pincered_units, unit, pincering_unit)
+
+			level += 1
+
 	return attack_queue
 
 
@@ -54,12 +71,6 @@ func _queue_attack(queue: Array, targeted_units: Array, attacking_unit: Unit, pi
 		attack.pincering_unit = pincering_unit
 	
 	queue.push_back(attack)
-
-
-func _queue_chain_attacks(queue: Array, chains: Array, targeted_units: Array, pincering_unit: Unit) -> void:
-	for chain in chains:
-		for unit in chain:
-			_queue_attack(queue, targeted_units, unit, pincering_unit)
 
 
 func _filter_attacks(attacks: Array) -> void:
@@ -106,12 +117,17 @@ func _get_attack_focus(attack: Attack) -> Vector2:
 
 
 func _execute_attack(attack: Attack) -> void:
-	var attacker_stats = attack.pincering_unit.get_stats()
+	# Each attacker hits with its OWN stats — chained units deal damage with
+	# their own ATK, not the pincering unit's (Terra Battle rule)
+	var attacker_stats = attack.attacking_unit.get_stats()
 
 	_play_sound(attacker_stats.weapon_type)
 
+	# Chained Powered Point: all damage is boosted x1.5 for the rest of the turn
+	var powered_mult: float = 1.5 if Events.power_boost_active else 1.0
+
 	for targeted_unit in attack.targeted_units:
-		var damage: int = targeted_unit.calculate_attack_damage(attacker_stats) * _random.randf_range(0.9, 1.1)
+		var damage: int = targeted_unit.calculate_attack_damage(attacker_stats) * powered_mult * _random.randf_range(0.9, 1.1)
 
 		var attack_effect: Node2D = attack_effect_packed_scene.instantiate()
 		add_child(attack_effect)
@@ -123,6 +139,12 @@ func _execute_attack(attack: Attack) -> void:
 		targeted_unit.inflict_damage(damage, emphasis)
 
 		targeted_unit.on_attacked()
+
+		# Every damaging hit on an enemy that survives it charges the Power
+		# Gauge — basic pincer and chain attacks included (Terra Battle rule)
+		if damage > 0 and attack.attacking_unit.faction == Unit.PLAYER_FACTION \
+				and targeted_unit.faction == Unit.ENEMY_FACTION and targeted_unit.is_alive():
+			Events.emit_signal("enemy_survived_player_hit")
 
 
 # Circle-of-Carnage / elemental advantage on a basic pincer hit (1 = advantage).
