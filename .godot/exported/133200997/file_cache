@@ -16,13 +16,13 @@ res://battles/test_battles/test_boss_battle.tscn::5f9e95494b29ec8aee09cc54655042
 res://battles/tutorial/tutorial.tscn::05b5f2155a64564343e84577d6d38405::1782139258::res://.godot/exported/133200997/export-61669101ff932a82b9663eaad6b3c95f-tutorial.scn
 res://board/highlights/cell_highlight.tscn::5ddfb1acdaaee7e84c1353e6a3f7e584::1782139258::res://.godot/exported/133200997/export-2e9a0fa4574ba81c17d1638231173c95-cell_highlight.scn
 res://board/highlights/chain_previewer.tscn::c87e49eb5b0cf88d1f5d43867b3541b8::1781188477::res://.godot/exported/133200997/export-d09cf4c7293f4b950dfb3df08c6802bb-chain_previewer.scn
-res://board/highlights/chain_previewer_line2d.tscn::cb3aaf8d8063ff05331f5ea585c82174::1782139258::res://.godot/exported/133200997/export-1b113f47fd6a383eb02ad2175de2da47-chain_previewer_line2d.scn
+res://board/highlights/chain_previewer_line2d.tscn::712c1075f7818df349a45b0748ef8e64::1783134083::res://.godot/exported/133200997/export-1b113f47fd6a383eb02ad2175de2da47-chain_previewer_line2d.scn
 res://board/highlights/delayed_skill_highlighter.tscn::845eeb1a25276b120fdc090b4e13ec56::1781188477::res://.godot/exported/133200997/export-ae943943aa648840500248d49623fb9a-delayed_skill_highlighter.scn
 res://board/highlights/pincer_highlight.tscn::d6138ee3d5859a395ba1137bac70fd9b::1782139258::res://.godot/exported/133200997/export-eefbbb42e2a988ee15dbb1435f7873bb-pincer_highlight.scn
 res://board/highlights/skill_highlight.tscn::d09717cacbfbdcf2d09fd81673d4c1de::1782139258::res://.godot/exported/133200997/export-cac8cbf033af4200127872ddf5249f20-skill_highlight.scn
-res://board/highlights/trail2d.tscn::bc03ac9d13b0b7ba5355931c19e01348::1782139258::res://.godot/exported/133200997/export-5083e77c9bf075877fbdc5a064b7b1be-trail2d.scn
+res://board/highlights/trail2d.tscn::b2c547d8a38e44861cd51c58e3bef547::1783134083::res://.godot/exported/133200997/export-5083e77c9bf075877fbdc5a064b7b1be-trail2d.scn
 res://board/attacker.tscn::1c5afdf72e4c59d26b99dcc6dec11dca::1782139258::res://.godot/exported/133200997/export-b84b0efd896669cb451399ba7302f5e7-attacker.scn
-res://board/battle.tscn::c2278aade929e1c92c2ef5fbeabada09::1783122711::res://.godot/exported/133200997/export-17dae8706ba3621e47ba3e0e0e785bc7-battle.scn
+res://board/battle.tscn::174a70e061075fb51eeeaa2ec3daf2d3::1783134083::res://.godot/exported/133200997/export-17dae8706ba3621e47ba3e0e0e785bc7-battle.scn
 res://board/cell.tscn::b15ca9d4b7f2e783e1135f5703fd276f::1781188477::res://.godot/exported/133200997/export-c1cd22ec9f82bfbccb44fff70940950c-cell.scn
 res://board/trap.tscn::699a0650d5d2852cc79c8fc5d3789ab4::1782139258::res://.godot/exported/133200997/export-1b1672cc02f0886e234660d537e34d70-trap.scn
 res://chapter_data/terra/borderlands.tres::03f1c16f08a3e5a3ad02d9387b007630::1783007432::res://.godot/exported/133200997/export-c08a1d504c1cb511edf33e9c2d0d8e32-borderlands.res
