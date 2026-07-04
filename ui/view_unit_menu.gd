@@ -92,6 +92,8 @@ func initialize_from_data(job: Job, base_stats: Stats, current_stats: Stats, lev
 
 		pill.setup(skill, can_show_activation_rate, is_skill_locked)
 
+	_add_companion_row(job)
+
 	if is_in_battle and not status_effects.is_empty():
 		var status_header := Label.new()
 		status_header.text = tr("STATUS_EFFECTS_TAB")
@@ -124,6 +126,35 @@ func _on_ReturnButton_pressed() -> void:
 	_return_button.disabled = true
 
 	go_back()
+
+
+# Equipped companion line under the skill list: "Companion: Earth Sword (+80 ATK)"
+func _add_companion_row(job: Job) -> void:
+	var companion = job.companion
+
+	if companion == null:
+		return
+
+	var bonuses := []
+
+	if companion.health_bonus != 0:
+		bonuses.push_back("+%d HP" % companion.health_bonus)
+	if companion.attack_bonus != 0:
+		bonuses.push_back("+%d ATK" % companion.attack_bonus)
+	if companion.defense_bonus != 0:
+		bonuses.push_back("+%d DEF" % companion.defense_bonus)
+	if companion.spiritual_attack_bonus != 0:
+		bonuses.push_back("+%d S.ATK" % companion.spiritual_attack_bonus)
+	if companion.spiritual_defense_bonus != 0:
+		bonuses.push_back("+%d S.DEF" % companion.spiritual_defense_bonus)
+
+	var row := Label.new()
+	row.text = "%s: %s (%s)" % [tr("COMPANION"), tr(companion.companion_name), ", ".join(bonuses)]
+	row.add_theme_color_override("font_color", Color(0.72, 0.86, 0.78))
+	row.add_theme_font_override("font", _skills_header.get_theme_font("font"))
+	row.add_theme_font_size_override("font_size", 16)
+
+	_skills_vbox.add_child(row)
 
 
 # ---- Element & EXP display (Terra Battle status screen parity) ----

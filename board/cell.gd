@@ -17,6 +17,11 @@ var trap: Trap = null
 # board._spawn_powered_point.
 var is_powered: bool = false
 
+# Capsule dropped on this cell by a defeated enemy (Enums.CapsuleType). Like
+# Powered Points, capsules are collected by chaining the cell and resolved in
+# the capsule phase — see Pincerer.find_chains and board._spawn_capsule.
+var capsule_type: int = Enums.CapsuleType.NONE
+
 # Array of Cell. Only valid, non-null neighbors
 var neighbors: Array = []
 

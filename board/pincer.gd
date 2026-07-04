@@ -21,6 +21,10 @@ var pincer_orientation: int = Enums.PincerOrientation.HORIZONTAL
 # damage and healing x1.5 for the rest of the player turn.
 var chained_powered_cells: Array = []
 
+# Array<Cell>. Capsules lying on the pincer/chain lines (filled by
+# Pincerer.find_chains). Collected in the capsule phase, after healing.
+var chained_capsule_cells: Array = []
+
 # Start position and end position so the pincer highlight
 # uses these positions and it works correctly for 2x2 units
 var start_position: Vector2

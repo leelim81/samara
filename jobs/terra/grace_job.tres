@@ -1,15 +1,17 @@
-[gd_resource type="Resource" load_steps=6 format=2]
+[gd_resource type="Resource" load_steps=7 format=2]
 
 [ext_resource path="res://jobs/job.gd" type="Script" id=1]
 [ext_resource path="res://stats/terra/grace_stats.tres" type="Resource" id=2]
 [ext_resource path="res://assets/terra/tokens/grace_token.png" type="Texture2D" id=3]
 [ext_resource path="res://assets/terra/full/grace_full.png" type="Texture2D" id=4]
 [ext_resource path="res://skills/resources/terra/arrow_player.tres" type="Resource" id=5]
+[ext_resource path="res://companions/resources/terra/guardian_charm.tres" type="Resource" id=6]
 
 [resource]
 script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ) ]
+companion = ExtResource( 6 )
 job_name = "GRACE"
 description = "Yan Qing, the Wanderer. A street performer, wrestler, and crossbow shot with an angle for everything and, underneath, a loyalty that never moves. She talks like nothing matters. Watch what she does instead."
 portrait = ExtResource( 3 )

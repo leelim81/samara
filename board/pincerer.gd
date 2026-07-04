@@ -76,19 +76,103 @@ func find_chains(grid:Grid, pincer: Pincer) -> void:
 	# pushed while checking the chains then you may get the wrong cell
 	var cells: Array = [grid.get_cell_from_position(pincer.start_position), grid.get_cell_from_position(pincer.end_position)]
 
+	# Powered Points and capsules chained per SIDE (per pincering unit), so
+	# the Extend Chain pass below only branches from the side holding the skill
+	var side_pickups: Array = [_new_pickups(), _new_pickups()]
+
+	for i in cells.size():
+		var cell: Cell = cells[i]
+
+		# A pincering unit standing on a Powered Point / capsule chains it too
+		_collect_pickups(cell, side_pickups[i])
+
+		_find_chain(cell, Enums.DIRECTION.RIGHT, chain_families, pincering_units[i], faction, side_pickups[i])
+		_find_chain(cell, Enums.DIRECTION.LEFT, chain_families, pincering_units[i], faction, side_pickups[i])
+		_find_chain(cell, Enums.DIRECTION.UP, chain_families, pincering_units[i], faction, side_pickups[i])
+		_find_chain(cell, Enums.DIRECTION.DOWN, chain_families, pincering_units[i], faction, side_pickups[i])
+
+	# Extend Chain (TB): if a side of the chain includes a unit with the
+	# skill, every unit, Powered Point and capsule chained on that side acts
+	# as an additional chaining point, recursively.
+	for i in pincering_units.size():
+		if _side_has_extend_chain(pincering_units[i], chain_families):
+			_extend_side(grid, pincering_units[i], chain_families, faction, side_pickups[i])
+
 	pincer.chained_powered_cells = []
+	pincer.chained_capsule_cells = []
 
-	for cell in cells:
-		# A pincering unit standing on a Powered Point chains it as well
-		if cell.is_powered and not pincer.chained_powered_cells.has(cell):
-			pincer.chained_powered_cells.push_back(cell)
+	for pickups in side_pickups:
+		for cell in pickups.powered:
+			if not pincer.chained_powered_cells.has(cell):
+				pincer.chained_powered_cells.push_back(cell)
 
-		_find_chain(cell, Enums.DIRECTION.RIGHT, chain_families, faction, pincer.chained_powered_cells)
-		_find_chain(cell, Enums.DIRECTION.LEFT, chain_families, faction, pincer.chained_powered_cells)
-		_find_chain(cell, Enums.DIRECTION.UP, chain_families, faction, pincer.chained_powered_cells)
-		_find_chain(cell, Enums.DIRECTION.DOWN, chain_families, faction, pincer.chained_powered_cells)
+		for cell in pickups.capsules:
+			if not pincer.chained_capsule_cells.has(cell):
+				pincer.chained_capsule_cells.push_back(cell)
 
 	pincer.chain_families = chain_families
+
+
+func _new_pickups() -> Dictionary:
+	return {"powered": [], "capsules": []}
+
+
+# Records a chained Powered Point or capsule lying on this cell
+func _collect_pickups(cell: Cell, pickups: Dictionary) -> void:
+	if cell.is_powered and not pickups.powered.has(cell):
+		pickups.powered.push_back(cell)
+
+	if cell.capsule_type != Enums.CapsuleType.NONE and not pickups.capsules.has(cell):
+		pickups.capsules.push_back(cell)
+
+
+# True if the pincering unit or any unit chained to it has an Extend Chain skill
+func _side_has_extend_chain(pincering_unit: Unit, chain_families: Dictionary) -> bool:
+	if pincering_unit.has_extend_chain():
+		return true
+
+	for chain in chain_families[pincering_unit]:
+		for unit in chain:
+			if unit.has_extend_chain():
+				return true
+
+	return false
+
+
+# Walks perpendicular chains from every chained unit, Powered Point and
+# capsule on this side, repeatedly, until no new chaining points appear
+# (Extend Chain rule).
+func _extend_side(grid: Grid, owner: Unit, chain_families: Dictionary, faction: int, pickups: Dictionary) -> void:
+	var processed := {}
+
+	while true:
+		var anchors: Array = []
+
+		for chain in chain_families[owner]:
+			for unit in chain:
+				var cell: Cell = grid.get_cell_from_position(unit.position)
+
+				if cell != null and not processed.has(cell):
+					anchors.push_back(cell)
+
+		for cell in pickups.powered:
+			if not processed.has(cell):
+				anchors.push_back(cell)
+
+		for cell in pickups.capsules:
+			if not processed.has(cell):
+				anchors.push_back(cell)
+
+		if anchors.is_empty():
+			break
+
+		for anchor in anchors:
+			processed[anchor] = true
+
+			_find_chain(anchor, Enums.DIRECTION.RIGHT, chain_families, owner, faction, pickups)
+			_find_chain(anchor, Enums.DIRECTION.LEFT, chain_families, owner, faction, pickups)
+			_find_chain(anchor, Enums.DIRECTION.UP, chain_families, owner, faction, pickups)
+			_find_chain(anchor, Enums.DIRECTION.DOWN, chain_families, owner, faction, pickups)
 
 
 func _find_corner_pincers(grid: Grid, active_unit: Unit, leading_pincers: Array, pincers: Array) -> void:
@@ -216,9 +300,9 @@ func _check_neighbors_for_pincers(grid: Grid, start_x: int, start_y: int, factio
 # Finds a chain from a given cell.
 # Terra Battle rule: a unit is chained if it is in the same row or column as a
 # pincering unit and there are no ENEMIES (or obstacles) between them — empty
-# cells and allies that can't act do NOT break the chain. Powered Points lying
-# on the line are chained too, and collected into chained_powered_cells.
-func _find_chain(cell: Cell, direction: int, chain_families: Dictionary, faction: int, chained_powered_cells: Array) -> void:
+# cells and allies that can't act do NOT break the chain. Powered Points and
+# capsules lying on the line are chained too (collected into `pickups`).
+func _find_chain(cell: Cell, direction: int, chain_families: Dictionary, family_owner: Unit, faction: int, pickups: Dictionary) -> void:
 	var neighbor = cell.get_neighbor(direction)
 
 	var chain_level: int = 0
@@ -230,12 +314,11 @@ func _find_chain(cell: Cell, direction: int, chain_families: Dictionary, faction
 			# Enemies break the chain, stop searching
 			break
 
-		if neighbor.is_powered and not chained_powered_cells.has(neighbor):
-			chained_powered_cells.push_back(neighbor)
+		_collect_pickups(neighbor, pickups)
 
 		if chained_unit != null and chained_unit.is_ally(faction) and chained_unit.can_act() \
 				and not chain_families.has(chained_unit):
-			var chains: Array = chain_families[cell.unit]
+			var chains: Array = chain_families[family_owner]
 
 			if chains.size() < chain_level + 1:
 				chains.push_back([])

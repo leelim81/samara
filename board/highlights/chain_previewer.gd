@@ -25,7 +25,7 @@ func update_preview(unit: Unit, cell: Cell) -> void:
 				# Found an enemy unit, stop searching
 				break
 
-			if neighbor.is_powered:
+			if neighbor.is_powered or neighbor.capsule_type != Enums.CapsuleType.NONE:
 				last_cell_with_ally = neighbor
 
 			if neighbor.unit != null and neighbor.unit.is_ally(unit.faction) and neighbor.unit.can_act():

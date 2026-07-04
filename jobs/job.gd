@@ -12,6 +12,10 @@ const _SKILL_UNLOCK_LEVELS: Array = [1, 15, 35, 65]
 # Array<Skill>
 @export var skills: Array = [] # (Array, Resource)
 
+# Equipped companion (Terra Battle): grants flat stats and may cast its skill
+# during pincers — see units/job.gd _apply_companion and unit.activate_skills
+@export var companion: Resource = null
+
 @export var job_name: String = ""
 
 @export var portrait: Texture2D = null

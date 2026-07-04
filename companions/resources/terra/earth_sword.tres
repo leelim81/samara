@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://companions/companion.gd" type="Script" id=1]
+[ext_resource path="res://skills/resources/terra/sever.tres" type="Resource" id=2]
+
+[resource]
+script = ExtResource( 1 )
+companion_name = "EARTH_SWORD"
+health_bonus = 0
+attack_bonus = 80
+defense_bonus = 0
+spiritual_attack_bonus = 0
+spiritual_defense_bonus = 0
+skill = ExtResource( 2 )
+frequency = 0.25
+max_frequency = 0.7

@@ -54,6 +54,11 @@ class_name Skill
 # True if this is a escape skill. Will remove unit(s) from play
 @export var is_escape: bool = false
 
+# Extend Chain (Terra Battle): while this unit is part of a chain, every unit
+# and Powered Point chained on its side acts as an additional chaining point
+# (chains can branch perpendicular from them). Passive — pair with EQUIP.
+@export var extends_chain: bool = false
+
 
 func is_physical() -> bool:
 	return primary_weapon_type != Enums.WeaponType.STAFF

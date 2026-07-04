@@ -55,9 +55,30 @@ func _reset_base_stats() -> void:
 	base_stats = job.stats.duplicate()
 	base_stats.level = level
 
+	_apply_companion(base_stats)
+
 
 func _reset_current_stats() -> void:
 	current_stats = base_stats.duplicate()
 	current_stats.level = level
-	
+
+	_apply_companion(current_stats)
+
 	skills = job.skills.duplicate()
+
+
+# Companion flat stat grants (Terra Battle). Applied AFTER the level is set:
+# Stats.set_level recomputes every field from its percentages, which would
+# wipe direct additions. Applied to base AND current so max HP includes the
+# companion's health bonus and buffs/caps stay consistent.
+func _apply_companion(stats: Stats) -> void:
+	var companion = job.companion if job != null else null
+
+	if companion == null:
+		return
+
+	stats.health += companion.health_bonus
+	stats.attack += companion.attack_bonus
+	stats.defense += companion.defense_bonus
+	stats.spiritual_attack += companion.spiritual_attack_bonus
+	stats.spiritual_defense += companion.spiritual_defense_bonus

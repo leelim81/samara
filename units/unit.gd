@@ -722,6 +722,26 @@ func flash_hit() -> void:
 			.set_ease(Tween.EASE_OUT)
 
 
+# True if any unlocked skill grants Extend Chain (chained units/Powered Points
+# on this unit's side of a chain act as additional chaining points).
+func has_extend_chain() -> bool:
+	for skill in get_unlocked_skills():
+		if skill.extends_chain:
+			return true
+
+	return false
+
+
+# First unlocked COUNTER skill, or null. Used by the counter phase: a pincered
+# unit that survives strikes back at the pincering units (Terra Battle).
+func get_counter_skill() -> Skill:
+	for skill in get_unlocked_skills():
+		if skill.skill_type == Enums.SkillType.COUNTER:
+			return skill
+
+	return null
+
+
 func activate_skills() -> Array:
 	var activated_skills := []
 	
@@ -740,6 +760,17 @@ func activate_skills() -> Array:
 
 			if activation < skill.activation_rate:
 				activated_skills.push_back(skill)
+
+	# Companion skill (Terra Battle): fires at the companion's frequency.
+	# Under the Powered Point boost, frequency is treated as if the companion
+	# were at max level (wiki rule) — boosted, but not guaranteed.
+	var companion = $Job.job.companion if $Job.job != null else null
+
+	if companion != null and companion.skill != null:
+		var frequency: float = companion.max_frequency if Events.power_boost_active else companion.frequency
+
+		if _random.randf() < frequency:
+			activated_skills.push_back(companion.skill)
 
 	return activated_skills
 

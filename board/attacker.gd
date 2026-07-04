@@ -2,6 +2,7 @@ class_name Attacker
 extends Node2D
 
 signal attack_phase_finished
+signal counter_phase_finished
 
 # Seconds from lunge start to the hit landing (sound, flash, damage)
 const LUNGE_IMPACT_DELAY_SECONDS := 0.08
@@ -25,7 +26,49 @@ func start(pincer: Pincer) -> void:
 
 	_filter_attacks(_attack_queue)
 
-	_run_attack_sequence()
+	_run_attack_sequence("attack_phase_finished")
+
+
+# Counter phase (Terra Battle): surviving pincered units with a COUNTER skill
+# strike back at the two pincering units. "Enemy counter" runs after each
+# player pincer resolves; "Player counter" runs after each enemy pincer.
+func start_counters(pincer: Pincer) -> void:
+	_attack_queue = _queue_counters(pincer)
+
+	_filter_attacks(_attack_queue)
+
+	_run_attack_sequence("counter_phase_finished")
+
+
+func _queue_counters(pincer: Pincer) -> Array:
+	var queue := []
+
+	for pincered_unit in pincer.pincered_units:
+		if pincered_unit.is_dead() or not pincered_unit.can_act():
+			continue
+
+		var counter_skill: Skill = pincered_unit.get_counter_skill()
+
+		if counter_skill == null:
+			continue
+
+		# Same roll convention as unit.activate_skills, so Demoralize's -1
+		# skill_activation_rate_modifier disables counters too
+		var activation: float = _random.randf() + pincered_unit.get_stats().skill_activation_rate_modifier
+
+		if activation >= counter_skill.activation_rate:
+			continue
+
+		var attack: Attack = Attack.new()
+
+		attack.attacking_unit = pincered_unit
+		attack.pincering_unit = pincered_unit
+		attack.counter_skill = counter_skill
+		attack.targeted_units = pincer.pincering_units.duplicate()
+
+		queue.push_back(attack)
+
+	return queue
 
 
 # Terra Battle attack order: both pincering units first, then the chained
@@ -86,11 +129,15 @@ func _filter_attacks(attacks: Array) -> void:
 
 # Plays the whole pincer attack chain: each attacker lunges at its target,
 # the hit lands mid-lunge, and the next chain member follows right after.
-func _run_attack_sequence() -> void:
+func _run_attack_sequence(finish_signal: String) -> void:
 	while not _attack_queue.is_empty():
 		var attack: Attack = _attack_queue.pop_front()
 
 		if attack.targeted_units.is_empty():
+			continue
+
+		# Counterattackers can be killed by an earlier counter resolving first
+		if attack.counter_skill != null and attack.attacking_unit.is_dead():
 			continue
 
 		if attack.attacking_unit.is_alive():
@@ -103,7 +150,7 @@ func _run_attack_sequence() -> void:
 
 		await get_tree().create_timer(ATTACK_FOLLOW_THROUGH_SECONDS).timeout
 
-	call_deferred("emit_signal", "attack_phase_finished")
+	call_deferred("emit_signal", finish_signal)
 
 
 # Point the lunge at the center of everything this attack hits
@@ -123,11 +170,23 @@ func _execute_attack(attack: Attack) -> void:
 
 	_play_sound(attacker_stats.weapon_type)
 
-	# Chained Powered Point: all damage is boosted x1.5 for the rest of the turn
-	var powered_mult: float = 1.5 if Events.power_boost_active else 1.0
+	# Chained Powered Point: player damage is boosted x1.5 for the rest of the
+	# turn. Enemy hits (e.g. enemy counters during the player turn) never
+	# benefit from the player's boost.
+	var powered_mult: float = 1.5 if (Events.power_boost_active and attack.attacking_unit.faction == Unit.PLAYER_FACTION) else 1.0
 
 	for targeted_unit in attack.targeted_units:
-		var damage: int = targeted_unit.calculate_attack_damage(attacker_stats) * powered_mult * _random.randf_range(0.9, 1.1)
+		var damage: int
+
+		if attack.counter_skill != null:
+			# Counterattack: power/weapon/attribute come from the COUNTER skill
+			damage = targeted_unit.calculate_damage(attacker_stats,
+					targeted_unit.get_stats(),
+					attack.counter_skill.primary_power,
+					attack.counter_skill.primary_weapon_type,
+					attack.counter_skill.primary_attribute) * powered_mult * _random.randf_range(0.9, 1.1)
+		else:
+			damage = targeted_unit.calculate_attack_damage(attacker_stats) * powered_mult * _random.randf_range(0.9, 1.1)
 
 		var attack_effect: Node2D = attack_effect_packed_scene.instantiate()
 		add_child(attack_effect)

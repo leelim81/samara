@@ -93,9 +93,21 @@ enum StatusEffectType {
 	
 	# Any stats buff
 	BUFF,
-	
+
 	# Any stats debuff
 	DEBUFF
+}
+
+# Capsules dropped by defeated enemies (Terra Battle). Collected by chaining
+# the capsule's cell; resolved in the capsule phase, after healing.
+enum CapsuleType {
+	NONE,
+
+	# Restores HP to the whole squad
+	RECOVERY,
+
+	# Grants bonus coins (battle spoils)
+	COIN
 }
 
 # https://terrabattle.fandom.com/wiki/Skills

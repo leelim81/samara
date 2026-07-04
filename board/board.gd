@@ -93,6 +93,18 @@ var _power_charge: float = 0.0
 var _powered_cells: Array = []
 var _powered_discs: Dictionary = {}
 
+# Capsules (Terra Battle): dropped by defeated enemies, collected by chaining
+const CAPSULE_SCENE := preload("res://board/highlights/capsule.tscn")
+const CAPSULE_DROP_CHANCE: float = 0.25
+const RECOVERY_CAPSULE_HEAL_RATIO: float = 0.3
+
+var _capsule_discs: Dictionary = {}
+var _capsule_coin_amounts: Dictionary = {}
+
+# Runtime container for capsule discs (created in _ready, sibling of
+# $PoweredPoints, so battle.tscn needs no edit)
+var _capsules_node: Node2D = null
+
 @onready var _grid := $Grid
 @onready var _powered_points := $PoweredPoints
 
@@ -110,6 +122,13 @@ func _ready() -> void:
 	Events.power_boost_active = false
 	Events.enemy_survived_player_hit.connect(_charge_power)
 	_emit_power()
+
+	_capsules_node = Node2D.new()
+	_capsules_node.name = "Capsules"
+	add_child(_capsules_node)
+	# Same layer as the Powered Point discs
+	_capsules_node.z_index = _powered_points.z_index
+	_capsules_node.z_as_relative = _powered_points.z_as_relative
 
 	if can_use_debug_units:
 		_player_units_node = $DebugUnits
@@ -833,18 +852,31 @@ func _execute_pincers(unit: Unit) -> void:
 		
 		$PincerExecutor.check_dead_units()
 		await $PincerExecutor.finished_checking_for_dead_units
-		
+
 		if _current_turn == Turn.PLAYER:
 			$PincerExecutor.start_heal_phase()
-			
+
 			await $PincerExecutor.heal_phase_finished
 
 			# The Power Gauge charges per surviving enemy hit during the attack
 			# phase (see _charge_power), not per completed pincer.
-		
+
+			# Capsule phase (TB turn order: after healing): collect every
+			# capsule chained by this pincer
+			_consume_chained_capsules(pincer)
+
+		# Counter phase (Terra Battle turn order): surviving pincered units
+		# with a COUNTER skill strike back at the pincering pair — "Enemy
+		# counter" after a player pincer, "Player counter" after an enemy one.
+		$Attacker.start_counters(pincer)
+		await $Attacker.counter_phase_finished
+
+		$PincerExecutor.check_dead_units()
+		await $PincerExecutor.finished_checking_for_dead_units
+
 		if _current_turn == Turn.ENEMY:
 			# Removes the unit (besides the active unit) that performed the
-			# pincer from the queue, so it doesn't act again in the same turn 
+			# pincer from the queue, so it doesn't act again in the same turn
 			_remove_pincering_units_from_enemy_queue(unit, pincer)
 	
 	print("All pincers done!")
@@ -1203,6 +1235,8 @@ func _on_Enemy_dead(unit: Unit) -> void:
 
 	_accumulate_spoils(unit)
 
+	_maybe_drop_capsule(unit)
+
 	shake(8.5 if unit.is2x2() else 4.5, 0.28 if unit.is2x2() else 0.2)
 
 
@@ -1284,10 +1318,9 @@ func _clear_powered_point(cell = null) -> void:
 
 # Charges the Power Gauge per surviving enemy hit; each full bar spawns a
 # Powered Point, up to POWER_MAX on the field at once (Terra Battle rule).
+# The signal only fires for player hits on enemies, so player counters during
+# the enemy turn charge the gauge too (wiki: "each hit that deals damage").
 func _charge_power() -> void:
-	if _current_turn != Turn.PLAYER:
-		return
-
 	_power_charge += CHARGE_PER_HIT
 
 	while _power_charge >= 1.0 and _powered_cells.size() < POWER_MAX:
@@ -1306,6 +1339,65 @@ func _charge_power() -> void:
 # HUD fill = full bars (stored Powered Points) + the partial next bar.
 func _emit_power() -> void:
 	emit_signal("power_changed", float(_powered_cells.size()) + _power_charge, POWER_MAX)
+
+
+# ---- Capsules (Terra Battle) ----
+
+# Drops a capsule on the defeated enemy's cell (sometimes). RECOVERY heals the
+# squad when collected; COIN grants bonus coins scaled to the enemy's level.
+func _maybe_drop_capsule(unit: Unit) -> void:
+	if randf() >= CAPSULE_DROP_CHANCE:
+		return
+
+	var cell: Cell = _grid.get_cell_from_position(unit.position)
+
+	if cell == null or cell.is_powered or cell.capsule_type != Enums.CapsuleType.NONE or cell.trap != null:
+		return
+
+	var capsule_type: int = Enums.CapsuleType.RECOVERY if randf() < 0.5 else Enums.CapsuleType.COIN
+
+	cell.capsule_type = capsule_type
+
+	var disc: Node2D = CAPSULE_SCENE.instantiate()
+	_capsules_node.add_child(disc)
+	disc.position = cell.position
+	disc.initialize(capsule_type)
+	_capsule_discs[cell] = disc
+
+	if capsule_type == Enums.CapsuleType.COIN:
+		_capsule_coin_amounts[cell] = 30 + 8 * unit.get_level()
+
+
+# Capsule phase (Terra Battle turn order: after healing). Collects every
+# capsule that was chained by this pincer and applies its effect.
+func _consume_chained_capsules(pincer: Pincer) -> void:
+	for cell in pincer.chained_capsule_cells:
+		if cell.capsule_type == Enums.CapsuleType.NONE:
+			continue
+
+		match cell.capsule_type:
+			Enums.CapsuleType.RECOVERY:
+				for unit in _player_units_node.get_children():
+					if unit.is_alive():
+						var heal: int = int(unit.get_max_health() * RECOVERY_CAPSULE_HEAL_RATIO)
+
+						unit.inflict_damage(-heal)
+			Enums.CapsuleType.COIN:
+				_battle_coins += _capsule_coin_amounts.get(cell, 50)
+
+				emit_signal("spoils_changed", _battle_exp, _battle_coins, _enemies_defeated)
+
+		_clear_capsule(cell)
+
+
+func _clear_capsule(cell: Cell) -> void:
+	cell.capsule_type = Enums.CapsuleType.NONE
+	_capsule_coin_amounts.erase(cell)
+
+	var disc = _capsule_discs.get(cell)
+	if is_instance_valid(disc):
+		disc.consume()
+	_capsule_discs.erase(cell)
 
 
 # Battle spoils for the results screen: {exp, coins, defeated}
