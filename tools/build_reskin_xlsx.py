@@ -237,7 +237,7 @@ def reskin_appearance(reskin, weapon, attribute):
 
 
 RESKIN_NAME = {
-    1: "Off the Path", 2: "Bail Money", 3: "The Fraud Who Was Right", 4: "The Unicorn",
+    1: "Off the Path", 2: "Debt Paid", 3: "The Fraud Who Was Right", 4: "The Unicorn",
     5: "The Park at the Bottom", 6: "The Instructor", 7: "Three Punches", 8: "Repossession",
     9: "The Tiger", 10: "Ten Feet of Steel", 11: "The Consultant",
     12: "The Quiet Doors", 13: "The Birthday Convoy", 14: "Complimentary Drinks", 15: "The Fence Below",

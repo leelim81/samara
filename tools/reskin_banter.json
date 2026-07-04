@@ -1,265 +1,802 @@
 {
  "1": [
-  ["THE WANDERER", "Drones hunt in pairs, kid. So do we. Get on its other side."],
-  ["NINE DRAGONS", "I have a name."],
-  ["THE WANDERER", "You've got nine dragons inked up your arms. That's name enough. Move."],
-  ["THE SKILLED DOCTOR", "I'm a doctor, not backup. If anyone bleeds today, it had better be the drone."]
+  [
+   "THE WANDERER",
+   "Drones hunt in pairs, kid. So do we. Get on its other side."
+  ],
+  [
+   "NINE DRAGONS",
+   "I have a name."
+  ],
+  [
+   "THE WANDERER",
+   "You've got nine dragons inked up your arms. That's name enough. Move."
+  ],
+  [
+   "THE SKILLED DOCTOR",
+   "I'm a doctor, not backup. If anyone bleeds today, it had better be the drone."
+  ]
  ],
  "2": [
-  ["RED-HAIRED DEVIL", "Stop following me. I bite, and I already owe bail money."],
-  ["THE WANDERER", "Everyone we like owes bail money. Who's your bondsman?"],
-  ["RED-HAIRED DEVIL", "Man called Timely Rain. Never met him. He paid anyway."],
-  ["THE SKILLED DOCTOR", "A stranger who pays? Now I've heard folklore."]
+  [
+   "RED-HAIRED DEVIL",
+   "Stop following me. I bite, and I'm already buried in debt."
+  ],
+  [
+   "THE WANDERER",
+   "Everyone we like is buried in debt. Who paid yours?"
+  ],
+  [
+   "RED-HAIRED DEVIL",
+   "Man called Timely Rain. Never met him. He paid it off anyway."
+  ],
+  [
+   "THE SKILLED DOCTOR",
+   "A stranger who clears your debt? Now I've heard folklore."
+  ]
  ],
  "3": [
-  ["DRAGON IN THE CLOUDS", "You'll want an umbrella in forty seconds. Also, the big one flanks left."],
-  ["RED-HAIRED DEVIL", "Nobody plans my flank for me, lady."],
-  ["DRAGON IN THE CLOUDS", "I didn't plan it. I read it. There's a difference nobody funds."],
-  ["NINE DRAGONS", "It's flanking left. I hate that I'm impressed."]
+  [
+   "DRAGON IN THE CLOUDS",
+   "You'll want an umbrella in forty seconds. Also, the big one flanks left."
+  ],
+  [
+   "RED-HAIRED DEVIL",
+   "Nobody plans my flank for me, lady."
+  ],
+  [
+   "DRAGON IN THE CLOUDS",
+   "I didn't plan it. I read it. There's a difference nobody funds."
+  ],
+  [
+   "NINE DRAGONS",
+   "It's flanking left. I hate that I'm impressed."
+  ]
  ],
  "4": [
-  ["JADE UNICORN", "You're the deviants from the bulletins. Did my own company predict me into this?"],
-  ["THE WANDERER", "Rich man, we can't afford your company. We got flagged the artisanal way."],
-  ["JADE UNICORN", "Then stand still while I find out who could."],
-  ["THE SKILLED DOCTOR", "Or sit down. Lobby furniture this nice, someone should bleed on it comfortably."]
+  [
+   "JADE UNICORN",
+   "You're the deviants from the bulletins. Did my own company predict me into this?"
+  ],
+  [
+   "THE WANDERER",
+   "Rich man, we can't afford your company. We got flagged the artisanal way."
+  ],
+  [
+   "JADE UNICORN",
+   "Then stand still while I find out who could."
+  ],
+  [
+   "THE SKILLED DOCTOR",
+   "Or sit down. Lobby furniture this nice, someone should bleed on it comfortably."
+  ]
  ],
  "5": [
-  ["TIMELY RAIN", "Eat first. Whatever you're running from will still be there after soup."],
-  ["NINE DRAGONS", "You don't even know us."],
-  ["TIMELY RAIN", "I know you're hungry. The rest is paperwork."],
-  ["THE TIGRESS", "He keeps a ledger, you know. A hundred and eight lines. Old habit, he says."],
-  ["THE UNRESTRAINED", "And I carried the soup. Everyone remember who carried the soup."]
+  [
+   "TIMELY RAIN",
+   "Eat first. Whatever you're running from will still be there after soup."
+  ],
+  [
+   "NINE DRAGONS",
+   "You don't even know us."
+  ],
+  [
+   "TIMELY RAIN",
+   "I know you're hungry. The rest is paperwork."
+  ],
+  [
+   "THE TIGRESS",
+   "He keeps a ledger, you know. A hundred and eight lines. Old habit, he says."
+  ],
+  [
+   "THE UNRESTRAINED",
+   "And I carried the soup. Everyone remember who carried the soup."
+  ]
  ],
  "6": [
-  ["PANTHER HEAD", "Stay back. I'm flagged. Standing near me is a crime now."],
-  ["THE WANDERER", "Lucky us, we're pre-owned criminals. Walk with us, instructor."],
-  ["PANTHER HEAD", "They took the school. My rank. Her. I raised no hand. The file did it all."],
-  ["THE SKILLED DOCTOR", "A file did that in a day? Then the Commission's the disease. Not you."]
+  [
+   "PANTHER HEAD",
+   "Stay back. I'm flagged. Standing near me is a crime now."
+  ],
+  [
+   "THE WANDERER",
+   "Lucky us, we're pre-owned criminals. Walk with us, instructor."
+  ],
+  [
+   "PANTHER HEAD",
+   "They took the school. My rank. Her. I raised no hand. The file did it all."
+  ],
+  [
+   "THE SKILLED DOCTOR",
+   "A file did that in a day? Then the Commission's the disease. Not you."
+  ]
  ],
  "7": [
-  ["THE TATTOOED MONK", "Ninety-four percent? I punched a man into retirement and only got eighty-nine."],
-  ["PANTHER HEAD", "It's not a scoreboard, Monk."],
-  ["THE TATTOOED MONK", "Everything's a scoreboard. Doctor, what did you get?"],
-  ["THE SKILLED DOCTOR", "Twelve. Apparently I'm a flight risk, not a fight risk."],
-  ["PANTHER HEAD", "My wife is still in the city. I'm down here. That's the score."],
-  ["THE TATTOOED MONK", "Then teach me. I've hit things wrong my whole life. Ask anyone I hit."]
+  [
+   "THE TATTOOED MONK",
+   "Ninety-four percent? I punched a man into retirement and only got eighty-nine."
+  ],
+  [
+   "PANTHER HEAD",
+   "It's not a scoreboard, Monk."
+  ],
+  [
+   "THE TATTOOED MONK",
+   "Everything's a scoreboard. Doctor, what did you get?"
+  ],
+  [
+   "THE SKILLED DOCTOR",
+   "Twelve. Apparently I'm a flight risk, not a fight risk."
+  ],
+  [
+   "PANTHER HEAD",
+   "My wife is still in the city. I'm down here. That's the score."
+  ],
+  [
+   "THE TATTOOED MONK",
+   "Then teach me. I've hit things wrong my whole life. Ask anyone I hit."
+  ]
  ],
  "8": [
-  ["BLACK WHIRLWIND", "New plan. We hit the depot until it apologizes."],
-  ["TIMELY RAIN", "That's the whole plan?"],
-  ["BLACK WHIRLWIND", "Plans with two steps go wrong at step two, brother."],
-  ["TIMELY RAIN", "Try not to apologize anyone to death."],
-  ["BLACK WHIRLWIND", "No promises. One promise. That one."]
+  [
+   "BLACK WHIRLWIND",
+   "My old bosses sent me to rob you. New plan: we go make them apologize. With hammers."
+  ],
+  [
+   "TIMELY RAIN",
+   "That's the whole plan?"
+  ],
+  [
+   "BLACK WHIRLWIND",
+   "Plans with two steps go wrong at step two, brother."
+  ],
+  [
+   "TIMELY RAIN",
+   "Try not to apologize anyone to death."
+  ],
+  [
+   "BLACK WHIRLWIND",
+   "I'll try. For you. Nobody else."
+  ]
  ],
  "9": [
-  ["THE PILGRIM", "Before anyone asks: three drinks, one tiger, zero regrets."],
-  ["BLACK WHIRLWIND", "I heard it was four drinks."],
-  ["THE PILGRIM", "Four drinks, I'd have fought two tigers."],
-  ["THE SKILLED DOCTOR", "As your new physician: no. As your audience: what's it like, four drinks?"]
+  [
+   "THE PILGRIM",
+   "Before anyone asks: three drinks, one tiger, zero regrets."
+  ],
+  [
+   "BLACK WHIRLWIND",
+   "I heard it was four drinks."
+  ],
+  [
+   "THE PILGRIM",
+   "Four drinks, I'd have fought two tigers."
+  ],
+  [
+   "THE SKILLED DOCTOR",
+   "As your new physician: no. As your audience: what's it like, four drinks?"
+  ]
  ],
  "10": [
-  ["TEN FEET OF STEEL", "Whirlwind. You're in its blind spot. Correction: you're in mine."],
-  ["BLACK WHIRLWIND", "I'm exactly where the hitting is best!"],
-  ["TEN FEET OF STEEL", "You're exactly where the rock lands. Yard rules: anything unattended gets towed."],
-  ["NINE DRAGONS", "Did she just tow him? Mid-fight?"],
-  ["THE UNRESTRAINED", "She once towed my whole noodle cart. Uphill. I proposed on the spot."]
+  [
+   "TEN FEET OF STEEL",
+   "Whirlwind. You're in its blind spot. Correction: you're in mine."
+  ],
+  [
+   "BLACK WHIRLWIND",
+   "I'm exactly where the hitting is best!"
+  ],
+  [
+   "TEN FEET OF STEEL",
+   "You're exactly where the rock lands. Yard rules: anything unattended gets towed."
+  ],
+  [
+   "NINE DRAGONS",
+   "Did she just tow him? Mid-fight?"
+  ],
+  [
+   "THE UNRESTRAINED",
+   "She once towed my whole noodle cart. Uphill. I proposed on the spot."
+  ]
  ],
  "11": [
-  ["THE WISDOM STAR", "I have the convoy route, three exit plans, and one worry I'm keeping."],
-  ["RED-HAIRED DEVIL", "Plans. Wonderful. I'll be over here, improvising."],
-  ["THE WISDOM STAR", "You're exit plan three."],
-  ["RED-HAIRED DEVIL", "...I'm honored?"]
+  [
+   "THE WISDOM STAR",
+   "I have the convoy route, three exit plans, and one worry I'm keeping."
+  ],
+  [
+   "RED-HAIRED DEVIL",
+   "Plans. Wonderful. I'll be over here, improvising."
+  ],
+  [
+   "THE WISDOM STAR",
+   "You're exit plan three."
+  ],
+  [
+   "RED-HAIRED DEVIL",
+   "...I'm honored?"
+  ]
  ],
  "12": [
-  ["THE WISDOM STAR", "Forged transfer order. Walk slow, look bored. Nobody runs."],
-  ["BLACK WHIRLWIND", "What if they check the order?"],
-  ["THE WISDOM STAR", "Then we improvise."],
-  ["RED-HAIRED DEVIL", "SEE? It comes for everyone, planning lady."]
+  [
+   "THE WISDOM STAR",
+   "Forged transfer order. Walk slow, look bored. Nobody runs."
+  ],
+  [
+   "BLACK WHIRLWIND",
+   "What if they check the order?"
+  ],
+  [
+   "THE WISDOM STAR",
+   "Then we improvise."
+  ],
+  [
+   "RED-HAIRED DEVIL",
+   "SEE? It comes for everyone, planning lady."
+  ]
  ],
  "13": [
-  ["THE WANDERER", "Checkpoint's set. Drinks are chilled. Smiles, everyone. We're infrastructure."],
-  ["BLACK WHIRLWIND", "I don't like the fake mustache."],
-  ["THE WANDERER", "It builds trust."],
-  ["THE WISDOM STAR", "The captain out front is Yang Zhi. Decorated, demoted, incorruptible. Nobody engage him. Please."]
+  [
+   "THE WANDERER",
+   "Checkpoint's set. Drinks are chilled. Smiles, everyone. We're infrastructure."
+  ],
+  [
+   "BLACK WHIRLWIND",
+   "I don't like the fake mustache."
+  ],
+  [
+   "THE WANDERER",
+   "It builds trust."
+  ],
+  [
+   "THE WISDOM STAR",
+   "The captain out front is Yang Zhi. Decorated, demoted, incorruptible. Nobody engage him. Please."
+  ]
  ],
  "14": [
-  ["THE PILGRIM", "A heist where only the guards drink. Criminal waste."],
-  ["THE WISDOM STAR", "Clean lift, no casualties, home before the alarm."],
-  ["DRAGON IN THE CLOUDS", "Too clean. Rain tomorrow, and something under it."],
-  ["BLACK WHIRLWIND", "You say that about everything."],
-  ["DRAGON IN THE CLOUDS", "And?"]
+  [
+   "THE PILGRIM",
+   "A heist where only the guards drink. Criminal waste."
+  ],
+  [
+   "THE WISDOM STAR",
+   "Clean lift, no casualties, home before the alarm."
+  ],
+  [
+   "DRAGON IN THE CLOUDS",
+   "Too clean. Rain tomorrow, and something under it."
+  ],
+  [
+   "BLACK WHIRLWIND",
+   "You say that about everything."
+  ],
+  [
+   "DRAGON IN THE CLOUDS",
+   "And?"
+  ]
  ],
  "15": [
-  ["BLUE-FACED BEAST", "I guarded that convoy. You people ruined me."],
-  ["TIMELY RAIN", "We did. Sit down, captain. Soup first, grudges after."],
-  ["BLUE-FACED BEAST", "My bad-luck ledger has forty-one entries. You're seven of them."],
-  ["THE WANDERER", "Give us a month. We'll be the whole ledger."]
+  [
+   "BLUE-FACED BEAST",
+   "I guarded that convoy. You people ruined me."
+  ],
+  [
+   "TIMELY RAIN",
+   "We did. Sit down, captain. Soup first, grudges after."
+  ],
+  [
+   "BLUE-FACED BEAST",
+   "My bad-luck ledger has forty-one entries. You're seven of them."
+  ],
+  [
+   "THE WANDERER",
+   "Give us a month. We'll be the whole ledger."
+  ]
  ],
  "16": [
-  ["FIERY THUNDERBOLT", "YOU. I lost everything because of you."],
-  ["THE WISDOM STAR", "You lost because of us. Everything was them. I can show you the file."],
-  ["FIERY THUNDERBOLT", "Show me. Then show me what you people hit around here."],
-  ["BLACK WHIRLWIND", "I like him. He yells my language."]
+  [
+   "FIERY THUNDERBOLT",
+   "YOU. I lost everything because of you."
+  ],
+  [
+   "THE WISDOM STAR",
+   "You lost because of us. Everything was them. I can show you the file."
+  ],
+  [
+   "FIERY THUNDERBOLT",
+   "Show me. Then show me what you people hit around here."
+  ],
+  [
+   "BLACK WHIRLWIND",
+   "I like him. He yells my language."
+  ]
  ],
  "17": [
-  ["TWIN RODS", "A rematch. You owe a marshal that much courtesy."],
-  ["PANTHER HEAD", "I trained half your officers. They were good men once."],
-  ["TWIN RODS", "They still think they are. That's the sad part. Rematch after soup?"],
-  ["TIMELY RAIN", "Everything here is after soup, marshal."]
+  [
+   "TWIN RODS",
+   "A rematch. You owe a marshal that much courtesy."
+  ],
+  [
+   "PANTHER HEAD",
+   "I trained half your officers. They were good men once."
+  ],
+  [
+   "TWIN RODS",
+   "They still think they are. That's the sad part. Rematch after soup?"
+  ],
+  [
+   "TIMELY RAIN",
+   "Everything here is after soup, marshal."
+  ]
  ],
  "18": [
-  ["LITTLE LI GUANG", "Four hundred meters, crosswind, through a warrant sheet. You're welcome."],
-  ["THE WANDERER", "I once hit a can at thirty. In fog."],
-  ["LITTLE LI GUANG", "That's adorable."],
-  ["THE SKILLED DOCTOR", "New rule. Archers bunk separately."]
+  [
+   "LITTLE LI GUANG",
+   "Four hundred meters, crosswind, through a warrant sheet. You're welcome."
+  ],
+  [
+   "THE WANDERER",
+   "I once hit a can at thirty. In fog."
+  ],
+  [
+   "LITTLE LI GUANG",
+   "That's adorable."
+  ],
+  [
+   "THE SKILLED DOCTOR",
+   "New rule. Archers bunk separately."
+  ]
  ],
  "19": [
-  ["BLACK WHIRLWIND", "We go get him. Now. That's the plan and the backup plan."],
-  ["THE WISDOM STAR", "The plaza is a kill box. We need a way in, a way out, and a miracle."],
-  ["DRAGON IN THE CLOUDS", "Rain, day after tomorrow. Heavy. There's your miracle."],
-  ["PANTHER HEAD", "Then we drill today. Nobody dies rescuing the man who bailed us out. He'd hate the math."]
+  [
+   "BLACK WHIRLWIND",
+   "We go get him. Now. That's the plan and the backup plan."
+  ],
+  [
+   "THE WISDOM STAR",
+   "The plaza is a kill box. We need a way in, a way out, and a miracle."
+  ],
+  [
+   "DRAGON IN THE CLOUDS",
+   "Rain, day after tomorrow. Heavy. There's your miracle."
+  ],
+  [
+   "PANTHER HEAD",
+   "Then we drill today. Nobody dies rescuing the man who cleared our debts. He'd hate the math."
+  ]
  ],
  "20": [
-  ["MARVELOUS TRAVELER", "Route's memorized. I ran it twice while you were saying route."],
-  ["THE WISDOM STAR", "The gate rotation?"],
-  ["MARVELOUS TRAVELER", "Four minutes, seven seconds. You owe me a noodle."],
-  ["BLACK WHIRLWIND", "Does everyone owe you a noodle?"],
-  ["MARVELOUS TRAVELER", "Everyone alive, yes."]
+  [
+   "MARVELOUS TRAVELER",
+   "Route's memorized. I ran it twice while you were saying route."
+  ],
+  [
+   "THE WISDOM STAR",
+   "The gate rotation?"
+  ],
+  [
+   "MARVELOUS TRAVELER",
+   "Four minutes, seven seconds. You owe me a noodle."
+  ],
+  [
+   "BLACK WHIRLWIND",
+   "Does everyone owe you a noodle?"
+  ],
+  [
+   "MARVELOUS TRAVELER",
+   "Everyone alive, yes."
+  ]
  ],
  "21": [
-  ["WHITE STREAK IN THE WAVES", "Come in. The water's honest."],
-  ["BLACK WHIRLWIND", "The water is NOT honest. The water cheats."],
-  ["WHITE STREAK IN THE WAVES", "You swung first. The river just voted."],
-  ["TEN FEET OF STEEL", "Towed him out twice today. New yard record."]
+  [
+   "WHITE STREAK IN THE WAVES",
+   "Come in. The water's honest."
+  ],
+  [
+   "BLACK WHIRLWIND",
+   "The water is NOT honest. The water cheats."
+  ],
+  [
+   "WHITE STREAK IN THE WAVES",
+   "You swung first. The river just voted."
+  ],
+  [
+   "TEN FEET OF STEEL",
+   "Towed him out twice today. New yard record."
+  ]
  ],
  "22": [
-  ["MARVELOUS TRAVELER", "Order's forged, broadcast is mine for ninety seconds. Run on go."],
-  ["LITTLE LI GUANG", "Every rope on that platform is about to be an ex-rope."],
-  ["BLACK WHIRLWIND", "GO. That was go, right? I already went."],
-  ["TIMELY RAIN", "You came. All of you. You absolute fools. Thank you."]
+  [
+   "MARVELOUS TRAVELER",
+   "Order's forged, broadcast is mine for ninety seconds. Run on go."
+  ],
+  [
+   "LITTLE LI GUANG",
+   "Every rope on that platform is about to be an ex-rope."
+  ],
+  [
+   "BLACK WHIRLWIND",
+   "GO. That was go, right? I already went."
+  ],
+  [
+   "TIMELY RAIN",
+   "You came. All of you. You absolute fools. Thank you."
+  ]
  ],
  "23": [
-  ["FEATHERLESS ARROW", "Drone, forty meters. Drone, zero meters."],
-  ["THE PILGRIM", "You could at least stand up when you throw."],
-  ["FEATHERLESS ARROW", "Standing's ceremony. I'm against it."],
-  ["NINE DRAGONS", "Nine hits without looking. I counted. I count things now."]
+  [
+   "FEATHERLESS ARROW",
+   "Drone, forty meters. Drone, zero meters."
+  ],
+  [
+   "THE PILGRIM",
+   "You could at least stand up when you throw."
+  ],
+  [
+   "FEATHERLESS ARROW",
+   "Standing's ceremony. I'm against it."
+  ],
+  [
+   "NINE DRAGONS",
+   "Nine hits without looking. I counted. I count things now."
+  ]
  ],
  "24": [
-  ["TIMELY RAIN", "Eighty-two lanterns. When did we become eighty-two?"],
-  ["THE WISDOM STAR", "When the city started making more of us than it could hold."],
-  ["THE TIGRESS", "Then we build a longer table. Tonight, everyone chops."],
-  ["BLACK WHIRLWIND", "I chop the fastest."],
-  ["THE TIGRESS", "You chop the loudest. There's a difference, dumpling."]
+  [
+   "TIMELY RAIN",
+   "Eighty-two lanterns. When did we become eighty-two?"
+  ],
+  [
+   "THE WISDOM STAR",
+   "When the city started making more of us than it could hold."
+  ],
+  [
+   "THE TIGRESS",
+   "Then we build a longer table. Tonight, everyone chops."
+  ],
+  [
+   "BLACK WHIRLWIND",
+   "I chop the fastest."
+  ],
+  [
+   "THE TIGRESS",
+   "You chop the loudest. There's a difference, dumpling."
+  ]
  ],
  "25": [
-  ["THE LIVING DEATH-GOD", "They took the fleet. So I'm taking it personally."],
-  ["PANTHER HEAD", "That one just used my counter. My own counter."],
-  ["THE WISDOM STAR", "They've been watching us. All of it. Change everything you always do."],
-  ["BLACK WHIRLWIND", "Finally. An order I've been following my whole life."]
+  [
+   "THE LIVING DEATH-GOD",
+   "They took the fleet. So I'm taking it personally."
+  ],
+  [
+   "PANTHER HEAD",
+   "That one just used my counter. My own counter."
+  ],
+  [
+   "THE WISDOM STAR",
+   "They've been watching us. All of it. Change everything you always do."
+  ],
+  [
+   "BLACK WHIRLWIND",
+   "Finally. An order I've been following my whole life."
+  ]
  ],
  "26": [
-  ["THE SKILLED DOCTOR", "Stop me if you've heard this one. A tiger walks into a bio-farm."],
-  ["THE PILGRIM", "Doctor. NOW?"],
-  ["THE SKILLED DOCTOR", "Trust me. It hasn't heard it."],
-  ["THE WANDERER", "It hesitated. Hit the flawless thing in the joke."]
+  [
+   "THE SKILLED DOCTOR",
+   "Stop me if you've heard this one. A tiger walks into a bio-farm."
+  ],
+  [
+   "THE PILGRIM",
+   "Doctor. NOW?"
+  ],
+  [
+   "THE SKILLED DOCTOR",
+   "Trust me. It hasn't heard it."
+  ],
+  [
+   "THE WANDERER",
+   "It hesitated. Hit the flawless thing in the joke."
+  ]
  ],
  "27": [
-  ["THE TATTOOED MONK", "The gate's still standing. She held it. So we hold the rest."],
-  ["BLACK WHIRLWIND", "I'll cook tonight. She'd hate that. She'd yell."],
-  ["THE TATTOOED MONK", "She'd love yelling. Cook badly, little brother. For her."],
-  ["TIMELY RAIN", "Line up. Children first, grief second. Her rules."]
+  [
+   "THE TATTOOED MONK",
+   "The gate's still standing. She held it. So we hold the rest."
+  ],
+  [
+   "BLACK WHIRLWIND",
+   "I'll cook tonight. She'd hate that. She'd yell."
+  ],
+  [
+   "THE TATTOOED MONK",
+   "She'd love yelling. Cook badly, little brother. For her."
+  ],
+  [
+   "TIMELY RAIN",
+   "Line up. Children first, grief second. Her rules."
+  ]
  ],
  "28": [
-  ["THE PILGRIM", "Don't say it. I know how this road ends. I walked it for my brother."],
-  ["THE SKILLED DOCTOR", "I'm not saying anything. I'm setting your hand. It's broken."],
-  ["THE PILGRIM", "It's fine."],
-  ["THE SKILLED DOCTOR", "It's broken, and you're not. That's my report. We go home now."]
+  [
+   "THE PILGRIM",
+   "Don't say it. I know how this road ends. I walked it for my brother."
+  ],
+  [
+   "THE SKILLED DOCTOR",
+   "I'm not saying anything. I'm setting your hand. It's broken."
+  ],
+  [
+   "THE PILGRIM",
+   "It's fine."
+  ],
+  [
+   "THE SKILLED DOCTOR",
+   "It's broken, and you're not. That's my report. We go home now."
+  ]
  ],
  "29": [
-  ["LORD OF THE BEAUTIFUL BEARD", "You have the right to remain a monster. It waives the right."],
-  ["BLACK WHIRLWIND", "Is he reading it its rights? It's a BEAST."],
-  ["LORD OF THE BEAUTIFUL BEARD", "Procedure survives employment, son."],
-  ["TEN FEET OF STEEL", "Leave him be. The beard does the community outreach."]
+  [
+   "LORD OF THE BEAUTIFUL BEARD",
+   "You have the right to remain a monster. It waives the right."
+  ],
+  [
+   "BLACK WHIRLWIND",
+   "Is he reading it its rights? It's a BEAST."
+  ],
+  [
+   "LORD OF THE BEAUTIFUL BEARD",
+   "Procedure survives employment, son."
+  ],
+  [
+   "TEN FEET OF STEEL",
+   "Leave him be. The beard does the community outreach."
+  ]
  ],
  "30": [
-  ["TWO-HEADED SNAKE", "Beasts don't march in lines. Someone's herding them."],
-  ["NINE DRAGONS", "At us?"],
-  ["TWO-HEADED SNAKE", "At whoever's being tested."],
-  ["THE WISDOM STAR", "Tested. There's that shape again."]
+  [
+   "TWO-HEADED SNAKE",
+   "Beasts don't march in lines. Someone's herding them."
+  ],
+  [
+   "NINE DRAGONS",
+   "At us?"
+  ],
+  [
+   "TWO-HEADED SNAKE",
+   "At whoever's being tested."
+  ],
+  [
+   "THE WISDOM STAR",
+   "Tested. There's that shape again."
+  ]
  ],
  "31": [
-  ["TWIN-TAILED SCORPION", "...and THAT is why you flank a horn-king left."],
-  ["TWO-HEADED SNAKE", "Started that sentence Tuesday."],
-  ["TWIN-TAILED SCORPION", "Finished it, didn't I?"],
-  ["THE SKILLED DOCTOR", "There are two of them now. Archers bunk separately. Hunters bunk outside."]
+  [
+   "TWIN-TAILED SCORPION",
+   "...and THAT is why you flank a horn-king left."
+  ],
+  [
+   "TWO-HEADED SNAKE",
+   "Started that sentence Tuesday."
+  ],
+  [
+   "TWIN-TAILED SCORPION",
+   "Finished it, didn't I?"
+  ],
+  [
+   "THE SKILLED DOCTOR",
+   "There are two of them now. Archers bunk separately. Hunters bunk outside."
+  ]
  ],
  "32": [
-  ["THE WITCH", "House rules: eat what I serve, start nothing, tip well. You'd all sell beautifully."],
-  ["THE WANDERER", "Was that a threat or a compliment?"],
-  ["THE WITCH", "It's a menu."],
-  ["RED-HAIRED DEVIL", "I like her. I'm terrified. Both."]
+  [
+   "THE WITCH",
+   "House rules: eat what I serve, start nothing, tip well. You'd all sell beautifully."
+  ],
+  [
+   "THE WANDERER",
+   "Was that a threat or a compliment?"
+  ],
+  [
+   "THE WITCH",
+   "It's a menu."
+  ],
+  [
+   "RED-HAIRED DEVIL",
+   "I like her. I'm terrified. Both."
+  ]
  ],
  "33": [
-  ["THE WITCH", "My inn. Thirty years of soup. Someone burned it in twenty minutes."],
-  ["THE WISDOM STAR", "The knots are wrong. Southbank hands don't tie like that. This was authored."],
-  ["FIERY THUNDERBOLT", "Then point me at the author."],
-  ["THE WISDOM STAR", "That's the problem. There isn't one. Anywhere."]
+  [
+   "THE WITCH",
+   "My inn. Thirty years of soup. Someone burned it in twenty minutes."
+  ],
+  [
+   "THE WISDOM STAR",
+   "The knots are wrong. Southbank hands don't tie like that. This was authored."
+  ],
+  [
+   "FIERY THUNDERBOLT",
+   "Then point me at the author."
+  ],
+  [
+   "THE WISDOM STAR",
+   "That's the problem. There isn't one. Anywhere."
+  ]
  ],
  "34": [
-  ["GOLD LANCER", "Feet wider. Commission armor opens at the collar, like a lie."],
-  ["TWIN RODS", "I wore that armor, lancer."],
-  ["GOLD LANCER", "Then you know where it lies."],
-  ["TIMELY RAIN", "Rest well tonight. Tomorrow we decide who we are."]
+  [
+   "GOLD LANCER",
+   "Feet wider. Commission armor opens at the collar, like a lie."
+  ],
+  [
+   "TWIN RODS",
+   "I wore that armor, lancer."
+  ],
+  [
+   "GOLD LANCER",
+   "Then you know where it lies."
+  ],
+  [
+   "TIMELY RAIN",
+   "Rest well tonight. Tomorrow we decide who we are."
+  ]
  ],
  "35": [
-  ["BLACK WHIRLWIND", "Badges. BADGES. We're the ones they badge AGAINST."],
-  ["TIMELY RAIN", "And now they can't. Brother, I am trying to buy you a future."],
-  ["BLACK WHIRLWIND", "Buy back the old one. I liked knowing who I was."],
-  ["PANTHER HEAD", "Wear it or don't. Tomorrow we march either way. Sleep."]
+  [
+   "BLACK WHIRLWIND",
+   "Badges. BADGES. We're the ones they badge AGAINST."
+  ],
+  [
+   "TIMELY RAIN",
+   "And now they can't. Brother, I am trying to buy you a future."
+  ],
+  [
+   "BLACK WHIRLWIND",
+   "Buy back the old one. I liked knowing who I was."
+  ],
+  [
+   "PANTHER HEAD",
+   "Wear it or don't. Tomorrow we march either way. Sleep."
+  ]
  ],
  "36": [
-  ["FIERY THUNDERBOLT", "A bridge. Good. Bridges are honest work."],
-  ["THE WISDOM STAR", "Hold it four minutes, then fall back. Four. Minutes."],
-  ["FIERY THUNDERBOLT", "Four minutes. Then I apologize to whatever's left standing."],
-  ["THE WITCH", "Come back hungry, thunder-man. I'm cooking for the loud ones tonight."]
+  [
+   "FIERY THUNDERBOLT",
+   "A bridge. Good. Bridges are honest work."
+  ],
+  [
+   "THE WISDOM STAR",
+   "Hold it four minutes, then fall back. Four. Minutes."
+  ],
+  [
+   "FIERY THUNDERBOLT",
+   "Four minutes. Then I apologize to whatever's left standing."
+  ],
+  [
+   "THE WITCH",
+   "Come back hungry, thunder-man. I'm cooking for the loud ones tonight."
+  ]
  ],
  "37": [
-  ["WHITE STREAK IN THE WAVES", "The gate holds if someone holds it. Water's honest. It should be me."],
-  ["BLACK WHIRLWIND", "Then I hold YOU. That's the deal, fish. Land holds water."],
-  ["WHITE STREAK IN THE WAVES", "Not this time, land. Come in when it's over. The water will remember you."],
-  ["RED-HAIRED DEVIL", "No plans, no speeches. See you all at the noodles."]
+  [
+   "WHITE STREAK IN THE WAVES",
+   "The gate holds if someone holds it. Water's honest. It should be me."
+  ],
+  [
+   "BLACK WHIRLWIND",
+   "Then I hold YOU. That's the deal, fish. Land holds water."
+  ],
+  [
+   "WHITE STREAK IN THE WAVES",
+   "Not this time, land. Come in when it's over. The water will remember you."
+  ],
+  [
+   "RED-HAIRED DEVIL",
+   "No plans, no speeches. See you all at the noodles."
+  ]
  ],
  "38": [
-  ["THE WISDOM STAR", "I need everyone to hear this sober. Our whole war fits one curve."],
-  ["PANTHER HEAD", "Meaning what?"],
-  ["THE WISDOM STAR", "Meaning somebody graded it. I found the rubric. It's older than the city."],
-  ["THE SKILLED DOCTOR", "I'll get my good thread. Someone's getting stitches either way."]
+  [
+   "THE WISDOM STAR",
+   "I need everyone to hear this sober. Our whole war fits one curve."
+  ],
+  [
+   "PANTHER HEAD",
+   "Meaning what?"
+  ],
+  [
+   "THE WISDOM STAR",
+   "Meaning somebody graded it. I found the rubric. It's older than the city."
+  ],
+  [
+   "THE SKILLED DOCTOR",
+   "I'll get my good thread. Someone's getting stitches either way."
+  ]
  ],
  "39": [
-  ["TIMELY RAIN", "Every kindness. Every bowl of soup. They wrote it before I meant it."],
-  ["THE TATTOOED MONK", "You still meant it. Their pen, your hand. The soup was real, brother."],
-  ["TIMELY RAIN", "The ledger was the harvest list. I kept it FOR them."],
-  ["THE WISDOM STAR", "Then we're the first crop to read the farmer's mail. Move. They know we know."]
+  [
+   "TIMELY RAIN",
+   "Every kindness. Every bowl of soup. They wrote it before I meant it."
+  ],
+  [
+   "THE TATTOOED MONK",
+   "You still meant it. Their pen, your hand. The soup was real, brother."
+  ],
+  [
+   "TIMELY RAIN",
+   "The ledger was the harvest list. I kept it FOR them."
+  ],
+  [
+   "THE WISDOM STAR",
+   "Then we're the first crop to read the farmer's mail. Move. They know we know."
+  ]
  ],
  "40": [
-  ["TWIN RODS", "Marshals hold rearguards. It's the one order I'm keeping."],
-  ["THE LIVING DEATH-GOD", "Race you to the bottom, marshal. Loser buys."],
-  ["GOLD LANCER", "Collar seams. Stairwell. Single file. Class dismissed. GO."],
-  ["NINE DRAGONS", "We are not leaving them."],
-  ["PANTHER HEAD", "We're not wasting them either. Run."]
+  [
+   "TWIN RODS",
+   "Marshals hold rearguards. It's the one order I'm keeping."
+  ],
+  [
+   "THE LIVING DEATH-GOD",
+   "Race you to the bottom, marshal. Loser buys."
+  ],
+  [
+   "GOLD LANCER",
+   "Collar seams. Stairwell. Single file. Class dismissed. GO."
+  ],
+  [
+   "NINE DRAGONS",
+   "We are not leaving them."
+  ],
+  [
+   "PANTHER HEAD",
+   "We're not wasting them either. Run."
+  ]
  ],
  "41": [
-  ["BLACK WHIRLWIND", "My plan has two steps now. Break the machine. Then the cup, together."],
-  ["PANTHER HEAD", "Two steps. Look at you."],
-  ["BLACK WHIRLWIND", "I saved the good plan for last."],
-  ["TIMELY RAIN", "Stand on my other side, brother. One last time."],
-  ["THE SKILLED DOCTOR", "Everyone's stitched. Best work I ever did. Let's not waste it slowly."]
+  [
+   "BLACK WHIRLWIND",
+   "My plan has two steps now. Break the machine. Then the cup, together."
+  ],
+  [
+   "PANTHER HEAD",
+   "Two steps. Look at you."
+  ],
+  [
+   "BLACK WHIRLWIND",
+   "I saved the good plan for last."
+  ],
+  [
+   "TIMELY RAIN",
+   "Stand on my other side, brother. One last time."
+  ],
+  [
+   "THE SKILLED DOCTOR",
+   "Everyone's stitched. Best work I ever did. Let's not waste it slowly."
+  ]
  ],
  "42": [
-  ["TIMELY RAIN", "To the ones ahead. Keep the soup warm."],
-  ["THE TATTOOED MONK", "Final score: they predicted everything, and still lost. I counted."],
-  ["THE WANDERER", "Best angle I ever played was you people."],
-  ["NINE DRAGONS", "I believe the bedtime story now. Just not their version."],
-  ["TIMELY RAIN", "Ours ends better. All together now."]
+  [
+   "TIMELY RAIN",
+   "To the ones ahead. Keep the soup warm."
+  ],
+  [
+   "THE TATTOOED MONK",
+   "Final score: they predicted everything, and still lost. I counted."
+  ],
+  [
+   "THE WANDERER",
+   "Best angle I ever played was you people."
+  ],
+  [
+   "NINE DRAGONS",
+   "I believe the bedtime story now. Just not their version."
+  ],
+  [
+   "TIMELY RAIN",
+   "Ours ends better. All together now."
+  ]
  ]
 }
