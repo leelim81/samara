@@ -293,3 +293,16 @@ PETRIFY,Petrify,Petrificar
 ICEBIND,Icebind,Congelación
 BLIND,Blind,Ceguera
 WEAKNESS,Weakness,Debilidad
+ITEMS,Items,Objetos
+MATERIALS,Materials,Materiales
+INVENTORY_EMPTY,"You have not collected any materials yet. Materials drop from battle.","Aún no has recogido materiales. Los materiales caen de las batallas."
+ITEM_SCRAP,Scrap Iron,Chatarra
+ITEM_SCRAP_DESC,"Common salvage. The base material for basic upgrades.","Chatarra común. El material base para mejoras básicas."
+ITEM_ALLOY,Refined Alloy,Aleación Refinada
+ITEM_ALLOY_DESC,"A sturdier worked metal used for mid-tier upgrades.","Un metal trabajado más resistente para mejoras intermedias."
+ITEM_CELL,Power Cell,Célula de Poder
+ITEM_CELL_DESC,"A charged core that powers advanced upgrades.","Un núcleo cargado que alimenta mejoras avanzadas."
+ITEM_CORE,Neural Core,Núcleo Neural
+ITEM_CORE_DESC,"A rare processing core sought for elite upgrades.","Un núcleo de procesamiento raro para mejoras de élite."
+ITEM_SIGIL,Sigil Shard,Fragmento de Sello
+ITEM_SIGIL_DESC,"A fragment humming with old power. The rarest material.","Un fragmento que zumba con poder antiguo. El material más raro."

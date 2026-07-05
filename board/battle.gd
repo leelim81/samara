@@ -187,6 +187,12 @@ func _on_VictoryScreen_continue_button_pressed() -> void:
 	# Account rank shares the same EXP the squad earns (a separate track).
 	GameData.save_data.add_account_exp($Board.get_battle_spoils().exp)
 
+	# Bank materials dropped this battle into the inventory.
+	var dropped_materials: Dictionary = $Board.get_battle_spoils().get("materials", {})
+
+	for item_id in dropped_materials:
+		GameData.save_data.add_item(item_id, dropped_materials[item_id])
+
 	# Mark this chapter cleared and unlock the next one in the story list.
 	# Story recruitment happens inside clear_chapter_and_unlock_next; remember
 	# the roster size so newly joined heroes can be announced.

@@ -54,6 +54,10 @@ var supports: Dictionary = {}
 # curve and gates optional EX stages.
 @export var account_exp: int = 0
 
+# Item inventory: item id -> count. Materials drop from battle and are spent on
+# upgrades in the shop (see items/item.gd).
+@export var inventory: Dictionary = {}
+
 # Array<ChapterSaveData>
 var unlocked_chapters: Array = []
 
@@ -276,6 +280,35 @@ func add_account_exp(amount: int) -> void:
 
 func account_level() -> int:
 	return Leveling.level_for_exp(account_exp)
+
+
+# ---- Item inventory ----
+
+func add_item(item_id: String, amount: int = 1) -> void:
+	if item_id == "" or amount == 0:
+		return
+
+	inventory[item_id] = int(inventory.get(item_id, 0)) + amount
+
+
+func item_count(item_id: String) -> int:
+	return int(inventory.get(item_id, 0))
+
+
+# Spends `amount` of an item. Returns false (and changes nothing) if the player
+# does not have enough.
+func remove_item(item_id: String, amount: int = 1) -> bool:
+	if item_count(item_id) < amount:
+		return false
+
+	var remaining: int = item_count(item_id) - amount
+
+	if remaining > 0:
+		inventory[item_id] = remaining
+	else:
+		inventory.erase(item_id)
+
+	return true
 
 
 # ---- Squad save/switch (Terra Battle: up to 10 named squads) ----

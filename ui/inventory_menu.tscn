@@ -1,0 +1,78 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://theme.tres" type="Theme" id=2]
+[ext_resource path="res://ui/inventory_menu.gd" type="Script" id=3]
+[ext_resource path="res://ui/audio_button.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/ui/btn_dark_normal.tres" type="StyleBox" id=5]
+[ext_resource path="res://assets/ui/btn_dark_hover.tres" type="StyleBox" id=6]
+[ext_resource path="res://assets/ui/btn_dark_pressed.tres" type="StyleBox" id=7]
+[ext_resource path="res://assets/fonts/EBGaramond24.tres" type="FontFile" id=8]
+
+[node name="InventoryMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.082, 0.094, 0.114, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+theme_override_constants/separation = 16
+
+[node name="HeaderLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2( 0, 56 )
+theme_override_colors/font_color = Color(0.863, 0.878, 0.894, 1)
+theme_override_fonts/font = ExtResource( 8 )
+theme_override_font_sizes/font_size = 42
+text = "ITEMS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TitleRule" type="ColorRect" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2( 280, 1 )
+size_flags_horizontal = 4
+color = Color( 0.753, 0.627, 0.384, 0.55 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/ScrollContainer"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="ReturnButton" parent="MarginContainer/VBoxContainer" instance=ExtResource( 4 )]
+custom_minimum_size = Vector2( 240, 73 )
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.863, 0.878, 0.894, 1)
+theme_override_colors/font_hover_color = Color( 1, 1, 1, 1 )
+theme_override_colors/font_pressed_color = Color(0.604, 0.64, 0.667, 1)
+theme_override_colors/font_focus_color = Color( 1, 1, 1, 1 )
+theme_override_styles/normal = ExtResource( 5 )
+theme_override_styles/hover = ExtResource( 6 )
+theme_override_styles/pressed = ExtResource( 7 )
+theme_override_styles/focus = ExtResource( 6 )
+text = "RETURN"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ReturnButton" to="." method="_on_ReturnButton_pressed"]

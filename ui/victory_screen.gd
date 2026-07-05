@@ -4,6 +4,7 @@ extends Control
 signal continue_button_pressed
 
 const ROWS_PATH := "MarginContainer/VBoxContainer/ResultsPanel/Margin/Rows"
+const _MATERIAL_LIST_PATH := "res://items/material_list.tres"
 
 var _spoils: Dictionary = {}
 var _turn_count: int = 0
@@ -20,6 +21,7 @@ func initialize(total_drag_time_seconds: float, player_turn_count: int, spoils: 
 	_spoils = spoils
 
 	_build_squad_gain_rows(squad_gains)
+	_build_material_rows(_spoils.get("materials", {}))
 
 	# Static lines fill in immediately; the spoils count up on reveal
 	_set_value("TurnRow", str(player_turn_count))
@@ -75,6 +77,73 @@ func _build_squad_gain_rows(squad_gains: Array) -> void:
 		hb.add_child(exp_label)
 
 
+# Dropped materials as icon + name + "x N" rows, hidden until revealed after the
+# spoils count up (see _reveal_materials).
+func _build_material_rows(materials: Dictionary) -> void:
+	var rows: VBoxContainer = get_node(ROWS_PATH)
+	var holder: VBoxContainer = rows.get_node_or_null("MaterialDrops")
+
+	if holder != null:
+		holder.queue_free()
+
+	if materials.is_empty():
+		return
+
+	var registry = load(_MATERIAL_LIST_PATH)
+
+	holder = VBoxContainer.new()
+	holder.name = "MaterialDrops"
+	holder.add_theme_constant_override("separation", 6)
+	holder.modulate.a = 0.0
+	rows.add_child(holder)
+
+	holder.add_child(HSeparator.new())
+
+	var header := Label.new()
+	header.text = tr("MATERIALS")
+	header.add_theme_font_size_override("font_size", 15)
+	header.add_theme_color_override("font_color", Color(0.6, 0.64, 0.667))
+	holder.add_child(header)
+
+	for item_id in materials:
+		var item: Item = registry.get_by_id(item_id) if registry != null else null
+
+		var hb := HBoxContainer.new()
+		hb.add_theme_constant_override("separation", 10)
+		holder.add_child(hb)
+
+		if item != null and item.icon != null:
+			var icon := TextureRect.new()
+			icon.texture = item.icon
+			icon.custom_minimum_size = Vector2(26, 26)
+			icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+			icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+			hb.add_child(icon)
+
+		var name_label := Label.new()
+		name_label.text = tr(item.name_key) if item != null else item_id
+		name_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		name_label.add_theme_font_size_override("font_size", 18)
+		name_label.add_theme_color_override("font_color", Color(0.863, 0.878, 0.894, 0.85))
+		hb.add_child(name_label)
+
+		var count_label := Label.new()
+		count_label.text = "x%d" % int(materials[item_id])
+		count_label.add_theme_font_size_override("font_size", 18)
+		count_label.add_theme_color_override("font_color", Color(0.86, 0.72, 0.42, 1))
+		hb.add_child(count_label)
+
+
+func _reveal_materials() -> void:
+	var holder = get_node(ROWS_PATH).get_node_or_null("MaterialDrops")
+
+	if holder == null:
+		return
+
+	var tween := create_tween()
+	tween.tween_property(holder, "modulate:a", 1.0, 0.3)
+
+
 func _set_value(row_name: String, text: String) -> void:
 	get_node("%s/%s/Value" % [ROWS_PATH, row_name]).text = text
 
@@ -113,6 +182,10 @@ func _play_entrance() -> void:
 	await get_tree().create_timer(0.18).timeout
 
 	_count_up("DefeatedRow", int(_spoils.get("defeated", 0)), "")
+
+	await get_tree().create_timer(0.18).timeout
+
+	_reveal_materials()
 
 
 # Animates a result value from 0 to its total with a tick sound and a

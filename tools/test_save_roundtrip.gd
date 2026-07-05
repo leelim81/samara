@@ -32,6 +32,8 @@ func _run() -> void:
 	sd.mark_enemy_defeated("res://jobs/terra/golem_job.tres")
 	sd.mark_enemy_seen("res://jobs/terra/mantle_slime_job.tres")
 	sd.add_account_exp(5000)
+	sd.add_item("scrap", 3)
+	sd.add_item("alloy", 1)
 
 	var gained: int = j0.gain_exp(20000)
 	_check("gain_exp returned levels gained > 0", gained > 0)
@@ -69,6 +71,11 @@ func _run() -> void:
 	_check("enemy seen state restored", r.enemy_encounter_state("res://jobs/terra/mantle_slime_job.tres") == SaveData.ENCOUNTER_SEEN)
 	_check("account_exp restored", r.account_exp == 5000)
 	_check("account_level derived (>1)", r.account_level() > 1)
+	_check("inventory scrap restored", r.item_count("scrap") == 3)
+	_check("inventory alloy restored", r.item_count("alloy") == 1)
+	_check("remove_item succeeds when enough", r.remove_item("scrap", 2) == true)
+	_check("remove_item leaves remainder", r.item_count("scrap") == 1)
+	_check("remove_item fails when short", r.remove_item("scrap", 5) == false)
 
 	print("test_save_roundtrip: %s" % ("PASS" if _f == 0 else "FAIL (%d)" % _f))
 	quit(1 if _f > 0 else 0)

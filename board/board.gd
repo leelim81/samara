@@ -89,6 +89,11 @@ var _battle_exp: int = 0
 var _battle_coins: int = 0
 var _enemies_defeated: int = 0
 
+# Materials farmed this battle: item id -> count (banked into inventory on
+# victory). _materials_cache holds the drop pool, loaded on first drop.
+var _battle_materials: Dictionary = {}
+var _materials_cache: Array = []
+
 # Screen shake (shakes the Board node, not a camera, so HUD/cut-in layers stay put)
 var _shake_tween: Tween
 var _shake_home_set: bool = false
@@ -1288,6 +1293,8 @@ func _on_Enemy_dead(unit: Unit) -> void:
 
 	_maybe_drop_capsule(unit)
 
+	_maybe_drop_material(unit)
+
 	shake(8.5 if unit.is2x2() else 4.5, 0.28 if unit.is2x2() else 0.2)
 
 
@@ -1612,7 +1619,59 @@ func get_battle_spoils() -> Dictionary:
 		"exp": _battle_exp,
 		"coins": _battle_coins,
 		"defeated": _enemies_defeated,
+		"materials": _battle_materials,
 	}
+
+
+# ---- Material drops (Terra Battle: farmed upgrade materials) ----
+
+const MATERIAL_DROP_CHANCE: float = 0.14
+const _MATERIAL_LIST_PATH: String = "res://items/material_list.tres"
+
+
+func _maybe_drop_material(unit: Unit) -> void:
+	if randf() >= MATERIAL_DROP_CHANCE:
+		return
+
+	var item = _pick_material(unit.get_level())
+
+	if item != null:
+		_battle_materials[item.id] = int(_battle_materials.get(item.id, 0)) + 1
+
+
+func _get_material_pool() -> Array:
+	if _materials_cache.is_empty():
+		var list = load(_MATERIAL_LIST_PATH)
+
+		if list != null:
+			_materials_cache = list.materials()
+
+	return _materials_cache
+
+
+# Weighted pick among materials whose drop_min_level the enemy meets.
+func _pick_material(level: int):
+	var eligible := []
+	var total := 0.0
+
+	for item in _get_material_pool():
+		if item.drop_min_level <= level:
+			eligible.append(item)
+			total += item.drop_weight
+
+	if eligible.is_empty() or total <= 0.0:
+		return null
+
+	var roll := randf() * total
+	var accumulated := 0.0
+
+	for item in eligible:
+		accumulated += item.drop_weight
+
+		if roll <= accumulated:
+			return item
+
+	return eligible.back()
 
 
 # Active player units in squad order (for the HUD squad-status icons).

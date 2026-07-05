@@ -117,6 +117,13 @@ enum StatusEffectType {
 	WEAKNESS
 }
 
+# Item categories. Materials drop from battles and are spent on upgrades;
+# consumables are used directly (reserved for later).
+enum ItemCategory {
+	MATERIAL,
+	CONSUMABLE,
+}
+
 # Capsules dropped by defeated enemies (Terra Battle). Collected by chaining
 # the capsule's cell; resolved in the capsule phase, after healing.
 enum CapsuleType {
