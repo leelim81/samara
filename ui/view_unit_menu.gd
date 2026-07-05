@@ -37,6 +37,10 @@ var _element_label: Label = null
 var _exp_label: Label = null
 var _desc_label: Label = null
 
+# The job currently shown, cached so returning from a pushed screen (e.g. the
+# companion equip menu) re-renders it without needing the data passed again.
+var _current_job: Job = null
+
 
 # Called from squad menu
 func initialize(job: Job, level: int) -> void:
@@ -114,9 +118,11 @@ func initialize_from_data(job: Job, base_stats: Stats, current_stats: Stats, lev
 
 
 func on_add_to_tree(data: Object) -> void:
-	var job: Job = data as Job
+	if data is Job:
+		_current_job = data
 
-	initialize(job, job.level)
+	if _current_job != null:
+		initialize(_current_job, _current_job.level)
 
 
 func _set_focus() -> void:
@@ -187,6 +193,7 @@ const TRAIN_EXP: int = 500
 const TRAIN_COST: int = 400
 
 var _train_button: Button = null
+var _companion_button: Button = null
 var _wallet_label: Label = null
 var _train_job: Job = null
 
@@ -210,14 +217,7 @@ func _update_train_button(job: Job, is_in_battle: bool) -> void:
 		_train_button = Button.new()
 		_train_button.custom_minimum_size = Vector2(0, 40)
 		_train_button.add_theme_font_size_override("font_size", 14)
-
-		var style := StyleBoxFlat.new()
-		style.bg_color = Color(0.16, 0.185, 0.225, 1)
-		style.set_border_width_all(1)
-		style.border_color = Color(0.753, 0.627, 0.384, 0.8)
-		style.set_corner_radius_all(8)
-		style.set_content_margin_all(8)
-		_train_button.add_theme_stylebox_override("normal", style)
+		_train_button.add_theme_stylebox_override("normal", _gold_button_style())
 		_train_button.pressed.connect(_on_train_pressed)
 		row.add_child(_train_button)
 
@@ -227,8 +227,24 @@ func _update_train_button(job: Job, is_in_battle: bool) -> void:
 		_wallet_label.add_theme_color_override("font_color", Color(0.86, 0.72, 0.42, 1))
 		row.add_child(_wallet_label)
 
+		var companion_row := HBoxContainer.new()
+		companion_row.name = "CompanionRow"
+		meta.add_child(companion_row)
+		meta.move_child(companion_row, row.get_index() + 1)
+
+		_companion_button = Button.new()
+		_companion_button.custom_minimum_size = Vector2(0, 40)
+		_companion_button.add_theme_font_size_override("font_size", 14)
+		_companion_button.add_theme_stylebox_override("normal", _gold_button_style())
+		_companion_button.text = tr("COMPANION")
+		_companion_button.pressed.connect(_on_companion_pressed)
+		companion_row.add_child(_companion_button)
+
 	var row_node: Node = _train_button.get_parent()
 	row_node.visible = show
+
+	if _companion_button != null:
+		_companion_button.get_parent().visible = show
 
 	if not show:
 		return
@@ -253,6 +269,22 @@ func _on_train_pressed() -> void:
 
 		# Re-render this panel with the (possibly leveled-up) job
 		initialize(_train_job, _train_job.level)
+
+
+func _gold_button_style() -> StyleBoxFlat:
+	var style := StyleBoxFlat.new()
+	style.bg_color = Color(0.16, 0.185, 0.225, 1)
+	style.set_border_width_all(1)
+	style.border_color = Color(0.753, 0.627, 0.384, 0.8)
+	style.set_corner_radius_all(8)
+	style.set_content_margin_all(8)
+
+	return style
+
+
+func _on_companion_pressed() -> void:
+	if _train_job != null:
+		navigate("res://ui/companion_equip_menu.tscn", _train_job)
 
 
 func _update_exp_label(job: Job, level: int) -> void:

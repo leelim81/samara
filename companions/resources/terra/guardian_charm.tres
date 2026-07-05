@@ -14,3 +14,4 @@ spiritual_defense_bonus = 40
 skill = ExtResource( 2 )
 frequency = 0.25
 max_frequency = 0.7
+shop_price = 800

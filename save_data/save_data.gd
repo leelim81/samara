@@ -58,6 +58,14 @@ var supports: Dictionary = {}
 # upgrades in the shop (see items/item.gd).
 @export var inventory: Dictionary = {}
 
+# Companions the player owns (companion resource path -> true). Seeded from the
+# companions baked onto starting heroes; grown by buying in the market.
+@export var owned_companions: Dictionary = {}
+
+# Companion equipped per unit (Job.uid -> companion path, or "" for none). A unit
+# with no entry keeps whatever companion its job baked in.
+@export var equipped_companions: Dictionary = {}
+
 # Array<ChapterSaveData>
 var unlocked_chapters: Array = []
 
@@ -309,6 +317,17 @@ func remove_item(item_id: String, amount: int = 1) -> bool:
 		inventory.erase(item_id)
 
 	return true
+
+
+# ---- Companions ----
+
+func is_companion_owned(path: String) -> bool:
+	return bool(owned_companions.get(path, false))
+
+
+func add_owned_companion(path: String) -> void:
+	if path != "":
+		owned_companions[path] = true
 
 
 # ---- Squad save/switch (Terra Battle: up to 10 named squads) ----

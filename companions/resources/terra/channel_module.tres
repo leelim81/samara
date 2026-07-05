@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://companions/companion.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+companion_name = "COMPANION_CHANNEL"
+health_bonus = 0
+attack_bonus = 0
+defense_bonus = 0
+spiritual_attack_bonus = 100
+spiritual_defense_bonus = 40
+frequency = 0.25
+max_frequency = 0.7
+shop_price = 700

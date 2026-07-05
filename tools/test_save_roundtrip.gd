@@ -34,6 +34,8 @@ func _run() -> void:
 	sd.add_account_exp(5000)
 	sd.add_item("scrap", 3)
 	sd.add_item("alloy", 1)
+	sd.add_owned_companion("res://companions/resources/terra/striker_module.tres")
+	sd.equipped_companions[uid0] = "res://companions/resources/terra/striker_module.tres"
 
 	var gained: int = j0.gain_exp(20000)
 	_check("gain_exp returned levels gained > 0", gained > 0)
@@ -76,6 +78,9 @@ func _run() -> void:
 	_check("remove_item succeeds when enough", r.remove_item("scrap", 2) == true)
 	_check("remove_item leaves remainder", r.item_count("scrap") == 1)
 	_check("remove_item fails when short", r.remove_item("scrap", 5) == false)
+	_check("owned companion restored", r.is_companion_owned("res://companions/resources/terra/striker_module.tres"))
+	_check("baked companion seeded as owned", r.is_companion_owned("res://companions/resources/terra/earth_sword.tres"))
+	_check("equipped companion applied to job0", r.jobs[0].companion != null and r.jobs[0].companion.resource_path == "res://companions/resources/terra/striker_module.tres")
 
 	print("test_save_roundtrip: %s" % ("PASS" if _f == 0 else "FAIL (%d)" % _f))
 	quit(1 if _f > 0 else 0)

@@ -41,6 +41,22 @@ func load_data():
 	# Backfill stable unit ids (legacy saves predate Job.uid).
 	save_data.ensure_uids()
 
+	_apply_companions()
+
+
+# Seeds companion ownership from the companions baked onto roster jobs, then
+# applies the player's per-unit equipped choices (overriding the baked default).
+func _apply_companions() -> void:
+	for job in save_data.jobs:
+		if job.companion != null:
+			save_data.add_owned_companion(job.companion.resource_path)
+
+	for job in save_data.jobs:
+		if save_data.equipped_companions.has(job.uid):
+			var path: String = save_data.equipped_companions[job.uid]
+
+			job.companion = load(path) if path != "" else null
+
 
 # True once the player has progress on disk (used to show "Continue").
 func has_save_file() -> bool:
@@ -88,6 +104,8 @@ func _load_data_from_configs_file() -> void:
 	save_data.enemies_encountered = config_file.get_value(_UNIT_DATA_SECTION, "enemies_encountered", {})
 	save_data.account_exp = config_file.get_value(_UNIT_DATA_SECTION, "account_exp", 0)
 	save_data.inventory = config_file.get_value(_UNIT_DATA_SECTION, "inventory", {})
+	save_data.owned_companions = config_file.get_value(_UNIT_DATA_SECTION, "owned_companions", {})
+	save_data.equipped_companions = config_file.get_value(_UNIT_DATA_SECTION, "equipped_companions", {})
 
 	save_data.music_volume = config_file.get_value(_SETTINGS_SECTION, "music_volume", 1.0)
 	save_data.sound_effects_volume = config_file.get_value(_SETTINGS_SECTION, "sound_effects_volume", 1.0)
@@ -146,6 +164,8 @@ func save() -> void:
 	config_file.set_value(_UNIT_DATA_SECTION, "enemies_encountered", save_data.enemies_encountered)
 	config_file.set_value(_UNIT_DATA_SECTION, "account_exp", save_data.account_exp)
 	config_file.set_value(_UNIT_DATA_SECTION, "inventory", save_data.inventory)
+	config_file.set_value(_UNIT_DATA_SECTION, "owned_companions", save_data.owned_companions)
+	config_file.set_value(_UNIT_DATA_SECTION, "equipped_companions", save_data.equipped_companions)
 
 	config_file.set_value(_SETTINGS_SECTION, "music_volume", save_data.music_volume)
 	config_file.set_value(_SETTINGS_SECTION, "sound_effects_volume", save_data.sound_effects_volume)

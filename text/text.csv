@@ -309,3 +309,12 @@ ITEM_SIGIL_DESC,"A fragment humming with old power. The rarest material.","Un fr
 MARKET,Market,Mercado
 BUY,Buy,Comprar
 OWNED,Owned,En posesión
+COMPANIONS,Companions,Compañeros
+EQUIP,Equip,Equipar
+EQUIPPED,Equipped,Equipado
+UNEQUIP,Unequip,Quitar
+NO_COMPANION,No companion,Sin compañero
+NO_BONUS,No stat bonus,Sin bonificación
+COMPANION_STRIKER,Striker Module,Módulo de Ataque
+COMPANION_BULWARK,Bulwark Module,Módulo de Defensa
+COMPANION_CHANNEL,Channel Module,Módulo de Canalización

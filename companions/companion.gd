@@ -24,3 +24,7 @@ extends Resource
 
 # Frequency while the Powered Point boost is active (max-level treatment)
 @export var max_frequency: float = 0.8 # (float, 0, 1, 0.05)
+
+# Coin price to acquire in the market. 0 means not sold (owned by default, e.g.
+# companions that come baked onto a starting hero).
+@export var shop_price: int = 0
