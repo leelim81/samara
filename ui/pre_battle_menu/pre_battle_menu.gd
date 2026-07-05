@@ -6,10 +6,12 @@ extends StackBasedMenuScreen
 
 func _ready() -> void:
 	_create_buttons_for_unlocked_chapters()
-	
+
 	_refresh_wallet()
 
 	_set_focus()
+
+	_maybe_auto_show_tutorial()
 
 
 func on_load() -> void:
@@ -25,7 +27,28 @@ func _refresh_wallet() -> void:
 
 
 func _set_focus() -> void:
-	$MarginContainer/VBoxContainer/HBoxContainer/SquadButton.grab_focus()
+	$MarginContainer/VBoxContainer/NavGrid/SquadButton.grab_focus()
+
+
+# Shows the How to Play primer once, on the player's first arrival at this hub.
+func _maybe_auto_show_tutorial() -> void:
+	if GameData.save_data == null or GameData.save_data.tutorial_seen:
+		return
+
+	# Defer past this frame so the stack manager has connected our
+	# navigation_requested signal (the parent readies after this child).
+	call_deferred("_auto_show_tutorial")
+
+
+func _auto_show_tutorial() -> void:
+	if GameData.save_data == null or GameData.save_data.tutorial_seen:
+		return
+
+	# Let the entry transition settle before opening the primer.
+	await get_tree().create_timer(0.35).timeout
+
+	if is_inside_tree() and GameData.save_data != null and not GameData.save_data.tutorial_seen:
+		navigate("res://ui/how_to_play_menu.tscn")
 
 
 func _create_buttons_for_unlocked_chapters() -> void:
@@ -55,6 +78,10 @@ func _on_SquadButton_pressed() -> void:
 
 func _on_CharactersButton_pressed() -> void:
 	navigate("res://ui/pre_battle_menu/characters_menu.tscn")
+
+
+func _on_HowToPlayButton_pressed() -> void:
+	navigate("res://ui/how_to_play_menu.tscn")
 
 
 func _on_QuitButton_pressed() -> void:

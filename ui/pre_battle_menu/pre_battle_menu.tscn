@@ -80,36 +80,36 @@ theme_override_constants/separation = 10
 offset_left = 22.0
 offset_right = 597.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-offset_top = 787.0
-offset_right = 620.0
-offset_bottom = 860.0
-theme_override_constants/separation = 8
-alignment = 1
+[node name="NavGrid" type="GridContainer" parent="MarginContainer/VBoxContainer"]
+columns = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
 
-[node name="SquadButton" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 4 )]
-custom_minimum_size = Vector2( 180, 0 )
-offset_right = 180.0
-offset_bottom = 73.0
+[node name="SquadButton" parent="MarginContainer/VBoxContainer/NavGrid" instance=ExtResource( 4 )]
+custom_minimum_size = Vector2( 0, 73 )
+size_flags_horizontal = 3
 text = "SQUAD"
 clip_text = true
 
-[node name="CharactersButton" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 4 )]
-custom_minimum_size = Vector2( 180, 0 )
-offset_left = 188.0
-offset_right = 368.0
-offset_bottom = 73.0
+[node name="CharactersButton" parent="MarginContainer/VBoxContainer/NavGrid" instance=ExtResource( 4 )]
+custom_minimum_size = Vector2( 0, 73 )
+size_flags_horizontal = 3
 text = "CHARACTERS"
 clip_text = true
 
-[node name="QuitButton" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 4 )]
-custom_minimum_size = Vector2( 180, 0 )
-offset_left = 376.0
-offset_right = 556.0
-offset_bottom = 73.0
+[node name="HowToPlayButton" parent="MarginContainer/VBoxContainer/NavGrid" instance=ExtResource( 4 )]
+custom_minimum_size = Vector2( 0, 73 )
+size_flags_horizontal = 3
+text = "HOW_TO_PLAY"
+clip_text = true
+
+[node name="QuitButton" parent="MarginContainer/VBoxContainer/NavGrid" instance=ExtResource( 4 )]
+custom_minimum_size = Vector2( 0, 73 )
+size_flags_horizontal = 3
 text = "RETURN_TO_MAIN_MENU"
 clip_text = true
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/SquadButton" to="." method="_on_SquadButton_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/CharactersButton" to="." method="_on_CharactersButton_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/NavGrid/SquadButton" to="." method="_on_SquadButton_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/NavGrid/CharactersButton" to="." method="_on_CharactersButton_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/NavGrid/HowToPlayButton" to="." method="_on_HowToPlayButton_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/NavGrid/QuitButton" to="." method="_on_QuitButton_pressed"]

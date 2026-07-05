@@ -84,6 +84,7 @@ func _load_data_from_configs_file() -> void:
 	save_data.active_squad_index = config_file.get_value(_UNIT_DATA_SECTION, "active_squad_index", 0)
 	save_data.coins = config_file.get_value(_UNIT_DATA_SECTION, "coins", 0)
 	save_data.next_uid = config_file.get_value(_UNIT_DATA_SECTION, "next_uid", 1)
+	save_data.tutorial_seen = config_file.get_value(_UNIT_DATA_SECTION, "tutorial_seen", false)
 
 	save_data.music_volume = config_file.get_value(_SETTINGS_SECTION, "music_volume", 1.0)
 	save_data.sound_effects_volume = config_file.get_value(_SETTINGS_SECTION, "sound_effects_volume", 1.0)
@@ -138,6 +139,7 @@ func save() -> void:
 	config_file.set_value(_UNIT_DATA_SECTION, "active_squad_index", save_data.active_squad_index)
 	config_file.set_value(_UNIT_DATA_SECTION, "coins", save_data.coins)
 	config_file.set_value(_UNIT_DATA_SECTION, "next_uid", save_data.next_uid)
+	config_file.set_value(_UNIT_DATA_SECTION, "tutorial_seen", save_data.tutorial_seen)
 
 	config_file.set_value(_SETTINGS_SECTION, "music_volume", save_data.music_volume)
 	config_file.set_value(_SETTINGS_SECTION, "sound_effects_volume", save_data.sound_effects_volume)

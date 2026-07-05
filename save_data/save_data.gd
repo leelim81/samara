@@ -41,6 +41,10 @@ var supports: Dictionary = {}
 # ids stay globally unique across sessions.
 @export var next_uid: int = 1
 
+# True once the player has seen the How to Play screen (shown once automatically
+# on the first visit to the pre-battle menu; always reachable from its button).
+@export var tutorial_seen: bool = false
+
 # Array<ChapterSaveData>
 var unlocked_chapters: Array = []
 
