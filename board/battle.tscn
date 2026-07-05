@@ -520,7 +520,7 @@ mouse_filter = 2
 theme_override_constants/separation = 4
 
 [node name="C1" type="Control" parent="CanvasLayer/MarginContainer/Hud/Row1"]
-custom_minimum_size = Vector2( 240, 0 )
+custom_minimum_size = Vector2( 276, 0 )
 mouse_filter = 2
 
 [node name="PGauge" type="HBoxContainer" parent="CanvasLayer/MarginContainer/Hud/Row1/C1"]
@@ -538,7 +538,8 @@ text = "P"
 vertical_alignment = 1
 
 [node name="Seg1" type="TextureProgressBar" parent="CanvasLayer/MarginContainer/Hud/Row1/C1/PGauge"]
-custom_minimum_size = Vector2( 64, 21 )
+custom_minimum_size = Vector2( 0, 26 )
+size_flags_horizontal = 3
 size_flags_vertical = 4
 max_value = 100.0
 value = 0.0
@@ -551,7 +552,8 @@ stretch_margin_right = 7
 stretch_margin_bottom = 6
 
 [node name="Seg2" type="TextureProgressBar" parent="CanvasLayer/MarginContainer/Hud/Row1/C1/PGauge"]
-custom_minimum_size = Vector2( 64, 21 )
+custom_minimum_size = Vector2( 0, 26 )
+size_flags_horizontal = 3
 size_flags_vertical = 4
 max_value = 100.0
 value = 0.0
@@ -564,7 +566,8 @@ stretch_margin_right = 7
 stretch_margin_bottom = 6
 
 [node name="Seg3" type="TextureProgressBar" parent="CanvasLayer/MarginContainer/Hud/Row1/C1/PGauge"]
-custom_minimum_size = Vector2( 64, 21 )
+custom_minimum_size = Vector2( 0, 26 )
+size_flags_horizontal = 3
 size_flags_vertical = 4
 max_value = 100.0
 value = 0.0
@@ -577,11 +580,11 @@ stretch_margin_right = 7
 stretch_margin_bottom = 6
 
 [node name="SpacerA1" type="Control" parent="CanvasLayer/MarginContainer/Hud/Row1"]
-custom_minimum_size = Vector2( 56, 0 )
 mouse_filter = 2
+size_flags_horizontal = 3
 
 [node name="C2" type="Control" parent="CanvasLayer/MarginContainer/Hud/Row1"]
-custom_minimum_size = Vector2( 112, 0 )
+custom_minimum_size = Vector2( 104, 0 )
 mouse_filter = 2
 
 [node name="CoinPair" type="HBoxContainer" parent="CanvasLayer/MarginContainer/Hud/Row1/C2"]
@@ -606,7 +609,7 @@ text = "0"
 vertical_alignment = 1
 
 [node name="C3" type="Control" parent="CanvasLayer/MarginContainer/Hud/Row1"]
-custom_minimum_size = Vector2( 112, 0 )
+custom_minimum_size = Vector2( 104, 0 )
 mouse_filter = 2
 
 [node name="KoPair" type="HBoxContainer" parent="CanvasLayer/MarginContainer/Hud/Row1/C3"]
@@ -635,7 +638,7 @@ mouse_filter = 2
 size_flags_horizontal = 3
 
 [node name="C4" type="Control" parent="CanvasLayer/MarginContainer/Hud/Row1"]
-custom_minimum_size = Vector2( 150, 0 )
+custom_minimum_size = Vector2( 174, 0 )
 mouse_filter = 2
 
 [node name="Buttons" type="HBoxContainer" parent="CanvasLayer/MarginContainer/Hud/Row1/C4"]
@@ -643,6 +646,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 alignment = 2
 theme_override_constants/separation = 8
+
+[node name="DragModeOptionButton" parent="CanvasLayer/MarginContainer/Hud/Row1/C4/Buttons" instance=ExtResource( 23 )]
+custom_minimum_size = Vector2( 58, 40 )
+size_flags_vertical = 4
+theme_override_styles/focus = SubResource( 12 )
+theme_override_styles/hover = SubResource( 13 )
+theme_override_styles/pressed = SubResource( 14 )
+theme_override_styles/normal = SubResource( 12 )
 
 [node name="PauseButton" parent="CanvasLayer/MarginContainer/Hud/Row1/C4/Buttons" instance=ExtResource( 33 )]
 custom_minimum_size = Vector2( 50, 40 )
@@ -674,13 +685,12 @@ mouse_filter = 2
 theme_override_constants/separation = 4
 
 [node name="C1" type="Control" parent="CanvasLayer/MarginContainer/Hud/Row2"]
-custom_minimum_size = Vector2( 240, 0 )
+custom_minimum_size = Vector2( 276, 0 )
 mouse_filter = 2
 
 [node name="TimerRow" type="HBoxContainer" parent="CanvasLayer/MarginContainer/Hud/Row2/C1"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 44.0
 mouse_filter = 2
 theme_override_constants/separation = 6
 
@@ -693,7 +703,7 @@ expand = true
 stretch_mode = 6
 
 [node name="TimerBar" type="TextureProgressBar" parent="CanvasLayer/MarginContainer/Hud/Row2/C1/TimerRow"]
-custom_minimum_size = Vector2( 0, 18 )
+custom_minimum_size = Vector2( 0, 26 )
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -719,11 +729,11 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="SpacerA2" type="Control" parent="CanvasLayer/MarginContainer/Hud/Row2"]
-custom_minimum_size = Vector2( 56, 0 )
 mouse_filter = 2
+size_flags_horizontal = 3
 
 [node name="C2" type="Control" parent="CanvasLayer/MarginContainer/Hud/Row2"]
-custom_minimum_size = Vector2( 112, 0 )
+custom_minimum_size = Vector2( 104, 0 )
 mouse_filter = 2
 
 [node name="ExpPair" type="HBoxContainer" parent="CanvasLayer/MarginContainer/Hud/Row2/C2"]
@@ -746,33 +756,34 @@ text = "0"
 vertical_alignment = 1
 
 [node name="C3" type="Control" parent="CanvasLayer/MarginContainer/Hud/Row2"]
-custom_minimum_size = Vector2( 112, 0 )
+custom_minimum_size = Vector2( 104, 0 )
 mouse_filter = 2
 
-[node name="DragModeOptionButton" parent="CanvasLayer/MarginContainer/Hud/Row2/C3" instance=ExtResource( 23 )]
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 0.0
-offset_top = -18.0
-offset_right = 122.0
-offset_bottom = 18.0
-custom_minimum_size = Vector2( 122, 36 )
-theme_override_colors/font_color = Color( 0.86, 0.88, 0.9, 1 )
-theme_override_colors/font_hover_color = Color( 0.95, 0.82, 0.5, 1 )
-theme_override_colors/font_focus_color = Color( 0.86, 0.88, 0.9, 1 )
-theme_override_colors/font_pressed_color = Color( 0.95, 0.82, 0.5, 1 )
+[node name="WavePair" type="HBoxContainer" parent="CanvasLayer/MarginContainer/Hud/Row2/C3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="Prefix" type="Label" parent="CanvasLayer/MarginContainer/Hud/Row2/C3/WavePair"]
+theme_override_colors/font_color = Color( 0.42, 0.9, 0.72, 1 )
 theme_override_font_sizes/font_size = 15
-theme_override_styles/focus = SubResource( 12 )
-theme_override_styles/hover = SubResource( 13 )
-theme_override_styles/pressed = SubResource( 14 )
-theme_override_styles/normal = SubResource( 12 )
+text = "WAVE"
+vertical_alignment = 1
+
+[node name="Value" type="Label" parent="CanvasLayer/MarginContainer/Hud/Row2/C3/WavePair"]
+theme_override_colors/font_color = Color( 0.94, 0.95, 0.96, 1 )
+theme_override_fonts/font = ExtResource( 39 )
+theme_override_font_sizes/font_size = 24
+text = "1/1"
+vertical_alignment = 1
 
 [node name="SpacerB2" type="Control" parent="CanvasLayer/MarginContainer/Hud/Row2"]
 mouse_filter = 2
 size_flags_horizontal = 3
 
 [node name="C4" type="Control" parent="CanvasLayer/MarginContainer/Hud/Row2"]
-custom_minimum_size = Vector2( 150, 0 )
+custom_minimum_size = Vector2( 174, 0 )
 mouse_filter = 2
 
 [node name="CarnageCircle" type="Control" parent="CanvasLayer/MarginContainer/Hud/Row2/C4"]
@@ -872,7 +883,7 @@ bus = "Music"
 [connection signal="tree_exiting" from="Board/PincerExecutor" to="Board/PincerExecutor" method="_on_PincerExecutor_tree_exiting"]
 [connection signal="timeout" from="Board/PincerExecutor/SkillActivationTimer" to="Board/PincerExecutor" method="_on_SkillActivationTimer_timeout"]
 [connection signal="timeout" from="Board/PincerExecutor/DeathAnimationTimer" to="Board/PincerExecutor" method="_on_DeathAnimationTimer_timeout"]
-[connection signal="drag_mode_changed" from="CanvasLayer/MarginContainer/Hud/Row2/C3/DragModeOptionButton" to="." method="_on_DragModeOptionButton_drag_mode_changed"]
+[connection signal="drag_mode_changed" from="CanvasLayer/MarginContainer/Hud/Row1/C4/Buttons/DragModeOptionButton" to="." method="_on_DragModeOptionButton_drag_mode_changed"]
 [connection signal="fast_forward_toggled" from="CanvasLayer/MarginContainer/Hud/Row1/C4/Buttons/FastForwardButton" to="." method="_on_FastForwardButton_fast_forward_toggled"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/Hud/Row1/C4/Buttons/PauseButton" to="." method="_on_PauseButton_pressed"]
 [connection signal="quit_button_pressed" from="CanvasLayer/DefeatScreen" to="." method="_on_DefeatScreen_quit_button_pressed"]

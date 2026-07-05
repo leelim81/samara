@@ -61,6 +61,7 @@ func initialize_from_data(job: Job, base_stats: Stats, current_stats: Stats, lev
 
 	_update_element_label(base_stats.attribute)
 	_update_exp_label(job, level)
+	_update_train_button(job, is_in_battle)
 	_update_desc_label(job)
 
 	# In battle the panel reflects the unit's live stats; otherwise its base
@@ -175,6 +176,82 @@ func _update_element_label(attribute: int) -> void:
 	_element_label.visible = true
 	_element_label.text = _element_name(attribute)
 	_element_label.add_theme_color_override("font_color", _element_color(attribute))
+
+
+# Training: convert banked coins into EXP for this hero ("various upgrades",
+# per the TB wiki's coin usage). Collection view only — never in battle.
+const TRAIN_EXP: int = 500
+const TRAIN_COST: int = 400
+
+var _train_button: Button = null
+var _wallet_label: Label = null
+var _train_job: Job = null
+
+
+func _update_train_button(job: Job, is_in_battle: bool) -> void:
+	var owned: bool = GameData.save_data != null and GameData.save_data.jobs.has(job)
+	var show: bool = (not is_in_battle) and owned
+
+	if _train_button == null:
+		if not show:
+			return
+
+		var meta: Node = _lv_label.get_parent()
+
+		var row := HBoxContainer.new()
+		row.name = "TrainRow"
+		row.add_theme_constant_override("separation", 10)
+		meta.add_child(row)
+		meta.move_child(row, _exp_label.get_index() + 1)
+
+		_train_button = Button.new()
+		_train_button.custom_minimum_size = Vector2(0, 40)
+		_train_button.add_theme_font_size_override("font_size", 14)
+
+		var style := StyleBoxFlat.new()
+		style.bg_color = Color(0.16, 0.185, 0.225, 1)
+		style.set_border_width_all(1)
+		style.border_color = Color(0.753, 0.627, 0.384, 0.8)
+		style.set_corner_radius_all(8)
+		style.set_content_margin_all(8)
+		_train_button.add_theme_stylebox_override("normal", style)
+		_train_button.pressed.connect(_on_train_pressed)
+		row.add_child(_train_button)
+
+		_wallet_label = Label.new()
+		_wallet_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		_wallet_label.add_theme_font_size_override("font_size", 14)
+		_wallet_label.add_theme_color_override("font_color", Color(0.86, 0.72, 0.42, 1))
+		row.add_child(_wallet_label)
+
+	var row_node: Node = _train_button.get_parent()
+	row_node.visible = show
+
+	if not show:
+		return
+
+	_train_job = job
+
+	var coins: int = GameData.save_data.coins
+	var maxed: bool = job.level >= Leveling.MAX_LEVEL
+
+	_train_button.text = "TRAIN  +%d EXP  (%dc)" % [TRAIN_EXP, TRAIN_COST]
+	_train_button.disabled = maxed or coins < TRAIN_COST
+	_wallet_label.text = "MAX" if maxed else "%dc" % coins
+
+
+func _on_train_pressed() -> void:
+	var save_data = GameData.save_data
+
+	if _train_job == null or save_data.coins < TRAIN_COST or _train_job.level >= Leveling.MAX_LEVEL:
+		return
+
+	save_data.coins -= TRAIN_COST
+	_train_job.gain_exp(TRAIN_EXP)
+	GameData.save()
+
+	# Re-render this panel with the (possibly leveled-up) job
+	initialize(_train_job, _train_job.level)
 
 
 func _update_exp_label(job: Job, level: int) -> void:

@@ -7,13 +7,21 @@ extends StackBasedMenuScreen
 func _ready() -> void:
 	_create_buttons_for_unlocked_chapters()
 	
+	_refresh_wallet()
+
 	_set_focus()
 
 
 func on_load() -> void:
 	super.on_load()
 	
+	_refresh_wallet()
+
 	_set_focus()
+
+
+func _refresh_wallet() -> void:
+	$MarginContainer/VBoxContainer/WalletRow/Amount.text = str(GameData.save_data.coins)
 
 
 func _set_focus() -> void:

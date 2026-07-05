@@ -14,10 +14,12 @@ func focus_default_button() -> void:
 	$MarginContainer/VBoxContainer/ContinueButton.grab_focus()
 
 
-func initialize(total_drag_time_seconds: float, player_turn_count: int, spoils: Dictionary = {}) -> void:
+func initialize(total_drag_time_seconds: float, player_turn_count: int, spoils: Dictionary = {}, squad_gains: Array = []) -> void:
 	_drag_time_seconds = total_drag_time_seconds
 	_turn_count = player_turn_count
 	_spoils = spoils
+
+	_build_squad_gain_rows(squad_gains)
 
 	# Static lines fill in immediately; the spoils count up on reveal
 	_set_value("TurnRow", str(player_turn_count))
@@ -25,6 +27,52 @@ func initialize(total_drag_time_seconds: float, player_turn_count: int, spoils: 
 	_set_value("ExpRow", "0")
 	_set_value("CoinRow", "0")
 	_set_value("DefeatedRow", "0")
+
+
+# One compact line per hero under the spoils: "Name  +120 EXP", with a gold
+# "LEVEL UP!" when this battle's share pushes them over a threshold.
+func _build_squad_gain_rows(squad_gains: Array) -> void:
+	var rows: VBoxContainer = get_node(ROWS_PATH)
+	var holder: VBoxContainer = rows.get_node_or_null("SquadGains")
+
+	if holder != null:
+		holder.queue_free()
+
+	if squad_gains.is_empty():
+		return
+
+	holder = VBoxContainer.new()
+	holder.name = "SquadGains"
+	holder.add_theme_constant_override("separation", 6)
+	rows.add_child(holder)
+
+	var top_rule := HSeparator.new()
+	holder.add_child(top_rule)
+
+	for gain in squad_gains:
+		var hb := HBoxContainer.new()
+		hb.add_theme_constant_override("separation", 10)
+		holder.add_child(hb)
+
+		var name_label := Label.new()
+		name_label.text = gain.name
+		name_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		name_label.add_theme_font_size_override("font_size", 18)
+		name_label.add_theme_color_override("font_color", Color(0.863, 0.878, 0.894, 0.85))
+		hb.add_child(name_label)
+
+		if gain.levels_gained > 0:
+			var up := Label.new()
+			up.text = "LEVEL UP!" if gain.levels_gained == 1 else "LEVEL UP x%d!" % gain.levels_gained
+			up.add_theme_font_size_override("font_size", 16)
+			up.add_theme_color_override("font_color", Color(0.95, 0.82, 0.5, 1))
+			hb.add_child(up)
+
+		var exp_label := Label.new()
+		exp_label.text = "+%d EXP" % gain.gain
+		exp_label.add_theme_font_size_override("font_size", 18)
+		exp_label.add_theme_color_override("font_color", Color(0.42, 0.9, 0.72, 1))
+		hb.add_child(exp_label)
 
 
 func _set_value(row_name: String, text: String) -> void:

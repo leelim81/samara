@@ -17,10 +17,11 @@ func _run() -> void:
 	await process_frame
 	await process_frame
 
-	var job = load("res://jobs/terra/daiana_job.tres").duplicate()
-	job.stats = job.stats.duplicate()
-	job.set_level(12)
-	menu.initialize(job, 12)
+	var game_data = root.get_node("/root/GameData")
+	game_data.load_data()
+
+	var job = game_data.save_data.jobs[0]
+	menu.initialize(job, job.level)
 
 	for i in 50:
 		await process_frame

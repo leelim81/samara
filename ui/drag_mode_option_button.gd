@@ -14,8 +14,10 @@ func _ready() -> void:
 	# control reads the same on touch and mouse. tr() because item text set
 	# from code is not auto-translated.
 	clear()
-	add_icon_item(preload("res://assets/ui/click.png"), tr("TAP"), CLICK_MODE_INDEX)
-	add_icon_item(preload("res://assets/ui/drag.png"), tr("HOLD"), HOLD_MODE_INDEX)
+	add_icon_item(preload("res://assets/ui/click.png"), "", CLICK_MODE_INDEX)
+	add_icon_item(preload("res://assets/ui/drag.png"), "", HOLD_MODE_INDEX)
+
+	tooltip_text = "%s / %s" % [tr("TAP"), tr("HOLD")]
 
 	var save_data: SaveData = GameData.save_data
 

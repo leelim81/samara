@@ -34,6 +34,9 @@ const SQUAD_NAME_MAX_LENGTH: int = 10
 # TODO: Save and load from file
 var supports: Dictionary = {}
 
+# Banked coins (battle spoils accumulate here on victory; spent on training).
+@export var coins: int = 0
+
 # Array<ChapterSaveData>
 var unlocked_chapters: Array = []
 
@@ -144,6 +147,9 @@ func add_job(job: Job, level: int) -> void:
 	var new_job: Job = job.duplicate()
 	new_job.stats = new_job.stats.duplicate()
 	new_job.source_path = job.source_path if job.source_path != "" else job.resource_path
+
+	# Player heroes grow on TB's sub-linear curve (see game_data._duplicate_job).
+	new_job.stats.uses_growth_curve = true
 
 	new_job.level = level
 

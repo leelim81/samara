@@ -79,6 +79,7 @@ func _load_data_from_configs_file() -> void:
 	save_data.active_units = config_file.get_value(_UNIT_DATA_SECTION, "active_units", save_data.active_units)
 	save_data.squads = config_file.get_value(_UNIT_DATA_SECTION, "squads", [])
 	save_data.active_squad_index = config_file.get_value(_UNIT_DATA_SECTION, "active_squad_index", 0)
+	save_data.coins = config_file.get_value(_UNIT_DATA_SECTION, "coins", 0)
 
 	save_data.music_volume = config_file.get_value(_SETTINGS_SECTION, "music_volume", 1.0)
 	save_data.sound_effects_volume = config_file.get_value(_SETTINGS_SECTION, "sound_effects_volume", 1.0)
@@ -131,6 +132,7 @@ func save() -> void:
 	config_file.set_value(_UNIT_DATA_SECTION, "active_units", save_data.active_units)
 	config_file.set_value(_UNIT_DATA_SECTION, "squads", save_data.squads)
 	config_file.set_value(_UNIT_DATA_SECTION, "active_squad_index", save_data.active_squad_index)
+	config_file.set_value(_UNIT_DATA_SECTION, "coins", save_data.coins)
 
 	config_file.set_value(_SETTINGS_SECTION, "music_volume", save_data.music_volume)
 	config_file.set_value(_SETTINGS_SECTION, "sound_effects_volume", save_data.sound_effects_volume)
@@ -192,6 +194,11 @@ func _duplicate_job(job: Job, level: int) -> Job:
 	# but does not duplicate other resources of Job
 	var new_job: Job = job.duplicate()
 	new_job.stats = job.stats.duplicate()
+
+	# Player heroes grow on TB's sub-linear curve (~level^0.53, wiki-accurate).
+	# Enemies never pass through here and keep their calibrated linear stats.
+	# Must be set before the level assignment below derives the stats.
+	new_job.stats.uses_growth_curve = true
 
 	# Preserve the original path for save serialization (duplicates lose it).
 	new_job.source_path = job.source_path if job.source_path != "" else job.resource_path

@@ -24,7 +24,7 @@ var _view_unit_menu_tween: Tween
 @onready var _your_turn_label: Label = $CanvasLayer/MarginContainer/Hud/Row2/C1/TimerRow/TimerBar/YourTurnLabel
 
 # Live battle-spoils HUD (static grid labels; see the Row1/Row2 columns).
-var _wave_label: Label
+@onready var _wave_label: Label = $CanvasLayer/MarginContainer/Hud/Row2/C3/WavePair/Value
 @onready var _coins_label: Label = $CanvasLayer/MarginContainer/Hud/Row1/C2/CoinPair/Value
 @onready var _exp_label: Label = $CanvasLayer/MarginContainer/Hud/Row2/C2/ExpPair/Value
 @onready var _ko_label: Label = $CanvasLayer/MarginContainer/Hud/Row1/C3/KoPair/Value
@@ -42,6 +42,10 @@ func _ready() -> void:
 	
 	_build_live_hud()
 	_build_pause_menu()
+
+	# The first enemy_phase_started fires during Board._ready, before this
+	# node's @onready labels exist — backfill the wave display.
+	_wave_label.text = "%d / %d" % [max(1, $Board._current_enemy_phase), max(1, $Board._enemy_phase_count)]
 
 	# Apply the saved drag mode up front: the HUD OptionButton's initial
 	# select() never emits, so without this the saved mode wouldn't take
@@ -137,7 +141,7 @@ func _on_Board_victory() -> void:
 	# Results screen animates in real time regardless of fast-forward
 	Engine.time_scale = 1.0
 
-	$CanvasLayer/VictoryScreen.initialize(_total_drag_time_seconds, _player_turn_count, $Board.get_battle_spoils())
+	$CanvasLayer/VictoryScreen.initialize(_total_drag_time_seconds, _player_turn_count, $Board.get_battle_spoils(), _preview_squad_gains())
 
 	# Let the last death dissolve finish before the banner drops
 	# Give the boss slice-death (~1.4s) time to play out before results
@@ -177,6 +181,9 @@ func _on_VictoryScreen_continue_button_pressed() -> void:
 	# Award battle EXP to the active squad so levels carry over (persistent leveling).
 	$Board.award_exp_to_squad()
 
+	# Bank the battle coins into the persistent wallet (spent on training).
+	GameData.save_data.coins += $Board.get_battle_spoils().coins
+
 	# Mark this chapter cleared and unlock the next one in the story list.
 	# Story recruitment happens inside clear_chapter_and_unlock_next; remember
 	# the roster size so newly joined heroes can be announced.
@@ -187,15 +194,41 @@ func _on_VictoryScreen_continue_button_pressed() -> void:
 
 	GameData.save()
 
-	var joined_names: Array = []
+	var joined_jobs: Array = []
 
 	for i in range(jobs_before, GameData.save_data.jobs.size()):
-		joined_names.push_back(tr(GameData.save_data.jobs[i].job_name))
+		joined_jobs.push_back(GameData.save_data.jobs[i])
 
-	if joined_names.is_empty():
+	if joined_jobs.is_empty():
 		_go_to_next_scene()
 	else:
-		_show_new_ally_dialog(joined_names)
+		_show_new_ally_dialog(joined_jobs)
+
+
+# Preview what award_exp_to_squad WILL grant, per hero, for the results
+# screen: [{name, gain, levels_gained}]. Mirrors the board's equal split.
+func _preview_squad_gains() -> Array:
+	var gains: Array = []
+	var save_data = GameData.save_data
+	var active: Array = save_data.active_units
+
+	if active.is_empty():
+		return gains
+
+	var share: int = int($Board.get_battle_spoils().exp / active.size())
+
+	for index in active:
+		if index >= 0 and index < save_data.jobs.size():
+			var job = save_data.jobs[index]
+			var level_after: int = Leveling.level_for_exp(job.current_exp + share)
+
+			gains.push_back({
+				"name": tr(job.job_name),
+				"gain": share,
+				"levels_gained": level_after - job.level,
+			})
+
+	return gains
 
 
 func _go_to_next_scene() -> void:
@@ -204,20 +237,120 @@ func _go_to_next_scene() -> void:
 
 
 # Announce story joins before leaving the battle, so the recruitment drip is
-# a visible reward and not a silent roster change.
-func _show_new_ally_dialog(joined_names: Array) -> void:
-	var dialog := AcceptDialog.new()
+# a visible reward and not a silent roster change. Themed overlay (the stock
+# AcceptDialog ignored the game theme).
+func _show_new_ally_dialog(joined_jobs: Array) -> void:
+	var layer := CanvasLayer.new()
+	layer.layer = 60
+	add_child(layer)
 
-	dialog.title = "New Ally" if joined_names.size() == 1 else "New Allies"
-	dialog.dialog_text = "Joined Outer Heaven:\n\n" + "\n".join(joined_names)
-	dialog.ok_button_text = "Continue"
-	dialog.exclusive = true
+	var overlay := Control.new()
+	overlay.anchor_right = 1.0
+	overlay.anchor_bottom = 1.0
+	overlay.theme = load("res://theme.tres")
+	layer.add_child(overlay)
 
-	dialog.confirmed.connect(_go_to_next_scene)
-	dialog.canceled.connect(_go_to_next_scene)
+	var dim := ColorRect.new()
+	dim.color = Color(0.03, 0.04, 0.06, 0.85)
+	dim.anchor_right = 1.0
+	dim.anchor_bottom = 1.0
+	dim.mouse_filter = Control.MOUSE_FILTER_STOP
+	overlay.add_child(dim)
 
-	add_child(dialog)
-	dialog.popup_centered()
+	var center := CenterContainer.new()
+	center.anchor_right = 1.0
+	center.anchor_bottom = 1.0
+	overlay.add_child(center)
+
+	var panel := PanelContainer.new()
+	var card := StyleBoxFlat.new()
+	card.bg_color = Color(0.122, 0.141, 0.173, 0.97)
+	card.set_border_width_all(1)
+	card.border_color = Color(0.753, 0.627, 0.384, 0.55)
+	card.set_corner_radius_all(14)
+	card.shadow_color = Color(0, 0, 0, 0.35)
+	card.shadow_size = 18
+	card.content_margin_left = 44.0
+	card.content_margin_right = 44.0
+	card.content_margin_top = 32.0
+	card.content_margin_bottom = 36.0
+	panel.add_theme_stylebox_override("panel", card)
+	center.add_child(panel)
+
+	var vbox := VBoxContainer.new()
+	vbox.add_theme_constant_override("separation", 14)
+	panel.add_child(vbox)
+
+	var title := Label.new()
+	title.text = "NEW ALLY" if joined_jobs.size() == 1 else "NEW ALLIES"
+	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	title.add_theme_font_override("font", load("res://assets/fonts/CinzelDecorativeBold.tres"))
+	title.add_theme_font_size_override("font_size", 30)
+	title.add_theme_color_override("font_color", Color(0.92, 0.9, 0.84))
+	vbox.add_child(title)
+
+	var rule := ColorRect.new()
+	rule.color = Color(0.753, 0.627, 0.384, 0.4)
+	rule.custom_minimum_size = Vector2(0, 1)
+	vbox.add_child(rule)
+
+	var caption := Label.new()
+	caption.text = "Joined Outer Heaven"
+	caption.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	caption.add_theme_font_size_override("font_size", 15)
+	caption.add_theme_color_override("font_color", Color(0.604, 0.64, 0.667))
+	vbox.add_child(caption)
+
+	for job in joined_jobs:
+		var row := HBoxContainer.new()
+		row.alignment = BoxContainer.ALIGNMENT_CENTER
+		row.add_theme_constant_override("separation", 16)
+		vbox.add_child(row)
+
+		var frame := PanelContainer.new()
+		var frame_style := StyleBoxFlat.new()
+		frame_style.bg_color = Color(0.055, 0.065, 0.085, 1)
+		frame_style.set_border_width_all(1)
+		frame_style.border_color = Color(0.753, 0.627, 0.384, 0.7)
+		frame_style.set_corner_radius_all(10)
+		frame_style.set_content_margin_all(4)
+		frame.add_theme_stylebox_override("panel", frame_style)
+		row.add_child(frame)
+
+		var portrait := TextureRect.new()
+		portrait.texture = job.portrait
+		portrait.custom_minimum_size = Vector2(72, 72)
+		portrait.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		portrait.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		frame.add_child(portrait)
+
+		var name_label := Label.new()
+		name_label.text = tr(job.job_name)
+		name_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		name_label.add_theme_font_size_override("font_size", 22)
+		name_label.add_theme_color_override("font_color", Color(0.94, 0.95, 0.96))
+		row.add_child(name_label)
+
+	var spacer := Control.new()
+	spacer.custom_minimum_size = Vector2(0, 6)
+	vbox.add_child(spacer)
+
+	var continue_button := Button.new()
+	continue_button.text = "CONTINUE"
+	continue_button.custom_minimum_size = Vector2(240, 56)
+	continue_button.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+	continue_button.add_theme_font_size_override("font_size", 19)
+
+	var primary := StyleBoxFlat.new()
+	primary.bg_color = Color(0.16, 0.185, 0.225, 1)
+	primary.set_border_width_all(1)
+	primary.border_color = Color(0.753, 0.627, 0.384, 0.8)
+	primary.set_corner_radius_all(10)
+	continue_button.add_theme_stylebox_override("normal", primary)
+	continue_button.pressed.connect(_go_to_next_scene)
+	vbox.add_child(continue_button)
+
+	continue_button.grab_focus()
 
 
 func _on_PauseButton_pressed() -> void:
@@ -313,11 +446,8 @@ func _on_ViewUnitMenu_go_back(view_unit_menu: Control) -> void:
 # ---- Live spoils HUD (Terra Battle battle HUD parity) ----
 
 func _build_live_hud() -> void:
-	# The spoils labels live in the .tscn grid now; only the standalone wave
-	# label (used by the enemy-phase banner code) and the carnage glyphs are
-	# built here.
-	_wave_label = Label.new()
-
+	# The spoils labels live in the .tscn grid now; only the carnage glyphs
+	# are built here.
 	_build_carnage_circle()
 
 	_update_live_hud()
@@ -330,7 +460,7 @@ func _build_live_hud() -> void:
 # so the diagram can never drift from the actual damage rule.
 func _build_carnage_circle() -> void:
 	var circle: Control = $CanvasLayer/MarginContainer/Hud/Row2/C4/CarnageCircle
-	var slot_centers := [42.0, 78.0, 114.0]
+	var slot_centers := [45.0, 81.0, 117.0]
 
 	var weapon_type: int = Enums.WeaponType.SWORD
 

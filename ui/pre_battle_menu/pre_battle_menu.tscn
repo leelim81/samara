@@ -1,10 +1,16 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://theme.tres" type="Theme" id=1]
 [ext_resource path="res://ui/pre_battle_menu/pre_battle_menu.gd" type="Script" id=2]
 [ext_resource path="res://ui/pre_battle_menu/battle_button_container.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ui/audio_button.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/fonts/EBGaramond24.tres" type="FontFile" id=5]
+[ext_resource path="res://assets/terra/ui/ui_icons.png" type="Texture2D" id=6]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 5
+atlas = ExtResource( 6 )
+region = Rect2( 64, 128, 64, 64 )
 
 [node name="PreBattleMenu" type="Control"]
 anchor_right = 1.0
@@ -48,6 +54,24 @@ vertical_alignment = 1
 custom_minimum_size = Vector2( 280, 1 )
 size_flags_horizontal = 4
 color = Color( 0.753, 0.627, 0.384, 0.55 )
+
+[node name="WalletRow" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+alignment = 2
+theme_override_constants/separation = 7
+
+[node name="Icon" type="TextureRect" parent="MarginContainer/VBoxContainer/WalletRow"]
+custom_minimum_size = Vector2( 20, 20 )
+modulate = Color( 0.86, 0.72, 0.42, 1 )
+size_flags_vertical = 4
+texture = SubResource( 1 )
+expand = true
+stretch_mode = 6
+
+[node name="Amount" type="Label" parent="MarginContainer/VBoxContainer/WalletRow"]
+theme_override_colors/font_color = Color( 0.94, 0.95, 0.96, 1 )
+theme_override_font_sizes/font_size = 18
+text = "0"
+vertical_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]
 size_flags_vertical = 3

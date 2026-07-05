@@ -40,6 +40,9 @@ signal power_changed(power, max_power)
 # Fixed player units level
 @export var fixed_player_units_level: int = -1 # (int, -1, 100)
 
+# Extra levels on top of the per-battle floor (see _load_player_units).
+const FLOOR_LEVEL_BONUS: int = 5
+
 var _active_unit: Unit = null
 var _active_unit_current_cell: Cell = null
 var _active_unit_last_valid_cell: Cell = null
@@ -66,6 +69,10 @@ var _enemy_units_node: Node2D
 
 var _enemy_phase_count: int = 0
 var _current_enemy_phase: int = 0
+
+# Latched when victory or defeat is emitted: every later turn/spawn path
+# early-outs so nothing keeps playing behind the results overlay.
+var _battle_over: bool = false
 var _enemy_phases_queue: Array
 
 var _save_data: SaveData
@@ -87,7 +94,7 @@ const POWERED_POINT_SCENE := preload("res://board/highlights/powered_point.tscn"
 const POWER_MAX: int = 3
 # Charge added per damaging hit an enemy survives (TB charges per surviving hit,
 # not per pincer; ~3 hits fill one bar). Each full bar spawns a Powered Point.
-const CHARGE_PER_HIT: float = 0.34
+const CHARGE_PER_HIT: float = 0.1
 
 var _power_charge: float = 0.0
 var _powered_cells: Array = []
@@ -95,7 +102,7 @@ var _powered_discs: Dictionary = {}
 
 # Capsules (Terra Battle): dropped by defeated enemies, collected by chaining
 const CAPSULE_SCENE := preload("res://board/highlights/capsule.tscn")
-const CAPSULE_DROP_CHANCE: float = 0.25
+const CAPSULE_DROP_CHANCE: float = 0.05
 const RECOVERY_CAPSULE_HEAL_RATIO: float = 0.3
 
 var _capsule_discs: Dictionary = {}
@@ -182,7 +189,11 @@ func _load_player_units() -> void:
 			var battle_level: int = job.level
 
 			if fixed_player_units_level > 0:
-				battle_level = max(job.level, fixed_player_units_level)
+				# The baked floor is top_enemy+3; with TB's sub-linear growth
+				# curve on player heroes, widen the cushion a little (~+16%
+				# stats) to stand in for the items/companions real TB gives
+				# players and this game doesn't have.
+				battle_level = max(job.level, fixed_player_units_level + FLOOR_LEVEL_BONUS)
 
 			unit.set_battle_level(battle_level)
 		else:
@@ -217,10 +228,18 @@ func _load_enemy_phases() -> void:
 
 # EnemyPhases
 func _load_next_enemy_phase() -> void:
-	if _current_enemy_phase == _enemy_phase_count:
-		emit_signal("victory")
-		
+	# Skip declared-but-empty phase nodes so a numbering gap can neither end
+	# the battle early nor hand the player an empty "wave".
+	while _current_enemy_phase < _enemy_phases_queue.size() \
+			and _enemy_phases_queue[_current_enemy_phase].get_children().is_empty():
 		_current_enemy_phase += 1
+
+	if _current_enemy_phase >= _enemy_phases_queue.size():
+		_battle_over = true
+
+		emit_signal("victory")
+
+		_current_enemy_phase = _enemy_phase_count + 1
 	else:
 		_enemy_units_node = _enemy_phases_queue[_current_enemy_phase]
 	
@@ -374,6 +393,9 @@ func _start_turn_zero_enemy_turn() -> void:
 
 
 func _start_player_turn(has_same_cell: bool = false) -> void:
+	if _battle_over:
+		return
+
 	print("Starting player turn")
 
 	$PincerExecutor.initialize(_grid, _enemy_units_node.get_children(), _player_units_node.get_children())
@@ -388,6 +410,8 @@ func _start_player_turn(has_same_cell: bool = false) -> void:
 	if _player_units_node.get_children().size() < SaveData.MIN_SQUAD_SIZE or _has_less_than_min_squad_size_alive(_player_units_node.get_children()):
 		print("Defeat!")
 		
+		_battle_over = true
+
 		emit_signal("defeat")
 	elif _is_all_units_dead(_enemy_units_node.get_children()):
 		_load_next_enemy_phase()
@@ -533,6 +557,9 @@ func _disable_units(units: Array) -> void:
 
 
 func _start_enemy_turn() -> void:
+	if _battle_over:
+		return
+
 	print("Starting enemy turn")
 
 	_current_turn = Turn.ENEMY
@@ -545,7 +572,9 @@ func _start_enemy_turn() -> void:
 	_enemy_queue.clear()
 	
 	if _enemy_units_node.get_children().is_empty():
-		emit_signal("victory")
+		# Wave already cleared: let the player-turn path advance the phase
+		# (or emit the single victory if none remain).
+		_start_player_turn()
 	else:
 		_initialize_enemy_pincer_executor()
 		
