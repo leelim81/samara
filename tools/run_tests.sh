@@ -35,6 +35,7 @@ run "battle: pincer integration"     res://test_pincer.gd               "TEST PA
 run "powered point: 100% activation" res://tools/test_powered_point.gd   "test_powered_point: PASS"
 run "powered point: integration"     res://tools/test_powered_point_integration.gd "test_powered_point_integration: PASS"
 run "powered point: link directions" res://tools/test_powered_link_directions.gd "test_powered_link_directions: PASS"
+run "pickups: pushed aside on drag"  res://tools/test_pickup_push.gd    "test_pickup_push: PASS"
 run "combat: counterattacks"         res://tools/test_counter.gd        "test_counter: PASS"
 run "combat: extend chain"           res://tools/test_extend_chain.gd   "test_extend_chain: PASS"
 run "combat: capsules"               res://tools/test_capsule.gd        "test_capsule: PASS"

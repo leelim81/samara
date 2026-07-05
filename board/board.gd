@@ -677,9 +677,12 @@ func _on_Cell_area_exited(area: Area2D, cell: Cell) -> void:
 		_update_2x2_unit_cells(_active_unit, selected_cell)
 	else:
 		var unit_to_swap: Unit = selected_cell.unit
-		
+
 		_swap_units(_active_unit, selected_cell.unit, _active_unit_current_cell, _active_unit_last_valid_cell)
-		
+
+		# Dragging over a Powered Point / capsule shoves it aside (TB)
+		_push_pickups_aside(selected_cell, _active_unit_last_valid_cell)
+
 		if selected_cell != _active_unit_last_valid_cell:
 			_activate_trap(selected_cell, _active_unit)
 		
@@ -722,14 +725,20 @@ func _update_2x2_unit_cells(unit: Unit, cell: Cell) -> void:
 
 
 func _push_cells_in_area(unit: Unit, cell: Cell) -> void:
-	for area_cell in cell.get_cells_in_area():
+	var area_cells: Array = cell.get_cells_in_area()
+
+	for area_cell in area_cells:
 		_color_cell(area_cell)
-		
+
 		if area_cell.unit != null and area_cell.unit != unit:
 			$Pusher.push_unit(cell, area_cell)
-		
+
+		# A 2x2 sweeping over a Powered Point / capsule shoves it out of its
+		# footprint (never onto another footprint cell)
+		_push_pickups_aside(area_cell, cell, area_cells)
+
 		assert(area_cell.unit == null or area_cell.unit == unit)
-		
+
 		area_cell.unit = unit
 
 
@@ -1076,14 +1085,17 @@ func _highlight_possible_chains(unit: Unit) -> void:
 		return
 	
 	var chain_families: Dictionary = {}
-	
+
 	chain_families[unit] = []
 	var faction: int = unit.faction
-	
-	$Pincerer._find_chain(_active_unit_current_cell, Enums.DIRECTION.RIGHT, chain_families, faction)
-	$Pincerer._find_chain(_active_unit_current_cell, Enums.DIRECTION.LEFT, chain_families, faction)
-	$Pincerer._find_chain(_active_unit_current_cell, Enums.DIRECTION.UP, chain_families, faction)
-	$Pincerer._find_chain(_active_unit_current_cell, Enums.DIRECTION.DOWN, chain_families, faction)
+
+	# Preview-only pickups dict; the walk needs one but the highlight ignores it
+	var pickups: Dictionary = $Pincerer._new_pickups()
+
+	$Pincerer._find_chain(_active_unit_current_cell, Enums.DIRECTION.RIGHT, chain_families, unit, faction, pickups)
+	$Pincerer._find_chain(_active_unit_current_cell, Enums.DIRECTION.LEFT, chain_families, unit, faction, pickups)
+	$Pincerer._find_chain(_active_unit_current_cell, Enums.DIRECTION.UP, chain_families, unit, faction, pickups)
+	$Pincerer._find_chain(_active_unit_current_cell, Enums.DIRECTION.DOWN, chain_families, unit, faction, pickups)
 	
 	var currently_chained_units: Array = _possible_chained_units.duplicate()
 	_possible_chained_units.clear()
@@ -1451,6 +1463,103 @@ func _clear_capsule(cell: Cell, reward_tag: String = "") -> void:
 	if is_instance_valid(disc):
 		disc.consume(reward_tag)
 	_capsule_discs.erase(cell)
+
+
+# ---- Pickup pushing (Terra Battle: dragging a unit over a Powered Point or
+# capsule shoves the pickup to a nearby free tile, so it can be repositioned
+# into chain lines instead of being covered by the unit) ----
+
+func _push_pickups_aside(cell: Cell, incoming_cell: Cell, excluded_cells: Array = []) -> void:
+	if not (cell.is_powered or cell.capsule_type != Enums.CapsuleType.NONE):
+		return
+
+	var destination: Cell = _find_pickup_destination(cell, incoming_cell, excluded_cells)
+
+	if destination != null:
+		_move_pickup(cell, destination)
+
+
+# First free neighbor, continuing in the drag direction and rotating
+# clockwise (same feel as Pusher); falls back to the closest free cell
+# anywhere on the board. Null when the whole board is blocked.
+func _find_pickup_destination(cell: Cell, incoming_cell: Cell, excluded_cells: Array) -> Cell:
+	var direction: int = Enums.DIRECTION.UP
+
+	if incoming_cell != null and incoming_cell != cell:
+		direction = Enums.get_direction(incoming_cell.coordinates, cell.coordinates)
+
+	var initial_direction: int = direction
+	var candidate: Cell = cell.get_neighbor(direction)
+
+	while not _is_cell_free_for_pickup(candidate, excluded_cells):
+		direction = Enums.get_next_direction(direction)
+
+		if direction == initial_direction:
+			candidate = null
+
+			break
+
+		candidate = cell.get_neighbor(direction)
+
+	if candidate == null:
+		var best_distance: float = INF
+
+		for grid_cell in _grid.get_all_cells():
+			if grid_cell != cell and _is_cell_free_for_pickup(grid_cell, excluded_cells):
+				var distance: float = cell.coordinates.distance_squared_to(grid_cell.coordinates)
+
+				if distance < best_distance:
+					best_distance = distance
+					candidate = grid_cell
+
+	return candidate
+
+
+func _is_cell_free_for_pickup(cell: Cell, excluded_cells: Array) -> bool:
+	return cell != null \
+			and not excluded_cells.has(cell) \
+			and cell.unit == null \
+			and cell.trap == null \
+			and not cell.is_powered \
+			and cell.capsule_type == Enums.CapsuleType.NONE
+
+
+# Relocates the pickup's cell flags, board bookkeeping and disc together
+func _move_pickup(cell: Cell, destination: Cell) -> void:
+	if cell.is_powered:
+		cell.is_powered = false
+		destination.is_powered = true
+
+		_powered_cells.erase(cell)
+		_powered_cells.push_back(destination)
+
+		var disc = _powered_discs.get(cell)
+		_powered_discs.erase(cell)
+
+		if is_instance_valid(disc):
+			_powered_discs[destination] = disc
+			_slide_disc(disc, destination.position)
+
+	if cell.capsule_type != Enums.CapsuleType.NONE:
+		destination.capsule_type = cell.capsule_type
+		cell.capsule_type = Enums.CapsuleType.NONE
+
+		if _capsule_coin_amounts.has(cell):
+			_capsule_coin_amounts[destination] = _capsule_coin_amounts[cell]
+			_capsule_coin_amounts.erase(cell)
+
+		var disc = _capsule_discs.get(cell)
+		_capsule_discs.erase(cell)
+
+		if is_instance_valid(disc):
+			_capsule_discs[destination] = disc
+			_slide_disc(disc, destination.position)
+
+
+func _slide_disc(disc: Node2D, target_position: Vector2) -> void:
+	var tween := disc.create_tween()
+	tween.tween_property(disc, "position", target_position, 0.15) \
+			.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 
 
 # Battle spoils for the results screen: {exp, coins, defeated}
