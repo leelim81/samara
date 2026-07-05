@@ -1,16 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://theme.tres" type="Theme" id=1]
 [ext_resource path="res://ui/pre_battle_menu/pre_battle_menu.gd" type="Script" id=2]
 [ext_resource path="res://ui/pre_battle_menu/battle_button_container.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ui/audio_button.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/fonts/EBGaramond24.tres" type="FontFile" id=5]
-[ext_resource path="res://assets/terra/ui/ui_icons.png" type="Texture2D" id=6]
-
-[sub_resource type="AtlasTexture" id=1]
-flags = 5
-atlas = ExtResource( 6 )
-region = Rect2( 64, 128, 64, 64 )
+[ext_resource path="res://assets/terra/ui/coin.png" type="Texture2D" id=6]
 
 [node name="PreBattleMenu" type="Control"]
 anchor_right = 1.0
@@ -63,7 +58,7 @@ theme_override_constants/separation = 7
 custom_minimum_size = Vector2( 20, 20 )
 modulate = Color( 0.86, 0.72, 0.42, 1 )
 size_flags_vertical = 4
-texture = SubResource( 1 )
+texture = ExtResource( 6 )
 expand = true
 stretch_mode = 6
 

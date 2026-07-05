@@ -460,7 +460,7 @@ func _build_live_hud() -> void:
 # so the diagram can never drift from the actual damage rule.
 func _build_carnage_circle() -> void:
 	var circle: Control = $CanvasLayer/MarginContainer/Hud/Row2/C4/CarnageCircle
-	var slot_centers := [45.0, 81.0, 117.0]
+	var slot_centers := [42.0, 78.0, 114.0]
 
 	var weapon_type: int = Enums.WeaponType.SWORD
 

@@ -73,6 +73,11 @@ var _current_enemy_phase: int = 0
 # Latched when victory or defeat is emitted: every later turn/spawn path
 # early-outs so nothing keeps playing behind the results overlay.
 var _battle_over: bool = false
+
+# Kills made during the CURRENT player turn, for the wiki's combo EXP rule:
+# 1st kill = base EXP, 2nd = 110%, 3rd = 120%, ... Enemy-turn kills
+# (counters, traps) stay at base and never advance the combo.
+var _combo_kills: int = 0
 var _enemy_phases_queue: Array
 
 var _save_data: SaveData
@@ -404,8 +409,9 @@ func _start_player_turn(has_same_cell: bool = false) -> void:
 	_current_turn = Turn.PLAYER
 
 	# The Powered Point boost lasts "for the rest of the turn": a fresh player
-	# turn always starts without it.
+	# turn always starts without it. The combo-EXP chain also resets.
 	Events.power_boost_active = false
+	_combo_kills = 0
 	
 	if _player_units_node.get_children().size() < SaveData.MIN_SQUAD_SIZE or _has_less_than_min_squad_size_alive(_player_units_node.get_children()):
 		print("Defeat!")
@@ -1298,7 +1304,14 @@ func _accumulate_spoils(unit: Unit) -> void:
 	var level: int = unit.get_level()
 	var multiplier: int = 5 if unit.is2x2() else 1
 
-	_battle_exp += (18 + level * 12) * multiplier
+	var base_exp: int = (18 + level * 12) * multiplier
+
+	# Combo EXP (TB wiki): +10% per additional kill within one player turn
+	if _current_turn == Turn.PLAYER:
+		base_exp = int(base_exp * (1.0 + 0.1 * _combo_kills))
+		_combo_kills += 1
+
+	_battle_exp += base_exp
 	_battle_coins += (6 + level * 5) * multiplier
 	_enemies_defeated += 1
 

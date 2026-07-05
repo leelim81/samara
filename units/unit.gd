@@ -654,6 +654,28 @@ func calculate_attack_damage(attacker_stats: Stats) -> int:
 	return calculate_damage(attacker_stats, get_stats(), 1.0, attacker_stats.weapon_type, attacker_stats.attribute)
 
 
+# Floating skill-feedback tag ("POWER UP", "POISON", "CURED") — the silent
+# skill types (buff/debuff/cure) get the same visibility attacks already
+# have via damage numbers.
+func show_skill_tag(text: String, color: Color) -> void:
+	var tag := Label.new()
+	tag.text = text
+	tag.z_index = 12
+	tag.add_theme_font_size_override("font_size", 17)
+	tag.add_theme_color_override("font_color", color)
+	tag.add_theme_color_override("font_outline_color", Color(0.05, 0.06, 0.08, 0.95))
+	tag.add_theme_constant_override("outline_size", 5)
+	tag.position = Vector2(-46, -66)
+	add_child(tag)
+
+	var tween := tag.create_tween()
+	tween.tween_property(tag, "position:y", tag.position.y - 34.0, 0.85) \
+			.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	tween.parallel().tween_property(tag, "modulate:a", 0.0, 0.85) \
+			.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+	tween.tween_callback(tag.queue_free)
+
+
 func inflict_damage(damage: int, emphasis: int = 0) -> void:
 	$Job.decrease_health(damage)
 

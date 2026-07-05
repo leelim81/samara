@@ -46,15 +46,23 @@ func initialize(capsule_type: int) -> void:
 	inner.color = inner_color
 	add_child(inner)
 
-	var label := Label.new()
-	label.text = glyph
-	label.custom_minimum_size = Vector2(40, 40)
-	label.position = Vector2(-20, -22)
-	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	label.add_theme_font_size_override("font_size", 24)
-	label.add_theme_color_override("font_color", glyph_color)
-	add_child(label)
+	if capsule_type == Enums.CapsuleType.COIN:
+		# The coin drop wears the actual coin icon (dark-tinted on gold disc)
+		var icon := Sprite2D.new()
+		icon.texture = load("res://assets/terra/ui/coin.png")
+		icon.scale = Vector2(0.42, 0.42)
+		icon.modulate = Color(glyph_color.r, glyph_color.g, glyph_color.b, 1)
+		add_child(icon)
+	else:
+		var label := Label.new()
+		label.text = glyph
+		label.custom_minimum_size = Vector2(40, 40)
+		label.position = Vector2(-20, -22)
+		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		label.add_theme_font_size_override("font_size", 24)
+		label.add_theme_color_override("font_color", glyph_color)
+		add_child(label)
 
 	_accent = inner_color
 

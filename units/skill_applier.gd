@@ -82,6 +82,14 @@ func apply_skill(unit: Unit,
 				print("Applied %s to %s" % [status_effect.status_effect_type, _target_unit.name])
 				
 				_status_effect_node2d.add(status_effect.status_effect_type, status_effect.effect_scene)
+
+				# Visible feedback: buffs rise gold, ailments/debuffs rise violet
+				if status_effect.is_buff():
+					_target_unit.show_skill_tag("POWER UP", Color(0.95, 0.82, 0.5, 1))
+				else:
+					_target_unit.show_skill_tag(
+						Enums.status_effect_type_to_string(status_effect.status_effect_type),
+						Color(0.78, 0.6, 0.95, 1))
 			else:
 				print("%s resisted %s" % [name, status_effect.status_effect_type])
 	
@@ -100,6 +108,8 @@ func apply_skill(unit: Unit,
 		
 		if not status_effects_to_remove.is_empty():
 			has_modified_stats = true
+
+			_target_unit.show_skill_tag("CURED", Color(0.9, 0.97, 0.92, 1))
 	
 	if has_modified_stats:
 		_target_unit.recalculate_stats()

@@ -57,9 +57,10 @@ to Godot 4.6 and re-themed.
 - Sounds: Duelyst (open resources), freesound.org contributors (see `assets/sfx/credits.md`),
   Kenney Casino Audio
 - Fonts: Cinzel Decorative, EB Garamond, Exo 2 (Google Fonts, OFL)
-- Weapon icons: [game-icons.net](https://game-icons.net) — broadsword and wizard-staff
-  by Lorc, pistol by John Colburn (CC BY 3.0; sources in `tools/gameicons/`); spear
-  drawn in-project after the original Terra Battle glyph
+- Weapon/coin icons: [game-icons.net](https://game-icons.net) — broadsword and
+  wizard-staff by Lorc, pistol by John Colburn, two-coins by Delapouite (CC BY 3.0;
+  sources in `tools/gameicons/`); spear drawn in-project after the original Terra
+  Battle glyph
 - Antialiased Line2D addon © Hugo Locurcio and contributors
 - Terra Battle character/enemy artwork © Mistwalker Corporation, sourced from the
   Terra Battle wiki for personal use only (see `assets/terra/characters/manifest.json`)

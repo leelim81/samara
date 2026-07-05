@@ -197,7 +197,7 @@ def vendored_weapons():
     (no game-icons spear reads as a plain spear at HUD size). Copy the
     processed 128px PNGs into the game so a full regen never clobbers them."""
     src_dir = os.path.join(ROOT, "tools", "gameicons")
-    for name in ("sword", "gun", "staff"):
+    for name in ("sword", "gun", "staff", "coin"):
         src = os.path.join(src_dir, "%s.png" % name)
         img = Image.open(src).convert("RGBA")
         _save(img, "%s.png" % name, img.size)

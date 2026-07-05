@@ -5,6 +5,10 @@ extends Node2D
 # and can play a consume pop. Parent it under Board/PoweredPoints (Board-local coords).
 
 var _pulse: Tween
+var _spin: Tween
+
+# Rotating ring holder (TB's point spins in place while pulsing)
+var _spinner: Node2D
 
 
 func _ready() -> void:
@@ -15,15 +19,17 @@ func _ready() -> void:
 # TB-style arrival: the point blooms in with a flash ring, then settles
 # into its idle breathing.
 func _play_spawn() -> void:
-	scale = Vector2(2.2, 2.2)
-	modulate.a = 0.0
+	scale = Vector2(2.4, 2.4)
+	modulate = Color(2.4, 2.4, 2.4, 0.0)
 
-	_flash_ring(0.4, 1.5, 0.45)
+	_flash_ring(0.4, 1.9, 0.5)
+	_flash_ring(0.2, 1.2, 0.35, Color(0.95, 1.0, 0.98, 0.9))
 
 	var tween := create_tween()
-	tween.tween_property(self, "modulate:a", 1.0, 0.22)
-	tween.parallel().tween_property(self, "scale", Vector2.ONE, 0.4) \
+	tween.tween_property(self, "modulate", Color(2.4, 2.4, 2.4, 1.0), 0.14)
+	tween.parallel().tween_property(self, "scale", Vector2.ONE, 0.45) \
 			.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	tween.tween_property(self, "modulate", Color.WHITE, 0.25)
 	tween.tween_callback(_start_pulse)
 
 
@@ -68,6 +74,29 @@ func _build() -> void:
 	inner.color = Color(0.55, 0.95, 0.98, 0.9)
 	add_child(inner)
 
+	# Notched orbit ring: satellite ticks that make the rotation readable
+	# (a plain circle spinning shows nothing).
+	_spinner = Node2D.new()
+	add_child(_spinner)
+
+	for i in 4:
+		var angle: float = TAU * float(i) / 4.0
+		var tick := Polygon2D.new()
+		tick.polygon = PackedVector2Array([
+			Vector2(-6, -2.6), Vector2(6, -2.6), Vector2(6, 2.6), Vector2(-6, 2.6)
+		])
+		tick.color = Color(0.72, 0.99, 0.96, 0.95)
+		tick.position = Vector2(cos(angle), sin(angle)) * 33.0
+		tick.rotation = angle + PI / 2.0
+		_spinner.add_child(tick)
+
+		var dot := Polygon2D.new()
+		dot.polygon = _circle_points(2.4, 10)
+		dot.color = Color(0.55, 0.95, 0.98, 0.75)
+		var mid: float = angle + TAU / 8.0
+		dot.position = Vector2(cos(mid), sin(mid)) * 33.0
+		_spinner.add_child(dot)
+
 	# The "P".
 	var label := Label.new()
 	label.text = "P"
@@ -91,11 +120,17 @@ func _circle_points(radius: float, segments: int) -> PackedVector2Array:
 
 
 func _start_pulse() -> void:
+	# TB reference: the point stays on its cell, spinning steadily while the
+	# whole orb breathes in scale.
 	_pulse = create_tween().set_loops()
-	_pulse.tween_property(self, "scale", Vector2(1.1, 1.1), 0.6) \
+	_pulse.tween_property(self, "scale", Vector2(1.12, 1.12), 0.6) \
 			.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	_pulse.tween_property(self, "scale", Vector2(0.92, 0.92), 0.6) \
+	_pulse.tween_property(self, "scale", Vector2(0.9, 0.9), 0.6) \
 			.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+
+	_spin = create_tween().set_loops()
+	_spin.tween_property(_spinner, "rotation", TAU, 3.2) \
+			.from(0.0).set_trans(Tween.TRANS_LINEAR)
 
 
 func place(cell) -> void:
@@ -105,6 +140,9 @@ func place(cell) -> void:
 func consume() -> void:
 	if is_instance_valid(_pulse):
 		_pulse.kill()
+
+	if is_instance_valid(_spin):
+		_spin.kill()
 
 	# Chaining the point arms the turn-wide x1.5 boost, so the payoff is
 	# bigger than the old pop: white-hot flash, double burst ring, and a
