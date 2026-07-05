@@ -963,8 +963,11 @@ func can_act() -> bool:
 
 func _has_blocking_status_effect() -> bool:
 	return has_status_effect_of_type(Enums.StatusEffectType.SLEEP) or \
+			has_status_effect_of_type(Enums.StatusEffectType.DEEP_SLEEP) or \
 			has_status_effect_of_type(Enums.StatusEffectType.PARALYZE) or \
-			has_status_effect_of_type(Enums.StatusEffectType.CONFUSE)
+			has_status_effect_of_type(Enums.StatusEffectType.CONFUSE) or \
+			has_status_effect_of_type(Enums.StatusEffectType.PETRIFY) or \
+			has_status_effect_of_type(Enums.StatusEffectType.ICEBIND)
 
 
 ## Signals

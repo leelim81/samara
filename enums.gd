@@ -95,7 +95,26 @@ enum StatusEffectType {
 	BUFF,
 
 	# Any stats debuff
-	DEBUFF
+	DEBUFF,
+
+	# Stronger poison: more damage per turn
+	VENOM,
+
+	# Like Sleep but does not wake when the unit is attacked
+	DEEP_SLEEP,
+
+	# Turned to stone: cannot move or participate in pincers
+	PETRIFY,
+
+	# Frozen: cannot move or participate in pincers
+	ICEBIND,
+
+	# Attacks deal much less damage (no accuracy system, so modeled as reduced
+	# physical and spiritual attack)
+	BLIND,
+
+	# Takes extra elemental damage
+	WEAKNESS
 }
 
 # Capsules dropped by defeated enemies (Terra Battle). Collected by chaining

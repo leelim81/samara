@@ -383,11 +383,12 @@ func get_units_with_status_effect(target_units: Array, status_effect_type: int) 
 
 func _status_effect_has_delay(status_effect_type: int) -> bool:
 	return status_effect_type == Enums.StatusEffectType.POISON or \
+		status_effect_type == Enums.StatusEffectType.VENOM or \
 		status_effect_type == Enums.StatusEffectType.REGENERATE
 
 
 func _play_status_effect_sound(status_effect_type: int) -> void:
-	if status_effect_type == Enums.StatusEffectType.POISON:
+	if status_effect_type == Enums.StatusEffectType.POISON or status_effect_type == Enums.StatusEffectType.VENOM:
 		$PoisonAudio.play()
 	elif status_effect_type == Enums.StatusEffectType.REGENERATE:
 		$RegenerateAudio.play()

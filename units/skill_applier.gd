@@ -217,17 +217,19 @@ func _get_attribute_multiplier(defender_stats: Stats, attacker_attribute, defend
 	if attacker_attribute == Enums.Attribute.NONE or attacker_attribute == Enums.Attribute.HEALING:
 		return 1.0
 
+	var multiplier: float = 1.0
+
 	if attacker_attribute == defender_attribute:
-		return 1.0 - defender_stats.same_attribute_resistance
+		multiplier = 1.0 - defender_stats.same_attribute_resistance
+	else:
+		var opposed_attribute = Enums.ATTRIBUTE_RELATIONSHIPS.get(attacker_attribute)
 
-	var opposed_attribute = Enums.ATTRIBUTE_RELATIONSHIPS.get(attacker_attribute)
+		if opposed_attribute != null and opposed_attribute == defender_attribute:
+			# Opposed elements deal double damage.
+			multiplier = WEAPON_ADVANTAGE
 
-	if opposed_attribute != null and opposed_attribute == defender_attribute:
-		# Opposed elements deal double damage.
-		return WEAPON_ADVANTAGE
-
-	# TODO (P3): consult a per-element resistance table on the defender.
-	return 1.0
+	# The Weakness status makes the defender take extra elemental damage.
+	return multiplier * defender_stats.elemental_weakness_multiplier
 
 
 func _can_inflict_status_effects(skill: Skill) -> bool:

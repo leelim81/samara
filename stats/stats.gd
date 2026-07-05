@@ -41,6 +41,11 @@ const _GROWTH_EXPONENT: float = 0.53
 # should heal the unit
 @export var same_attribute_resistance: float = 0.0 # (float, 0, 2, 0.1)
 
+# Elemental damage taken multiplier (1.0 = normal). Raised by the Weakness status
+# effect so the unit takes extra elemental damage. Resets on every recalc because
+# current_stats is a fresh duplicate of base_stats.
+@export var elemental_weakness_multiplier: float = 1.0
+
 # Attribute of unit
 @export var attribute: int = Enums.Attribute.NONE # (Enums.Attribute)
 
