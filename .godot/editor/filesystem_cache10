@@ -1468,7 +1468,7 @@ script_vengeance.json::JSON::-1::1783227164::0::1::::<><><>0<>0<><>::
 script_voice_from_beyond.json::JSON::-1::1783227164::0::1::::<><><>0<>0<><>::
 script_voice_from_beyond_post_battle.json::JSON::-1::1783227164::0::1::::<><><>0<>0<><>::
 script_zero_series.json::JSON::-1::1783227164::0::1::::<><><>0<>0<><>::
-::res://tools/::1783242592
+::res://tools/::1783243553
 audit_art.gd::GDScript::2585363787179767723::1782139258::0::1::::<>SceneTree<><>0<>0<><>::
 build_translations.gd::GDScript::3129852484046695516::1782641554::0::1::::<>SceneTree<><>0<>0<><>::
 find_bad_enemy.gd::GDScript::1745768150649462391::1782139258::0::1::::<>SceneTree<><>0<>0<><>::
@@ -1485,6 +1485,7 @@ screenshot_cutscene.gd::GDScript::308746142516858129::1782139258::0::1::::<>Scen
 screenshot_pincer.gd::GDScript::2308848861591864961::1782139258::0::1::::<>SceneTree<><>0<>0<><>::
 screenshot_victory.gd::GDScript::6539522827520652358::1783010392::0::1::::<>SceneTree<><>0<>0<><>::
 shot_capsule.gd::GDScript::8560526411755130955::1783151223::0::1::::<>SceneTree<><>0<>0<><>::
+shot_cardfocus.gd::GDScript::5729462113040934689::1783243553::0::1::::<>SceneTree<><>0<>0<><>::
 shot_chain.gd::GDScript::682995610570809927::1783134160::0::1::::<>SceneTree<><>0<>0<><>::
 shot_newally.gd::GDScript::6330807426457400104::1783212285::0::1::::<>SceneTree<><>0<>0<><>::
 shot_pause.gd::GDScript::1766401535170144336::1783009151::0::1::::<>SceneTree<><>0<>0<><>::
