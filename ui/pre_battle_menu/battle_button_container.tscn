@@ -33,28 +33,18 @@ content_margin_bottom = 4.0
 [sub_resource type="StyleBoxEmpty" id="cardflat"]
 
 [sub_resource type="StyleBoxFlat" id="cardhover"]
-bg_color = Color(1, 1, 1, 0.04)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.74902, 0.627451, 0.384314, 0.7)
-corner_radius_top_left = 14
-corner_radius_top_right = 14
-corner_radius_bottom_right = 14
-corner_radius_bottom_left = 14
+bg_color = Color(1, 1, 1, 0.045)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
 
 [sub_resource type="StyleBoxFlat" id="cardfocus"]
-bg_color = Color(1, 1, 1, 0.02)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.74902, 0.627451, 0.384314, 0.95)
-corner_radius_top_left = 14
-corner_radius_top_right = 14
-corner_radius_bottom_right = 14
-corner_radius_bottom_left = 14
+bg_color = Color(0.95, 0.82, 0.5, 0.06)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
 
 [node name="BattleButtonContainer" type="PanelContainer"]
 custom_minimum_size = Vector2(575, 0)
@@ -71,6 +61,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 focus_mode = 2
+pop_on_hover = false
 theme_override_styles/normal = SubResource("cardflat")
 theme_override_styles/hover = SubResource("cardhover")
 theme_override_styles/pressed = SubResource("cardflat")
