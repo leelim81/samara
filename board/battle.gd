@@ -184,6 +184,9 @@ func _on_VictoryScreen_continue_button_pressed() -> void:
 	# Bank the battle coins into the persistent wallet (spent on training).
 	GameData.save_data.coins += $Board.get_battle_spoils().coins
 
+	# Account rank shares the same EXP the squad earns (a separate track).
+	GameData.save_data.add_account_exp($Board.get_battle_spoils().exp)
+
 	# Mark this chapter cleared and unlock the next one in the story list.
 	# Story recruitment happens inside clear_chapter_and_unlock_next; remember
 	# the roster size so newly joined heroes can be announced.

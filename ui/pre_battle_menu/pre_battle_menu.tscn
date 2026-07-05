@@ -51,8 +51,16 @@ size_flags_horizontal = 4
 color = Color( 0.753, 0.627, 0.384, 0.55 )
 
 [node name="WalletRow" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-alignment = 2
 theme_override_constants/separation = 7
+
+[node name="RankLabel" type="Label" parent="MarginContainer/VBoxContainer/WalletRow"]
+theme_override_colors/font_color = Color( 0.72, 0.78, 0.86, 1 )
+theme_override_font_sizes/font_size = 18
+text = "RANK 1"
+vertical_alignment = 1
+
+[node name="Spacer" type="Control" parent="MarginContainer/VBoxContainer/WalletRow"]
+size_flags_horizontal = 3
 
 [node name="Icon" type="TextureRect" parent="MarginContainer/VBoxContainer/WalletRow"]
 custom_minimum_size = Vector2( 20, 20 )

@@ -24,6 +24,7 @@ func on_load() -> void:
 
 func _refresh_wallet() -> void:
 	$MarginContainer/VBoxContainer/WalletRow/Amount.text = str(GameData.save_data.coins)
+	$MarginContainer/VBoxContainer/WalletRow/RankLabel.text = "%s %d" % [tr("RANK"), GameData.save_data.account_level()]
 
 
 func _set_focus() -> void:

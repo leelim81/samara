@@ -49,6 +49,11 @@ var supports: Dictionary = {}
 # seen). Keyed by the enemy job's resource path (jobs/terra/<slug>_job.tres).
 @export var enemies_encountered: Dictionary = {}
 
+# Player account rank. account_exp accrues the same battle EXP the squad earns
+# (a separate, never-reset track); the rank is derived via the shared level
+# curve and gates optional EX stages.
+@export var account_exp: int = 0
+
 # Array<ChapterSaveData>
 var unlocked_chapters: Array = []
 
@@ -260,6 +265,17 @@ func mark_enemy_defeated(path: String) -> void:
 
 func enemy_encounter_state(path: String) -> int:
 	return int(enemies_encountered.get(path, 0))
+
+
+# ---- Player account rank ----
+
+func add_account_exp(amount: int) -> void:
+	if amount > 0:
+		account_exp += amount
+
+
+func account_level() -> int:
+	return Leveling.level_for_exp(account_exp)
 
 
 # ---- Squad save/switch (Terra Battle: up to 10 named squads) ----
