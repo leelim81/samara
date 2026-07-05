@@ -22,12 +22,19 @@ const _SKILL_UNLOCK_LEVELS: Array = [1, 15, 35, 65]
 # time the unit is in the active squad for a first chapter clear. Capped at 99.
 @export var luck: int = 0
 
-# Metamorphosis / Awakening: a one-way permanent power-up. When set, the unit's
-# stat percentages are boosted (re-applied after load, since stats rebuild from
-# the base .tres each time).
+# Metamorphosis / Awakening: a one-way permanent power-up that boosts the unit's
+# stat percentages.
 const AWAKEN_MULTIPLIER: float = 1.3
 
+# Reforge (sub-job): a toggleable alternate build that flips the unit between a
+# physical and a magic role, moving this fraction of its primary attack to the
+# other side and swapping the weapon. Both transforms are re-applied after load
+# (and on toggle) by rebuild_stats, since stats are always derived from the base.
+const REFORGE_SHIFT: float = 0.5
+
 @export var awakened: bool = false
+@export var reforge_unlocked: bool = false
+@export var reforged: bool = false
 
 # Equipped companion (Terra Battle): grants flat stats and may cast its skill
 # during pincers — see units/job.gd _apply_companion and unit.activate_skills
@@ -128,23 +135,67 @@ func metamorphose() -> void:
 
 	awakened = true
 
-	apply_awakening()
+	rebuild_stats()
 
 
-# Applies the awakening boost to the (fresh) stats and re-derives them. Called on
-# metamorphose and re-applied after load, since serialized jobs rebuild their
-# stats from the base .tres each session.
-func apply_awakening() -> void:
-	if not awakened or stats == null:
+func unlock_reforge() -> void:
+	reforge_unlocked = true
+
+	set_reforged(true)
+
+
+func set_reforged(value: bool) -> void:
+	if reforged == value:
 		return
 
+	reforged = value
+
+	rebuild_stats()
+
+
+# Rebuilds stats from the base job, then re-applies the active transforms
+# (reforge, then awaken). The single source of truth for a unit's stats, so
+# toggling reforge is always clean and re-applies awaken correctly.
+func rebuild_stats() -> void:
+	if source_path == "":
+		return
+
+	var base = load(source_path)
+
+	if base == null or base.stats == null:
+		return
+
+	stats = base.stats.duplicate()
+	stats.uses_growth_curve = true
+
+	if reforged:
+		_apply_reforge_transform()
+
+	if awakened:
+		_apply_awaken_transform()
+
+	set_level(level)
+
+
+func _apply_awaken_transform() -> void:
 	stats.health_percentage *= AWAKEN_MULTIPLIER
 	stats.attack_percentage *= AWAKEN_MULTIPLIER
 	stats.defense_percentage *= AWAKEN_MULTIPLIER
 	stats.spiritual_attack_percentage *= AWAKEN_MULTIPLIER
 	stats.spiritual_defense_percentage *= AWAKEN_MULTIPLIER
 
-	set_level(level)
+
+func _apply_reforge_transform() -> void:
+	if stats.weapon_type == Enums.WeaponType.STAFF:
+		# Magic build -> physical (sword): move attack power to ATK.
+		stats.weapon_type = Enums.WeaponType.SWORD
+		stats.attack_percentage += stats.spiritual_attack_percentage * REFORGE_SHIFT
+		stats.spiritual_attack_percentage *= (1.0 - REFORGE_SHIFT)
+	else:
+		# Physical build -> magic (staff): move attack power to S.ATK.
+		stats.weapon_type = Enums.WeaponType.STAFF
+		stats.spiritual_attack_percentage += stats.attack_percentage * REFORGE_SHIFT
+		stats.attack_percentage *= (1.0 - REFORGE_SHIFT)
 
 
 func set_level(_level: int) -> void:

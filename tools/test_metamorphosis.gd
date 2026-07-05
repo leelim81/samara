@@ -15,6 +15,7 @@ func _run() -> void:
 	var job = load("res://jobs/terra/bahl_job.tres").duplicate()
 	job.stats = job.stats.duplicate()
 	job.stats.uses_growth_curve = true
+	job.source_path = "res://jobs/terra/bahl_job.tres"
 	job.level = 50
 
 	var base_atk: int = job.stats.attack
