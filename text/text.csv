@@ -320,3 +320,10 @@ COMPANION_BULWARK,Bulwark Module,Módulo de Defensa
 COMPANION_CHANNEL,Channel Module,Módulo de Canalización
 LUCK,Luck,Suerte
 LUCK_BONUS,Luck Bonus,Bono de Suerte
+EX_STAGES,EX Stages,Etapas EX
+EX_DRILL_GROUNDS,Drill Grounds,Campo de Entrenamiento
+EX_DRILL_GROUNDS_CAPTION,"A safe yard to grind levels and basic parts.","Un patio seguro para subir niveles y conseguir piezas básicas."
+EX_PROVING_RUN,Proving Run,Prueba de Aptitud
+EX_PROVING_RUN_CAPTION,"A tougher circuit with better salvage.","Un circuito más duro con mejor botín."
+EX_TOWER_TRIAL,Tower Trial,Prueba de la Torre
+EX_TOWER_TRIAL_CAPTION,"The old tower's gauntlet. Elite parts await the strong.","El desafío de la vieja torre. Piezas de élite esperan a los fuertes."

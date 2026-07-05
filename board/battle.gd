@@ -211,7 +211,7 @@ func _on_VictoryScreen_continue_button_pressed() -> void:
 	# the roster size so newly joined heroes can be announced.
 	var jobs_before: int = GameData.save_data.jobs.size()
 
-	if chapter_data != null and chapter_data is ChapterData:
+	if chapter_data != null and chapter_data is ChapterData and not chapter_data.is_ex:
 		GameData.save_data.clear_chapter_and_unlock_next(chapter_data.title)
 
 	GameData.save()
@@ -271,8 +271,14 @@ func _preview_squad_gains() -> Array:
 
 
 func _go_to_next_scene() -> void:
-	if Loader.change_scene_to_file(next_scene, chapter_data) != OK:
-		printerr("Failed to change to %s" % next_scene)
+	# EX stages skip the story post-battle chain and return straight to the hub.
+	var destination: String = next_scene
+
+	if chapter_data is ChapterData and chapter_data.is_ex:
+		destination = "res://ui/pre_battle_menu/stack_based_pre_battle_menu.tscn"
+
+	if Loader.change_scene_to_file(destination, chapter_data) != OK:
+		printerr("Failed to change to %s" % destination)
 
 
 # Announce story joins before leaving the battle, so the recruitment drip is

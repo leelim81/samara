@@ -3,6 +3,10 @@ extends StackBasedMenuScreen
 
 @export var battle_button_container_packed_scene: PackedScene
 
+# EX / farming stages appear in the battle list once the player reaches this rank.
+const EX_UNLOCK_RANK: int = 3
+const _EX_LIST_PATH := "res://chapter_data/ex_stage_list.tres"
+
 
 func _ready() -> void:
 	_create_buttons_for_unlocked_chapters()
@@ -71,6 +75,41 @@ func _create_buttons_for_unlocked_chapters() -> void:
 		list.add_child(container)
 
 		container.set_values(chapter_data)
+
+	_add_ex_stages(list, save_data)
+
+
+# Appends the EX / farming stages below the story chapters, once unlocked. They
+# launch straight into battle (no story cutscenes) and never advance the story.
+func _add_ex_stages(list: VBoxContainer, save_data: SaveData) -> void:
+	if save_data.account_level() < EX_UNLOCK_RANK:
+		return
+
+	var ex_list: ChapterList = load(_EX_LIST_PATH)
+
+	if ex_list == null:
+		return
+
+	var header := Label.new()
+	header.text = tr("EX_STAGES")
+	header.add_theme_font_size_override("font_size", 22)
+	header.add_theme_color_override("font_color", Color(0.86, 0.72, 0.42))
+	header.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	header.custom_minimum_size = Vector2(0, 48)
+	list.add_child(header)
+
+	for chapter_data in ex_list.chapters:
+		var container: Control = battle_button_container_packed_scene.instantiate()
+
+		container.connect("pressed", Callable(self, "on_ExStagePressed").bind(chapter_data))
+
+		list.add_child(container)
+
+		container.set_values(chapter_data)
+
+
+func on_ExStagePressed(chapter_data: ChapterData) -> void:
+	change_scene_to_file(chapter_data.battle_scene_path, chapter_data)
 
 
 func _on_SquadButton_pressed() -> void:

@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ChapterData" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://chapter_data/chapter_data.gd" id="1"]
+[ext_resource type="Script" path="res://chapter_data/battle_info.gd" id="2"]
+
+[sub_resource type="Resource" id="BattleInfo_1"]
+script = ExtResource("2")
+sword_enemy_count = 0
+gun_enemy_count = 0
+spear_enemy_count = 3
+staff_enemy_count = 0
+phases_count = 4
+
+[resource]
+script = ExtResource("1")
+title = "EX_PROVING_RUN"
+caption = "EX_PROVING_RUN_CAPTION"
+difficulty = "EX"
+battle_scene_path = "res://battles/terra/strange_new_world.tscn"
+locked = false
+is_ex = true
+battle_info = SubResource("BattleInfo_1")

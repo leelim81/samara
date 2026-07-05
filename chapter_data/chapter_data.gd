@@ -15,6 +15,9 @@ extends Resource
 # Placeholder chapter: shown in the menu but not yet playable (no battle data)
 @export var locked: bool = false
 
+# EX / farming stage: replayable for rewards, does not advance the story.
+@export var is_ex: bool = false
+
 # res:// paths of job .tres files granted when this chapter is cleared.
 # Grants are idempotent (owned jobs are skipped), so replays are safe.
 # Stamped by tools/wire_chapter_joins.py from docs/outer_heaven_bible.md.
