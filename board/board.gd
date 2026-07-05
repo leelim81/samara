@@ -674,8 +674,10 @@ func _on_Cell_area_exited(area: Area2D, cell: Cell) -> void:
 
 		_swap_units(_active_unit, selected_cell.unit, _active_unit_current_cell, _active_unit_last_valid_cell)
 
-		# Dragging over a Powered Point / capsule shoves it aside (TB)
-		_push_pickups_aside(selected_cell, _active_unit_last_valid_cell)
+		# A Powered Point / capsule behaves like a friendly-unit tile: dragging
+		# onto it swaps the pickup back into the cell the unit just vacated
+		# (not shoved along in the drag direction).
+		_swap_pickup_into_vacated_cell(selected_cell, _active_unit_last_valid_cell)
 
 		if selected_cell != _active_unit_last_valid_cell:
 			_activate_trap(selected_cell, _active_unit)
@@ -1459,10 +1461,29 @@ func _clear_capsule(cell: Cell, reward_tag: String = "") -> void:
 	_capsule_discs.erase(cell)
 
 
-# ---- Pickup pushing (Terra Battle: dragging a unit over a Powered Point or
-# capsule shoves the pickup to a nearby free tile, so it can be repositioned
-# into chain lines instead of being covered by the unit) ----
+# ---- Pickup relocation ----
+# A Powered Point / capsule behaves like a friendly-unit tile: dragging a unit
+# onto it swaps the pickup into the cell the unit just vacated, so it stays
+# reachable and can be repositioned into chain lines instead of being covered.
 
+# 1x1 drag: swap the pickup back into the vacated cell (mirrors the friendly
+# unit swap in _swap_units). No-op if the pickup cell has no pickup, there was
+# no movement, or the vacated cell can't hold it (e.g. a unit swapped in).
+func _swap_pickup_into_vacated_cell(pickup_cell: Cell, vacated_cell: Cell) -> void:
+	if pickup_cell == vacated_cell:
+		return
+
+	if not (pickup_cell.is_powered or pickup_cell.capsule_type != Enums.CapsuleType.NONE):
+		return
+
+	if not _is_cell_free_for_pickup(vacated_cell, []):
+		return
+
+	_move_pickup(pickup_cell, vacated_cell)
+
+
+# 2x2 sweep: no single vacated cell exists, so shove the pickup to a nearby
+# free tile — the same way a 2x2 pushes friendly units out of its footprint.
 func _push_pickups_aside(cell: Cell, incoming_cell: Cell, excluded_cells: Array = []) -> void:
 	if not (cell.is_powered or cell.capsule_type != Enums.CapsuleType.NONE):
 		return

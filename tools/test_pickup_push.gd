@@ -1,10 +1,8 @@
 extends SceneTree
-# Verifies battle drop-ins (Powered Points and capsules) are SHOVED ASIDE when
-# a unit is dragged onto their tile (Terra Battle behavior), instead of being
-# covered. Uses the validated real-drag primitive from test_drag_move.gd:
-# drag A onto a powered cell -> the point slides to the next free tile in the
-# drag direction (not consumed); then drag A onto a capsule cell -> the
-# capsule slides aside with its coin amount intact.
+# Verifies battle drop-ins (Powered Points and capsules) behave like a
+# friendly-unit tile when a unit is dragged onto them: they SWAP into the cell
+# the unit just vacated (not consumed, not shoved along the drag direction).
+# Uses the validated real-drag primitive from test_drag_move.gd.
 #   godot --headless --script res://tools/test_pickup_push.gd
 
 var _f := 0
@@ -44,20 +42,20 @@ func _run() -> void:
 	_park_units(grid, board, a)
 	_teleport(grid, a, grid.get_cell_from_coordinates(Vector2(3, 6)))
 
-	# --- Drag UP onto a Powered Point ---
+	# --- Drag UP onto a Powered Point: it swaps into the vacated cell ---
 	var powered_cell = grid.get_cell_from_coordinates(Vector2(3, 5))
-	var ahead_cell = grid.get_cell_from_coordinates(Vector2(3, 4))
+	var vacated_cell = grid.get_cell_from_coordinates(Vector2(3, 6))  # where A started
 	_plant_powered(board, powered_cell)
 
 	await _drag_move(board, grid, a, powered_cell)
 
 	_check("unit landed on the powered tile", _cell_of(grid, a) == powered_cell)
-	_check("powered point was pushed off the tile", not powered_cell.is_powered)
-	_check("powered point slid ahead in the drag direction", ahead_cell.is_powered)
-	_check("board bookkeeping follows the point", board._powered_cells.has(ahead_cell) and not board._powered_cells.has(powered_cell))
-	_check("point was moved, not consumed (disc alive)", is_instance_valid(board._powered_discs.get(ahead_cell)))
+	_check("powered point left the tile the unit moved onto", not powered_cell.is_powered)
+	_check("powered point swapped into the vacated cell (like a friendly unit)", vacated_cell.is_powered)
+	_check("board bookkeeping follows the point", board._powered_cells.has(vacated_cell) and not board._powered_cells.has(powered_cell))
+	_check("point was moved, not consumed (disc alive)", is_instance_valid(board._powered_discs.get(vacated_cell)))
 
-	# --- Wait for the next player turn, then drag LEFT onto a capsule ---
+	# --- Wait for the next player turn, then drag onto a capsule ---
 	var back := false
 	for i in 2400:
 		await process_frame
@@ -70,18 +68,20 @@ func _run() -> void:
 		return
 	_park_units(grid, board, a)
 
-	var capsule_cell = grid.get_cell_from_coordinates(Vector2(2, 5))
-	var left_cell = grid.get_cell_from_coordinates(Vector2(1, 5))
+	# Fresh lane in row 3 so the leftover powered point (row 6) can't interfere.
+	_teleport(grid, a, grid.get_cell_from_coordinates(Vector2(3, 3)))
+	var capsule_cell = grid.get_cell_from_coordinates(Vector2(2, 3))
+	var capsule_vacated = grid.get_cell_from_coordinates(Vector2(3, 3))  # where A is now
 	_plant_capsule(board, capsule_cell, 2) # CapsuleType.COIN
 	board._capsule_coin_amounts[capsule_cell] = 55
 
 	await _drag_move(board, grid, a, capsule_cell)
 
 	_check("unit landed on the capsule tile", _cell_of(grid, a) == capsule_cell)
-	_check("capsule was pushed off the tile", capsule_cell.capsule_type == 0)
-	_check("capsule slid ahead in the drag direction", left_cell.capsule_type == 2)
-	_check("coin amount travels with the capsule", board._capsule_coin_amounts.get(left_cell, -1) == 55)
-	_check("capsule disc alive at the new tile", is_instance_valid(board._capsule_discs.get(left_cell)))
+	_check("capsule left the tile the unit moved onto", capsule_cell.capsule_type == 0)
+	_check("capsule swapped into the vacated cell (like a friendly unit)", capsule_vacated.capsule_type == 2)
+	_check("coin amount travels with the capsule", board._capsule_coin_amounts.get(capsule_vacated, -1) == 55)
+	_check("capsule disc alive at the vacated cell", is_instance_valid(board._capsule_discs.get(capsule_vacated)))
 
 	print("test_pickup_push: %s" % ("PASS" if _f == 0 else "FAIL (%d)" % _f))
 	quit(1 if _f > 0 else 0)
