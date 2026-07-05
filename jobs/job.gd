@@ -12,6 +12,12 @@ const _SKILL_UNLOCK_LEVELS: Array = [1, 15, 35, 65]
 # Array<Skill>
 @export var skills: Array = [] # (Array, Resource)
 
+# Per-skill Skill Boost (Terra Battle "Skill Up"), parallel to `skills`.
+# skill_uses counts activations; skill_boosts is the earned bonus activation
+# rate. Grown via register_skill_use and persisted per unit.
+@export var skill_boosts: Array = [] # (Array, float)
+@export var skill_uses: Array = [] # (Array, int)
+
 # Equipped companion (Terra Battle): grants flat stats and may cast its skill
 # during pincers — see units/job.gd _apply_companion and unit.activate_skills
 @export var companion: Resource = null
@@ -62,6 +68,42 @@ func get_unlocked_skills(_level: int) -> Array:
 			skills_unlocked_count += 1
 
 	return skills.slice(0, skills_unlocked_count)
+
+
+# Earned bonus activation rate for the skill at `index` (0 if none / out of range).
+func get_skill_boost(index: int) -> float:
+	if index >= 0 and index < skill_boosts.size():
+		return float(skill_boosts[index])
+
+	return 0.0
+
+
+# Records a use of skill `index`. Returns true if it crossed a Skill Up threshold
+# (the activation bonus increased this call).
+func register_skill_use(index: int) -> bool:
+	if index < 0 or index >= skills.size():
+		return false
+
+	_ensure_skill_arrays()
+
+	skill_uses[index] = int(skill_uses[index]) + 1
+
+	var new_boost: float = SkillGrowth.boost_for_uses(int(skill_uses[index]))
+
+	if new_boost > float(skill_boosts[index]):
+		skill_boosts[index] = new_boost
+
+		return true
+
+	return false
+
+
+func _ensure_skill_arrays() -> void:
+	while skill_boosts.size() < skills.size():
+		skill_boosts.append(0.0)
+
+	while skill_uses.size() < skills.size():
+		skill_uses.append(0)
 
 
 func set_level(_level: int) -> void:

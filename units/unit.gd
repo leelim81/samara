@@ -767,21 +767,32 @@ func get_counter_skill() -> Skill:
 func activate_skills() -> Array:
 	var activated_skills := []
 	
-	for skill in get_unlocked_skills():
+	var unlocked: Array = get_unlocked_skills()
+	var boostable: bool = faction == PLAYER_FACTION
+
+	for i in unlocked.size():
+		var skill = unlocked[i]
+
 		# Activation rules
 		if skill.area_of_effect == Enums.AreaOfEffect.EQUIP or skill.skill_type == Enums.SkillType.COUNTER:
 			continue
-		
+
+		# Skill Boost (Terra Battle "Skill Up") is added to the base rate for
+		# player units and grows as the skill is used.
+		var boost: float = $Job.job.get_skill_boost(i) if (boostable and $Job.job != null) else 0.0
+
 		if Events.power_boost_active:
 			# A Powered Point was chained this turn: every skill is guaranteed
 			# to activate (TB rule). Status-effect infliction is rolled
 			# separately during execution, so it is unaffected.
 			activated_skills.push_back(skill)
+			_register_skill_use(i, boostable)
 		else:
 			var activation: float = _random.randf() + $Job.current_stats.skill_activation_rate_modifier
 
-			if activation < skill.activation_rate:
+			if activation < skill.activation_rate + boost:
 				activated_skills.push_back(skill)
+				_register_skill_use(i, boostable)
 
 	# Companion skill (Terra Battle): fires at the companion's frequency.
 	# Under the Powered Point boost, frequency is treated as if the companion
@@ -795,6 +806,17 @@ func activate_skills() -> Array:
 			activated_skills.push_back(companion.skill)
 
 	return activated_skills
+
+
+# Records a player unit's skill use, surfacing a "SKILL UP" tag when the skill's
+# activation bonus grows. Enemies are skipped (their skills are not persisted and
+# their skill list is not parallel to a stored boost array).
+func _register_skill_use(index: int, boostable: bool) -> void:
+	if not boostable or $Job.job == null:
+		return
+
+	if $Job.job.register_skill_use(index):
+		show_skill_tag("SKILL UP", Color(0.55, 0.85, 1.0))
 
 
 func play_skill_activation_animation(activated_skills: Array, layer_z_index: int) -> void:

@@ -85,7 +85,8 @@ func initialize_from_data(job: Job, base_stats: Stats, current_stats: Stats, lev
 
 	var unlocked_skills: Array = job.get_unlocked_skills(level)
 
-	for skill in skills:
+	for i in skills.size():
+		var skill = skills[i]
 		var is_skill_locked: bool = false
 
 		if not can_ignore_locked_skills:
@@ -95,7 +96,7 @@ func initialize_from_data(job: Job, base_stats: Stats, current_stats: Stats, lev
 
 		_skills_vbox.add_child(pill)
 
-		pill.setup(skill, can_show_activation_rate, is_skill_locked)
+		pill.setup(skill, can_show_activation_rate, is_skill_locked, job.get_skill_boost(i))
 
 	_add_companion_row(job)
 

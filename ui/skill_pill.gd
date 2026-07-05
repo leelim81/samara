@@ -12,7 +12,7 @@ extends PanelContainer
 @onready var _q: Button = $H/QButton
 
 
-func setup(skill: Skill, can_show_activation_rate: bool, is_locked: bool) -> void:
+func setup(skill: Skill, can_show_activation_rate: bool, is_locked: bool, boost: float = 0.0) -> void:
 	# Probe the existing label builder for the canonical text + icon
 	var probe := skill_label_container_scene.instantiate()
 	probe.initialize(skill, true, is_locked, can_show_activation_rate)
@@ -37,6 +37,16 @@ func setup(skill: Skill, can_show_activation_rate: bool, is_locked: bool) -> voi
 	_detail.visible = false
 
 	_q.pressed.connect(_on_QButton_pressed)
+
+	# Earned Skill Boost (Terra Battle "Skill Up"), shown as a cyan bonus.
+	if boost > 0.0 and not is_locked:
+		var boost_label := Label.new()
+		boost_label.text = "+%d%%" % int(round(boost * 100.0))
+		boost_label.add_theme_font_size_override("font_size", 15)
+		boost_label.add_theme_color_override("font_color", Color(0.55, 0.85, 1.0))
+		boost_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		$H.add_child(boost_label)
+		$H.move_child(boost_label, _q.get_index())
 
 	if is_locked:
 		modulate = Color(1, 1, 1, 0.45)
