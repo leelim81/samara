@@ -1,5 +1,5 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1783214774
+::res://::1783219167
 default_bus_layout.tres::AudioBusLayout::7454578157151104952::1782641424::0::1::::<><><>0<>0<><>::
 default_env.tres::Environment::-1::1782139258::0::1::::<><><>0<>0<><>::
 enums.gd::GDScript::7378857898191831885::1783139270::0::1::::<>Node<><>0<>0<><>::
@@ -493,7 +493,7 @@ ui_icons.png::CompressedTexture2D::3043568967405194235::1782630274::1782630377::
 unit_player_border.png::CompressedTexture2D::8535091980705266749::1782574028::1782569347::1::::<><><>0<>0<>64a91d78043defe364bc8a06439db39b<>res://.godot/imported/unit_player_border.png-1c2288365146fdf4f619e5c192d0dfd6.ctex::
 unit_square_bg.png::CompressedTexture2D::368177042202849577::1782574028::1782569347::1::::<><><>0<>0<>112c86a9681404ba97f8e3d241b61c1d<>res://.godot/imported/unit_square_bg.png-e9eba7a877b026c08e5393f52fe2b381.ctex::
 unit_square_bg_2x2.png::CompressedTexture2D::1799078722795852365::1782574028::1782569347::1::::<><><>0<>0<>00b84d918a743c08d0a537aa2b3f13b5<>res://.godot/imported/unit_square_bg_2x2.png-f719e8136b0b41ba3fad2ca3298dabf9.ctex::
-::res://assets/ui/::1783041335
+::res://assets/ui/::1783218846
 arrow_right.png::CompressedTexture2D::4219284104071158502::1781184353::1782139258::1::::<><><>0<>0<>7ad8d5d676721df34906425ac18ee52b<>res://.godot/imported/arrow_right.png-a04511e5711405d9f976d0045a72cb7a.ctex::
 art_scrim.png::CompressedTexture2D::7314064803399198849::1782574028::1782574116::1::::<><><>0<>0<>835dd004f5243022ce3e7e3c1abcd7de<>res://.godot/imported/art_scrim.png-511add03852064fd8d85062f0988dc0d.ctex::
 big_bar_progress_bg.png::CompressedTexture2D::7360412494071876136::1781184353::1782139258::1::::<><><>0<>0<>38093117ee4bf7bbca0a5ed54e3ce70c<>res://.godot/imported/big_bar_progress_bg.png-1b4595f2ee2318ffc6cd27ad759e55ec.ctex::
@@ -618,7 +618,7 @@ attacker.gd::GDScript::3513285196231765724::1783138689::0::1::::Attacker<>Node2D
 attacker.tscn::PackedScene::-1::1782139258::0::1::::<><><>0<>0<><>::res://skills/effects/attack_effect.tscn<>res://assets/sfx/sfx_whitewidow_attack_impact.wav<>res://board/attacker.gd<>res://assets/sfx/sfx_f2general_attack_impact_3.wav<>res://assets/sfx/gun_with_ricochet.wav<>res://assets/sfx/sfx_neutral_sunelemental_impact.wav
 battle.gd::GDScript::6728734705744623894::1783214681::0::1::::<>MarginContainer<><>0<>0<><>::
 battle.tscn::PackedScene::-1::1783214681::0::1::::<><><>0<>0<><>::res://theme.tres<>res://board/cell.tscn<>res://board/highlights/trail2d.tscn<>res://board/highlights/chain_previewer.tscn<>res://board/highlights/pincer_highlight.tscn<>res://board/board.gd<>res://board/battle.gd<>res://assets/terra/ui/bar_fill.png<>res://board/fleer.gd<>res://assets/terra/ui/bar_bg.png<>res://board/pincer_executor.gd<>res://board/pincerer.gd<>res://board/grid.gd<>res://board/pusher.gd<>res://assets/terra/ui/grid.png<>res://assets/terra/ui/panel_card.png<>res://assets/fonts/Exo2SemiBold.tres<>res://assets/music/Unlocated_Hell.mp3<>res://assets/ui/city_bg.png<>res://board/attacker.tscn<>res://units/unit.tscn<>res://ui/defeat_screen.tscn<>res://ui/victory_screen.tscn<>res://ui/view_unit_menu.tscn<>res://assets/sfx/bells.wav<>res://assets/sfx/spell_1.wav<>res://board/highlights/delayed_skill_highlighter.tscn<>res://ui/drag_mode_option_button.tscn<>res://ui/audio_button.tscn<>res://ui/fast_forward_button.tscn<>res://assets/sfx/chess_place_2.wav<>res://board/highlights/trails.gd<>res://assets/terra/ui/ui_icons.png<>res://ui/cutin_banner.tscn<>res://ui/skill_feed.tscn<>res://assets/terra/ui/battle_vignette.png<>res://assets/terra/ui/carnage_ring.png<>res://assets/terra/ui/coin.png
-board.gd::GDScript::3954095454800199928::1783214717::0::1::::Board<>Node2D<><>0<>0<><>::
+board.gd::GDScript::3954095454800199928::1783219140::0::1::::Board<>Node2D<><>0<>0<><>::
 board_utils.gd::GDScript::335306704686223731::1782261721::0::1::::BoardUtils<>RefCounted<><>0<>0<><>::
 cell.gd::GDScript::980751288271494695::1783139274::0::1::::Cell<>Area2D<><>0<>0<><>::
 cell.tscn::PackedScene::-1::1781188477::0::1::::<><><>0<>0<><>::res://board/cell.gd
@@ -643,7 +643,7 @@ delayed_skill_highlighter.gd::GDScript::415979133391335718::1782139258::0::1::::
 delayed_skill_highlighter.tscn::PackedScene::-1::1781188477::0::1::::<><><>0<>0<><>::res://board/highlights/delayed_skill_highlighter.gd<>res://board/highlights/skill_highlight.tscn
 pincer_highlight.gd::GDScript::1860911508746260134::1782139258::0::1::::<>Node2D<><>0<>0<><>::
 pincer_highlight.tscn::PackedScene::-1::1782139258::0::1::::<><><>0<>0<><>::res://board/highlights/pincer_highlight.gd<>res://assets/pincer_highlights/pincer_highlight_5.png<>res://assets/pincer_highlights/pincer_highlight_3.png<>res://assets/pincer_highlights/pincer_highlight_4.png<>res://assets/pincer_highlights/pincer_highlight_1.png<>res://assets/pincer_highlights/pincer_highlight_6.png<>res://assets/pincer_highlights/pincer_highlight_corner.png<>res://assets/pincer_highlights/pincer_highlight_2.png
-powered_point.gd::GDScript::8566988521461655104::1783214717::0::1::::<>Node2D<><>0<>0<><>::
+powered_point.gd::GDScript::8566988521461655104::1783218909::0::1::::<>Node2D<><>0<>0<><>::
 powered_point.tscn::PackedScene::8710807523578965638::1782147755::0::1::::<><><>0<>0<><>::res://board/highlights/powered_point.gd
 skill_highlight.gd::GDScript::2274898853740426308::1782139258::0::1::::<>Node2D<><>0<>0<><>::
 skill_highlight.tscn::PackedScene::-1::1782139258::0::1::::<><><>0<>0<><>::res://board/highlights/skill_highlight.gd<>res://board/highlights/cell_highlight.tscn
@@ -1485,12 +1485,12 @@ shot_capsule.gd::GDScript::8560526411755130955::1783151223::0::1::::<>SceneTree<
 shot_chain.gd::GDScript::682995610570809927::1783134160::0::1::::<>SceneTree<><>0<>0<><>::
 shot_newally.gd::GDScript::6330807426457400104::1783212285::0::1::::<>SceneTree<><>0<>0<><>::
 shot_pause.gd::GDScript::1766401535170144336::1783009151::0::1::::<>SceneTree<><>0<>0<><>::
-shot_powerpoint.gd::GDScript::3364118251717886671::1783148829::0::1::::<>SceneTree<><>0<>0<><>::
+shot_powerpoint.gd::GDScript::3364118251717886671::1783219108::0::1::::<>SceneTree<><>0<>0<><>::
 shot_scene.gd::GDScript::5309918801739343519::1782830006::0::1::::<>SceneTree<><>0<>0<><>::
 shot_unitmenu.gd::GDScript::6069864387906778558::1783212285::0::1::::<>SceneTree<><>0<>0<><>::
 test_campaign_drip.gd::GDScript::4094879608658120319::1783042757::0::1::::<>SceneTree<><>0<>0<><>::
 test_capsule.gd::GDScript::3204457449191309442::1783139477::0::1::::<>SceneTree<><>0<>0<><>::
-test_companion.gd::GDScript::7452850211478099934::1783139693::0::1::::<>SceneTree<><>0<>0<><>::
+test_companion.gd::GDScript::7452850211478099934::1783219016::0::1::::<>SceneTree<><>0<>0<><>::
 test_counter.gd::GDScript::8223198182174295155::1783138831::0::1::::<>SceneTree<><>0<>0<><>::
 test_damage.gd::GDScript::3970527948164926117::1782139258::0::1::::<>SceneTree<><>0<>0<><>::
 test_drag_move.gd::GDScript::6296590025700830::1782195435::0::1::::<>SceneTree<><>0<>0<><>::
