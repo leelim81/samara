@@ -156,7 +156,7 @@ res://ui/main_menu/settings_menu.tscn::ba0fc224d161cbed3f40ed4a057b3cc9::1783010
 res://ui/main_menu/stack_based_main_menu.tscn::d723ae68f3a92755c016c0b25e248661::1782528300::res://.godot/exported/133200997/export-a1aa7b539d65b968a35f10776bb00c92-stack_based_main_menu.scn
 res://ui/main_menu/title_screen.tscn::6a1956e9c64ac56260c09bfbb95c65a9::1783010565::res://.godot/exported/133200997/export-b2154635bd8649a65d06739824a12101-title_screen.scn
 res://ui/main_menu/volume_slider.tscn::985c57b5322cb3f4967bca51aeaf009e::1782139258::res://.godot/exported/133200997/export-bbc37ab440ec9628a3efdc8a6aa8a606-volume_slider.scn
-res://ui/pre_battle_menu/battle_button_container.tscn::f1a89ae605a62e3eb98c046f3eb8d488::1783010787::res://.godot/exported/133200997/export-8fc68cce0e677e48394337ad6b28a975-battle_button_container.scn
+res://ui/pre_battle_menu/battle_button_container.tscn::a45915ba1c4259d1051cc13b0dd610e8::1783242649::res://.godot/exported/133200997/export-8fc68cce0e677e48394337ad6b28a975-battle_button_container.scn
 res://ui/pre_battle_menu/change_unit_menu.tscn::4751da9cab0d35432f8cb67e86a7b406::1782570118::res://.godot/exported/133200997/export-a540ddb60bae2f583ee3cb0255036588-change_unit_menu.scn
 res://ui/pre_battle_menu/choose_unit_item_container.tscn::d5c12720c29e6697040a9d1dcba06bd9::1782139258::res://.godot/exported/133200997/export-06197addb6455ac60933a260ea5fe197-choose_unit_item_container.scn
 res://ui/pre_battle_menu/pre_battle_menu.tscn::3ee76a510daf3952204b29a7207bb7f1::1783214681::res://.godot/exported/133200997/export-5d87b324a14adab031a3fe85e91e3274-pre_battle_menu.scn
