@@ -171,12 +171,6 @@ func _ready() -> void:
 	_make_enemies_appear(_enemy_units_node.get_children())
 
 
-func _process(_delta: float) -> void:
-	if OS.is_debug_build():
-		if Input.is_action_just_pressed("ui_home"):
-			emit_signal("victory")
-
-
 # Units node
 func _load_player_units() -> void:
 	var discarded_units := []
