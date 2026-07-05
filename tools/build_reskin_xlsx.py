@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the SIGNAL / 108 — Off-Network re-skin mapping workbook.
+"""Build the Outer Heaven re-skin mapping workbook.
 
 Modern Water Margin x The World Ends With You re-skin: a drowned near-future
 megacity (NEO-LIANG) run by a civic super-app (HARMONY); the wrongfully dead
@@ -719,7 +719,7 @@ def sheet(name, headers, rows, widths, bold_cols=()):
 ov = wb.active
 ov.title = "Overview"
 ov.sheet_view.showGridLines = False
-ov["A1"] = "HEAVEN'S MANDATE — Outer Heaven — Re-skin Mapping"
+ov["A1"] = "HEAVEN'S MANDATE: Outer Heaven Re-skin Mapping"
 ov["A1"].font = TITLE_FONT
 notes = [
     "",
