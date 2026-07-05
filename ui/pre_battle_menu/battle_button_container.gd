@@ -11,6 +11,7 @@ func set_values(chapter_data: ChapterData) -> void:
 
 	if chapter_data.locked:
 		modulate = Color(1, 1, 1, 0.45)
+		$CardButton.disabled = true
 		$VBoxContainer/TitleRow/AudioButton.disabled = true
 		$VBoxContainer/CaptionLabel.text = tr("COMING_SOON")
 	elif GameData.save_data.is_chapter_cleared(chapter_data.title):

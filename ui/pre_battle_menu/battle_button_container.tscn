@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3]
+[gd_scene load_steps=13 format=3]
 
 [ext_resource type="PackedScene" path="res://ui/audio_button.tscn" id="1"]
 [ext_resource type="Texture2D" path="res://assets/terra/ui/sword.png" id="2"]
@@ -30,6 +30,32 @@ content_margin_top = 4.0
 content_margin_right = 2.0
 content_margin_bottom = 4.0
 
+[sub_resource type="StyleBoxEmpty" id="cardflat"]
+
+[sub_resource type="StyleBoxFlat" id="cardhover"]
+bg_color = Color(1, 1, 1, 0.04)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.74902, 0.627451, 0.384314, 0.7)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="StyleBoxFlat" id="cardfocus"]
+bg_color = Color(1, 1, 1, 0.02)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.74902, 0.627451, 0.384314, 0.95)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
 [node name="BattleButtonContainer" type="PanelContainer"]
 custom_minimum_size = Vector2(575, 0)
 offset_right = 575.0
@@ -39,15 +65,30 @@ theme = ExtResource("5")
 theme_override_styles/panel = SubResource("card")
 script = ExtResource("7")
 
+[node name="CardButton" parent="." instance=ExtResource("1")]
+custom_minimum_size = Vector2(0, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 2
+theme_override_styles/normal = SubResource("cardflat")
+theme_override_styles/hover = SubResource("cardhover")
+theme_override_styles/pressed = SubResource("cardflat")
+theme_override_styles/focus = SubResource("cardfocus")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 6
 
 [node name="TitleRow" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="AudioButton" parent="VBoxContainer/TitleRow" instance=ExtResource("1")]
 layout_mode = 2
+mouse_filter = 2
+focus_mode = 0
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = SubResource("flat")
@@ -60,6 +101,7 @@ text = "BORDERLANDS"
 
 [node name="DifficultyLabel" type="Label" parent="VBoxContainer/TitleRow"]
 layout_mode = 2
+mouse_filter = 2
 size_flags_vertical = 4
 theme_override_colors/font_color = Color(0.752941, 0.627451, 0.384314, 1)
 theme_override_font_sizes/font_size = 18
@@ -67,6 +109,7 @@ text = "Lv 1"
 
 [node name="CaptionLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_colors/font_color = Color(0.863, 0.878, 0.894, 0.55)
 theme_override_font_sizes/font_size = 16
 text = "Caption"
@@ -74,64 +117,75 @@ autowrap_mode = 2
 
 [node name="InfoRow" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 8
 
 [node name="SwordIcon" type="TextureRect" parent="VBoxContainer/InfoRow"]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("2")
 expand_mode = 1
 stretch_mode = 5
 
 [node name="SwordEnemyCountLabel" type="Label" parent="VBoxContainer/InfoRow"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_font_sizes/font_size = 17
 text = "0"
 
 [node name="GunIcon" type="TextureRect" parent="VBoxContainer/InfoRow"]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("4")
 expand_mode = 1
 stretch_mode = 5
 
 [node name="GunEnemyCountLabel" type="Label" parent="VBoxContainer/InfoRow"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_font_sizes/font_size = 17
 text = "0"
 
 [node name="SpearIcon" type="TextureRect" parent="VBoxContainer/InfoRow"]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("3")
 expand_mode = 1
 stretch_mode = 5
 
 [node name="SpearEnemyCountLabel" type="Label" parent="VBoxContainer/InfoRow"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_font_sizes/font_size = 17
 text = "0"
 
 [node name="StaffIcon" type="TextureRect" parent="VBoxContainer/InfoRow"]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("6")
 expand_mode = 1
 stretch_mode = 5
 
 [node name="StaffEnemyCountLabel" type="Label" parent="VBoxContainer/InfoRow"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_font_sizes/font_size = 17
 text = "0"
 
 [node name="Spacer" type="Control" parent="VBoxContainer/InfoRow"]
 layout_mode = 2
+mouse_filter = 2
 size_flags_horizontal = 3
 
 [node name="BattleCountLabel" type="Label" parent="VBoxContainer/InfoRow"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_colors/font_color = Color(0.863, 0.878, 0.894, 0.6)
 theme_override_font_sizes/font_size = 17
 text = "Battles: 0"
 
-[connection signal="pressed" from="VBoxContainer/TitleRow/AudioButton" to="." method="_on_AudioButton_pressed"]
+[connection signal="pressed" from="CardButton" to="." method="_on_AudioButton_pressed"]
