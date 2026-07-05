@@ -22,7 +22,7 @@ res://board/highlights/pincer_highlight.tscn::d6138ee3d5859a395ba1137bac70fd9b::
 res://board/highlights/skill_highlight.tscn::d09717cacbfbdcf2d09fd81673d4c1de::1782139258::res://.godot/exported/133200997/export-cac8cbf033af4200127872ddf5249f20-skill_highlight.scn
 res://board/highlights/trail2d.tscn::b2c547d8a38e44861cd51c58e3bef547::1783134083::res://.godot/exported/133200997/export-5083e77c9bf075877fbdc5a064b7b1be-trail2d.scn
 res://board/attacker.tscn::1c5afdf72e4c59d26b99dcc6dec11dca::1782139258::res://.godot/exported/133200997/export-b84b0efd896669cb451399ba7302f5e7-attacker.scn
-res://board/battle.tscn::43a55f21dc9e74f27d78606271ed8bbb::1783211888::res://.godot/exported/133200997/export-17dae8706ba3621e47ba3e0e0e785bc7-battle.scn
+res://board/battle.tscn::2b64b4069683ba0c7e58529ae2020a67::1783214681::res://.godot/exported/133200997/export-17dae8706ba3621e47ba3e0e0e785bc7-battle.scn
 res://board/cell.tscn::b15ca9d4b7f2e783e1135f5703fd276f::1781188477::res://.godot/exported/133200997/export-c1cd22ec9f82bfbccb44fff70940950c-cell.scn
 res://board/trap.tscn::699a0650d5d2852cc79c8fc5d3789ab4::1782139258::res://.godot/exported/133200997/export-1b1672cc02f0886e234660d537e34d70-trap.scn
 res://chapter_data/terra/borderlands.tres::03f1c16f08a3e5a3ad02d9387b007630::1783164793::res://.godot/exported/133200997/export-c08a1d504c1cb511edf33e9c2d0d8e32-borderlands.res
@@ -159,7 +159,7 @@ res://ui/main_menu/volume_slider.tscn::985c57b5322cb3f4967bca51aeaf009e::1782139
 res://ui/pre_battle_menu/battle_button_container.tscn::f1a89ae605a62e3eb98c046f3eb8d488::1783010787::res://.godot/exported/133200997/export-8fc68cce0e677e48394337ad6b28a975-battle_button_container.scn
 res://ui/pre_battle_menu/change_unit_menu.tscn::4751da9cab0d35432f8cb67e86a7b406::1782570118::res://.godot/exported/133200997/export-a540ddb60bae2f583ee3cb0255036588-change_unit_menu.scn
 res://ui/pre_battle_menu/choose_unit_item_container.tscn::d5c12720c29e6697040a9d1dcba06bd9::1782139258::res://.godot/exported/133200997/export-06197addb6455ac60933a260ea5fe197-choose_unit_item_container.scn
-res://ui/pre_battle_menu/pre_battle_menu.tscn::3eea2e4bb769ba6566d0af1c1189072e::1783212171::res://.godot/exported/133200997/export-5d87b324a14adab031a3fe85e91e3274-pre_battle_menu.scn
+res://ui/pre_battle_menu/pre_battle_menu.tscn::3ee76a510daf3952204b29a7207bb7f1::1783214681::res://.godot/exported/133200997/export-5d87b324a14adab031a3fe85e91e3274-pre_battle_menu.scn
 res://ui/pre_battle_menu/squad_menu.tscn::fb332ba8a125f59d7f4a09653162553f::1783010979::res://.godot/exported/133200997/export-c79e0c3b658a7997ed843ff6f3f9f3c2-squad_menu.scn
 res://ui/pre_battle_menu/stack_based_pre_battle_menu.tscn::381de3dade59ed01328c61a81bb3bb5a::1781188477::res://.godot/exported/133200997/export-2e4ad36f3c8e00829861f5b67087aca1-stack_based_pre_battle_menu.scn
 res://ui/pre_battle_menu/unit_icon.tscn::2dec3beeb4a855ea16150e5bac0a8420::1783010933::res://.godot/exported/133200997/export-6d57d0217bdfecb58389cbe794b6d9d2-unit_icon.scn
