@@ -9,6 +9,9 @@ const MIN_SQUAD_SIZE: int = 2
 const MAX_SQUADS: int = 10
 const SQUAD_NAME_MAX_LENGTH: int = 10
 
+# Luck each active squad member earns the first time a chapter is cleared.
+const LUCK_PER_FIRST_CLEAR: int = 2
+
 @export var version: int = 1
 
 # Array<Job>
@@ -121,7 +124,15 @@ func clear_chapter_and_unlock_next(title: String) -> void:
 		unlock_chapter(title)
 		chapter_save_data = find_unlocked_chapter_by_title(title)
 
+	var was_cleared: bool = chapter_save_data.is_cleared
+
 	chapter_save_data.is_cleared = true
+
+	# Luck grows for the units that were in the squad for a chapter's first clear.
+	if not was_cleared:
+		for index in active_units:
+			if index >= 0 and index < jobs.size():
+				jobs[index].add_luck(LUCK_PER_FIRST_CLEAR)
 
 	var chapter_list: ChapterList = load("res://chapter_data/main_story_chapter_list.tres")
 

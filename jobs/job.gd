@@ -18,6 +18,10 @@ const _SKILL_UNLOCK_LEVELS: Array = [1, 15, 35, 65]
 @export var skill_boosts: Array = [] # (Array, float)
 @export var skill_uses: Array = [] # (Array, int)
 
+# Terra Battle Luck: drives the end-of-battle luck drops. Grows a little each
+# time the unit is in the active squad for a first chapter clear. Capped at 99.
+@export var luck: int = 0
+
 # Equipped companion (Terra Battle): grants flat stats and may cast its skill
 # during pincers — see units/job.gd _apply_companion and unit.activate_skills
 @export var companion: Resource = null
@@ -104,6 +108,10 @@ func _ensure_skill_arrays() -> void:
 
 	while skill_uses.size() < skills.size():
 		skill_uses.append(0)
+
+
+func add_luck(amount: int) -> void:
+	luck = clampi(luck + amount, 0, 99)
 
 
 func set_level(_level: int) -> void:

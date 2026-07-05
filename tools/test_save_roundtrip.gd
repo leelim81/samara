@@ -40,6 +40,8 @@ func _run() -> void:
 	for _n in 8:
 		j0.register_skill_use(0)
 
+	j0.add_luck(7)
+
 	var gained: int = j0.gain_exp(20000)
 	_check("gain_exp returned levels gained > 0", gained > 0)
 
@@ -86,6 +88,7 @@ func _run() -> void:
 	_check("equipped companion applied to job0", r.jobs[0].companion != null and r.jobs[0].companion.resource_path == "res://companions/resources/terra/striker_module.tres")
 	_check("skill_uses restored", r.jobs[0].skill_uses.size() > 0 and int(r.jobs[0].skill_uses[0]) == 8)
 	_check("skill_boost restored", is_equal_approx(r.jobs[0].get_skill_boost(0), 0.02))
+	_check("luck restored", r.jobs[0].luck == 7)
 
 	print("test_save_roundtrip: %s" % ("PASS" if _f == 0 else "FAIL (%d)" % _f))
 	quit(1 if _f > 0 else 0)

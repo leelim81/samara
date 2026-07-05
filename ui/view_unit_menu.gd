@@ -36,6 +36,7 @@ const _SPECIES: Dictionary = {
 var _element_label: Label = null
 var _exp_label: Label = null
 var _desc_label: Label = null
+var _luck_label: Label = null
 
 # The job currently shown, cached so returning from a pushed screen (e.g. the
 # companion equip menu) re-renders it without needing the data passed again.
@@ -64,6 +65,7 @@ func initialize_from_data(job: Job, base_stats: Stats, current_stats: Stats, lev
 	_lv_label.text = "LV %d" % level
 
 	_update_element_label(base_stats.attribute)
+	_update_luck_label(job)
 	_update_exp_label(job, level)
 	_update_train_button(job, is_in_battle)
 	_update_desc_label(job)
@@ -169,6 +171,27 @@ func _add_companion_row(job: Job) -> void:
 
 
 # ---- Element & EXP display (Terra Battle status screen parity) ----
+
+# Luck (Terra Battle): shown for owned player units, next to the element. Drives
+# the end-of-battle luck drops (squad total).
+func _update_luck_label(job: Job) -> void:
+	var owned: bool = GameData.save_data != null and GameData.save_data.jobs.has(job)
+
+	if _luck_label == null:
+		if not owned:
+			return
+
+		_luck_label = Label.new()
+		_luck_label.add_theme_font_size_override("font_size", 18)
+		_luck_label.add_theme_color_override("font_color", Color(0.86, 0.72, 0.42))
+		var species_row: Node = _weapon_icon.get_parent()
+		species_row.add_child(_luck_label)
+
+	_luck_label.visible = owned
+
+	if owned:
+		_luck_label.text = "%s %d" % [tr("LUCK"), job.luck]
+
 
 func _update_element_label(attribute: int) -> void:
 	if _element_label == null:

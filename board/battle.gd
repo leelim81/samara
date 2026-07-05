@@ -132,6 +132,9 @@ func _on_Board_player_turn_started() -> void:
 	_your_turn_label.visible = true
 
 
+var _battle_drops: Dictionary = {}
+
+
 func _on_Board_victory() -> void:
 	if _is_battle_finished:
 		return
@@ -141,7 +144,9 @@ func _on_Board_victory() -> void:
 	# Results screen animates in real time regardless of fast-forward
 	Engine.time_scale = 1.0
 
-	$CanvasLayer/VictoryScreen.initialize(_total_drag_time_seconds, _player_turn_count, $Board.get_battle_spoils(), _preview_squad_gains())
+	_battle_drops = _roll_luck_drops()
+
+	$CanvasLayer/VictoryScreen.initialize(_total_drag_time_seconds, _player_turn_count, $Board.get_battle_spoils(), _preview_squad_gains(), _battle_drops)
 
 	# Let the last death dissolve finish before the banner drops
 	# Give the boss slice-death (~1.4s) time to play out before results
@@ -193,6 +198,14 @@ func _on_VictoryScreen_continue_button_pressed() -> void:
 	for item_id in dropped_materials:
 		GameData.save_data.add_item(item_id, dropped_materials[item_id])
 
+	# Bank the squad's luck drops (bonus coins + materials).
+	GameData.save_data.coins += int(_battle_drops.get("coins", 0))
+
+	var luck_materials: Dictionary = _battle_drops.get("materials", {})
+
+	for item_id in luck_materials:
+		GameData.save_data.add_item(item_id, luck_materials[item_id])
+
 	# Mark this chapter cleared and unlock the next one in the story list.
 	# Story recruitment happens inside clear_chapter_and_unlock_next; remember
 	# the roster size so newly joined heroes can be announced.
@@ -212,6 +225,23 @@ func _on_VictoryScreen_continue_button_pressed() -> void:
 		_go_to_next_scene()
 	else:
 		_show_new_ally_dialog(joined_jobs)
+
+
+func _roll_luck_drops() -> Dictionary:
+	var rng := RandomNumberGenerator.new()
+	rng.randomize()
+
+	return LuckDrops.roll(_squad_luck(), rng)
+
+
+func _squad_luck() -> int:
+	var total: int = 0
+
+	for index in GameData.save_data.active_units:
+		if index >= 0 and index < GameData.save_data.jobs.size():
+			total += GameData.save_data.jobs[index].luck
+
+	return total
 
 
 # Preview what award_exp_to_squad WILL grant, per hero, for the results

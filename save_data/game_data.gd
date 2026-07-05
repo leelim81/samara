@@ -209,6 +209,7 @@ func _serialize_job(job: Job) -> Dictionary:
 		"uid": job.uid,
 		"skill_boosts": job.skill_boosts,
 		"skill_uses": job.skill_uses,
+		"luck": job.luck,
 	}
 
 
@@ -219,6 +220,7 @@ func _deserialize_job(dictionary: Dictionary) -> Job:
 	job.uid = dictionary.get("uid", "")
 	job.skill_boosts = dictionary.get("skill_boosts", [])
 	job.skill_uses = dictionary.get("skill_uses", [])
+	job.luck = dictionary.get("luck", 0)
 
 	# Migrate legacy saves that stored only level: seed EXP from the level so
 	# subsequent EXP gains continue from the right place.

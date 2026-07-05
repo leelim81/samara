@@ -5,6 +5,7 @@ signal continue_button_pressed
 
 const ROWS_PATH := "MarginContainer/VBoxContainer/ResultsPanel/Margin/Rows"
 const _MATERIAL_LIST_PATH := "res://items/material_list.tres"
+const _COIN_ICON := preload("res://assets/terra/ui/coin.png")
 
 var _spoils: Dictionary = {}
 var _turn_count: int = 0
@@ -15,13 +16,14 @@ func focus_default_button() -> void:
 	$MarginContainer/VBoxContainer/ContinueButton.grab_focus()
 
 
-func initialize(total_drag_time_seconds: float, player_turn_count: int, spoils: Dictionary = {}, squad_gains: Array = []) -> void:
+func initialize(total_drag_time_seconds: float, player_turn_count: int, spoils: Dictionary = {}, squad_gains: Array = [], drops: Dictionary = {}) -> void:
 	_drag_time_seconds = total_drag_time_seconds
 	_turn_count = player_turn_count
 	_spoils = spoils
 
 	_build_squad_gain_rows(squad_gains)
 	_build_material_rows(_spoils.get("materials", {}))
+	_build_luck_rows(drops)
 
 	# Static lines fill in immediately; the spoils count up on reveal
 	_set_value("TurnRow", str(player_turn_count))
@@ -144,6 +146,98 @@ func _reveal_materials() -> void:
 	tween.tween_property(holder, "modulate:a", 1.0, 0.3)
 
 
+# The squad's luck drops: bonus coins and any bonus materials, revealed last.
+func _build_luck_rows(drops: Dictionary) -> void:
+	var rows: VBoxContainer = get_node(ROWS_PATH)
+	var holder: VBoxContainer = rows.get_node_or_null("LuckDrops")
+
+	if holder != null:
+		holder.queue_free()
+
+	var coins: int = int(drops.get("coins", 0))
+	var materials: Dictionary = drops.get("materials", {})
+
+	if coins <= 0 and materials.is_empty():
+		return
+
+	var registry = load(_MATERIAL_LIST_PATH)
+
+	holder = VBoxContainer.new()
+	holder.name = "LuckDrops"
+	holder.add_theme_constant_override("separation", 6)
+	holder.modulate.a = 0.0
+	rows.add_child(holder)
+
+	holder.add_child(HSeparator.new())
+
+	var header := Label.new()
+	header.text = tr("LUCK_BONUS")
+	header.add_theme_font_size_override("font_size", 15)
+	header.add_theme_color_override("font_color", Color(0.86, 0.72, 0.42))
+	holder.add_child(header)
+
+	if coins > 0:
+		var hb := HBoxContainer.new()
+		hb.add_theme_constant_override("separation", 10)
+		holder.add_child(hb)
+
+		var icon := TextureRect.new()
+		icon.texture = _COIN_ICON
+		icon.custom_minimum_size = Vector2(24, 24)
+		icon.modulate = Color(0.86, 0.72, 0.42)
+		icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		hb.add_child(icon)
+
+		var spacer := Control.new()
+		spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		hb.add_child(spacer)
+
+		var coin_label := Label.new()
+		coin_label.text = "+%d" % coins
+		coin_label.add_theme_font_size_override("font_size", 18)
+		coin_label.add_theme_color_override("font_color", Color(0.86, 0.72, 0.42, 1))
+		hb.add_child(coin_label)
+
+	for item_id in materials:
+		var item: Item = registry.get_by_id(item_id) if registry != null else null
+
+		var mrow := HBoxContainer.new()
+		mrow.add_theme_constant_override("separation", 10)
+		holder.add_child(mrow)
+
+		if item != null and item.icon != null:
+			var micon := TextureRect.new()
+			micon.texture = item.icon
+			micon.custom_minimum_size = Vector2(24, 24)
+			micon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+			micon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+			mrow.add_child(micon)
+
+		var name_label := Label.new()
+		name_label.text = tr(item.name_key) if item != null else item_id
+		name_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		name_label.add_theme_font_size_override("font_size", 18)
+		name_label.add_theme_color_override("font_color", Color(0.863, 0.878, 0.894, 0.85))
+		mrow.add_child(name_label)
+
+		var count_label := Label.new()
+		count_label.text = "x%d" % int(materials[item_id])
+		count_label.add_theme_font_size_override("font_size", 18)
+		count_label.add_theme_color_override("font_color", Color(0.86, 0.72, 0.42, 1))
+		mrow.add_child(count_label)
+
+
+func _reveal_luck() -> void:
+	var holder = get_node(ROWS_PATH).get_node_or_null("LuckDrops")
+
+	if holder == null:
+		return
+
+	var tween := create_tween()
+	tween.tween_property(holder, "modulate:a", 1.0, 0.3)
+
+
 func _set_value(row_name: String, text: String) -> void:
 	get_node("%s/%s/Value" % [ROWS_PATH, row_name]).text = text
 
@@ -186,6 +280,10 @@ func _play_entrance() -> void:
 	await get_tree().create_timer(0.18).timeout
 
 	_reveal_materials()
+
+	await get_tree().create_timer(0.18).timeout
+
+	_reveal_luck()
 
 
 # Animates a result value from 0 to its total with a tick sound and a
