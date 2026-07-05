@@ -136,18 +136,21 @@ func _add_companion_row(job: Job) -> void:
 	if companion == null:
 		return
 
+	# Show the CURRENT scaled grant (companions ride the hero's growth curve
+	# and reach their full listed strength at the level cap).
+	var growth: float = pow(float(clampi(job.level, 1, Leveling.MAX_LEVEL)), 0.53) / pow(float(Leveling.MAX_LEVEL), 0.53)
 	var bonuses := []
 
 	if companion.health_bonus != 0:
-		bonuses.push_back("+%d HP" % companion.health_bonus)
+		bonuses.push_back("+%d HP" % int(round(companion.health_bonus * growth)))
 	if companion.attack_bonus != 0:
-		bonuses.push_back("+%d ATK" % companion.attack_bonus)
+		bonuses.push_back("+%d ATK" % int(round(companion.attack_bonus * growth)))
 	if companion.defense_bonus != 0:
-		bonuses.push_back("+%d DEF" % companion.defense_bonus)
+		bonuses.push_back("+%d DEF" % int(round(companion.defense_bonus * growth)))
 	if companion.spiritual_attack_bonus != 0:
-		bonuses.push_back("+%d S.ATK" % companion.spiritual_attack_bonus)
+		bonuses.push_back("+%d S.ATK" % int(round(companion.spiritual_attack_bonus * growth)))
 	if companion.spiritual_defense_bonus != 0:
-		bonuses.push_back("+%d S.DEF" % companion.spiritual_defense_bonus)
+		bonuses.push_back("+%d S.DEF" % int(round(companion.spiritual_defense_bonus * growth)))
 
 	var row := Label.new()
 	row.text = "%s: %s (%s)" % [tr("COMPANION"), tr(companion.companion_name), ", ".join(bonuses)]

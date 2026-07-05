@@ -120,17 +120,9 @@ func _circle_points(radius: float, segments: int) -> PackedVector2Array:
 
 
 func _start_pulse() -> void:
-	# TB reference: the point stays on its cell, spinning steadily while the
-	# whole orb breathes in scale.
-	_pulse = create_tween().set_loops()
-	_pulse.tween_property(self, "scale", Vector2(1.12, 1.12), 0.6) \
-			.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	_pulse.tween_property(self, "scale", Vector2(0.9, 0.9), 0.6) \
-			.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-
-	_spin = create_tween().set_loops()
-	_spin.tween_property(_spinner, "rotation", TAU, 3.2) \
-			.from(0.0).set_trans(Tween.TRANS_LINEAR)
+	# Idle is deliberately STILL — the point sits quietly on its cell and all
+	# the motion is saved for the activation payoff.
+	scale = Vector2.ONE
 
 
 func place(cell) -> void:
@@ -144,17 +136,29 @@ func consume() -> void:
 	if is_instance_valid(_spin):
 		_spin.kill()
 
-	# Chaining the point arms the turn-wide x1.5 boost, so the payoff is
-	# bigger than the old pop: white-hot flash, double burst ring, and a
-	# rising "POWER x1.5" tag left behind at the cell.
-	_flash_ring(0.8, 2.4, 0.5, Color(0.95, 1.0, 0.98, 0.9))
-	_spawn_boost_tag()
+	# Activation is the one big moment (~1s): the orbit ring spins up and the
+	# orb swells, surges white-hot with a double burst, then collapses while
+	# the "POWER x1.5" tag rises from the cell.
+	_spin = create_tween()
+	_spin.tween_property(_spinner, "rotation", _spinner.rotation + TAU * 2.5, 0.95) \
+			.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
 
 	var tween := create_tween()
-	tween.tween_property(self, "modulate", Color(3.0, 3.0, 3.0, 1.0), 0.08)
-	tween.tween_property(self, "scale", Vector2(1.7, 1.7), 0.2) \
+	# 0.00-0.35s: wind up
+	tween.tween_property(self, "scale", Vector2(1.35, 1.35), 0.35) \
+			.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	# 0.35-0.55s: white-hot surge + rings + tag
+	tween.tween_callback(func():
+		_flash_ring(0.6, 2.6, 0.55, Color(0.95, 1.0, 0.98, 0.95))
+		_flash_ring(0.3, 1.6, 0.4)
+		_spawn_boost_tag())
+	tween.tween_property(self, "modulate", Color(3.2, 3.2, 3.2, 1.0), 0.18)
+	tween.parallel().tween_property(self, "scale", Vector2(1.75, 1.75), 0.2) \
 			.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-	tween.parallel().tween_property(self, "modulate", Color(3.0, 3.0, 3.0, 0.0), 0.2)
+	# 0.55-0.95s: collapse and vanish
+	tween.tween_property(self, "scale", Vector2(0.1, 0.1), 0.35) \
+			.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
+	tween.parallel().tween_property(self, "modulate", Color(3.2, 3.2, 3.2, 0.0), 0.35)
 	tween.tween_callback(queue_free)
 
 

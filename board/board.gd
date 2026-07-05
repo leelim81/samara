@@ -141,6 +141,10 @@ func _ready() -> void:
 	# Same layer as the Powered Point discs
 	_capsules_node.z_index = _powered_points.z_index
 	_capsules_node.z_as_relative = _powered_points.z_as_relative
+	# Draw beside the Powered Points — i.e. UNDER the unit nodes. Appended
+	# children land after PlayerUnits, which made discs render on top of any
+	# unit dragged across or parked on the cell.
+	move_child(_capsules_node, _powered_points.get_index() + 1)
 
 	if can_use_debug_units:
 		_player_units_node = $DebugUnits

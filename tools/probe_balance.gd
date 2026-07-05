@@ -29,7 +29,15 @@ func _run() -> void:
 	print("PLAYER %s L%d: HP %d ATK %d DEF %d SATK %d SDEF %d" % [
 		p.get_job().job_name, p.get_level(), ps.health, ps.attack, ps.defense, ps.spiritual_attack, ps.spiritual_defense])
 
-	for e in board._enemy_units_node.get_children():
+	var all_enemies: Array = []
+
+	for phase in board._enemy_phases_queue:
+		all_enemies.append_array(phase.get_children())
+
+	if all_enemies.is_empty():
+		all_enemies = board._enemy_units_node.get_children()
+
+	for e in all_enemies:
 		var es = e.get_stats()
 		var dmg_to_enemy: int = int(1.395 * pow(ps.attack, 1.7) / pow(es.defense, 0.7))
 		var dmg_to_player: int = int(1.395 * pow(es.attack, 1.7) / pow(ps.defense, 0.7))

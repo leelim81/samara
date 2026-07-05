@@ -1,7 +1,9 @@
 extends SceneTree
-# Companion tests (Terra Battle): flat stat grants (wiki: "Earth Sword at max
-# level gives +80 ATK") and the companion skill firing at its frequency —
-# treated as max-level frequency while the Powered Point boost is active.
+# Companion tests (Terra Battle): stat grants scale with the owner's growth
+# curve — the wiki's "Earth Sword at max level gives +80 ATK" is the value at
+# the L90 cap; lower-level heroes receive level^0.53/90^0.53 of it (a flat
+# max-strength grant one-shot the early campaign). Also: the companion skill
+# fires at its frequency — max-level frequency under the Powered Point boost.
 #   godot --headless --script res://tools/test_companion.gd
 
 var _f := 0
@@ -33,16 +35,39 @@ func _run() -> void:
 	with_unit.set_job(job_with)
 	without_unit.set_job(job_without)
 
+	var level: int = with_unit.get_stats().level
+	var expected: int = int(round(80.0 * pow(float(level), 0.53) / pow(90.0, 0.53)))
+
 	var atk_delta: int = with_unit.get_stats().attack - without_unit.get_stats().attack
-	_check("Earth Sword grants +80 ATK (got %+d)" % atk_delta, atk_delta == 80)
+	_check("Earth Sword grants +%d ATK at L%d (got %+d)" % [expected, level, atk_delta], atk_delta == expected)
 	_check("max HP unchanged by an ATK-only companion",
 			with_unit.get_max_health() == without_unit.get_max_health())
 
+	# The grant reaches the full wiki value at the level cap
+	var capped_job = (load("res://jobs/terra/bahl_job.tres") as Resource).duplicate()
+	capped_job.stats = capped_job.stats.duplicate()
+	var capped_bare = (load("res://jobs/terra/bahl_job.tres") as Resource).duplicate()
+	capped_bare.stats = capped_bare.stats.duplicate()
+	capped_bare.companion = null
+	capped_job.stats.set_level(90)
+	capped_bare.stats.set_level(90)
+	var cap_unit = load("res://units/unit.tscn").instantiate()
+	var cap_bare_unit = load("res://units/unit.tscn").instantiate()
+	root.add_child(cap_unit)
+	root.add_child(cap_bare_unit)
+	await process_frame
+	cap_unit.set_job(capped_job)
+	cap_bare_unit.set_job(capped_bare)
+	cap_unit.set_battle_level(90)
+	cap_bare_unit.set_battle_level(90)
+	_check("companion grants the full +80 at the L90 cap",
+			cap_unit.get_stats().attack - cap_bare_unit.get_stats().attack == 80)
+
 	# Buff caps still key off the companion-inclusive base: recalculating
-	# stats must keep the +80 (companion applies on every reset).
+	# stats must keep the grant (companion applies on every reset).
 	with_unit.recalculate_stats()
 	var atk_after_recalc: int = with_unit.get_stats().attack - without_unit.get_stats().attack
-	_check("companion ATK survives recalculate_stats", atk_after_recalc == 80)
+	_check("companion ATK survives recalculate_stats", atk_after_recalc == expected)
 
 	# --- Skill frequency ---
 	var companion = job_with.companion.duplicate()

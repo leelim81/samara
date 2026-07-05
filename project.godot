@@ -79,6 +79,8 @@ limits/debugger/max_chars_per_second=10000
 
 [rendering]
 
+environment/defaults/default_clear_color=Color(0.082, 0.094, 0.114, 1)
+
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 environment/defaults/default_environment="res://default_env.tres"

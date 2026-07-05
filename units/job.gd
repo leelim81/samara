@@ -77,8 +77,14 @@ func _apply_companion(stats: Stats) -> void:
 	if companion == null:
 		return
 
-	stats.health += companion.health_bonus
-	stats.attack += companion.attack_bonus
-	stats.defense += companion.defense_bonus
-	stats.spiritual_attack += companion.spiritual_attack_bonus
-	stats.spiritual_defense += companion.spiritual_defense_bonus
+	# Companions grow alongside their owner (TB levels them separately; here
+	# they ride the hero's growth curve and reach full listed strength at the
+	# L90 cap). A flat max-strength +80 ATK on a level-7 hero nearly doubled
+	# their attack and one-shot the early campaign.
+	var growth: float = pow(float(clampi(stats.level, 1, Leveling.MAX_LEVEL)), 0.53) / pow(float(Leveling.MAX_LEVEL), 0.53)
+
+	stats.health += int(round(companion.health_bonus * growth))
+	stats.attack += int(round(companion.attack_bonus * growth))
+	stats.defense += int(round(companion.defense_bonus * growth))
+	stats.spiritual_attack += int(round(companion.spiritual_attack_bonus * growth))
+	stats.spiritual_defense += int(round(companion.spiritual_defense_bonus * growth))

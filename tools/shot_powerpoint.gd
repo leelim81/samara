@@ -36,10 +36,16 @@ func _run() -> void:
 	if not board._powered_cells.is_empty():
 		board._clear_powered_point(board._powered_cells[0])
 
-	for i in 12:
+	for i in 14:
 		await process_frame
 
 	root.get_viewport().get_texture().get_image().save_png("/tmp/powerpoint_consume.png")
 	print("CONSUME SHOT SAVED")
+
+	for i in 18:
+		await process_frame
+
+	root.get_viewport().get_texture().get_image().save_png("/tmp/powerpoint_surge.png")
+	print("SURGE SHOT SAVED")
 
 	quit(0)
