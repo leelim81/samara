@@ -306,3 +306,6 @@ ITEM_CORE,Neural Core,Núcleo Neural
 ITEM_CORE_DESC,"A rare processing core sought for elite upgrades.","Un núcleo de procesamiento raro para mejoras de élite."
 ITEM_SIGIL,Sigil Shard,Fragmento de Sello
 ITEM_SIGIL_DESC,"A fragment humming with old power. The rarest material.","Un fragmento que zumba con poder antiguo. El material más raro."
+MARKET,Market,Mercado
+BUY,Buy,Comprar
+OWNED,Owned,En posesión

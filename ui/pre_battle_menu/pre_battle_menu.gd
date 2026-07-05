@@ -93,6 +93,10 @@ func _on_ItemsButton_pressed() -> void:
 	navigate("res://ui/inventory_menu.tscn")
 
 
+func _on_MarketButton_pressed() -> void:
+	navigate("res://ui/shop/shop_menu.tscn")
+
+
 func _on_QuitButton_pressed() -> void:
 	change_scene_to_file("res://ui/main_menu/stack_based_main_menu.tscn")
 

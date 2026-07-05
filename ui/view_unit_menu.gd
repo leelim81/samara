@@ -239,22 +239,20 @@ func _update_train_button(job: Job, is_in_battle: bool) -> void:
 	var maxed: bool = job.level >= Leveling.MAX_LEVEL
 
 	_train_button.text = "TRAIN  +%d EXP  (%dc)" % [TRAIN_EXP, TRAIN_COST]
-	_train_button.disabled = maxed or coins < TRAIN_COST
+	_train_button.disabled = maxed or not Purchase.can_afford(GameData.save_data, TRAIN_COST)
 	_wallet_label.text = "MAX" if maxed else "%dc" % coins
 
 
 func _on_train_pressed() -> void:
-	var save_data = GameData.save_data
-
-	if _train_job == null or save_data.coins < TRAIN_COST or _train_job.level >= Leveling.MAX_LEVEL:
+	if _train_job == null or _train_job.level >= Leveling.MAX_LEVEL:
 		return
 
-	save_data.coins -= TRAIN_COST
-	_train_job.gain_exp(TRAIN_EXP)
-	GameData.save()
+	if Purchase.spend(GameData.save_data, TRAIN_COST):
+		_train_job.gain_exp(TRAIN_EXP)
+		GameData.save()
 
-	# Re-render this panel with the (possibly leveled-up) job
-	initialize(_train_job, _train_job.level)
+		# Re-render this panel with the (possibly leveled-up) job
+		initialize(_train_job, _train_job.level)
 
 
 func _update_exp_label(job: Job, level: int) -> void:

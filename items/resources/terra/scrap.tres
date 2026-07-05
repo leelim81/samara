@@ -14,3 +14,4 @@ rarity = 1
 sort_order = 1
 drop_min_level = 1
 drop_weight = 100.0
+shop_price = 50

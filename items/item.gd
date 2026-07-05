@@ -19,3 +19,6 @@ extends Resource
 # chosen by drop_weight among all eligible items.
 @export var drop_min_level: int = 1
 @export var drop_weight: float = 1.0
+
+# Coin price in the market. 0 means the item is not sold.
+@export var shop_price: int = 0

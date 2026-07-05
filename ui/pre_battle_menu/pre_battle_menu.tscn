@@ -117,6 +117,12 @@ size_flags_horizontal = 3
 text = "ITEMS"
 clip_text = true
 
+[node name="MarketButton" parent="MarginContainer/VBoxContainer/NavGrid" instance=ExtResource( 4 )]
+custom_minimum_size = Vector2( 0, 73 )
+size_flags_horizontal = 3
+text = "MARKET"
+clip_text = true
+
 [node name="HowToPlayButton" parent="MarginContainer/VBoxContainer/NavGrid" instance=ExtResource( 4 )]
 custom_minimum_size = Vector2( 0, 73 )
 size_flags_horizontal = 3
@@ -133,5 +139,6 @@ clip_text = true
 [connection signal="pressed" from="MarginContainer/VBoxContainer/NavGrid/CharactersButton" to="." method="_on_CharactersButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/NavGrid/BestiaryButton" to="." method="_on_BestiaryButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/NavGrid/ItemsButton" to="." method="_on_ItemsButton_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/NavGrid/MarketButton" to="." method="_on_MarketButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/NavGrid/HowToPlayButton" to="." method="_on_HowToPlayButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/NavGrid/QuitButton" to="." method="_on_QuitButton_pressed"]
