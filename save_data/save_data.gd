@@ -45,6 +45,10 @@ var supports: Dictionary = {}
 # on the first visit to the pre-battle menu; always reachable from its button).
 @export var tutorial_seen: bool = false
 
+# Bestiary: enemy job path -> encounter state (SEEN or DEFEATED; defeated implies
+# seen). Keyed by the enemy job's resource path (jobs/terra/<slug>_job.tres).
+@export var enemies_encountered: Dictionary = {}
+
 # Array<ChapterSaveData>
 var unlocked_chapters: Array = []
 
@@ -229,6 +233,33 @@ func add_support_level(pair: String) -> void:
 	var current_support_level: int = supports.get(pair, 0)
 
 	supports[pair] = current_support_level + 1
+
+
+# ---- Bestiary encounter tracking ----
+
+const ENCOUNTER_SEEN: int = 1
+const ENCOUNTER_DEFEATED: int = 2
+
+
+# Records that an enemy appeared in battle. Never downgrades a defeated mark.
+func mark_enemy_seen(path: String) -> void:
+	if path == "":
+		return
+
+	if int(enemies_encountered.get(path, 0)) < ENCOUNTER_SEEN:
+		enemies_encountered[path] = ENCOUNTER_SEEN
+
+
+# Records that an enemy was defeated (the strongest encounter state).
+func mark_enemy_defeated(path: String) -> void:
+	if path == "":
+		return
+
+	enemies_encountered[path] = ENCOUNTER_DEFEATED
+
+
+func enemy_encounter_state(path: String) -> int:
+	return int(enemies_encountered.get(path, 0))
 
 
 # ---- Squad save/switch (Terra Battle: up to 10 named squads) ----

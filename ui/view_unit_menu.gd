@@ -258,6 +258,16 @@ func _on_train_pressed() -> void:
 
 
 func _update_exp_label(job: Job, level: int) -> void:
+	# EXP progression is a player-unit concept. Hide it for reference views such
+	# as the bestiary, which shows enemies (they do not gain EXP).
+	var owned: bool = GameData.save_data != null and GameData.save_data.jobs.has(job)
+
+	if not owned:
+		if _exp_label != null:
+			_exp_label.visible = false
+
+		return
+
 	if _exp_label == null:
 		_exp_label = Label.new()
 		_exp_label.add_theme_font_size_override("font_size", 15)

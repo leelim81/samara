@@ -28,6 +28,10 @@ func _run() -> void:
 	_check("uids minted non-empty", uid0 != "" and uid1 != "")
 	_check("uids are distinct", uid0 != uid1)
 
+	sd.tutorial_seen = true
+	sd.mark_enemy_defeated("res://jobs/terra/golem_job.tres")
+	sd.mark_enemy_seen("res://jobs/terra/mantle_slime_job.tres")
+
 	var gained: int = j0.gain_exp(20000)
 	_check("gain_exp returned levels gained > 0", gained > 0)
 
@@ -59,6 +63,9 @@ func _run() -> void:
 	_check("job0 uid restored", r.jobs[0].uid == uid0)
 	_check("job1 uid restored", r.jobs[1].uid == uid1)
 	_check("next_uid persisted (>= 3)", r.next_uid >= 3)
+	_check("tutorial_seen restored", r.tutorial_seen == true)
+	_check("enemy defeated state restored", r.enemy_encounter_state("res://jobs/terra/golem_job.tres") == SaveData.ENCOUNTER_DEFEATED)
+	_check("enemy seen state restored", r.enemy_encounter_state("res://jobs/terra/mantle_slime_job.tres") == SaveData.ENCOUNTER_SEEN)
 
 	print("test_save_roundtrip: %s" % ("PASS" if _f == 0 else "FAIL (%d)" % _f))
 	quit(1 if _f > 0 else 0)

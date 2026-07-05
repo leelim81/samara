@@ -81,7 +81,7 @@ offset_left = 22.0
 offset_right = 597.0
 
 [node name="NavGrid" type="GridContainer" parent="MarginContainer/VBoxContainer"]
-columns = 2
+columns = 3
 theme_override_constants/h_separation = 8
 theme_override_constants/v_separation = 8
 
@@ -95,6 +95,12 @@ clip_text = true
 custom_minimum_size = Vector2( 0, 73 )
 size_flags_horizontal = 3
 text = "CHARACTERS"
+clip_text = true
+
+[node name="BestiaryButton" parent="MarginContainer/VBoxContainer/NavGrid" instance=ExtResource( 4 )]
+custom_minimum_size = Vector2( 0, 73 )
+size_flags_horizontal = 3
+text = "BESTIARY"
 clip_text = true
 
 [node name="HowToPlayButton" parent="MarginContainer/VBoxContainer/NavGrid" instance=ExtResource( 4 )]
@@ -111,5 +117,6 @@ clip_text = true
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/NavGrid/SquadButton" to="." method="_on_SquadButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/NavGrid/CharactersButton" to="." method="_on_CharactersButton_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/NavGrid/BestiaryButton" to="." method="_on_BestiaryButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/NavGrid/HowToPlayButton" to="." method="_on_HowToPlayButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/NavGrid/QuitButton" to="." method="_on_QuitButton_pressed"]

@@ -271,6 +271,8 @@ func _assign_enemies_to_cells() -> void:
 	for enemy in _enemy_units_node.get_children():
 		_add_enemy(enemy)
 
+		_record_enemy_encounter(enemy)
+
 
 func _assign_units_to_cells() -> void:
 	for unit in _player_units_node.get_children():
@@ -1282,6 +1284,8 @@ func _on_Enemy_dead(unit: Unit) -> void:
 
 	_accumulate_spoils(unit)
 
+	_record_enemy_defeated(unit)
+
 	_maybe_drop_capsule(unit)
 
 	shake(8.5 if unit.is2x2() else 4.5, 0.28 if unit.is2x2() else 0.2)
@@ -1328,6 +1332,31 @@ func _accumulate_spoils(unit: Unit) -> void:
 	_enemies_defeated += 1
 
 	emit_signal("spoils_changed", _battle_exp, _battle_coins, _enemies_defeated)
+
+
+# ---- Bestiary encounter recording (persisted at victory via GameData.save) ----
+
+func _record_enemy_encounter(enemy: Unit) -> void:
+	if _save_data == null or enemy == null:
+		return
+
+	_save_data.mark_enemy_seen(_enemy_bestiary_path(enemy))
+
+
+func _record_enemy_defeated(unit: Unit) -> void:
+	if _save_data == null or unit == null:
+		return
+
+	_save_data.mark_enemy_defeated(_enemy_bestiary_path(unit))
+
+
+func _enemy_bestiary_path(unit: Unit) -> String:
+	var job: Job = unit.get_job()
+
+	if job == null:
+		return ""
+
+	return job.source_path if job.source_path != "" else job.resource_path
 
 
 # ---- Power Gauge + Powered Points (Terra Battle) ----

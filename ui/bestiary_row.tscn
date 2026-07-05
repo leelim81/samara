@@ -1,0 +1,101 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Theme" path="res://theme.tres" id="1"]
+[ext_resource type="Script" path="res://ui/bestiary_row.gd" id="2"]
+[ext_resource type="FontVariation" path="res://assets/fonts/Exo2SemiBold.tres" id="3"]
+[ext_resource type="AudioStream" path="res://assets/sfx/chess_place_2.wav" id="4"]
+
+[sub_resource type="StyleBoxFlat" id="card"]
+content_margin_left = 14.0
+content_margin_top = 10.0
+content_margin_right = 14.0
+content_margin_bottom = 10.0
+bg_color = Color(0.122, 0.141, 0.173, 0.95)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.749, 0.627, 0.384, 0.35)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="StyleBoxFlat" id="card_hi"]
+content_margin_left = 14.0
+content_margin_top = 10.0
+content_margin_right = 14.0
+content_margin_bottom = 10.0
+bg_color = Color(0.153, 0.176, 0.216, 0.98)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.749, 0.627, 0.384, 0.7)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[node name="BestiaryRow" type="Button"]
+custom_minimum_size = Vector2(0, 96)
+size_flags_horizontal = 3
+theme = ExtResource("1")
+theme_override_styles/focus = SubResource("card_hi")
+theme_override_styles/disabled = SubResource("card")
+theme_override_styles/hover = SubResource("card_hi")
+theme_override_styles/pressed = SubResource("card_hi")
+theme_override_styles/normal = SubResource("card")
+script = ExtResource("2")
+
+[node name="PressedAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4")
+bus = "Sound effects"
+
+[node name="Margin" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 8
+
+[node name="H" type="HBoxContainer" parent="Margin"]
+mouse_filter = 2
+theme_override_constants/separation = 16
+
+[node name="Token" type="TextureRect" parent="Margin/H"]
+custom_minimum_size = Vector2(72, 72)
+mouse_filter = 2
+size_flags_vertical = 4
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Body" type="VBoxContainer" parent="Margin/H"]
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 5
+
+[node name="NameLabel" type="Label" parent="Margin/H/Body"]
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.863, 0.878, 0.894, 1)
+theme_override_fonts/font = ExtResource("3")
+theme_override_font_sizes/font_size = 24
+text = "UNIT_NAME"
+
+[node name="StateLabel" type="Label" parent="Margin/H/Body"]
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.6, 0.64, 0.667, 1)
+theme_override_font_sizes/font_size = 15
+text = ""
+
+[node name="WeaponIcon" type="TextureRect" parent="Margin/H"]
+custom_minimum_size = Vector2(24, 24)
+mouse_filter = 2
+size_flags_vertical = 4
+expand_mode = 1
+stretch_mode = 5
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

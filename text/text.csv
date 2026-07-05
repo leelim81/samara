@@ -283,3 +283,6 @@ HOWTO_POWER_TITLE,Powered Points,Puntos de Poder
 HOWTO_POWER_BODY,"Survive enemy hits to fill the power gauge and spawn glowing tiles. Chain one during a pincer to guarantee your skills and boost all damage and healing for the rest of the turn.","Sobrevive a los golpes enemigos para llenar el medidor de poder y generar casillas brillantes. Encadena una durante una pinza para asegurar tus habilidades y potenciar todo el daño y la curación durante el resto del turno."
 HOWTO_TIMER_TITLE,Move Timer,Temporizador de Movimiento
 HOWTO_TIMER_BODY,"When you pick up a unit, a short timer starts. Drag through allies and around enemies to line up the best pincer before it runs out.","Cuando tomas una unidad, empieza un breve temporizador. Arrastra a través de aliados y alrededor de enemigos para preparar la mejor pinza antes de que se agote."
+BESTIARY,Bestiary,Bestiario
+BESTIARY_DEFEATED,Defeated,Derrotado
+BESTIARY_ENCOUNTERED,Encountered,Encontrado

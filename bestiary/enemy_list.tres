@@ -1,0 +1,1015 @@
+[gd_resource type="Resource" script_class="BestiaryList" format=3]
+
+[ext_resource type="Script" path="res://bestiary/bestiary_list.gd" id="1_k234o"]
+
+[resource]
+script = ExtResource("1_k234o")
+entries = [{
+"attribute": 0,
+"level": 99,
+"name_key": "Apirath, the Toll-Keeper",
+"path": "res://jobs/terra/apirath_job.tres",
+"token_path": "res://assets/terra/tokens/apirath_token.png",
+"weapon_type": 3
+}, {
+"attribute": 1,
+"level": 74,
+"name_key": "Arc Machine",
+"path": "res://jobs/terra/rebel_electrocutor_job.tres",
+"token_path": "res://assets/terra/tokens/rebel_electrocutor_token.png",
+"weapon_type": 1
+}, {
+"attribute": 1,
+"level": 52,
+"name_key": "Arc Machine",
+"path": "res://jobs/terra/boltspew_job.tres",
+"token_path": "res://assets/terra/tokens/boltspew_token.png",
+"weapon_type": 3
+}, {
+"attribute": 1,
+"level": 25,
+"name_key": "Arc Machine",
+"path": "res://jobs/terra/electrowatt_job.tres",
+"token_path": "res://assets/terra/tokens/electrowatt_token.png",
+"weapon_type": 2
+}, {
+"attribute": 0,
+"level": 58,
+"name_key": "Arc Machine",
+"path": "res://jobs/terra/electroseizer_job.tres",
+"token_path": "res://assets/terra/tokens/electroseizer_token.png",
+"weapon_type": 3
+}, {
+"attribute": 1,
+"level": 39,
+"name_key": "Arc Machine",
+"path": "res://jobs/terra/electropede_job.tres",
+"token_path": "res://assets/terra/tokens/electropede_token.png",
+"weapon_type": 1
+}, {
+"attribute": 0,
+"level": 33,
+"name_key": "Badge Squad Bruiser",
+"path": "res://jobs/terra/stonefolk_warrior_job.tres",
+"token_path": "res://assets/terra/tokens/stonefolk_warrior_token.png",
+"weapon_type": 0
+}, {
+"attribute": 0,
+"level": 33,
+"name_key": "Badge Squad Heavy",
+"path": "res://jobs/terra/stonefolk_knight_job.tres",
+"token_path": "res://assets/terra/tokens/stonefolk_knight_token.png",
+"weapon_type": 2
+}, {
+"attribute": 0,
+"level": 33,
+"name_key": "Badge Squad Marksman",
+"path": "res://jobs/terra/stonefolk_archer_job.tres",
+"token_path": "res://assets/terra/tokens/stonefolk_archer_token.png",
+"weapon_type": 1
+}, {
+"attribute": 0,
+"level": 3,
+"name_key": "Beast-Clan Bruiser",
+"path": "res://jobs/terra/beastfolk_warrior_job.tres",
+"token_path": "res://assets/terra/tokens/beastfolk_warrior_token.png",
+"weapon_type": 0
+}, {
+"attribute": 4,
+"level": 3,
+"name_key": "Beast-Clan Caster",
+"path": "res://jobs/terra/beastfolk_mage_job.tres",
+"token_path": "res://assets/terra/tokens/beastfolk_mage_token.png",
+"weapon_type": 3
+}, {
+"attribute": 0,
+"level": 3,
+"name_key": "Beast-Clan Heavy",
+"path": "res://jobs/terra/beastfolk_knight_job.tres",
+"token_path": "res://assets/terra/tokens/beastfolk_knight_token.png",
+"weapon_type": 2
+}, {
+"attribute": 0,
+"level": 3,
+"name_key": "Beast-Clan Marksman",
+"path": "res://jobs/terra/beastfolk_archer_job.tres",
+"token_path": "res://assets/terra/tokens/beastfolk_archer_token.png",
+"weapon_type": 1
+}, {
+"attribute": 0,
+"level": 3,
+"name_key": "Beast-Clan Medic",
+"path": "res://jobs/terra/beastfolk_healer_job.tres",
+"token_path": "res://assets/terra/tokens/beastfolk_healer_token.png",
+"weapon_type": 3
+}, {
+"attribute": 4,
+"level": 57,
+"name_key": "Blade Beast",
+"path": "res://jobs/terra/cursed_claw_job.tres",
+"token_path": "res://assets/terra/tokens/cursed_claw_token.png",
+"weapon_type": 0
+}, {
+"attribute": 0,
+"level": 30,
+"name_key": "Blade Beast",
+"path": "res://jobs/terra/assassin_job.tres",
+"token_path": "res://assets/terra/tokens/assassin_token.png",
+"weapon_type": 0
+}, {
+"attribute": 0,
+"level": 55,
+"name_key": "Blade Beast",
+"path": "res://jobs/terra/slasher_job.tres",
+"token_path": "res://assets/terra/tokens/slasher_token.png",
+"weapon_type": 0
+}, {
+"attribute": 0,
+"level": 72,
+"name_key": "Blade Beast",
+"path": "res://jobs/terra/slasher_goblin_job.tres",
+"token_path": "res://assets/terra/tokens/slasher_goblin_token.png",
+"weapon_type": 0
+}, {
+"attribute": 4,
+"level": 53,
+"name_key": "Bone Caster",
+"path": "res://jobs/terra/necromancer_job.tres",
+"token_path": "res://assets/terra/tokens/necromancer_token.png",
+"weapon_type": 3
+}, {
+"attribute": 0,
+"level": 80,
+"name_key": "Council Warden Gamma",
+"path": "res://jobs/terra/3coo_job.tres",
+"token_path": "res://assets/terra/tokens/3coo_token.png",
+"weapon_type": 1
+}, {
+"attribute": 0,
+"level": 59,
+"name_key": "Council Warden, Lesser",
+"path": "res://jobs/terra/2boo_mark_job.tres",
+"token_path": "res://assets/terra/tokens/orbling_token.png",
+"weapon_type": 2
+}, {
+"attribute": 0,
+"level": 67,
+"name_key": "Council Warden, Lesser",
+"path": "res://jobs/terra/3coo_mark_job.tres",
+"token_path": "res://assets/terra/tokens/orbling_token.png",
+"weapon_type": 1
+}, {
+"attribute": 0,
+"level": 73,
+"name_key": "Creeper",
+"path": "res://jobs/terra/right_creeper_job.tres",
+"token_path": "res://assets/terra/tokens/right_creeper_token.png",
+"weapon_type": 2
+}, {
+"attribute": 0,
+"level": 73,
+"name_key": "Creeper",
+"path": "res://jobs/terra/left_creeper_job.tres",
+"token_path": "res://assets/terra/tokens/left_creeper_token.png",
+"weapon_type": 2
+}, {
+"attribute": 0,
+"level": 120,
+"name_key": "Defector Frame",
+"path": "res://jobs/terra/54b2_job.tres",
+"token_path": "res://assets/terra/tokens/54b2_token.png",
+"weapon_type": 0
+}, {
+"attribute": 2,
+"level": 21,
+"name_key": "Ember Beast",
+"path": "res://jobs/terra/heat_sparker_job.tres",
+"token_path": "res://assets/terra/tokens/heat_sparker_token.png",
+"weapon_type": 2
+}, {
+"attribute": 0,
+"level": 71,
+"name_key": "Enforcement Bombardier, Mk II",
+"path": "res://jobs/terra/oxsecian_bomber_ex_job.tres",
+"token_path": "res://assets/terra/tokens/oxsecian_bomber_ex_token.png",
+"weapon_type": 1
+}, {
+"attribute": 0,
+"level": 55,
+"name_key": "Enforcement Guard, Mk II",
+"path": "res://jobs/terra/oxsecian_guard_sp_job.tres",
+"token_path": "res://assets/terra/tokens/oxsecian_guard_sp_token.png",
+"weapon_type": 0
+}, {
+"attribute": 0,
+"level": 55,
+"name_key": "Enforcement Lancer, Elite",
+"path": "res://jobs/terra/oxsecian_grunt_sp_job.tres",
+"token_path": "res://assets/terra/tokens/oxsecian_grunt_sp_token.png",
+"weapon_type": 2
+}, {
+"attribute": 2,
+"level": 35,
+"name_key": "Enforcement Machine",
+"path": "res://jobs/terra/cyberclops_job.tres",
+"token_path": "res://assets/terra/tokens/cyberclops_token.png",
+"weapon_type": 0
+}, {
+"attribute": 0,
+"level": 47,
+"name_key": "Enforcement Machine",
+"path": "res://jobs/terra/laser_unit_h_job.tres",
+"token_path": "res://assets/terra/tokens/laser_unit_h_token.png",
+"weapon_type": 1
+}, {
+"attribute": 0,
+"level": 70,
+"name_key": "Enforcement Machine",
+"path": "res://jobs/terra/transporter_job.tres",
+"token_path": "res://assets/terra/tokens/transporter_token.png",
+"weapon_type": 3
+}, {
+"attribute": 0,
+"level": 56,
+"name_key": "Enforcement Machine",
+"path": "res://jobs/terra/terminator_y_job.tres",
+"token_path": "res://assets/terra/tokens/terminator_y_token.png",
+"weapon_type": 1
+}, {
+"attribute": 0,
+"level": 47,
+"name_key": "Enforcement Machine",
+"path": "res://jobs/terra/laser_unit_v_job.tres",
+"token_path": "res://assets/terra/tokens/laser_unit_v_token.png",
+"weapon_type": 1
+}, {
+"attribute": 1,
+"level": 21,
+"name_key": "Enforcement Machine",
+"path": "res://jobs/terra/teksura_job.tres",
+"token_path": "res://assets/terra/tokens/teksura_token.png",
+"weapon_type": 3
+}, {
+"attribute": 4,
+"level": 79,
+"name_key": "Enforcement Machine",
+"path": "res://jobs/terra/incapacitator_job.tres",
+"token_path": "res://assets/terra/tokens/incapacitator_token.png",
+"weapon_type": 3
+}, {
+"attribute": 3,
+"level": 36,
+"name_key": "Enforcement Machine",
+"path": "res://jobs/terra/androclops_job.tres",
+"token_path": "res://assets/terra/tokens/androclops_token.png",
+"weapon_type": 2
+}, {
+"attribute": 0,
+"level": 55,
+"name_key": "Enforcement Marksman, Elite",
+"path": "res://jobs/terra/oxsecian_gunner_sp_job.tres",
+"token_path": "res://assets/terra/tokens/oxsecian_gunner_sp_token.png",
+"weapon_type": 1
+}, {
+"attribute": 0,
+"level": 55,
+"name_key": "Enforcement Sentry, Elite",
+"path": "res://jobs/terra/oxsecian_guard_job.tres",
+"token_path": "res://assets/terra/tokens/orbling_token.png",
+"weapon_type": 0
+}, {
+"attribute": 0,
+"level": 50,
+"name_key": "Enforcement Skirmisher, Elite",
+"path": "res://jobs/terra/oxsecian_airgrunt_job.tres",
+"token_path": "res://assets/terra/tokens/oxsecian_airgrunt_token.png",
+"weapon_type": 1
+}, {
+"attribute": 0,
+"level": 50,
+"name_key": "Enforcement Trooper, Elite",
+"path": "res://jobs/terra/oxsecian_grunt_job.tres",
+"token_path": "res://assets/terra/tokens/oxsecian_grunt_token.png",
+"weapon_type": 1
+}, {
+"attribute": 0,
+"level": 65,
+"name_key": "Enforcement Unit, Trooper",
+"path": "res://jobs/terra/oxsecian_raider_job.tres",
+"token_path": "res://assets/terra/tokens/oxsecian_raider_token.png",
+"weapon_type": 3
+}, {
+"attribute": 0,
+"level": 73,
+"name_key": "Enforcement Unit, Trooper",
+"path": "res://jobs/terra/oxsecian_mobile_artillery_job.tres",
+"token_path": "res://assets/terra/tokens/oxsecian_mobile_artillery_token.png",
+"weapon_type": 0
+}, {
+"attribute": 0,
+"level": 65,
+"name_key": "Enforcement Unit, Trooper",
+"path": "res://jobs/terra/oxsecian_stormer_job.tres",
+"token_path": "res://assets/terra/tokens/oxsecian_stormer_token.png",
+"weapon_type": 3
+}, {
+"attribute": 0,
+"level": 49,
+"name_key": "Enforcement Unit, Trooper",
+"path": "res://jobs/terra/oxsecian_sniper_job.tres",
+"token_path": "res://assets/terra/tokens/oxsecian_sniper_token.png",
+"weapon_type": 1
+}, {
+"attribute": 0,
+"level": 67,
+"name_key": "Enforcement Unit, Trooper",
+"path": "res://jobs/terra/oxsecian_rps_job.tres",
+"token_path": "res://assets/terra/tokens/oxsecian_rps_token.png",
+"weapon_type": 3
+}, {
+"attribute": 0,
+"level": 66,
+"name_key": "Enforcement Unit, Trooper",
+"path": "res://jobs/terra/oxsecian_blitzer_job.tres",
+"token_path": "res://assets/terra/tokens/oxsecian_blitzer_token.png",
+"weapon_type": 0
+}, {
+"attribute": 0,
+"level": 44,
+"name_key": "Enforcement Unit, Trooper",
+"path": "res://jobs/terra/oxsecian_bomb_job.tres",
+"token_path": "res://assets/terra/tokens/oxsecian_bomb_token.png",
+"weapon_type": 3
+}, {
+"attribute": 1,
+"level": 72,
+"name_key": "Enforcement Unit, Trooper",
+"path": "res://jobs/terra/oxsecian_generator_job.tres",
+"token_path": "res://assets/terra/tokens/oxsecian_generator_token.png",
+"weapon_type": 3
+}, {
+"attribute": 0,
+"level": 66,
+"name_key": "Enforcement Unit, Trooper",
+"path": "res://jobs/terra/oxsecian_gas_bomb_job.tres",
+"token_path": "res://assets/terra/tokens/oxsecian_gas_bomb_token.png",
+"weapon_type": 3
+}, {
+"attribute": 0,
+"level": 55,
+"name_key": "Enforcement Unit, Trooper",
+"path": "res://jobs/terra/oxsecian_fighter_job.tres",
+"token_path": "res://assets/terra/tokens/oxsecian_fighter_token.png",
+"weapon_type": 1
+}, {
+"attribute": 0,
+"level": 73,
+"name_key": "Fen Spirit",
+"path": "res://jobs/terra/spitch_job.tres",
+"token_path": "res://assets/terra/tokens/spitch_token.png",
+"weapon_type": 2
+}, {
+"attribute": 0,
+"level": 79,
+"name_key": "Fen Spirit",
+"path": "res://jobs/terra/falaan_job.tres",
+"token_path": "res://assets/terra/tokens/falaan_token.png",
+"weapon_type": 3
+}, {
+"attribute": 0,
+"level": 78,
+"name_key": "Fen Spirit",
+"path": "res://jobs/terra/leefa_job.tres",
+"token_path": "res://assets/terra/tokens/leefa_token.png",
+"weapon_type": 3
+}, {
+"attribute": 0,
+"level": 78,
+"name_key": "Fen Spirit",
+"path": "res://jobs/terra/wisprat_job.tres",
+"token_path": "res://assets/terra/tokens/wisprat_token.png",
+"weapon_type": 0
+}, {
+"attribute": 0,
+"level": 60,
+"name_key": "Force Node",
+"path": "res://jobs/terra/defense_amp_job.tres",
+"token_path": "res://assets/terra/tokens/defense_amp_token.png",
+"weapon_type": 3
+}, {
+"attribute": 3,
+"level": 63,
+"name_key": "Frost Beast",
+"path": "res://jobs/terra/ice_razor_job.tres",
+"token_path": "res://assets/terra/tokens/ice_razor_token.png",
+"weapon_type": 0
+}, {
+"attribute": 3,
+"level": 37,
+"name_key": "Frost Beast",
+"path": "res://jobs/terra/cryoplatelet_job.tres",
+"token_path": "res://assets/terra/tokens/cryoplatelet_token.png",
+"weapon_type": 3
+}, {
+"attribute": 3,
+"level": 38,
+"name_key": "Frost Beast",
+"path": "res://jobs/terra/freeze_sparker_job.tres",
+"token_path": "res://assets/terra/tokens/freeze_sparker_token.png",
+"weapon_type": 2
+}, {
+"attribute": 0,
+"level": 33,
+"name_key": "Frost Beast",
+"path": "res://jobs/terra/rockfreeze_job.tres",
+"token_path": "res://assets/terra/tokens/rockfreeze_token.png",
+"weapon_type": 2
+}, {
+"attribute": 0,
+"level": 78,
+"name_key": "Horned Beast",
+"path": "res://jobs/terra/kirusk_job.tres",
+"token_path": "res://assets/terra/tokens/kirusk_token.png",
+"weapon_type": 0
+}, {
+"attribute": 0,
+"level": 76,
+"name_key": "Horned Beast",
+"path": "res://jobs/terra/gnorusk_job.tres",
+"token_path": "res://assets/terra/tokens/gnorusk_token.png",
+"weapon_type": 2
+}, {
+"attribute": 1,
+"level": 51,
+"name_key": "Horned Beast",
+"path": "res://jobs/terra/thunder_horn_job.tres",
+"token_path": "res://assets/terra/tokens/thunder_horn_token.png",
+"weapon_type": 3
+}, {
+"attribute": 0,
+"level": 75,
+"name_key": "Horned Beast",
+"path": "res://jobs/terra/aurochs_job.tres",
+"token_path": "res://assets/terra/tokens/aurochs_token.png",
+"weapon_type": 2
+}, {
+"attribute": 0,
+"level": 18,
+"name_key": "Iron Crawler",
+"path": "res://jobs/terra/aeropede_job.tres",
+"token_path": "res://assets/terra/tokens/aeropede_token.png",
+"weapon_type": 1
+}, {
+"attribute": 0,
+"level": 4,
+"name_key": "Marsh Leech",
+"path": "res://jobs/terra/gorf_job.tres",
+"token_path": "res://assets/terra/tokens/gorf_token.png",
+"weapon_type": 3
+}, {
+"attribute": 0,
+"level": 78,
+"name_key": "Old Grief",
+"path": "res://jobs/terra/ancient_sadness_job.tres",
+"token_path": "res://assets/terra/tokens/ancient_sadness_token.png",
+"weapon_type": 0
+}, {
+"attribute": 1,
+"level": 12,
+"name_key": "Patrol Drone",
+"path": "res://jobs/terra/antenna_orbling_job.tres",
+"token_path": "res://assets/terra/tokens/antenna_orbling_token.png",
+"weapon_type": 1
+}, {
+"attribute": 0,
+"level": 25,
+"name_key": "Peprope, the Stray Blade",
+"path": "res://jobs/terra/peprop_job.tres",
+"token_path": "res://assets/terra/tokens/peprop_token.png",
+"weapon_type": 0
+}, {
+"attribute": 0,
+"level": 3,
+"name_key": "Removal Foreman Tu",
+"path": "res://jobs/terra/orbling_boss_job.tres",
+"token_path": "res://assets/terra/tokens/orbling_token.png",
+"weapon_type": 0
+}, {
+"attribute": 1,
+"level": 53,
+"name_key": "River Siren",
+"path": "res://jobs/terra/mermaid_job.tres",
+"token_path": "res://assets/terra/tokens/mermaid_token.png",
+"weapon_type": 3
+}, {
+"attribute": 0,
+"level": 6,
+"name_key": "Saber Tiger",
+"path": "res://jobs/terra/sabertooth_job.tres",
+"token_path": "res://assets/terra/tokens/sabertooth_token.png",
+"weapon_type": 2
+}, {
+"attribute": 0,
+"level": 1,
+"name_key": "Scout Drone",
+"path": "res://jobs/terra/wee_orbling_spear_job.tres",
+"token_path": "res://assets/terra/tokens/orbling_token.png",
+"weapon_type": 2
+}, {
+"attribute": 0,
+"level": 1,
+"name_key": "Scout Drone",
+"path": "res://jobs/terra/wee_orbling_bow_job.tres",
+"token_path": "res://assets/terra/tokens/orbling_token.png",
+"weapon_type": 1
+}, {
+"attribute": 0,
+"level": 1,
+"name_key": "Scout Drone",
+"path": "res://jobs/terra/wee_orbling_sword_job.tres",
+"token_path": "res://assets/terra/tokens/orbling_token.png",
+"weapon_type": 0
+}, {
+"attribute": 3,
+"level": 3,
+"name_key": "Serpent-Folk Caster",
+"path": "res://jobs/terra/lizardfolk_mage_job.tres",
+"token_path": "res://assets/terra/tokens/lizardfolk_mage_token.png",
+"weapon_type": 3
+}, {
+"attribute": 0,
+"level": 7,
+"name_key": "Serpent-Folk Heavy",
+"path": "res://jobs/terra/lizardfolk_knight_job.tres",
+"token_path": "res://assets/terra/tokens/lizardfolk_knight_token.png",
+"weapon_type": 2
+}, {
+"attribute": 0,
+"level": 3,
+"name_key": "Serpent-Folk Marksman",
+"path": "res://jobs/terra/lizardfolk_archer_job.tres",
+"token_path": "res://assets/terra/tokens/lizardfolk_archer_token.png",
+"weapon_type": 1
+}, {
+"attribute": 0,
+"level": 3,
+"name_key": "Serpent-Folk Medic",
+"path": "res://jobs/terra/lizardfolk_healer_job.tres",
+"token_path": "res://assets/terra/tokens/lizardfolk_healer_token.png",
+"weapon_type": 3
+}, {
+"attribute": 2,
+"level": 20,
+"name_key": "Shell Beast",
+"path": "res://jobs/terra/mantle_tortoise_job.tres",
+"token_path": "res://assets/terra/tokens/mantle_tortoise_token.png",
+"weapon_type": 3
+}, {
+"attribute": 0,
+"level": 26,
+"name_key": "Shell Beast",
+"path": "res://jobs/terra/dark_tortoise_job.tres",
+"token_path": "res://assets/terra/tokens/dark_tortoise_token.png",
+"weapon_type": 2
+}, {
+"attribute": 0,
+"level": 78,
+"name_key": "Sky Beast",
+"path": "res://jobs/terra/harrier_job.tres",
+"token_path": "res://assets/terra/tokens/harrier_token.png",
+"weapon_type": 3
+}, {
+"attribute": 0,
+"level": 37,
+"name_key": "Sky Beast",
+"path": "res://jobs/terra/hell_bat_job.tres",
+"token_path": "res://assets/terra/tokens/hell_bat_token.png",
+"weapon_type": 0
+}, {
+"attribute": 0,
+"level": 10,
+"name_key": "Sky Beast",
+"path": "res://jobs/terra/fungibird_job.tres",
+"token_path": "res://assets/terra/tokens/fungibird_token.png",
+"weapon_type": 1
+}, {
+"attribute": 0,
+"level": 60,
+"name_key": "Sludge Beast",
+"path": "res://jobs/terra/slime_slug_job.tres",
+"token_path": "res://assets/terra/tokens/slime_slug_token.png",
+"weapon_type": 2
+}, {
+"attribute": 2,
+"level": 18,
+"name_key": "Sludge Beast",
+"path": "res://jobs/terra/mantle_slime_job.tres",
+"token_path": "res://assets/terra/tokens/mantle_slime_token.png",
+"weapon_type": 3
+}, {
+"attribute": 0,
+"level": 73,
+"name_key": "Southbank Fighter",
+"path": "res://jobs/terra/rebel_defender_job.tres",
+"token_path": "res://assets/terra/tokens/rebel_defender_token.png",
+"weapon_type": 3
+}, {
+"attribute": 0,
+"level": 73,
+"name_key": "Southbank Fighter",
+"path": "res://jobs/terra/rebel_soldier_job.tres",
+"token_path": "res://assets/terra/tokens/rebel_soldier_token.png",
+"weapon_type": 1
+}, {
+"attribute": 1,
+"level": 5,
+"name_key": "Storm Imp",
+"path": "res://jobs/terra/dracorin_job.tres",
+"token_path": "res://assets/terra/tokens/dracorin_token.png",
+"weapon_type": 1
+}, {
+"attribute": 1,
+"level": 33,
+"name_key": "Swarm Machine",
+"path": "res://jobs/terra/nanoworm_job.tres",
+"token_path": "res://assets/terra/tokens/nanoworm_token.png",
+"weapon_type": 3
+}, {
+"attribute": 1,
+"level": 64,
+"name_key": "Vajra, the Storm Idol",
+"path": "res://jobs/terra/vajra_job.tres",
+"token_path": "res://assets/terra/tokens/orbling_token.png",
+"weapon_type": 3
+}, {
+"attribute": 0,
+"level": 65,
+"name_key": "Weaver",
+"path": "res://jobs/terra/arachnochip_job.tres",
+"token_path": "res://assets/terra/tokens/arachnochip_token.png",
+"weapon_type": 1
+}, {
+"attribute": 0,
+"level": 67,
+"name_key": "Weaver",
+"path": "res://jobs/terra/arachnochip_ex_job.tres",
+"token_path": "res://assets/terra/tokens/arachnochip_ex_token.png",
+"weapon_type": 1
+}, {
+"attribute": 3,
+"level": 30,
+"name_key": "Works Machine",
+"path": "res://jobs/terra/shieldcell_job.tres",
+"token_path": "res://assets/terra/tokens/shieldcell_token.png",
+"weapon_type": 3
+}, {
+"attribute": 0,
+"level": 16,
+"name_key": "Works Machine",
+"path": "res://jobs/terra/robotick_job.tres",
+"token_path": "res://assets/terra/tokens/robotick_token.png",
+"weapon_type": 0
+}, {
+"attribute": 0,
+"level": 42,
+"name_key": "Works Machine",
+"path": "res://jobs/terra/regenercell_job.tres",
+"token_path": "res://assets/terra/tokens/regenercell_token.png",
+"weapon_type": 3
+}, {
+"attribute": 0,
+"level": 21,
+"name_key": "Works Machine",
+"path": "res://jobs/terra/trilobot_job.tres",
+"token_path": "res://assets/terra/tokens/trilobot_token.png",
+"weapon_type": 2
+}, {
+"attribute": 0,
+"level": 42,
+"name_key": "Works Machine",
+"path": "res://jobs/terra/ramcell_job.tres",
+"token_path": "res://assets/terra/tokens/ramcell_token.png",
+"weapon_type": 1
+}, {
+"attribute": 0,
+"level": 48,
+"name_key": "Works Machine",
+"path": "res://jobs/terra/powercell_job.tres",
+"token_path": "res://assets/terra/tokens/powercell_token.png",
+"weapon_type": 1
+}, {
+"attribute": 0,
+"level": 47,
+"name_key": "Works Machine",
+"path": "res://jobs/terra/pneumatobot_beta_job.tres",
+"token_path": "res://assets/terra/tokens/pneumatobot_beta_token.png",
+"weapon_type": 2
+}, {
+"attribute": 4,
+"level": 37,
+"name_key": "Works Machine",
+"path": "res://jobs/terra/dark_ampcell_job.tres",
+"token_path": "res://assets/terra/tokens/dark_ampcell_token.png",
+"weapon_type": 3
+}, {
+"attribute": 4,
+"level": 37,
+"name_key": "Works Machine",
+"path": "res://jobs/terra/darkbot_job.tres",
+"token_path": "res://assets/terra/tokens/darkbot_token.png",
+"weapon_type": 3
+}, {
+"attribute": 0,
+"level": 42,
+"name_key": "Works Machine",
+"path": "res://jobs/terra/mechacell_job.tres",
+"token_path": "res://assets/terra/tokens/mechacell_token.png",
+"weapon_type": 1
+}, {
+"attribute": 4,
+"level": 36,
+"name_key": "Works Machine",
+"path": "res://jobs/terra/dark_mechacell_job.tres",
+"token_path": "res://assets/terra/tokens/dark_mechacell_token.png",
+"weapon_type": 0
+}, {
+"attribute": 0,
+"level": 45,
+"name_key": "Works Machine",
+"path": "res://jobs/terra/analyzer_job.tres",
+"token_path": "res://assets/terra/tokens/orbling_token.png",
+"weapon_type": 3
+}, {
+"attribute": 1,
+"level": 43,
+"name_key": "Works Machine",
+"path": "res://jobs/terra/mechaclops_job.tres",
+"token_path": "res://assets/terra/tokens/mechaclops_token.png",
+"weapon_type": 1
+}, {
+"attribute": 4,
+"level": 36,
+"name_key": "Works Machine",
+"path": "res://jobs/terra/dark_archercell_job.tres",
+"token_path": "res://assets/terra/tokens/dark_archercell_token.png",
+"weapon_type": 1
+}, {
+"attribute": 0,
+"level": 85,
+"name_key": "Xaepha, the Remaker",
+"path": "res://jobs/terra/xaepha_job.tres",
+"token_path": "res://assets/terra/tokens/orbling_token.png",
+"weapon_type": 3
+}, {
+"attribute": 2,
+"level": 50,
+"name_key": "Young Wyrm",
+"path": "res://jobs/terra/pegawyrm_job.tres",
+"token_path": "res://assets/terra/tokens/pegawyrm_token.png",
+"weapon_type": 2
+}, {
+"attribute": 4,
+"level": 54,
+"name_key": "Young Wyrm",
+"path": "res://jobs/terra/dark_pegawyrm_job.tres",
+"token_path": "res://assets/terra/tokens/dark_pegawyrm_token.png",
+"weapon_type": 0
+}, {
+"attribute": 0,
+"level": 5,
+"name_key": "the Beast-Clan Champion",
+"path": "res://jobs/terra/beastfolk_hero_job.tres",
+"token_path": "res://assets/terra/tokens/beastfolk_hero_token.png",
+"weapon_type": 0
+}, {
+"attribute": 0,
+"level": 77,
+"name_key": "the Bone Clerk",
+"path": "res://jobs/terra/lich_job.tres",
+"token_path": "res://assets/terra/tokens/lich_token.png",
+"weapon_type": 0
+}, {
+"attribute": 0,
+"level": 35,
+"name_key": "the Concrete Sentinel",
+"path": "res://jobs/terra/golem_job.tres",
+"token_path": "res://assets/terra/tokens/golem_token.png",
+"weapon_type": 2
+}, {
+"attribute": 0,
+"level": 63,
+"name_key": "the Core Generator",
+"path": "res://jobs/terra/em_generator_job.tres",
+"token_path": "res://assets/terra/tokens/em_generator_token.png",
+"weapon_type": 0
+}, {
+"attribute": 0,
+"level": 73,
+"name_key": "the Curse Node",
+"path": "res://jobs/terra/magic_amp_job.tres",
+"token_path": "res://assets/terra/tokens/magic_amp_token.png",
+"weapon_type": 3
+}, {
+"attribute": 0,
+"level": 99,
+"name_key": "the First Warden",
+"path": "res://jobs/terra/6zoo_job.tres",
+"token_path": "res://assets/terra/tokens/6zoo_token.png",
+"weapon_type": 0
+}, {
+"attribute": 0,
+"level": 106,
+"name_key": "the Flawless One",
+"path": "res://jobs/terra/prototype_zero_job.tres",
+"token_path": "res://assets/terra/tokens/prototype_zero_token.png",
+"weapon_type": 3
+}, {
+"attribute": 0,
+"level": 86,
+"name_key": "the Greater Hollow",
+"path": "res://jobs/terra/giant_nega_job.tres",
+"token_path": "res://assets/terra/tokens/giant_nega_token.png",
+"weapon_type": 2
+}, {
+"attribute": 0,
+"level": 78,
+"name_key": "the Hollow",
+"path": "res://jobs/terra/devourer_job.tres",
+"token_path": "res://assets/terra/tokens/devourer_token.png",
+"weapon_type": 3
+}, {
+"attribute": 4,
+"level": 70,
+"name_key": "the Hollow",
+"path": "res://jobs/terra/nebulator_job.tres",
+"token_path": "res://assets/terra/tokens/nebulator_token.png",
+"weapon_type": 3
+}, {
+"attribute": 0,
+"level": 76,
+"name_key": "the Hollow",
+"path": "res://jobs/terra/negale_job.tres",
+"token_path": "res://assets/terra/tokens/negale_token.png",
+"weapon_type": 0
+}, {
+"attribute": 0,
+"level": 76,
+"name_key": "the Hollow",
+"path": "res://jobs/terra/negat_job.tres",
+"token_path": "res://assets/terra/tokens/negat_token.png",
+"weapon_type": 2
+}, {
+"attribute": 0,
+"level": 77,
+"name_key": "the Hollow",
+"path": "res://jobs/terra/negaton_job.tres",
+"token_path": "res://assets/terra/tokens/negaton_token.png",
+"weapon_type": 2
+}, {
+"attribute": 1,
+"level": 30,
+"name_key": "the Iron Drake",
+"path": "res://jobs/terra/mechadrake_job.tres",
+"token_path": "res://assets/terra/tokens/mechadrake_token.png",
+"weapon_type": 2
+}, {
+"attribute": 4,
+"level": 43,
+"name_key": "the Iron Drake, Rebuilt",
+"path": "res://jobs/terra/mechadrake_redux_job.tres",
+"token_path": "res://assets/terra/tokens/mechadrake_redux_token.png",
+"weapon_type": 3
+}, {
+"attribute": 0,
+"level": 62,
+"name_key": "the Leashed Sky-Drake",
+"path": "res://jobs/terra/celestial_dragon_job.tres",
+"token_path": "res://assets/terra/tokens/celestial_dragon_token.png",
+"weapon_type": 2
+}, {
+"attribute": 0,
+"level": 15,
+"name_key": "the Loom Machine",
+"path": "res://jobs/terra/arachnobot_job.tres",
+"token_path": "res://assets/terra/tokens/arachnobot_token.png",
+"weapon_type": 0
+}, {
+"attribute": 2,
+"level": 25,
+"name_key": "the Magma Drake",
+"path": "res://jobs/terra/mantledrake_job.tres",
+"token_path": "res://assets/terra/tokens/mantledrake_token.png",
+"weapon_type": 3
+}, {
+"attribute": 0,
+"level": 18,
+"name_key": "the Mending Node",
+"path": "res://jobs/terra/power_pyramid_job.tres",
+"token_path": "res://assets/terra/tokens/power_pyramid_token.png",
+"weapon_type": 3
+}, {
+"attribute": 0,
+"level": 36,
+"name_key": "the Moment-Eater",
+"path": "res://jobs/terra/time_devourer_job.tres",
+"token_path": "res://assets/terra/tokens/time_devourer_token.png",
+"weapon_type": 2
+}, {
+"attribute": 4,
+"level": 88,
+"name_key": "the Old Relic",
+"path": "res://jobs/terra/relic_job.tres",
+"token_path": "res://assets/terra/tokens/relic_token.png",
+"weapon_type": 3
+}, {
+"attribute": 4,
+"level": 67,
+"name_key": "the Onyx Dragon",
+"path": "res://jobs/terra/onyx_dragon_job.tres",
+"token_path": "res://assets/terra/tokens/onyx_dragon_token.png",
+"weapon_type": 3
+}, {
+"attribute": 0,
+"level": 50,
+"name_key": "the Overcharged Sentinel",
+"path": "res://jobs/terra/enerzerk_job.tres",
+"token_path": "res://assets/terra/tokens/enerzerk_token.png",
+"weapon_type": 1
+}, {
+"attribute": 0,
+"level": 20,
+"name_key": "the Pale Wyrm",
+"path": "res://jobs/terra/whitewyrm_job.tres",
+"token_path": "res://assets/terra/tokens/whitewyrm_token.png",
+"weapon_type": 1
+}, {
+"attribute": 0,
+"level": 5,
+"name_key": "the Serpent-Folk Champion",
+"path": "res://jobs/terra/lizardfolk_hero_job.tres",
+"token_path": "res://assets/terra/tokens/lizardfolk_hero_token.png",
+"weapon_type": 2
+}, {
+"attribute": 1,
+"level": 15,
+"name_key": "the Serpent-Folk Warlord",
+"path": "res://jobs/terra/lizardfolk_warrior_job.tres",
+"token_path": "res://assets/terra/tokens/lizardfolk_warrior_token.png",
+"weapon_type": 0
+}, {
+"attribute": 0,
+"level": 58,
+"name_key": "the Siphon Machine",
+"path": "res://jobs/terra/energy_aspirator_job.tres",
+"token_path": "res://assets/terra/tokens/energy_aspirator_token.png",
+"weapon_type": 1
+}, {
+"attribute": 4,
+"level": 75,
+"name_key": "the Spined Leviathan",
+"path": "res://jobs/terra/spiny_leviathan_job.tres",
+"token_path": "res://assets/terra/tokens/spiny_leviathan_token.png",
+"weapon_type": 3
+}, {
+"attribute": 3,
+"level": 46,
+"name_key": "the Splitting Mass",
+"path": "res://jobs/terra/megacell_job.tres",
+"token_path": "res://assets/terra/tokens/megacell_token.png",
+"weapon_type": 3
+}, {
+"attribute": 0,
+"level": 49,
+"name_key": "the Targeting Array",
+"path": "res://jobs/terra/lock_on_job.tres",
+"token_path": "res://assets/terra/tokens/lock_on_token.png",
+"weapon_type": 1
+}, {
+"attribute": 1,
+"level": 9,
+"name_key": "the Thornback",
+"path": "res://jobs/terra/spinetrich_job.tres",
+"token_path": "res://assets/terra/tokens/spinetrich_token.png",
+"weapon_type": 2
+}, {
+"attribute": 0,
+"level": 91,
+"name_key": "the Trapmaw",
+"path": "res://jobs/terra/snaptrap_job.tres",
+"token_path": "res://assets/terra/tokens/snaptrap_token.png",
+"weapon_type": 3
+}, {
+"attribute": 1,
+"level": 35,
+"name_key": "the Tunnel Worm",
+"path": "res://jobs/terra/gigaworm_job.tres",
+"token_path": "res://assets/terra/tokens/gigaworm_token.png",
+"weapon_type": 3
+}, {
+"attribute": 0,
+"level": 73,
+"name_key": "the War Node",
+"path": "res://jobs/terra/power_amp_job.tres",
+"token_path": "res://assets/terra/tokens/power_amp_token.png",
+"weapon_type": 3
+}]
