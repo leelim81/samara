@@ -68,6 +68,7 @@ func initialize_from_data(job: Job, base_stats: Stats, current_stats: Stats, lev
 	_update_luck_label(job)
 	_update_exp_label(job, level)
 	_update_train_button(job, is_in_battle)
+	_update_awaken_button(job)
 	_update_desc_label(job)
 
 	# In battle the panel reflects the unit's live stats; otherwise its base
@@ -216,8 +217,17 @@ func _update_element_label(attribute: int) -> void:
 const TRAIN_EXP: int = 500
 const TRAIN_COST: int = 400
 
+# Metamorphosis (Awaken): a one-way permanent stat boost, gated by level and paid
+# in coins + a rare material.
+const AWAKEN_MIN_LEVEL: int = 30
+const AWAKEN_COIN_COST: int = 3000
+const AWAKEN_MATERIAL_ID: String = "core"
+const AWAKEN_MATERIAL_COUNT: int = 1
+
 var _train_button: Button = null
 var _companion_button: Button = null
+var _awaken_button: Button = null
+var _awaken_confirming: bool = false
 var _wallet_label: Label = null
 var _train_job: Job = null
 
@@ -264,11 +274,26 @@ func _update_train_button(job: Job, is_in_battle: bool) -> void:
 		_companion_button.pressed.connect(_on_companion_pressed)
 		companion_row.add_child(_companion_button)
 
+		var awaken_row := HBoxContainer.new()
+		awaken_row.name = "AwakenRow"
+		meta.add_child(awaken_row)
+		meta.move_child(awaken_row, companion_row.get_index() + 1)
+
+		_awaken_button = Button.new()
+		_awaken_button.custom_minimum_size = Vector2(0, 40)
+		_awaken_button.add_theme_font_size_override("font_size", 14)
+		_awaken_button.add_theme_stylebox_override("normal", _gold_button_style())
+		_awaken_button.pressed.connect(_on_awaken_pressed)
+		awaken_row.add_child(_awaken_button)
+
 	var row_node: Node = _train_button.get_parent()
 	row_node.visible = show
 
 	if _companion_button != null:
 		_companion_button.get_parent().visible = show
+
+	if _awaken_button != null:
+		_awaken_button.get_parent().visible = show
 
 	if not show:
 		return
@@ -309,6 +334,43 @@ func _gold_button_style() -> StyleBoxFlat:
 func _on_companion_pressed() -> void:
 	if _train_job != null:
 		navigate("res://ui/companion_equip_menu.tscn", _train_job)
+
+
+func _update_awaken_button(job: Job) -> void:
+	if _awaken_button == null:
+		return
+
+	_awaken_confirming = false
+
+	if job.awakened:
+		_awaken_button.text = tr("AWAKENED")
+		_awaken_button.disabled = true
+		_awaken_button.tooltip_text = ""
+		return
+
+	var level_ok: bool = job.level >= AWAKEN_MIN_LEVEL
+	var affordable: bool = Purchase.can_afford(GameData.save_data, AWAKEN_COIN_COST, {AWAKEN_MATERIAL_ID: AWAKEN_MATERIAL_COUNT})
+
+	_awaken_button.text = "%s  (LV %d)" % [tr("AWAKEN"), AWAKEN_MIN_LEVEL] if not level_ok else tr("AWAKEN")
+	_awaken_button.disabled = not (level_ok and affordable)
+	_awaken_button.tooltip_text = "%dc + 1 %s" % [AWAKEN_COIN_COST, tr("ITEM_CORE")]
+
+
+func _on_awaken_pressed() -> void:
+	if _train_job == null or _train_job.awakened or _train_job.level < AWAKEN_MIN_LEVEL:
+		return
+
+	# One-way and consumes a rare material, so require a second tap to confirm.
+	if not _awaken_confirming:
+		_awaken_confirming = true
+		_awaken_button.text = tr("AWAKEN_CONFIRM")
+		return
+
+	if Purchase.spend(GameData.save_data, AWAKEN_COIN_COST, {AWAKEN_MATERIAL_ID: AWAKEN_MATERIAL_COUNT}):
+		_train_job.metamorphose()
+		GameData.save()
+
+		initialize(_train_job, _train_job.level)
 
 
 func _update_exp_label(job: Job, level: int) -> void:

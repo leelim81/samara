@@ -41,8 +41,10 @@ func _run() -> void:
 		j0.register_skill_use(0)
 
 	j0.add_luck(7)
+	j0.metamorphose()
 
 	var gained: int = j0.gain_exp(20000)
+	var awakened_atk: int = j0.stats.attack
 	_check("gain_exp returned levels gained > 0", gained > 0)
 
 	sd.ensure_squads()              # squad 0 = [0, 1]
@@ -89,6 +91,8 @@ func _run() -> void:
 	_check("skill_uses restored", r.jobs[0].skill_uses.size() > 0 and int(r.jobs[0].skill_uses[0]) == 8)
 	_check("skill_boost restored", is_equal_approx(r.jobs[0].get_skill_boost(0), 0.02))
 	_check("luck restored", r.jobs[0].luck == 7)
+	_check("awakened restored", r.jobs[0].awakened == true)
+	_check("awakened stats re-applied on load", r.jobs[0].stats.attack == awakened_atk)
 
 	print("test_save_roundtrip: %s" % ("PASS" if _f == 0 else "FAIL (%d)" % _f))
 	quit(1 if _f > 0 else 0)
@@ -97,6 +101,7 @@ func _run() -> void:
 func _mk_job(path: String):
 	var j = load(path).duplicate()
 	j.stats = j.stats.duplicate()
+	j.stats.uses_growth_curve = true
 	j.source_path = path
 	j.level = 1
 	return j

@@ -327,3 +327,6 @@ EX_PROVING_RUN,Proving Run,Prueba de Aptitud
 EX_PROVING_RUN_CAPTION,"A tougher circuit with better salvage.","Un circuito más duro con mejor botín."
 EX_TOWER_TRIAL,Tower Trial,Prueba de la Torre
 EX_TOWER_TRIAL_CAPTION,"The old tower's gauntlet. Elite parts await the strong.","El desafío de la vieja torre. Piezas de élite esperan a los fuertes."
+AWAKEN,Awaken,Despertar
+AWAKENED,Awakened,Despierto
+AWAKEN_CONFIRM,Tap to confirm,Toca para confirmar

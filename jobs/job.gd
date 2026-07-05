@@ -22,6 +22,13 @@ const _SKILL_UNLOCK_LEVELS: Array = [1, 15, 35, 65]
 # time the unit is in the active squad for a first chapter clear. Capped at 99.
 @export var luck: int = 0
 
+# Metamorphosis / Awakening: a one-way permanent power-up. When set, the unit's
+# stat percentages are boosted (re-applied after load, since stats rebuild from
+# the base .tres each time).
+const AWAKEN_MULTIPLIER: float = 1.3
+
+@export var awakened: bool = false
+
 # Equipped companion (Terra Battle): grants flat stats and may cast its skill
 # during pincers — see units/job.gd _apply_companion and unit.activate_skills
 @export var companion: Resource = null
@@ -112,6 +119,32 @@ func _ensure_skill_arrays() -> void:
 
 func add_luck(amount: int) -> void:
 	luck = clampi(luck + amount, 0, 99)
+
+
+# One-way Metamorphosis: permanently awakens the unit's stats. Idempotent.
+func metamorphose() -> void:
+	if awakened:
+		return
+
+	awakened = true
+
+	apply_awakening()
+
+
+# Applies the awakening boost to the (fresh) stats and re-derives them. Called on
+# metamorphose and re-applied after load, since serialized jobs rebuild their
+# stats from the base .tres each session.
+func apply_awakening() -> void:
+	if not awakened or stats == null:
+		return
+
+	stats.health_percentage *= AWAKEN_MULTIPLIER
+	stats.attack_percentage *= AWAKEN_MULTIPLIER
+	stats.defense_percentage *= AWAKEN_MULTIPLIER
+	stats.spiritual_attack_percentage *= AWAKEN_MULTIPLIER
+	stats.spiritual_defense_percentage *= AWAKEN_MULTIPLIER
+
+	set_level(level)
 
 
 func set_level(_level: int) -> void:
