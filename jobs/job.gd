@@ -35,6 +35,12 @@ var level: int = 1: set = set_level
 # be re-serialized (duplicated resources lose their resource_path).
 var source_path: String = ""
 
+# Stable per-roster-slot id, minted when the unit joins the roster and persisted
+# across saves. Per-unit growth state (equipped companion, unlocked job variants,
+# metamorphosis) keys off this so it survives the jobs-array index model. Empty
+# until assigned by SaveData.generate_uid / ensure_uids.
+var uid: String = ""
+
 
 # Adds EXP and re-derives the level from the new total. Returns levels gained.
 func gain_exp(amount: int) -> int:

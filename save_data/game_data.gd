@@ -38,6 +38,9 @@ func load_data():
 	save_data.ensure_squads()
 	save_data.active_units = save_data.squads[save_data.active_squad_index]["units"].duplicate()
 
+	# Backfill stable unit ids (legacy saves predate Job.uid).
+	save_data.ensure_uids()
+
 
 # True once the player has progress on disk (used to show "Continue").
 func has_save_file() -> bool:
@@ -80,6 +83,7 @@ func _load_data_from_configs_file() -> void:
 	save_data.squads = config_file.get_value(_UNIT_DATA_SECTION, "squads", [])
 	save_data.active_squad_index = config_file.get_value(_UNIT_DATA_SECTION, "active_squad_index", 0)
 	save_data.coins = config_file.get_value(_UNIT_DATA_SECTION, "coins", 0)
+	save_data.next_uid = config_file.get_value(_UNIT_DATA_SECTION, "next_uid", 1)
 
 	save_data.music_volume = config_file.get_value(_SETTINGS_SECTION, "music_volume", 1.0)
 	save_data.sound_effects_volume = config_file.get_value(_SETTINGS_SECTION, "sound_effects_volume", 1.0)
@@ -133,6 +137,7 @@ func save() -> void:
 	config_file.set_value(_UNIT_DATA_SECTION, "squads", save_data.squads)
 	config_file.set_value(_UNIT_DATA_SECTION, "active_squad_index", save_data.active_squad_index)
 	config_file.set_value(_UNIT_DATA_SECTION, "coins", save_data.coins)
+	config_file.set_value(_UNIT_DATA_SECTION, "next_uid", save_data.next_uid)
 
 	config_file.set_value(_SETTINGS_SECTION, "music_volume", save_data.music_volume)
 	config_file.set_value(_SETTINGS_SECTION, "sound_effects_volume", save_data.sound_effects_volume)
@@ -173,6 +178,7 @@ func _serialize_job(job: Job) -> Dictionary:
 		"job_resource_path": path,
 		"level": job.level,
 		"current_exp": job.current_exp,
+		"uid": job.uid,
 	}
 
 
@@ -180,6 +186,7 @@ func _deserialize_job(dictionary: Dictionary) -> Job:
 	var job: Job = _duplicate_job(load(dictionary.job_resource_path), dictionary.get("level", 1))
 
 	job.current_exp = dictionary.get("current_exp", 0)
+	job.uid = dictionary.get("uid", "")
 
 	# Migrate legacy saves that stored only level: seed EXP from the level so
 	# subsequent EXP gains continue from the right place.

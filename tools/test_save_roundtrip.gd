@@ -22,6 +22,12 @@ func _run() -> void:
 	sd.jobs = [j0, j1]
 	sd.active_units = [0, 1]
 
+	sd.ensure_uids()
+	var uid0: String = sd.jobs[0].uid
+	var uid1: String = sd.jobs[1].uid
+	_check("uids minted non-empty", uid0 != "" and uid1 != "")
+	_check("uids are distinct", uid0 != uid1)
+
 	var gained: int = j0.gain_exp(20000)
 	_check("gain_exp returned levels gained > 0", gained > 0)
 
@@ -50,6 +56,9 @@ func _run() -> void:
 	_check("squad 1 units = [1]", r.squads[1]["units"] == [1])
 	_check("active squad index 0", r.active_squad_index == 0)
 	_check("active_units = [0, 1]", r.active_units == [0, 1])
+	_check("job0 uid restored", r.jobs[0].uid == uid0)
+	_check("job1 uid restored", r.jobs[1].uid == uid1)
+	_check("next_uid persisted (>= 3)", r.next_uid >= 3)
 
 	print("test_save_roundtrip: %s" % ("PASS" if _f == 0 else "FAIL (%d)" % _f))
 	quit(1 if _f > 0 else 0)

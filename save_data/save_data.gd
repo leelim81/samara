@@ -37,6 +37,10 @@ var supports: Dictionary = {}
 # Banked coins (battle spoils accumulate here on victory; spent on training).
 @export var coins: int = 0
 
+# Monotonic counter for minting stable per-unit ids (see Job.uid). Persisted so
+# ids stay globally unique across sessions.
+@export var next_uid: int = 1
+
 # Array<ChapterSaveData>
 var unlocked_chapters: Array = []
 
@@ -147,6 +151,7 @@ func add_job(job: Job, level: int) -> void:
 	var new_job: Job = job.duplicate()
 	new_job.stats = new_job.stats.duplicate()
 	new_job.source_path = job.source_path if job.source_path != "" else job.resource_path
+	new_job.uid = generate_uid(new_job.source_path)
 
 	# Player heroes grow on TB's sub-linear curve (see game_data._duplicate_job).
 	new_job.stats.uses_growth_curve = true
@@ -154,6 +159,27 @@ func add_job(job: Job, level: int) -> void:
 	new_job.level = level
 
 	jobs.push_back(new_job)
+
+
+# Mints a stable, unique id for a roster slot. Combines the source file name (for
+# readability) with a monotonic counter (for uniqueness).
+func generate_uid(job_path: String) -> String:
+	var base: String = job_path.get_file().get_basename() if job_path != "" else "unit"
+	var minted: String = "%s_%d" % [base, next_uid]
+
+	next_uid += 1
+
+	return minted
+
+
+# Backfills a uid onto any roster slot missing one (legacy saves, hand-built
+# rosters). Safe to call every load: slots that already have a uid keep it.
+func ensure_uids() -> void:
+	for job in jobs:
+		if job.uid == "":
+			var path: String = job.source_path if job.source_path != "" else job.resource_path
+
+			job.uid = generate_uid(path)
 
 
 func swap_jobs(old_job: Job, new_job: Job) -> void:
