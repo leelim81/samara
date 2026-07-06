@@ -24,12 +24,13 @@ func _run() -> void:
 
 	var job = gd.save_data.jobs[0]
 	job.level = 50
+	job.metamorphose()
 	menu.initialize(job, 50)
 
 	for i in 60:
 		await process_frame
 
-	root.get_viewport().get_texture().get_image().save_png("/tmp/awaken.png")
+	root.get_viewport().get_texture().get_image().save_png("/tmp/awakened_form.png")
 	print("SHOT SAVED")
 
 	quit(0)

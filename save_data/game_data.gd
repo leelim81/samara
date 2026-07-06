@@ -228,6 +228,7 @@ func _deserialize_job(dictionary: Dictionary) -> Job:
 	job.reforge_unlocked = dictionary.get("reforge_unlocked", false)
 	job.reforged = dictionary.get("reforged", false)
 	job.rebuild_stats()
+	job.resolve_portraits()
 
 	# Migrate legacy saves that stored only level: seed EXP from the level so
 	# subsequent EXP gains continue from the right place.

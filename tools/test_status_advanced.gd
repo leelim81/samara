@@ -60,6 +60,11 @@ func _run() -> void:
 			_check("%s has correct type" % path, res.status_effect_type == expected[path])
 			_check("%s has icon" % path, res.icon != null)
 
+	# The statuses are wired onto enemy skills so they appear in battle.
+	var venom_skill = load("res://skills/resources/terra/d_venomous_aim_bow.tres")
+	_check("enemy skill carries a status", venom_skill != null and venom_skill.status_effects.size() > 0)
+	_check("wired status is Venom", venom_skill != null and venom_skill.status_effects.size() > 0 and venom_skill.status_effects[0].status_effect_type == Enums.StatusEffectType.VENOM)
+
 	print("test_status_advanced: %s" % ("PASS" if _f == 0 else "FAIL (%d)" % _f))
 	quit(1 if _f > 0 else 0)
 

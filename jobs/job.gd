@@ -136,6 +136,7 @@ func metamorphose() -> void:
 	awakened = true
 
 	rebuild_stats()
+	resolve_portraits()
 
 
 func unlock_reforge() -> void:
@@ -167,14 +168,64 @@ func rebuild_stats() -> void:
 
 	stats = base.stats.duplicate()
 	stats.uses_growth_curve = true
+	skills = base.skills.duplicate()
 
 	if reforged:
 		_apply_reforge_transform()
+		_reforge_skills()
 
 	if awakened:
 		_apply_awaken_transform()
 
 	set_level(level)
+
+
+# Reforge also flips the unit's skills to the new weapon (magic <-> physical) so
+# they scale off the build the unit actually has. Skills are duplicated so the
+# shared base skill resources are never mutated.
+func _reforge_skills() -> void:
+	var new_weapon: int = stats.weapon_type
+	var flipped := []
+
+	for skill in skills:
+		var copy = skill.duplicate()
+		copy.primary_weapon_type = new_weapon
+		flipped.append(copy)
+
+	skills = flipped
+
+
+# Awakened units show their awakened-form art (assets/terra/awakened/...),
+# falling back to the base if a variant file is missing. Called on metamorphose
+# and re-applied after load.
+func resolve_portraits() -> void:
+	if not awakened:
+		return
+
+	var full_variant = _variant_texture(full_portrait)
+	if full_variant != null:
+		full_portrait = full_variant
+
+	var token_variant = _variant_texture(portrait)
+	if token_variant != null:
+		portrait = token_variant
+
+
+func _variant_texture(texture: Texture2D):
+	if texture == null:
+		return null
+
+	var path: String = texture.resource_path
+
+	if path == "":
+		return null
+
+	var variant_path: String = path.replace("res://assets/terra/", "res://assets/terra/awakened/")
+
+	if variant_path == path or not ResourceLoader.exists(variant_path):
+		return null
+
+	return load(variant_path)
 
 
 func _apply_awaken_transform() -> void:

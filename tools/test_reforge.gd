@@ -22,15 +22,18 @@ func _run() -> void:
 	var base_weapon: int = job.stats.weapon_type
 	var base_atk: int = job.stats.attack
 	var base_satk: int = job.stats.spiritual_attack
+	var base_skill_weapon: int = job.skills[0].primary_weapon_type if job.skills.size() > 0 else -1
 
 	job.unlock_reforge()
 	_check("reforge unlocked", job.reforge_unlocked)
 	_check("reforged active after unlock", job.reforged)
 	_check("weapon type changed", job.stats.weapon_type != base_weapon)
 	_check("attack power shifted", job.stats.attack != base_atk or job.stats.spiritual_attack != base_satk)
+	_check("skills flipped to reforged weapon", job.skills.size() > 0 and job.skills[0].primary_weapon_type == job.stats.weapon_type)
 
 	job.set_reforged(false)
 	_check("weapon restored on revert", job.stats.weapon_type == base_weapon)
+	_check("skills restored on revert", job.skills.size() > 0 and job.skills[0].primary_weapon_type == base_skill_weapon)
 	_check("attack restored exactly", job.stats.attack == base_atk)
 	_check("spiritual attack restored exactly", job.stats.spiritual_attack == base_satk)
 	_check("still unlocked after revert", job.reforge_unlocked)
