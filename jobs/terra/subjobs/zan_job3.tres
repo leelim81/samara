@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="Job" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/terra/subjobs/zan_job3_full.png" id="1_b75u3"]
+[ext_resource type="Texture2D" path="res://assets/terra/subjobs/zan_job3_token.png" id="2_66uhb"]
+[ext_resource type="Script" path="res://jobs/job.gd" id="3_hdpdk"]
+[ext_resource type="Resource" path="res://skills/resources/terra/fire.tres" id="4_lu3fn"]
+[ext_resource type="Resource" path="res://skills/resources/terra/ice.tres" id="5_h43yr"]
+[ext_resource type="Resource" path="res://skills/resources/terra/heal.tres" id="6_4878d"]
+[ext_resource type="Script" path="res://stats/stats.gd" id="7_7qj5q"]
+
+[sub_resource type="Resource" id="Resource_wbqns"]
+script = ExtResource("7_7qj5q")
+unit_name = "CHAR_BLACK_WHIRLWIND"
+unit_type = "HUMAN"
+health_percentage = 2.62404
+attack_percentage = 5.22
+defense_percentage = 5.06
+spiritual_attack_percentage = 9.86
+spiritual_defense_percentage = 6.16
+same_attribute_resistance = 0.5
+weapon_type = 3
+max_turn_counter = 1
+
+[resource]
+script = ExtResource("3_hdpdk")
+stats = SubResource("Resource_wbqns")
+skills = [ExtResource("4_lu3fn"), ExtResource("5_h43yr"), ExtResource("6_4878d")]
+job_name = "CHAR_BLACK_WHIRLWIND"
+portrait = ExtResource("2_66uhb")
+full_portrait = ExtResource("1_b75u3")
+description = "Li Kui, the Black Whirlwind. Repossession man, strongest hands in the undercity, heart aimed permanently at Timely Rain. His plans have one step. His loyalty has none; it is just there, all the way down."

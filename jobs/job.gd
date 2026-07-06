@@ -26,15 +26,15 @@ const _SKILL_UNLOCK_LEVELS: Array = [1, 15, 35, 65]
 # stat percentages.
 const AWAKEN_MULTIPLIER: float = 1.3
 
-# Reforge (sub-job): a toggleable alternate build that flips the unit between a
-# physical and a magic role, moving this fraction of its primary attack to the
-# other side and swapping the weapon. Both transforms are re-applied after load
-# (and on toggle) by rebuild_stats, since stats are always derived from the base.
-const REFORGE_SHIFT: float = 0.5
-
 @export var awakened: bool = false
-@export var reforge_unlocked: bool = false
-@export var reforged: bool = false
+
+# Terra Battle jobs: a character has up to 3 jobs, each with its own stats, skills,
+# and artwork (jobs/terra/subjobs/<slug>_job2.tres, _job3.tres). active_job is the
+# active job index (0 = base, 1, 2); unlocked_jobs is how many are unlocked (1..3),
+# added in order. The active job's content is rebuilt into this Job in place so the
+# roster array stays index-stable.
+@export var active_job: int = 0
+@export var unlocked_jobs: int = 1
 
 # Equipped companion (Terra Battle): grants flat stats and may cast its skill
 # during pincers — see units/job.gd _apply_companion and unit.activate_skills
@@ -135,64 +135,82 @@ func metamorphose() -> void:
 
 	awakened = true
 
-	rebuild_stats()
-	resolve_portraits()
+	rebuild_from_job()
 
 
-func unlock_reforge() -> void:
-	reforge_unlocked = true
+# ---- Jobs (Terra Battle: up to 3 per character, added in order) ----
 
-	set_reforged(true)
+# How many jobs this character actually has (1..3), by which variant files exist.
+func job_count() -> int:
+	var count: int = 1
+
+	for n in [2, 3]:
+		if ResourceLoader.exists(variant_path(source_path, n)):
+			count = n
+		else:
+			break
+
+	return count
 
 
-func set_reforged(value: bool) -> void:
-	if reforged == value:
+# Switches to an already-unlocked job (0-based index). Resets earned skill boosts
+# since each job has its own skills.
+func switch_job(index: int) -> void:
+	if index < 0 or index >= unlocked_jobs or index >= job_count():
 		return
 
-	reforged = value
+	active_job = index
+	skill_boosts = []
+	skill_uses = []
 
-	rebuild_stats()
+	rebuild_from_job()
 
 
-# Rebuilds stats from the base job, then re-applies the active transforms
-# (reforge, then awaken). The single source of truth for a unit's stats, so
-# toggling reforge is always clean and re-applies awaken correctly.
-func rebuild_stats() -> void:
-	if source_path == "":
+# Unlocks the next job in order (2, then 3) and switches to it.
+func unlock_next_job() -> void:
+	if unlocked_jobs < job_count():
+		unlocked_jobs += 1
+
+		switch_job(unlocked_jobs - 1)
+
+
+static func variant_path(base_path: String, n: int) -> String:
+	if n <= 1 or base_path == "":
+		return base_path
+
+	var slug: String = base_path.get_file().replace("_job.tres", "")
+
+	return "res://jobs/terra/subjobs/%s_job%d.tres" % [slug, n]
+
+
+func _active_job_resource():
+	var path: String = variant_path(source_path, active_job + 1)
+
+	return load(path) if (path != "" and ResourceLoader.exists(path)) else null
+
+
+# Rebuilds this Job's stats, skills, name, and artwork from the ACTIVE job variant,
+# then re-applies awaken. The single source of truth for a unit's form. Per-unit
+# state (level, exp, uid, luck, companion, skill boosts) is preserved.
+func rebuild_from_job() -> void:
+	var active = _active_job_resource()
+
+	if active == null or active.stats == null:
 		return
 
-	var base = load(source_path)
-
-	if base == null or base.stats == null:
-		return
-
-	stats = base.stats.duplicate()
+	stats = active.stats.duplicate()
 	stats.uses_growth_curve = true
-	skills = base.skills.duplicate()
-
-	if reforged:
-		_apply_reforge_transform()
-		_reforge_skills()
+	skills = active.skills.duplicate()
+	job_name = active.job_name
+	portrait = active.portrait
+	full_portrait = active.full_portrait
+	description = active.description
 
 	if awakened:
 		_apply_awaken_transform()
 
 	set_level(level)
-
-
-# Reforge also flips the unit's skills to the new weapon (magic <-> physical) so
-# they scale off the build the unit actually has. Skills are duplicated so the
-# shared base skill resources are never mutated.
-func _reforge_skills() -> void:
-	var new_weapon: int = stats.weapon_type
-	var flipped := []
-
-	for skill in skills:
-		var copy = skill.duplicate()
-		copy.primary_weapon_type = new_weapon
-		flipped.append(copy)
-
-	skills = flipped
+	resolve_portraits()
 
 
 # Awakened units show their awakened-form art (assets/terra/awakened/...),
@@ -234,19 +252,6 @@ func _apply_awaken_transform() -> void:
 	stats.defense_percentage *= AWAKEN_MULTIPLIER
 	stats.spiritual_attack_percentage *= AWAKEN_MULTIPLIER
 	stats.spiritual_defense_percentage *= AWAKEN_MULTIPLIER
-
-
-func _apply_reforge_transform() -> void:
-	if stats.weapon_type == Enums.WeaponType.STAFF:
-		# Magic build -> physical (sword): move attack power to ATK.
-		stats.weapon_type = Enums.WeaponType.SWORD
-		stats.attack_percentage += stats.spiritual_attack_percentage * REFORGE_SHIFT
-		stats.spiritual_attack_percentage *= (1.0 - REFORGE_SHIFT)
-	else:
-		# Physical build -> magic (staff): move attack power to S.ATK.
-		stats.weapon_type = Enums.WeaponType.STAFF
-		stats.spiritual_attack_percentage += stats.attack_percentage * REFORGE_SHIFT
-		stats.attack_percentage *= (1.0 - REFORGE_SHIFT)
 
 
 func set_level(_level: int) -> void:

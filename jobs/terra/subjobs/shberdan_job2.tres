@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="Job" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/terra/subjobs/shberdan_job2_full.png" id="1_q6hfn"]
+[ext_resource type="Texture2D" path="res://assets/terra/subjobs/shberdan_job2_token.png" id="2_i1lxb"]
+[ext_resource type="Script" path="res://jobs/job.gd" id="3_jw654"]
+[ext_resource type="Resource" path="res://skills/resources/terra/slash.tres" id="4_hu1nr"]
+[ext_resource type="Resource" path="res://skills/resources/terra/counterattack.tres" id="5_8chqj"]
+[ext_resource type="Script" path="res://stats/stats.gd" id="6_ryn4q"]
+
+[sub_resource type="Resource" id="Resource_l0yy5"]
+script = ExtResource("6_ryn4q")
+unit_name = "SHBERDAN"
+unit_type = "LIZARDFOLK"
+health_percentage = 2.9586200000000002
+attack_percentage = 6.669999999999999
+defense_percentage = 6.72
+spiritual_attack_percentage = 5.8
+spiritual_defense_percentage = 5.25
+same_attribute_resistance = 0.5
+weapon_type = 2
+max_turn_counter = 1
+
+[resource]
+script = ExtResource("3_jw654")
+stats = SubResource("Resource_l0yy5")
+skills = [ExtResource("4_hu1nr"), ExtResource("5_8chqj")]
+job_name = "SHBERDAN"
+portrait = ExtResource("2_i1lxb")
+full_portrait = ExtResource("1_q6hfn")
+description = "Liu Tang, the Red-Haired Devil. A courier for everything the trains refuse: medicine, letters, other people's chances. Allergic to plans, loyal past argument, and fond of exactly one bondsman he has never met."

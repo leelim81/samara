@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="Job" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/terra/subjobs/raprow_job3_full.png" id="1_cfs1q"]
+[ext_resource type="Texture2D" path="res://assets/terra/subjobs/raprow_job3_token.png" id="2_1mj1p"]
+[ext_resource type="Script" path="res://jobs/job.gd" id="3_ak7y0"]
+[ext_resource type="Resource" path="res://skills/resources/terra/fire.tres" id="4_1r0pm"]
+[ext_resource type="Resource" path="res://skills/resources/terra/ice.tres" id="5_anlc0"]
+[ext_resource type="Resource" path="res://skills/resources/terra/heal.tres" id="6_edu2s"]
+[ext_resource type="Script" path="res://stats/stats.gd" id="7_b3yct"]
+
+[sub_resource type="Resource" id="Resource_tehju"]
+script = ExtResource("7_b3yct")
+unit_name = "CHAR_LORD_OF_THE_BEAUTIFUL_BEARD"
+unit_type = "HUMAN"
+health_percentage = 2.91996
+attack_percentage = 5.4
+defense_percentage = 5.5
+spiritual_attack_percentage = 4.42
+spiritual_defense_percentage = 3.9199999999999995
+same_attribute_resistance = 0.5
+weapon_type = 3
+max_turn_counter = 1
+
+[resource]
+script = ExtResource("3_ak7y0")
+stats = SubResource("Resource_tehju")
+skills = [ExtResource("4_1r0pm"), ExtResource("5_anlc0"), ExtResource("6_edu2s")]
+job_name = "CHAR_LORD_OF_THE_BEAUTIFUL_BEARD"
+portrait = ExtResource("2_1mj1p")
+full_portrait = ExtResource("1_cfs1q")
+description = "Zhu Tong, Lord of the Beautiful Beard. An honest constable audited out of his badge for years of quiet mercy. Still walks his beat; the beat just moved. Reads monsters their rights. The beard is not negotiable."

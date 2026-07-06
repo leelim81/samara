@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="Job" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/terra/subjobs/kem_job3_full.png" id="1_7620b"]
+[ext_resource type="Texture2D" path="res://assets/terra/subjobs/kem_job3_token.png" id="2_4y7q8"]
+[ext_resource type="Script" path="res://jobs/job.gd" id="3_4j35b"]
+[ext_resource type="Resource" path="res://skills/resources/terra/fire.tres" id="4_homxb"]
+[ext_resource type="Resource" path="res://skills/resources/terra/ice.tres" id="5_s6qv0"]
+[ext_resource type="Resource" path="res://skills/resources/terra/heal.tres" id="6_wiln2"]
+[ext_resource type="Script" path="res://stats/stats.gd" id="7_wym78"]
+
+[sub_resource type="Resource" id="Resource_dq2ik"]
+script = ExtResource("7_wym78")
+unit_name = "CHAR_PANTHER_HEAD"
+unit_type = "HUMAN"
+health_percentage = 2.496
+attack_percentage = 5.4
+defense_percentage = 5.5
+spiritual_attack_percentage = 8.16
+spiritual_defense_percentage = 5.88
+same_attribute_resistance = 0.5
+weapon_type = 3
+max_turn_counter = 1
+
+[resource]
+script = ExtResource("3_4j35b")
+stats = SubResource("Resource_dq2ik")
+skills = [ExtResource("4_homxb"), ExtResource("5_s6qv0"), ExtResource("6_wiln2")]
+job_name = "CHAR_PANTHER_HEAD"
+portrait = ExtResource("2_4y7q8")
+full_portrait = ExtResource("1_7620b")
+description = "Lin Chong, the Panther Head. Eleven years the Commission's finest arms instructor, until the Director's son wanted his wife and a predicted crime took the rest. Speaks in short, controlled sentences. His fury stays on a leash. He teaches anyone who asks."

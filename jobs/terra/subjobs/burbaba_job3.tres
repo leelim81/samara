@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="Job" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/terra/subjobs/burbaba_job3_full.png" id="1_cl23s"]
+[ext_resource type="Texture2D" path="res://assets/terra/subjobs/burbaba_job3_token.png" id="2_d08yw"]
+[ext_resource type="Script" path="res://jobs/job.gd" id="3_r2l2j"]
+[ext_resource type="Resource" path="res://skills/resources/terra/fire.tres" id="4_ncrre"]
+[ext_resource type="Resource" path="res://skills/resources/terra/ice.tres" id="5_kmn1s"]
+[ext_resource type="Resource" path="res://skills/resources/terra/heal.tres" id="6_7q3mj"]
+[ext_resource type="Script" path="res://stats/stats.gd" id="7_3qv70"]
+
+[sub_resource type="Resource" id="Resource_d73xt"]
+script = ExtResource("7_3qv70")
+unit_name = "CHAR_BLUE_FACED_BEAST"
+unit_type = "HUMAN"
+health_percentage = 2.5599600000000002
+attack_percentage = 5.760000000000001
+defense_percentage = 6.16
+spiritual_attack_percentage = 4.76
+spiritual_defense_percentage = 3.9199999999999995
+same_attribute_resistance = 0.5
+weapon_type = 3
+max_turn_counter = 1
+
+[resource]
+script = ExtResource("3_r2l2j")
+stats = SubResource("Resource_d73xt")
+skills = [ExtResource("4_ncrre"), ExtResource("5_kmn1s"), ExtResource("6_7q3mj")]
+job_name = "CHAR_BLUE_FACED_BEAST"
+portrait = ExtResource("2_d08yw")
+full_portrait = ExtResource("1_cl23s")
+description = "Yang Zhi, the Blue-Faced Beast, born marked and born unlucky. Decorated captain, demoted, ruined, and flagged for a crime the system wrote around him. Keeps a ledger of his bad luck. Duty is the one thing that never left."

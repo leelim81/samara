@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="Job" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/terra/subjobs/amazora_job3_full.png" id="1_t0qji"]
+[ext_resource type="Texture2D" path="res://assets/terra/subjobs/amazora_job3_token.png" id="2_fe445"]
+[ext_resource type="Script" path="res://jobs/job.gd" id="3_dxbxy"]
+[ext_resource type="Resource" path="res://skills/resources/terra/fire.tres" id="4_hsgko"]
+[ext_resource type="Resource" path="res://skills/resources/terra/ice.tres" id="5_jvkbq"]
+[ext_resource type="Resource" path="res://skills/resources/terra/heal.tres" id="6_ajvoa"]
+[ext_resource type="Script" path="res://stats/stats.gd" id="7_eav68"]
+
+[sub_resource type="Resource" id="Resource_k2qlt"]
+script = ExtResource("7_eav68")
+unit_name = "CHAR_THE_WITCH"
+unit_type = "HUMAN"
+health_percentage = 2.5839600000000003
+attack_percentage = 4.5
+defense_percentage = 5.28
+spiritual_attack_percentage = 10.54
+spiritual_defense_percentage = 6.72
+same_attribute_resistance = 0.5
+attribute = 2
+weapon_type = 3
+max_turn_counter = 1
+
+[resource]
+script = ExtResource("3_dxbxy")
+stats = SubResource("Resource_k2qlt")
+skills = [ExtResource("4_hsgko"), ExtResource("5_jvkbq"), ExtResource("6_ajvoa")]
+job_name = "CHAR_THE_WITCH"
+portrait = ExtResource("2_fe445")
+full_portrait = ExtResource("1_t0qji")
+description = "Sun Erniang, the Witch. Kept the border inn every road warned you about and every traveler ended up loving. Feeds both sides, threatens to sell the rude ones, means the menu. Fiercely protective of her own."

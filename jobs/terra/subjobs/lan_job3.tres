@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="Job" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/terra/subjobs/lan_job3_full.png" id="1_xghav"]
+[ext_resource type="Texture2D" path="res://assets/terra/subjobs/lan_job3_token.png" id="2_2d745"]
+[ext_resource type="Script" path="res://jobs/job.gd" id="3_dcxqu"]
+[ext_resource type="Resource" path="res://skills/resources/terra/fire.tres" id="4_u61ox"]
+[ext_resource type="Resource" path="res://skills/resources/terra/ice.tres" id="5_bvv5a"]
+[ext_resource type="Resource" path="res://skills/resources/terra/heal.tres" id="6_ttf34"]
+[ext_resource type="Script" path="res://stats/stats.gd" id="7_ykpcw"]
+
+[sub_resource type="Resource" id="Resource_txfqq"]
+script = ExtResource("7_ykpcw")
+unit_name = "CHAR_LAN"
+unit_type = "HUMAN"
+health_percentage = 2.3840399999999997
+attack_percentage = 4.14
+defense_percentage = 5.28
+spiritual_attack_percentage = 9.86
+spiritual_defense_percentage = 6.72
+same_attribute_resistance = 0.5
+attribute = 1
+weapon_type = 3
+max_turn_counter = 1
+
+[resource]
+script = ExtResource("3_dcxqu")
+stats = SubResource("Resource_txfqq")
+skills = [ExtResource("4_u61ox"), ExtResource("5_bvv5a"), ExtResource("6_ttf34")]
+job_name = "CHAR_LAN"
+portrait = ExtResource("2_2d745")
+full_portrait = ExtResource("1_xghav")
+description = "Xie Bao, the Twin-Tailed Scorpion. The other hunter, the one who starts the sentences. Between her and her brother nothing in the hills goes untracked, including the things being herded."

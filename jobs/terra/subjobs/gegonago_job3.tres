@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="Job" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/terra/subjobs/gegonago_job3_full.png" id="1_6cai3"]
+[ext_resource type="Texture2D" path="res://assets/terra/subjobs/gegonago_job3_token.png" id="2_vtj6t"]
+[ext_resource type="Script" path="res://jobs/job.gd" id="3_qyjr4"]
+[ext_resource type="Resource" path="res://skills/resources/terra/fire.tres" id="4_fy4q3"]
+[ext_resource type="Resource" path="res://skills/resources/terra/ice.tres" id="5_y0b2v"]
+[ext_resource type="Resource" path="res://skills/resources/terra/heal.tres" id="6_ly0ln"]
+[ext_resource type="Script" path="res://stats/stats.gd" id="7_eqy6j"]
+
+[sub_resource type="Resource" id="Resource_1m54y"]
+script = ExtResource("7_eqy6j")
+unit_name = "CHAR_THE_TATTOOED_MONK"
+unit_type = "HUMAN"
+health_percentage = 2.7359999999999998
+attack_percentage = 6.3
+defense_percentage = 6.16
+spiritual_attack_percentage = 3.74
+spiritual_defense_percentage = 4.199999999999999
+same_attribute_resistance = 0.5
+weapon_type = 3
+max_turn_counter = 1
+
+[resource]
+script = ExtResource("3_qyjr4")
+stats = SubResource("Resource_1m54y")
+skills = [ExtResource("4_fy4q3"), ExtResource("5_y0b2v"), ExtResource("6_ly0ln")]
+job_name = "CHAR_THE_TATTOOED_MONK"
+portrait = ExtResource("2_vtj6t")
+full_portrait = ExtResource("1_6cai3")
+description = "Lu Zhishen, the Tattooed Monk. Hit an extortionist three times; the man stopped being alive; the monastery's robes fit well enough. Keeps score of everything, believes in soup, and loves his sworn brother louder than any bell."

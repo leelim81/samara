@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="Job" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/terra/subjobs/eileen_job2_full.png" id="1_0qw3y"]
+[ext_resource type="Texture2D" path="res://assets/terra/subjobs/eileen_job2_token.png" id="2_vrjej"]
+[ext_resource type="Script" path="res://jobs/job.gd" id="3_75g3u"]
+[ext_resource type="Resource" path="res://skills/resources/terra/slash.tres" id="4_qlwes"]
+[ext_resource type="Resource" path="res://skills/resources/terra/counterattack.tres" id="5_1vehm"]
+[ext_resource type="Script" path="res://stats/stats.gd" id="6_u8wx6"]
+
+[sub_resource type="Resource" id="Resource_r6q6l"]
+script = ExtResource("6_u8wx6")
+unit_name = "CHAR_THE_WISDOM_STAR"
+unit_type = "HUMAN"
+health_percentage = 2.7813799999999995
+attack_percentage = 4.6
+defense_percentage = 5.04
+spiritual_attack_percentage = 6.8
+spiritual_defense_percentage = 6.75
+same_attribute_resistance = 0.5
+attribute = 9
+weapon_type = 3
+max_turn_counter = 1
+
+[resource]
+script = ExtResource("3_75g3u")
+stats = SubResource("Resource_r6q6l")
+skills = [ExtResource("4_qlwes"), ExtResource("5_1vehm")]
+job_name = "CHAR_THE_WISDOM_STAR"
+portrait = ExtResource("2_vrjej")
+full_portrait = ExtResource("1_0qw3y")
+description = "Wu Yong, the Wisdom Star. She built the Commission's prediction models until she read a file she could not unread. Sees three moves ahead and says so; will spend the war wishing she saw four. Plans are how she prays."

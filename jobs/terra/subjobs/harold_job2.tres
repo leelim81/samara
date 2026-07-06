@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="Job" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/terra/subjobs/harold_job2_full.png" id="1_4yv64"]
+[ext_resource type="Texture2D" path="res://assets/terra/subjobs/harold_job2_token.png" id="2_n2gcx"]
+[ext_resource type="Script" path="res://jobs/job.gd" id="3_hd33s"]
+[ext_resource type="Resource" path="res://skills/resources/terra/slash.tres" id="4_xjd61"]
+[ext_resource type="Resource" path="res://skills/resources/terra/counterattack.tres" id="5_x5bgc"]
+[ext_resource type="Script" path="res://stats/stats.gd" id="6_v4n3h"]
+
+[sub_resource type="Resource" id="Resource_tju2v"]
+script = ExtResource("6_v4n3h")
+unit_name = "CHAR_LITTLE_LI_GUANG"
+unit_type = "HUMAN"
+health_percentage = 3.3693799999999996
+attack_percentage = 8.51
+defense_percentage = 7.279999999999999
+spiritual_attack_percentage = 2.8
+spiritual_defense_percentage = 4.0
+same_attribute_resistance = 0.5
+weapon_type = 1
+max_turn_counter = 1
+
+[resource]
+script = ExtResource("3_hd33s")
+stats = SubResource("Resource_tju2v")
+skills = [ExtResource("4_xjd61"), ExtResource("5_x5bgc")]
+job_name = "CHAR_LITTLE_LI_GUANG"
+portrait = ExtResource("2_n2gcx")
+full_portrait = ExtResource("1_4yv64")
+description = "Hua Rong, called Little Li Guang after the old archer who split stones. The finest shot in the enforcement ranks, retired by his own conscience at four hundred meters. Quick to laugh, quicker to aim, never lets anyone forget either."

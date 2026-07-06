@@ -37,12 +37,14 @@ func _run() -> void:
 	sd.add_owned_companion("res://companions/resources/terra/striker_module.tres")
 	sd.equipped_companions[uid0] = "res://companions/resources/terra/striker_module.tres"
 
-	for _n in 8:
-		j0.register_skill_use(0)
-
 	j0.add_luck(7)
 	j0.metamorphose()
-	j0.unlock_reforge()
+	j0.unlock_next_job()
+
+	# Skill uses are per-job; switching jobs resets them, so register after the
+	# switch (on the now-active job's skill).
+	for _n in 8:
+		j0.register_skill_use(0)
 
 	var gained: int = j0.gain_exp(20000)
 	var awakened_atk: int = j0.stats.attack
@@ -93,9 +95,9 @@ func _run() -> void:
 	_check("skill_boost restored", is_equal_approx(r.jobs[0].get_skill_boost(0), 0.02))
 	_check("luck restored", r.jobs[0].luck == 7)
 	_check("awakened restored", r.jobs[0].awakened == true)
-	_check("reforge unlocked restored", r.jobs[0].reforge_unlocked == true)
-	_check("reforged restored", r.jobs[0].reforged == true)
-	_check("reforge+awaken stats re-applied on load", r.jobs[0].stats.attack == awakened_atk)
+	_check("unlocked_jobs restored", r.jobs[0].unlocked_jobs == 2)
+	_check("active_job restored", r.jobs[0].active_job == 1)
+	_check("job+awaken stats re-applied on load", r.jobs[0].stats.attack == awakened_atk)
 
 	print("test_save_roundtrip: %s" % ("PASS" if _f == 0 else "FAIL (%d)" % _f))
 	quit(1 if _f > 0 else 0)

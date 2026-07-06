@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="Job" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/terra/subjobs/kuscah_job3_full.png" id="1_uofi6"]
+[ext_resource type="Texture2D" path="res://assets/terra/subjobs/kuscah_job3_token.png" id="2_x07s3"]
+[ext_resource type="Script" path="res://jobs/job.gd" id="3_m4vnb"]
+[ext_resource type="Resource" path="res://skills/resources/terra/fire.tres" id="4_4fllq"]
+[ext_resource type="Resource" path="res://skills/resources/terra/ice.tres" id="5_jcnvj"]
+[ext_resource type="Resource" path="res://skills/resources/terra/heal.tres" id="6_r0b2n"]
+[ext_resource type="Script" path="res://stats/stats.gd" id="7_g5pus"]
+
+[sub_resource type="Resource" id="Resource_ba123"]
+script = ExtResource("7_g5pus")
+unit_name = "KUSCAH"
+unit_type = "HUMAN"
+health_percentage = 2.34396
+attack_percentage = 2.16
+defense_percentage = 3.74
+spiritual_attack_percentage = 9.86
+spiritual_defense_percentage = 7.279999999999999
+same_attribute_resistance = 0.5
+weapon_type = 3
+max_turn_counter = 1
+
+[resource]
+script = ExtResource("3_m4vnb")
+stats = SubResource("Resource_ba123")
+skills = [ExtResource("4_4fllq"), ExtResource("5_jcnvj"), ExtResource("6_r0b2n")]
+job_name = "KUSCAH"
+portrait = ExtResource("2_x07s3")
+full_portrait = ExtResource("1_uofi6")
+description = "An Daoquan, the Skilled Doctor, struck off the register for treating the unregistered. No wound he cannot close, no patient he will not scold. The complaining is how he says he cares."

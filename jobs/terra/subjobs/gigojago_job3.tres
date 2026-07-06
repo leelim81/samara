@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="Job" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/terra/subjobs/gigojago_job3_full.png" id="1_dx3sy"]
+[ext_resource type="Texture2D" path="res://assets/terra/subjobs/gigojago_job3_token.png" id="2_r28vg"]
+[ext_resource type="Script" path="res://jobs/job.gd" id="3_o33kw"]
+[ext_resource type="Resource" path="res://skills/resources/terra/fire.tres" id="4_qdosq"]
+[ext_resource type="Resource" path="res://skills/resources/terra/ice.tres" id="5_qsin0"]
+[ext_resource type="Resource" path="res://skills/resources/terra/heal.tres" id="6_dws8t"]
+[ext_resource type="Script" path="res://stats/stats.gd" id="7_avljv"]
+
+[sub_resource type="Resource" id="Resource_ode11"]
+script = ExtResource("7_avljv")
+unit_name = "CHAR_WHITE_STREAK_IN_THE_WAVES"
+unit_type = "HUMAN"
+health_percentage = 3.05604
+attack_percentage = 4.32
+defense_percentage = 5.06
+spiritual_attack_percentage = 10.88
+spiritual_defense_percentage = 6.4399999999999995
+same_attribute_resistance = 0.5
+attribute = 3
+weapon_type = 3
+max_turn_counter = 1
+
+[resource]
+script = ExtResource("3_o33kw")
+stats = SubResource("Resource_ode11")
+skills = [ExtResource("4_qdosq"), ExtResource("5_qsin0"), ExtResource("6_dws8t")]
+job_name = "CHAR_WHITE_STREAK_IN_THE_WAVES"
+portrait = ExtResource("2_r28vg")
+full_portrait = ExtResource("1_dx3sy")
+description = "Zhang Shun, the White Streak in the Waves. Fish-market royalty and the best diver the river ever raised. Quiet on land, unbeatable in water, forever inviting people to swim. The water's honest, he says. So is he."

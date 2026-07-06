@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="Job" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/terra/subjobs/sorman_job2_full.png" id="1_2ewyt"]
+[ext_resource type="Texture2D" path="res://assets/terra/subjobs/sorman_job2_token.png" id="2_w6nay"]
+[ext_resource type="Script" path="res://jobs/job.gd" id="3_qsffh"]
+[ext_resource type="Resource" path="res://skills/resources/terra/slash.tres" id="4_3we63"]
+[ext_resource type="Resource" path="res://skills/resources/terra/counterattack.tres" id="5_xu5iq"]
+[ext_resource type="Script" path="res://stats/stats.gd" id="6_wihjn"]
+
+[sub_resource type="Resource" id="Resource_xgofv"]
+script = ExtResource("6_wihjn")
+unit_name = "CHAR_MARVELOUS_TRAVELER"
+unit_type = "HUMAN"
+health_percentage = 2.69738
+attack_percentage = 2.76
+defense_percentage = 5.04
+spiritual_attack_percentage = 5.8
+spiritual_defense_percentage = 6.5
+same_attribute_resistance = 0.5
+attribute = 9
+weapon_type = 3
+max_turn_counter = 1
+
+[resource]
+script = ExtResource("3_qsffh")
+stats = SubResource("Resource_xgofv")
+skills = [ExtResource("4_3we63"), ExtResource("5_xu5iq")]
+job_name = "CHAR_MARVELOUS_TRAVELER"
+portrait = ExtResource("2_w6nay")
+full_portrait = ExtResource("1_2ewyt")
+description = "Dai Zong, the Marvelous Traveler. The fastest legs in the city, method undisclosed. First to know everything, last to sit still, and everyone alive owes him a noodle. Payable in advance."

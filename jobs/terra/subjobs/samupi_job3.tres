@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="Job" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/terra/subjobs/samupi_job3_full.png" id="1_g23jc"]
+[ext_resource type="Texture2D" path="res://assets/terra/subjobs/samupi_job3_token.png" id="2_fjxac"]
+[ext_resource type="Script" path="res://jobs/job.gd" id="3_7kl05"]
+[ext_resource type="Resource" path="res://skills/resources/terra/fire.tres" id="4_l4h6x"]
+[ext_resource type="Resource" path="res://skills/resources/terra/ice.tres" id="5_bbgx7"]
+[ext_resource type="Resource" path="res://skills/resources/terra/heal.tres" id="6_8fnub"]
+[ext_resource type="Script" path="res://stats/stats.gd" id="7_kcx1h"]
+
+[sub_resource type="Resource" id="Resource_k20c5"]
+script = ExtResource("7_kcx1h")
+unit_name = "CHAR_TEN_FEET_OF_STEEL"
+unit_type = "HUMAN"
+health_percentage = 2.48796
+attack_percentage = 5.58
+defense_percentage = 5.720000000000001
+spiritual_attack_percentage = 8.5
+spiritual_defense_percentage = 5.6
+same_attribute_resistance = 0.5
+weapon_type = 3
+max_turn_counter = 1
+
+[resource]
+script = ExtResource("3_7kl05")
+stats = SubResource("Resource_k20c5")
+skills = [ExtResource("4_l4h6x"), ExtResource("5_bbgx7"), ExtResource("6_8fnub")]
+job_name = "CHAR_TEN_FEET_OF_STEEL"
+portrait = ExtResource("2_fjxac")
+full_portrait = ExtResource("1_g23jc")
+description = "Hu Sanniang, Ten Feet of Steel. Runs the last honest scrapyard on the lake road and settles fights with a tow cable. Yard rules apply everywhere: anything unattended gets towed, including brawling colleagues."

@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="Job" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/terra/subjobs/iskar_job2_full.png" id="1_cd5ao"]
+[ext_resource type="Texture2D" path="res://assets/terra/subjobs/iskar_job2_token.png" id="2_2550j"]
+[ext_resource type="Script" path="res://jobs/job.gd" id="3_au3va"]
+[ext_resource type="Resource" path="res://skills/resources/terra/slash.tres" id="4_85ygp"]
+[ext_resource type="Resource" path="res://skills/resources/terra/counterattack.tres" id="5_65flm"]
+[ext_resource type="Script" path="res://stats/stats.gd" id="6_hsh6d"]
+
+[sub_resource type="Resource" id="Resource_jpyk1"]
+script = ExtResource("6_hsh6d")
+unit_name = "CHAR_THE_WANDERER"
+unit_type = "HUMAN"
+health_percentage = 3.62138
+attack_percentage = 6.4399999999999995
+defense_percentage = 7.279999999999999
+spiritual_attack_percentage = 7.2
+spiritual_defense_percentage = 7.0
+same_attribute_resistance = 0.5
+weapon_type = 1
+max_turn_counter = 1
+
+[resource]
+script = ExtResource("3_au3va")
+stats = SubResource("Resource_jpyk1")
+skills = [ExtResource("4_85ygp"), ExtResource("5_65flm")]
+job_name = "CHAR_THE_WANDERER"
+portrait = ExtResource("2_2550j")
+full_portrait = ExtResource("1_cd5ao")
+description = "Xie Zhen, the Two-Headed Snake. A mountain hunter who reads beast-sign like weather reports, terse as a snapped twig. His sister finishes his sentences, usually about a week later."

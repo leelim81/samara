@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="Job" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/terra/subjobs/manmer_job3_full.png" id="1_b8jlp"]
+[ext_resource type="Texture2D" path="res://assets/terra/subjobs/manmer_job3_token.png" id="2_ilu6p"]
+[ext_resource type="Script" path="res://jobs/job.gd" id="3_xxg3f"]
+[ext_resource type="Resource" path="res://skills/resources/terra/fire.tres" id="4_ffgal"]
+[ext_resource type="Resource" path="res://skills/resources/terra/ice.tres" id="5_kdbha"]
+[ext_resource type="Resource" path="res://skills/resources/terra/heal.tres" id="6_81m4k"]
+[ext_resource type="Script" path="res://stats/stats.gd" id="7_fvlfm"]
+
+[sub_resource type="Resource" id="Resource_s8ul7"]
+script = ExtResource("7_fvlfm")
+unit_name = "CHAR_FEATHERLESS_ARROW"
+unit_type = "HUMAN"
+health_percentage = 2.65596
+attack_percentage = 5.58
+defense_percentage = 6.38
+spiritual_attack_percentage = 4.76
+spiritual_defense_percentage = 4.76
+same_attribute_resistance = 0.5
+weapon_type = 3
+max_turn_counter = 1
+
+[resource]
+script = ExtResource("3_xxg3f")
+stats = SubResource("Resource_s8ul7")
+skills = [ExtResource("4_ffgal"), ExtResource("5_kdbha"), ExtResource("6_81m4k")]
+job_name = "CHAR_FEATHERLESS_ARROW"
+portrait = ExtResource("2_ilu6p")
+full_portrait = ExtResource("1_b8jlp")
+description = "Zhang Qing, the Featherless Arrow. Never lost a fight he could end with one thrown stone, and he has never needed two. Easy-going, deadly accurate, and firmly against ceremony, including standing up."

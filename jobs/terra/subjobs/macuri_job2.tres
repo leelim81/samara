@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="Job" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/terra/subjobs/macuri_job2_full.png" id="1_iwafe"]
+[ext_resource type="Texture2D" path="res://assets/terra/subjobs/macuri_job2_token.png" id="2_fxo3s"]
+[ext_resource type="Script" path="res://jobs/job.gd" id="3_0euw6"]
+[ext_resource type="Resource" path="res://skills/resources/terra/slash.tres" id="4_ch1py"]
+[ext_resource type="Resource" path="res://skills/resources/terra/counterattack.tres" id="5_vuxxb"]
+[ext_resource type="Script" path="res://stats/stats.gd" id="6_lyyvh"]
+
+[sub_resource type="Resource" id="Resource_qtk4p"]
+script = ExtResource("6_lyyvh")
+unit_name = "MACURI"
+unit_type = "LIZARDFOLK"
+health_percentage = 2.968
+attack_percentage = 9.2
+defense_percentage = 7.0
+spiritual_attack_percentage = 2.4
+spiritual_defense_percentage = 3.5
+same_attribute_resistance = 0.5
+weapon_type = 2
+max_turn_counter = 1
+
+[resource]
+script = ExtResource("3_0euw6")
+stats = SubResource("Resource_qtk4p")
+skills = [ExtResource("4_ch1py"), ExtResource("5_vuxxb")]
+job_name = "MACURI"
+portrait = ExtResource("2_fxo3s")
+full_portrait = ExtResource("1_iwafe")
+description = "Mu Hong, the Unrestrained. He fed half a district before the Commission drowned it, and kept feeding it after. Gentle past all reason until pushed, then immovable. Carries crates, carries people, carries on."

@@ -70,6 +70,8 @@ SWEEP,Sweep,Barrido
 TAIL_SWEEP,Tail sweep,Barrido de cola
 SHOOT,Gunshot,Disparo
 SLASH,Slash,Corte
+ICE,Ice,Hielo
+COUNTERATTACK,Counterattack,Contraataque
 WIDE_BITE,Wide bite,Mordida ancha
 VERTICAL_STAB,Vertical stab,Puñalada vertical
 CIRCLE_SLASH,Circle slash,Corte circular
@@ -330,6 +332,12 @@ EX_TOWER_TRIAL_CAPTION,"The old tower's gauntlet. Elite parts await the strong."
 AWAKEN,Awaken,Despertar
 AWAKENED,Awakened,Despierto
 AWAKEN_CONFIRM,Tap to confirm,Toca para confirmar
-REFORGE,Reforge,Reforjar
-REVERT,Revert,Revertir
-REFORGE_CONFIRM,Tap to confirm,Toca para confirmar
+JOBS,Jobs,Oficios
+JOB_ROLE_1,Prime,Primaria
+JOB_ROLE_2,Vanguard,Vanguardia
+JOB_ROLE_3,Adept,Adepto
+JOB_ACTIVE,Active,Activo
+SWITCH,Switch,Cambiar
+UNLOCK,Unlock,Desbloquear
+UNLOCK_CONFIRM,Tap to confirm,Toca para confirmar
+LOCKED,Locked,Bloqueado

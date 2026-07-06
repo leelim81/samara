@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="Job" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/terra/subjobs/maralme_job3_full.png" id="1_brvmv"]
+[ext_resource type="Texture2D" path="res://assets/terra/subjobs/maralme_job3_token.png" id="2_wv75t"]
+[ext_resource type="Script" path="res://jobs/job.gd" id="3_bi6sr"]
+[ext_resource type="Resource" path="res://skills/resources/terra/fire.tres" id="4_x8rwp"]
+[ext_resource type="Resource" path="res://skills/resources/terra/ice.tres" id="5_yh2cu"]
+[ext_resource type="Resource" path="res://skills/resources/terra/heal.tres" id="6_r7mao"]
+[ext_resource type="Script" path="res://stats/stats.gd" id="7_r58i7"]
+
+[sub_resource type="Resource" id="Resource_4imsk"]
+script = ExtResource("7_r58i7")
+unit_name = "CHAR_FIERY_THUNDERBOLT"
+unit_type = "HUMAN"
+health_percentage = 2.5839600000000003
+attack_percentage = 4.86
+defense_percentage = 6.16
+spiritual_attack_percentage = 10.54
+spiritual_defense_percentage = 6.16
+same_attribute_resistance = 0.5
+attribute = 2
+weapon_type = 3
+max_turn_counter = 1
+
+[resource]
+script = ExtResource("3_bi6sr")
+stats = SubResource("Resource_4imsk")
+skills = [ExtResource("4_x8rwp"), ExtResource("5_yh2cu"), ExtResource("6_r7mao")]
+job_name = "CHAR_FIERY_THUNDERBOLT"
+portrait = ExtResource("2_wv75t")
+full_portrait = ExtResource("1_brvmv")
+description = "Qin Ming, the Fiery Thunderbolt. Garrison champion, temper first, orders second. The Commission burned his garrison for the crime of losing to the crew, so now he fights for the crew. Loudly. Apologizes by hitting things for you."

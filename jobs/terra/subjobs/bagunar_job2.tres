@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="Job" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/terra/subjobs/bagunar_job2_full.png" id="1_bh7ly"]
+[ext_resource type="Texture2D" path="res://assets/terra/subjobs/bagunar_job2_token.png" id="2_m5p4s"]
+[ext_resource type="Script" path="res://jobs/job.gd" id="3_08f0l"]
+[ext_resource type="Resource" path="res://skills/resources/terra/slash.tres" id="4_3gkfj"]
+[ext_resource type="Resource" path="res://skills/resources/terra/counterattack.tres" id="5_0ahu5"]
+[ext_resource type="Script" path="res://stats/stats.gd" id="6_s02vf"]
+
+[sub_resource type="Resource" id="Resource_r4kg5"]
+script = ExtResource("6_s02vf")
+unit_name = "CHAR_JADE_UNICORN"
+unit_type = "HUMAN"
+health_percentage = 3.3413799999999996
+attack_percentage = 5.52
+defense_percentage = 6.4399999999999995
+spiritual_attack_percentage = 6.0
+spiritual_defense_percentage = 6.0
+same_attribute_resistance = 0.5
+attribute = 1
+max_turn_counter = 1
+
+[resource]
+script = ExtResource("3_08f0l")
+stats = SubResource("Resource_r4kg5")
+skills = [ExtResource("4_3gkfj"), ExtResource("5_0ahu5")]
+job_name = "CHAR_JADE_UNICORN"
+portrait = ExtResource("2_m5p4s")
+full_portrait = ExtResource("1_bh7ly")
+description = "Lu Junyi, the Jade Unicorn. He built the perfect life, and his own operations chief filed it away in one afternoon. Boardroom manners, fencing-champion hands, and a very precise anger. Terrible once finally roused."

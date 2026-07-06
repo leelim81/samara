@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="Job" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/terra/subjobs/bahl_job3_full.png" id="1_afobu"]
+[ext_resource type="Texture2D" path="res://assets/terra/subjobs/bahl_job3_token.png" id="2_rbdcd"]
+[ext_resource type="Script" path="res://jobs/job.gd" id="3_3okbn"]
+[ext_resource type="Resource" path="res://skills/resources/terra/fire.tres" id="4_5538x"]
+[ext_resource type="Resource" path="res://skills/resources/terra/ice.tres" id="5_k4bq1"]
+[ext_resource type="Resource" path="res://skills/resources/terra/heal.tres" id="6_wi6ck"]
+[ext_resource type="Script" path="res://stats/stats.gd" id="7_snw66"]
+
+[sub_resource type="Resource" id="Resource_wph3b"]
+script = ExtResource("7_snw66")
+unit_name = "BAHL"
+unit_type = "HUMAN"
+health_percentage = 2.568
+attack_percentage = 5.58
+defense_percentage = 5.720000000000001
+spiritual_attack_percentage = 4.42
+spiritual_defense_percentage = 4.199999999999999
+same_attribute_resistance = 0.5
+weapon_type = 3
+max_turn_counter = 1
+
+[resource]
+script = ExtResource("3_3okbn")
+stats = SubResource("Resource_wph3b")
+skills = [ExtResource("4_5538x"), ExtResource("5_k4bq1"), ExtResource("6_wi6ck")]
+job_name = "BAHL"
+portrait = ExtResource("2_rbdcd")
+full_portrait = ExtResource("1_afobu")
+description = "Shi Jin, called Nine Dragons for the ink on his arms. He was three exams from his assigned future when the Commission revised it without asking. Brave, generous, a little reckless, and learning what each of those costs. Hates being called kid. Counts his dragons when he is nervous."

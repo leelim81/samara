@@ -69,7 +69,7 @@ func initialize_from_data(job: Job, base_stats: Stats, current_stats: Stats, lev
 	_update_exp_label(job, level)
 	_update_train_button(job, is_in_battle)
 	_update_awaken_button(job)
-	_update_reforge_button(job)
+	_update_jobs_button(job)
 	_update_desc_label(job)
 
 	# In battle the panel reflects the unit's live stats; otherwise its base
@@ -225,16 +225,11 @@ const AWAKEN_COIN_COST: int = 3000
 const AWAKEN_MATERIAL_ID: String = "core"
 const AWAKEN_MATERIAL_COUNT: int = 1
 
-# Reforge (sub-job): unlocked once with coins + materials, then toggles freely.
-const REFORGE_COIN_COST: int = 2000
-const REFORGE_MATERIAL: Dictionary = {"cell": 2}
-
 var _train_button: Button = null
 var _companion_button: Button = null
 var _awaken_button: Button = null
 var _awaken_confirming: bool = false
-var _reforge_button: Button = null
-var _reforge_confirming: bool = false
+var _jobs_button: Button = null
 var _wallet_label: Label = null
 var _train_job: Job = null
 
@@ -293,17 +288,18 @@ func _update_train_button(job: Job, is_in_battle: bool) -> void:
 		_awaken_button.pressed.connect(_on_awaken_pressed)
 		awaken_row.add_child(_awaken_button)
 
-		var reforge_row := HBoxContainer.new()
-		reforge_row.name = "ReforgeRow"
-		meta.add_child(reforge_row)
-		meta.move_child(reforge_row, awaken_row.get_index() + 1)
+		var jobs_row := HBoxContainer.new()
+		jobs_row.name = "JobsRow"
+		meta.add_child(jobs_row)
+		meta.move_child(jobs_row, awaken_row.get_index() + 1)
 
-		_reforge_button = Button.new()
-		_reforge_button.custom_minimum_size = Vector2(0, 40)
-		_reforge_button.add_theme_font_size_override("font_size", 14)
-		_reforge_button.add_theme_stylebox_override("normal", _gold_button_style())
-		_reforge_button.pressed.connect(_on_reforge_pressed)
-		reforge_row.add_child(_reforge_button)
+		_jobs_button = Button.new()
+		_jobs_button.custom_minimum_size = Vector2(0, 40)
+		_jobs_button.add_theme_font_size_override("font_size", 14)
+		_jobs_button.add_theme_stylebox_override("normal", _gold_button_style())
+		_jobs_button.text = tr("JOBS")
+		_jobs_button.pressed.connect(_on_jobs_pressed)
+		jobs_row.add_child(_jobs_button)
 
 	var row_node: Node = _train_button.get_parent()
 	row_node.visible = show
@@ -314,8 +310,8 @@ func _update_train_button(job: Job, is_in_battle: bool) -> void:
 	if _awaken_button != null:
 		_awaken_button.get_parent().visible = show
 
-	if _reforge_button != null:
-		_reforge_button.get_parent().visible = show
+	if _jobs_button != null:
+		_jobs_button.get_parent().visible = show
 
 	if not show:
 		return
@@ -395,45 +391,19 @@ func _on_awaken_pressed() -> void:
 		initialize(_train_job, _train_job.level)
 
 
-func _update_reforge_button(job: Job) -> void:
-	if _reforge_button == null:
+func _update_jobs_button(job: Job) -> void:
+	if _jobs_button == null:
 		return
 
-	_reforge_confirming = false
+	var owned: bool = GameData.save_data != null and GameData.save_data.jobs.has(job)
 
-	if job.reforge_unlocked:
-		_reforge_button.text = tr("REVERT") if job.reforged else tr("REFORGE")
-		_reforge_button.disabled = false
-		_reforge_button.tooltip_text = ""
-		return
-
-	var affordable: bool = Purchase.can_afford(GameData.save_data, REFORGE_COIN_COST, REFORGE_MATERIAL)
-	_reforge_button.text = tr("REFORGE")
-	_reforge_button.disabled = not affordable
-	_reforge_button.tooltip_text = "%dc + 2 %s" % [REFORGE_COIN_COST, tr("ITEM_CELL")]
+	# Only shown when the character actually has more than one job.
+	_jobs_button.get_parent().visible = owned and job.job_count() > 1
 
 
-func _on_reforge_pressed() -> void:
-	if _train_job == null:
-		return
-
-	# Once unlocked, switching builds is free and instant.
-	if _train_job.reforge_unlocked:
-		_train_job.set_reforged(not _train_job.reforged)
-		GameData.save()
-		initialize(_train_job, _train_job.level)
-		return
-
-	# First unlock is a purchase; confirm since it consumes materials.
-	if not _reforge_confirming:
-		_reforge_confirming = true
-		_reforge_button.text = tr("REFORGE_CONFIRM")
-		return
-
-	if Purchase.spend(GameData.save_data, REFORGE_COIN_COST, REFORGE_MATERIAL):
-		_train_job.unlock_reforge()
-		GameData.save()
-		initialize(_train_job, _train_job.level)
+func _on_jobs_pressed() -> void:
+	if _train_job != null:
+		navigate("res://ui/job_menu.tscn", _train_job)
 
 
 func _update_exp_label(job: Job, level: int) -> void:

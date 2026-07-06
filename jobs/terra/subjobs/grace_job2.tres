@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="Job" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/terra/subjobs/grace_job2_full.png" id="1_ghcgt"]
+[ext_resource type="Texture2D" path="res://assets/terra/subjobs/grace_job2_token.png" id="2_bnr84"]
+[ext_resource type="Script" path="res://jobs/job.gd" id="3_ktcva"]
+[ext_resource type="Resource" path="res://skills/resources/terra/slash.tres" id="4_iyvax"]
+[ext_resource type="Resource" path="res://skills/resources/terra/counterattack.tres" id="5_8vdc0"]
+[ext_resource type="Script" path="res://stats/stats.gd" id="6_wo28i"]
+
+[sub_resource type="Resource" id="Resource_xftsx"]
+script = ExtResource("6_wo28i")
+unit_name = "GRACE"
+unit_type = "HUMAN"
+health_percentage = 2.968
+attack_percentage = 7.13
+defense_percentage = 6.72
+spiritual_attack_percentage = 3.0
+spiritual_defense_percentage = 4.25
+same_attribute_resistance = 0.5
+weapon_type = 1
+max_turn_counter = 1
+
+[resource]
+script = ExtResource("3_ktcva")
+stats = SubResource("Resource_xftsx")
+skills = [ExtResource("4_iyvax"), ExtResource("5_8vdc0")]
+job_name = "GRACE"
+portrait = ExtResource("2_bnr84")
+full_portrait = ExtResource("1_ghcgt")
+description = "Yan Qing, the Wanderer. A street performer, wrestler, and crossbow shot with an angle for everything and, underneath, a loyalty that never moves. She talks like nothing matters. Watch what she does instead."

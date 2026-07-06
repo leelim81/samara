@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="Job" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/terra/subjobs/unasag_job3_full.png" id="1_5r36u"]
+[ext_resource type="Texture2D" path="res://assets/terra/subjobs/unasag_job3_token.png" id="2_bgmf4"]
+[ext_resource type="Script" path="res://jobs/job.gd" id="3_golpn"]
+[ext_resource type="Resource" path="res://skills/resources/terra/fire.tres" id="4_w1s10"]
+[ext_resource type="Resource" path="res://skills/resources/terra/ice.tres" id="5_efgdk"]
+[ext_resource type="Resource" path="res://skills/resources/terra/heal.tres" id="6_7ur2j"]
+[ext_resource type="Script" path="res://stats/stats.gd" id="7_c5tcv"]
+
+[sub_resource type="Resource" id="Resource_iekgp"]
+script = ExtResource("7_c5tcv")
+unit_name = "CHAR_THE_LIVING_DEATH_GOD"
+unit_type = "HUMAN"
+health_percentage = 2.9120399999999997
+attack_percentage = 4.5
+defense_percentage = 5.06
+spiritual_attack_percentage = 10.54
+spiritual_defense_percentage = 6.72
+same_attribute_resistance = 0.5
+attribute = 3
+weapon_type = 3
+max_turn_counter = 1
+
+[resource]
+script = ExtResource("3_golpn")
+stats = SubResource("Resource_iekgp")
+skills = [ExtResource("4_w1s10"), ExtResource("5_efgdk"), ExtResource("6_7ur2j")]
+job_name = "CHAR_THE_LIVING_DEATH_GOD"
+portrait = ExtResource("2_bgmf4")
+full_portrait = ExtResource("1_5r36u")
+description = "Ruan Xiaoqi, the Living Death-God, wildest of the fisher brothers. The Commission seized the fleet; he considers that a personal invitation. Fearless to the edge of madness, happiest in a losing fight he intends to win."

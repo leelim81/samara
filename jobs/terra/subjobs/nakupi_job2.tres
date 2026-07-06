@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="Job" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/terra/subjobs/nakupi_job2_full.png" id="1_cphkt"]
+[ext_resource type="Texture2D" path="res://assets/terra/subjobs/nakupi_job2_token.png" id="2_k28jk"]
+[ext_resource type="Script" path="res://jobs/job.gd" id="3_5y4lo"]
+[ext_resource type="Resource" path="res://skills/resources/terra/slash.tres" id="4_a1ypa"]
+[ext_resource type="Resource" path="res://skills/resources/terra/counterattack.tres" id="5_8kapx"]
+[ext_resource type="Script" path="res://stats/stats.gd" id="6_nmdvy"]
+
+[sub_resource type="Resource" id="Resource_saec1"]
+script = ExtResource("6_nmdvy")
+unit_name = "CHAR_TWIN_RODS"
+unit_type = "HUMAN"
+health_percentage = 3.0426199999999994
+attack_percentage = 7.13
+defense_percentage = 7.279999999999999
+spiritual_attack_percentage = 4.8
+spiritual_defense_percentage = 5.0
+same_attribute_resistance = 0.5
+max_turn_counter = 1
+
+[resource]
+script = ExtResource("3_5y4lo")
+stats = SubResource("Resource_saec1")
+skills = [ExtResource("4_a1ypa"), ExtResource("5_8kapx")]
+job_name = "CHAR_TWIN_RODS"
+portrait = ExtResource("2_k28jk")
+full_portrait = ExtResource("1_cphkt")
+description = "Huyan Zhuo, the Twin Rods. A marshal with a career of medals who changed sides exactly once, the day he saw which side the cruelty was on. Courteous, disciplined, and finally serving something worth the parade."

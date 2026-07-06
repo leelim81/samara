@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="Job" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/terra/subjobs/korin_job3_full.png" id="1_rmai1"]
+[ext_resource type="Texture2D" path="res://assets/terra/subjobs/korin_job3_token.png" id="2_6e7wt"]
+[ext_resource type="Script" path="res://jobs/job.gd" id="3_lek5k"]
+[ext_resource type="Resource" path="res://skills/resources/terra/fire.tres" id="4_17tuk"]
+[ext_resource type="Resource" path="res://skills/resources/terra/ice.tres" id="5_jvwix"]
+[ext_resource type="Resource" path="res://skills/resources/terra/heal.tres" id="6_oivle"]
+[ext_resource type="Script" path="res://stats/stats.gd" id="7_5m81r"]
+
+[sub_resource type="Resource" id="Resource_p5vhs"]
+script = ExtResource("7_5m81r")
+unit_name = "CHAR_THE_PILGRIM"
+unit_type = "HUMAN"
+health_percentage = 2.53596
+attack_percentage = 5.4
+defense_percentage = 5.5
+spiritual_attack_percentage = 8.5
+spiritual_defense_percentage = 5.88
+same_attribute_resistance = 0.5
+weapon_type = 3
+max_turn_counter = 1
+
+[resource]
+script = ExtResource("3_lek5k")
+stats = SubResource("Resource_p5vhs")
+skills = [ExtResource("4_17tuk"), ExtResource("5_jvwix"), ExtResource("6_oivle")]
+job_name = "CHAR_THE_PILGRIM"
+portrait = ExtResource("2_6e7wt")
+full_portrait = ExtResource("1_rmai1")
+description = "Wu Song, the Pilgrim. Killed a tiger bare-handed, three drinks in, on camera. Buried a brother, avenged him badly, and walked it off in borrowed monk's gear. Pride like armor, and a strict personal rule about drink counts he breaks on schedule."

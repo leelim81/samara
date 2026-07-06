@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="Job" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/terra/subjobs/daiana_job3_full.png" id="1_1ntn0"]
+[ext_resource type="Texture2D" path="res://assets/terra/subjobs/daiana_job3_token.png" id="2_5gfqs"]
+[ext_resource type="Script" path="res://jobs/job.gd" id="3_ocexf"]
+[ext_resource type="Resource" path="res://skills/resources/terra/fire.tres" id="4_l3g0o"]
+[ext_resource type="Resource" path="res://skills/resources/terra/ice.tres" id="5_lf4jy"]
+[ext_resource type="Resource" path="res://skills/resources/terra/heal.tres" id="6_dg4au"]
+[ext_resource type="Script" path="res://stats/stats.gd" id="7_hp4me"]
+
+[sub_resource type="Resource" id="Resource_gwm4a"]
+script = ExtResource("7_hp4me")
+unit_name = "DAIANA"
+unit_type = "STONEFOLK"
+health_percentage = 2.53596
+attack_percentage = 3.24
+defense_percentage = 4.4
+spiritual_attack_percentage = 12.58
+spiritual_defense_percentage = 7.839999999999999
+same_attribute_resistance = 0.5
+attribute = 2
+weapon_type = 3
+max_turn_counter = 1
+
+[resource]
+script = ExtResource("3_ocexf")
+stats = SubResource("Resource_gwm4a")
+skills = [ExtResource("4_l3g0o"), ExtResource("5_lf4jy"), ExtResource("6_dg4au")]
+job_name = "DAIANA"
+portrait = ExtResource("2_5gfqs")
+full_portrait = ExtResource("1_1ntn0")
+description = "Gongsun Sheng, the Dragon in the Clouds. She reads the city's weather: floods, crowds, knocks on doors. The Commission called her a fraud because her readings kept being right. Serene, cryptic, and the first to notice the crew's luck has a shape."

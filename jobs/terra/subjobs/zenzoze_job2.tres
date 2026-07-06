@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="Job" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/terra/subjobs/zenzoze_job2_full.png" id="1_esm85"]
+[ext_resource type="Texture2D" path="res://assets/terra/subjobs/zenzoze_job2_token.png" id="2_5xuw6"]
+[ext_resource type="Script" path="res://jobs/job.gd" id="3_2xyaw"]
+[ext_resource type="Resource" path="res://skills/resources/terra/slash.tres" id="4_poyfv"]
+[ext_resource type="Resource" path="res://skills/resources/terra/counterattack.tres" id="5_730dq"]
+[ext_resource type="Script" path="res://stats/stats.gd" id="6_metb6"]
+
+[sub_resource type="Resource" id="Resource_2cjd6"]
+script = ExtResource("6_metb6")
+unit_name = "CHAR_THE_NINE_DRAGONED"
+unit_type = "HUMAN"
+health_percentage = 3.2386199999999996
+attack_percentage = 5.75
+defense_percentage = 6.4399999999999995
+spiritual_attack_percentage = 6.2
+spiritual_defense_percentage = 6.0
+same_attribute_resistance = 0.5
+attribute = 4
+weapon_type = 2
+max_turn_counter = 1
+
+[resource]
+script = ExtResource("3_2xyaw")
+stats = SubResource("Resource_2cjd6")
+skills = [ExtResource("4_poyfv"), ExtResource("5_730dq")]
+job_name = "CHAR_THE_NINE_DRAGONED"
+portrait = ExtResource("2_5xuw6")
+full_portrait = ExtResource("1_esm85")
+description = "Xu Ning, the Gold Lancer, drill instructor of a lance lineage older than the plates. He came to teach the crew how to open Commission armor and stayed to see it done properly. Feet wider. Class is always in session."
