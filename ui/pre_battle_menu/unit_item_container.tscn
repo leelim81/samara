@@ -165,7 +165,7 @@ libraries = {
 stream = ExtResource("5_audio")
 bus = "Sound effects"
 
-[connection signal="gui_input" from="Card/H/UnitIcon" to="." method="_on_UnitIcon_gui_input"]
-[connection signal="mouse_entered" from="Card/H/UnitIcon" to="." method="_on_UnitIcon_mouse_entered"]
-[connection signal="mouse_exited" from="Card/H/UnitIcon" to="." method="_on_UnitIcon_mouse_exited"]
+[connection signal="gui_input" from="Card" to="." method="_on_Card_gui_input"]
+[connection signal="mouse_entered" from="Card" to="." method="_on_Card_mouse_entered"]
+[connection signal="mouse_exited" from="Card" to="." method="_on_Card_mouse_exited"]
 [connection signal="pressed" from="Card/H/ChangeButton" to="." method="_on_ChangeButton_pressed"]

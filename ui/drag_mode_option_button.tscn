@@ -1,24 +1,20 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/ui/click.png" type="Texture2D" id=1]
-[ext_resource path="res://assets/ui/drag.png" type="Texture2D" id=2]
 [ext_resource path="res://ui/drag_mode_option_button.gd" type="Script" id=3]
 [ext_resource path="res://theme.tres" type="Theme" id=4]
 [ext_resource path="res://assets/sfx/chess_place_2.wav" type="AudioStream" id=5]
 
-[node name="DragModeOptionButton" type="OptionButton"]
-offset_right = 74.0
-offset_bottom = 80.0
+[node name="DragModeOptionButton" type="Button"]
+offset_right = 50.0
+offset_bottom = 40.0
 theme = ExtResource( 4 )
-text = "CLICK"
+toggle_mode = true
 icon = ExtResource( 1 )
-clip_text = true
-selected = 0
 script = ExtResource( 3 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
 bus = "Sound effects"
 
-[connection signal="item_selected" from="." to="." method="_on_DragModeOptionButton_item_selected"]
-[connection signal="pressed" from="." to="." method="_on_DragModeOptionButton_pressed"]
+[connection signal="toggled" from="." to="." method="_on_toggled"]

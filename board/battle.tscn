@@ -649,7 +649,7 @@ alignment = 2
 theme_override_constants/separation = 8
 
 [node name="DragModeOptionButton" parent="CanvasLayer/MarginContainer/Hud/Row1/C4/Buttons" instance=ExtResource( 23 )]
-custom_minimum_size = Vector2( 58, 40 )
+custom_minimum_size = Vector2( 50, 40 )
 size_flags_vertical = 4
 theme_override_styles/focus = SubResource( 12 )
 theme_override_styles/hover = SubResource( 13 )

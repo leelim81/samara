@@ -38,6 +38,10 @@ func _show_units() -> void:
 			if unit_item_container.connect("unit_double_clicked", Callable(self, "_on_UnitItemContainer_unit_double_clicked").bind(job)) != OK:
 				printerr("Failed to connect signal")
 
+			# Single tap anywhere on the row opens the unit's detail page.
+			if unit_item_container.connect("unit_selected", Callable(self, "_on_UnitItemContainer_unit_double_clicked").bind(job)) != OK:
+				printerr("Failed to connect signal")
+
 
 func on_add_to_tree(data: Object) -> void:
 	# Data can be null when returning from unit view menu, so don't reassign

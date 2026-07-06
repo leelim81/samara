@@ -84,7 +84,12 @@ func _show_active_units() -> void:
 			
 		if unit_item.connect("unit_double_clicked", Callable(self, "_on_UnitItem_unit_double_clicked").bind(job)) != OK:
 			printerr("Failed to connect signal")
-		
+
+		# Keyboard select opens detail; single mouse clicks stay reserved for
+		# drag-to-reorder on these squad rows.
+		if unit_item.connect("unit_selected", Callable(self, "_on_UnitItem_unit_double_clicked").bind(job)) != OK:
+			printerr("Failed to connect signal")
+
 		if _changed_job != null && _index_of_changed_job != -1:
 			if _index_of_changed_job == i and _changed_job != job:
 				_unit_item_to_highlight = unit_item

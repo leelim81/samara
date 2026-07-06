@@ -1,43 +1,41 @@
-extends OptionButton
+extends Button
+# A single tap toggle for the tile-drag control scheme, sitting on the battle
+# HUD next to Pause / Fast-forward. Web players use tap-to-move (CLICK); phone
+# players use hold-and-drag (HOLD). One button, two states, no dropdown: the
+# icon shows the mode you are currently in and a tap flips it.
 
-
-const CLICK_MODE_INDEX: int = 0
-const HOLD_MODE_INDEX: int = 1
 
 signal drag_mode_changed(drag_mode)
 
+const _CLICK_ICON := preload("res://assets/ui/click.png")
+const _DRAG_ICON := preload("res://assets/ui/drag.png")
+
 
 func _ready() -> void:
-	# Items are built in code: the Godot 3 scene "items" property is not
-	# understood by Godot 4's OptionButton.
-	# Gesture glyphs (tap ripples / motion arrow) + one-word labels so the
-	# control reads the same on touch and mouse. tr() because item text set
-	# from code is not auto-translated.
-	clear()
-	add_icon_item(preload("res://assets/ui/click.png"), "", CLICK_MODE_INDEX)
-	add_icon_item(preload("res://assets/ui/drag.png"), "", HOLD_MODE_INDEX)
+	toggle_mode = true
 
-	tooltip_text = "%s / %s" % [tr("TAP"), tr("HOLD")]
+	var is_hold: bool = GameData.save_data.drag_mode == Enums.DragMode.HOLD
 
-	var save_data: SaveData = GameData.save_data
-
-	if save_data.drag_mode == Enums.DragMode.CLICK:
-		select(CLICK_MODE_INDEX)
-	else:
-		select(HOLD_MODE_INDEX)
+	# Reflect the saved mode without re-emitting on startup.
+	set_pressed_no_signal(is_hold)
+	_refresh_visual(is_hold)
 
 
-func _on_DragModeOptionButton_item_selected(index: int) -> void:
+func _on_toggled(is_pressed: bool) -> void:
 	_play_sound()
-	
-	if index == CLICK_MODE_INDEX:
-		emit_signal("drag_mode_changed", Enums.DragMode.CLICK)
-	else:
-		emit_signal("drag_mode_changed", Enums.DragMode.HOLD)
+	_refresh_visual(is_pressed)
+
+	var mode: int = Enums.DragMode.HOLD if is_pressed else Enums.DragMode.CLICK
+
+	emit_signal("drag_mode_changed", mode)
 
 
-func _on_DragModeOptionButton_pressed() -> void:
-	_play_sound()
+func _refresh_visual(is_hold: bool) -> void:
+	# Tap-ripples glyph = tap-to-move, motion-arrow glyph = hold-and-drag. The
+	# pressed-in look (toggle on) reinforces that hold mode is engaged.
+	icon = _DRAG_ICON if is_hold else _CLICK_ICON
+
+	tooltip_text = "%s  /  %s" % [tr("TAP"), tr("HOLD")]
 
 
 func _play_sound() -> void:
