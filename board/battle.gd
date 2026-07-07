@@ -74,6 +74,15 @@ func _process(_delta: float) -> void:
 	_progress_bar.tint_progress = Color(1.0, 0.38, 0.32).lerp(Color.WHITE, urgency)
 
 
+# Cheat / fast-test hotkey: press K to instantly clear every enemy and win the
+# current battle.
+func _unhandled_key_input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_K:
+		$Board.debug_win_battle()
+
+		get_viewport().set_input_as_handled()
+
+
 func on_instance(data: Object) -> void:
 	assert(data is ChapterData)
 

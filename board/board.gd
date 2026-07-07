@@ -257,8 +257,35 @@ func _load_next_enemy_phase() -> void:
 		_assign_enemies_to_cells()
 		
 		_current_enemy_phase += 1
-		
+
 		emit_signal("enemy_phase_started", _current_enemy_phase, _enemy_phase_count)
+
+
+# Cheat / fast-test: instantly win the whole battle (bound to the K key in
+# battle.gd). Tallies spoils and bestiary credit for every enemy still to be
+# faced (the current wave plus any waves not yet spawned), then jumps past the
+# final wave so the normal victory path fires exactly once.
+func debug_win_battle() -> void:
+	if _battle_over:
+		return
+
+	print("DEBUG: instant win (K)")
+
+	for enemy in _enemy_units_node.get_children():
+		if enemy.is_alive():
+			_accumulate_spoils(enemy)
+			_record_enemy_defeated(enemy)
+
+	# Enemies from waves that have not spawned yet have no cell, so only tally
+	# their rewards (no capsule / material drops, which need a board position).
+	for phase_index in range(_current_enemy_phase, _enemy_phases_queue.size()):
+		for enemy in _enemy_phases_queue[phase_index].get_children():
+			_accumulate_spoils(enemy)
+			_record_enemy_defeated(enemy)
+
+	_current_enemy_phase = _enemy_phases_queue.size()
+
+	_load_next_enemy_phase()
 
 
 # Traps?
