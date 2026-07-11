@@ -63,6 +63,14 @@ func _ready() -> void:
 	# Pause plate shows the gold glyph instead of the literal "II" text.
 	ButtonIcons.apply_icon_only($CanvasLayer/MarginContainer/Hud/Row1/C4/Buttons/PauseButton, "pause")
 
+	# A fresh save's first battle runs the guided tutorial overlay (pulsing
+	# cues + callouts) instead of fronting a wall of text.
+	if TutorialGuide.should_run():
+		var guide := TutorialGuide.new()
+
+		guide.setup($Board, self)
+		add_child(guide)
+
 	$BattleTheme.play()
 
 

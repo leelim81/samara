@@ -25,6 +25,24 @@ static func apply(button: Button, icon_name: String) -> void:
 	button.add_theme_constant_override("h_separation", 7)
 
 
+# Mobile-style nav tab: a large icon stacked above a small label (Godot
+# stacks them when the icon is horizontally centered and vertically topped).
+static func apply_tab(button: Button, icon_name: String) -> void:
+	var path := _DIR + icon_name + ".png"
+
+	if not ResourceLoader.exists(path):
+		push_warning("ButtonIcons: missing icon %s" % path)
+		return
+
+	button.icon = load(path)
+	button.expand_icon = false
+	button.icon_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	button.vertical_icon_alignment = VERTICAL_ALIGNMENT_TOP
+	button.add_theme_constant_override("icon_max_width", 30)
+	button.add_theme_constant_override("h_separation", 0)
+	button.add_theme_font_size_override("font_size", 13)
+
+
 # For compact controls that are pure glyphs (pause, fast forward): the icon
 # replaces the text entirely and sits centered.
 static func apply_icon_only(button: Button, icon_name: String) -> void:

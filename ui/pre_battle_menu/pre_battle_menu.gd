@@ -15,18 +15,15 @@ func _ready() -> void:
 
 	_set_focus()
 
-	_maybe_auto_show_tutorial()
+	# Mobile-style bottom tabs: large glyph over a small label. Rarely used
+	# destinations live in the More sheet.
+	var nav: Node = $MarginContainer/VBoxContainer/NavBar
 
-	# Gold glyphs on the nav grid (shared button icon set).
-	var nav: Node = $MarginContainer/VBoxContainer/NavGrid
-
-	ButtonIcons.apply(nav.get_node("SquadButton"), "squad")
-	ButtonIcons.apply(nav.get_node("CharactersButton"), "figure")
-	ButtonIcons.apply(nav.get_node("BestiaryButton"), "book")
-	ButtonIcons.apply(nav.get_node("ItemsButton"), "pouch")
-	ButtonIcons.apply(nav.get_node("MarketButton"), "scales")
-	ButtonIcons.apply(nav.get_node("HowToPlayButton"), "question")
-	ButtonIcons.apply(nav.get_node("QuitButton"), "door")
+	ButtonIcons.apply_tab(nav.get_node("SquadButton"), "squad")
+	ButtonIcons.apply_tab(nav.get_node("CharactersButton"), "figure")
+	ButtonIcons.apply_tab(nav.get_node("MarketButton"), "scales")
+	ButtonIcons.apply_tab(nav.get_node("ItemsButton"), "pouch")
+	ButtonIcons.apply_tab(nav.get_node("MoreButton"), "more")
 
 
 func on_load() -> void:
@@ -43,28 +40,103 @@ func _refresh_wallet() -> void:
 
 
 func _set_focus() -> void:
-	$MarginContainer/VBoxContainer/NavGrid/SquadButton.grab_focus()
+	$MarginContainer/VBoxContainer/NavBar/SquadButton.grab_focus()
 
 
-# Shows the How to Play primer once, on the player's first arrival at this hub.
-func _maybe_auto_show_tutorial() -> void:
-	if GameData.save_data == null or GameData.save_data.tutorial_seen:
+# ---- The More sheet (rarely used destinations, folded behind the More tab) --
+
+const _MORE_ROWS := [
+	{"key": "BESTIARY", "icon": "book", "scene": "res://ui/bestiary_menu.tscn"},
+	{"key": "HOW_TO_PLAY", "icon": "question", "scene": "res://ui/how_to_play_menu.tscn"},
+	{"key": "SETTINGS", "icon": "gear", "scene": "res://ui/main_menu/settings_menu.tscn"},
+	{"key": "RETURN_TO_MAIN_MENU", "icon": "door", "scene": ""},
+]
+
+const _AUDIO_BUTTON := preload("res://ui/audio_button.tscn")
+
+var _more_sheet: Control = null
+
+
+func _on_MoreButton_pressed() -> void:
+	if _more_sheet != null:
+		_close_more_sheet()
 		return
 
-	# Defer past this frame so the stack manager has connected our
-	# navigation_requested signal (the parent readies after this child).
-	call_deferred("_auto_show_tutorial")
+	_more_sheet = Control.new()
+	_more_sheet.set_anchors_preset(Control.PRESET_FULL_RECT)
+	add_child(_more_sheet)
+
+	# Tapping the dimmed backdrop closes the sheet.
+	var scrim := ColorRect.new()
+	scrim.color = Color(0, 0, 0, 0.55)
+	scrim.set_anchors_preset(Control.PRESET_FULL_RECT)
+	scrim.gui_input.connect(_on_more_scrim_input)
+	_more_sheet.add_child(scrim)
+
+	var panel := PanelContainer.new()
+	var style := StyleBoxFlat.new()
+	style.bg_color = Color(0.106, 0.122, 0.149)
+	style.border_color = Color(0.753, 0.627, 0.384, 0.8)
+	style.set_border_width_all(1)
+	style.border_width_top = 2
+	style.corner_radius_top_left = 14
+	style.corner_radius_top_right = 14
+	style.set_content_margin_all(18)
+	panel.add_theme_stylebox_override("panel", style)
+	panel.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
+	panel.grow_vertical = Control.GROW_DIRECTION_BEGIN
+	_more_sheet.add_child(panel)
+
+	var vbox := VBoxContainer.new()
+	vbox.add_theme_constant_override("separation", 10)
+	panel.add_child(vbox)
+
+	for row in _MORE_ROWS:
+		var button: Button = _AUDIO_BUTTON.instantiate()
+		button.text = row.key
+		button.custom_minimum_size = Vector2(0, 56)
+		vbox.add_child(button)
+		ButtonIcons.apply(button, row.icon)
+		button.pressed.connect(_on_more_row_pressed.bind(row))
+
+	vbox.get_child(0).grab_focus()
+
+	# Slide up from the bottom edge.
+	panel.modulate.a = 0.0
+	var tween := create_tween().set_parallel(true)
+	tween.tween_property(panel, "modulate:a", 1.0, 0.16)
+	panel.position.y += 26
+	tween.tween_property(panel, "position:y", panel.position.y - 26, 0.18) \
+			.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 
 
-func _auto_show_tutorial() -> void:
-	if GameData.save_data == null or GameData.save_data.tutorial_seen:
-		return
+func _on_more_scrim_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.pressed:
+		_close_more_sheet()
 
-	# Let the entry transition settle before opening the primer.
-	await get_tree().create_timer(0.35).timeout
 
-	if is_inside_tree() and GameData.save_data != null and not GameData.save_data.tutorial_seen:
-		navigate("res://ui/how_to_play_menu.tscn")
+func _close_more_sheet() -> void:
+	if _more_sheet != null:
+		_more_sheet.queue_free()
+		_more_sheet = null
+
+		_set_focus()
+
+
+func _on_more_row_pressed(row: Dictionary) -> void:
+	_close_more_sheet()
+
+	if row.scene == "":
+		change_scene_to_file("res://ui/main_menu/stack_based_main_menu.tscn")
+	else:
+		navigate(row.scene)
+
+
+func _unhandled_key_input(event: InputEvent) -> void:
+	if _more_sheet != null and event.is_action_pressed("ui_cancel"):
+		_close_more_sheet()
+
+		get_viewport().set_input_as_handled()
 
 
 func _create_buttons_for_unlocked_chapters() -> void:
@@ -131,24 +203,12 @@ func _on_CharactersButton_pressed() -> void:
 	navigate("res://ui/pre_battle_menu/characters_menu.tscn")
 
 
-func _on_HowToPlayButton_pressed() -> void:
-	navigate("res://ui/how_to_play_menu.tscn")
-
-
-func _on_BestiaryButton_pressed() -> void:
-	navigate("res://ui/bestiary_menu.tscn")
-
-
 func _on_ItemsButton_pressed() -> void:
 	navigate("res://ui/inventory_menu.tscn")
 
 
 func _on_MarketButton_pressed() -> void:
 	navigate("res://ui/shop/shop_menu.tscn")
-
-
-func _on_QuitButton_pressed() -> void:
-	change_scene_to_file("res://ui/main_menu/stack_based_main_menu.tscn")
 
 
 func on_ChapterButton_pressed(chapter_data: ChapterData) -> void:

@@ -260,6 +260,11 @@ def g_funnel(d):
     d.line(P((16, 26), (24, 26)), fill=GOLD, width=int(SS * 4))
 
 
+def g_more(d):
+    for cx in (11, 20, 29):
+        d.ellipse(P((cx - 3.2, 16.8), (cx + 3.2, 23.2)), fill=GOLD, outline=GOLD_DARK)
+
+
 GLYPHS = {
     "return": g_return,
     "battle": g_battle,
@@ -294,6 +299,7 @@ GLYPHS = {
     "flag": g_flag,
     "globe": g_globe,
     "funnel": g_funnel,
+    "more": g_more,
 }
 
 

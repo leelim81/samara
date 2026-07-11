@@ -86,6 +86,7 @@ Every button in the game carries a small gold glyph beside its label, applied in
 | `assets/ui/icons/flag.png` | GIVE UP | Raised flag. |
 | `assets/ui/icons/globe.png` | Language picker | Globe. |
 | `assets/ui/icons/funnel.png` | Sort picker | Stacked filter lines. |
+| `assets/ui/icons/more.png` | More tab (hub nav) | Three dots. |
 """
 
 VFX = """

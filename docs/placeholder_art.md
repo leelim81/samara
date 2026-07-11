@@ -271,6 +271,7 @@ Every button in the game carries a small gold glyph beside its label, applied in
 | `assets/ui/icons/flag.png` | GIVE UP | Raised flag. |
 | `assets/ui/icons/globe.png` | Language picker | Globe. |
 | `assets/ui/icons/funnel.png` | Sort picker | Stacked filter lines. |
+| `assets/ui/icons/more.png` | More tab (hub nav) | Three dots. |
 
 ## Battle VFX (tools/gen_vfx_art.py)
 Per-element skill bursts and per-weapon impact sprites. The four burst sheets are 768x512 atlases of six 256px frames (rows of three, played at 18 fps by `skills/effects/*_hit_animation.tscn`); the weapon impacts are single sprites drawn additively by `skills/effects/attack_effect.gd`. Real art must keep the exact sheet layout and dimensions and stay luminous on transparency (the scenes use additive blending). Regenerate the whole set with `python3 tools/gen_vfx_art.py`. The other files in `assets/vfx/` are original hand-authored effects, not placeholders.

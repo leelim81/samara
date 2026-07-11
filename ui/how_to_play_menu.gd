@@ -35,11 +35,10 @@ func on_load() -> void:
 
 
 func on_add_to_tree(_data: Object) -> void:
-	# Mark the primer seen the moment it is shown, so it never auto-opens again.
-	if GameData.save_data != null and not GameData.save_data.tutorial_seen:
-		GameData.save_data.tutorial_seen = true
-
-		GameData.save()
+	# Reading the primer no longer touches tutorial_seen: that flag belongs to
+	# the guided first-battle tutorial (ui/tutorial_guide.gd), so browsing this
+	# reference screen early cannot cancel the in-game guidance.
+	pass
 
 
 func _build_sections() -> void:
