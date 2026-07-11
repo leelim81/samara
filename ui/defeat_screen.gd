@@ -5,6 +5,11 @@ signal try_again_button_pressed
 signal quit_button_pressed
 
 
+func _ready() -> void:
+	ButtonIcons.apply($MarginContainer/VBoxContainer/TryAgainButton, "retry")
+	ButtonIcons.apply($MarginContainer/VBoxContainer/QuitButton, "door")
+
+
 func focus_default_button() -> void:
 	$MarginContainer/VBoxContainer/TryAgainButton.grab_focus()
 

@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/ui/status/blind.png" type="Texture2D" id=1]
 [ext_resource path="res://status_effects/blind.gd" type="Script" id=2]
-[ext_resource path="res://status_effects/effects/sleep_particles.tscn" type="PackedScene" id=3]
+[ext_resource path="res://status_effects/effects/blind_particles.tscn" type="PackedScene" id=3]
 
 [resource]
 script = ExtResource( 2 )

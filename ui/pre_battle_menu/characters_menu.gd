@@ -20,6 +20,9 @@ func _ready() -> void:
 	_setup_sort()
 	_show_units()
 
+	ButtonIcons.apply($MarginContainer/VBoxContainer/ReturnButton, "return")
+	ButtonIcons.apply(_sort_option, "funnel")
+
 
 func on_add_to_tree(_data: Object) -> void:
 	_show_units()
@@ -28,8 +31,9 @@ func on_add_to_tree(_data: Object) -> void:
 func on_load() -> void:
 	super.on_load()
 
-	_show_units()
-
+	# The list is already rebuilt while the ink overlay covers the screen
+	# (_ready on first entry, on_add_to_tree on every navigate/go_back), so
+	# rebuilding here would visibly flash the list after the reveal.
 	$MarginContainer/VBoxContainer/ReturnButton.grab_focus()
 
 

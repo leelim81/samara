@@ -43,6 +43,8 @@ func _ready() -> void:
 	if _is_local and not _pages.is_empty():
 		_start_showing_text()
 
+	ButtonIcons.apply($MarginContainer/VBoxContainer/SkipButton, "skip")
+
 
 func on_instance(data: Object) -> void:
 	assert(data is ChapterData)

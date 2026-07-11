@@ -29,14 +29,12 @@ TRY_AGAIN,Try again,Intentar de nuevo
 TOTAL_DRAG_TIME,Total drag time: {time} s,Tiempo de arrastre: {time} s
 TURN_COUNT,Turns: {count},Turnos: {count}
 CHANGE,Change,Cambiar
-CHOOSE,Choose,Elegir
 GIVE_UP,Give up,Rendirse
 VICTORY,VICTORY,VICTORIA
 DEFEAT,DEFEAT,DERROTA
 CLICK,Click,Clic
 TAP,Tap,Tocar
 HOLD,Hold,Mantener
-DEFEAT,DEFEAT,DERROTA
 TUTORIAL,Tutorial,Tutorial
 TUTORIAL_SWAP_PROMPT,"All but one units have been disabled.
 
@@ -49,7 +47,6 @@ Empuja tus otras unidades arrastrando la unidad habilitada sobre ellas.
 Empuja repetidamente hasta que puedas alinear tus unidades para cercar al enemigo."
 GREAVES_OF_CLAY,Greaves of Clay,Grebas de Arcilla
 NONE,None,Ninguno
-EQUIP,Equip,Equipado
 PINCER,Pincer,Cerco
 AREA_X,Area,Área
 CROSS_X,Cross,Cruz
@@ -69,7 +66,6 @@ HEALING_AURA,Healing aura,Aura curativa
 SWEEP,Sweep,Barrido
 TAIL_SWEEP,Tail sweep,Barrido de cola
 SHOOT,Gunshot,Disparo
-SLASH,Slash,Corte
 ICE,Ice,Hielo
 COUNTERATTACK,Counterattack,Contraataque
 WIDE_BITE,Wide bite,Mordida ancha
@@ -96,7 +92,6 @@ SWORD,Sword,Espada
 GUN,Gun,Arma de fuego
 SPEAR,Spear,Lanza
 STAFF,Spiritual,Espiritual
-NONE,None,Ninguno
 POISON,Poison,Veneno
 SLEEP,Sleep,Sueño
 PARALYZE,Paralyze,Paralizar
@@ -127,7 +122,6 @@ JOB_TORMENTED,Tormented,Atormentado
 WEE_ORBLING,Wee Orbling,Orblin menor
 ORBLING,Orbling,Orblin
 GORF,Gorf,Gorf
-DRACORIN,Dracorin,Dracorin
 SABERTOOTH,Sabertooth,Dientes de sable
 SPINETRICH,Spinetrich,Spinetrich
 SLASH,Slash,Tajo
@@ -138,7 +132,6 @@ COMPANION,Companion,Compañero
 EXTEND_CHAIN,Extend Chain,Extender cadena
 STAB,Stab,Estocada
 ARROW,Arrow,Flecha
-HEAL,Heal,Curar
 FIRE,Fire,Fuego
 THUNDER_ARROWS,Thunder Arrows,Flechas de trueno
 THRUST_AWAY,Thrust Away,Empujón
@@ -341,3 +334,19 @@ SWITCH,Switch,Cambiar
 UNLOCK,Unlock,Desbloquear
 UNLOCK_CONFIRM,Tap to confirm,Toca para confirmar
 LOCKED,Locked,Bloqueado
+EXP,EXP,EXP
+COINS,Coins,Monedas
+DEFEATED,Defeated,Derrotados
+TURNS,Turns,Turnos
+TIME,Time,Tiempo
+WAVE,Wave,Oleada
+LOADING,Loading,Cargando
+SKILLS,Skills,Habilidades
+HP,HP,PV
+SHOW_SKILLS,Show skills,Mostrar habilidades
+PAUSED,PAUSED,EN PAUSA
+MAX,MAX,MÁX
+TRAIN_BUTTON_FORMAT,TRAIN  +%d EXP  (%dc),ENTRENAR  +%d EXP  (%dc)
+LEVEL_UP,LEVEL UP!,¡SUBE DE NIVEL!
+EXP_GAIN_FORMAT,+%d EXP,+%d EXP
+LEVEL_UP_MULTI,LEVEL UP x%d!,¡SUBE x%d NIVELES!

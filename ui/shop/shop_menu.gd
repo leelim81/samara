@@ -26,6 +26,8 @@ const _RARITY_COLORS := {
 func _ready() -> void:
 	_build()
 
+	ButtonIcons.apply(_return_button, "return")
+
 
 func on_add_to_tree(_data: Object) -> void:
 	_build()
@@ -116,6 +118,7 @@ func _make_row(item) -> PanelContainer:
 
 	var buy := _AUDIO_BUTTON.instantiate()
 	buy.text = tr("BUY")
+	ButtonIcons.apply(buy, "buy")
 	buy.pop_on_hover = false
 	buy.custom_minimum_size = Vector2(104, 46)
 	buy.size_flags_vertical = Control.SIZE_SHRINK_CENTER

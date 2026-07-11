@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/ui/letter_z.png" id="1"]
+[ext_resource type="Script" path="res://status_effects/effects/status_effect_particles.gd" id="2"]
+
+[sub_resource type="Gradient" id="grad"]
+offsets = PackedFloat32Array(0.25, 0.75)
+colors = PackedColorArray(0.5, 0.45, 0.92, 1, 0.3, 0.24, 0.6, 0)
+
+[node name="DeepSleepParticles" type="CPUParticles2D"]
+position = Vector2(1, 0)
+amount = 3
+lifetime = 4.0
+texture = ExtResource("1")
+emission_shape = 3
+emission_points = PackedVector2Array(30, -30)
+gravity = Vector2(10, -18)
+angular_velocity_min = -14.0
+angular_velocity_max = -6.0
+scale_amount_min = 0.42
+scale_amount_max = 0.6
+color_ramp = SubResource("grad")
+script = ExtResource("2")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

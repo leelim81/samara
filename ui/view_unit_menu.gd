@@ -43,6 +43,10 @@ var _luck_label: Label = null
 var _current_job: Job = null
 
 
+func _ready() -> void:
+	ButtonIcons.apply(_return_button, "return")
+
+
 # Called from squad menu
 func initialize(job: Job, level: int) -> void:
 	# Show activation rate, is not in battle, don't ignore locked skills
@@ -255,6 +259,7 @@ func _update_train_button(job: Job, is_in_battle: bool) -> void:
 		_train_button.add_theme_font_size_override("font_size", 14)
 		_train_button.add_theme_stylebox_override("normal", _gold_button_style())
 		_train_button.pressed.connect(_on_train_pressed)
+		ButtonIcons.apply(_train_button, "train")
 		row.add_child(_train_button)
 
 		_wallet_label = Label.new()
@@ -274,6 +279,7 @@ func _update_train_button(job: Job, is_in_battle: bool) -> void:
 		_companion_button.add_theme_stylebox_override("normal", _gold_button_style())
 		_companion_button.text = tr("COMPANION")
 		_companion_button.pressed.connect(_on_companion_pressed)
+		ButtonIcons.apply(_companion_button, "companion")
 		companion_row.add_child(_companion_button)
 
 		var awaken_row := HBoxContainer.new()
@@ -286,6 +292,7 @@ func _update_train_button(job: Job, is_in_battle: bool) -> void:
 		_awaken_button.add_theme_font_size_override("font_size", 14)
 		_awaken_button.add_theme_stylebox_override("normal", _gold_button_style())
 		_awaken_button.pressed.connect(_on_awaken_pressed)
+		ButtonIcons.apply(_awaken_button, "awaken")
 		awaken_row.add_child(_awaken_button)
 
 		var jobs_row := HBoxContainer.new()
@@ -299,6 +306,7 @@ func _update_train_button(job: Job, is_in_battle: bool) -> void:
 		_jobs_button.add_theme_stylebox_override("normal", _gold_button_style())
 		_jobs_button.text = tr("JOBS")
 		_jobs_button.pressed.connect(_on_jobs_pressed)
+		ButtonIcons.apply(_jobs_button, "jobs")
 		jobs_row.add_child(_jobs_button)
 
 	var row_node: Node = _train_button.get_parent()
@@ -321,9 +329,9 @@ func _update_train_button(job: Job, is_in_battle: bool) -> void:
 	var coins: int = GameData.save_data.coins
 	var maxed: bool = job.level >= Leveling.MAX_LEVEL
 
-	_train_button.text = "TRAIN  +%d EXP  (%dc)" % [TRAIN_EXP, TRAIN_COST]
+	_train_button.text = tr("TRAIN_BUTTON_FORMAT") % [TRAIN_EXP, TRAIN_COST]
 	_train_button.disabled = maxed or not Purchase.can_afford(GameData.save_data, TRAIN_COST)
-	_wallet_label.text = "MAX" if maxed else "%dc" % coins
+	_wallet_label.text = tr("MAX") if maxed else "%dc" % coins
 
 
 func _on_train_pressed() -> void:

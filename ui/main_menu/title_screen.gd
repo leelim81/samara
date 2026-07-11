@@ -12,12 +12,16 @@ var _last_active_button: Button = null
 func _ready() -> void:
 	if OS.get_name() == "Web":
 		_quit_button.hide()
-	
+
 	_set_focus()
 
 	# Show "Continue" instead of "Start" once the player has progress on disk.
 	if GameData.has_save_file():
 		_start_button.text = "CONTINUE"
+
+	ButtonIcons.apply(_start_button, "battle")
+	ButtonIcons.apply($MarginContainer/VBoxContainer2/VBoxContainer/SettingsButton, "gear")
+	ButtonIcons.apply(_quit_button, "door")
 
 
 func on_load() -> void:

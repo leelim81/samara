@@ -17,6 +17,17 @@ func _ready() -> void:
 
 	_maybe_auto_show_tutorial()
 
+	# Gold glyphs on the nav grid (shared button icon set).
+	var nav: Node = $MarginContainer/VBoxContainer/NavGrid
+
+	ButtonIcons.apply(nav.get_node("SquadButton"), "squad")
+	ButtonIcons.apply(nav.get_node("CharactersButton"), "figure")
+	ButtonIcons.apply(nav.get_node("BestiaryButton"), "book")
+	ButtonIcons.apply(nav.get_node("ItemsButton"), "pouch")
+	ButtonIcons.apply(nav.get_node("MarketButton"), "scales")
+	ButtonIcons.apply(nav.get_node("HowToPlayButton"), "question")
+	ButtonIcons.apply(nav.get_node("QuitButton"), "door")
+
 
 func on_load() -> void:
 	super.on_load()

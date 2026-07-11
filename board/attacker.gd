@@ -54,9 +54,10 @@ func _queue_counters(pincer: Pincer) -> Array:
 
 		# Same roll convention as unit.activate_skills, so Demoralize's -1
 		# skill_activation_rate_modifier disables counters too
-		var activation: float = _random.randf() + pincered_unit.get_stats().skill_activation_rate_modifier
+		var threshold: float = counter_skill.activation_rate \
+				+ pincered_unit.get_stats().skill_activation_rate_modifier
 
-		if activation >= counter_skill.activation_rate:
+		if _random.randf() >= threshold:
 			continue
 
 		var attack: Attack = Attack.new()
@@ -186,14 +187,32 @@ func _execute_attack(attack: Attack) -> void:
 					attack.counter_skill.primary_weapon_type,
 					attack.counter_skill.primary_attribute) * powered_mult * _random.randf_range(0.9, 1.1)
 		else:
-			damage = targeted_unit.calculate_attack_damage(attacker_stats) * powered_mult * _random.randf_range(0.9, 1.1)
+			# Terra Battle: chained units strike with their own stats but the
+			# PINCERING unit's weapon type decides the Circle of Carnage bonus.
+			var advantage_weapon_type: int = attack.pincering_unit.get_stats().weapon_type
+
+			damage = targeted_unit.calculate_attack_damage(attacker_stats, advantage_weapon_type) * powered_mult * _random.randf_range(0.9, 1.1)
 
 		var attack_effect: Node2D = attack_effect_packed_scene.instantiate()
+
+		# Style the impact for this attack: per-weapon flash, element sparks.
+		if attack_effect.has_method("setup"):
+			if attack.counter_skill != null:
+				attack_effect.setup(attack.counter_skill.primary_weapon_type,
+						attack.counter_skill.primary_attribute)
+			else:
+				attack_effect.setup(attacker_stats.weapon_type, attacker_stats.attribute)
+
 		add_child(attack_effect)
 
 		attack_effect.position = targeted_unit.get_offset_origin()
 
-		var emphasis: int = _pincer_emphasis(attacker_stats, targeted_unit.get_stats())
+		var emphasis: int
+		if attack.counter_skill != null:
+			emphasis = _pincer_emphasis(attacker_stats, targeted_unit.get_stats())
+		else:
+			emphasis = _pincer_emphasis(attacker_stats, targeted_unit.get_stats(),
+					attack.pincering_unit.get_stats().weapon_type)
 
 		targeted_unit.inflict_damage(damage, emphasis)
 
@@ -207,8 +226,11 @@ func _execute_attack(attack: Attack) -> void:
 
 
 # Circle-of-Carnage / elemental advantage on a basic pincer hit (1 = advantage).
-func _pincer_emphasis(attacker_stats, defender_stats) -> int:
-	var weapon_advantage: bool = Enums.WEAPON_RELATIONSHIPS.get(attacker_stats.weapon_type) == defender_stats.weapon_type
+# The weapon half uses the PINCERING unit's weapon type, matching the damage
+# math for chained units.
+func _pincer_emphasis(attacker_stats, defender_stats, advantage_weapon_type: int = -1) -> int:
+	var weapon_type: int = advantage_weapon_type if advantage_weapon_type >= 0 else attacker_stats.weapon_type
+	var weapon_advantage: bool = Enums.WEAPON_RELATIONSHIPS.get(weapon_type) == defender_stats.weapon_type
 	var element_advantage: bool = attacker_stats.attribute != Enums.Attribute.NONE \
 			and Enums.ATTRIBUTE_RELATIONSHIPS.get(attacker_stats.attribute) == defender_stats.attribute
 

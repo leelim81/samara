@@ -27,11 +27,13 @@ var is_dialogue_skipped: bool = false
 
 func _ready() -> void:
 	_free_container_children()
-	
+
 	_load_lines_keys()
-	
+
 	if _is_local and not lines.is_empty():
 		_start_showing_text()
+
+	ButtonIcons.apply($MarginContainer/VBoxContainer/SkipButton, "skip")
 
 
 func on_instance(data: Object) -> void:

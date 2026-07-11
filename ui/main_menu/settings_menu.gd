@@ -5,6 +5,11 @@ extends StackBasedMenuScreen
 @onready var _drag_mode_check: CheckButton = $MarginContainer/VBoxContainer/VBoxContainer/Card/Rows/DragRow/CheckButton
 
 
+func _ready() -> void:
+	ButtonIcons.apply(_return_button, "return")
+	ButtonIcons.apply($MarginContainer/VBoxContainer/VBoxContainer/Card/Rows/HBoxContainer3/LanguageOptionButton, "globe")
+
+
 func on_load() -> void:
 	super.on_load()
 

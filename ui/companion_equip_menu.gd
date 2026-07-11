@@ -23,6 +23,10 @@ const _MUTED := Color(0.6, 0.64, 0.667)
 var _job: Job = null
 
 
+func _ready() -> void:
+	ButtonIcons.apply(_return_button, "return")
+
+
 func on_add_to_tree(data: Object) -> void:
 	if data is Job:
 		_job = data
@@ -108,7 +112,9 @@ func _make_row(companion) -> PanelContainer:
 		tag.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 		hb.add_child(tag)
 	elif GameData.save_data.is_companion_owned(companion.resource_path):
-		hb.add_child(_action_button(tr("EQUIP"), _on_equip.bind(companion), false))
+		var equip_button := _action_button(tr("EQUIP"), _on_equip.bind(companion), false)
+		ButtonIcons.apply(equip_button, "link")
+		hb.add_child(equip_button)
 	else:
 		var price := Label.new()
 		price.text = "%dc" % companion.shop_price
@@ -120,7 +126,9 @@ func _make_row(companion) -> PanelContainer:
 		hb.add_child(price)
 
 		var can_buy: bool = companion.shop_price > 0 and Purchase.can_afford(GameData.save_data, companion.shop_price)
-		hb.add_child(_action_button(tr("BUY"), _on_buy.bind(companion), not can_buy))
+		var buy_button := _action_button(tr("BUY"), _on_buy.bind(companion), not can_buy)
+		ButtonIcons.apply(buy_button, "buy")
+		hb.add_child(buy_button)
 
 	return card
 
@@ -142,7 +150,9 @@ func _make_remove_row() -> PanelContainer:
 	label.add_theme_color_override("font_color", _MUTED)
 	hb.add_child(label)
 
-	hb.add_child(_action_button(tr("UNEQUIP"), _on_unequip, false))
+	var unequip_button := _action_button(tr("UNEQUIP"), _on_unequip, false)
+	ButtonIcons.apply(unequip_button, "unlink")
+	hb.add_child(unequip_button)
 
 	return card
 

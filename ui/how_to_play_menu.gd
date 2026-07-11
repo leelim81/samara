@@ -25,6 +25,8 @@ const _BODY_COLOR: Color = Color(0.7, 0.74, 0.78)
 func _ready() -> void:
 	_build_sections()
 
+	ButtonIcons.apply(_return_button, "return")
+
 
 func on_load() -> void:
 	super.on_load()

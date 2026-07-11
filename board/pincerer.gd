@@ -316,7 +316,8 @@ func _find_chain(cell: Cell, direction: int, chain_families: Dictionary, family_
 
 		_collect_pickups(neighbor, pickups)
 
-		if chained_unit != null and chained_unit.is_ally(faction) and chained_unit.can_act() \
+		# can_chain, not can_act: a petrified ally still passes the chain (TB)
+		if chained_unit != null and chained_unit.is_ally(faction) and chained_unit.can_chain() \
 				and not chain_families.has(chained_unit):
 			var chains: Array = chain_families[family_owner]
 

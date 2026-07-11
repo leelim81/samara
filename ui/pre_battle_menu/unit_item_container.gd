@@ -19,6 +19,11 @@ var _is_draggable: bool = false
 @onready var _change_button := $Card/H/ChangeButton
 
 
+func _ready() -> void:
+	# Same glyph whether the button reads CHANGE or CHOOSE.
+	ButtonIcons.apply(_change_button, "swap")
+
+
 func initialize(_job: Job, is_draggable: bool = false, compare_job: Job = null) -> void:
 	job = _job
 	_is_draggable = is_draggable

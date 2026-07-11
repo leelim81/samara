@@ -22,6 +22,8 @@ const _RARITY_COLORS := {
 func _ready() -> void:
 	_build()
 
+	ButtonIcons.apply(_return_button, "return")
+
 
 func on_add_to_tree(_data: Object) -> void:
 	_build()

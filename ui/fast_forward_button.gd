@@ -12,6 +12,9 @@ func _ready() -> void:
 
 	add_theme_color_override("font_color", IDLE_COLOR)
 
+	# Glyph replaces the ">>" text; toggling only recolors, so it stays put.
+	ButtonIcons.apply_icon_only(self, "fast_forward")
+
 
 func _on_toggled(is_pressed: bool) -> void:
 	add_theme_color_override("font_color", ACTIVE_COLOR if is_pressed else IDLE_COLOR)

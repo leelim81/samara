@@ -63,8 +63,10 @@ func _run() -> void:
 		print(r)
 	print("==============================")
 
-	if fails == 0 and sd.jobs.size() == 25:
-		print("CAMPAIGN DRIP: PASS (42/42 chapters, roster ends at 25)")
+	# 3 starters + 23 distinct heroes granted across the chapters'
+	# unlocked_job_paths (no overlap with the starters) = 26.
+	if fails == 0 and sd.jobs.size() == 26:
+		print("CAMPAIGN DRIP: PASS (42/42 chapters, roster ends at 26)")
 		quit(0)
 	else:
 		print("CAMPAIGN DRIP: FAIL (%d chapter failures, roster %d)" % [fails, sd.jobs.size()])

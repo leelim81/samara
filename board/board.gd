@@ -927,7 +927,13 @@ func _execute_pincers(unit: Unit) -> void:
 		
 		$PincerExecutor.start_attack_skill_phase()
 		await $PincerExecutor.attack_skill_phase_finished
-		
+
+		# Icebind (Terra Battle): a frozen unit shatters when pincered.
+		for pincered_unit in pincer.pincered_units:
+			if pincered_unit.is_alive() \
+					and pincered_unit.has_status_effect_of_type(Enums.StatusEffectType.ICEBIND):
+				pincered_unit.inflict_damage(pincered_unit.get_stats().health)
+
 		$PincerExecutor.check_dead_units()
 		await $PincerExecutor.finished_checking_for_dead_units
 

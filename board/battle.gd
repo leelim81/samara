@@ -60,6 +60,9 @@ func _ready() -> void:
 
 	Events.power_boost_changed.connect(_on_power_boost_changed)
 
+	# Pause plate shows the gold glyph instead of the literal "II" text.
+	ButtonIcons.apply_icon_only($CanvasLayer/MarginContainer/Hud/Row1/C4/Buttons/PauseButton, "pause")
+
 	$BattleTheme.play()
 
 
@@ -240,17 +243,20 @@ func _roll_luck_drops() -> Dictionary:
 	var rng := RandomNumberGenerator.new()
 	rng.randomize()
 
-	return LuckDrops.roll(_squad_luck(), rng)
+	return LuckDrops.roll(_squad_average_luck(), rng)
 
 
-func _squad_luck() -> int:
+# Terra Battle keys the luck chests to the TEAM AVERAGE Luck value.
+func _squad_average_luck() -> float:
 	var total: int = 0
+	var members: int = 0
 
 	for index in GameData.save_data.active_units:
 		if index >= 0 and index < GameData.save_data.jobs.size():
 			total += GameData.save_data.jobs[index].luck
+			members += 1
 
-	return total
+	return float(total) / float(members) if members > 0 else 0.0
 
 
 # Preview what award_exp_to_squad WILL grant, per hero, for the results
@@ -391,6 +397,7 @@ func _show_new_ally_dialog(joined_jobs: Array) -> void:
 
 	var continue_button := Button.new()
 	continue_button.text = "CONTINUE"
+	ButtonIcons.apply(continue_button, "arrow_right")
 	continue_button.custom_minimum_size = Vector2(240, 56)
 	continue_button.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 	continue_button.add_theme_font_size_override("font_size", 19)
@@ -629,7 +636,7 @@ func _build_pause_menu() -> void:
 	panel.add_child(vbox)
 
 	var title := Label.new()
-	title.text = "PAUSED"
+	title.text = tr("PAUSED")
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	title.add_theme_font_override("font", load("res://assets/fonts/CinzelDecorativeBold.tres"))
 	title.add_theme_font_size_override("font_size", 38)
@@ -646,10 +653,12 @@ func _build_pause_menu() -> void:
 	vbox.add_child(spacer)
 
 	var resume := _make_pause_button("RESUME", true)
+	ButtonIcons.apply(resume, "play")
 	resume.pressed.connect(_on_pause_resume)
 	vbox.add_child(resume)
 
 	var give_up := _make_pause_button("GIVE UP", false)
+	ButtonIcons.apply(give_up, "flag")
 	give_up.add_theme_color_override("font_color", Color(0.85, 0.48, 0.42))
 	give_up.pressed.connect(_on_pause_give_up)
 	vbox.add_child(give_up)

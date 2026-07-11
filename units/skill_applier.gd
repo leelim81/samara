@@ -41,7 +41,12 @@ func apply_skill(unit: Unit,
 	if (skill.is_attack() or skill.is_healing()) and skill.primary_power > 0:
 		var damage := calculate_damage(unit.get_stats(), _target_unit.get_stats(), skill.primary_power, skill.primary_weapon_type, skill.primary_attribute)
 		
-		var powered_mult: float = POWERED_POINT_DAMAGE_MULTIPLIER if Events.power_boost_active else 1.0
+		# The Powered Point boost belongs to the player: enemy skills (e.g.
+		# counters resolving during the player turn) never benefit from it.
+		var powered_mult: float = 1.0
+
+		if Events.power_boost_active and unit.faction == Unit.PLAYER_FACTION:
+			powered_mult = POWERED_POINT_DAMAGE_MULTIPLIER
 		damage = int(damage * powered_mult * _random.randf_range(0.9, 1.1))
 
 		if skill.is_healing():
@@ -119,10 +124,18 @@ func calculate_damage(attacker_stats: Stats,
 			defender_stats: Stats,
 			power: float,
 			weapon_type: int,
-			attribute: int) -> int:
+			attribute: int,
+			from_skill: bool = true) -> int:
 	var damage: float = 0
 
-	if weapon_type == Enums.WeaponType.STAFF:
+	# Terra Battle: ALL elemental (and healing) skills are magical and use
+	# MATK vs MDEF, even on a sword or bow (wiki Skills page). Basic pincer
+	# attacks (from_skill == false) are physical by weapon: only staff wielders
+	# strike with spirit.
+	var is_magical: bool = weapon_type == Enums.WeaponType.STAFF \
+			or (from_skill and attribute != Enums.Attribute.NONE)
+
+	if is_magical:
 		# Magical attack: spiritual attack vs spiritual defense.
 		damage = STAFF_DAMAGE_MODIFIER * power \
 				* pow(attacker_stats.spiritual_attack, ATTACK_EXPONENT) \

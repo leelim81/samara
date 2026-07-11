@@ -125,7 +125,8 @@ func _ensure_skill_arrays() -> void:
 
 
 func add_luck(amount: int) -> void:
-	luck = clampi(luck + amount, 0, 99)
+	# Terra Battle: Luck caps at 100 (the Lambda / Z Class ceiling).
+	luck = clampi(luck + amount, 0, 100)
 
 
 # One-way Metamorphosis: permanently awakens the unit's stats. Idempotent.

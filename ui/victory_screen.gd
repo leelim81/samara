@@ -12,6 +12,10 @@ var _turn_count: int = 0
 var _drag_time_seconds: float = 0.0
 
 
+func _ready() -> void:
+	ButtonIcons.apply($MarginContainer/VBoxContainer/ContinueButton, "arrow_right")
+
+
 func focus_default_button() -> void:
 	$MarginContainer/VBoxContainer/ContinueButton.grab_focus()
 
@@ -67,13 +71,13 @@ func _build_squad_gain_rows(squad_gains: Array) -> void:
 
 		if gain.levels_gained > 0:
 			var up := Label.new()
-			up.text = "LEVEL UP!" if gain.levels_gained == 1 else "LEVEL UP x%d!" % gain.levels_gained
+			up.text = tr("LEVEL_UP") if gain.levels_gained == 1 else tr("LEVEL_UP_MULTI") % gain.levels_gained
 			up.add_theme_font_size_override("font_size", 16)
 			up.add_theme_color_override("font_color", Color(0.95, 0.82, 0.5, 1))
 			hb.add_child(up)
 
 		var exp_label := Label.new()
-		exp_label.text = "+%d EXP" % gain.gain
+		exp_label.text = tr("EXP_GAIN_FORMAT") % gain.gain
 		exp_label.add_theme_font_size_override("font_size", 18)
 		exp_label.add_theme_color_override("font_color", Color(0.42, 0.9, 0.72, 1))
 		hb.add_child(exp_label)

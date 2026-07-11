@@ -85,7 +85,8 @@ enum StatusEffectType {
 	# in pincers
 	CONFUSE,
 	
-	# Reduces attack and spiritual attack to zero, and unit can't use skills
+	# Reduces attack to zero and the unit can't use skills. Spiritual attack
+	# is unaffected (Terra Battle).
 	DEMORALIZE,
 	
 	# Heal HP over time

@@ -23,26 +23,31 @@ const _SLOT_PRESSED := preload("res://assets/ui/btn_dark_pressed.tres")
 
 func _ready() -> void:
 	var save_data: SaveData = GameData.save_data
-	
+
 	_number_of_units_before_change = save_data.active_units.size()
-	
+
 	_show_active_units()
 	_refresh_squad_ui()
+
+	ButtonIcons.apply($MarginContainer/VBoxContainer/AddUnitButton, "plus")
+	ButtonIcons.apply(_return_button, "return")
 
 
 func on_load() -> void:
 	super.on_load()
-	
+
 	_return_button.grab_focus()
-	
+
+	# Only the changed-slot highlight runs after the reveal (it is a deliberate
+	# animation); all content is rebuilt while covered in on_add_to_tree.
 	_highlight_changed_unit()
-	_refresh_squad_ui()
 
 
 func on_add_to_tree(data: Object) -> void:
 	super.on_add_to_tree(data)
-	
+
 	_show_active_units()
+	_refresh_squad_ui()
 
 
 func _show_active_units() -> void:

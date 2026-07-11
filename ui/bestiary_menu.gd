@@ -22,6 +22,8 @@ func _ready() -> void:
 	_load_entries()
 	_build_list()
 
+	ButtonIcons.apply(_return_button, "return")
+
 
 func on_add_to_tree(_data: Object) -> void:
 	_build_list()

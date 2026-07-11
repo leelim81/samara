@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=5 format=2]
 
-[ext_resource path="res://status_effects/effects/poison_particles.tscn" type="PackedScene" id=1]
+[ext_resource path="res://status_effects/effects/venom_particles.tscn" type="PackedScene" id=1]
 [ext_resource path="res://status_effects/venom.gd" type="Script" id=2]
 [ext_resource path="res://assets/ui/ui_icons.png" type="Texture2D" id=3]
 

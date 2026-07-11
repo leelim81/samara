@@ -10,6 +10,11 @@ var _active_job: Job = null
 @onready var _list_container: VBoxContainer = $MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer
 
 
+func _ready() -> void:
+	ButtonIcons.apply($MarginContainer/VBoxContainer/RemoveButton, "cross")
+	ButtonIcons.apply($MarginContainer/VBoxContainer/ReturnButton, "return")
+
+
 func _show_units() -> void:
 	for child in _list_container.get_children():
 		child.queue_free()

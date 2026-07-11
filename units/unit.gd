@@ -650,8 +650,14 @@ func get_status_effects() -> Array:
 	return _status_effects
 
 
-func calculate_attack_damage(attacker_stats: Stats) -> int:
-	return calculate_damage(attacker_stats, get_stats(), 1.0, attacker_stats.weapon_type, attacker_stats.attribute)
+# Basic pincer damage. Chained units strike with their OWN stats but the
+# PINCERING unit's weapon type decides the Circle of Carnage bonus (Terra
+# Battle: "Units chained with a pincering unit will do pincer damage according
+# to the pincering unit's weapon type"). Pass -1 to use the attacker's own.
+func calculate_attack_damage(attacker_stats: Stats, advantage_weapon_type: int = -1) -> int:
+	var weapon_type: int = advantage_weapon_type if advantage_weapon_type >= 0 else attacker_stats.weapon_type
+
+	return calculate_damage(attacker_stats, get_stats(), 1.0, weapon_type, attacker_stats.attribute, false)
 
 
 # Floating skill-feedback tag ("POWER UP", "POISON", "CURED") — the silent
@@ -788,9 +794,12 @@ func activate_skills() -> Array:
 			activated_skills.push_back(skill)
 			_register_skill_use(i, boostable)
 		else:
-			var activation: float = _random.randf() + $Job.current_stats.skill_activation_rate_modifier
+			# A positive modifier raises the activation chance; Demoralize's -1
+			# drives the threshold to zero so skills never fire.
+			var threshold: float = skill.activation_rate + boost \
+					+ $Job.current_stats.skill_activation_rate_modifier
 
-			if activation < skill.activation_rate + boost:
+			if _random.randf() < threshold:
 				activated_skills.push_back(skill)
 				_register_skill_use(i, boostable)
 
@@ -850,8 +859,9 @@ func calculate_damage(attacker_stats: Stats,
 			defender_stats: Stats,
 			power: float,
 			weapon_type: int,
-			attribute: int) -> int:
-	return $SkillApplier.calculate_damage(attacker_stats, defender_stats, power, weapon_type, attribute)
+			attribute: int,
+			from_skill: bool = true) -> int:
+	return $SkillApplier.calculate_damage(attacker_stats, defender_stats, power, weapon_type, attribute, from_skill)
 
 
 # Removes Sleep status effects when unit is pincered
@@ -981,6 +991,20 @@ func on_select_for_view() -> void:
 
 func can_act() -> bool:
 	return not (is_dead() or _has_blocking_status_effect())
+
+
+# Terra Battle: Petrify stops a unit from moving or acting, but "Chaining is
+# not blocked" — a statue still passes a chain through. Everything else that
+# blocks acting also blocks chaining.
+func can_chain() -> bool:
+	if is_dead():
+		return false
+
+	return not (has_status_effect_of_type(Enums.StatusEffectType.SLEEP) or \
+			has_status_effect_of_type(Enums.StatusEffectType.DEEP_SLEEP) or \
+			has_status_effect_of_type(Enums.StatusEffectType.PARALYZE) or \
+			has_status_effect_of_type(Enums.StatusEffectType.CONFUSE) or \
+			has_status_effect_of_type(Enums.StatusEffectType.ICEBIND))
 
 
 func _has_blocking_status_effect() -> bool:

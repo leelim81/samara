@@ -33,6 +33,10 @@ var _job: Job = null
 var _confirming_index: int = -1
 
 
+func _ready() -> void:
+	ButtonIcons.apply(_return_button, "return")
+
+
 func on_add_to_tree(data: Object) -> void:
 	if data is Job:
 		_job = data
@@ -201,7 +205,10 @@ func _action(index: int, unlocked: bool, active: bool, is_next: bool) -> Control
 		return _tag(tr("JOB_ACTIVE"), _ACCENT)
 
 	if unlocked:
-		return _button(tr("SWITCH"), _on_switch.bind(index), false)
+		var switch_button := _button(tr("SWITCH"), _on_switch.bind(index), false)
+		ButtonIcons.apply(switch_button, "switch")
+
+		return switch_button
 
 	if is_next:
 		var box := VBoxContainer.new()
@@ -217,6 +224,7 @@ func _action(index: int, unlocked: bool, active: bool, is_next: bool) -> Control
 
 		var affordable: bool = Purchase.can_afford(GameData.save_data, _UNLOCK_COIN[index], _UNLOCK_MATS[index])
 		var button := _button(tr("UNLOCK"), Callable(), not affordable)
+		ButtonIcons.apply(button, "unlock")
 		button.pressed.connect(_on_unlock_pressed.bind(index, button))
 		box.add_child(button)
 
@@ -283,6 +291,7 @@ func _on_unlock_pressed(index: int, button: Button) -> void:
 	if _confirming_index != index:
 		_confirming_index = index
 		button.text = tr("UNLOCK_CONFIRM")
+		ButtonIcons.apply(button, "check")
 
 		return
 
