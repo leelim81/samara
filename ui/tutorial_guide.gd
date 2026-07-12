@@ -329,50 +329,49 @@ func _make_dim() -> ColorRect:
 
 func _build_callout() -> void:
 	# The callout: an ink plate near the bottom. The whole plate is a button
-	# (tap to continue); children ignore the mouse so clicks reach it.
+	# (tap to continue); children ignore the mouse so clicks reach it. A Button
+	# does not grow to fit Control children, so it is sized and placed
+	# explicitly to always sit fully on-screen (text was overflowing before).
+	var screen: Vector2 = get_viewport().get_visible_rect().size
+	var margin := 36.0
+	var panel_h := 132.0
+
 	_panel = Button.new()
 	_panel.flat = true
 	_panel.focus_mode = Control.FOCUS_NONE
+	_panel.clip_contents = true
 
 	var style := StyleBoxFlat.new()
 	style.bg_color = Color(0.075, 0.086, 0.106, 0.97)
 	style.border_color = Color(_GOLD.r, _GOLD.g, _GOLD.b, 0.85)
 	style.set_border_width_all(1)
 	style.set_corner_radius_all(12)
-	style.set_content_margin_all(14)
 	_panel.add_theme_stylebox_override("normal", style)
 	_panel.add_theme_stylebox_override("hover", style)
 	_panel.add_theme_stylebox_override("pressed", style)
 	_panel.add_theme_stylebox_override("focus", style)
 
-	_panel.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
-	_panel.grow_vertical = Control.GROW_DIRECTION_BEGIN
-	_panel.offset_left = 40
-	_panel.offset_right = -40
-	_panel.offset_bottom = -34
+	_panel.position = Vector2(margin, screen.y - panel_h - margin)
+	_panel.size = Vector2(screen.x - margin * 2.0, panel_h)
 	_panel.pressed.connect(_advance)
 	_root.add_child(_panel)
 
-	var vbox := VBoxContainer.new()
-	vbox.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	vbox.set_anchors_preset(Control.PRESET_FULL_RECT)
-	vbox.offset_left = 14
-	vbox.offset_right = -14
-	vbox.offset_top = 12
-	vbox.offset_bottom = -12
-	vbox.add_theme_constant_override("separation", 8)
-	_panel.add_child(vbox)
-
+	# Message pinned to the top of the plate, wrapping within its width.
 	_text_label = Label.new()
 	_text_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_text_label.add_theme_font_size_override("font_size", 18)
 	_text_label.add_theme_color_override("font_color", Color(0.93, 0.94, 0.96))
 	_text_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	vbox.add_child(_text_label)
+	_text_label.position = Vector2(16, 14)
+	_text_label.size = Vector2(_panel.size.x - 32, panel_h - 50)
+	_panel.add_child(_text_label)
 
+	# Hint + Skip pinned to the bottom of the plate, so they are never clipped.
 	var bottom_row := HBoxContainer.new()
 	bottom_row.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	vbox.add_child(bottom_row)
+	bottom_row.position = Vector2(16, panel_h - 30)
+	bottom_row.size = Vector2(_panel.size.x - 32, 22)
+	_panel.add_child(bottom_row)
 
 	_hint_label = Label.new()
 	_hint_label.text = tr("TUT_CONTINUE")
