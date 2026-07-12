@@ -18,7 +18,10 @@ func _run() -> void:
 		if board._current_turn == board.Turn.PLAYER:
 			break
 
-	var guide := TutorialGuide.new()
+	# Runtime-load (not the TutorialGuide class_name): a compile-time class
+	# reference would force the script to compile before autoloads register in
+	# this --script tool, breaking its GameData reference.
+	var guide = load("res://ui/tutorial_guide.gd").new()
 	guide.setup(board, battle)
 	battle.add_child(guide)
 

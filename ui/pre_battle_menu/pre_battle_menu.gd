@@ -54,7 +54,10 @@ const _MORE_ROWS := [
 
 const _AUDIO_BUTTON := preload("res://ui/audio_button.tscn")
 
-var _more_sheet: Control = null
+# The sheet lives on its own CanvasLayer so it always draws above the nav bar.
+var _more_sheet: CanvasLayer = null
+var _more_panel: Panel = null
+var _more_tween: Tween = null
 
 
 func _on_MoreButton_pressed() -> void:
@@ -62,18 +65,39 @@ func _on_MoreButton_pressed() -> void:
 		_close_more_sheet()
 		return
 
-	_more_sheet = Control.new()
-	_more_sheet.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_more_sheet = CanvasLayer.new()
+	_more_sheet.layer = 50
 	add_child(_more_sheet)
+
+	# A CanvasLayer has no rect, so its child Control does not inherit the
+	# viewport size from anchors. Size it explicitly to the design canvas.
+	var canvas_size: Vector2 = get_viewport().get_visible_rect().size
+
+	var root := Control.new()
+	root.size = canvas_size
+	_more_sheet.add_child(root)
 
 	# Tapping the dimmed backdrop closes the sheet.
 	var scrim := ColorRect.new()
 	scrim.color = Color(0, 0, 0, 0.55)
-	scrim.set_anchors_preset(Control.PRESET_FULL_RECT)
+	scrim.size = canvas_size
 	scrim.gui_input.connect(_on_more_scrim_input)
-	_more_sheet.add_child(scrim)
+	root.add_child(scrim)
 
-	var panel := PanelContainer.new()
+	const _ROW_HEIGHT := 56
+	const _SEPARATION := 10
+	const _HEADER_HEIGHT := 24
+	const _MARGIN := 18
+
+	# Deterministic height from the row count (a Container's min-size is not
+	# valid the same frame its children are added).
+	var rows: int = _MORE_ROWS.size()
+	var content: int = _HEADER_HEIGHT + rows * _ROW_HEIGHT + rows * _SEPARATION
+	var sheet_height: float = content + _MARGIN * 2
+
+	# A plain Panel (not PanelContainer) keeps the size we set and paints its
+	# stylebox opaquely across the whole rect, hiding the nav bar behind it.
+	var panel := Panel.new()
 	var style := StyleBoxFlat.new()
 	style.bg_color = Color(0.106, 0.122, 0.149)
 	style.border_color = Color(0.753, 0.627, 0.384, 0.8)
@@ -81,32 +105,44 @@ func _on_MoreButton_pressed() -> void:
 	style.border_width_top = 2
 	style.corner_radius_top_left = 14
 	style.corner_radius_top_right = 14
-	style.set_content_margin_all(18)
 	panel.add_theme_stylebox_override("panel", style)
-	panel.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
-	panel.grow_vertical = Control.GROW_DIRECTION_BEGIN
-	_more_sheet.add_child(panel)
+	panel.size = Vector2(canvas_size.x, sheet_height)
+	panel.position = Vector2(0, canvas_size.y - sheet_height)
+	root.add_child(panel)
+	_more_panel = panel
 
+	# The VBox lays its children out inside the panel's content rect.
 	var vbox := VBoxContainer.new()
-	vbox.add_theme_constant_override("separation", 10)
+	vbox.add_theme_constant_override("separation", _SEPARATION)
+	vbox.position = Vector2(_MARGIN, _MARGIN)
+	vbox.size = Vector2(canvas_size.x - _MARGIN * 2, sheet_height - _MARGIN * 2)
 	panel.add_child(vbox)
+
+	var header := Label.new()
+	header.text = tr("MORE")
+	header.custom_minimum_size = Vector2(0, _HEADER_HEIGHT)
+	header.add_theme_font_size_override("font_size", 15)
+	header.add_theme_color_override("font_color", Color(0.56, 0.63, 0.74))
+	vbox.add_child(header)
 
 	for row in _MORE_ROWS:
 		var button: Button = _AUDIO_BUTTON.instantiate()
 		button.text = row.key
-		button.custom_minimum_size = Vector2(0, 56)
+		button.custom_minimum_size = Vector2(0, _ROW_HEIGHT)
 		vbox.add_child(button)
 		ButtonIcons.apply(button, row.icon)
 		button.pressed.connect(_on_more_row_pressed.bind(row))
 
-	vbox.get_child(0).grab_focus()
+	vbox.get_child(1).grab_focus()
 
 	# Slide up from the bottom edge.
+	var rest_y: float = panel.position.y
+	panel.position.y = canvas_size.y
 	panel.modulate.a = 0.0
-	var tween := create_tween().set_parallel(true)
-	tween.tween_property(panel, "modulate:a", 1.0, 0.16)
-	panel.position.y += 26
-	tween.tween_property(panel, "position:y", panel.position.y - 26, 0.18) \
+	_more_tween = create_tween().set_parallel(true)
+	var tween := _more_tween
+	tween.tween_property(panel, "modulate:a", 1.0, 0.18)
+	tween.tween_property(panel, "position:y", rest_y, 0.2) \
 			.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 
 

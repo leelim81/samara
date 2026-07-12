@@ -29,7 +29,11 @@ func _run() -> void:
 
 	# Drive the guide directly (battle._ready loads the real save, whose
 	# tutorial flag may be set; the guide's own mechanics are what we test).
-	var guide := TutorialGuide.new()
+	# Load the script at RUNTIME rather than via the TutorialGuide class_name:
+	# a compile-time class reference would force tutorial_guide.gd to compile
+	# in this --script tool's early load phase, before the GameData autoload
+	# registers, which poisons the script and hangs the coroutine.
+	var guide = load("res://ui/tutorial_guide.gd").new()
 	guide.setup(board, battle)
 	battle.add_child(guide)
 
