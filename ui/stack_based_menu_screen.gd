@@ -32,23 +32,17 @@ func on_add_to_tree(_data: Object) -> void:
 
 
 # Callback executed when the loading animation finished playing and the
-# scene should allow input now. Restores focus in all buttons
+# scene should allow input now. Restores focus in all buttons.
+#
+# The reveal is handled entirely by the ink overlay fading out (loading_screen,
+# CanvasLayer layer 100). This runs AFTER that fade completes, so the screen is
+# already fully visible here. It must NOT re-animate modulate: blanking the
+# screen to alpha 0 at this point flashes the black viewport clear color for a
+# frame before fading back in (the "dark flicker" between pages).
 func on_load() -> void:
 	print("%s loaded" % [name])
-	
+
 	_restore_focus(self)
-	
-	_play_enter_animation()
-
-
-# Soft content fade so screens land gently after the loader fade lifts
-func _play_enter_animation() -> void:
-	modulate.a = 0.0
-	
-	var tween := create_tween()
-	tween.tween_property(self, "modulate:a", 1.0, 0.18) \
-			.set_trans(Tween.TRANS_SINE) \
-			.set_ease(Tween.EASE_OUT)
 
 
 # Disables focus from all the buttons in the scene, recursively
