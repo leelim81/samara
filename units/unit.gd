@@ -1019,12 +1019,20 @@ func _has_blocking_status_effect() -> bool:
 ## Signals
 
 func _on_SelectionArea2D_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+	# During the guided tutorial only the highlighted unit accepts input, so a
+	# new player cannot wander off the step they are being shown. Viewing the
+	# unit's detail page is still allowed.
+	var tutorial_blocks: bool = not Events.tutorial_allows(self)
+
 	if event is InputEventMouseButton and event.double_click and is_click_to_drag:
 		on_select_for_view()
 	elif event is InputEventMouseButton and event.pressed:
+		if tutorial_blocks:
+			return
+
 		if not is_click_to_drag:
 			$LongPressTimer.start()
-		
+
 		if is_controlled_by_player and can_act():
 			match(current_state):
 				STATE.IDLE:
@@ -1042,7 +1050,7 @@ func _on_position_tween_finished() -> void:
 
 
 func _on_SelectionArea2D_mouse_entered() -> void:
-	if is_controlled_by_player and current_state == STATE.IDLE and can_act():
+	if is_controlled_by_player and current_state == STATE.IDLE and can_act() and Events.tutorial_allows(self):
 		$Sprite2D/Glow.show()
 
 		_tween_sprite_scale(Vector2(1.08, 1.08), 0.1, Tween.TRANS_CUBIC, Tween.EASE_OUT)

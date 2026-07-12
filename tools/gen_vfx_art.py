@@ -238,6 +238,66 @@ def arcane_glyph():
     _save(img.resize((256, 256), Image.LANCZOS), "arcane_glyph.png")
 
 
+def victory_burst():
+    """A warm radial light bloom with soft god-rays, for the results screen
+    entrance behind the VICTORY title (additive)."""
+    s = 512 * SS
+    img = Image.new("RGBA", (s, s), (0, 0, 0, 0))
+    c = s // 2
+
+    # Soft radial core: concentric fading gold-white discs.
+    core = Image.new("RGBA", (s, s), (0, 0, 0, 0))
+    cd = ImageDraw.Draw(core)
+    steps = 60
+    for i in range(steps, 0, -1):
+        t = i / steps
+        r = int(c * 0.62 * t)
+        a = int(150 * (1.0 - t) ** 2.2)
+        col = (255, int(238 - 30 * t), int(196 - 60 * t), a)
+        cd.ellipse([c - r, c - r, c + r, c + r], fill=col)
+    img = Image.alpha_composite(img, core)
+
+    # God-rays: long soft tapered spokes.
+    rays = Image.new("RGBA", (s, s), (0, 0, 0, 0))
+    rd = ImageDraw.Draw(rays)
+    for k in range(12):
+        a = k * math.tau / 12
+        length = c * (0.95 if k % 2 == 0 else 0.6)
+        width = SS * (10 if k % 2 == 0 else 5)
+        tip = (c + math.cos(a) * length, c + math.sin(a) * length)
+        n = (-math.sin(a), math.cos(a))
+        rd.polygon([
+            (c + n[0] * width, c + n[1] * width),
+            tip,
+            (c - n[0] * width, c - n[1] * width),
+        ], fill=(255, 240, 205, 120))
+    rays = rays.filter(ImageFilter.GaussianBlur(SS * 6))
+    img = Image.alpha_composite(img, rays)
+
+    # Bright hot center.
+    hd = ImageDraw.Draw(img)
+    r = SS * 40
+    hd.ellipse([c - r, c - r, c + r, c + r], fill=(255, 252, 240, 220))
+    img = img.filter(ImageFilter.GaussianBlur(SS * 2))
+    _save(img.resize((512, 512), Image.LANCZOS), "victory_burst.png")
+
+
+def victory_gleam():
+    """A soft vertical light streak that sweeps across the title once."""
+    w, h = 128 * SS, 220 * SS
+    img = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    d = ImageDraw.Draw(img)
+    cx = w // 2
+    for i in range(w // 2, 0, -1):
+        t = i / (w / 2)
+        a = int(200 * (1.0 - t) ** 2)
+        d.line([(cx - i, 0), (cx - i, h)], fill=(255, 250, 232, a))
+        d.line([(cx + i, 0), (cx + i, h)], fill=(255, 250, 232, a))
+    d.line([(cx, 0), (cx, h)], fill=(255, 255, 245, 220))
+    img = img.filter(ImageFilter.GaussianBlur(SS * 3))
+    _save(img.resize((128, 220), Image.LANCZOS), "victory_gleam.png")
+
+
 def slash_cut():
     """Sword: a crossed pair of tapered slash streaks."""
     s = 256 * SS
@@ -271,6 +331,8 @@ def main():
     ricochet_star()
     arcane_glyph()
     slash_cut()
+    victory_burst()
+    victory_gleam()
     print("done")
 
 

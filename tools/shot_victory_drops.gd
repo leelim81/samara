@@ -37,10 +37,21 @@ func _run() -> void:
 		if holder != null:
 			holder.modulate.a = 1.0
 
-	var panel = vs.get_node("MarginContainer/VBoxContainer")
-	panel.modulate.a = 1.0
-	panel.scale = Vector2.ONE
+	# Force the FF-style entrance to its rest state (tweens stall under --script).
+	var title = vs.get_node("MarginContainer/VBoxContainer/Label")
+	title.scale = Vector2.ONE
+	title.modulate.a = 1.0
+	var results = vs.get_node("MarginContainer/VBoxContainer/ResultsPanel")
+	results.scale = Vector2.ONE
+	results.modulate.a = 1.0
+	vs.get_node("MarginContainer/VBoxContainer/ContinueButton").modulate.a = 1.0
 	vs.get_node("ColorRect").modulate.a = 1.0
+
+	# Light bloom at its settled ambient glow; flash/gleam finished.
+	vs._title_burst.scale = Vector2(1.1, 1.1)
+	vs._title_burst.modulate.a = 0.4
+	vs._gleam.modulate.a = 0.0
+	vs._flash.modulate.a = 0.0
 
 	for i in 20:
 		await process_frame

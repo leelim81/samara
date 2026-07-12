@@ -41,7 +41,20 @@ func _run() -> void:
 	await process_frame
 
 	_check("step 1 shows the move callout", guide._text_label.text == tr("TUT_MOVE"))
-	_check("ring targets a unit", guide._target.is_valid())
+	_check("step 1 spotlights a unit", guide._current_rect() != null)
+
+	# Strict gating: the step locks board input to a single player unit.
+	var locked = root.get_node("/root/Events").tutorial_locked_unit
+	_check("step 1 locks input to a player unit", locked != null and locked in board._player_units_node.get_children())
+
+	# A non-locked unit must be refused input while the lock is set.
+	var other = null
+	for u in board._player_units_node.get_children():
+		if u != locked and u.is_alive():
+			other = u
+			break
+	_check("locked unit is allowed", root.get_node("/root/Events").tutorial_allows(locked))
+	_check("other units are blocked", other != null and not root.get_node("/root/Events").tutorial_allows(other))
 
 	# The player picks up a unit: the drag timer starts.
 	board.emit_signal("drag_timer_started", null)
@@ -61,6 +74,7 @@ func _run() -> void:
 	await process_frame
 	_check("drag end advances to the ready step", guide._text_label.text == tr("TUT_READY"))
 	_check("final step drops the continue hint", guide._hint_label.text == "")
+	_check("final step releases the input lock", root.get_node("/root/Events").tutorial_locked_unit == null)
 
 	# Quit before the final step's 2.6s auto-finish so the guide never saves.
 	print("test_tutorial: %s" % ("PASS" if _f == 0 else "FAIL (%d)" % _f))

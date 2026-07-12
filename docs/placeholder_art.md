@@ -286,3 +286,5 @@ Per-element skill bursts and per-weapon impact sprites. The four burst sheets ar
 | `assets/vfx/thrust_streak.png` | Spear basic attack impact: triple horizontal thrust streak. |
 | `assets/vfx/ricochet_star.png` | Gun basic attack impact: sharp ricochet star with chips. |
 | `assets/vfx/arcane_glyph.png` | Staff basic attack impact: spinning rune circle. |
+| `assets/vfx/victory_burst.png` | Victory screen: warm radial light bloom with soft god-rays behind the VICTORY title. |
+| `assets/vfx/victory_gleam.png` | Victory screen: soft vertical light streak that sweeps across the title once. |
