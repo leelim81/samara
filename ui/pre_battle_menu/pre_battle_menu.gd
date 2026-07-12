@@ -40,6 +40,18 @@ func _refresh_wallet() -> void:
 
 
 func _set_focus() -> void:
+	# Focus the first battle card, not a nav tab: the tabs share the theme's
+	# gold focus stylebox, so a focused tab reads as a permanently selected
+	# one. The card is the hub's primary action and the natural default.
+	var list: VBoxContainer = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer2
+
+	for child in list.get_children():
+		var card: Button = child.get_node_or_null("CardButton")
+		if card != null:
+			card.grab_focus()
+			return
+
+	# No chapters unlocked yet: fall back to the first nav tab.
 	$MarginContainer/VBoxContainer/NavBar/SquadButton.grab_focus()
 
 
