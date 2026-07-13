@@ -37,8 +37,19 @@ var power_boost_active: bool = false:
 # it per step and clears it (null) when it finishes. null = no restriction.
 var tutorial_locked_unit: Node = null
 
+# Guided-tutorial destination gate. When set to real grid coordinates, a drag
+# only commits (resolves the turn) if the unit is dropped on THIS cell; any
+# other drop snaps the unit back to where it started. Vector2(-1, -1) = off.
+# The board reads this in _on_Unit_snapped_to_grid.
+var tutorial_required_coords: Vector2 = Vector2(-1, -1)
+
 
 # A unit may act this frame if the tutorial is not gating input, or if it is
 # the unit the tutorial currently allows.
 func tutorial_allows(unit: Node) -> bool:
 	return tutorial_locked_unit == null or tutorial_locked_unit == unit
+
+
+# True while the tutorial is forcing the drop onto one specific cell.
+func tutorial_requires_cell() -> bool:
+	return tutorial_required_coords.x >= 0.0

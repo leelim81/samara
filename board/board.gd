@@ -48,6 +48,10 @@ var _active_unit_current_cell: Cell = null
 var _active_unit_last_valid_cell: Cell = null
 var _active_trail: Node2D = null
 
+# Cell a dragged unit started from, captured at pickup for the tutorial
+# drop-lock (a wrong drop snaps the unit back here).
+var _tutorial_origin_cell: Cell = null
+
 # Dictionary<Cell, Cell>
 var _active_unit_entered_cells := {}
 var _has_active_unit_exited_cell: bool = false
@@ -784,9 +788,13 @@ func _clean_up_cells_in_area(unit: Unit, cell: Cell) -> void:
 
 func _update_active_unit(unit: Unit) -> void:
 	_active_unit = unit
-	
+
 	_active_unit_current_cell = _grid.get_cell_from_position(unit.position)
-	
+
+	# The origin cell is overwritten as the unit is dragged, so remember it now
+	# for the tutorial drop-lock (snap-back on a wrong drop).
+	_tutorial_origin_cell = _active_unit_current_cell
+
 	_active_unit_last_valid_cell = null
 	_has_active_unit_exited_cell = false
 	
@@ -807,8 +815,30 @@ func _clear_active_cells() -> void:
 	_active_unit_current_cell = null
 	_active_unit_last_valid_cell = null
 	_has_active_unit_exited_cell = false
-	
+
 	_active_unit_entered_cells.clear()
+
+
+# Tutorial drop-lock: put a wrongly-dropped unit back on its origin cell,
+# bumping whatever slid into the origin during the drag back to where the unit
+# ended up (the same swap logic the drag itself uses).
+func _restore_unit_to_origin(unit: Unit) -> void:
+	if _tutorial_origin_cell == null:
+		return
+
+	var current_cell: Cell = _grid.get_cell_from_position(unit.position)
+
+	if current_cell != null and current_cell.unit == unit:
+		current_cell.unit = null
+
+	if _tutorial_origin_cell.unit != null and _tutorial_origin_cell.unit != unit and current_cell != null:
+		var displaced: Unit = _tutorial_origin_cell.unit
+		displaced.position = current_cell.position
+		current_cell.unit = displaced
+
+	_tutorial_origin_cell.unit = unit
+	unit.position = _tutorial_origin_cell.position
+	unit.z_index = 0
 
 
 func _color_cell(cell: Cell) -> void:
@@ -1298,14 +1328,28 @@ func _on_Unit_snapped_to_grid(unit: Unit) -> void:
 			_stop_possible_chained_units_animations()
 		
 		$PincerExecutor.check_dead_units()
-		
+
 		await $PincerExecutor.finished_checking_for_dead_units
-		
+
+		# Tutorial drop-lock: while the guide forces a destination, a drop on
+		# any cell other than the required one is rejected. The unit snaps back
+		# to where it started and the turn is NOT resolved, so the only move
+		# that does anything is the one being taught.
+		if _has_active_unit_exited_cell and Events.tutorial_requires_cell():
+			var final_cell: Cell = _grid.get_cell_from_position(unit.position)
+
+			if final_cell == null or final_cell.coordinates != Events.tutorial_required_coords:
+				_restore_unit_to_origin(unit)
+				_clear_active_cells()
+				_start_player_turn(true)
+
+				return
+
 		if _has_active_unit_exited_cell:
 			_clear_active_cells()
-			
+
 			_disable_unit_selection()
-			
+
 			_execute_pincers(unit)
 		else:
 			# Do nothing

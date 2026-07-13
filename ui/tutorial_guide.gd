@@ -27,8 +27,15 @@ var _pending_signal: Array = []  # [object, signal_name] currently connected
 var _rect_fn: Callable = Callable()   # current step's spotlight rect (screen)
 var _lock_fn: Callable = Callable()   # current step's locked unit
 
+# Scripted layout: the hero the player must drag, and the tile to drop on.
+var _drag_unit: Node = null
+var _target_coords: Vector2 = Vector2(-1, -1)
+var _target_coords_current: Vector2 = Vector2(-1, -1)  # the active step's target
+var _tap_advances: bool = false                        # only true on tap steps
+
 var _root: Control
 var _ring: TextureRect
+var _target_marker: TextureRect
 var _mask_top: ColorRect
 var _mask_bottom: ColorRect
 var _mask_left: ColorRect
@@ -54,37 +61,56 @@ func _ready() -> void:
 
 	_build_ui()
 
-	_steps = [
-		{
-			"text": "TUT_MOVE",
-			"lock": func(): return _player(0),
-			"advance": [_board, "drag_timer_started"],
-		},
-		{
-			"text": "TUT_PINCER",
-			"lock": func(): return _player(0),
-			"advance": [Events, "cutin_requested"],
-		},
-		{
-			"text": "TUT_CHAIN",
-			"lock": func(): return _player(0),
-			"advance": [Events, "cutin_requested"],
-		},
-		{
-			"text": "TUT_TIMER",
-			"rect": func(): return _timer_rect(),
-			"advance": [_board, "drag_timer_stopped"],
-		},
-		{
-			"text": "TUT_READY",
-			"advance": [],
-		},
-	]
+	# Let the board finish placing every unit on its cell before rearranging.
+	await get_tree().process_frame
+
+	var forced: bool = _setup_layout()
+
+	if forced:
+		# On-rails: one forced drag onto a marked tile forms a pincer, then a
+		# short explanation, then free play.
+		_steps = [
+			{
+				"text": "TUT_DRAG_HERE",
+				"lock": func(): return _drag_unit,
+				"target": _target_coords,
+				"advance": [Events, "cutin_requested"],
+			},
+			{
+				"text": "TUT_PINCER_DONE",
+				"advance": "tap",
+			},
+			{
+				"text": "TUT_FINISH",
+				"advance": [],
+			},
+		]
+	else:
+		# Fallback (unexpected squad shape): guide without forcing a cell.
+		_steps = [
+			{
+				"text": "TUT_DRAG_HERE",
+				"lock": func(): return _player(0),
+				"advance": [Events, "cutin_requested"],
+			},
+			{
+				"text": "TUT_FINISH",
+				"advance": [],
+			},
+		]
 
 	_enter_step(0)
 
 
 func _process(_delta: float) -> void:
+	# The bright "drop here" marker follows the target tile.
+	var marker_pos = _target_cell_screen_pos()
+	if marker_pos == null:
+		_target_marker.visible = false
+	else:
+		_target_marker.visible = true
+		_target_marker.position = (marker_pos as Vector2) - _target_marker.size * 0.5
+
 	var rect = _current_rect()
 
 	if rect == null:
@@ -93,6 +119,74 @@ func _process(_delta: float) -> void:
 
 	_set_spotlight_visible(true)
 	_layout_spotlight(rect as Rect2)
+
+
+# ---- scripted layout --------------------------------------------------------
+
+# Rearranges the board into a fixed layout where one forced drag onto a marked
+# tile forms a pincer. Returns false (no forcing) if the squad shape is
+# unexpected, so the guide degrades gracefully instead of breaking.
+func _setup_layout() -> bool:
+	var grid = _board.get_node_or_null("Grid")
+	if grid == null:
+		return false
+
+	var players := _alive(_board._player_units_node)
+	var enemies := _alive(_board._enemy_units_node)
+
+	if players.size() < 2 or enemies.is_empty():
+		return false
+
+	# Vacate every unit's current cell first so placements never collide.
+	for u in players + enemies:
+		var c = grid.get_cell_from_position(u.position)
+		if c != null and c.unit == u:
+			c.unit = null
+
+	# A row of partner + enemy + (drop target); the draggable hero sits below
+	# the target so a straight drag up completes the pincer.
+	_place(grid, players[1], Vector2(2, 3))   # partner holds one side
+	_place(grid, enemies[0], Vector2(3, 3))   # enemy to trap
+	_place(grid, players[0], Vector2(4, 5))   # the hero the player drags
+	_drag_unit = players[0]
+	_target_coords = Vector2(4, 3)
+
+	# Park any extra units out of the way.
+	var spare := [Vector2(0, 7), Vector2(1, 7), Vector2(0, 6), Vector2(1, 6)]
+	for i in range(2, players.size()):
+		if i - 2 < spare.size():
+			_place(grid, players[i], spare[i - 2])
+
+	var espare := [Vector2(5, 0), Vector2(4, 0), Vector2(5, 1), Vector2(4, 1)]
+	for i in range(1, enemies.size()):
+		if i - 1 < espare.size():
+			_place(grid, enemies[i], espare[i - 1])
+
+	return true
+
+
+func _place(grid, unit, coords: Vector2) -> void:
+	var cell = grid.get_cell_from_coordinates(coords)
+	if cell == null:
+		return
+	cell.unit = unit
+	unit.position = cell.position
+
+
+# Screen-space center of the current step's target tile, or null when none.
+func _target_cell_screen_pos():
+	if _target_coords_current.x < 0.0:
+		return null
+
+	var grid = _board.get_node_or_null("Grid")
+	if grid == null:
+		return null
+
+	var cell = grid.get_cell_from_coordinates(_target_coords_current)
+	if cell == null:
+		return null
+
+	return cell.get_global_transform_with_canvas().origin
 
 
 # ---- steps ------------------------------------------------------------------
@@ -115,15 +209,29 @@ func _enter_step(index: int) -> void:
 	# Gate all board input to the step's unit (if any).
 	Events.tutorial_locked_unit = _locked_unit()
 
-	if step.advance.is_empty():
+	# Gate the drop destination (the forced move). Setting real coordinates
+	# makes the board reject any drop but the marked cell.
+	_target_coords_current = step.get("target", Vector2(-1, -1))
+	Events.tutorial_required_coords = _target_coords_current
+
+	# Only explanation ("tap") steps advance when the callout is tapped; forced
+	# steps must be completed by the taught action.
+	var advance = step.advance
+	_tap_advances = advance is String and advance == "tap"
+
+	if advance is String:
+		# Tap-to-continue explanation step.
+		_hint_label.text = tr("TUT_CONTINUE")
+	elif advance.is_empty():
 		# Final beat: no lock, no spotlight; linger then bow out.
 		Events.tutorial_locked_unit = null
+		Events.tutorial_required_coords = Vector2(-1, -1)
 		_hint_label.text = ""
 		get_tree().create_timer(2.6).timeout.connect(_finish, CONNECT_ONE_SHOT)
 	else:
-		_hint_label.text = tr("TUT_CONTINUE")
-		var emitter: Object = step.advance[0]
-		var signal_name: String = step.advance[1]
+		_hint_label.text = ""
+		var emitter: Object = advance[0]
+		var signal_name: String = advance[1]
 		emitter.connect(signal_name, _on_step_action)
 		_pending_signal = [emitter, signal_name]
 
@@ -161,9 +269,11 @@ func _finish() -> void:
 	_disconnect_pending()
 	_rect_fn = Callable()
 	_lock_fn = Callable()
+	_target_coords_current = Vector2(-1, -1)
 
-	# Always release the input gate when the tutorial ends.
+	# Always release both gates when the tutorial ends.
 	Events.tutorial_locked_unit = null
+	Events.tutorial_required_coords = Vector2(-1, -1)
 
 	if GameData.save_data != null and not GameData.save_data.tutorial_seen:
 		GameData.save_data.tutorial_seen = true
@@ -175,9 +285,17 @@ func _finish() -> void:
 
 
 func _notification(what: int) -> void:
-	# Never leave the board locked if the guide is torn down unexpectedly.
-	if what == NOTIFICATION_PREDELETE and Events.tutorial_locked_unit != null:
+	# Never leave the board gated if the guide is torn down unexpectedly.
+	if what == NOTIFICATION_PREDELETE:
 		Events.tutorial_locked_unit = null
+		Events.tutorial_required_coords = Vector2(-1, -1)
+
+
+# Tapping the callout only advances explanation steps; forced steps must be
+# completed by the taught action (the Skip button remains the escape hatch).
+func _on_callout_tapped() -> void:
+	if _tap_advances:
+		_advance()
 
 
 # ---- focus / targets --------------------------------------------------------
@@ -206,13 +324,18 @@ func _player(index: int):
 
 
 func _nth_alive(units_node: Node, index: int):
+	var alive: Array = _alive(units_node)
+	if alive.is_empty():
+		return null
+	return alive[clampi(index, 0, alive.size() - 1)]
+
+
+func _alive(units_node: Node) -> Array:
 	var alive := []
 	for unit in units_node.get_children():
 		if unit.is_alive():
 			alive.push_back(unit)
-	if alive.is_empty():
-		return null
-	return alive[clampi(index, 0, alive.size() - 1)]
+	return alive
 
 
 func _unit_rect(unit) -> Rect2:
@@ -314,6 +437,27 @@ func _build_ui() -> void:
 			.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	pulse.parallel().tween_property(_ring, "modulate:a", 0.9, 0.6)
 
+	# The bright "drop here" marker on the target tile. It rides ON TOP of the
+	# dimming, so it reads even though the target cell is itself dimmed.
+	_target_marker = TextureRect.new()
+	_target_marker.texture = _RING_TEXTURE
+	_target_marker.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	_target_marker.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	_target_marker.size = Vector2(104, 104)
+	_target_marker.pivot_offset = _target_marker.size * 0.5
+	_target_marker.modulate = Color(1.0, 0.9, 0.5, 1.0)
+	_target_marker.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_target_marker.visible = false
+	_root.add_child(_target_marker)
+
+	var mpulse := create_tween().set_loops()
+	mpulse.tween_property(_target_marker, "scale", Vector2(1.14, 1.14), 0.5) \
+			.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	mpulse.parallel().tween_property(_target_marker, "modulate:a", 0.55, 0.5)
+	mpulse.tween_property(_target_marker, "scale", Vector2(0.9, 0.9), 0.5) \
+			.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	mpulse.parallel().tween_property(_target_marker, "modulate:a", 1.0, 0.5)
+
 	_build_callout()
 
 	_set_spotlight_visible(false)
@@ -353,7 +497,7 @@ func _build_callout() -> void:
 
 	_panel.position = Vector2(margin, screen.y - panel_h - margin)
 	_panel.size = Vector2(screen.x - margin * 2.0, panel_h)
-	_panel.pressed.connect(_advance)
+	_panel.pressed.connect(_on_callout_tapped)
 	_root.add_child(_panel)
 
 	# Message pinned to the top of the plate, wrapping within its width.

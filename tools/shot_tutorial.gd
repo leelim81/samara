@@ -25,14 +25,15 @@ func _run() -> void:
 	guide.setup(board, battle)
 	battle.add_child(guide)
 
-	for i in 30:
+	# Let _ready rearrange the board and settle the forced-drag step.
+	for i in 40:
 		await process_frame
 
 	var img := root.get_viewport().get_texture().get_image()
 	img.save_png("/tmp/tutorial_shot.png")
 
-	# Second step (pincer) for the enemy-target cue.
-	board.emit_signal("drag_timer_started", null)
+	# Advance to the explanation step for a second capture.
+	root.get_node("/root/Events").emit_signal("cutin_requested", [null], "", true, Color.WHITE, false)
 
 	for i in 20:
 		await process_frame

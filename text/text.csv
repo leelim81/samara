@@ -358,3 +358,6 @@ TUT_TIMER,"The sand only runs while you drag. When it empties, your turn ends.",
 TUT_READY,You are ready. Clear the field!,¡Estás listo! ¡Despeja el campo!
 TUT_SKIP,Skip tutorial,Saltar tutorial
 TUT_CONTINUE,Tap to continue,Toca para continuar
+TUT_DRAG_HERE,Drag your glowing hero onto the marked tile.,Arrastra a tu héroe brillante a la casilla marcada.
+TUT_PINCER_DONE,"A pincer! An enemy trapped between two heroes is struck from both sides.","¡Una pinza! Un enemigo atrapado entre dos héroes recibe golpes de ambos lados."
+TUT_FINISH,You have got it. Now clear the rest of the field!,Lo tienes. ¡Ahora despeja el resto del campo!
