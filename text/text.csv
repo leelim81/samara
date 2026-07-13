@@ -361,3 +361,6 @@ TUT_CONTINUE,Tap to continue,Toca para continuar
 TUT_DRAG_HERE,Drag your glowing hero onto the marked tile.,Arrastra a tu héroe brillante a la casilla marcada.
 TUT_PINCER_DONE,"A pincer! An enemy trapped between two heroes is struck from both sides.","¡Una pinza! Un enemigo atrapado entre dos héroes recibe golpes de ambos lados."
 TUT_FINISH,You have got it. Now clear the rest of the field!,Lo tienes. ¡Ahora despeja el resto del campo!
+TUT_PINCER_MOVE,Drag your glowing hero onto the marked tile to trap the enemy.,Arrastra a tu héroe brillante a la casilla marcada para atrapar al enemigo.
+TUT_CHAIN_MOVE,Now line up a third hero: drag onto the marked tile to chain the attack.,Ahora alinea a un tercer héroe: arrastra a la casilla marcada para encadenar el ataque.
+TUT_CHAIN_DONE,"A chain! Heroes lined up with the pincer pile on extra hits.","¡Una cadena! Los héroes alineados con la pinza añaden golpes extra."
