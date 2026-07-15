@@ -22,9 +22,13 @@ var _board: Node = null
 var _battle: Node = null
 
 var _running: bool = false
-var _wait_flag: bool = false
 var _tap_flag: bool = false
 var _arrow_time: float = 0.0
+
+# Latched true whenever the board hands a fresh turn back to the player. Reset
+# at the start of each forced move so we can tell exactly when THAT move has
+# fully resolved, without racing the player_turn_started signal.
+var _pt_latched: bool = false
 
 # The hero to spotlight this move, and the tile to drop on.
 var _spot_unit: Node = null
@@ -61,6 +65,11 @@ func _ready() -> void:
 
 	_build_ui()
 
+	# Latch every fresh player turn from now on. Connecting before the sequence
+	# starts means a move can never resolve faster than we start listening.
+	if _board != null and not _board.player_turn_started.is_connected(_on_player_turn):
+		_board.player_turn_started.connect(_on_player_turn)
+
 	# Let the board finish placing every unit on its cell before rearranging.
 	await get_tree().process_frame
 
@@ -71,18 +80,22 @@ func _ready() -> void:
 # ---- the scripted sequence --------------------------------------------------
 
 func _run() -> void:
+	# Enemies hold still for the whole tutorial so the board stays exactly as
+	# each step arranges it and no hero can be lost while the player learns.
+	Events.tutorial_freeze_enemies = true
+
 	# MOVE 1: a two-hero pincer.
 	if not _setup_pincer_layout():
 		# Unexpected squad shape: guide loosely and bow out.
 		_begin_move("TUT_PINCER_MOVE", _player(0), Vector2(-1, -1))
-		await _await_signal_once(Events, "cutin_requested")
+		await _await_move_resolved()
 		_end_move()
 		await _explain("TUT_FINISH")
 		_finish()
 		return
 
 	_begin_move("TUT_PINCER_MOVE", _drag_unit, _target_coords)
-	await _await_signal_once(Events, "cutin_requested")
+	await _await_move_resolved()
 	if not _running:
 		return
 	_end_move()
@@ -90,21 +103,25 @@ func _run() -> void:
 	if not _running:
 		return
 
-	# Wait for the player's turn to come back after the enemy acts.
-	await _await_signal_once(_board, "player_turn_started")
-	if not _running:
-		return
-
-	# MOVE 2: add a third hero in line to chain the pincer.
-	if _setup_chain_layout():
-		_begin_move("TUT_CHAIN_MOVE", _drag_unit, _target_coords)
-		await _await_signal_once(Events, "cutin_requested")
+	# MOVE 2 + 3: the player BUILDS a chain, they do not just slot in the last
+	# piece. First they line a hero up on the far side of the enemy (no pincer
+	# yet), then they close the trap so the lined-up hero chains in.
+	if _setup_chain_setup_layout():
+		_begin_move("TUT_CHAIN_SETUP", _drag_unit, _target_coords)
+		await _await_move_resolved()
 		if not _running:
 			return
 		_end_move()
-		await _explain("TUT_CHAIN_DONE")
-		if not _running:
-			return
+
+		if _setup_chain_trap_layout():
+			_begin_move("TUT_CHAIN_MOVE", _drag_unit, _target_coords)
+			await _await_move_resolved()
+			if not _running:
+				return
+			_end_move()
+			await _explain("TUT_CHAIN_DONE")
+			if not _running:
+				return
 
 	# Done: hand the battle back to the player.
 	_end_move()
@@ -125,6 +142,11 @@ func _begin_move(text_key: String, unit, target: Vector2) -> void:
 
 	Events.tutorial_locked_unit = unit
 	Events.tutorial_required_coords = target
+
+	# Arm the turn latch: it flips true only once THIS move resolves and the
+	# board hands the next turn back, so a wrong-drop snap-back (which does not
+	# start a new turn) never advances the tutorial.
+	_pt_latched = false
 
 	_panel.modulate.a = 0.35
 	create_tween().tween_property(_panel, "modulate:a", 1.0, 0.22)
@@ -164,23 +186,18 @@ func _wait(seconds: float) -> void:
 		elapsed += get_process_delta_time()
 
 
-# Poll for a signal without directly awaiting it, so a Skip mid-wait (which
-# frees this node) can never resume a dead coroutine.
-func _await_signal_once(obj: Object, signal_name: String) -> void:
-	_wait_flag = false
-
-	if obj != null:
-		obj.connect(signal_name, _on_wait_signal)
-
-	while _running and not _wait_flag:
+# Wait until the current forced move has fully resolved: the drop is accepted,
+# the pincer (if any) plays out, and the board hands a fresh turn back. Polling
+# the latch (set by player_turn_started, armed in _begin_move) avoids racing the
+# signal, which can fire before or after any explanation delay. Skip-safe: a
+# Skip clears _running and drops us straight out.
+func _await_move_resolved() -> void:
+	while _running and not _pt_latched:
 		await get_tree().process_frame
 
-	if is_instance_valid(obj) and obj.is_connected(signal_name, _on_wait_signal):
-		obj.disconnect(signal_name, _on_wait_signal)
 
-
-func _on_wait_signal(_a = null, _b = null, _c = null, _d = null, _e = null) -> void:
-	_wait_flag = true
+func _on_player_turn() -> void:
+	_pt_latched = true
 
 
 func _on_callout_tapped() -> void:
@@ -197,6 +214,7 @@ func _finish() -> void:
 
 	_running = false
 	_end_move()
+	Events.tutorial_freeze_enemies = false
 
 	if GameData.save_data != null and not GameData.save_data.tutorial_seen:
 		GameData.save_data.tutorial_seen = true
@@ -208,10 +226,12 @@ func _finish() -> void:
 
 
 func _notification(what: int) -> void:
-	# Never leave the board gated if the guide is torn down unexpectedly.
+	# Never leave the board gated or the enemies frozen if the guide is torn
+	# down unexpectedly.
 	if what == NOTIFICATION_PREDELETE:
 		Events.tutorial_locked_unit = null
 		Events.tutorial_required_coords = Vector2(-1, -1)
+		Events.tutorial_freeze_enemies = false
 
 
 # ---- per-frame highlight ----------------------------------------------------
@@ -279,9 +299,39 @@ func _setup_pincer_layout() -> bool:
 	return true
 
 
-# Same pincer, plus a third hero lined up beyond the draggable one so the
-# pincer chains for extra hits.
-func _setup_chain_layout() -> bool:
+# CHAIN, part 1 (line up): the enemy and one partner are set. The player drags
+# a hero to the FAR side of the enemy so it sits in line with it. No pincer
+# forms yet, so nothing fires: this move just gets the hero into position.
+#   row 3:   partner(2) . enemy(3) . [gap](4) . DROP HERE(5)
+func _setup_chain_setup_layout() -> bool:
+	var grid = _board.get_node_or_null("Grid")
+	if grid == null:
+		return false
+
+	var players := _alive(_board._player_units_node)
+	var enemies := _alive(_board._enemy_units_node)
+
+	if players.size() < 3 or enemies.is_empty():
+		return false
+
+	_vacate(grid, players + enemies)
+
+	_place(grid, players[1], Vector2(2, 3))   # partner holds the near side
+	_place(grid, enemies[0], Vector2(3, 3))   # enemy to trap
+	_place(grid, players[0], Vector2(4, 5))   # the trap hero waits below col 4
+	_place(grid, players[2], Vector2(5, 5))   # the hero to line up waits below col 5
+	_drag_unit = players[2]
+	_target_coords = Vector2(5, 3)
+
+	_park_extras(grid, players, enemies, 3)
+	return true
+
+
+# CHAIN, part 2 (close the trap): partner, enemy and the just-lined-up hero are
+# all in place. The player drags the last hero between the partner and the enemy
+# so the pincer forms AND the hero already in line beyond it chains in.
+#   row 3:   partner(2) . enemy(3) . DROP HERE(4) . chains in(5)
+func _setup_chain_trap_layout() -> bool:
 	var grid = _board.get_node_or_null("Grid")
 	if grid == null:
 		return false
@@ -296,22 +346,27 @@ func _setup_chain_layout() -> bool:
 
 	_place(grid, players[1], Vector2(2, 3))   # partner (far pincer side)
 	_place(grid, enemies[0], Vector2(3, 3))   # enemy to trap
-	_place(grid, players[0], Vector2(4, 5))   # draggable
-	_place(grid, players[2], Vector2(5, 3))   # chains in line beyond the drop
+	_place(grid, players[2], Vector2(5, 3))   # the hero the player just lined up
+	_place(grid, players[0], Vector2(4, 5))   # the trap hero waits below col 4
 	_drag_unit = players[0]
 	_target_coords = Vector2(4, 3)
 
+	_park_extras(grid, players, enemies, 3)
+	return true
+
+
+# Tuck any heroes past the first `used` and any spare enemies into the corners
+# so they take no part in the scripted move.
+func _park_extras(grid, players: Array, enemies: Array, used: int) -> void:
 	var spare := [Vector2(0, 7), Vector2(1, 7), Vector2(0, 6)]
-	for i in range(3, players.size()):
-		if i - 3 < spare.size():
-			_place(grid, players[i], spare[i - 3])
+	for i in range(used, players.size()):
+		if i - used < spare.size():
+			_place(grid, players[i], spare[i - used])
 
 	var espare := [Vector2(5, 0), Vector2(4, 0), Vector2(5, 1)]
 	for i in range(1, enemies.size()):
 		if i - 1 < espare.size():
 			_place(grid, enemies[i], espare[i - 1])
-
-	return true
 
 
 func _vacate(grid, units: Array) -> void:

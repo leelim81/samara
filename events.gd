@@ -43,6 +43,12 @@ var tutorial_locked_unit: Node = null
 # The board reads this in _on_Unit_snapped_to_grid.
 var tutorial_required_coords: Vector2 = Vector2(-1, -1)
 
+# Guided-tutorial enemy freeze. While true, enemies skip their turn entirely:
+# the board stays exactly as the guide arranged it between the player's forced
+# moves, and no hero can be lost mid-lesson. The board reads this in
+# _start_enemy_turn. false = normal combat.
+var tutorial_freeze_enemies: bool = false
+
 
 # A unit may act this frame if the tutorial is not gating input, or if it is
 # the unit the tutorial currently allows.

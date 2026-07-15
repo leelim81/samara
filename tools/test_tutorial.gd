@@ -84,21 +84,54 @@ func _run() -> void:
 	_check("wrong drop leaves the wrong cell empty", wrong.unit == null)
 	_check("wrong drop keeps it the player's turn", board._current_turn == board.Turn.PLAYER)
 
-	# ---- the pincer resolves -> explanation, locks released ---------------
-	events.emit_signal("cutin_requested", [null], "", true, Color.WHITE, false)
-	for i in 4:
-		await process_frame
+	# ---- the board is frozen and a wrong drop did NOT advance -------------
+	_check("tutorial freezes enemy turns", events.tutorial_freeze_enemies)
+	_check("wrong drop keeps the pincer move on screen", guide._text_label.text == tr("TUT_PINCER_MOVE"))
+
+	# ---- the pincer resolves (a fresh player turn) -> explanation ----------
+	# Advancement now rides the player_turn_started latch, not the cut-in, so a
+	# turn that resolves faster than the explanation dwell can never be missed.
+	board.emit_signal("player_turn_started")
+	await _await_text(guide, "TUT_PINCER_DONE")
 	_check("pincer advances to the explanation", guide._text_label.text == tr("TUT_PINCER_DONE"))
 	_check("explanation releases the input lock", events.tutorial_locked_unit == null)
 	_check("explanation releases the drop lock", not events.tutorial_requires_cell())
+	guide._tap_flag = true   # skip the explanation dwell
 
-	# ---- chain layout lines up a third hero -------------------------------
 	if _alive_players(board) >= 3:
-		_check("chain layout returns true with 3 heroes", guide._setup_chain_layout())
-		_check("chain hero lined up at (5,3)", _is_player(grid, board, Vector2(5, 3)))
+		# ---- CHAIN part 1: the player lines a hero up on the far side ------
+		await _await_text(guide, "TUT_CHAIN_SETUP")
+		_check("chain setup places partner at (2,3)", _is_player(grid, board, Vector2(2, 3)))
+		_check("chain setup places enemy at (3,3)", _is_enemy(grid, board, Vector2(3, 3)))
+		_check("chain setup drags the third hero", guide._drag_unit == guide._player(2))
+		_check("chain setup target is the far tile (5,3)", guide._target_coords == Vector2(5, 3))
+		_check("chain setup locks input to the third hero", events.tutorial_locked_unit == guide._drag_unit)
+		_check("chain setup locks the drop to (5,3)", events.tutorial_required_coords == Vector2(5, 3))
+
+		# resolve the line-up move (no pincer) -> a fresh player turn
+		board.emit_signal("player_turn_started")
+
+		# ---- CHAIN part 2: the player closes the trap; the lined-up hero chains
+		await _await_text(guide, "TUT_CHAIN_MOVE")
+		_check("chain trap keeps the lined-up hero at (5,3)", _is_player(grid, board, Vector2(5, 3)))
+		_check("chain trap places enemy at (3,3)", _is_enemy(grid, board, Vector2(3, 3)))
+		_check("chain trap drags the first hero", guide._drag_unit == guide._player(0))
+		_check("chain trap target is the pincer tile (4,3)", guide._target_coords == Vector2(4, 3))
+		_check("chain trap locks the drop to (4,3)", events.tutorial_required_coords == Vector2(4, 3))
 
 	print("test_tutorial: %s" % ("PASS" if _f == 0 else "FAIL (%d)" % _f))
 	quit(1 if _f > 0 else 0)
+
+
+# Poll until the callout shows `key`'s text, or fail after a generous timeout.
+func _await_text(guide, key: String, max_frames: int = 600) -> void:
+	var f := 0
+	while guide._text_label.text != tr(key) and f < max_frames:
+		await process_frame
+		f += 1
+	if guide._text_label.text != tr(key):
+		_f += 1
+		print("  FAIL timed out waiting for %s (saw '%s')" % [key, guide._text_label.text])
 
 
 func _alive_players(board) -> int:

@@ -358,9 +358,10 @@ TUT_TIMER,"The sand only runs while you drag. When it empties, your turn ends.",
 TUT_READY,You are ready. Clear the field!,¡Estás listo! ¡Despeja el campo!
 TUT_SKIP,Skip tutorial,Saltar tutorial
 TUT_CONTINUE,Tap to continue,Toca para continuar
-TUT_DRAG_HERE,Drag your glowing hero onto the marked tile.,Arrastra a tu héroe brillante a la casilla marcada.
+TUT_DRAG_HERE,Drag your hero onto the marked tile.,Arrastra a tu héroe a la casilla marcada.
 TUT_PINCER_DONE,"A pincer! An enemy trapped between two heroes is struck from both sides.","¡Una pinza! Un enemigo atrapado entre dos héroes recibe golpes de ambos lados."
 TUT_FINISH,You have got it. Now clear the rest of the field!,Lo tienes. ¡Ahora despeja el resto del campo!
-TUT_PINCER_MOVE,Drag your glowing hero onto the marked tile to trap the enemy.,Arrastra a tu héroe brillante a la casilla marcada para atrapar al enemigo.
-TUT_CHAIN_MOVE,Now line up a third hero: drag onto the marked tile to chain the attack.,Ahora alinea a un tercer héroe: arrastra a la casilla marcada para encadenar el ataque.
-TUT_CHAIN_DONE,"A chain! Heroes lined up with the pincer pile on extra hits.","¡Una cadena! Los héroes alineados con la pinza añaden golpes extra."
+TUT_PINCER_MOVE,Drag your hero onto the marked tile to trap the enemy.,Arrastra a tu héroe a la casilla marcada para atrapar al enemigo.
+TUT_CHAIN_SETUP,"First, line up a hero on the far side of the enemy. Drag onto the marked tile.","Primero, alinea a un héroe al otro lado del enemigo. Arrastra a la casilla marcada."
+TUT_CHAIN_MOVE,Now close the trap. The hero you lined up chains in for extra hits.,Ahora cierra la trampa. El héroe que alineaste se encadena para dar golpes extra.
+TUT_CHAIN_DONE,"A chain! Heroes lined up beyond the pincer pile on extra hits.","¡Una cadena! Los héroes alineados más allá de la pinza añaden golpes extra."

@@ -602,6 +602,13 @@ func _start_enemy_turn() -> void:
 	if _battle_over:
 		return
 
+	# On-rails tutorial: enemies never take their turn, so the board stays
+	# exactly as the guide scripted it while the player builds a pincer and a
+	# chain across several forced moves. Cycle straight back to the player.
+	if Events.tutorial_freeze_enemies:
+		_start_player_turn()
+		return
+
 	print("Starting enemy turn")
 
 	_current_turn = Turn.ENEMY

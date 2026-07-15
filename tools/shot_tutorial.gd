@@ -1,6 +1,8 @@
 extends SceneTree
-# Dev tool: shows the guided tutorial's first step over a live battle and
-# screenshots it (callout plate + pulsing ring on a hero). Run windowed:
+# Dev tool: shows the guided tutorial's three forced moves over a live battle
+# and screenshots each (callout + bouncing grab arrow + pulsing drop ring):
+#   1  pincer      2  chain line-up      3  chain trap
+# Run windowed:
 #   godot --path . --script res://tools/shot_tutorial.gd
 
 
@@ -9,7 +11,7 @@ func _initialize() -> void:
 
 
 func _run() -> void:
-	# Force a fresh 3-hero squad so the chain move (needs 3) shows.
+	# Force a fresh 3-hero squad so the chain moves (which need 3) show.
 	var default_save = load("res://save_data/default_save_data.tres")
 	var sd = default_save.duplicate()
 	sd.jobs = []
@@ -37,33 +39,48 @@ func _run() -> void:
 	guide.setup(board, battle)
 	battle.add_child(guide)
 
-	# Let _ready rearrange the board and settle the pincer move (arrow + ring).
-	for i in 40:
+	# MOVE 1 (pincer): let the layout settle, then shoot.
+	await _await_text(guide, "TUT_PINCER_MOVE")
+	for i in 12:
 		await process_frame
+	_shoot("/tmp/tutorial_shot.png")
 
-	var img := root.get_viewport().get_texture().get_image()
-	img.save_png("/tmp/tutorial_shot.png")
-
-	# Advance past the pincer to the chain move: fire the pincer cut-in, then a
-	# player turn so the guide sets up the chain layout.
-	var events = root.get_node("/root/Events")
-	events.emit_signal("cutin_requested", [null], "", true, Color.WHITE, false)
-	for i in 8:
-		await process_frame
-	# Tap through the explanation instead of waiting out its timer.
-	guide._on_callout_tapped()
-	for i in 4:
-		await process_frame
+	# Resolve move 1 -> explanation -> chain line-up. Advancement rides the
+	# player_turn_started latch, and freeze keeps the board still.
 	board.emit_signal("player_turn_started")
-	for i in 30:
+	await _await_text(guide, "TUT_PINCER_DONE")
+	guide._tap_flag = true
+
+	# MOVE 2 (chain line-up): drag a hero to the far side of the enemy.
+	await _await_text(guide, "TUT_CHAIN_SETUP")
+	for i in 12:
 		await process_frame
+	_shoot("/tmp/tutorial_shot2.png")
+
+	# Resolve the line-up (no pincer) -> chain trap.
+	board.emit_signal("player_turn_started")
+
+	# MOVE 3 (chain trap): close the pincer so the lined-up hero chains in.
+	await _await_text(guide, "TUT_CHAIN_MOVE")
+	for i in 12:
+		await process_frame
+	_shoot("/tmp/tutorial_shot3.png")
+
 	print("alive players: %d" % _count_alive(board._player_units_node))
-
-	img = root.get_viewport().get_texture().get_image()
-	img.save_png("/tmp/tutorial_shot2.png")
-
 	print("SHOTS SAVED")
 	quit(0)
+
+
+func _shoot(path: String) -> void:
+	var img := root.get_viewport().get_texture().get_image()
+	img.save_png(path)
+
+
+func _await_text(guide, key: String, max_frames: int = 600) -> void:
+	var f := 0
+	while guide._text_label.text != tr(key) and f < max_frames:
+		await process_frame
+		f += 1
 
 
 func _count_alive(units_node: Node) -> int:
