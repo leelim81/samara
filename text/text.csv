@@ -362,6 +362,6 @@ TUT_DRAG_HERE,Drag your hero onto the marked tile.,Arrastra a tu héroe a la cas
 TUT_PINCER_DONE,"A pincer! An enemy trapped between two heroes is struck from both sides.","¡Una pinza! Un enemigo atrapado entre dos héroes recibe golpes de ambos lados."
 TUT_FINISH,You have got it. Now clear the rest of the field!,Lo tienes. ¡Ahora despeja el resto del campo!
 TUT_PINCER_MOVE,Drag your hero onto the marked tile to trap the enemy.,Arrastra a tu héroe a la casilla marcada para atrapar al enemigo.
-TUT_CHAIN_SETUP,"First, line up a hero on the far side of the enemy. Drag onto the marked tile.","Primero, alinea a un héroe al otro lado del enemigo. Arrastra a la casilla marcada."
-TUT_CHAIN_MOVE,Now close the trap. The hero you lined up chains in for extra hits.,Ahora cierra la trampa. El héroe que alineaste se encadena para dar golpes extra.
+TUT_CHAIN_SETUP,"First, line a hero up in the enemy's row, a few tiles out. Drag onto the marked tile.","Primero, alinea a un héroe en la fila del enemigo, a unas casillas de distancia. Arrastra a la casilla marcada."
+TUT_CHAIN_MOVE,"Now close the trap. Your hero down the row chains in, even from a few tiles away.","Ahora cierra la trampa. Tu héroe en la fila se encadena, incluso a unas casillas de distancia."
 TUT_CHAIN_DONE,"A chain! Heroes lined up beyond the pincer pile on extra hits.","¡Una cadena! Los héroes alineados más allá de la pinza añaden golpes extra."

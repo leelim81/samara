@@ -336,10 +336,12 @@ func _setup_pincer_layout() -> bool:
 	return true
 
 
-# CHAIN, part 1 (line up): the enemy and one partner are set. The player drags
-# a hero to the FAR side of the enemy so it sits in line with it. No pincer
-# forms yet, so nothing fires: this move just gets the hero into position.
-#   row 3:   partner(2) . enemy(3) . [gap](4) . DROP HERE(5)
+# CHAIN, part 1 (line up): the enemy and one partner sit at the left edge. The
+# player drags a hero WAY out to the far end of the enemy's row so it sits well
+# clear of where the trap will close. No pincer forms yet, so nothing fires:
+# this move just gets the support hero into position. A chain reaches across the
+# empty cells between (only enemies break a chain), so the gap is deliberate.
+#   row 3:   partner(0) . enemy(1) . [trap tile](2) . gap(3) . gap(4) . DROP HERE(5)
 func _setup_chain_setup_layout() -> bool:
 	var grid = _board.get_node_or_null("Grid")
 	if grid == null:
@@ -353,10 +355,10 @@ func _setup_chain_setup_layout() -> bool:
 
 	_vacate(grid, players + enemies)
 
-	_place(grid, players[1], Vector2(2, 3))   # partner holds the near side
-	_place(grid, enemies[0], Vector2(3, 3))   # enemy to trap
-	_place(grid, players[0], Vector2(4, 5))   # the trap hero waits below col 4
-	_place(grid, players[2], Vector2(5, 5))   # the hero to line up waits below col 5
+	_place(grid, players[1], Vector2(0, 3))   # partner holds the near side
+	_place(grid, enemies[0], Vector2(1, 3))   # enemy to trap
+	_place(grid, players[0], Vector2(2, 5))   # the trap hero waits below col 2
+	_place(grid, players[2], Vector2(5, 5))   # the support hero waits below col 5
 	_drag_unit = players[2]
 	_target_coords = Vector2(5, 3)
 
@@ -364,10 +366,10 @@ func _setup_chain_setup_layout() -> bool:
 	return true
 
 
-# CHAIN, part 2 (close the trap): partner, enemy and the just-lined-up hero are
-# all in place. The player drags the last hero between the partner and the enemy
-# so the pincer forms AND the hero already in line beyond it chains in.
-#   row 3:   partner(2) . enemy(3) . DROP HERE(4) . chains in(5)
+# CHAIN, part 2 (close the trap): partner, enemy and the far-off support hero are
+# all in place. The player drags the last hero next to the enemy so the pincer
+# forms AND the support hero a few squares down the row chains in across the gap.
+#   row 3:   partner(0) . enemy(1) . DROP HERE(2) . gap(3) . gap(4) . chains in(5)
 func _setup_chain_trap_layout() -> bool:
 	var grid = _board.get_node_or_null("Grid")
 	if grid == null:
@@ -381,12 +383,12 @@ func _setup_chain_trap_layout() -> bool:
 
 	_vacate(grid, players + enemies)
 
-	_place(grid, players[1], Vector2(2, 3))   # partner (far pincer side)
-	_place(grid, enemies[0], Vector2(3, 3))   # enemy to trap
-	_place(grid, players[2], Vector2(5, 3))   # the hero the player just lined up
-	_place(grid, players[0], Vector2(4, 5))   # the trap hero waits below col 4
+	_place(grid, players[1], Vector2(0, 3))   # partner (far pincer side)
+	_place(grid, enemies[0], Vector2(1, 3))   # enemy to trap
+	_place(grid, players[2], Vector2(5, 3))   # the support hero, a few squares away
+	_place(grid, players[0], Vector2(2, 5))   # the trap hero waits below col 2
 	_drag_unit = players[0]
-	_target_coords = Vector2(4, 3)
+	_target_coords = Vector2(2, 3)
 
 	_park_extras(grid, players, enemies, 3)
 	return true
