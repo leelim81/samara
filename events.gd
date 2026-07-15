@@ -49,6 +49,12 @@ var tutorial_required_coords: Vector2 = Vector2(-1, -1)
 # _start_enemy_turn. false = normal combat.
 var tutorial_freeze_enemies: bool = false
 
+# Emitted the instant the player drops the tutorial-locked unit on the required
+# cell (a correct forced move is committing). The guide waits for THIS before it
+# treats a move as done, so it can never advance on a stray player_turn_started
+# (battle start, a timed-out turn, or the frozen-enemy cycle).
+signal tutorial_move_accepted
+
 
 # A unit may act this frame if the tutorial is not gating input, or if it is
 # the unit the tutorial currently allows.

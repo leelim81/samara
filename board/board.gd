@@ -1352,6 +1352,10 @@ func _on_Unit_snapped_to_grid(unit: Unit) -> void:
 
 				return
 
+			# Correct forced drop: tell the guide the taught move is committing so
+			# it advances on THIS, not on any stray turn start.
+			Events.emit_signal("tutorial_move_accepted")
+
 		if _has_active_unit_exited_cell:
 			_clear_active_cells()
 

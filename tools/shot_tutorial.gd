@@ -26,6 +26,10 @@ func _run() -> void:
 	var battle = (load("res://battles/terra/borderlands.tscn") as PackedScene).instantiate()
 	root.add_child(battle)
 	var board = battle.get_node("Board")
+	# Runtime handle to the Events autoload (compile-time refs don't resolve in a
+	# --script tool). A forced move now advances only on a real accepted drop, so
+	# simulate that here alongside handing the turn back.
+	var events = root.get_node("/root/Events")
 
 	for i in 1200:
 		await process_frame
@@ -45,8 +49,8 @@ func _run() -> void:
 		await process_frame
 	_shoot("/tmp/tutorial_shot.png")
 
-	# Resolve move 1 -> explanation -> chain line-up. Advancement rides the
-	# player_turn_started latch, and freeze keeps the board still.
+	# Resolve move 1: simulate the accepted drop, then hand the turn back.
+	events.emit_signal("tutorial_move_accepted")
 	board.emit_signal("player_turn_started")
 	await _await_text(guide, "TUT_PINCER_DONE")
 	guide._tap_flag = true
@@ -57,7 +61,8 @@ func _run() -> void:
 		await process_frame
 	_shoot("/tmp/tutorial_shot2.png")
 
-	# Resolve the line-up (no pincer) -> chain trap.
+	# Resolve the line-up (no pincer): accepted drop + turn hand-back.
+	events.emit_signal("tutorial_move_accepted")
 	board.emit_signal("player_turn_started")
 
 	# MOVE 3 (chain trap): close the pincer so the lined-up hero chains in.

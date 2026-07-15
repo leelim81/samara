@@ -30,6 +30,13 @@ var _arrow_time: float = 0.0
 # fully resolved, without racing the player_turn_started signal.
 var _pt_latched: bool = false
 
+# Latched true when the player actually drops the locked hero on the required
+# tile (Events.tutorial_move_accepted). A move only advances once BOTH this and
+# the turn latch are set, so a stray player_turn_started (battle start, a
+# timed-out turn, the frozen-enemy cycle) can never skip the lesson ahead.
+var _drop_accepted: bool = false
+var _move_requires_drop: bool = false
+
 # The hero to spotlight this move, and the tile to drop on.
 var _spot_unit: Node = null
 var _target_coords_current: Vector2 = Vector2(-1, -1)
@@ -69,6 +76,10 @@ func _ready() -> void:
 	# starts means a move can never resolve faster than we start listening.
 	if _board != null and not _board.player_turn_started.is_connected(_on_player_turn):
 		_board.player_turn_started.connect(_on_player_turn)
+
+	# The board fires this the moment a correct forced drop commits.
+	if not Events.tutorial_move_accepted.is_connected(_on_tutorial_move_accepted):
+		Events.tutorial_move_accepted.connect(_on_tutorial_move_accepted)
 
 	# Let the board finish placing every unit on its cell before rearranging.
 	await get_tree().process_frame
@@ -143,10 +154,13 @@ func _begin_move(text_key: String, unit, target: Vector2) -> void:
 	Events.tutorial_locked_unit = unit
 	Events.tutorial_required_coords = target
 
-	# Arm the turn latch: it flips true only once THIS move resolves and the
-	# board hands the next turn back, so a wrong-drop snap-back (which does not
-	# start a new turn) never advances the tutorial.
+	# Arm the latches: the move advances only once the player has both dropped on
+	# the required tile (_drop_accepted) AND the board has handed the turn back
+	# (_pt_latched). A wrong-drop snap-back starts no turn; a stray turn start
+	# carries no accepted drop. Neither alone advances the lesson.
 	_pt_latched = false
+	_drop_accepted = false
+	_move_requires_drop = target.x >= 0.0
 
 	_panel.modulate.a = 0.35
 	create_tween().tween_property(_panel, "modulate:a", 1.0, 0.22)
@@ -192,12 +206,18 @@ func _wait(seconds: float) -> void:
 # signal, which can fire before or after any explanation delay. Skip-safe: a
 # Skip clears _running and drops us straight out.
 func _await_move_resolved() -> void:
-	while _running and not _pt_latched:
+	# A move with a required tile needs the real drop; the loose fallback move
+	# (no target) only has the turn latch to go on.
+	while _running and not (_pt_latched and (_drop_accepted or not _move_requires_drop)):
 		await get_tree().process_frame
 
 
 func _on_player_turn() -> void:
 	_pt_latched = true
+
+
+func _on_tutorial_move_accepted() -> void:
+	_drop_accepted = true
 
 
 func _on_callout_tapped() -> void:
@@ -239,18 +259,35 @@ func _notification(what: int) -> void:
 func _process(delta: float) -> void:
 	_arrow_time += delta
 
-	# Spotlight + grab arrow on the hero to drag.
+	# Spotlight the hero to drag; a gold arrow shows the gesture.
 	if _spot_unit != null and is_instance_valid(_spot_unit):
 		var rect := _unit_rect(_spot_unit)
 		_set_spotlight_visible(true)
 		_layout_spotlight(rect)
 
-		# The arrow sits just above the hero and bobs up and down.
-		var bob: float = sin(_arrow_time * 6.0) * 6.0
+		var from: Vector2 = rect.get_center()
+		var target_pos = _target_cell_screen_pos()
 		_grab_arrow.visible = true
-		_grab_arrow.position = Vector2(
-				rect.get_center().x - _grab_arrow.size.x * 0.5,
-				rect.position.y - _grab_arrow.size.y - 8.0 + bob)
+
+		if target_pos != null:
+			# Sweep the arrow along the whole drag path, hero -> marked tile, on
+			# a loop, pointing the way, so the player sees exactly where to drag.
+			var to: Vector2 = target_pos
+			var period := 1.5
+			var t: float = fmod(_arrow_time, period) / period
+			var eased: float = t * t * (3.0 - 2.0 * t)          # smoothstep
+			_grab_arrow.rotation = (to - from).angle()
+			_grab_arrow.position = from.lerp(to, eased) - _grab_arrow.size * 0.5
+			# Fade in leaving the hero, out arriving at the tile: reads as a sweep.
+			_grab_arrow.modulate = Color(_GOLD.r, _GOLD.g, _GOLD.b, clampf(sin(t * PI) * 1.6, 0.12, 1.0))
+		else:
+			# No destination (loose fallback move): bob above the hero.
+			var bob: float = sin(_arrow_time * 6.0) * 6.0
+			_grab_arrow.rotation = PI / 2.0
+			_grab_arrow.modulate = _GOLD
+			_grab_arrow.position = Vector2(
+					from.x - _grab_arrow.size.x * 0.5,
+					rect.position.y - _grab_arrow.size.y - 8.0 + bob)
 	else:
 		_set_spotlight_visible(false)
 		_grab_arrow.visible = false
