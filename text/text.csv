@@ -271,11 +271,11 @@ the Tigress,Gu Dasao (the Tigress),Gu Dasao (the Tigress)
 CHAR_THE_TATTOOED_MONK,Lu Zhishen (the Tattooed Monk),Lu Zhishen (the Tattooed Monk)
 HOW_TO_PLAY,How to Play,Cómo Jugar
 HOWTO_PINCER_TITLE,Pincer Attack,Ataque en Pinza
-HOWTO_PINCER_BODY,"Trap an enemy between two of your units on the same row or column to attack it. Move one unit to close the trap and the pincer strikes on its own.","Atrapa a un enemigo entre dos de tus unidades en la misma fila o columna para atacarlo. Mueve una unidad para cerrar la trampa y la pinza ataca por sí sola."
+HOWTO_PINCER_BODY,Trap an enemy between two of your units on the same row or column to attack it. Move one unit to close the trap and the pincer strikes on its own.,Atrapa a un enemigo entre dos de tus unidades en la misma fila o columna para atacarlo. Mueve una unidad para cerrar la trampa y la pinza ataca por sí sola.
 HOWTO_CHAIN_TITLE,Chain,Cadena
 HOWTO_CHAIN_BODY,"Line up more units behind a pincer, with a clear path to the trapped enemy, and they join the strike. Longer chains deal far more damage and set off more skills.","Alinea más unidades detrás de una pinza, con un camino despejado hasta el enemigo atrapado, y se unen al golpe. Las cadenas más largas causan mucho más daño y activan más habilidades."
 HOWTO_POWER_TITLE,Powered Points,Puntos de Poder
-HOWTO_POWER_BODY,"Survive enemy hits to fill the power gauge and spawn glowing tiles. Chain one during a pincer to guarantee your skills and boost all damage and healing for the rest of the turn.","Sobrevive a los golpes enemigos para llenar el medidor de poder y generar casillas brillantes. Encadena una durante una pinza para asegurar tus habilidades y potenciar todo el daño y la curación durante el resto del turno."
+HOWTO_POWER_BODY,Survive enemy hits to fill the power gauge and spawn glowing tiles. Chain one during a pincer to guarantee your skills and boost all damage and healing for the rest of the turn.,Sobrevive a los golpes enemigos para llenar el medidor de poder y generar casillas brillantes. Encadena una durante una pinza para asegurar tus habilidades y potenciar todo el daño y la curación durante el resto del turno.
 HOWTO_TIMER_TITLE,Move Timer,Temporizador de Movimiento
 HOWTO_TIMER_BODY,"When you pick up a unit, a short timer starts. Drag through allies and around enemies to line up the best pincer before it runs out.","Cuando tomas una unidad, empieza un breve temporizador. Arrastra a través de aliados y alrededor de enemigos para preparar la mejor pinza antes de que se agote."
 BESTIARY,Bestiary,Bestiario
@@ -290,17 +290,17 @@ BLIND,Blind,Ceguera
 WEAKNESS,Weakness,Debilidad
 ITEMS,Items,Objetos
 MATERIALS,Materials,Materiales
-INVENTORY_EMPTY,"You have not collected any materials yet. Materials drop from battle.","Aún no has recogido materiales. Los materiales caen de las batallas."
+INVENTORY_EMPTY,You have not collected any materials yet. Materials drop from battle.,Aún no has recogido materiales. Los materiales caen de las batallas.
 ITEM_SCRAP,Scrap Iron,Chatarra
-ITEM_SCRAP_DESC,"Common salvage. The base material for basic upgrades.","Chatarra común. El material base para mejoras básicas."
+ITEM_SCRAP_DESC,Common salvage. The base material for basic upgrades.,Chatarra común. El material base para mejoras básicas.
 ITEM_ALLOY,Refined Alloy,Aleación Refinada
-ITEM_ALLOY_DESC,"A sturdier worked metal used for mid-tier upgrades.","Un metal trabajado más resistente para mejoras intermedias."
+ITEM_ALLOY_DESC,A sturdier worked metal used for mid-tier upgrades.,Un metal trabajado más resistente para mejoras intermedias.
 ITEM_CELL,Power Cell,Célula de Poder
-ITEM_CELL_DESC,"A charged core that powers advanced upgrades.","Un núcleo cargado que alimenta mejoras avanzadas."
+ITEM_CELL_DESC,A charged core that powers advanced upgrades.,Un núcleo cargado que alimenta mejoras avanzadas.
 ITEM_CORE,Neural Core,Núcleo Neural
-ITEM_CORE_DESC,"A rare processing core sought for elite upgrades.","Un núcleo de procesamiento raro para mejoras de élite."
+ITEM_CORE_DESC,A rare processing core sought for elite upgrades.,Un núcleo de procesamiento raro para mejoras de élite.
 ITEM_SIGIL,Sigil Shard,Fragmento de Sello
-ITEM_SIGIL_DESC,"A fragment humming with old power. The rarest material.","Un fragmento que zumba con poder antiguo. El material más raro."
+ITEM_SIGIL_DESC,A fragment humming with old power. The rarest material.,Un fragmento que zumba con poder antiguo. El material más raro.
 MARKET,Market,Mercado
 BUY,Buy,Comprar
 OWNED,Owned,En posesión
@@ -317,11 +317,11 @@ LUCK,Luck,Suerte
 LUCK_BONUS,Luck Bonus,Bono de Suerte
 EX_STAGES,EX Stages,Etapas EX
 EX_DRILL_GROUNDS,Drill Grounds,Campo de Entrenamiento
-EX_DRILL_GROUNDS_CAPTION,"A safe yard to grind levels and basic parts.","Un patio seguro para subir niveles y conseguir piezas básicas."
+EX_DRILL_GROUNDS_CAPTION,A safe yard to grind levels and basic parts.,Un patio seguro para subir niveles y conseguir piezas básicas.
 EX_PROVING_RUN,Proving Run,Prueba de Aptitud
-EX_PROVING_RUN_CAPTION,"A tougher circuit with better salvage.","Un circuito más duro con mejor botín."
+EX_PROVING_RUN_CAPTION,A tougher circuit with better salvage.,Un circuito más duro con mejor botín.
 EX_TOWER_TRIAL,Tower Trial,Prueba de la Torre
-EX_TOWER_TRIAL_CAPTION,"The old tower's gauntlet. Elite parts await the strong.","El desafío de la vieja torre. Piezas de élite esperan a los fuertes."
+EX_TOWER_TRIAL_CAPTION,The old tower's gauntlet. Elite parts await the strong.,El desafío de la vieja torre. Piezas de élite esperan a los fuertes.
 AWAKEN,Awaken,Despertar
 AWAKENED,Awakened,Despierto
 AWAKEN_CONFIRM,Tap to confirm,Toca para confirmar
@@ -352,16 +352,16 @@ EXP_GAIN_FORMAT,+%d EXP,+%d EXP
 LEVEL_UP_MULTI,LEVEL UP x%d!,¡SUBE x%d NIVELES!
 MORE,More,Más
 TUT_MOVE,Drag a hero anywhere on the grid. One drag is your whole turn.,Arrastra a un héroe por la cuadrícula. Un arrastre es todo tu turno.
-TUT_PINCER,Trap an enemy between two heroes to strike from both sides.,Atrapa a un enemigo entre dos héroes para atacar por ambos lados.
-TUT_CHAIN,"Allies lined up with the pair join in. Longer chains, more hits.","Los aliados alineados con la pareja se unen. Cadenas más largas, más golpes."
+TUT_PINCER,Catch an enemy between two heroes. It gets hit from both sides.,Catch an enemy between two heroes. It gets hit from both sides.
+TUT_CHAIN,"Extra heroes lined up with a pincer join the attack too. This is a chained pincer. More heroes, more hits.","Extra heroes lined up with a pincer join the attack too. This is a chained pincer. More heroes, more hits."
 TUT_TIMER,"The sand only runs while you drag. When it empties, your turn ends.","La arena solo corre mientras arrastras. Cuando se agota, tu turno termina."
 TUT_READY,You are ready. Clear the field!,¡Estás listo! ¡Despeja el campo!
 TUT_SKIP,Skip tutorial,Saltar tutorial
 TUT_CONTINUE,Tap to continue,Toca para continuar
 TUT_DRAG_HERE,Drag your hero onto the marked tile.,Arrastra a tu héroe a la casilla marcada.
-TUT_PINCER_DONE,"A pincer! An enemy trapped between two heroes is struck from both sides.","¡Una pinza! Un enemigo atrapado entre dos héroes recibe golpes de ambos lados."
+TUT_PINCER_DONE,A pincer! An enemy caught between two heroes is hit from both sides.,A pincer! An enemy caught between two heroes is hit from both sides.
 TUT_FINISH,You have got it. Now clear the rest of the field!,Lo tienes. ¡Ahora despeja el resto del campo!
-TUT_PINCER_MOVE,Drag your hero onto the marked tile to trap the enemy.,Arrastra a tu héroe a la casilla marcada para atrapar al enemigo.
-TUT_CHAIN_SETUP,"First, line a hero up in the enemy's row, a few tiles out. Drag onto the marked tile.","Primero, alinea a un héroe en la fila del enemigo, a unas casillas de distancia. Arrastra a la casilla marcada."
-TUT_CHAIN_MOVE,"Now close the trap. Your hero down the row chains in, even from a few tiles away.","Ahora cierra la trampa. Tu héroe en la fila se encadena, incluso a unas casillas de distancia."
-TUT_CHAIN_DONE,"A chain! Heroes lined up beyond the pincer pile on extra hits.","¡Una cadena! Los héroes alineados más allá de la pinza añaden golpes extra."
+TUT_PINCER_MOVE,Drag your hero onto the marked tile to catch the enemy.,Drag your hero onto the marked tile to catch the enemy.
+TUT_CHAIN_SETUP,"First, move a hero into the enemy's row, a few tiles away. Drag him to the marked tile.","First, move a hero into the enemy's row, a few tiles away. Drag him to the marked tile."
+TUT_CHAIN_MOVE,Now catch the enemy in a pincer. The hero down the row joins in too. That is a chained pincer.,Now catch the enemy in a pincer. The hero down the row joins in too. That is a chained pincer.
+TUT_CHAIN_DONE,A chained pincer! Heroes lined up in the row add extra hits.,A chained pincer! Heroes lined up in the row add extra hits.
