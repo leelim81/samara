@@ -7,16 +7,20 @@ const ROWS_PATH := "MarginContainer/VBoxContainer/ResultsPanel/Margin/Rows"
 const _MATERIAL_LIST_PATH := "res://items/material_list.tres"
 const _COIN_ICON := preload("res://assets/terra/ui/coin.png")
 
-const _BURST_TEX := preload("res://assets/vfx/victory_burst.png")
+const _BURST_TEX := preload("res://assets/vfx/victory_halo.png")
 const _GLEAM_TEX := preload("res://assets/vfx/victory_gleam.png")
+const _MOTE_TEX := preload("res://assets/vfx/glow_spark.png")
 
 var _spoils: Dictionary = {}
 var _turn_count: int = 0
 var _drag_time_seconds: float = 0.0
 
 var _title_burst: TextureRect
-var _gleam: TextureRect
-var _flash: ColorRect
+var _underline: TextureRect
+var _motes: CPUParticles2D
+
+var _breathe_tween: Tween
+var _pulse_tween: Tween
 
 
 func _ready() -> void:
@@ -26,8 +30,27 @@ func _ready() -> void:
 # The Continue button is intentionally text-only (no icon): an arrow read as
 # clutter on the results screen.
 func _build_entrance_effects() -> void:
-	# Warm light bloom behind the VICTORY title (drawn above the backdrop but
-	# behind the text).
+	# Slow, warm light motes drift upward behind everything so the screen feels
+	# alive and lit rather than a static card (Final Fantasy results feel).
+	_motes = CPUParticles2D.new()
+	_motes.texture = _MOTE_TEX
+	_motes.amount = 16
+	_motes.lifetime = 7.0
+	_motes.preprocess = 3.5
+	_motes.emission_shape = CPUParticles2D.EMISSION_SHAPE_RECTANGLE
+	_motes.direction = Vector2(0, -1)
+	_motes.spread = 16.0
+	_motes.gravity = Vector2(0, -18)
+	_motes.initial_velocity_min = 16.0
+	_motes.initial_velocity_max = 42.0
+	_motes.scale_amount_min = 0.10
+	_motes.scale_amount_max = 0.28
+	_motes.color_ramp = _mote_ramp()
+	_motes.material = _additive_material()
+	add_child(_motes)
+	move_child(_motes, 1)
+
+	# Warm bloom behind the VICTORY title: above the backdrop, behind the text.
 	_title_burst = TextureRect.new()
 	_title_burst.texture = _BURST_TEX
 	_title_burst.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
@@ -36,25 +59,32 @@ func _build_entrance_effects() -> void:
 	_title_burst.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_title_burst.modulate.a = 0.0
 	add_child(_title_burst)
-	move_child(_title_burst, 1)
+	move_child(_title_burst, 2)
 
-	# A light streak that sweeps across the title once, on top of the text.
-	_gleam = TextureRect.new()
-	_gleam.texture = _GLEAM_TEX
-	_gleam.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	_gleam.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-	_gleam.material = _additive_material()
-	_gleam.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	_gleam.modulate.a = 0.0
-	add_child(_gleam)
+	# An elegant light rule that draws outward from the center beneath the title,
+	# replacing the old left-to-right sweep. Repurposes the soft gleam streak so
+	# it reads as a symmetric glow, not a moving flash.
+	_underline = TextureRect.new()
+	_underline.texture = _GLEAM_TEX
+	_underline.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	_underline.stretch_mode = TextureRect.STRETCH_SCALE
+	_underline.material = _additive_material()
+	_underline.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_underline.modulate.a = 0.0
+	add_child(_underline)
 
-	# A brief white impact flash over everything.
-	_flash = ColorRect.new()
-	_flash.color = Color(1, 1, 1, 1)
-	_flash.set_anchors_preset(Control.PRESET_FULL_RECT)
-	_flash.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	_flash.modulate.a = 0.0
-	add_child(_flash)
+
+func _mote_ramp() -> Gradient:
+	# Motes fade in and back out over their life so none pop on or off.
+	var g := Gradient.new()
+	g.offsets = PackedFloat32Array([0.0, 0.25, 0.75, 1.0])
+	g.colors = PackedColorArray([
+		Color(0.95, 0.82, 0.5, 0.0),
+		Color(0.95, 0.82, 0.5, 0.24),
+		Color(0.95, 0.82, 0.5, 0.24),
+		Color(0.95, 0.82, 0.5, 0.0),
+	])
+	return g
 
 
 func _additive_material() -> CanvasItemMaterial:
@@ -298,81 +328,89 @@ func _notification(what: int) -> void:
 		_play_entrance()
 
 
-# Final Fantasy-style reveal: a light burst behind the title, the word VICTORY
-# punches in with an impact flash and a gleam sweep, the results panel rises,
-# then the spoils count up in sequence.
+# Final Fantasy-style reveal: warm light swells behind the title, VICTORY
+# settles in softly and a light rule draws outward beneath it, the results
+# panel rises, then each spoil line arrives and counts up in sequence.
 func _play_entrance() -> void:
 	var title: Label = $MarginContainer/VBoxContainer/Label
 	var results: Control = $MarginContainer/VBoxContainer/ResultsPanel
 	var button: Control = $MarginContainer/VBoxContainer/ContinueButton
 
+	# Replaying (screen re-shown): stop any looping glow/pulse from last time so
+	# they never stack.
+	if is_instance_valid(_breathe_tween):
+		_breathe_tween.kill()
+	if is_instance_valid(_pulse_tween):
+		_pulse_tween.kill()
+
 	# Wait one frame so container layout (title/results rects) is valid.
 	await get_tree().process_frame
 
-	$ColorRect.modulate.a = 0.0
-	create_tween().tween_property($ColorRect, "modulate:a", 1.0, 0.3)
+	var vp: Vector2 = get_viewport_rect().size
 
-	# Position the light bloom over the title center.
+	# Drift the motes up across the full width, rising from just below the frame.
+	_motes.position = Vector2(vp.x / 2.0, vp.y + 16.0)
+	_motes.emission_rect_extents = Vector2(vp.x / 2.0, 8.0)
+
+	$ColorRect.modulate.a = 0.0
+	create_tween().tween_property($ColorRect, "modulate:a", 1.0, 0.35)
+
+	# Position the warm bloom over the title center.
 	var title_center: Vector2 = title.global_position + title.size / 2.0
-	var burst_size := Vector2(480, 480)
+	var burst_size := Vector2(520, 520)
 	_title_burst.size = burst_size
 	_title_burst.pivot_offset = burst_size / 2.0
 	_title_burst.position = title_center - burst_size / 2.0
-	_title_burst.scale = Vector2(0.4, 0.4)
+	_title_burst.scale = Vector2(0.5, 0.5)
 
-	# Impact flash: a quick white pop as the title lands.
-	_flash.modulate.a = 0.0
-	var flash := create_tween()
-	flash.tween_interval(0.08)
-	flash.tween_property(_flash, "modulate:a", 0.55, 0.05)
-	flash.tween_property(_flash, "modulate:a", 0.0, 0.4).set_trans(Tween.TRANS_SINE)
-
-	# Light bloom: blooms outward, then settles to a soft ambient glow.
+	# Bloom swells outward, settles to a soft ambient level, then breathes.
 	var bloom := create_tween()
-	bloom.set_parallel(true)
-	bloom.tween_property(_title_burst, "modulate:a", 0.95, 0.28).set_ease(Tween.EASE_OUT)
-	bloom.tween_property(_title_burst, "scale", Vector2(1.1, 1.1), 0.55) \
+	bloom.tween_property(_title_burst, "modulate:a", 0.9, 0.32).set_ease(Tween.EASE_OUT)
+	bloom.parallel().tween_property(_title_burst, "scale", Vector2(1.2, 1.2), 0.6) \
 			.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	bloom.chain().tween_property(_title_burst, "modulate:a", 0.4, 0.6)
+	bloom.chain().tween_callback(_breathe_bloom)
 
-	# VICTORY punches in.
+	# VICTORY eases in with a soft scale settle (no hard punch).
 	title.pivot_offset = title.size / 2.0
-	title.scale = Vector2(1.22, 1.22)
+	title.scale = Vector2(1.14, 1.14)
 	title.modulate.a = 0.0
 	var t := create_tween()
-	t.set_parallel(true)
-	t.tween_property(title, "modulate:a", 1.0, 0.22)
-	t.tween_property(title, "scale", Vector2.ONE, 0.5) \
-			.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	t.tween_property(title, "modulate:a", 1.0, 0.28)
+	t.parallel().tween_property(title, "scale", Vector2.ONE, 0.6) \
+			.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 
-	# A gleam sweeps across the title as it lands.
-	_sweep_gleam(title)
+	# The light rule draws outward from center beneath the title.
+	_draw_underline(title)
 
-	# Results panel rises and fades in, then the button.
+	# Spoils lines start hidden so each can arrive right before it counts.
+	var rows := get_node(ROWS_PATH)
+	for row_name in ["ExpRow", "CoinRow", "DefeatedRow"]:
+		rows.get_node(row_name).modulate.a = 0.0
+
 	results.pivot_offset = Vector2(results.size.x / 2.0, 0)
-	results.scale = Vector2(1.0, 0.92)
+	results.scale = Vector2(1.0, 0.94)
 	results.modulate.a = 0.0
 	button.modulate.a = 0.0
 
-	await get_tree().create_timer(0.22).timeout
+	await get_tree().create_timer(0.5).timeout
 
+	# Results panel rises (a subtle vertical grow reads as a lift).
 	var rise := create_tween()
-	rise.set_parallel(true)
-	rise.tween_property(results, "modulate:a", 1.0, 0.3)
-	rise.tween_property(results, "scale", Vector2.ONE, 0.4) \
+	rise.tween_property(results, "modulate:a", 1.0, 0.32)
+	rise.parallel().tween_property(results, "scale", Vector2.ONE, 0.42) \
 			.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 
 	await rise.finished
 
-	_count_up("ExpRow", int(_spoils.get("exp", 0)), "")
-	await get_tree().create_timer(0.18).timeout
+	# Each spoil line fades in, then counts up, one after another.
+	await _reveal_and_count("ExpRow", int(_spoils.get("exp", 0)))
+	await _reveal_and_count("CoinRow", int(_spoils.get("coins", 0)))
+	await _reveal_and_count("DefeatedRow", int(_spoils.get("defeated", 0)))
 
-	_count_up("CoinRow", int(_spoils.get("coins", 0)), "")
-	await get_tree().create_timer(0.18).timeout
-
-	_count_up("DefeatedRow", int(_spoils.get("defeated", 0)), "")
-
+	# The Continue button fades in and breathes gently to invite the tap.
 	create_tween().tween_property(button, "modulate:a", 1.0, 0.3)
+	_pulse_button(button)
 
 	await get_tree().create_timer(0.18).timeout
 
@@ -383,24 +421,65 @@ func _play_entrance() -> void:
 	_reveal_luck()
 
 
-# A soft light streak travels left to right across the title once.
-func _sweep_gleam(title: Control) -> void:
-	var h: float = title.size.y
-	_gleam.size = Vector2(120, h)
-	var start_x: float = title.global_position.x - 90.0
-	var end_x: float = title.global_position.x + title.size.x + 90.0
-	_gleam.position = Vector2(start_x, title.global_position.y)
-	_gleam.modulate.a = 0.0
+# Draws a soft light rule outward from the center, just under the title text.
+func _draw_underline(title: Control) -> void:
+	var w := 340.0
+	var h := 22.0
+	var title_center: Vector2 = title.global_position + title.size / 2.0
+	var underline_y: float = title.global_position.y + title.size.y * 0.72
 
-	var move := create_tween()
-	move.tween_interval(0.14)
-	move.tween_property(_gleam, "position:x", end_x, 0.55).set_trans(Tween.TRANS_SINE)
+	_underline.size = Vector2(w, h)
+	_underline.pivot_offset = Vector2(w / 2.0, h / 2.0)
+	_underline.position = Vector2(title_center.x - w / 2.0, underline_y - h / 2.0)
+	_underline.scale = Vector2(0.02, 1.0)
+	_underline.modulate.a = 0.0
+
+	var draw := create_tween()
+	draw.tween_interval(0.24)
+	draw.tween_property(_underline, "scale:x", 1.0, 0.5) \
+			.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	draw.parallel().tween_property(_underline, "modulate:a", 0.85, 0.3)
+	draw.chain().tween_property(_underline, "modulate:a", 0.5, 0.55)
+
+
+# The bloom behind the title breathes slowly, keeping the screen alive.
+func _breathe_bloom() -> void:
+	if not is_instance_valid(_title_burst):
+		return
+
+	_breathe_tween = create_tween().set_loops()
+	_breathe_tween.tween_property(_title_burst, "modulate:a", 0.5, 1.7) \
+			.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	_breathe_tween.parallel().tween_property(_title_burst, "scale", Vector2(1.28, 1.28), 1.7) \
+			.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	_breathe_tween.tween_property(_title_burst, "modulate:a", 0.32, 1.7) \
+			.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	_breathe_tween.parallel().tween_property(_title_burst, "scale", Vector2(1.2, 1.2), 1.7) \
+			.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+
+
+# The Continue button breathes to draw the eye once results are in.
+func _pulse_button(button: Control) -> void:
+	button.pivot_offset = button.size / 2.0
+
+	_pulse_tween = create_tween().set_loops()
+	_pulse_tween.tween_property(button, "scale", Vector2(1.03, 1.03), 0.95) \
+			.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	_pulse_tween.tween_property(button, "scale", Vector2.ONE, 0.95) \
+			.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+
+
+# Fades one spoil line in, counts it up, and holds a beat before the next.
+func _reveal_and_count(row_name: String, target: int) -> void:
+	var row: Control = get_node("%s/%s" % [ROWS_PATH, row_name])
 
 	var fade := create_tween()
-	fade.tween_interval(0.14)
-	fade.tween_property(_gleam, "modulate:a", 0.85, 0.14)
-	fade.tween_interval(0.2)
-	fade.tween_property(_gleam, "modulate:a", 0.0, 0.2)
+	fade.tween_property(row, "modulate:a", 1.0, 0.2)
+	await fade.finished
+
+	_count_up(row_name, target, "")
+
+	await get_tree().create_timer(0.34).timeout
 
 
 # Animates a result value from 0 to its total with a tick sound and a

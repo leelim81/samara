@@ -282,6 +282,33 @@ def victory_burst():
     _save(img.resize((512, 512), Image.LANCZOS), "victory_burst.png")
 
 
+def victory_halo():
+    """A smooth, spike-free warm radial glow for behind the VICTORY title
+    (additive). Softer and more elegant than victory_burst's god-rays, so it
+    reads as a halo of light rather than a star or cross."""
+    s = 512 * SS
+    img = Image.new("RGBA", (s, s), (0, 0, 0, 0))
+    cd = ImageDraw.Draw(img)
+    c = s // 2
+
+    # Concentric fading gold-white discs with a gentle falloff to the rim.
+    steps = 90
+    for i in range(steps, 0, -1):
+        t = i / steps
+        r = int(c * 0.94 * t)
+        a = int(120 * (1.0 - t) ** 2.4)
+        col = (255, int(240 - 26 * t), int(206 - 54 * t), a)
+        cd.ellipse([c - r, c - r, c + r, c + r], fill=col)
+
+    # A soft warm core for a little life at the center.
+    r = SS * 58
+    cd.ellipse([c - r, c - r, c + r, c + r], fill=(255, 250, 236, 150))
+
+    # Heavy blur removes every hard edge, leaving a pure soft halo.
+    img = img.filter(ImageFilter.GaussianBlur(SS * 14))
+    _save(img.resize((512, 512), Image.LANCZOS), "victory_halo.png")
+
+
 def victory_gleam():
     """A soft vertical light streak that sweeps across the title once."""
     w, h = 128 * SS, 220 * SS
@@ -332,6 +359,7 @@ def main():
     arcane_glyph()
     slash_cut()
     victory_burst()
+    victory_halo()
     victory_gleam()
     print("done")
 

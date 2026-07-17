@@ -32,6 +32,10 @@ func _run() -> void:
 	vs.get_node(rows_path + "/CoinRow/Value").text = "340"
 	vs.get_node(rows_path + "/DefeatedRow/Value").text = "6"
 
+	# The spoil lines now start hidden and arrive one at a time; force them in.
+	for row_name in ["ExpRow", "CoinRow", "DefeatedRow"]:
+		vs.get_node(rows_path + "/" + row_name).modulate.a = 1.0
+
 	for holder_name in ["SquadGains", "MaterialDrops", "LuckDrops"]:
 		var holder = vs.get_node(rows_path).get_node_or_null(holder_name)
 		if holder != null:
@@ -47,11 +51,11 @@ func _run() -> void:
 	vs.get_node("MarginContainer/VBoxContainer/ContinueButton").modulate.a = 1.0
 	vs.get_node("ColorRect").modulate.a = 1.0
 
-	# Light bloom at its settled ambient glow; flash/gleam finished.
-	vs._title_burst.scale = Vector2(1.1, 1.1)
+	# Bloom at its settled ambient glow; the underline rule fully drawn.
+	vs._title_burst.scale = Vector2(1.2, 1.2)
 	vs._title_burst.modulate.a = 0.4
-	vs._gleam.modulate.a = 0.0
-	vs._flash.modulate.a = 0.0
+	vs._underline.scale = Vector2.ONE
+	vs._underline.modulate.a = 0.5
 
 	for i in 20:
 		await process_frame
