@@ -362,6 +362,6 @@ TUT_DRAG_HERE,Drag your hero onto the marked tile.,Arrastra a tu héroe a la cas
 TUT_PINCER_DONE,A pincer! An enemy caught between two heroes is hit from both sides.,A pincer! An enemy caught between two heroes is hit from both sides.
 TUT_FINISH,You have got it. Now clear the rest of the field!,Lo tienes. ¡Ahora despeja el resto del campo!
 TUT_PINCER_MOVE,Drag your hero onto the marked tile to catch the enemy.,Drag your hero onto the marked tile to catch the enemy.
-TUT_CHAIN_SETUP,"First, move a hero into the enemy's row, a few tiles away. Drag him to the marked tile.","First, move a hero into the enemy's row, a few tiles away. Drag him to the marked tile."
+TUT_CHAIN_SETUP,"First, align a hero with attacking units. Drag him to the marked tile.","First, align a hero with attacking units. Drag him to the marked tile."
 TUT_CHAIN_MOVE,Now catch the enemy in a pincer. The hero down the row joins in too. That is a chained pincer.,Now catch the enemy in a pincer. The hero down the row joins in too. That is a chained pincer.
 TUT_CHAIN_DONE,A chained pincer! Heroes lined up in the row add extra hits.,A chained pincer! Heroes lined up in the row add extra hits.
