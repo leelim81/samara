@@ -10,6 +10,9 @@ var job: Job
 
 var _is_draggable: bool = false
 
+var _card_style_normal: StyleBox
+var _card_style_hover: StyleBoxFlat
+
 @onready var _card: PanelContainer = $Card
 @onready var _unit_icon := $Card/H/UnitIcon
 @onready var _name_label: Label = $Card/H/Body/NameRow/NameLabel
@@ -22,6 +25,22 @@ var _is_draggable: bool = false
 func _ready() -> void:
 	# Same glyph whether the button reads CHANGE or CHOOSE.
 	ButtonIcons.apply(_change_button, "swap")
+	_build_hover_style()
+
+
+# A clean box highlight on hover, matching the stage-selection cells: the whole
+# card brightens (gold border + a faint fill lift) instead of the old red-orange
+# glow that sat misaligned behind the portrait.
+func _build_hover_style() -> void:
+	var base := _card.get_theme_stylebox("panel") as StyleBoxFlat
+	if base == null:
+		return
+
+	_card_style_normal = base
+	_card_style_hover = base.duplicate()
+	_card_style_hover.bg_color = Color(0.16, 0.185, 0.223, 0.97)
+	_card_style_hover.border_color = Color(0.95, 0.82, 0.5, 0.7)
+	_card_style_hover.set_border_width_all(2)
 
 
 func initialize(_job: Job, is_draggable: bool = false, compare_job: Job = null) -> void:
@@ -117,11 +136,13 @@ func _on_ChangeButton_pressed() -> void:
 
 
 func _on_Card_mouse_entered() -> void:
-	_unit_icon.show_glow()
+	if _card_style_hover != null:
+		_card.add_theme_stylebox_override("panel", _card_style_hover)
 
 
 func _on_Card_mouse_exited() -> void:
-	_unit_icon.hide_glow()
+	if _card_style_normal != null:
+		_card.add_theme_stylebox_override("panel", _card_style_normal)
 
 
 func _on_Card_gui_input(event: InputEvent) -> void:
