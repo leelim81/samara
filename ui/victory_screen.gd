@@ -8,7 +8,6 @@ const _MATERIAL_LIST_PATH := "res://items/material_list.tres"
 const _COIN_ICON := preload("res://assets/terra/ui/coin.png")
 
 const _BURST_TEX := preload("res://assets/vfx/victory_halo.png")
-const _GLEAM_TEX := preload("res://assets/vfx/victory_gleam.png")
 const _MOTE_TEX := preload("res://assets/vfx/glow_spark.png")
 
 var _spoils: Dictionary = {}
@@ -16,7 +15,6 @@ var _turn_count: int = 0
 var _drag_time_seconds: float = 0.0
 
 var _title_burst: TextureRect
-var _underline: TextureRect
 var _motes: CPUParticles2D
 
 var _breathe_tween: Tween
@@ -60,18 +58,6 @@ func _build_entrance_effects() -> void:
 	_title_burst.modulate.a = 0.0
 	add_child(_title_burst)
 	move_child(_title_burst, 2)
-
-	# An elegant light rule that draws outward from the center beneath the title,
-	# replacing the old left-to-right sweep. Repurposes the soft gleam streak so
-	# it reads as a symmetric glow, not a moving flash.
-	_underline = TextureRect.new()
-	_underline.texture = _GLEAM_TEX
-	_underline.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	_underline.stretch_mode = TextureRect.STRETCH_SCALE
-	_underline.material = _additive_material()
-	_underline.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	_underline.modulate.a = 0.0
-	add_child(_underline)
 
 
 func _mote_ramp() -> Gradient:
@@ -380,9 +366,6 @@ func _play_entrance() -> void:
 	t.parallel().tween_property(title, "scale", Vector2.ONE, 0.6) \
 			.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 
-	# The light rule draws outward from center beneath the title.
-	_draw_underline(title)
-
 	# Spoils lines start hidden so each can arrive right before it counts.
 	var rows := get_node(ROWS_PATH)
 	for row_name in ["ExpRow", "CoinRow", "DefeatedRow"]:
@@ -419,27 +402,6 @@ func _play_entrance() -> void:
 	await get_tree().create_timer(0.18).timeout
 
 	_reveal_luck()
-
-
-# Draws a soft light rule outward from the center, just under the title text.
-func _draw_underline(title: Control) -> void:
-	var w := 340.0
-	var h := 22.0
-	var title_center: Vector2 = title.global_position + title.size / 2.0
-	var underline_y: float = title.global_position.y + title.size.y * 0.72
-
-	_underline.size = Vector2(w, h)
-	_underline.pivot_offset = Vector2(w / 2.0, h / 2.0)
-	_underline.position = Vector2(title_center.x - w / 2.0, underline_y - h / 2.0)
-	_underline.scale = Vector2(0.02, 1.0)
-	_underline.modulate.a = 0.0
-
-	var draw := create_tween()
-	draw.tween_interval(0.24)
-	draw.tween_property(_underline, "scale:x", 1.0, 0.5) \
-			.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
-	draw.parallel().tween_property(_underline, "modulate:a", 0.85, 0.3)
-	draw.chain().tween_property(_underline, "modulate:a", 0.5, 0.55)
 
 
 # The bloom behind the title breathes slowly, keeping the screen alive.

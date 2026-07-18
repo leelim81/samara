@@ -288,4 +288,4 @@ Per-element skill bursts and per-weapon impact sprites. The four burst sheets ar
 | `assets/vfx/arcane_glyph.png` | Staff basic attack impact: spinning rune circle. |
 | `assets/vfx/victory_burst.png` | Victory screen: warm radial light bloom with soft god-rays (alternate title glow, currently unused in favor of victory_halo). |
 | `assets/vfx/victory_halo.png` | Victory screen: smooth spike-free warm radial glow behind the VICTORY title (the live title glow). |
-| `assets/vfx/victory_gleam.png` | Victory screen: soft light streak, used as the light rule that draws outward beneath the VICTORY title. |
+| `assets/vfx/victory_gleam.png` | Victory screen: soft vertical light streak (currently unused). |

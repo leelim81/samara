@@ -51,11 +51,9 @@ func _run() -> void:
 	vs.get_node("MarginContainer/VBoxContainer/ContinueButton").modulate.a = 1.0
 	vs.get_node("ColorRect").modulate.a = 1.0
 
-	# Bloom at its settled ambient glow; the underline rule fully drawn.
+	# Bloom at its settled ambient glow.
 	vs._title_burst.scale = Vector2(1.2, 1.2)
 	vs._title_burst.modulate.a = 0.4
-	vs._underline.scale = Vector2.ONE
-	vs._underline.modulate.a = 0.5
 
 	for i in 20:
 		await process_frame
