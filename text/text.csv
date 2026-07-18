@@ -352,7 +352,7 @@ EXP_GAIN_FORMAT,+%d EXP,+%d EXP
 LEVEL_UP_MULTI,LEVEL UP x%d!,¡SUBE x%d NIVELES!
 MORE,More,Más
 TUT_MOVE,Drag a hero anywhere on the grid. One drag is your whole turn.,Arrastra a un héroe por la cuadrícula. Un arrastre es todo tu turno.
-TUT_PINCER,Catch an enemy between two heroes. It gets hit from both sides.,Catch an enemy between two heroes. It gets hit from both sides.
+TUT_PINCER,Catch an enemy between two heroes to attack.,Catch an enemy between two heroes to attack.
 TUT_CHAIN,"Extra heroes lined up with a pincer join the attack too. This is a chained pincer. More heroes, more hits.","Extra heroes lined up with a pincer join the attack too. This is a chained pincer. More heroes, more hits."
 TUT_TIMER,"The sand only runs while you drag. When it empties, your turn ends.","La arena solo corre mientras arrastras. Cuando se agota, tu turno termina."
 TUT_READY,You are ready. Clear the field!,¡Estás listo! ¡Despeja el campo!
