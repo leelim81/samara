@@ -1,0 +1,2052 @@
+{
+  "downloaded": 168,
+  "failed": 0,
+  "missing_pages": [],
+  "no_job_art": [],
+  "units": {
+    "nakupi": {
+      "page": "Nakup\u00ed",
+      "slots": {
+        "job2_full": "File:Nakup\u00ed job2.png",
+        "job2_token": "File:Nakup\u00ed job2 icon.png",
+        "job3_full": "File:Nakup\u00ed job3.png",
+        "job3_token": "File:Nakup\u00ed job3 icon.png",
+        "job1_full": "File:Nakup\u00ed.png",
+        "job1_token": "File:Nakup\u00ed icon.png"
+      },
+      "files": {
+        "job2_full": {
+          "title": "File:Nakup\u00ed job2.png",
+          "status": "downloaded",
+          "bytes": 2328273,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/subjobs/nakupi_job2_full.png"
+        },
+        "job2_token": {
+          "title": "File:Nakup\u00ed job2 icon.png",
+          "status": "downloaded",
+          "bytes": 30774,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/nakupi_job2_token.png"
+        },
+        "job3_full": {
+          "title": "File:Nakup\u00ed job3.png",
+          "status": "downloaded",
+          "bytes": 2413220,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/subjobs/nakupi_job3_full.png"
+        },
+        "job3_token": {
+          "title": "File:Nakup\u00ed job3 icon.png",
+          "status": "downloaded",
+          "bytes": 31741,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/nakupi_job3_token.png"
+        },
+        "job1_full": {
+          "title": "File:Nakup\u00ed.png",
+          "status": "downloaded",
+          "bytes": 1725216,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/full/nakupi_full.png"
+        },
+        "job1_token": {
+          "title": "File:Nakup\u00ed icon.png",
+          "status": "downloaded",
+          "bytes": 24939,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/tokens/nakupi_token.png"
+        }
+      }
+    },
+    "bahl": {
+      "page": "Bahl",
+      "slots": {
+        "job2_full": "File:Bahl job2.png",
+        "job2_token": "File:Bahl job2 icon.png",
+        "job3_full": "File:Bahl job3.png",
+        "job3_token": "File:Bahl job3 icon.png",
+        "job1_full": "File:Bahl.png",
+        "job1_token": "File:Bahl icon.png"
+      },
+      "files": {
+        "job2_full": {
+          "title": "File:Bahl job2.png",
+          "status": "downloaded",
+          "bytes": 2115160,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/subjobs/bahl_job2_full.png"
+        },
+        "job2_token": {
+          "title": "File:Bahl job2 icon.png",
+          "status": "downloaded",
+          "bytes": 29684,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/bahl_job2_token.png"
+        },
+        "job3_full": {
+          "title": "File:Bahl job3.png",
+          "status": "downloaded",
+          "bytes": 2288405,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/subjobs/bahl_job3_full.png"
+        },
+        "job3_token": {
+          "title": "File:Bahl job3 icon.png",
+          "status": "downloaded",
+          "bytes": 31646,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/bahl_job3_token.png"
+        },
+        "job1_full": {
+          "title": "File:Bahl.png",
+          "status": "downloaded",
+          "bytes": 1959464,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/full/bahl_full.png"
+        },
+        "job1_token": {
+          "title": "File:Bahl icon.png",
+          "status": "downloaded",
+          "bytes": 27862,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/tokens/bahl_token.png"
+        }
+      }
+    },
+    "grace": {
+      "page": "Grace",
+      "slots": {
+        "job2_full": "File:Grace job2.png",
+        "job2_token": "File:Grace job2 icon.png",
+        "job3_full": "File:Grace job3.png",
+        "job3_token": "File:Grace job3 icon.png",
+        "job1_full": "File:Grace.png",
+        "job1_token": "File:Grace icon.png"
+      },
+      "files": {
+        "job2_full": {
+          "title": "File:Grace job2.png",
+          "status": "downloaded",
+          "bytes": 1807176,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/subjobs/grace_job2_full.png"
+        },
+        "job2_token": {
+          "title": "File:Grace job2 icon.png",
+          "status": "downloaded",
+          "bytes": 29102,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/grace_job2_token.png"
+        },
+        "job3_full": {
+          "title": "File:Grace job3.png",
+          "status": "downloaded",
+          "bytes": 1911988,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/subjobs/grace_job3_full.png"
+        },
+        "job3_token": {
+          "title": "File:Grace job3 icon.png",
+          "status": "downloaded",
+          "bytes": 32280,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/grace_job3_token.png"
+        },
+        "job1_full": {
+          "title": "File:Grace.png",
+          "status": "downloaded",
+          "bytes": 1434930,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/full/grace_full.png"
+        },
+        "job1_token": {
+          "title": "File:Grace icon.png",
+          "status": "downloaded",
+          "bytes": 24417,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/tokens/grace_token.png"
+        }
+      }
+    },
+    "kuscah": {
+      "page": "Kuscah",
+      "slots": {
+        "job2_full": "File:Kuscah job2.png",
+        "job2_token": "File:Kuscah job2 icon.png",
+        "job3_full": "File:Kuscah job3.png",
+        "job3_token": "File:Kuscah job3 icon.png",
+        "job1_full": "File:Kuscah.png",
+        "job1_token": "File:Kuscah icon.png"
+      },
+      "files": {
+        "job2_full": {
+          "title": "File:Kuscah job2.png",
+          "status": "downloaded",
+          "bytes": 3353226,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/subjobs/kuscah_job2_full.png"
+        },
+        "job2_token": {
+          "title": "File:Kuscah job2 icon.png",
+          "status": "downloaded",
+          "bytes": 29923,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/kuscah_job2_token.png"
+        },
+        "job3_full": {
+          "title": "File:Kuscah job3.png",
+          "status": "downloaded",
+          "bytes": 3205594,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/subjobs/kuscah_job3_full.png"
+        },
+        "job3_token": {
+          "title": "File:Kuscah job3 icon.png",
+          "status": "downloaded",
+          "bytes": 31338,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/kuscah_job3_token.png"
+        },
+        "job1_full": {
+          "title": "File:Kuscah.png",
+          "status": "downloaded",
+          "bytes": 3214506,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/full/kuscah_full.png"
+        },
+        "job1_token": {
+          "title": "File:Kuscah icon.png",
+          "status": "downloaded",
+          "bytes": 30465,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/tokens/kuscah_token.png"
+        }
+      }
+    },
+    "shberdan": {
+      "page": "Sh'berdan",
+      "slots": {
+        "job2_full": "File:Sh'berdan job2.png",
+        "job2_token": "File:Sh'berdan job2 icon.png",
+        "job3_full": "File:Sh'berdan job3.png",
+        "job3_token": "File:Sh'berdan job3 icon.png",
+        "job1_full": "File:Sh'berdan.png",
+        "job1_token": "File:Sh'berdan icon.png"
+      },
+      "files": {
+        "job2_full": {
+          "title": "File:Sh'berdan job2.png",
+          "status": "downloaded",
+          "bytes": 2525373,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/subjobs/shberdan_job2_full.png"
+        },
+        "job2_token": {
+          "title": "File:Sh'berdan job2 icon.png",
+          "status": "downloaded",
+          "bytes": 33011,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/shberdan_job2_token.png"
+        },
+        "job3_full": {
+          "title": "File:Sh'berdan job3.png",
+          "status": "downloaded",
+          "bytes": 2249425,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/subjobs/shberdan_job3_full.png"
+        },
+        "job3_token": {
+          "title": "File:Sh'berdan job3 icon.png",
+          "status": "downloaded",
+          "bytes": 33446,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/shberdan_job3_token.png"
+        },
+        "job1_full": {
+          "title": "File:Sh'berdan.png",
+          "status": "downloaded",
+          "bytes": 2131069,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/full/shberdan_full.png"
+        },
+        "job1_token": {
+          "title": "File:Sh'berdan icon.png",
+          "status": "downloaded",
+          "bytes": 27046,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/tokens/shberdan_token.png"
+        }
+      }
+    },
+    "daiana": {
+      "page": "Daiana",
+      "slots": {
+        "job2_full": "File:Daiana job2.png",
+        "job2_token": "File:Daiana job2 icon.png",
+        "job3_full": "File:Daiana job3.png",
+        "job3_token": "File:Daiana job3 icon.png",
+        "job1_full": "File:Daiana.png",
+        "job1_token": "File:Daiana icon.png"
+      },
+      "files": {
+        "job2_full": {
+          "title": "File:Daiana job2.png",
+          "status": "downloaded",
+          "bytes": 2128428,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/subjobs/daiana_job2_full.png"
+        },
+        "job2_token": {
+          "title": "File:Daiana job2 icon.png",
+          "status": "downloaded",
+          "bytes": 26487,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/daiana_job2_token.png"
+        },
+        "job3_full": {
+          "title": "File:Daiana job3.png",
+          "status": "downloaded",
+          "bytes": 3507667,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/subjobs/daiana_job3_full.png"
+        },
+        "job3_token": {
+          "title": "File:Daiana job3 icon.png",
+          "status": "downloaded",
+          "bytes": 28131,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/daiana_job3_token.png"
+        },
+        "job1_full": {
+          "title": "File:Daiana.png",
+          "status": "downloaded",
+          "bytes": 2051907,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/full/daiana_full.png"
+        },
+        "job1_token": {
+          "title": "File:Daiana icon.png",
+          "status": "downloaded",
+          "bytes": 22173,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/tokens/daiana_token.png"
+        }
+      }
+    },
+    "macuri": {
+      "page": "Ma'curi",
+      "slots": {
+        "job2_full": "File:Ma'curi job2.png",
+        "job2_token": "File:Ma'curi job2 icon.png",
+        "job3_full": "File:Ma'curi job3.png",
+        "job3_token": "File:Ma'curi job3 icon.png",
+        "job1_full": "File:Ma'curi.png",
+        "job1_token": "File:Ma'curi icon.png"
+      },
+      "files": {
+        "job2_full": {
+          "title": "File:Ma'curi job2.png",
+          "status": "downloaded",
+          "bytes": 2512103,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/subjobs/macuri_job2_full.png"
+        },
+        "job2_token": {
+          "title": "File:Ma'curi job2 icon.png",
+          "status": "downloaded",
+          "bytes": 32531,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/macuri_job2_token.png"
+        },
+        "job3_full": {
+          "title": "File:Ma'curi job3.png",
+          "status": "downloaded",
+          "bytes": 2449453,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/subjobs/macuri_job3_full.png"
+        },
+        "job3_token": {
+          "title": "File:Ma'curi job3 icon.png",
+          "status": "downloaded",
+          "bytes": 32815,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/macuri_job3_token.png"
+        },
+        "job1_full": {
+          "title": "File:Ma'curi.png",
+          "status": "downloaded",
+          "bytes": 2346288,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/full/macuri_full.png"
+        },
+        "job1_token": {
+          "title": "File:Ma'curi icon.png",
+          "status": "downloaded",
+          "bytes": 29577,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/tokens/macuri_token.png"
+        }
+      }
+    },
+    "zan": {
+      "page": "Zan the Lava Surfer",
+      "slots": {
+        "job2_full": "File:Zan job2.png",
+        "job2_token": "File:Zan job2 icon.png",
+        "job3_full": "File:Zan job3.png",
+        "job3_token": "File:Zan job3 icon.png",
+        "job1_full": "File:Zan.png",
+        "job1_token": "File:Zan icon.png"
+      },
+      "files": {
+        "job2_full": {
+          "title": "File:Zan job2.png",
+          "status": "downloaded",
+          "bytes": 2099540,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/subjobs/zan_job2_full.png"
+        },
+        "job2_token": {
+          "title": "File:Zan job2 icon.png",
+          "status": "downloaded",
+          "bytes": 30506,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/zan_job2_token.png"
+        },
+        "job3_full": {
+          "title": "File:Zan job3.png",
+          "status": "downloaded",
+          "bytes": 2552020,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/subjobs/zan_job3_full.png"
+        },
+        "job3_token": {
+          "title": "File:Zan job3 icon.png",
+          "status": "downloaded",
+          "bytes": 31403,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/zan_job3_token.png"
+        },
+        "job1_full": {
+          "title": "File:Zan.png",
+          "status": "downloaded",
+          "bytes": 1779076,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/full/zan_full.png"
+        },
+        "job1_token": {
+          "title": "File:Zan icon.png",
+          "status": "downloaded",
+          "bytes": 27838,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/tokens/zan_token.png"
+        }
+      }
+    },
+    "korin": {
+      "page": "Korin the Swordsman",
+      "slots": {
+        "job2_full": "File:Korin job2.png",
+        "job2_token": "File:Korin job2 icon.png",
+        "job3_full": "File:Korin job3.png",
+        "job3_token": "File:Korin job3 icon.png",
+        "job1_full": "File:Korin.png",
+        "job1_token": "File:Korin icon.png"
+      },
+      "files": {
+        "job2_full": {
+          "title": "File:Korin job2.png",
+          "status": "downloaded",
+          "bytes": 1994381,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/subjobs/korin_job2_full.png"
+        },
+        "job2_token": {
+          "title": "File:Korin job2 icon.png",
+          "status": "downloaded",
+          "bytes": 26975,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/korin_job2_token.png"
+        },
+        "job3_full": {
+          "title": "File:Korin job3.png",
+          "status": "downloaded",
+          "bytes": 2189299,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/subjobs/korin_job3_full.png"
+        },
+        "job3_token": {
+          "title": "File:Korin job3 icon.png",
+          "status": "downloaded",
+          "bytes": 31069,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/korin_job3_token.png"
+        },
+        "job1_full": {
+          "title": "File:Korin.png",
+          "status": "downloaded",
+          "bytes": 1563315,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/full/korin_full.png"
+        },
+        "job1_token": {
+          "title": "File:Korin icon.png",
+          "status": "downloaded",
+          "bytes": 22801,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/tokens/korin_token.png"
+        }
+      }
+    },
+    "samupi": {
+      "page": "Samup\u00ed the Handsome",
+      "slots": {
+        "job2_full": "File:Samup\u00ed job2.png",
+        "job2_token": "File:Samup\u00ed job2 icon.png",
+        "job3_full": "File:Samup\u00ed job3.png",
+        "job3_token": "File:Samup\u00ed job3 icon.png",
+        "job1_full": "File:Samup\u00ed.png",
+        "job1_token": "File:Samup\u00ed icon.png"
+      },
+      "files": {
+        "job2_full": {
+          "title": "File:Samup\u00ed job2.png",
+          "status": "downloaded",
+          "bytes": 2802121,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/subjobs/samupi_job2_full.png"
+        },
+        "job2_token": {
+          "title": "File:Samup\u00ed job2 icon.png",
+          "status": "downloaded",
+          "bytes": 24816,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/samupi_job2_token.png"
+        },
+        "job3_full": {
+          "title": "File:Samup\u00ed job3.png",
+          "status": "downloaded",
+          "bytes": 2944120,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/subjobs/samupi_job3_full.png"
+        },
+        "job3_token": {
+          "title": "File:Samup\u00ed job3 icon.png",
+          "status": "downloaded",
+          "bytes": 30488,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/samupi_job3_token.png"
+        },
+        "job1_full": {
+          "title": "File:Samup\u00ed.png",
+          "status": "downloaded",
+          "bytes": 2017360,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/full/samupi_full.png"
+        },
+        "job1_token": {
+          "title": "File:Samup\u00ed icon.png",
+          "status": "downloaded",
+          "bytes": 27206,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/tokens/samupi_token.png"
+        }
+      }
+    },
+    "bagunar": {
+      "page": "Ba'gunar the Highborn",
+      "slots": {
+        "job2_full": "File:Ba'gunar job2.png",
+        "job2_token": "File:Ba'gunar job2 icon.png",
+        "job3_full": "File:Ba'gunar job3.png",
+        "job3_token": "File:Ba'gunar job3 icon.png",
+        "job1_full": "File:Ba'gunar.png",
+        "job1_token": "File:Ba'gunar icon.png"
+      },
+      "files": {
+        "job2_full": {
+          "title": "File:Ba'gunar job2.png",
+          "status": "downloaded",
+          "bytes": 2868855,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/subjobs/bagunar_job2_full.png"
+        },
+        "job2_token": {
+          "title": "File:Ba'gunar job2 icon.png",
+          "status": "downloaded",
+          "bytes": 35575,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/bagunar_job2_token.png"
+        },
+        "job3_full": {
+          "title": "File:Ba'gunar job3.png",
+          "status": "downloaded",
+          "bytes": 3033920,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/subjobs/bagunar_job3_full.png"
+        },
+        "job3_token": {
+          "title": "File:Ba'gunar job3 icon.png",
+          "status": "downloaded",
+          "bytes": 35529,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/bagunar_job3_token.png"
+        },
+        "job1_full": {
+          "title": "File:Ba'gunar.png",
+          "status": "downloaded",
+          "bytes": 2546268,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/full/bagunar_full.png"
+        },
+        "job1_token": {
+          "title": "File:Ba'gunar icon.png",
+          "status": "downloaded",
+          "bytes": 31274,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/tokens/bagunar_token.png"
+        }
+      }
+    },
+    "burbaba": {
+      "page": "Burbaba the Punching Bag",
+      "slots": {
+        "job2_full": "File:Burbaba job2.png",
+        "job2_token": "File:Burbaba job2 icon.png",
+        "job3_full": "File:Burbaba job3.png",
+        "job3_token": "File:Burbaba job3 icon.png",
+        "job1_full": "File:Burbaba.png",
+        "job1_token": "File:Burbaba icon.png"
+      },
+      "files": {
+        "job2_full": {
+          "title": "File:Burbaba job2.png",
+          "status": "downloaded",
+          "bytes": 2925106,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/subjobs/burbaba_job2_full.png"
+        },
+        "job2_token": {
+          "title": "File:Burbaba job2 icon.png",
+          "status": "downloaded",
+          "bytes": 28824,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/burbaba_job2_token.png"
+        },
+        "job3_full": {
+          "title": "File:Burbaba job3.png",
+          "status": "downloaded",
+          "bytes": 3262707,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/subjobs/burbaba_job3_full.png"
+        },
+        "job3_token": {
+          "title": "File:Burbaba job3 icon.png",
+          "status": "downloaded",
+          "bytes": 32261,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/burbaba_job3_token.png"
+        },
+        "job1_full": {
+          "title": "File:Burbaba.png",
+          "status": "downloaded",
+          "bytes": 2827849,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/full/burbaba_full.png"
+        },
+        "job1_token": {
+          "title": "File:Burbaba icon.png",
+          "status": "downloaded",
+          "bytes": 28949,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/tokens/burbaba_token.png"
+        }
+      }
+    },
+    "maralme": {
+      "page": "Maralme the Dragon Slayer",
+      "slots": {
+        "job2_full": "File:Maralme job2.png",
+        "job2_token": "File:Maralme job2 icon.png",
+        "job3_full": "File:Maralme job3.png",
+        "job3_token": "File:Maralme job3 icon.png",
+        "job1_full": "File:Maralme.png",
+        "job1_token": "File:Maralme icon.png"
+      },
+      "files": {
+        "job2_full": {
+          "title": "File:Maralme job2.png",
+          "status": "downloaded",
+          "bytes": 2100465,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/subjobs/maralme_job2_full.png"
+        },
+        "job2_token": {
+          "title": "File:Maralme job2 icon.png",
+          "status": "downloaded",
+          "bytes": 31347,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/maralme_job2_token.png"
+        },
+        "job3_full": {
+          "title": "File:Maralme job3.png",
+          "status": "downloaded",
+          "bytes": 2581769,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/subjobs/maralme_job3_full.png"
+        },
+        "job3_token": {
+          "title": "File:Maralme job3 icon.png",
+          "status": "downloaded",
+          "bytes": 30907,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/maralme_job3_token.png"
+        },
+        "job1_full": {
+          "title": "File:Maralme.png",
+          "status": "downloaded",
+          "bytes": 2052032,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/full/maralme_full.png"
+        },
+        "job1_token": {
+          "title": "File:Maralme icon.png",
+          "status": "downloaded",
+          "bytes": 26776,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/tokens/maralme_token.png"
+        }
+      }
+    },
+    "amazora": {
+      "page": "Amazora the Airy",
+      "slots": {
+        "job2_full": "File:Amazora job2.png",
+        "job2_token": "File:Amazora job2 icon.png",
+        "job3_full": "File:Amazora job3.png",
+        "job3_token": "File:Amazora job3 icon.png",
+        "job1_full": "File:Amazora.png",
+        "job1_token": "File:Amazora icon.png"
+      },
+      "files": {
+        "job2_full": {
+          "title": "File:Amazora job2.png",
+          "status": "downloaded",
+          "bytes": 1412710,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/subjobs/amazora_job2_full.png"
+        },
+        "job2_token": {
+          "title": "File:Amazora job2 icon.png",
+          "status": "downloaded",
+          "bytes": 29526,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/amazora_job2_token.png"
+        },
+        "job3_full": {
+          "title": "File:Amazora job3.png",
+          "status": "downloaded",
+          "bytes": 2034900,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/subjobs/amazora_job3_full.png"
+        },
+        "job3_token": {
+          "title": "File:Amazora job3 icon.png",
+          "status": "downloaded",
+          "bytes": 32396,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/amazora_job3_token.png"
+        },
+        "job1_full": {
+          "title": "File:Amazora.png",
+          "status": "downloaded",
+          "bytes": 1207883,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/full/amazora_full.png"
+        },
+        "job1_token": {
+          "title": "File:Amazora icon.png",
+          "status": "downloaded",
+          "bytes": 26093,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/tokens/amazora_token.png"
+        }
+      }
+    },
+    "kem": {
+      "page": "Kem the Spearman",
+      "slots": {
+        "job2_full": "File:Kem job2.png",
+        "job2_token": "File:Kem job2 icon.png",
+        "job3_full": "File:Kem job3.png",
+        "job3_token": "File:Kem job3 icon.png",
+        "job1_full": "File:Kem.png",
+        "job1_token": "File:Kem icon.png"
+      },
+      "files": {
+        "job2_full": {
+          "title": "File:Kem job2.png",
+          "status": "downloaded",
+          "bytes": 2003397,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/subjobs/kem_job2_full.png"
+        },
+        "job2_token": {
+          "title": "File:Kem job2 icon.png",
+          "status": "downloaded",
+          "bytes": 28697,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/kem_job2_token.png"
+        },
+        "job3_full": {
+          "title": "File:Kem job3.png",
+          "status": "downloaded",
+          "bytes": 2350439,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/subjobs/kem_job3_full.png"
+        },
+        "job3_token": {
+          "title": "File:Kem job3 icon.png",
+          "status": "downloaded",
+          "bytes": 28394,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/kem_job3_token.png"
+        },
+        "job1_full": {
+          "title": "File:Kem.png",
+          "status": "downloaded",
+          "bytes": 1498853,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/full/kem_full.png"
+        },
+        "job1_token": {
+          "title": "File:Kem icon.png",
+          "status": "downloaded",
+          "bytes": 24732,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/tokens/kem_token.png"
+        }
+      }
+    },
+    "zenzoze": {
+      "page": "Zenzoze the Dusky",
+      "slots": {
+        "job2_full": "File:Zenzoze job2.png",
+        "job2_token": "File:Zenzoze job2 icon.png",
+        "job3_full": "File:Zenzoze job3.png",
+        "job3_token": "File:Zenzoze job3 icon.png",
+        "job1_full": "File:Zenzoze.png",
+        "job1_token": "File:Zenzoze icon.png"
+      },
+      "files": {
+        "job2_full": {
+          "title": "File:Zenzoze job2.png",
+          "status": "downloaded",
+          "bytes": 2071085,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/subjobs/zenzoze_job2_full.png"
+        },
+        "job2_token": {
+          "title": "File:Zenzoze job2 icon.png",
+          "status": "downloaded",
+          "bytes": 34154,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/zenzoze_job2_token.png"
+        },
+        "job3_full": {
+          "title": "File:Zenzoze job3.png",
+          "status": "downloaded",
+          "bytes": 2021523,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/subjobs/zenzoze_job3_full.png"
+        },
+        "job3_token": {
+          "title": "File:Zenzoze job3 icon.png",
+          "status": "downloaded",
+          "bytes": 34131,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/zenzoze_job3_token.png"
+        },
+        "job1_full": {
+          "title": "File:Zenzoze.png",
+          "status": "downloaded",
+          "bytes": 1763852,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/full/zenzoze_full.png"
+        },
+        "job1_token": {
+          "title": "File:Zenzoze icon.png",
+          "status": "downloaded",
+          "bytes": 28985,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/tokens/zenzoze_token.png"
+        }
+      }
+    },
+    "unasag": {
+      "page": "U'nasag the Torrent",
+      "slots": {
+        "job2_full": "File:U'nasag job2.png",
+        "job2_token": "File:U'nasag job2 icon.png",
+        "job3_full": "File:U'nasag job3.png",
+        "job3_token": "File:U'nasag job3 icon.png",
+        "job1_full": "File:U'nasag.png",
+        "job1_token": "File:U'nasag icon.png"
+      },
+      "files": {
+        "job2_full": {
+          "title": "File:U'nasag job2.png",
+          "status": "downloaded",
+          "bytes": 2385600,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/subjobs/unasag_job2_full.png"
+        },
+        "job2_token": {
+          "title": "File:U'nasag job2 icon.png",
+          "status": "downloaded",
+          "bytes": 27084,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/unasag_job2_token.png"
+        },
+        "job3_full": {
+          "title": "File:U'nasag job3.png",
+          "status": "downloaded",
+          "bytes": 3738419,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/subjobs/unasag_job3_full.png"
+        },
+        "job3_token": {
+          "title": "File:U'nasag job3 icon.png",
+          "status": "downloaded",
+          "bytes": 29948,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/unasag_job3_token.png"
+        },
+        "job1_full": {
+          "title": "File:U'nasag.png",
+          "status": "downloaded",
+          "bytes": 3219809,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/full/unasag_full.png"
+        },
+        "job1_token": {
+          "title": "File:U'nasag icon.png",
+          "status": "downloaded",
+          "bytes": 29654,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/tokens/unasag_token.png"
+        }
+      }
+    },
+    "raprow": {
+      "page": "Ra'prow",
+      "slots": {
+        "job2_full": "File:Ra'prow job2.png",
+        "job2_token": "File:Ra'prow job2 icon.png",
+        "job3_full": "File:Ra'prow job3.png",
+        "job3_token": "File:Ra'prow job3 icon.png",
+        "job1_full": "File:Ra'prow.png",
+        "job1_token": "File:Ra'prow icon.png"
+      },
+      "files": {
+        "job2_full": {
+          "title": "File:Ra'prow job2.png",
+          "status": "downloaded",
+          "bytes": 2287403,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/subjobs/raprow_job2_full.png"
+        },
+        "job2_token": {
+          "title": "File:Ra'prow job2 icon.png",
+          "status": "downloaded",
+          "bytes": 30745,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/raprow_job2_token.png"
+        },
+        "job3_full": {
+          "title": "File:Ra'prow job3.png",
+          "status": "downloaded",
+          "bytes": 1976209,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/subjobs/raprow_job3_full.png"
+        },
+        "job3_token": {
+          "title": "File:Ra'prow job3 icon.png",
+          "status": "downloaded",
+          "bytes": 29553,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/raprow_job3_token.png"
+        },
+        "job1_full": {
+          "title": "File:Ra'prow.png",
+          "status": "downloaded",
+          "bytes": 2008312,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/full/raprow_full.png"
+        },
+        "job1_token": {
+          "title": "File:Ra'prow icon.png",
+          "status": "downloaded",
+          "bytes": 26292,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/tokens/raprow_token.png"
+        }
+      }
+    },
+    "harold": {
+      "page": "Harold",
+      "slots": {
+        "job2_full": "File:Harold job2.png",
+        "job2_token": "File:Harold job2 icon.png",
+        "job3_full": "File:Harold job3.png",
+        "job3_token": "File:Harold job3 icon.png",
+        "job1_full": "File:Harold.png",
+        "job1_token": "File:Harold icon.png"
+      },
+      "files": {
+        "job2_full": {
+          "title": "File:Harold job2.png",
+          "status": "downloaded",
+          "bytes": 2219003,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/subjobs/harold_job2_full.png"
+        },
+        "job2_token": {
+          "title": "File:Harold job2 icon.png",
+          "status": "downloaded",
+          "bytes": 21474,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/harold_job2_token.png"
+        },
+        "job3_full": {
+          "title": "File:Harold job3.png",
+          "status": "downloaded",
+          "bytes": 2479061,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/subjobs/harold_job3_full.png"
+        },
+        "job3_token": {
+          "title": "File:Harold job3 icon.png",
+          "status": "downloaded",
+          "bytes": 23227,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/harold_job3_token.png"
+        },
+        "job1_full": {
+          "title": "File:Harold.png",
+          "status": "downloaded",
+          "bytes": 2143529,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/full/harold_full.png"
+        },
+        "job1_token": {
+          "title": "File:Harold icon.png",
+          "status": "downloaded",
+          "bytes": 18792,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/tokens/harold_token.png"
+        }
+      }
+    },
+    "iskar": {
+      "page": "Iskar",
+      "slots": {
+        "job2_full": "File:Iskar job2.png",
+        "job2_token": "File:Iskar job2 icon.png",
+        "job3_full": "File:Iskar job3.png",
+        "job3_token": "File:Iskar job3 icon.png",
+        "job1_full": "File:Iskar.png",
+        "job1_token": "File:Iskar icon.png"
+      },
+      "files": {
+        "job2_full": {
+          "title": "File:Iskar job2.png",
+          "status": "downloaded",
+          "bytes": 645904,
+          "size": [
+            697,
+            1017
+          ],
+          "file": "assets/terra/subjobs/iskar_job2_full.png"
+        },
+        "job2_token": {
+          "title": "File:Iskar job2 icon.png",
+          "status": "downloaded",
+          "bytes": 26405,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/iskar_job2_token.png"
+        },
+        "job3_full": {
+          "title": "File:Iskar job3.png",
+          "status": "downloaded",
+          "bytes": 760387,
+          "size": [
+            697,
+            1017
+          ],
+          "file": "assets/terra/subjobs/iskar_job3_full.png"
+        },
+        "job3_token": {
+          "title": "File:Iskar job3 icon.png",
+          "status": "downloaded",
+          "bytes": 28575,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/iskar_job3_token.png"
+        },
+        "job1_full": {
+          "title": "File:Iskar.png",
+          "status": "downloaded",
+          "bytes": 629507,
+          "size": [
+            697,
+            1017
+          ],
+          "file": "assets/terra/full/iskar_full.png"
+        },
+        "job1_token": {
+          "title": "File:Iskar icon.png",
+          "status": "downloaded",
+          "bytes": 23865,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/tokens/iskar_token.png"
+        }
+      }
+    },
+    "manmer": {
+      "page": "Manmer",
+      "slots": {
+        "job2_full": "File:Manmer job2.png",
+        "job2_token": "File:Manmer job2 icon.png",
+        "job3_full": "File:Manmer job3.png",
+        "job3_token": "File:Manmer job3 icon.png",
+        "job1_full": "File:Manmer.png",
+        "job1_token": "File:Manmer icon.png"
+      },
+      "files": {
+        "job2_full": {
+          "title": "File:Manmer job2.png",
+          "status": "downloaded",
+          "bytes": 2882350,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/subjobs/manmer_job2_full.png"
+        },
+        "job2_token": {
+          "title": "File:Manmer job2 icon.png",
+          "status": "downloaded",
+          "bytes": 29482,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/manmer_job2_token.png"
+        },
+        "job3_full": {
+          "title": "File:Manmer job3.png",
+          "status": "downloaded",
+          "bytes": 3549952,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/subjobs/manmer_job3_full.png"
+        },
+        "job3_token": {
+          "title": "File:Manmer job3 icon.png",
+          "status": "downloaded",
+          "bytes": 33695,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/manmer_job3_token.png"
+        },
+        "job1_full": {
+          "title": "File:Manmer.png",
+          "status": "downloaded",
+          "bytes": 2833396,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/full/manmer_full.png"
+        },
+        "job1_token": {
+          "title": "File:Manmer icon.png",
+          "status": "downloaded",
+          "bytes": 31840,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/tokens/manmer_token.png"
+        }
+      }
+    },
+    "lan": {
+      "page": "Dracorin",
+      "slots": {
+        "job2_full": "File:Dracorin job2.png",
+        "job2_token": "File:Dracorin job2 icon.png",
+        "job3_full": "File:Dracorin job3.png",
+        "job3_token": "File:Dracorin job3 icon.png",
+        "job1_full": "File:Dracorin.png",
+        "job1_token": "File:Dracorin icon.png"
+      },
+      "files": {
+        "job2_full": {
+          "title": "File:Dracorin job2.png",
+          "status": "downloaded",
+          "bytes": 430227,
+          "size": [
+            670,
+            665
+          ],
+          "file": "assets/terra/subjobs/lan_job2_full.png"
+        },
+        "job2_token": {
+          "title": "File:Dracorin job2 icon.png",
+          "status": "downloaded",
+          "bytes": 21902,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/lan_job2_token.png"
+        },
+        "job3_full": {
+          "title": "File:Dracorin job3.png",
+          "status": "downloaded",
+          "bytes": 445938,
+          "size": [
+            670,
+            665
+          ],
+          "file": "assets/terra/subjobs/lan_job3_full.png"
+        },
+        "job3_token": {
+          "title": "File:Dracorin job3 icon.png",
+          "status": "downloaded",
+          "bytes": 25193,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/lan_job3_token.png"
+        },
+        "job1_full": {
+          "title": "File:Dracorin.png",
+          "status": "downloaded",
+          "bytes": 254967,
+          "size": [
+            459,
+            475
+          ],
+          "file": "assets/terra/full/lan_full.png"
+        },
+        "job1_token": {
+          "title": "File:Dracorin icon.png",
+          "status": "downloaded",
+          "bytes": 29029,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/tokens/lan_token.png"
+        }
+      }
+    },
+    "eileen": {
+      "page": "Eileen",
+      "slots": {
+        "job2_full": "File:Eileen job2.png",
+        "job2_token": "File:Eileen job2 icon.png",
+        "job3_full": "File:Eileen job3.png",
+        "job3_token": "File:Eileen job3 icon.png",
+        "job1_full": "File:Eileen.png",
+        "job1_token": "File:Eileen icon.png"
+      },
+      "files": {
+        "job2_full": {
+          "title": "File:Eileen job2.png",
+          "status": "downloaded",
+          "bytes": 2230141,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/subjobs/eileen_job2_full.png"
+        },
+        "job2_token": {
+          "title": "File:Eileen job2 icon.png",
+          "status": "downloaded",
+          "bytes": 31235,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/eileen_job2_token.png"
+        },
+        "job3_full": {
+          "title": "File:Eileen job3.png",
+          "status": "downloaded",
+          "bytes": 2398728,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/subjobs/eileen_job3_full.png"
+        },
+        "job3_token": {
+          "title": "File:Eileen job3 icon.png",
+          "status": "downloaded",
+          "bytes": 30318,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/eileen_job3_token.png"
+        },
+        "job1_full": {
+          "title": "File:Eileen.png",
+          "status": "downloaded",
+          "bytes": 1540606,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/full/eileen_full.png"
+        },
+        "job1_token": {
+          "title": "File:Eileen icon.png",
+          "status": "downloaded",
+          "bytes": 28170,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/tokens/eileen_token.png"
+        }
+      }
+    },
+    "sorman": {
+      "page": "Sorman",
+      "slots": {
+        "job2_full": "File:Sorman job2.png",
+        "job2_token": "File:Sorman job2 icon.png",
+        "job3_full": "File:Sorman job3.png",
+        "job3_token": "File:Sorman job3 icon.png",
+        "job1_full": "File:Sorman.png",
+        "job1_token": "File:Sorman icon.png"
+      },
+      "files": {
+        "job2_full": {
+          "title": "File:Sorman job2.png",
+          "status": "downloaded",
+          "bytes": 2029146,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/subjobs/sorman_job2_full.png"
+        },
+        "job2_token": {
+          "title": "File:Sorman job2 icon.png",
+          "status": "downloaded",
+          "bytes": 33085,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/sorman_job2_token.png"
+        },
+        "job3_full": {
+          "title": "File:Sorman job3.png",
+          "status": "downloaded",
+          "bytes": 2703617,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/subjobs/sorman_job3_full.png"
+        },
+        "job3_token": {
+          "title": "File:Sorman job3 icon.png",
+          "status": "downloaded",
+          "bytes": 33316,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/sorman_job3_token.png"
+        },
+        "job1_full": {
+          "title": "File:Sorman.png",
+          "status": "downloaded",
+          "bytes": 1355355,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/full/sorman_full.png"
+        },
+        "job1_token": {
+          "title": "File:Sorman icon.png",
+          "status": "downloaded",
+          "bytes": 26758,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/tokens/sorman_token.png"
+        }
+      }
+    },
+    "gigojago": {
+      "page": "Gigojago",
+      "slots": {
+        "job2_full": "File:Gigojago job2.png",
+        "job2_token": "File:Gigojago job2 icon.png",
+        "job3_full": "File:Gigojago job3.png",
+        "job3_token": "File:Gigojago job3 icon.png",
+        "job1_full": "File:Gigojago.png",
+        "job1_token": "File:Gigojago icon.png"
+      },
+      "files": {
+        "job2_full": {
+          "title": "File:Gigojago job2.png",
+          "status": "downloaded",
+          "bytes": 2336108,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/subjobs/gigojago_job2_full.png"
+        },
+        "job2_token": {
+          "title": "File:Gigojago job2 icon.png",
+          "status": "downloaded",
+          "bytes": 31095,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/gigojago_job2_token.png"
+        },
+        "job3_full": {
+          "title": "File:Gigojago job3.png",
+          "status": "downloaded",
+          "bytes": 2388610,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/subjobs/gigojago_job3_full.png"
+        },
+        "job3_token": {
+          "title": "File:Gigojago job3 icon.png",
+          "status": "downloaded",
+          "bytes": 31486,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/gigojago_job3_token.png"
+        },
+        "job1_full": {
+          "title": "File:Gigojago.png",
+          "status": "downloaded",
+          "bytes": 1827128,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/full/gigojago_full.png"
+        },
+        "job1_token": {
+          "title": "File:Gigojago icon.png",
+          "status": "downloaded",
+          "bytes": 27160,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/tokens/gigojago_token.png"
+        }
+      }
+    },
+    "gegonago": {
+      "page": "Gegonago",
+      "slots": {
+        "job2_full": "File:Gegonago job2.png",
+        "job2_token": "File:Gegonago job2 icon.png",
+        "job3_full": "File:Gegonago job3.png",
+        "job3_token": "File:Gegonago job3 icon.png",
+        "job1_full": "File:Gegonago.png",
+        "job1_token": "File:Gegonago icon.png"
+      },
+      "files": {
+        "job2_full": {
+          "title": "File:Gegonago job2.png",
+          "status": "downloaded",
+          "bytes": 2884850,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/subjobs/gegonago_job2_full.png"
+        },
+        "job2_token": {
+          "title": "File:Gegonago job2 icon.png",
+          "status": "downloaded",
+          "bytes": 26650,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/gegonago_job2_token.png"
+        },
+        "job3_full": {
+          "title": "File:Gegonago job3.png",
+          "status": "downloaded",
+          "bytes": 2711887,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/subjobs/gegonago_job3_full.png"
+        },
+        "job3_token": {
+          "title": "File:Gegonago job3 icon.png",
+          "status": "downloaded",
+          "bytes": 30480,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/gegonago_job3_token.png"
+        },
+        "job1_full": {
+          "title": "File:Gegonago.png",
+          "status": "downloaded",
+          "bytes": 2060445,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/full/gegonago_full.png"
+        },
+        "job1_token": {
+          "title": "File:Gegonago icon.png",
+          "status": "downloaded",
+          "bytes": 26378,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/tokens/gegonago_token.png"
+        }
+      }
+    },
+    "amimari": {
+      "page": "Amimari",
+      "slots": {
+        "job2_full": "File:Amimari job2.png",
+        "job2_token": "File:Amimari job2 icon.png",
+        "job3_full": "File:Amimari job3.png",
+        "job3_token": "File:Amimari job3 icon.png",
+        "job1_full": "File:Amimari.png",
+        "job1_token": "File:Amimari icon.png"
+      },
+      "files": {
+        "job2_full": {
+          "title": "File:Amimari job2.png",
+          "status": "downloaded",
+          "bytes": 1698021,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/subjobs/amimari_job2_full.png"
+        },
+        "job2_token": {
+          "title": "File:Amimari job2 icon.png",
+          "status": "downloaded",
+          "bytes": 31741,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/amimari_job2_token.png"
+        },
+        "job3_full": {
+          "title": "File:Amimari job3.png",
+          "status": "downloaded",
+          "bytes": 1679149,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/subjobs/amimari_job3_full.png"
+        },
+        "job3_token": {
+          "title": "File:Amimari job3 icon.png",
+          "status": "downloaded",
+          "bytes": 32439,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/amimari_job3_token.png"
+        },
+        "job1_full": {
+          "title": "File:Amimari.png",
+          "status": "downloaded",
+          "bytes": 1420591,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/full/amimari_full.png"
+        },
+        "job1_token": {
+          "title": "File:Amimari icon.png",
+          "status": "downloaded",
+          "bytes": 27971,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/tokens/amimari_token.png"
+        }
+      }
+    },
+    "mizell": {
+      "page": "Mizell",
+      "slots": {
+        "job2_full": "File:Mizell job2.png",
+        "job2_token": "File:Mizell job2 icon.png",
+        "job3_full": "File:Mizell job3.png",
+        "job3_token": "File:Mizell job3 icon.png",
+        "job1_full": "File:Mizell.png",
+        "job1_token": "File:Mizell icon.png"
+      },
+      "files": {
+        "job2_full": {
+          "title": "File:Mizell job2.png",
+          "status": "downloaded",
+          "bytes": 2285291,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/subjobs/mizell_job2_full.png"
+        },
+        "job2_token": {
+          "title": "File:Mizell job2 icon.png",
+          "status": "downloaded",
+          "bytes": 29270,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/mizell_job2_token.png"
+        },
+        "job3_full": {
+          "title": "File:Mizell job3.png",
+          "status": "downloaded",
+          "bytes": 2602949,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/subjobs/mizell_job3_full.png"
+        },
+        "job3_token": {
+          "title": "File:Mizell job3 icon.png",
+          "status": "downloaded",
+          "bytes": 29815,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/subjobs/mizell_job3_token.png"
+        },
+        "job1_full": {
+          "title": "File:Mizell.png",
+          "status": "downloaded",
+          "bytes": 1840199,
+          "size": [
+            1414,
+            2000
+          ],
+          "file": "assets/terra/full/mizell_full.png"
+        },
+        "job1_token": {
+          "title": "File:Mizell icon.png",
+          "status": "downloaded",
+          "bytes": 23029,
+          "size": [
+            106,
+            106
+          ],
+          "file": "assets/terra/tokens/mizell_token.png"
+        }
+      }
+    }
+  }
+}

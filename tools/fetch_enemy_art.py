@@ -11,9 +11,12 @@ Run: python3 tools/fetch_enemy_art.py
 import json
 import os
 import re
+import sys
 import time
 import urllib.parse
 import urllib.request
+
+FORCE = "--force" in sys.argv[1:]  # re-download files that already exist
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SCOPE = os.path.join(ROOT, "tools", "out", "terra_scope.json")
@@ -62,6 +65,8 @@ def page_images(titles):
 
 
 def download(url, dest):
+    # Fandom's CDN transcodes to WebP by default; format=original forces true PNG bytes
+    url += ("&" if "?" in url else "?") + "format=original"
     req = urllib.request.Request(url, headers={"User-Agent": UA})
     with urllib.request.urlopen(req, timeout=60) as r:
         data = r.read()
@@ -101,7 +106,7 @@ def main():
             ext = ".png"
         dest = os.path.join(ART_DIR, slug + ext)
         rel = os.path.relpath(dest, ROOT)
-        if os.path.exists(dest):
+        if os.path.exists(dest) and not FORCE:
             rec.update(status="exists", file=rel)
             skipped += 1
             manifest[nm] = rec

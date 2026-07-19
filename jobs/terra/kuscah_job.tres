@@ -12,6 +12,6 @@ script = ExtResource( 1 )
 stats = ExtResource( 2 )
 skills = [ ExtResource( 5 ), ExtResource( 6 ) ]
 job_name = "KUSCAH"
-description = "An Daoquan, the Skilled Doctor, struck off the register for treating the unregistered. No wound he cannot close, no patient he will not scold. The complaining is how he says he cares."
+description = "An Daoquan, the Skilled Doctor, struck off the register for treating the unregistered. No wound she cannot close, no patient she will not scold. The complaining is how she says she cares."
 portrait = ExtResource( 3 )
 full_portrait = ExtResource( 4 )

@@ -39,3 +39,10 @@ assets/terra/enemies/
 
 # Python bytecode (tooling)
 tools/__pycache__/
+**/__pycache__/
+
+# TWEWY restyle pipeline (tools/twewy_restyle)
+tools/twewy_restyle/.venv/
+tools/twewy_restyle/.env
+tools/twewy_restyle/out/
+tools/twewy_restyle/backup/

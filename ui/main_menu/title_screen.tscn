@@ -106,6 +106,10 @@ text = "START"
 layout_mode = 2
 text = "SETTINGS"
 
+[node name="GalleryButton" parent="MarginContainer/VBoxContainer2/VBoxContainer" instance=ExtResource("4")]
+layout_mode = 2
+text = "GALLERY"
+
 [node name="QuitButton" parent="MarginContainer/VBoxContainer2/VBoxContainer" instance=ExtResource("4")]
 layout_mode = 2
 text = "QUIT"
@@ -113,4 +117,5 @@ text = "QUIT"
 [connection signal="tree_entered" from="." to="." method="_on_TitleScreen_tree_entered"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer2/VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer2/VBoxContainer/SettingsButton" to="." method="_on_SettingsButton_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer2/VBoxContainer/GalleryButton" to="." method="_on_GalleryButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer2/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]

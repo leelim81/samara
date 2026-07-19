@@ -1,0 +1,71 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Theme" path="res://theme.tres" id="1"]
+[ext_resource type="Script" path="res://ui/gallery_detail_menu.gd" id="2"]
+[ext_resource type="PackedScene" path="res://ui/audio_button.tscn" id="3"]
+
+[node name="GalleryDetailMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource("1")
+script = ExtResource("2")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.082, 0.094, 0.114, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="HeaderLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.863, 0.878, 0.894, 1)
+theme_override_font_sizes/font_size = 38
+text = ""
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TitleRule" type="ColorRect" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(280, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+color = Color(0.753, 0.627, 0.384, 0.55)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 22
+
+[node name="ReturnButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("3")]
+custom_minimum_size = Vector2(240, 73)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "RETURN"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ReturnButton" to="." method="_on_ReturnButton_pressed"]

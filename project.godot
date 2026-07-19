@@ -30,6 +30,7 @@ Enums="*res://enums.gd"
 Events="*res://events.gd"
 Loader="*res://loader.gd"
 GameData="*res://save_data/game_data.gd"
+Global="*res://global.gd"
 AntialiasedLine2DTexture="*uid://d81jjbnxn20y"
 
 [debug]

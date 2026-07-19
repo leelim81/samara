@@ -7,6 +7,7 @@ var _last_active_button: Button = null
 
 @onready var _quit_button: Button = $MarginContainer/VBoxContainer2/VBoxContainer/QuitButton
 @onready var _start_button: Button = $MarginContainer/VBoxContainer2/VBoxContainer/StartButton
+@onready var _gallery_button: Button = $MarginContainer/VBoxContainer2/VBoxContainer/GalleryButton
 
 
 func _ready() -> void:
@@ -22,6 +23,12 @@ func _ready() -> void:
 	ButtonIcons.apply(_start_button, "battle")
 	ButtonIcons.apply($MarginContainer/VBoxContainer2/VBoxContainer/SettingsButton, "gear")
 	ButtonIcons.apply(_quit_button, "door")
+
+	# The art Gallery is a debug-only tool, gated on the global DEBUG flag.
+	_gallery_button.visible = Global.DEBUG
+
+	if Global.DEBUG:
+		ButtonIcons.apply(_gallery_button, "book")
 
 
 func on_load() -> void:
@@ -45,8 +52,14 @@ func _on_StartButton_pressed() -> void:
 
 func _on_SettingsButton_pressed() -> void:
 	_last_active_button = $MarginContainer/VBoxContainer2/VBoxContainer/SettingsButton
-	
+
 	navigate(settings_scene)
+
+
+func _on_GalleryButton_pressed() -> void:
+	_last_active_button = _gallery_button
+
+	navigate("res://ui/gallery_menu.tscn")
 
 
 func _on_QuitButton_pressed() -> void:

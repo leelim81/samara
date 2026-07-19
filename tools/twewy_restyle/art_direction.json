@@ -1,0 +1,450 @@
+{
+  "sorman": {
+    "name": "Dai Zong",
+    "epithet": "Marvelous Traveler",
+    "identity_line": "the impossible courier — Water Margin's Dai Zong, who straps magic talismans to his legs and crosses provinces in an afternoon; already there, and yes, you owe him a noodle",
+    "appearance_line": "a small, wiry old man with a single curling antenna of white hair, a neat white mustache, bright quick eyes, and courier's tassels everywhere; a little white mouse assistant rides his belt pouch; no tattoos",
+    "jobs": [
+      "the Courier",
+      "the Express",
+      "the Marvelous Traveler"
+    ],
+    "base_desc": "Take the BASE panel's mid-stride running pose in white tasseled courier robes, the thin curved sword at his back, holding up its glowing PINK EXPRESS TALISMAN — a magenta light-baton stamped with a delivery seal — the mouse peeking from his pouch, a receipt slip fluttering behind.",
+    "power1_desc": "A clear upgrade: the POWER 1 panel's floating pink delivery-pad under his feet — a glowing express talisman platform — the dark skull-marked parcel orb under one arm, robes flaring with speed lines of tassels.",
+    "power2_desc": "His ultimate form: the POWER 2 panel's great white wing-shell express rig unfolding around him with pink signal pods, hovering on the talisman pedestal, a blizzard of invoice slips spiraling — the fastest thing on any road.",
+    "personality_line": "already there — utterly unhurried because hurry is for people who are late; invoices everything, even favors",
+    "traits_line": "the glowing pink express-talisman motif (baton, then pad, then full rig), the courier tassels, the receipt slips, and the white mouse assistant in every panel; no tattoos"
+  },
+  "gigojago": {
+    "name": "Zhang Shun",
+    "epithet": "White Streak in the Waves",
+    "identity_line": "the peerless swimmer — Water Margin's Zhang Shun, quiet on land and a king in the water, the ferryman the river itself seems to obey",
+    "appearance_line": "a tall, serene dark-skinned man with white-silver hair escaping a blue crested skull-cap, a calm half-covered face, and an iridescent blue feather collar like sea-spray; no tattoos",
+    "jobs": [
+      "the Ferryman",
+      "the Tide Caller",
+      "White Streak in the Waves"
+    ],
+    "base_desc": "Take the BASE panel's quiet standing pose in the deep-blue fur-trimmed cloak with its white sash, raising a slim silver diving-whistle to his lips, the slender golden harp-bow across his back, water-vial pendants at his chest.",
+    "power1_desc": "A clear upgrade: the POWER 1 panel's two-handed casting — an orbit of blue water-orbs circling one hand, a burst of blue ice-crystal spray from the other — the cloak billowing like a wave about to break.",
+    "power2_desc": "His ultimate form: the POWER 2 panel's white-and-gold water-organ cannon — a pipe-array tide engine with hose and nozzle firing a blue beam — cradled like an instrument he is about to play, the whole figure crowned in spray.",
+    "personality_line": "quiet on land, king in water — a calm, knowing stillness; he is always, gently, inviting you to swim",
+    "traits_line": "the white-streak hair and blue crested cap, the water-vial pendants, the diving whistle, and the escalating water motif (orbs → crystal spray → tide engine); no tattoos"
+  },
+  "gegonago": {
+    "name": "Lu Zhishen",
+    "epithet": "the Tattooed Monk",
+    "identity_line": "the flower monk — Water Margin's Lu Zhishen, a mountain of a man who entered monkhood one manslaughter ahead of the law and practices theology mainly through punching",
+    "appearance_line": "a huge, barrel-built old monk with big ears, a grey-white beard, round dark goggle-lenses over his eyes, and his famous FLOWER TATTOOS — bold blossoming flowers inked across his back, shoulders and upper arms, revealed by his half-off robe",
+    "jobs": [
+      "the Flower Monk",
+      "the Iron Abbot",
+      "the Tattooed Monk"
+    ],
+    "base_desc": "Take the BASE panel's grounded stance: dark gold-trimmed monk's coat worn half-off the shoulder over a yellow under-robe so the flower tattoos show, heavy prayer beads, an iron monk's staff in one hand and a conjured fan of golden energy shards at the other.",
+    "power1_desc": "A clear upgrade: the POWER 1 panel's grand dark vestments and its huge curved GOLDEN energy glaive-bow held wide, more tattoos visible, golden light leaking through the robe seams.",
+    "power2_desc": "His ultimate form: the POWER 2 panel's golden temple-organ gauntlet — a keyboard-armed reliquary machine on one arm with a golden shield-case on the other — the tattoos glowing gold, a hymn about to become a haymaker.",
+    "personality_line": "a scoreboard for everything — grinning through the beard, theology delivered at fist speed, gentleness reserved for the small and hungry",
+    "traits_line": "the flower tattoos across back and shoulders visible in every panel (glowing gold in the final form), the prayer beads, the goggle-lenses, and the golden energy weapons; TATTOOS REQUIRED — this is the one canonically tattooed monk"
+  },
+  "amimari": {
+    "name": "Gu Dasao",
+    "epithet": "the Tigress",
+    "identity_line": "the inn's beating heart — Water Margin's Gu Dasao, who runs Outer Heaven's kitchen and will feed you or fight you, often both in one sitting",
+    "appearance_line": "a sturdy, warm-eyed woman with golden-blonde curls under a tiger-striped hood whose peaks stand up like tiger ears, warm brown skin, flour on her knuckles; no tattoos",
+    "jobs": [
+      "the Cook",
+      "the Innkeeper",
+      "the Tigress"
+    ],
+    "base_desc": "Take the BASE panel's easy stance in the white-and-orange hooded cape over practical kitchen-fighter gear, thigh-high boots, holding its small hammer-axe as a meat-tenderizer cleaver, the inn's black-and-orange teddy mascot at her side.",
+    "power1_desc": "A clear upgrade: the POWER 1 panel's great orange moth kitchen-spirit fluttering at her shoulder in a shower of gold sparkles, the curved white carving blade in hand, apron traded for light gold armor trim.",
+    "power2_desc": "Her ultimate form: the POWER 2 panel's dark knight-helm guardian spirit looming behind her — the inn's bouncer made manifest — as she levels the long halberd-spit, gold sparkles swirling like kitchen embers.",
+    "personality_line": "feeds you or fights you — hands on hips, judging your appetite and your manners in the same glance",
+    "traits_line": "the tiger-striped hood with ear-like peaks in every panel, the kitchen-blade weapons, the teddy mascot, and the escalating guardian spirits (teddy → moth → knight-helm); no tattoos"
+  },
+  "mizell": {
+    "name": "Song Jiang",
+    "epithet": "Timely Rain",
+    "identity_line": "the heart of Outer Heaven — Water Margin's Song Jiang, an unassuming clerk whose small kindnesses bound a hundred outlaws to him; he remembers debts as gifts",
+    "appearance_line": "a modest, gentle-faced young man with neat soft brown hair, mild dark eyes, plain clerk's clothes under a dark sailor-collared coat, and a thin pink thread of blessing-light that circles him like drifting rain; no tattoos",
+    "jobs": [
+      "the Clerk",
+      "the Benefactor",
+      "the Timely Rain"
+    ],
+    "base_desc": "Take the BASE panel's quiet standing pose beside its tall dark seal-staff — a cat-crowned orb stave planted like a brotherhood banner — the pink blessing-thread looping gently around him, sensible boots, hands clasped behind his back.",
+    "power1_desc": "A clear upgrade: the POWER 1 panel's raised seal-staff with its floating eye-orb lantern unfolding spider-leg fittings, two small eel-cat spirits — kindnesses come back to visit — swimming through the air beside him.",
+    "power2_desc": "His ultimate form: the POWER 2 panel's great guardian shrine-orb hovering at his back with blade-fins and armored limbs, more spirit-cats riding it, the blessing-thread now a bright ribbon storm — the whole brotherhood's gratitude made visible.",
+    "personality_line": "deflects praise, remembers everyone's name — soft-spoken, faintly embarrassed to be the center of anything",
+    "traits_line": "the pink blessing-thread of timely rain circling him in every panel (growing into a ribbon storm), the cat-crowned seal-staff, and the little spirit companions that multiply as he powers up; no tattoos"
+  },
+  "harold": {
+    "name": "Hua Rong",
+    "epithet": "Little Li Guang",
+    "identity_line": "the ace archer — Water Margin's Hua Rong, the general who makes the impossible shot for a friend, never misses, and never lets anyone forget it",
+    "appearance_line": "a clean-cut, athletic man with a bright orange crew cut, easy confident grin, strong jaw, and a leather champion's armband on one bicep; no tattoos — plus his tiny gnome-wizard lucky mascot perched on his shoulder",
+    "jobs": [
+      "the Marksman",
+      "the Sharpshooter",
+      "Little Li Guang"
+    ],
+    "base_desc": "Take the BASE panel's relaxed nock-and-draw stance with its white SKULL-FACED bow (green gem eyes), white tee under a buttoned grey vest, brocade-patterned trousers, checkered sneakers, quiver at the hip, the little gnome mascot on his shoulder.",
+    "power1_desc": "A clear upgrade: the POWER 1 panel's larger horned skull-bow with a ring window — the gnome mascot riding inside the ring on a tiny board — orange bracers, the grin cockier.",
+    "power2_desc": "His ultimate form: the POWER 2 panel's huge black-and-teal manta-wing tech bow with a glowing digital scope readout, a white bone-servitor drone hovering with the gnome as gunner, dark half-cape over the vest.",
+    "personality_line": "easy warmth and total certainty — mid-aim with a smile, already telling you about the shot he hasn't taken yet",
+    "traits_line": "the skull-faced bow lineage in every panel, the orange crew cut, the champion's armband, and the tiny gnome mascot appearing in all three forms; no tattoos"
+  },
+  "iskar": {
+    "name": "Xie Zhen",
+    "epithet": "Two-Headed Snake",
+    "identity_line": "the elder hunter brother — Water Margin's Xie Zhen, a terse mountain tracker who hunts with twin steel forks and finishes his sister's sentences",
+    "appearance_line": "a weathered, wiry man with slate-grey cropped hair, sharp hooded eyes, and hunter's camo made of layered slate-grey plates like shale scales; a trained hunting hawk rides his arm; no tattoos",
+    "jobs": [
+      "the Tracker",
+      "the Mountain Hunter",
+      "the Two-Headed Snake"
+    ],
+    "base_desc": "Take the BASE panel's forward-reaching stalk with slate plates scattering off his cloak like disturbed shale, the stone-grey HAWK perched on his outstretched arm, twin steel hunting forks sheathed crossed on his back.",
+    "power1_desc": "A clear upgrade: the POWER 1 panel's twin blades of orange ember-energy flaring from his hands — the two snake heads — the shale cloak smoldering at its edges, the hawk circling.",
+    "power2_desc": "His ultimate form: the POWER 2 panel's low four-point hunting crouch armored in full shale plate, golden fork-spears raised and orbiting shield-slates, his hawk and a slate hunting hound flanking him.",
+    "personality_line": "hunter's terseness — half a sentence is enough; utterly still, then all at once",
+    "traits_line": "the twin-fork weapons and twin ember-blades (the two heads of the snake) in every panel, the slate-shale plate motif, and the hunting hawk companion; no tattoos"
+  },
+  "manmer": {
+    "name": "Zhang Qing",
+    "epithet": "Featherless Arrow",
+    "identity_line": "the stone-thrower — Water Margin's Zhang Qing, a lazy-drawling deadeye who never misses with a thrown stone and can't be bothered with ceremony",
+    "appearance_line": "a slouching, heavy-lidded young man with a dark tousled bob, a bored half-smile, one hand always in a pocket, and a little toy car charm clipped to his jacket; no tattoos",
+    "jobs": [
+      "the Slinger",
+      "the Deadeye",
+      "the Featherless Arrow"
+    ],
+    "base_desc": "Take the BASE panel's lazy off-balance lean wrapped in its cloak of hovering white stone shards, the spiral-ringed drill-lance resting across one shoulder, a couple of glowing blue sling-stones orbiting his free hand, the toy car charm visible.",
+    "power1_desc": "A clear upgrade: the POWER 1 panel's kneeling wind-up inside a cocoon of raised shards, a glowing blue throwing stone charged in each clawed grip, a stone hannya mask pushed up on his head like a cap.",
+    "power2_desc": "His ultimate form: the POWER 2 panel's full orbiting storm of stone shards arranged like a flock of featherless arrows around him, the drill-lance planted vertically as he lounges against it, dozens of sling-stones ready.",
+    "personality_line": "lazy drawl, instant hands — allergic to ceremony, already yawning while the stone is mid-flight",
+    "traits_line": "the hovering stone-shard cloak motif in every panel (escalating to a full shard storm), the glowing blue sling-stones, and the toy car charm; no tattoos"
+  },
+  "lan": {
+    "name": "Xie Bao",
+    "epithet": "Twin-Tailed Scorpion",
+    "identity_line": "the younger hunter sibling — Water Margin's Xie Bao, a woman in this telling: quick, fierce, and the one who starts the sentences her brother finishes",
+    "appearance_line": "a lithe young woman with sea-green hair in TWO long braids tipped with steel blade-rings — her twin scorpion tails — golden antler-shaped hairpins, teal-green hunter's gear; no tattoos",
+    "jobs": [
+      "the Chaser",
+      "the Ridge Hunter",
+      "the Twin-Tailed Scorpion"
+    ],
+    "base_desc": "Recast the BASE panel's leaping green qilin into her: mid-sprint with her blade-tipped twin braids flying like the beast's mane, a scale-patterned green hunting jacket and shorts, twin steel hunting forks in hand, gold antler pins catching the light.",
+    "power1_desc": "A clear upgrade: take the POWER 1 panel's blazing ember ring — she dives through a lasso-ring of fire mid-hunt, dark armored plates over the green gear, the fork-blades ignited at their tips.",
+    "power2_desc": "Her ultimate form: the POWER 2 panel's blade-bristled charge — a mantle of silver blade-spikes across her shoulders, the twin braids now armored chain-tails with heavy steel stingers, twin forks extended into long glaives.",
+    "personality_line": "starts the sentence at full sprint — impatient, fearless, grinning; her brother will finish it when she's already mid-air",
+    "traits_line": "the twin blade-tipped braids (the scorpion's two tails) in every panel, the golden antler hairpins, the green scale motif from the reference beast, and the twin-fork weapons shared with her brother; no tattoos"
+  },
+  "eileen": {
+    "name": "Wu Yong",
+    "epithet": "the Wisdom Star",
+    "identity_line": "the strategist — Water Margin's Wu Yong, a woman in this telling: the mind behind every victory, three moves ahead and perfectly willing to say so",
+    "appearance_line": "an elegant, composed woman with long wavy ash-blonde hair, cool appraising eyes, a scholar's folding feather-fan, and a jeweled talisman belt; no tattoos",
+    "jobs": [
+      "the Tactician",
+      "the Grand Strategist",
+      "the Wisdom Star"
+    ],
+    "base_desc": "Take the BASE panel's poised standing pose in its brown fur-trimmed officer's dress with gold piping and the jeweled belt, one hand conjuring sparks of insight, the other resting on her red lantern-scepter, the folded feather-fan tucked at the belt.",
+    "power1_desc": "A clear upgrade: the POWER 1 panel's golden scepter-wand and its clockwork DRAGON familiar perched on her arm with red wings and a trailing signal-cord — her mechanical adviser — the feather-fan now open, the dress richer.",
+    "power2_desc": "Her ultimate form: the POWER 2 panel's vintage microphone stand and two great floating red SPEAKERS with blue signal-cables looping around her — the Wisdom Star broadcasting orders three moves ahead, head tilted back mid-command.",
+    "personality_line": "three moves ahead and says so — serene superiority, a strategist conducting the battle like a song; apologizes only in footnotes",
+    "traits_line": "the feather-fan of the strategist in every panel, the jeweled talisman belt, the clockwork dragon adviser from POWER 1 onward, and the broadcast motif (scepter → speakers); no tattoos"
+  },
+  "amazora": {
+    "name": "Sun Erniang",
+    "epithet": "the Witch",
+    "identity_line": "the fearless innkeeper of the dark road — Water Margin's Sun Erniang, who sizes up every guest like a cut of meat and mothers the ones she likes",
+    "appearance_line": "a petite, cheerful woman with a brown bob, one bright teal eye and a black eyepatch over the other, a teal bow at her collar, and a smile that means the menu is negotiable; no tattoos",
+    "jobs": [
+      "the Innkeeper",
+      "the Night Chef",
+      "the Witch of the Dark Road"
+    ],
+    "base_desc": "Take the BASE panel's playful mid-hop pose with its TWIN curved carving blades — her kitchen knives of the dark road — spiked steel pauldrons over a zip-front black dress, stockings and heels, a little inn-apron tied at the waist.",
+    "power1_desc": "A clear upgrade: she has lost both her arms and now fights on TWO sleek CYBERNETIC PROSTHETIC arms of normal human proportion — matte dark-grey segmented metal with visible mechanical joints and thin hydraulic lines, NO armor plating and NO cords — each robotic hand gripping one normal-size curved butcher's cleaver. Her dress is MAROON (deep brownish-red) in this form. Her sneakers are also MAROON to match the dress. Her torn thigh-high stockings are BLACK (matching every form).",
+    "power2_desc": "Her ultimate form: ONLY her two cybernetic arms remain (no extra arms, no cords), now much LONGER and BENT at the elbow, each ending in an oversized GIANT mechanical hand that firmly grips a GIANT curved butcher's cleaver — her smile unchanged. Her dress is WHITE in this form, and the two cybernetic arms are extra BULKY, thick and oversized. Her cyber-arm shoulder mechanisms are especially strong, complex and intricate; her hair is slightly longer; her sneakers are a WHITE color theme. Her torn thigh-high stockings are BLACK (matching every form).",
+    "personality_line": "menu threats delivered sweetly — 'you'd sell well' — fierce mother-hen warmth with a butcher's confidence",
+    "traits_line": "the black eyepatch and teal bow in every panel, the twin curved butcher's-cleaver motif, and her cybernetic prosthetic arms from POWER 1 onward; no tattoos"
+  },
+  "kem": {
+    "name": "Lin Chong",
+    "epithet": "Panther Head",
+    "identity_line": "the framed arms instructor — Water Margin's Lin Chong, the empire's finest spear teacher, betrayed by his best friend and carrying his grief on a short leash",
+    "appearance_line": "a tall, disciplined man with fierce panther-like features — sharp amber eyes, heavy brows, wild black hair swept back — and an instructor's contained bearing; no tattoos",
+    "jobs": [
+      "the Drill Instructor",
+      "the Night Enforcer",
+      "the Marshal"
+    ],
+    "base_desc": "Take the BASE panel's leaping mid-air strike pose, but REPLACE its weapons with a single tactical SPEAR — clean straight haft, leaf-shaped blade; he wears modern military-police instructor gear: a crisp duty uniform shirt with tactical trousers, boots and a duty belt, a PANTHER EMBLEM patch on the shoulder and a small panther breast badge.",
+    "power1_desc": "A clear upgrade, keeping this panel's look: the black tactical jacket, combat trousers and the panther-fang half-mask — but REPLACE the bow and katanas with a THREE-SECTION CHAINED POLE caught mid-spin, its steel segments linked by short chains; tactical gloves and forearm guards.",
+    "power2_desc": "His ultimate form: a decorated enforcement dress uniform — long white-and-grey marshal's greatcoat with epaulettes and service ribbons, a peaked cap with a golden PANTHER cap-badge — wielding the grandest ORNATE SPEAR with a golden tassel below its blade at the reference naginata's scale, the golden panther aura rising off his shoulders.",
+    "personality_line": "short, controlled sentences — grief on a leash; perfect form because form is all he has left",
+    "traits_line": "pole weapons ONLY in every panel (spear, then three-section chained pole, then grand ornate spear — never swords or bows), and the PANTHER EMBLEM in every form: uniform patch and badge when unmasked, the panther-fang mask itself in POWER 1, the golden cap-badge and panther aura in POWER 2; no tattoos"
+  },
+  "zenzoze": {
+    "name": "Xu Ning",
+    "epithet": "Gold Lancer",
+    "identity_line": "the master lancer — Water Margin's Xu Ning, imperial drillmaster of the hooked lance, recruited to break armored cavalry and endlessly proud of his family technique",
+    "appearance_line": "a poised, aristocratic man with long silver-white hair, pale sharp features, and a drillmaster's ramrod posture; no tattoos",
+    "jobs": [
+      "the Drillmaster",
+      "the Lance Captain",
+      "the Gold Lancer"
+    ],
+    "base_desc": "Take the BASE panel's turned-away glance-over-the-shoulder pose, grey fur-trimmed greatcoat swirling, carrying his GOLDEN HOOKED LANCE — a sleek blade-lance with a gilded hook below the tip — half-hidden along his back.",
+    "power1_desc": "A clear upgrade: the POWER 1 panel's white buttoned dress-uniform with enormous fur sleeves, the golden hook-lance now full-length and gleaming, boots polished to parade shine.",
+    "power2_desc": "His ultimate form: the POWER 2 panel's armored legs with GOLDEN SPURS and clawed sabatons, the lance's saw-toothed banner-tail sweeping behind, gold fittings on every strap — the family technique perfected.",
+    "personality_line": "drill-sergeant precision — chin high, correcting your stance mid-duel, proud of every generation behind his lance",
+    "traits_line": "the golden hooked lance in every panel (the hook is the family signature), silver-white hair, and gold spurs in the final form; no tattoos"
+  },
+  "unasag": {
+    "name": "Ruan Xiaoqi",
+    "epithet": "the Living Death-God",
+    "identity_line": "the wildest of the fisher brothers — Water Margin's Ruan Xiaoqi, who laughs at doom, fights happiest when losing, and calls his boat a warship",
+    "appearance_line": "a barrel-chested, wild-grinning fisherman with sun-darkened skin, shaggy black hair tied with a purple ribbon-band, and a small bone skull charm at his neck; no tattoos",
+    "jobs": [
+      "the Fisher",
+      "the Reef Reaver",
+      "the Living Death-God"
+    ],
+    "base_desc": "Take the BASE panel's hunched, ready crouch holding its black TRIDENT, a scale-mail vest of dark pangolin-like plates over bare arms, glowing blue water orbs drifting around his fists, a round black buckler on one arm.",
+    "power1_desc": "A clear upgrade: the POWER 1 panel's heavier scale armor — overlapping steel fish-scales down his back and arms like a tide-beast's hide — trident hafted longer, his grin wider.",
+    "power2_desc": "His ultimate form: the POWER 2 panel's floating ring-boat — a levitating war-tub with thrusters that he rides like a throne — water blobs and spray orbiting as he fishes for enemies from above, scale armor at its fullest.",
+    "personality_line": "laughs at doom — head back, delighted, happiest in a losing fight he intends to win anyway",
+    "traits_line": "the trident and drifting water orbs in every panel, the fish-scale armor motif, the skull charm, and the ridiculous glorious war-tub in the final form; no tattoos"
+  },
+  "raprow": {
+    "name": "Zhu Tong",
+    "epithet": "Lord of the Beautiful Beard",
+    "identity_line": "the honest lawman — Water Margin's Zhu Tong, a constable whose mercy cost him everything, who still reads monsters their rights before the catchpole comes down",
+    "appearance_line": "a stately, warm-eyed officer with a MAGNIFICENT long black beard — glossy, immaculate, sacred — wearing the white curled ceremonial wig of his office like a judge's crown; no tattoos",
+    "jobs": [
+      "the Constable",
+      "the Magistrate's Arm",
+      "Lord of the Beautiful Beard"
+    ],
+    "base_desc": "Take the BASE panel's high-kicking arrest-in-motion pose with its dark HOOKED CATCHPOLE trident and long restraint whip-cord, the white curl-wig headdress, an open lawman's vest with a jade badge-amulet, white lace-embroidered uniform trousers.",
+    "power1_desc": "A clear upgrade: the POWER 1 panel's long dark duty-coat over armored pauldrons, the catchpole trident taller and gilt-edged, the glowing glyph on his belt-buckle badge, boots braced wide in a line-holding stance.",
+    "power2_desc": "His ultimate form: the POWER 2 panel's riot armor — glossy tech greaves and gauntlets with green power-lines and a half-visor that leaves the sacred beard fully visible — catchpole crackling, restraint cord coiled to strike.",
+    "personality_line": "reads monsters their rights — calm, fair, immovable; mercy first, catchpole second; do not touch the beard",
+    "traits_line": "the magnificent black beard (sacred, prominent in every panel), the white curled wig of office, the jade badge-amulet, and the hooked catchpole-and-cord motif; no tattoos"
+  },
+  "samupi": {
+    "name": "Hu Sanniang",
+    "epithet": "Ten Feet of Steel",
+    "identity_line": "the lasso warrior — Water Margin's Hu Sanniang, a cool-headed fighter famous for her ten feet of gleaming steel cable, who ends fights by simply towing people away",
+    "appearance_line": "a tall, athletic woman with warm brown skin and short violet-black hair swept back with a silver streak, calm appraising eyes; no tattoos",
+    "jobs": [
+      "the Rope-Dancer",
+      "the Cable Duelist",
+      "Ten Feet of Steel"
+    ],
+    "base_desc": "Take the BASE panel's poised contrapposto wrapped in its long flowing sash — restyled as a gleaming STEEL-SILK TOW CABLE coiling around her body — holding the panel's twin dark tridents low; sleek bodysuit-and-scarf streetwear in blue and white.",
+    "power1_desc": "A clear upgrade: the POWER 1 panel's teal orb-and-hook staff — her cable now ends in a glowing grapple-hook — with bronze wing ornaments at her shoulder and the white cable spiraling wider around her.",
+    "power2_desc": "Her ultimate form: the POWER 2 panel's great teal manta-sail blade with its bead-cluster hilt, the steel cable now etched with glowing gold circuitry and orbiting her in a full loop, ready to tow a battleship.",
+    "personality_line": "tow-cable pragmatism — unimpressed, efficient, already calculating the shortest path to dragging you out of the fight",
+    "traits_line": "the ten-foot steel cable motif: a long gleaming ribbon-cable coiling around her in every panel, escalating from silk-steel to glowing circuited steel; no tattoos"
+  },
+  "bagunar": {
+    "name": "Lu Junyi",
+    "epithet": "Jade Unicorn",
+    "identity_line": "the perfect gentleman framed by his own right hand — Water Margin's Lu Junyi, a flawless aristocrat-champion who keeps boardroom formality even in gutter fights",
+    "appearance_line": "a tall, immaculate silver-haired man with a groomed short beard and cold jade-green eyes, dressed like a chairman who happens to be the best fighter in the city; no tattoos",
+    "jobs": [
+      "the Chairman",
+      "the Magnate",
+      "the Jade Unicorn"
+    ],
+    "base_desc": "Take the BASE panel's square, rooted stance and its huge ornate jade-and-gold single-edged sword held level; a white fur-collared greatcoat over a tailored suit, a jade unicorn-horn pin at the lapel, and the panel's dark crescent ring hovering around his waist like an orbiting accessory.",
+    "power1_desc": "A clear upgrade: the POWER 1 panel's grand gold-winged ceremonial greatsword point-down before him, golden sparkles in the air, the coat grander with gold-trimmed shoulders, the dark orbit-ring gilded.",
+    "power2_desc": "His ultimate form: the POWER 2 panel's pale white greatsword engraved with a serene face, both his hands raised inside blazing golden halo rings, the fur mantle at its most regal — a chairman crowned by his own verdict.",
+    "personality_line": "boardroom formality in a street brawl — chin level, posture perfect, disappointment sharper than the blade",
+    "traits_line": "the jade unicorn-horn lapel pin and the dark orbiting crescent ring in every panel, gilding as he powers up; golden hand-halos in the final form; no tattoos"
+  },
+  "burbaba": {
+    "name": "Yang Zhi",
+    "epithet": "Blue-Faced Beast",
+    "identity_line": "the disgraced escort captain — Water Margin's Yang Zhi, a proud soldier who lost the convoy he guarded and keeps a ledger of his own bad luck",
+    "appearance_line": "a burly, big-bellied but powerful man with blond braided hair and beard-braids, weathered tan skin, and a striking BLUE BIRTHMARK sweeping across one side of his face; blue-painted nails; no tattoos",
+    "jobs": [
+      "the Escort",
+      "the Convoy Captain",
+      "the Blue-Faced Beast"
+    ],
+    "base_desc": "Take the BASE panel's relaxed, big-hearted stance: green tank top under an open brown jacket, blue sash at the hip, a katana thrust through the belt and a second long saber in hand; sandals and a small battered LEDGER BOOK hanging from his belt.",
+    "power1_desc": "A clear upgrade: the POWER 1 panel's studded shoulder armor bound with heavy rope, the naginata polearm over his shoulder joining the katana, rope-wrapped bracer, the ledger still at his belt.",
+    "power2_desc": "His ultimate form: the POWER 2 panel's deep-blue commander's cloak with a gem clasp, the great propeller-hub glaive raised, and three cyan energy needles hovering ready — his bad luck finally weaponized.",
+    "personality_line": "duty in disgrace — a tired, honest grin; he expects the worst, shows up anyway, and writes it all down afterward",
+    "traits_line": "the blue face birthmark (unmistakable in every panel), blue-painted nails, the blue sash, and the little bad-luck ledger at his belt in all three forms; no tattoos"
+  },
+  "maralme": {
+    "name": "Qin Ming",
+    "epithet": "Fiery Thunderbolt",
+    "identity_line": "the hot-tempered champion — Water Margin's Qin Ming, a shouting vanguard whose temper arrives before he does, tricked into joining and loyal ever since",
+    "appearance_line": "a lean, battle-scarred man with long black hair streaming behind him and long crimson ribbons tied into it, fierce red-brown eyes, a scar across one cheek; no tattoos",
+    "jobs": [
+      "the Vanguard",
+      "the Champion",
+      "the Fiery Thunderbolt"
+    ],
+    "base_desc": "Take the BASE panel's grounded stance drawing its huge wolf-toothed serrated great-blade over the shoulder, red armor plates at the knees and chest over a studded gray fighting coat, the crimson ribbons streaming.",
+    "power1_desc": "A clear upgrade: the POWER 1 panel's leaping double strike with TWO pale great-blades scissoring, bronze armor at the waist, gauntleted arm, ribbons whipping like storm pennants.",
+    "power2_desc": "His ultimate form: the POWER 2 panel's crimson segmented whip-blade coiling around him like a scorpion's tail and crackling with thunderbolt energy, a clawed gauntlet raised, ribbons and blade in one continuous red storm.",
+    "personality_line": "volume as strategy — mid-shout, veins of temper, the charge already committed; he apologizes later by hitting things for you",
+    "traits_line": "the crimson ribbons in his hair in every panel and the wolf-tooth serration on every blade; the red whip-blade in POWER 2 crackles with thunderbolt arcs; no tattoos"
+  },
+  "nakupi": {
+    "name": "Huyan Zhuo",
+    "epithet": "Twin Rods",
+    "identity_line": "the marshal who defected — Water Margin's Huyan Zhuo, a decorated commander of chain-armored cavalry who brought his courtesy, and his two steel rods, to the outlaws",
+    "appearance_line": "a stately man with very long silver-white hair carrying a single dark-red streak, sharp patrician features, and a marshal's unbending posture; no tattoos",
+    "jobs": [
+      "the Marshal",
+      "the Defector",
+      "the Twin Rods"
+    ],
+    "base_desc": "Take the BASE panel's formal standing pose: a floor-length black dress-uniform coat glittering with faint pink star-sequins, a row of service medals on the breast with ONE torn off, and the panel's TWIN dark steel rods — spiked parade batons — held crossed at his sides.",
+    "power1_desc": "A clear upgrade: the POWER 1 panel's massive saw-edged greatsword reimagined as a segmented heavy rod-blade, the golden crank-winch device at his hip reeling its chain, dark armor plates over the uniform, pale banner-shards floating behind.",
+    "power2_desc": "His ultimate form: the POWER 2 panel's golden orb-shield on one arm, the cluster-headed flail-rod in the other, and its four floating eyeball-drones deployed around him as tireless watchmen — a marshal's surveillance made literal.",
+    "personality_line": "marshal's courtesy — spine straight, voice level, mentioning his medals only to disown them",
+    "traits_line": "the twin steel rods motif in every form (batons, then segmented rod-blade, then flail-rod), the medal row with one missing, and the silver hair with its single red streak; no tattoos"
+  },
+  "kuscah": {
+    "name": "An Daoquan",
+    "epithet": "the Skilled Doctor",
+    "identity_line": "the crew's plague-doctor physician — Water Margin's An Daoquan reimagined as a woman: a coolly confident, alluring plague doctor who cures with needle, herb and hard-won knowledge, and grumbles fondly about every patient she is already halfway through saving. COMPLETELY REDESIGN her — ignore the reference panels' male time-mage look (no hourglass, no clock); she is a sexy anime plague doctor",
+    "appearance_line": "a beautiful, curvaceous young woman with long flowing silver-white hair spilling out from under a PLAGUE-DOCTOR BIRD MASK — a polished silver beak-mask with a single glowing RED goggle-eye lens — pale skin, red-gloved hands, a confident sly poise; no tattoos",
+    "jobs": [
+      "the Apothecary",
+      "the Plague Doctor",
+      "the Grand Physician"
+    ],
+    "base_desc": "REDRAW her fresh (ignore the reference figure): a practical female plague doctor — brown wide-brim hat over the silver bird-beak mask, a short shoulder capelet, a red-and-white high-collar medical blouse with a laced red leather corset-vest, red gloves, a belt of glass potion vials and green healing herbs, holding a slim plague-doctor cane-staff tipped with a glass syringe of glowing green serum. Attractive but practical and mostly covered.",
+    "power1_desc": "A clear upgrade, sexier and more ornate: an ornate silver-and-gold filigree bird mask, the wide-brim hat plumed, a fitted red-and-gold corset bodice that flatters her figure with a bare midriff and thigh-high heeled boots, a flowing half-cape, more vials, pouches and herb-sprigs, and a glowing lantern at her hip; her healing staff grown longer and gilded with a larger syringe-vial of luminous serum.",
+    "power2_desc": "Her ultimate form — the most ornate AND the most alluring: a luxurious white MINK FUR CAPE draped off her shoulders, but underneath a revealing ornate red-and-gold bustier/bra top showing her cleavage, with gold filigree, garter straps and a jeweled navel, the finest gold plague-doctor bird mask, floating rings of glass vials and glowing green healing herbs orbiting her, wielding the grandest syringe-staff pouring radiant emerald healing light. Maximum accessories, maximum allure.",
+    "personality_line": "complaining is how she cares — a sly confident smirk behind the beak mask as she inventories your injuries out loud",
+    "traits_line": "the plague-doctor bird mask (silver-to-gold beak, glowing red eye-lens) and the red-and-white apothecary color scheme in every panel, glass potion vials and green healing herbs throughout; escalating from covered-and-practical to ornate-and-revealing; no hourglass or clock — she is a healer, not a time mage; no tattoos"
+  },
+  "shberdan": {
+    "name": "Liu Tang",
+    "epithet": "Red-Haired Devil",
+    "identity_line": "a rough, loyal early outlaw — Water Margin's Liu Tang, the wine-heist devil who is allergic to plans and shows affection through insults",
+    "appearance_line": "a rangy, rough man with wild unruly dark-red hair, olive skin, stubble, and a devil's grin; no tattoos",
+    "jobs": [
+      "the Prowler",
+      "the Raider",
+      "the Red Devil"
+    ],
+    "base_desc": "Take the BASE panel's stance with its ornate winged spear and its bandolier of glowing potion vials — his infamous drugged wine, now street-brew bottles on a strap; teal-and-white palette turned into a hooded scarf and rugged streetwear.",
+    "power1_desc": "A clear FUTURISTIC upgrade — NOT Chinese wuxia robes: dress him in sleek near-future TECH-WEAR: a fitted dark techwear jacket with glowing luminous trim, armored panels and a high collar over his rugged base clothes. He carries FEWER but BIGGER, better-designed wine-canisters — two or three large sleek glowing vials with ornate machined metal caps, clipped to a chest harness. Upgrade his spear to a sleek metal tech-spear with a glowing energy edge running along the blade.",
+    "power2_desc": "His ultimate form — dress him as a SITH LORD in the exact style of DARTH MAUL: all-BLACK layered Sith robes and tunic, a wide black leather belt, black combat gloves, black tabards over black trousers, black boots, a dark hooded robe collar — menacing and sleek. He wields DARTH MAUL WEAPON: a double-bladed red lightsaber SABERSTAFF — a long metal hilt projecting a glowing RED energy blade from BOTH ends, held diagonally across his body. His potion-vials are NOT worn on his body at all: instead a small sleek hovering ROBOTIC DRONE floats beside him carrying them — the drone holds a little rack of several SMALL potion bottles in DIFFERENT COLORS (red, blue, green, purple, amber). Keep HIS OWN identity — wild dark-red spiky hair, devil grin, his normal human face and skin; he is NOT Darth Maul himself and has NO horns, NO face tattoos, NO red skin — he is shberdan wearing the Sith outfit and wielding the saberstaff.",
+    "personality_line": "allergic to plans — cocky forward lean, itching to improvise, insult half-formed on his lips",
+    "traits_line": "the wild dark-red hair and devil grin in every panel; the wine-vial motif: a bandolier (base), sleek harness-canisters (POWER 1 futuristic techwear), and at POWER 2 small multi-colored potion bottles carried by a hovering drone beside him (not worn); POWER 1 is futuristic tech, POWER 2 is a Darth-Maul Sith look with a double-bladed red lightsaber; no tattoos"
+  },
+  "macuri": {
+    "name": "Mu Hong",
+    "epithet": "the Unrestrained",
+    "identity_line": "the generous hothead — Water Margin's Mu Hong, a big-hearted brawler who feeds people mid-crisis and fights like the bill is already paid",
+    "appearance_line": "a broad-shouldered, easy-grinning man with long dark braided locks under a small cap, warm brown skin, and heavy silver arm-rings; no tattoos",
+    "jobs": [
+      "the Brawler",
+      "the Champion",
+      "the Unrestrained"
+    ],
+    "base_desc": "Take the BASE panel's monk's-spade spear — crescent blade one end, ringed head the other — bare-chested under an open jacket with a gold coin medallion, banner tassels off the shaft, loose fighting trousers.",
+    "power1_desc": "A clear upgrade: the POWER 1 panel's floating white ring-banner behind him, gold pauldrons and knee guards, silver rings on both arms, the spade-spear more ornate.",
+    "power2_desc": "His ultimate form: the POWER 2 panel's hovering white horned war-mask above crossed TWIN spade-spears, two great ring-banners floating at his shoulders, gold and coin charms everywhere.",
+    "personality_line": "generous hothead — mid-fight grin, one hand ready to share food, the other holding a polearm; unstoppable warmth",
+    "traits_line": "the ring-banner motif and the gold coin medallion in every panel, plus a small food-skewer pouch at his belt — he feeds people even mid-crisis; no tattoos"
+  },
+  "zan": {
+    "name": "Li Kui",
+    "epithet": "Black Whirlwind",
+    "identity_line": "the devoted wrecking ball — Water Margin's Li Kui, a one-step-plan berserker whose only fear is disappointing Timely Rain",
+    "appearance_line": "a hulking, dark-skinned wild man with a shaved head, bristling black beard, small fierce eyes, and a swirling green war-paint mark across his face; no tattoos",
+    "jobs": [
+      "the Wrecker",
+      "the Berserker",
+      "the Black Whirlwind"
+    ],
+    "base_desc": "Take the BASE panel's low crouched charge with its massive jagged green-edged cleaver-blade, spiked iron shoulder-guard, ragged shorts and wrapped fists — pure forward menace.",
+    "power1_desc": "A clear upgrade: the POWER 1 panel's pale bone-feather mantle flaring like wings and its hull-like purple great-cleaver, heavier armor plates.",
+    "power2_desc": "His ultimate form: the POWER 2 panel's engine-cleaver — the giant blade grown a roaring turbine housing — with teal hex-tile whirlwind shards spiraling around him like shattered glass in a storm.",
+    "personality_line": "one-step plans and joyous violence — mouth open mid-roar, hurtling forward, a heart of absolute devotion",
+    "traits_line": "the green face war-paint swirl and the whirlwind motif — orbiting shards that escalate each panel until they are a full spiral storm in POWER 2; no tattoos"
+  },
+  "korin": {
+    "name": "Wu Song",
+    "epithet": "the Pilgrim",
+    "identity_line": "the tiger-slayer — Water Margin's Wu Song, an avenger in a pilgrim's habit who counts his drinks and wears his pride like armor",
+    "appearance_line": "a compact, sharp-eyed young man with spiky crimson hair and crimson eyes, a pilgrim's headband, and a prayer-bead necklace; a faint set of old tiger-claw scars across one forearm; no tattoos",
+    "jobs": [
+      "the Pilgrim",
+      "the Avenger",
+      "the Tiger-Slayer"
+    ],
+    "base_desc": "Take the BASE panel's easy stance with its giant single-edged crimson glaive-blade carried over one shoulder; black-and-white layered pilgrim travel gear with a monk's scarf restyled as streetwear, prayer beads at his neck.",
+    "power1_desc": "A clear upgrade: the POWER 1 panel's blazing red halo ring behind him and twin pale wing-blades at his back, the beads glowing, his coat flaring open mid-stride.",
+    "power2_desc": "His ultimate form: the POWER 2 panel's white reliquary pod with cylinder charms and its great curling white ring wrapped around him, the crimson blade at its grandest, tiger-stripe energy accents flickering along its edge.",
+    "personality_line": "counts his drinks, never his enemies — chin high, pride like armor, the calm of a man who has already killed a tiger barehanded",
+    "traits_line": "the prayer beads and pilgrim headband in every panel, the red halo motif growing each form, and subtle tiger-stripe accents on blade and sash; no tattoos"
+  },
+  "daiana": {
+    "name": "Gongsun Sheng",
+    "epithet": "Dragon in the Clouds",
+    "identity_line": "the crew's Taoist mystic — Water Margin's Gongsun Sheng, a storm-calling priest who reads luck like weather and speaks prophecy in weather-talk; serene amid any chaos",
+    "appearance_line": "a tall, serene young man with long flowing deep-red hair worn in a loose Taoist half-knot with a wooden hairpin, calm half-lidded eyes, pale skin, and no tattoos — an unhurried mystic's presence",
+    "jobs": [
+      "the Firedrinker",
+      "the Firemane",
+      "the Firemantle"
+    ],
+    "base_desc": "Take the BASE panel's drifting, weightless pose and its molten palette: a long black Taoist robe-coat over simple streetwear, the robe's hem glowing with rings of molten orange like cooling lava; he holds a plain gnarled dark staff, and from his free fingertip he draws a single thin thread of pink flame.",
+    "power1_desc": "A clear upgrade: take the POWER 1 panel's huge crescent ribbon of fire swirling in a full circle around him; the round talisman-clock at his chest now glows; his robe grows ornate ember-edged layers, his staff is topped with chiming brass rings, and embers orbit him.",
+    "power2_desc": "His ultimate form: transform the POWER 2 panel's great broken stone ring into a coiling STONE-AND-EMBER CLOUD-DRAGON encircling him — its rocky head emerging open-jawed at the top of the ring, molten light glowing in every crack; keep the panel's floating white tech talisman device as his hovering artifact; his most ornate robes, the chest talisman blazing, threads of flame rising like a storm.",
+    "personality_line": "weather-talk prophecy and serene dread — utterly calm, faintly amused, half-lidded eyes, as if he already knows how the fight ends",
+    "traits_line": "the dragon-in-clouds motif: cloud-and-dragon embroidery winding down his robe in every panel, growing bolder with each power level until the POWER 2 stone dragon makes it literal; the round talisman-clock at his chest appears in all three panels; no tattoos"
+  },
+  "grace": {
+    "name": "Yan Qing",
+    "epithet": "the Wanderer",
+    "identity_line": "the crew's silver-tongued jack-of-all-trades — Water Margin's Yan Qing, a woman in this telling: performer, wrestler, crossbow ace, and the Jade Unicorn's fiercely loyal protégé, who can talk her way through any door",
+    "appearance_line": "a graceful young Chinese woman with long straight black hair and blunt bangs, calm violet-blue eyes, fair skin, a knowing half-smile, and Yan Qing's famous ornate flower-and-songbird tattoos across her upper back and left thigh (glimpsed through the dress slit) — her arms are bare of ink",
+    "jobs": [
+      "the Archer",
+      "the Markswoman",
+      "the Ranger"
+    ],
+    "base_desc": "Her simplest look: a long black flower-printed dress restyled as elegant streetwear with a deep pink-trimmed neckline, a single leather glove, heeled boots; mirror the BASE panel's poised standing pose holding its compact ornate crossbow level at her hip.",
+    "power1_desc": "A clear upgrade: take the POWER 1 panel's kneeling firing stance and its much larger ornate golden greatbow nearly her own height; add gold armor plates on her arms, engraved shield-like limbs on the bow, throwing quarrels at her fingers, and swinging pink tassels.",
+    "power2_desc": "Her ultimate form: take the POWER 2 panel's kneeling pose with its sleek silver high-tech recurve bow; one of her arms is now a full chrome CYBORG ARM — a sculpted mechanical prosthetic with magenta light seams, echoing the reference's mechanical arm unit; TWO or THREE small robotic flyer-seeker drones (winged hunter machines, NOT arrowhead projectiles) hover beside her as separate floating elements; her darkest, most ornate dress with magenta energy accents, the flower tattoos glowing faintly.",
+    "personality_line": "everything's an angle — serene, effortlessly graceful, a charmer's knowing smile; charm as armor",
+    "traits_line": "the ornate flower-and-songbird tattoos on her upper back and left thigh (shown through the dress slit), visible in every panel; her arms stay bare of ink; the flower motif repeats in her dress print, and in POWER 2 the tattoos glow softly in magenta as part of her aura"
+  },
+  "bahl": {
+    "name": "Shi Jin",
+    "epithet": "Nine Dragons",
+    "identity_line": "the youngest rookie hero of the Outer Heaven crew — Water Margin's Shi Jin, a hot-blooded young man from a well-off family who mastered every weapon, inked nine dragons across his body, and hit the streets with something to prove",
+    "appearance_line": "a lean, athletic young Chinese man with dark hair in a modern topknot-undercut street style, sharp confident eyes, fair skin, and nine intertwined dragon tattoos sprawling across his shoulders, arms and upper torso",
+    "jobs": [
+      "the Dark Duelist",
+      "the Dark Warrior",
+      "the Dark Hero"
+    ],
+    "base_desc": "His simplest street gear: an open sleeveless dark jacket baring his tattooed chest and arms, loose dark martial-arts pants, chunky sneakers, and a red flower charm; mirror the BASE panel's calm low stance and carry its same slender dark single-edged sword held low.",
+    "power1_desc": "A clear upgrade: take the POWER 1 panel's dynamic leaping pose and its much larger ornate two-tone golden curved greatblade with a dragon-figure guard; layer armored plates and guards over his streetwear, add a streaming red sash, and expose more of the dragon tattoos.",
+    "power2_desc": "His ultimate form: take the POWER 2 panel's enormous jet-black greatblade with a pale inner edge and a charm-ringed round guard, violet spirit-flames coiling around the blade; his darkest, most elaborate armored streetwear, the nine dragon tattoos blazing with glowing energy, red petals scattering through the air.",
+    "personality_line": "rookie fire — cocky, eager, chin up, itching for the fight, furious at being called a kid",
+    "traits_line": "the nine intertwined Chinese dragon tattoos in bold graphic tattoo linework across his arms, shoulders and upper torso — clearly visible in all three panels; in POWER 1 more of the dragons show, and in POWER 2 the dragon tattoos glow as part of his aura; his wardrobe stays sleeveless or open enough that the tattooed arms are always on display"
+  }
+}
