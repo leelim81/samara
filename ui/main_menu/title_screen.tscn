@@ -89,13 +89,6 @@ layout_mode = 2
 size_flags_horizontal = 4
 color = Color(0.753, 0.627, 0.384, 0.55)
 
-[node name="SubtitleLabel" type="Label" parent="MarginContainer/VBoxContainer2/TitleBlock"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.863, 0.878, 0.894, 0.55)
-theme_override_font_sizes/font_size = 16
-text = "A  F A N  R E C R E A T I O N"
-horizontal_alignment = 1
-
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
@@ -116,14 +109,6 @@ text = "SETTINGS"
 [node name="QuitButton" parent="MarginContainer/VBoxContainer2/VBoxContainer" instance=ExtResource("4")]
 layout_mode = 2
 text = "QUIT"
-
-[node name="FooterLabel" type="Label" parent="MarginContainer/VBoxContainer2"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.863, 0.878, 0.894, 0.4)
-theme_override_font_sizes/font_size = 13
-text = "Personal, non-commercial fan project. Terra Battle is a property of Mistwalker Corporation."
-horizontal_alignment = 1
-autowrap_mode = 2
 
 [connection signal="tree_entered" from="." to="." method="_on_TitleScreen_tree_entered"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer2/VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
